@@ -1,0 +1,22 @@
+[
+  {
+    "name": "sort",
+    "ap_sql": "SELECT k, c, pad FROM sbtest1 WHERE id <= 400000 ORDER BY c DESC, pad ASC, k DESC",
+    "desc": "Sort 400K rows (~72MB) — spills at WM=64MB; SB=1024 creates IO baseline",
+    "cardinality": {
+      "rows": 400000,
+      "width": 186
+    }
+  },
+  {
+    "name": "io_join",
+    "ap_sql": "SELECT s1.id, s1.k, s2.c, s2.pad FROM sbtest1 s1 JOIN sbtest2 s2 ON s1.id = s2.id ORDER BY s2.c DESC, s1.pad ASC",
+    "desc": "Full JOIN sbtest1+sbtest2 (2M rows, ~920MB scan) — IO bottleneck at SB=1024MB",
+    "cardinality": {
+      "rows": 2000000,
+      "width": 212,
+      "override": true,
+      "note": "GaussDB planner reports ~16.5M rows (8x overestimate) due to broken join cardinality estimation on PK-PK equi-join; override prevents WM over-allocation"
+    }
+  }
+]
