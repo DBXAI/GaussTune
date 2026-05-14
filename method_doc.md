@@ -128,12 +128,30 @@ instant_ben = 0.5 × spill_mb × DISK_WRITE_COST / wm_mb
 | AP 活跃但无新 spill | `smoothed × 0.9`（慢衰减，保持信号） |
 | AP 空闲 | `smoothed × 0.1`（快衰减，约 4 个 interval 归零） |
 
-SB 收益（α/β 可减性调整）：
+SB 收益（α/β 可减性调整 + w_await 写 I/O 惩罚）：
+
 ```
-sb_ben_plain = blks_read × PAGE_SIZE_MB × DISK_READ_COST / sb_mb
-mb_wm = α × wm_ben
-mb_sb = β × sb_ben_plain
+读收益:
+  mb_sb_read = β × blks_read × PAGE_MB × DISK_READ_COST / sb_mb
+
+写 I/O 惩罚（新）:
+  w_await_calib(SB)  — 从 sb_calib.json 插值，纯 TP 场景下 SB 对应的写延迟基线
+  load_factor        = w_await_now / w_await_calib_base
+                       （实时磁盘压力 / calib 时基线，AP 注入后 > 1）
+  w_await_actual(SB) = w_await_calib(SB) × load_factor
+  excess             = max(0, w_await_actual - W_AWAIT_BASE_MS) / W_AWAIT_BASE_MS
+  penalty            = excess × IO_PENALTY_WEIGHT × DISK_READ_COST / sb_mb
+
+净边际收益:
+  mb_sb = max(0, mb_sb_read - penalty)
 ```
+
+`w_await_now` 在每个 tick（15s）通过 `iostat -xk <device> 1 1` 实测。
+
+物理含义：
+- SB 增大 → buffer pool 更多脏页 → checkpoint/WAL 写 I/O 竞争 → `w_await` 升高
+- AP 注入后磁盘更忙，`w_await_now > w_await_calib_base`，`load_factor > 1`，惩罚自动放大
+- 当写惩罚 ≥ 读收益时，`mb_sb` 降至 0，STMM 自然停止增大 SB，无需硬编码上界
 
 α（spill reducibility）：WM 增大后 spill 下降则恢复，否则衰减（×0.85）。β（read reducibility）：SB 增大后 blks_read 下降则恢复，否则衰减（×0.85）。可减性因子防止对"增加资源无法改善"的信号反应过度。
 
@@ -150,7 +168,7 @@ gain  = (p − 1) / slope_fitted,   p = 0.8
 
 **RECOVER**：AP 空闲后连续 3 个 interval `wm_ben < 1e-4`，主动缩回：`Δwm = −(wm − WM_MIN) × 0.2`。
 
-**SB 在线调整**（慢消费者，需重启）：比较 mb_sb 与 mb_wm；持续 4 个 interval mb_sb > mb_wm 则建议 +1GB，AP 空闲且 RECOVER 完成则建议 −1GB。
+**SB 在线调整**（慢消费者，需重启）：比较 mb_sb 与 mb_wm；持续 4 个 interval mb_sb > mb_wm 则建议 +1GB，AP 空闲且 RECOVER 完成则建议 −1GB。由于 mb_sb 已包含写 I/O 惩罚，SB 超过磁盘安全水位后净收益自然降至 0，不再触发增长，无需硬编码上界。
 
 #### HOLD 逻辑（防止 WM 低于预测下界）
 
@@ -237,11 +255,41 @@ GaussDB 估计 = 16,500,000（8× 高估）
 
 ---
 
-## 4. 文件结构
+## 4. SB 惩罚标定（sb_calib.py）
+
+SB 写 I/O 惩罚模型依赖离线标定曲线，需在部署时运行一次：
+
+```bash
+python3 sb_calib.py   # 输出 run-logs/sb_calib6.json
+```
+
+标定过程：在 SB=[1024,2048,...,7168]MB 各水平下运行 sysbench，测量 TPS、blks_hit/read、`w_await`（iostat）、bgwriter delta。每个水平 180s 暖机 + 60s 测量，约 38 分钟。
+
+关键发现（阿里云 EBS，14.7GB RAM）：
+
+| SB(MB) | TPS | w_await(ms) | wa% |
+|--------|-----|------------|-----|
+| 1024 | 164.7 | 11.9 | 61% |
+| 2048 | 193.2 | 21.1 | 65% |
+| 3072 | 151.7 | 22.6 | 77% |
+| 4096 | 100.6 | 21.3 | 85% |
+
+- `w_await` 在 SB=1024→2048 时从 12ms 跳至 21ms（buffer pool 超出 LLC，写 I/O 与 WAL 开始竞争）
+- L3 miss% 全程 12–17%（恒定），不是惩罚来源
+- `buffers_backend=0`（无后端强制写），写 I/O 主要来自 WAL + checkpoint
+- `bgwriter_delay=200ms`（PostgreSQL 默认）比 OpenGauss 默认的 2000ms 将安全上界从 2048MB 提升至 3072MB，实验开始时统一设置此值
+
+标定结果由 `SBPenaltyModel`（`memory_tuner.py`）加载，在每个 tick 的 `_sb_benefit_brbe()` 中用于计算写 I/O 惩罚，不同机器需重新标定。
+
+---
+
+## 5. 文件结构
 
 ```
 stmm_test.py        — 实验主控：阶段调度、STMM 驱动、结果采集
 stmm_controller.py  — STMMController / BRBEController / ProactiveBRBEController
+memory_tuner.py     — SBPenaltyModel：从 sb_calib.json 提供 w_await 插值和写 I/O 惩罚因子
+sb_calib.py         — SB 惩罚曲线离线标定（需部署时运行一次）
 workloads.py        — load_workloads() / update_cardinality()
 workloads.json      — query template + 真实基数存储
 run-logs/           — 实验日志、JSON 结果

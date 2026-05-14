@@ -242,6 +242,31 @@ def measure_tps(duration_s: int) -> float:
 def get_gaussdb_pid() -> int | None:
     """Return PID of the running gaussdb process owned by omm, or None."""
     out, _ = omm_run("pgrep -u omm gaussdb 2>/dev/null | head -1", timeout=10)
+
+def _read_w_await() -> float:
+    """Read current w_await (ms) from iostat for the data device. Returns 0 on failure."""
+    try:
+        dev = subprocess.check_output(["df", "/opt/openGauss/data"],
+                                      text=True, timeout=5).split("\n")[1].split()[0]
+        dev = dev.rsplit("/", 1)[-1]
+        import re as _re
+        m = _re.match(r"(nvme\d+n\d+|[a-z]+)", dev)
+        dev = m.group(1) if m else "sda"
+        r = subprocess.run(f"iostat -xk {dev} 1 1", shell=True,
+                           capture_output=True, text=True, timeout=8)
+        col_map: dict = {}
+        for line in r.stdout.splitlines():
+            if line.startswith("Device"):
+                col_map = {c: i for i, c in enumerate(line.split())}
+                continue
+            if col_map and line.strip() and not line.startswith(("Linux", "avg")):
+                parts = line.split()
+                idx = col_map.get("w_await", col_map.get("await", None))
+                if idx is not None and idx < len(parts):
+                    return float(parts[idx])
+    except Exception:
+        pass
+    return 0.0
     pid = out.strip().split()[0] if out.strip() else ""
     return int(pid) if pid.isdigit() else None
 
@@ -931,7 +956,8 @@ def run_config(label: str, wm_fixed: int | None, use_stmm: bool, sb_fixed: int |
                 dt = temp - prev_stats[2]
                 prev_stats[0], prev_stats[1], prev_stats[2] = hit, read, temp
 
-                new_wm, suggest_sb = stmm.tick(dh, dr, dt, n_ap)
+                new_wm, suggest_sb = stmm.tick(dh, dr, dt, n_ap,
+                                                w_await_now=_read_w_await())
                 if new_wm != current_wm[0]:
                     set_guc("work_mem", f"{new_wm}MB")
                     current_wm[0] = new_wm
@@ -1370,6 +1396,11 @@ def main():
     kill_ap()
     set_guc("shared_buffers", f"{SB_MB}MB")
     set_guc("work_mem", "64MB")
+    # Apply optimal bgwriter config once for all methods (bgwriter_delay=200ms
+    # matches PostgreSQL default; OpenGauss ships 2000ms which causes write I/O
+    # pressure at larger SB on cloud block storage — sweep experiment confirmed
+    # 200ms raises the safe SB ceiling from 2048MB to 3072MB)
+    set_guc("bgwriter_delay", "200")
     log("\nRestarting DB (SB=6GB baseline)...")
     ok = restart_db()
     if not ok:

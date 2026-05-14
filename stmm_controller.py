@@ -31,6 +31,7 @@ import numpy as np
 from collections import deque
 from dataclasses import dataclass, field
 from typing import Optional
+from memory_tuner import SBPenaltyModel
 
 # ── Paper constants ────────────────────────────────────────────────────────────
 POLE           = 0.8   # p; convergence in -4/ln(p) ≈ 18 intervals
@@ -451,16 +452,19 @@ class BRBEController(STMMController):
                  sb_init_mb: int = 6144,
                  poll_s: int = 30,
                  total_mem_mb: int = 15360,
-                 n_ap_workers: int = 4):
+                 n_ap_workers: int = 4,
+                 calib_json: str | None = "run-logs/sb_calib6.json"):
         super().__init__(wm_init_mb=wm_init_mb, sb_init_mb=sb_init_mb, poll_s=poll_s)
         self._total_mem_mb = float(total_mem_mb)
         self._n_ap_workers = n_ap_workers
         self._alpha = self.ALPHA_INIT
-        self._beta  = self.BETA_INIT    # SB read reducibility ∈ [0,1]
+        self._beta  = self.BETA_INIT
         self._prev_spill_mb   = 0.0
         self._prev_wm_mb      = float(wm_init_mb)
         self._prev_blks_read  = 0
         self._prev_sb_mb      = float(sb_init_mb)
+        self._penalty_model   = SBPenaltyModel(calib_json=calib_json,
+                                               log_fn=lambda m: self.log.append({"event": m}))
 
     def _update_alpha(self, spill_mb: float):
         """Update spill reducibility based on whether WM increase reduced spill."""
@@ -487,26 +491,35 @@ class BRBEController(STMMController):
         self._prev_sb_mb     = self.sb_mb
 
     def _sb_benefit_brbe(self, blks_read_delta: int, blks_hit_delta: int,
-                          n_ap: int) -> float:
+                          n_ap: int, w_await_now: float = 0.0) -> float:
         """
-        Marginal benefit of SB — saved disk-read seconds per MB of SB (same unit as mb_wm).
+        Net marginal benefit of SB = read-IO savings − write-IO penalty.
 
-        mb_sb = β × blks_read × PAGE_MB × DISK_READ_COST / sb_mb
+        Read benefit (same as before):
+          mb_sb_read = β × blks_read × PAGE_MB × DISK_READ_COST / sb_mb
 
-        This is the DB2 STMM common currency (§3.1): both mb_wm and mb_sb express
-        saved system seconds per MB, making the trade-off comparison dimensionally valid.
+        Write penalty (new):
+          Derived from SBPenaltyModel: as SB grows, w_await rises (calib curve).
+          Current disk pressure (w_await_now) scales the calib penalty up/down.
+          penalty = io_penalty(sb_mb, w_await_now) × DISK_READ_COST / DISK_WRITE_COST
 
-        β discounts reads that persist even after SB grows (irreducible I/O such as
-        index scans or data genuinely not in the working set).
-        No protection factor — AP sequential scans use ring buffers and do not appear
-        in blks_read, so no correction for AP scan eviction is needed.
+        The penalty is in the same unit (saved-s/MB) as the read benefit, so the
+        BRBE trade-off comparison remains dimensionally valid.
+        When w_await_now is 0 (not measured), penalty is 0 — no regression.
         """
         if blks_read_delta <= 0:
             return 0.0
         page_size_mb = PAGE_SIZE_KB / 1024.0
-        read_mb = blks_read_delta * page_size_mb
-        saved_s = read_mb * DISK_READ_COST_S_PER_MB
-        return self._beta * saved_s / max(self.sb_mb, 1.0)
+        read_mb  = blks_read_delta * page_size_mb
+        read_benefit = self._beta * read_mb * DISK_READ_COST_S_PER_MB / max(self.sb_mb, 1.0)
+
+        penalty = 0.0
+        if w_await_now > 0.0:
+            raw = self._penalty_model.io_penalty(int(self.sb_mb), w_await_now)
+            # Scale to same unit as read_benefit (raw penalty is dimensionless/MB)
+            penalty = raw * DISK_READ_COST_S_PER_MB
+
+        return max(0.0, read_benefit - penalty)
 
     def _brbe_marginal_wm(self, wm_ben: float) -> float:
         """Marginal benefit of adding 1MB to WM: α × B_WM."""
@@ -576,14 +589,15 @@ class BRBEController(STMMController):
              blks_hit_delta:  int,
              blks_read_delta: int,
              temp_bytes_delta: int,
-             n_ap: int) -> tuple[int, Optional[int]]:
+             n_ap: int,
+             w_await_now: float = 0.0) -> tuple[int, Optional[int]]:
         """Override tick() to use BRBE SB benefit and trade-off logic."""
         spill_mb = max(0.0, temp_bytes_delta / 1024 / 1024)
         self._update_alpha(spill_mb)
         self._update_beta(blks_read_delta)
 
         wm_ben = self._wm_benefit(temp_bytes_delta, n_ap)
-        sb_ben_brbe = self._sb_benefit_brbe(blks_read_delta, blks_hit_delta, n_ap)
+        sb_ben_brbe = self._sb_benefit_brbe(blks_read_delta, blks_hit_delta, n_ap, w_await_now)
         sb_ben_plain = self._sb_benefit(blks_read_delta, blks_hit_delta)
 
         self._wm_hist.add(self.wm_mb, wm_ben)

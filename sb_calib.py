@@ -9,7 +9,7 @@ Protocol per SB level:
   1. ALTER SYSTEM + DB restart (compact memory first for THP)
   2. Warmup: sysbench WARMUP_S seconds (fills buffer pool)
   3. Measure: sysbench MEASURE_S seconds (stable TPS)
-  4. Record: (SB, tps, blks_hit_rate, mem_avail_mb)
+  4. Record: TPS, blks_hit_rate, bgwriter delta, iostat, perf, vmstat
 
 After all levels, restores SB to BASE_SB_MB and fits a simple penalty model.
 """
@@ -20,17 +20,18 @@ from datetime import datetime
 # ── Config ────────────────────────────────────────────────────────────────────
 GSQL         = "/opt/openGauss/app/bin/gsql"
 OMM_PASS     = "1997"
-LOG_PATH     = "/home/node/GaussTune/run-logs/sb_calib4.log"
-JSON_OUT     = "/home/node/GaussTune/run-logs/sb_calib4.json"
+LOG_PATH     = "/home/node/GaussTune/run-logs/sb_calib6.log"
+JSON_OUT     = "/home/node/GaussTune/run-logs/sb_calib6.json"
 
-BASE_SB_MB   = 1024   # restore to this at end
+BASE_SB_MB   = 1024
 SB_LEVELS    = [1024, 2048, 3072, 4096, 5120, 6144, 7168]
 
-WARMUP_S     = 180    # sysbench warmup after each SB change
-MEASURE_S    = 60     # TPS measurement window
+WARMUP_S     = 180
+MEASURE_S    = 60
 
-PERF_EVENTS  = "dTLB-load-misses,longest_lat_cache.miss,longest_lat_cache.reference,cycles"
-OS_RESERVE   = 2048
+PERF_EVENTS  = ("dTLB-load-misses,longest_lat_cache.miss,longest_lat_cache.reference,"
+                "cycles,stalled-cycles-backend,stalled-cycles-frontend,page-faults")
+SUDO_PASS    = "1997"
 
 SB_CMD = (
     "LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu "
@@ -116,7 +117,6 @@ def restart_db():
     return False
 
 def get_db_stats():
-    """Returns (blks_hit, blks_read) cumulative counters."""
     tmp = "/tmp/sbcalib_stats.sql"
     with open(tmp, "w") as f:
         f.write("SELECT blks_hit, blks_read FROM pg_stat_database WHERE datname='sbtest';")
@@ -126,6 +126,29 @@ def get_db_stats():
     if len(row) >= 2:
         return int(row[0]), int(row[1])
     return 0, 0
+
+def get_bgwriter_stats() -> dict:
+    """Query pg_stat_bgwriter for write-origin attribution counters."""
+    sql = ("SELECT buffers_checkpoint, buffers_clean, buffers_backend, "
+           "buffers_backend_fsync, checkpoints_timed, checkpoints_req, "
+           "maxwritten_clean "
+           "FROM pg_stat_bgwriter;")
+    tmp = "/tmp/sbcalib_bgw.sql"
+    with open(tmp, "w") as f:
+        f.write(sql)
+    os.chmod(tmp, 0o666)
+    out, _ = omm_run(f"{GSQL} -d postgres -f {tmp}", timeout=15)
+    row = parse_row(out)
+    keys = ["buffers_checkpoint", "buffers_clean", "buffers_backend",
+            "buffers_backend_fsync", "checkpoints_timed", "checkpoints_req",
+            "maxwritten_clean"]
+    result = {}
+    for i, k in enumerate(keys):
+        try:
+            result[k] = int(row[i]) if i < len(row) else 0
+        except (ValueError, IndexError):
+            result[k] = 0
+    return result
 
 def read_meminfo():
     try:
@@ -138,12 +161,10 @@ def read_meminfo():
     return 0
 
 def parse_sysbench_tps(output: str) -> float:
-    """Extract average TPS from sysbench output (transactions/sec from summary line)."""
     for line in reversed(output.split("\n")):
         m = re.search(r"transactions:\s+\d+\s+\((\d+\.\d+)\s+per sec", line)
         if m:
             return float(m.group(1))
-    # fallback: average of report-interval lines
     tps_samples = []
     for line in output.split("\n"):
         m = re.search(r"\[\s*\d+s\s*\].*tps:\s*([\d.]+)", line)
@@ -151,10 +172,8 @@ def parse_sysbench_tps(output: str) -> float:
             tps_samples.append(float(m.group(1)))
     return sum(tps_samples) / len(tps_samples) if tps_samples else 0.0
 
-SUDO_PASS    = "1997"
-
+# ── perf ──────────────────────────────────────────────────────────────────────
 def run_perf(duration_s: int, out_file: str, pid: int):
-    """Run perf stat attached to gaussdb pid for duration_s seconds."""
     cmd = (f"echo '{SUDO_PASS}' | sudo -S perf stat "
            f"-e {PERF_EVENTS} -x, -p {pid} sleep {duration_s}")
     try:
@@ -165,9 +184,7 @@ def run_perf(duration_s: int, out_file: str, pid: int):
     except Exception as e:
         log(f"  [warn] perf: {e}")
 
-
 def parse_perf(out_file: str) -> dict:
-    """Parse perf stat CSV output (-x,). Returns dict of event→count."""
     counts = {}
     try:
         with open(out_file) as f:
@@ -176,10 +193,10 @@ def parse_perf(out_file: str) -> dict:
                 if not line or line.startswith("#"):
                     continue
                 parts = line.split(",")
-                if len(parts) < 2:
+                if len(parts) < 3:
                     continue
                 val_str = parts[0].strip()
-                event   = parts[2].strip() if len(parts) > 2 else parts[1].strip()
+                event   = parts[2].strip()
                 try:
                     counts[event] = int(val_str.replace(",", ""))
                 except ValueError:
@@ -187,12 +204,135 @@ def parse_perf(out_file: str) -> dict:
     except Exception:
         pass
     return counts
+
+# ── vmstat ────────────────────────────────────────────────────────────────────
+def run_vmstat(duration_s: int, out_file: str):
+    try:
+        r = subprocess.run(f"vmstat 1 {duration_s}", shell=True,
+                           capture_output=True, text=True, timeout=duration_s + 10)
+        with open(out_file, "w") as f:
+            f.write(r.stdout)
+    except Exception as e:
+        log(f"  [warn] vmstat: {e}")
+
+def parse_vmstat(out_file: str) -> dict:
+    si_list, so_list, b_list, wa_list = [], [], [], []
+    try:
+        with open(out_file) as f:
+            lines = f.readlines()
+        for line in lines[2:]:
+            parts = line.split()
+            if len(parts) < 16:
+                continue
+            try:
+                b_list.append(int(parts[1]))
+                si_list.append(int(parts[6]))
+                so_list.append(int(parts[7]))
+                wa_list.append(int(parts[15]))
+            except ValueError:
+                continue
+    except Exception:
+        pass
+    def avg(lst): return round(sum(lst) / len(lst), 2) if lst else 0
+    return {
+        "vmstat_b_avg":  avg(b_list),
+        "vmstat_si_avg": avg(si_list),
+        "vmstat_so_avg": avg(so_list),
+        "vmstat_wa_avg": avg(wa_list),
+    }
+
+# ── iostat ────────────────────────────────────────────────────────────────────
+def _data_device() -> str:
+    """Detect the block device backing the OpenGauss data directory."""
+    try:
+        out = subprocess.check_output(["df", "/opt/openGauss/data"], text=True)
+        raw = out.split("\n")[1].split()[0]       # e.g. /dev/sda1 or /dev/nvme0n1p1
+        dev = raw.rsplit("/", 1)[-1]
+        m = re.match(r"(nvme\d+n\d+|[a-z]+)", dev)
+        return m.group(1) if m else "sda"
+    except Exception:
+        return "sda"
+
+def run_iostat(duration_s: int, out_file: str):
+    dev = _data_device()
+    try:
+        r = subprocess.run(f"iostat -xk {dev} 1 {duration_s}",
+                           shell=True, capture_output=True, text=True,
+                           timeout=duration_s + 10)
+        with open(out_file, "w") as f:
+            f.write(r.stdout)
+    except Exception as e:
+        log(f"  [warn] iostat: {e}")
+
+def parse_iostat(out_file: str) -> dict:
+    """Parse iostat -xk output; return per-interval averages of wkB/s, w_await, %util."""
+    wkb_list, w_await_list, util_list = [], [], []
+    try:
+        with open(out_file) as f:
+            lines = f.readlines()
+        col_map: dict = {}
+        for line in lines:
+            line = line.rstrip()
+            if re.match(r"Device", line):
+                cols = line.split()
+                col_map = {c: i for i, c in enumerate(cols)}
+                continue
+            if not col_map or not line.strip():
+                continue
+            if re.match(r"Linux|avg-cpu", line):
+                continue
+            parts = line.split()
+            try:
+                wkb_idx  = col_map.get("wkB/s",   col_map.get("kB_wrtn/s", None))
+                w_aw_idx = col_map.get("w_await",  col_map.get("await",     None))
+                util_idx = col_map.get("%util",    None)
+                if wkb_idx  is not None and wkb_idx  < len(parts):
+                    wkb_list.append(float(parts[wkb_idx]))
+                if w_aw_idx is not None and w_aw_idx < len(parts):
+                    w_await_list.append(float(parts[w_aw_idx]))
+                if util_idx is not None and util_idx < len(parts):
+                    util_list.append(float(parts[util_idx]))
+            except (ValueError, IndexError):
+                pass
+    except Exception:
+        pass
+    def avg(lst): return round(sum(lst) / len(lst), 1) if lst else 0.0
+    return {"wkb_s": avg(wkb_list), "w_await": avg(w_await_list), "util_pct": avg(util_list)}
+
+# ── wait events ───────────────────────────────────────────────────────────────
+def get_wait_events() -> list:
+    sql = ("SELECT COALESCE(wait_event_type,'CPU') as type, "
+           "COALESCE(wait_event,'running') as event, count(*) "
+           "FROM pg_stat_activity WHERE state='active' "
+           "GROUP BY 1,2 ORDER BY 3 DESC;")
+    tmp = "/tmp/sbcalib_wait.sql"
+    with open(tmp, "w") as f:
+        f.write(sql)
+    os.chmod(tmp, 0o666)
+    out, _ = omm_run(f"{GSQL} -d postgres -f {tmp}", timeout=10)
+    events = []
+    in_data = False
+    for line in out.split("\n"):
+        if re.match(r"\s*-+", line):
+            in_data = True
+            continue
+        if in_data and line.strip() and not line.strip().startswith("("):
+            parts = [p.strip() for p in line.split("|")]
+            if len(parts) >= 3:
+                try:
+                    events.append({"type": parts[0], "event": parts[1],
+                                   "count": int(parts[2])})
+                except ValueError:
+                    pass
+    return events
+
+# ── Measurement ───────────────────────────────────────────────────────────────
 def measure_at_sb(sb_mb: int) -> dict:
     log(f"\n{'='*60}")
     log(f"  SB = {sb_mb} MB")
     log(f"{'='*60}")
 
-    compact_memory()          # compact only, no drop_caches
+    compact_memory()
     set_guc("shared_buffers", f"{sb_mb}MB")
     ok = restart_db()
     if not ok:
@@ -202,61 +342,121 @@ def measure_at_sb(sb_mb: int) -> dict:
     mem_before = read_meminfo()
     log(f"  MemAvailable after restart: {mem_before}MB")
 
-    # Warmup: fill buffer pool
     log(f"  Warmup {WARMUP_S}s ...")
     gsql_q("SELECT pg_stat_reset();")
     omm_run(SB_CMD.format(duration=WARMUP_S), timeout=WARMUP_S + 30)
 
-    # Measurement: sysbench + perf in parallel
-    log(f"  Measuring {MEASURE_S}s (+ perf stat) ...")
-    perf_out = f"/tmp/sbcalib_perf_{sb_mb}.txt"
-    gaussdb_pid = next(iter(
-        int(p) for p in subprocess.check_output(["pgrep", "-x", "gaussdb"]).split()
-    ), 0)
+    log(f"  Measuring {MEASURE_S}s (+ perf + bgwriter + iostat) ...")
+    perf_out   = f"/tmp/sbcalib_perf_{sb_mb}.txt"
+    vmstat_out = f"/tmp/sbcalib_vmstat_{sb_mb}.txt"
+    iostat_out = f"/tmp/sbcalib_iostat_{sb_mb}.txt"
+    pids = subprocess.check_output(["pgrep", "-x", "gaussdb"]).split()
+    gaussdb_pid = int(pids[0]) if pids else 0
+
+    # Snapshot counters at start of measurement window
     hit0, read0 = get_db_stats()
-    perf_thread = threading.Thread(
-        target=run_perf, args=(MEASURE_S, perf_out, gaussdb_pid), daemon=True)
+    bw0 = get_bgwriter_stats()
+
+    perf_thread   = threading.Thread(
+        target=run_perf,   args=(MEASURE_S, perf_out,   gaussdb_pid), daemon=True)
+    vmstat_thread = threading.Thread(
+        target=run_vmstat, args=(MEASURE_S, vmstat_out),              daemon=True)
+    iostat_thread = threading.Thread(
+        target=run_iostat, args=(MEASURE_S, iostat_out),              daemon=True)
     perf_thread.start()
+    vmstat_thread.start()
+    iostat_thread.start()
+
+    wait_results = []
+    def _sample_wait():
+        time.sleep(20)
+        return get_wait_events()
+    wait_thread = threading.Thread(
+        target=lambda: wait_results.append(_sample_wait()), daemon=True)
+    wait_thread.start()
+
     out, _ = omm_run(SB_CMD.format(duration=MEASURE_S), timeout=MEASURE_S + 30)
     perf_thread.join(timeout=MEASURE_S + 15)
-    hit1, read1 = get_db_stats()
+    vmstat_thread.join(timeout=MEASURE_S + 15)
+    iostat_thread.join(timeout=MEASURE_S + 15)
+    wait_thread.join(timeout=5)
+    wait_events = wait_results[0] if wait_results else []
 
-    tps = parse_sysbench_tps(out)
-    dh  = hit1  - hit0
-    dr  = read1 - read0
-    total = dh + dr
+    # Snapshot counters at end of measurement window
+    hit1, read1 = get_db_stats()
+    bw1 = get_bgwriter_stats()
+    bw_delta = {k: bw1.get(k, 0) - bw0.get(k, 0) for k in bw0}
+
+    tps    = parse_sysbench_tps(out)
+    dh     = hit1  - hit0
+    dr     = read1 - read0
+    total  = dh + dr
     hit_rate = dh / total if total > 0 else 1.0
     mem_after = read_meminfo()
 
     perf = parse_perf(perf_out)
-    dtlb  = perf.get("dTLB-load-misses", 0)
-    l3m   = perf.get("longest_lat_cache.miss", 0)
-    l3r   = perf.get("longest_lat_cache.reference", 0)
-    cyc   = perf.get("cycles", 0)
-    txns  = max(1, tps * MEASURE_S)
-    l3_pct = round(l3m / l3r * 100, 2) if l3r > 0 else 0.0
+    vmst = parse_vmstat(vmstat_out)
+    iost = parse_iostat(iostat_out)
 
-    log(f"  TPS             = {tps:.1f}")
-    log(f"  blks_hit        = {dh:,}  blks_read = {dr:,}  hit_rate = {hit_rate*100:.2f}%")
-    log(f"  MemAvail        = {mem_after}MB")
-    log(f"  dTLB-miss/txn   = {dtlb/txns:.0f}  ({dtlb:,} total)")
-    log(f"  L3-miss/txn     = {l3m/txns:.0f}  L3-miss% = {l3_pct}%")
-    log(f"  cycles/txn      = {cyc/txns:.0f}")
+    dtlb     = perf.get("dTLB-load-misses", 0)
+    l3m      = perf.get("longest_lat_cache.miss", 0)
+    l3r      = perf.get("longest_lat_cache.reference", 0)
+    cyc      = perf.get("cycles", 0)
+    stall_be = perf.get("stalled-cycles-backend", 0)
+    pgflt    = perf.get("page-faults", 0)
+    txns     = max(1, tps * MEASURE_S)
+    l3_pct   = round(l3m / l3r * 100, 2) if l3r > 0 else 0.0
+    stall_pct = round(stall_be / cyc * 100, 2) if cyc > 0 else 0.0
+
+    # Convert buffer counts (pages) to MB  (1 page = 8 KB)
+    chkpt_mb   = round(bw_delta["buffers_checkpoint"] * 8 / 1024, 1)
+    clean_mb   = round(bw_delta["buffers_clean"]       * 8 / 1024, 1)
+    backend_mb = round(bw_delta["buffers_backend"]     * 8 / 1024, 1)
+    n_chkpts   = bw_delta["checkpoints_timed"] + bw_delta["checkpoints_req"]
+
+    log(f"  TPS               = {tps:.1f}")
+    log(f"  blks_hit          = {dh:,}  blks_read = {dr:,}  hit_rate = {hit_rate*100:.2f}%")
+    log(f"  MemAvail          = {mem_after}MB")
+    log(f"  L3-miss/txn       = {l3m/txns:.0f}  L3-miss% = {l3_pct}%")
+    log(f"  stall-backend/txn = {stall_be/txns:.0f}  stall% = {stall_pct}%")
+    log(f"  page-faults/txn   = {pgflt/txns:.2f}")
+    log(f"  cycles/txn        = {cyc/txns:.0f}")
+    log(f"  vmstat b={vmst['vmstat_b_avg']}  si={vmst['vmstat_si_avg']}  "
+        f"so={vmst['vmstat_so_avg']}  wa={vmst['vmstat_wa_avg']}%")
+    log(f"  bgwriter: chkpt={chkpt_mb}MB  clean={clean_mb}MB  "
+        f"backend={backend_mb}MB  n_checkpoints={n_chkpts}")
+    log(f"  iostat:   wkB/s={iost['wkb_s']}  w_await={iost['w_await']}ms  "
+        f"util={iost['util_pct']}%")
+    if wait_events:
+        log(f"  wait_events       = " +
+            "  ".join(f"{e['type']}/{e['event']}×{e['count']}" for e in wait_events[:3]))
+    log(f"  Recorded: SB={sb_mb}MB → TPS={tps:.2f}")
 
     return {
-        "sb_mb":           sb_mb,
-        "tps":             round(tps, 2),
-        "blks_hit":        dh,
-        "blks_read":       dr,
-        "hit_rate":        round(hit_rate, 5),
-        "mem_avail":       mem_after,
-        "dtlb_miss":       dtlb,
-        "dtlb_miss_per_txn": round(dtlb / txns, 1),
-        "l3_miss":         l3m,
-        "l3_miss_per_txn": round(l3m / txns, 1),
-        "l3_miss_pct":     l3_pct,
-        "cycles":          cyc,
-        "cycles_per_txn":  round(cyc / txns, 0),
+        "sb_mb":               sb_mb,
+        "tps":                 round(tps, 2),
+        "blks_hit":            dh,
+        "blks_read":           dr,
+        "hit_rate":            round(hit_rate, 5),
+        "mem_avail":           mem_after,
+        "dtlb_miss_per_txn":   round(dtlb     / txns, 1),
+        "l3_miss_per_txn":     round(l3m      / txns, 1),
+        "l3_miss_pct":         l3_pct,
+        "stall_be_per_txn":    round(stall_be / txns, 1),
+        "stall_pct":           stall_pct,
+        "page_faults_per_txn": round(pgflt    / txns, 3),
+        "cycles_per_txn":      round(cyc      / txns, 0),
+        "vmstat":              vmst,
+        "bgwriter": {
+            "chkpt_mb":       chkpt_mb,
+            "clean_mb":       clean_mb,
+            "backend_mb":     backend_mb,
+            "n_checkpoints":  n_chkpts,
+            "maxwritten_clean":      bw_delta["maxwritten_clean"],
+            "buffers_backend_fsync": bw_delta["buffers_backend_fsync"],
+        },
+        "iostat":              iost,
+        "wait_events":         wait_events[:5],
     }
 
 # ── Model fitting ─────────────────────────────────────────────────────────────
@@ -267,48 +467,36 @@ def fit_penalty(results: list[dict]) -> dict:
               = tps_base - slope * (SB - SB_safe)  SB >  SB_safe
 
     SB_safe = largest SB where tps > tps_base * 0.95 (5% tolerance).
-    slope   = (tps_safe - tps_large) / (SB_large - SB_safe)  [TPS per MB]
-
-    Also fits an exponential decay for smoother integration into _mimo_simulate:
-      tps(SB) = tps_base * exp(-lambda * max(0, SB - SB_safe) / total_ram)
+    Also fits exponential decay for _mimo_simulate integration.
     """
     valid = [r for r in results if r.get("tps") is not None]
     if len(valid) < 2:
         return {}
 
-    sb_vals  = [r["sb_mb"]  for r in valid]
-    tps_vals = [r["tps"]    for r in valid]
+    sb_vals  = [r["sb_mb"] for r in valid]
+    tps_vals = [r["tps"]   for r in valid]
+    tps_base = tps_vals[0]
 
-    tps_base = tps_vals[0]  # TPS at baseline SB (smallest tested)
-
-    # Find SB_safe: last level where tps > tps_base * 0.95
     sb_safe = sb_vals[0]
     for r in valid:
         if r["tps"] >= tps_base * 0.95:
             sb_safe = r["sb_mb"]
         else:
-            break  # first level that drops below threshold
+            break
 
-    # Linear slope from sb_safe to max tested
-    safe_tps  = next((r["tps"] for r in valid if r["sb_mb"] == sb_safe), tps_base)
-    last      = valid[-1]
+    safe_tps = next((r["tps"] for r in valid if r["sb_mb"] == sb_safe), tps_base)
+    last     = valid[-1]
     if last["sb_mb"] > sb_safe and last["tps"] is not None:
         slope_tps_per_mb = (safe_tps - last["tps"]) / (last["sb_mb"] - sb_safe)
     else:
         slope_tps_per_mb = 0.0
 
-    # Exponential lambda
-    # tps(SB_max) = tps_base * exp(-λ * (SB_max - SB_safe) / total_ram)
-    # → λ = -ln(tps_max/tps_base) * total_ram / (SB_max - SB_safe)
-    total_ram = 14700  # MB
-    if last["sb_mb"] > sb_safe and last["tps"] is not None and last["tps"] > 0:
+    total_ram = 14700
+    lam = 0.0
+    if last["sb_mb"] > sb_safe and last["tps"] and last["tps"] > 0:
         ratio = last["tps"] / tps_base
-        if ratio < 1.0 and ratio > 0:
+        if 0 < ratio < 1.0:
             lam = -math.log(ratio) * total_ram / (last["sb_mb"] - sb_safe)
-        else:
-            lam = 0.0
-    else:
-        lam = 0.0
 
     log("\n── Penalty model ────────────────────────────────────────")
     log(f"  tps_base          = {tps_base:.1f} TPS  (at SB={sb_vals[0]}MB)")
@@ -320,12 +508,12 @@ def fit_penalty(results: list[dict]) -> dict:
     log("─────────────────────────────────────────────────────────\n")
 
     return {
-        "tps_base":          round(tps_base, 2),
-        "sb_safe_mb":        sb_safe,
-        "slope_tps_per_mb":  round(slope_tps_per_mb, 6),
-        "slope_tps_per_gb":  round(slope_tps_per_mb * 1024, 4),
-        "lambda_exp":        round(lam, 6),
-        "total_ram_mb":      total_ram,
+        "tps_base":         round(tps_base, 2),
+        "sb_safe_mb":       sb_safe,
+        "slope_tps_per_mb": round(slope_tps_per_mb, 6),
+        "slope_tps_per_gb": round(slope_tps_per_mb * 1024, 4),
+        "lambda_exp":       round(lam, 6),
+        "total_ram_mb":     total_ram,
     }
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -340,9 +528,7 @@ def main():
     for sb in SB_LEVELS:
         r = measure_at_sb(sb)
         results.append(r)
-        log(f"  Recorded: SB={sb}MB → TPS={r.get('tps', 'N/A')}")
 
-    # Restore baseline SB
     log(f"\nRestoring SB to {BASE_SB_MB}MB ...")
     set_guc("shared_buffers", f"{BASE_SB_MB}MB")
     restart_db()
@@ -350,27 +536,40 @@ def main():
 
     model = fit_penalty(results)
 
-    # Print summary table
+    # ── Summary table ────────────────────────────────────────────────────────
     log("── Results ──────────────────────────────────────────────")
-    log(f"  {'SB(MB)':>8}  {'TPS':>6}  {'hit%':>6}  {'blks_read':>10}  "
-        f"{'dTLB/txn':>10}  {'L3miss/txn':>11}  {'cyc/txn':>10}  {'MemAvail':>9}")
-    log(f"  {'-'*8}  {'-'*6}  {'-'*6}  {'-'*10}  {'-'*10}  {'-'*11}  {'-'*10}  {'-'*9}")
+    hdr = (f"  {'SB(MB)':>8}  {'TPS':>6}  {'hit%':>5}  {'wa%':>5}  "
+           f"{'chkpt_MB':>9}  {'clean_MB':>9}  {'backend_MB':>10}  "
+           f"{'wkB/s':>7}  {'w_await':>7}  {'L3/txn':>8}")
+    sep = (f"  {'─'*8}  {'─'*6}  {'─'*5}  {'─'*5}  "
+           f"{'─'*9}  {'─'*9}  {'─'*10}  "
+           f"{'─'*7}  {'─'*7}  {'─'*8}")
+    log(hdr)
+    log(sep)
     for r in results:
-        if r.get("tps") is not None:
-            log(f"  {r['sb_mb']:>8}  {r['tps']:>6.1f}  {r['hit_rate']*100:>6.1f}  "
-                f"{r['blks_read']:>10,}  {r['dtlb_miss_per_txn']:>10.0f}  "
-                f"{r['l3_miss_per_txn']:>11.0f}  {r['cycles_per_txn']:>10.0f}  "
-                f"{r['mem_avail']:>9}")
-        else:
+        if r.get("tps") is None:
             log(f"  {r['sb_mb']:>8}  {'ERROR':>6}")
+            continue
+        v  = r.get("vmstat",   {})
+        bw = r.get("bgwriter", {})
+        io = r.get("iostat",   {})
+        log(f"  {r['sb_mb']:>8}  {r['tps']:>6.1f}  "
+            f"{r['hit_rate']*100:>5.1f}  "
+            f"{v.get('vmstat_wa_avg',0):>5.1f}  "
+            f"{bw.get('chkpt_mb',   0):>9.1f}  "
+            f"{bw.get('clean_mb',   0):>9.1f}  "
+            f"{bw.get('backend_mb', 0):>10.1f}  "
+            f"{io.get('wkb_s',      0):>7.1f}  "
+            f"{io.get('w_await',    0):>7.1f}  "
+            f"{r['l3_miss_per_txn']:>8.0f}")
     log("─────────────────────────────────────────────────────────")
 
     output = {
-        "date":    datetime.now().isoformat(),
+        "date":      datetime.now().isoformat(),
         "warmup_s":  WARMUP_S,
         "measure_s": MEASURE_S,
-        "levels":  results,
-        "model":   model,
+        "levels":    results,
+        "model":     model,
     }
     with open(JSON_OUT, "w") as f:
         json.dump(output, f, indent=2)
