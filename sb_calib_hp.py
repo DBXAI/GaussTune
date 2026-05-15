@@ -387,30 +387,54 @@ def reserve_huge_pages(sb_mb: int):
     MemFree, and shared_buffers occupies that pool (not separate). OS cache
     available = TotalMem - SB - process overhead, identical to the no-HP case.
 
-    Compaction may briefly evict OS cache to free 2MB-contiguous regions,
-    but OS cache refills via the warmup sysbench run before measurement.
+    Compaction strategy: drop_caches=3 first (frees 4KB page cache pages back
+    to the buddy allocator) + compact_memory=1 (defragments). Then attempt
+    nr_hugepages reservation; verify; if pool < SB, retry once with another
+    drop_caches+compact cycle. OS cache refills via the warmup sysbench run.
+
+    Without drop_caches the kernel typically cannot find enough contiguous
+    2MB regions once OS cache is hot — observed at SB=4096 only 4012/4096MB
+    reserved, at SB=6144 only 4040/6144MB.
     """
-    n_pages   = (sb_mb // 2) + max(64, (sb_mb // 20))   # +5-10% headroom
-    try:
-        # Compact memory first so kernel can find 2MB-contiguous regions
-        subprocess.run(["sudo", "tee", "/proc/sys/vm/compact_memory"],
-                       input="1\n", capture_output=True, text=True, timeout=10)
-        time.sleep(2)
-        # Set nr_hugepages (kernel may not honor full request if fragmented)
-        r = subprocess.run(["sudo", "tee", "/proc/sys/vm/nr_hugepages"],
+    n_pages = (sb_mb // 2) + max(64, (sb_mb // 20))   # +5-10% headroom
+
+    def _try_reserve():
+        try:
+            # 1. drop OS page cache (4KB pages back to buddy allocator)
+            subprocess.run(["sudo", "tee", "/proc/sys/vm/drop_caches"],
+                           input="3\n", capture_output=True, text=True, timeout=10)
+            # 2. compact buddy memory to form 2MB-contiguous regions
+            subprocess.run(["sudo", "tee", "/proc/sys/vm/compact_memory"],
+                           input="1\n", capture_output=True, text=True, timeout=10)
+            time.sleep(3)
+            # 3. request hugepages
+            subprocess.run(["sudo", "tee", "/proc/sys/vm/nr_hugepages"],
                            input=f"{n_pages}\n", capture_output=True, text=True, timeout=15)
-        # Verify
-        with open("/proc/sys/vm/nr_hugepages") as f:
-            actual = int(f.read().strip())
+            time.sleep(1)
+            with open("/proc/sys/vm/nr_hugepages") as f:
+                return int(f.read().strip())
+        except Exception as e:
+            log(f"  [HP] reservation attempt error: {e}")
+            return 0
+
+    try:
+        actual = _try_reserve()
+        actual_mb = actual * 2
+        if actual_mb < sb_mb:
+            # One retry — sometimes a second drop_caches+compact cycle helps
+            # after the first pass shook things loose.
+            log(f"  [HP] first pass got only {actual_mb}MB < {sb_mb}MB SB, retrying...")
+            actual = _try_reserve()
+            actual_mb = actual * 2
+
         with open("/proc/meminfo") as f:
             free = sum(int(l.split()[1]) for l in f if l.startswith("HugePages_Free"))
-        actual_mb = actual * 2
-        required_mb = sb_mb
         log(f"  [HP] target={sb_mb}MB, requested={n_pages} pages, "
             f"got {actual} pages ({actual_mb}MB), free={free}")
-        if actual_mb < required_mb:
-            log(f"  [HP] WARNING: pool {actual_mb}MB < SB {required_mb}MB — "
+        if actual_mb < sb_mb:
+            log(f"  [HP] WARNING: pool {actual_mb}MB < SB {sb_mb}MB — "
                 f"shmget may fail (kernel couldn't compact enough)")
+
         # Also nudge THP enabled=always (THP for anon outside shared_buffers)
         for knob, val in [("enabled", "always"), ("defrag", "always"),
                           ("shmem_enabled", "always")]:
