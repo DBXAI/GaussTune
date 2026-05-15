@@ -20,12 +20,13 @@ at experiment startup in stmm_test.py (uniform across all methods).
 
 Integration:
   from memory_tuner import SBPenaltyModel
-  model = SBPenaltyModel(calib_json="run-logs/sb_calib6.json")
+  model = SBPenaltyModel(calib_json="run-logs/sb_calib9.json")
   w_await = model.w_await_at(sb_mb=3072)   # diagnostics
   penalty = model.io_penalty(sb_mb=3072, iowait_pct_now=15.0,
                               iowait_pct_baseline=5.0, poll_s=15.0)
 """
 
+from __future__ import annotations
 import os, json, math, argparse
 from datetime import datetime
 
@@ -124,7 +125,7 @@ class SBPenaltyModel:
 # ── Standalone ────────────────────────────────────────────────────────────────
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="SB penalty model report")
-    parser.add_argument("--calib-json", default="run-logs/sb_calib6.json")
+    parser.add_argument("--calib-json", default="run-logs/sb_calib9.json")
     args = parser.parse_args()
     model = SBPenaltyModel(calib_json=args.calib_json)
     model.report()

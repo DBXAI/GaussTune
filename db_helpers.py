@@ -13,6 +13,7 @@ This file is a pure library — no main(), no experiment orchestration.
 All experiment logic lives in bench_methods.py.
 """
 
+from __future__ import annotations
 import subprocess, time, re, os, json, threading
 from datetime import datetime
 from stmm_controller import STMMController, BRBEController, ProactiveBRBEController, PAGE_SIZE_KB
@@ -29,7 +30,7 @@ SB_CMD = (
     "sysbench oltp_read_write "
     "--db-driver=pgsql --pgsql-host=/tmp --pgsql-port=5432 "
     "--pgsql-user=omm --pgsql-password= --pgsql-db=sbtest "
-    "--tables=10 --table-size=2000000 "
+    "--tables=10 --table-size=10000000 "
     "--db-ps-mode=disable --threads=16 --rand-type=uniform "
     "--report-interval=5 --time={duration} run"
 )
@@ -43,7 +44,7 @@ POST_AP_S = 180
 
 WM_INIT       = 64
 SB_MB         = 1024
-RAM_MB        = 14700
+RAM_MB        = 30000
 OS_RESERVE_MB = 2048
 
 _log_file = open(LOG_PATH, "w", buffering=1)

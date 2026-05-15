@@ -26,6 +26,7 @@ Adaptations for OpenGauss:
       SB benefit  = blks_read × PAGE_READ_COST_S / sb_mb
 """
 
+from __future__ import annotations
 import math
 import numpy as np
 from collections import deque
@@ -453,7 +454,7 @@ class BRBEController(STMMController):
                  poll_s: int = 30,
                  total_mem_mb: int = 15360,
                  n_ap_workers: int = 4,
-                 calib_json: str | None = "run-logs/sb_calib6.json"):
+                 calib_json: str | None = "run-logs/sb_calib9.json"):
         super().__init__(wm_init_mb=wm_init_mb, sb_init_mb=sb_init_mb, poll_s=poll_s)
         self._total_mem_mb = float(total_mem_mb)
         self._n_ap_workers = n_ap_workers

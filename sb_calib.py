@@ -14,17 +14,18 @@ Protocol per SB level:
 After all levels, restores SB to BASE_SB_MB and fits a simple penalty model.
 """
 
+from __future__ import annotations
 import subprocess, time, re, os, json, math, threading
 from datetime import datetime
 
 # ── Config ────────────────────────────────────────────────────────────────────
 GSQL         = "/opt/openGauss/app/bin/gsql"
 OMM_PASS     = "1997"
-LOG_PATH     = "/home/node/GaussTune/run-logs/sb_calib6.log"
-JSON_OUT     = "/home/node/GaussTune/run-logs/sb_calib6.json"
+LOG_PATH     = "/home/node/GaussTune/run-logs/sb_calib9.log"
+JSON_OUT     = "/home/node/GaussTune/run-logs/sb_calib9.json"
 
 BASE_SB_MB   = 1024
-SB_LEVELS    = [1024, 2048, 3072, 4096, 5120, 6144, 7168]
+SB_LEVELS    = [1024, 2048, 4096, 6144, 8192, 12288, 16384]
 
 WARMUP_S     = 180
 MEASURE_S    = 60
@@ -38,7 +39,7 @@ SB_CMD = (
     "sysbench oltp_read_write "
     "--db-driver=pgsql --pgsql-host=/tmp --pgsql-port=5432 "
     "--pgsql-user=omm --pgsql-password= --pgsql-db=sbtest "
-    "--tables=10 --table-size=2000000 "
+    "--tables=10 --table-size=10000000 "
     "--db-ps-mode=disable --threads=16 --rand-type=uniform "
     "--report-interval=5 --time={duration} run"
 )

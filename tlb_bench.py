@@ -33,7 +33,7 @@ SB_CMD      = ("LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu 
                "sysbench oltp_read_write "
                "--db-driver=pgsql --pgsql-host=/tmp --pgsql-port=5432 "
                "--pgsql-user=omm --pgsql-password= --pgsql-db=sbtest "
-               "--tables=10 --table-size=2000000 "
+               "--tables=10 --table-size=10000000 "
                "--db-ps-mode=disable --threads=16 --rand-type=uniform "
                "--report-interval=5 --time={duration} run")
 MEASURE_S   = 60     # measurement window per experiment
