@@ -142,7 +142,7 @@ node ALL=(ALL) NOPASSWD: /opt/openGauss/app/bin/gs_ctl
 cd /home/<user>/GaussTune
 python3 bench_methods.py \
     --methods Default Expert-WM Expert-Full STMM+Proactive \
-    --workloads oltp_ro io_sort \
+    --workloads sort io_join \
     --out run-logs/bench_v1.json \
     --log run-logs/bench_v1.log
 ```
