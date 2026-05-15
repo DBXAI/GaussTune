@@ -171,7 +171,7 @@ class STMMProactiveMethod(Method):
 METHODS_BY_NAME = {
     "Default":      lambda: DefaultMethod(),
     "Expert-WM":    lambda: ExpertWMMethod(wm_mb=256),
-    "Expert-Full":  lambda: ExpertFullMethod(wm_mb=256, sb_mb=1024),
+    "Expert-Full":  lambda: ExpertFullMethod(wm_mb=256, sb_mb=2048),
     "STMM+Proactive": lambda: STMMProactiveMethod(),
 }
 
