@@ -136,6 +136,42 @@ node ALL=(ALL) NOPASSWD: /opt/openGauss/app/bin/gs_ctl
 
 ---
 
+## 三-A、Huge Pages 支持（可选，sb_calib_hp.py 必需）
+
+`sb_calib_hp.py` 跑 HugeTLB 对比实验时，gaussdb 必须能调 `shmget(SHM_HUGETLB)`。
+默认 `vm.hugetlb_shm_group=0` 只允许 root，gaussdb 跑在 `omm` (gid=1001) 下会失败。
+
+**一次性 host 配置（运行 sb_calib_hp.py 之前）**：
+
+```bash
+# 1. Runtime（立即生效）
+echo 1001 | sudo tee /proc/sys/vm/hugetlb_shm_group
+
+# 2. 持久化（重启后保留）
+cat <<EOF | sudo tee /etc/sysctl.d/99-gausstune-hugetlb.conf
+vm.hugetlb_shm_group = 1001
+EOF
+```
+
+如果 omm gid 不是 1001，先用 `id -g omm` 查。
+
+如果不配，启动 gaussdb 时报错：
+```
+FATAL: could not create shared memory segment: Operation not permitted
+DETAIL: Failed system call was shmget(..., 0o3600).
+```
+
+`SHM_HUGETLB` **不消耗 memlock**，无需调 ulimit。
+
+`sb_calib_hp.py` 还会在每个 SB level 临时设置：
+- `vm.nr_hugepages = SB_MB/2 + 5-10% headroom`
+- `transparent_hugepage/{enabled,defrag,shmem_enabled} = always`
+- gaussdb `enable_huge_pages = on`（要求 restart 生效）
+
+实验结束自动恢复 nr_hugepages=0、THP=madvise、enable_huge_pages=off。
+
+---
+
 ## 四、运行实验
 
 ```bash

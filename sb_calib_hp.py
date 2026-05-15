@@ -1,17 +1,68 @@
 #!/usr/bin/env python3
 """
-SB Penalty Calibration
-======================
-Measures TP TPS at each shared_buffers level to characterize the penalty
-function tps_penalty(SB) = tps_0 - tps(SB).
+SB Penalty Calibration — HUGE-PAGES variant
+============================================
+Identical protocol to sb_calib.py but each SB level is backed 100% by HugeTLB
+(2 MB pages) instead of the kernel's default 4 KB pages. Used to answer
+"is TLB pressure the cause of the SB > 4 GB TPS cliff observed in sb_calib?"
 
-Protocol per SB level:
-  1. ALTER SYSTEM + DB restart (compact memory first for THP)
-  2. Warmup: sysbench WARMUP_S seconds (fills buffer pool)
-  3. Measure: sysbench MEASURE_S seconds (stable TPS)
-  4. Record: TPS, blks_hit_rate, bgwriter delta, iostat, perf, vmstat
+Per-level changes vs sb_calib.py:
+  - reserve_huge_pages(sb_mb): set nr_hugepages = sb_mb/2 + 5-10% headroom
+                                + enable THP `always` on enabled/defrag/shmem
+  - set_guc("enable_huge_pages", "on") before DB restart
+  - DB teardown at end: nr_hugepages=0, THP back to madvise, enable_huge_pages=off
 
-After all levels, restores SB to BASE_SB_MB and fits a simple penalty model.
+PREREQUISITES (one-time host setup, will fail without them):
+
+  1. vm.hugetlb_shm_group must include omm's GID
+     ---------------------------------------------
+     gaussdb runs as `omm` (gid 1001 = dbgroup), and SHM_HUGETLB shmget() is
+     gated by /proc/sys/vm/hugetlb_shm_group. Default value 0 means only root
+     can use SHM_HUGETLB; if you leave it at 0, gaussdb startup with
+     enable_huge_pages=on will FAIL with:
+        FATAL: could not create shared memory segment: Operation not permitted
+        Failed system call was shmget(..., 0o3600).
+                                       ^---- 0o3600 = IPC_CREAT|SHM_HUGETLB|0600
+
+     Fix (persisted in /etc/sysctl.d/99-gausstune-hugetlb.conf on this host):
+        echo 1001 | sudo tee /proc/sys/vm/hugetlb_shm_group        # runtime
+        echo "vm.hugetlb_shm_group = 1001" | sudo tee \\
+             /etc/sysctl.d/99-gausstune-hugetlb.conf               # persistent
+        sudo sysctl --system   # to apply
+
+     Replace 1001 with `id -g omm` if omm has a different gid on your host.
+
+  2. NO need to raise omm's memlock (RLIMIT_MEMLOCK)
+     ---------------------------------------------
+     SHM_HUGETLB does not consume the memlock budget (unlike mmap(MAP_LOCKED)).
+     ulimit -l can stay at the default 65536 kB.
+
+  3. enable_huge_pages requires DB restart (not reload)
+     ---------------------------------------------
+     This script uses ALTER SYSTEM SET + restart_db(), which is the correct
+     sequence: ALTER SYSTEM writes postgresql.auto.conf, then restart picks it
+     up at startup. Do NOT expect pg_reload_conf() alone to apply it (the LOG
+     line "cannot be changed without restarting the server" is informational,
+     not fatal — the subsequent restart in measure_at_sb does the actual work).
+
+  4. Memory accounting: HugeTLB pool is NOT a double allocation
+     ---------------------------------------------
+     nr_hugepages=N reserves 2N MB carved out of free memory; shared_buffers
+     then occupies this same pool (not a separate 4 KB allocation). So the
+     "OS cache budget" for sysbench/sbtest data is identical to the no-HP
+     case: TotalMem - shared_buffers - process overhead. Only the PTE
+     mechanism differs (2 MB vs 4 KB pages → lower TLB pressure with HP).
+
+  5. Fragmentation can prevent full pool allocation
+     ---------------------------------------------
+     When MemFree is fragmented (typical after warm OS cache), the kernel
+     may not be able to compact enough contiguous 2 MB regions to satisfy
+     `echo N > /proc/sys/vm/nr_hugepages`. The script logs a WARNING if the
+     resulting pool is smaller than SB. If shmget fails because of this,
+     gaussdb will refuse to start and the level is recorded as error.
+
+Output:
+  run-logs/sb_calib_ro_hp.{log,json}
 """
 
 from __future__ import annotations
@@ -21,8 +72,8 @@ from datetime import datetime
 # ── Config ────────────────────────────────────────────────────────────────────
 GSQL         = "/opt/openGauss/app/bin/gsql"
 OMM_PASS     = "1997"
-LOG_PATH     = "/home/node/GaussTune/run-logs/sb_calib_ro_nohp.log"
-JSON_OUT     = "/home/node/GaussTune/run-logs/sb_calib_ro_nohp.json"
+LOG_PATH     = "/home/node/GaussTune/run-logs/sb_calib_ro_hp.log"
+JSON_OUT     = "/home/node/GaussTune/run-logs/sb_calib_ro_hp.json"
 
 BASE_SB_MB   = 1024
 SB_LEVELS    = [1024, 2048, 4096, 6144, 8192, 12288, 16384]
@@ -328,17 +379,83 @@ def get_wait_events() -> list:
     return events
 
 # ── Measurement ───────────────────────────────────────────────────────────────
+def reserve_huge_pages(sb_mb: int):
+    """Reserve nr_hugepages = sb_mb/2 + 10% headroom (2MB each).
+
+    Sized to exactly cover shared_buffers so SB is 100% backed by 2MB pages.
+    Note: this does NOT double-count memory — HugeTLB pool is carved out of
+    MemFree, and shared_buffers occupies that pool (not separate). OS cache
+    available = TotalMem - SB - process overhead, identical to the no-HP case.
+
+    Compaction may briefly evict OS cache to free 2MB-contiguous regions,
+    but OS cache refills via the warmup sysbench run before measurement.
+    """
+    n_pages   = (sb_mb // 2) + max(64, (sb_mb // 20))   # +5-10% headroom
+    try:
+        # Compact memory first so kernel can find 2MB-contiguous regions
+        subprocess.run(["sudo", "tee", "/proc/sys/vm/compact_memory"],
+                       input="1\n", capture_output=True, text=True, timeout=10)
+        time.sleep(2)
+        # Set nr_hugepages (kernel may not honor full request if fragmented)
+        r = subprocess.run(["sudo", "tee", "/proc/sys/vm/nr_hugepages"],
+                           input=f"{n_pages}\n", capture_output=True, text=True, timeout=15)
+        # Verify
+        with open("/proc/sys/vm/nr_hugepages") as f:
+            actual = int(f.read().strip())
+        with open("/proc/meminfo") as f:
+            free = sum(int(l.split()[1]) for l in f if l.startswith("HugePages_Free"))
+        actual_mb = actual * 2
+        required_mb = sb_mb
+        log(f"  [HP] target={sb_mb}MB, requested={n_pages} pages, "
+            f"got {actual} pages ({actual_mb}MB), free={free}")
+        if actual_mb < required_mb:
+            log(f"  [HP] WARNING: pool {actual_mb}MB < SB {required_mb}MB — "
+                f"shmget may fail (kernel couldn't compact enough)")
+        # Also nudge THP enabled=always (THP for anon outside shared_buffers)
+        for knob, val in [("enabled", "always"), ("defrag", "always"),
+                          ("shmem_enabled", "always")]:
+            subprocess.run(["sudo", "tee", f"/sys/kernel/mm/transparent_hugepage/{knob}"],
+                           input=f"{val}\n", capture_output=True, text=True, timeout=5)
+    except Exception as e:
+        log(f"  [HP] reservation error: {e}")
+
+
 def measure_at_sb(sb_mb: int) -> dict:
     log(f"\n{'='*60}")
-    log(f"  SB = {sb_mb} MB")
+    log(f"  SB = {sb_mb} MB  (HUGE-PAGES round)")
     log(f"{'='*60}")
+
+    # iter5-hp: reserve huge-page pool BEFORE applying shared_buffers + restart.
+    # nr_hugepages = min(sb_mb, 8192)/2 + headroom, so SB up to 8GB is fully
+    # backed by 2MB pages; SB > 8GB falls back partly to 4KB (intentional).
+    reserve_huge_pages(sb_mb)
 
     compact_memory()
     set_guc("shared_buffers", f"{sb_mb}MB")
+    # Enable HugeTLB in gaussdb (huge_pages=on means SHM_HUGETLB on shmget)
+    set_guc("enable_huge_pages", "on")
     ok = restart_db()
     if not ok:
         log(f"  ERROR: DB restart failed at SB={sb_mb}MB — skipping")
         return {"sb_mb": sb_mb, "tps": None, "error": "restart_failed"}
+
+    # Verify gaussdb actually grabbed huge pages
+    try:
+        with open("/proc/meminfo") as f:
+            mi = {}
+            for line in f:
+                parts = line.split(":")
+                if len(parts) == 2:
+                    k = parts[0].strip()
+                    v = parts[1].strip().split()
+                    if v and v[0].isdigit():
+                        mi[k] = int(v[0])
+        hp_used = mi.get("HugePages_Total", 0) - mi.get("HugePages_Free", 0)
+        log(f"  [HP] after DB restart: HugePages_Total={mi.get('HugePages_Total',0)}, "
+            f"Free={mi.get('HugePages_Free',0)}, used={hp_used} ({hp_used*2}MB), "
+            f"AnonHP={mi.get('AnonHugePages',0)}kB, ShmemHP={mi.get('ShmemHugePages',0)}kB")
+    except Exception:
+        pass
 
     mem_before = read_meminfo()
     log(f"  MemAvailable after restart: {mem_before}MB")
@@ -532,7 +649,20 @@ def main():
 
     log(f"\nRestoring SB to {BASE_SB_MB}MB ...")
     set_guc("shared_buffers", f"{BASE_SB_MB}MB")
+    set_guc("enable_huge_pages", "off")
     restart_db()
+    # Restore THP / hugepages to a low-impact state so subsequent experiments
+    # are not skewed by lingering reservation.
+    try:
+        subprocess.run(["sudo", "tee", "/proc/sys/vm/nr_hugepages"],
+                       input="0\n", capture_output=True, text=True, timeout=10)
+        for knob, val in [("enabled", "madvise"), ("defrag", "madvise"),
+                          ("shmem_enabled", "never")]:
+            subprocess.run(["sudo", "tee", f"/sys/kernel/mm/transparent_hugepage/{knob}"],
+                           input=f"{val}\n", capture_output=True, text=True, timeout=5)
+        log("  [HP] Teardown: nr_hugepages=0, THP back to madvise/never")
+    except Exception as e:
+        log(f"  [HP] teardown error: {e}")
     log("Done.\n")
 
     model = fit_penalty(results)
