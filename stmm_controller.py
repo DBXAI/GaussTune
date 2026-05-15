@@ -463,8 +463,13 @@ class BRBEController(STMMController):
         self._prev_wm_mb      = float(wm_init_mb)
         self._prev_blks_read  = 0
         self._prev_sb_mb      = float(sb_init_mb)
-        self._penalty_model   = SBPenaltyModel(calib_json=calib_json,
-                                               log_fn=lambda m: self.log.append({"event": m}))
+        self._penalty_model      = SBPenaltyModel(calib_json=calib_json,
+                                                log_fn=lambda m: self.log.append({"event": m}))
+        self._iowait_pct_baseline: float = 0.0  # TP-only iowait% from PRE phase
+
+    def set_iowait_baseline(self, pct: float):
+        """Record TP-only iowait% measured during PRE phase as write-IO penalty baseline."""
+        self._iowait_pct_baseline = pct
 
     def _update_alpha(self, spill_mb: float):
         """Update spill reducibility based on whether WM increase reduced spill."""
@@ -491,33 +496,33 @@ class BRBEController(STMMController):
         self._prev_sb_mb     = self.sb_mb
 
     def _sb_benefit_brbe(self, blks_read_delta: int, blks_hit_delta: int,
-                          n_ap: int, w_await_now: float = 0.0) -> float:
+                          n_ap: int, iowait_pct_now: float = 0.0) -> float:
         """
         Net marginal benefit of SB = read-IO savings − write-IO penalty.
 
-        Read benefit (same as before):
-          mb_sb_read = β × blks_read × PAGE_MB × DISK_READ_COST / sb_mb
+        Read benefit:
+          β × blks_read × PAGE_MB × DISK_READ_COST / sb_mb
+          Units: [s per poll-interval per MB]
 
-        Write penalty (new):
-          Derived from SBPenaltyModel: as SB grows, w_await rises (calib curve).
-          Current disk pressure (w_await_now) scales the calib penalty up/down.
-          penalty = io_penalty(sb_mb, w_await_now) × DISK_READ_COST / DISK_WRITE_COST
+        Write penalty (iowait%-based):
+          penalty = max(0, iowait_pct_now - iowait_baseline) / 100 * poll_s / sb_mb
+          Units: [s per poll-interval per MB] — same as read benefit.
 
-        The penalty is in the same unit (saved-s/MB) as the read benefit, so the
-        BRBE trade-off comparison remains dimensionally valid.
-        When w_await_now is 0 (not measured), penalty is 0 — no regression.
+          iowait_baseline is the TP-only iowait% set by set_iowait_baseline() during PRE.
+          The delta is purely from AP-phase disk pressure (bgwriter/checkpoint competition).
+          When iowait_pct_now=0 (not measured), penalty=0 — no regression vs current code.
         """
         if blks_read_delta <= 0:
             return 0.0
         page_size_mb = PAGE_SIZE_KB / 1024.0
-        read_mb  = blks_read_delta * page_size_mb
+        read_mb      = blks_read_delta * page_size_mb
         read_benefit = self._beta * read_mb * DISK_READ_COST_S_PER_MB / max(self.sb_mb, 1.0)
 
         penalty = 0.0
-        if w_await_now > 0.0:
-            raw = self._penalty_model.io_penalty(int(self.sb_mb), w_await_now)
-            # Scale to same unit as read_benefit (raw penalty is dimensionless/MB)
-            penalty = raw * DISK_READ_COST_S_PER_MB
+        if iowait_pct_now > 0.0:
+            penalty = self._penalty_model.io_penalty(
+                int(self.sb_mb), iowait_pct_now,
+                self._iowait_pct_baseline, self.poll_s)
 
         return max(0.0, read_benefit - penalty)
 
@@ -590,14 +595,14 @@ class BRBEController(STMMController):
              blks_read_delta: int,
              temp_bytes_delta: int,
              n_ap: int,
-             w_await_now: float = 0.0) -> tuple[int, Optional[int]]:
+             iowait_pct_now: float = 0.0) -> tuple[int, Optional[int]]:
         """Override tick() to use BRBE SB benefit and trade-off logic."""
         spill_mb = max(0.0, temp_bytes_delta / 1024 / 1024)
         self._update_alpha(spill_mb)
         self._update_beta(blks_read_delta)
 
         wm_ben = self._wm_benefit(temp_bytes_delta, n_ap)
-        sb_ben_brbe = self._sb_benefit_brbe(blks_read_delta, blks_hit_delta, n_ap, w_await_now)
+        sb_ben_brbe = self._sb_benefit_brbe(blks_read_delta, blks_hit_delta, n_ap, iowait_pct_now)
         sb_ben_plain = self._sb_benefit(blks_read_delta, blks_hit_delta)
 
         self._wm_hist.add(self.wm_mb, wm_ben)
@@ -725,39 +730,51 @@ class ProactiveBRBEController(BRBEController):
                        blks_read_per_interval: float,
                        total_budget_mb: int,
                        current_sb_mb: int = SB_INIT_MB,
-                       n_iter: int = 50) -> tuple[int, int, int, float, float]:
+                       n_iter: int = 50) -> tuple[int, int, int, float, float, float]:
         """
-        Simulate DB2 MIMO control with independent WM and SB updates + soft budget cap.
+        Simulate DB2 MIMO to find offline WM+SB allocation before AP starts.
 
-        Initial point:
-          wm_init = input_mb  (sort threshold — no spill above this)
-          sb_init = tp_working_set_mb / 0.99  (SB needed for 99% TP cache hit ratio)
-          tp_working_set_mb = blks_hit_per_interval × PAGE_SIZE_MB
+        Two cases:
+          Case A — WM sufficient (input_mb ≤ WM_MAX_MB): wm_ben=0, no MIMO needed.
+            Return wm = sort threshold, sb = TP working-set estimate.
+            The TP working set: current_sb / hit_ratio (cache miss tells us how
+            much of the working set is NOT in SB). Capped at SB_MAX_MB.
 
-        Benefit functions (DB2 §3.1, saved seconds / MB):
-          wm_ben(wm) = 0.5 × n × max(0, input_mb − wm) × DISK_WRITE_COST / wm
-          sb_ben(sb) = B_total / sb
-          B_total    = blks_read_per_interval × PAGE_SIZE_MB × DISK_READ_COST
+          Case B — WM insufficient (input_mb > WM_MAX_MB): run MIMO until
+            wm_ben(wm*) ≈ sb_ben(sb*) fixed point under soft budget constraint.
 
-        Independent MIMO updates (p=0.8):
-          Δwm = gain_wm × (wm_ben − avg_ben)
-          Δsb = gain_sb × (sb_ben − avg_ben)
+        SB penalty is NOT applied offline (no iowait signal during PRE phase).
+        Online tick() will fine-tune SB using live iowait% via _sb_benefit_brbe.
 
-        Soft budget constraint: if n×wm_new + sb_new > total_budget_mb, trim sb_new.
-
-        Returns (wm_mb, sb_mb, iters_used, input_mb, B_total).
+        Returns (wm_mb, sb_mb, iters_used, input_mb, B_total, tp_ws_mb).
         """
         sort_entry_b = ap_tuple_width_b + SORT_TUPLE_OVERHEAD_B
         input_mb = ap_rows * sort_entry_b / (1024.0 ** 2)
         B_total  = blks_read_per_interval * (PAGE_SIZE_KB / 1024.0) * DISK_READ_COST_S_PER_MB
 
-        # Initial point: WM at sort threshold, SB from TP working set model
-        wm = max(float(WM_MIN_MB), min(float(WM_MAX_MB), input_mb))
-        tp_ws_mb = blks_hit_per_interval * (PAGE_SIZE_KB / 1024.0)
-        sb_from_ws = tp_ws_mb / 0.99
-        sb = max(float(current_sb_mb), min(float(SB_MAX_MB), sb_from_ws))
+        # TP working-set estimate: current_sb / hit_ratio (miss rate tells gap)
+        total_blks = blks_hit_per_interval + blks_read_per_interval
+        if total_blks > 0:
+            hit_ratio = max(blks_hit_per_interval / total_blks, 0.5)
+            tp_ws_mb = current_sb_mb / hit_ratio
+        else:
+            tp_ws_mb = float(current_sb_mb)
 
-        # Enforce budget at start
+        wm_init = max(float(WM_MIN_MB), min(float(WM_MAX_MB), input_mb))
+        wm_out_raw = max(WM_MIN_MB, min(WM_MAX_MB,
+                         int(math.ceil(wm_init / WM_STEP_MIN)) * WM_STEP_MIN))
+
+        # Case A: WM at or below WM_MAX covers the sort input → no spill.
+        # SB recommendation = TP working-set estimate (no MIMO needed).
+        if input_mb <= WM_MAX_MB:
+            tp_ws_capped = max(float(current_sb_mb), min(float(SB_MAX_MB), tp_ws_mb))
+            sb_out = max(current_sb_mb, min(SB_MAX_MB,
+                         int(math.ceil(tp_ws_capped / SB_STEP_MB)) * SB_STEP_MB))
+            return wm_out_raw, sb_out, 1, input_mb, B_total, tp_ws_mb
+
+        # Case B: WM_MAX insufficient for one-pass sort → run MIMO.
+        wm = wm_init
+        sb = max(float(current_sb_mb), min(float(SB_MAX_MB), tp_ws_mb))
         if n_ap_workers * wm + sb > total_budget_mb:
             sb = max(float(current_sb_mb), float(total_budget_mb) - n_ap_workers * wm)
 
@@ -765,31 +782,31 @@ class ProactiveBRBEController(BRBEController):
         for i in range(n_iter):
             iters_used = i + 1
             spill_mb = n_ap_workers * max(0.0, input_mb - wm)
-            wm_ben = (0.5 * spill_mb * DISK_WRITE_COST_S_PER_MB / max(wm, 1.0)
-                      if spill_mb > 0.0 else 0.0)
-            sb_ben = B_total / max(sb, 1.0)
+            wm_ben   = (0.5 * spill_mb * DISK_WRITE_COST_S_PER_MB / max(wm, 1.0)
+                        if spill_mb > 0.0 else 0.0)
+
+            sb_ben = B_total / max(sb, 1.0)   # no offline penalty (no iowait signal)
             avg_ben = (wm_ben + sb_ben) / 2.0
 
-            # WM slope
             if spill_mb > 0.0:
                 slope_wm = (-0.5 * DISK_WRITE_COST_S_PER_MB * n_ap_workers
                             * input_mb / (wm ** 2))
+                gain_wm  = (POLE - 1.0) / slope_wm
+                wm_delta = gain_wm * (wm_ben - avg_ben)
+                wm_delta = max(-MAX_DEC_RATIO * wm, min(MAX_INC_RATIO * wm, wm_delta))
+                wm_new   = max(WM_MIN_MB, min(WM_MAX_MB, wm + wm_delta))
             else:
-                slope_wm = (-0.5 * DISK_WRITE_COST_S_PER_MB * n_ap_workers
-                            / max(input_mb, 1.0))
-            gain_wm  = (POLE - 1.0) / slope_wm
-            wm_delta = gain_wm * (wm_ben - avg_ben)
-            wm_delta = max(-MAX_DEC_RATIO * wm, min(MAX_INC_RATIO * wm, wm_delta))
-            wm_new   = max(WM_MIN_MB, min(WM_MAX_MB, wm + wm_delta))
+                wm_new = wm
 
-            # SB independent update
-            slope_sb = -B_total / max(sb ** 2, 1.0)
-            gain_sb  = (POLE - 1.0) / slope_sb
-            sb_delta = gain_sb * (sb_ben - avg_ben)
-            sb_delta = max(-MAX_DEC_RATIO * sb, min(MAX_INC_RATIO * sb, sb_delta))
-            sb_new   = max(float(current_sb_mb), min(float(SB_MAX_MB), sb + sb_delta))
+            if sb_ben > 0.0:
+                slope_sb = -B_total / max(sb ** 2, 1.0)
+                gain_sb  = (POLE - 1.0) / slope_sb
+                sb_delta = gain_sb * (sb_ben - avg_ben)
+                sb_delta = max(-MAX_DEC_RATIO * sb, min(MAX_INC_RATIO * sb, sb_delta))
+                sb_new   = max(float(current_sb_mb), min(float(SB_MAX_MB), sb + sb_delta))
+            else:
+                sb_new = sb
 
-            # Soft budget cap: trim SB if over limit
             if n_ap_workers * wm_new + sb_new > total_budget_mb:
                 sb_new = max(float(current_sb_mb),
                              float(total_budget_mb) - n_ap_workers * wm_new)
@@ -803,7 +820,7 @@ class ProactiveBRBEController(BRBEController):
                      int(math.ceil(wm / WM_STEP_MIN)) * WM_STEP_MIN))
         sb_out = max(current_sb_mb, min(SB_MAX_MB,
                      (int(sb) // SB_STEP_MB) * SB_STEP_MB))
-        return wm_out, sb_out, iters_used, input_mb, B_total
+        return wm_out, sb_out, iters_used, input_mb, B_total, tp_ws_mb
 
     def predict_pre_ap(self,
                        ap_rows: int,
@@ -827,7 +844,7 @@ class ProactiveBRBEController(BRBEController):
         blks_hit_per_interval  = blks_hit_delta  / n_intervals
         blks_read_per_interval = blks_read_delta / n_intervals
 
-        wm_alloc, sb_alloc, iters_used, input_mb, B_total = self._mimo_simulate(
+        wm_alloc, sb_alloc, iters_used, input_mb, B_total, tp_ws_mb = self._mimo_simulate(
             ap_rows=ap_rows,
             ap_tuple_width_b=ap_tuple_width_b,
             n_ap_workers=n_ap_workers,
@@ -855,7 +872,7 @@ class ProactiveBRBEController(BRBEController):
             "ap_rows":            ap_rows,
             "ap_tuple_width_b":   ap_tuple_width_b,
             "input_mb":           round(input_mb, 1),
-            "tp_ws_mb":           round(blks_hit_per_interval * (PAGE_SIZE_KB / 1024.0), 1),
+            "tp_ws_mb":           round(tp_ws_mb, 1),
             "B_total":            round(B_total, 6),
             "blks_hit_delta":     int(blks_hit_delta),
             "blks_read_delta":    int(blks_read_delta),
@@ -877,7 +894,8 @@ class ProactiveBRBEController(BRBEController):
              blks_hit_delta:  int,
              blks_read_delta: int,
              temp_bytes_delta: int,
-             n_ap: int) -> tuple[int, Optional[int]]:
+             n_ap: int,
+             iowait_pct_now: float = 0.0) -> tuple[int, Optional[int]]:
         """Override tick() to hold WM at the proactive floor while AP is active.
 
         wm_ben=0 during AP means no sort spill — WM is already sufficient.
@@ -889,7 +907,8 @@ class ProactiveBRBEController(BRBEController):
         clamp to _proactive_wm (HOLD state) instead of oscillating.
         """
         new_wm, suggest_sb = super().tick(blks_hit_delta, blks_read_delta,
-                                           temp_bytes_delta, n_ap)
+                                           temp_bytes_delta, n_ap,
+                                           iowait_pct_now=iowait_pct_now)
 
         # HOLD: keep WM at proactive floor throughout AP window.
         # Use _ap_phase_active flag (set by test harness) instead of n_ap alone, because
