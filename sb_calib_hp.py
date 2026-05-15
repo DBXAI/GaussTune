@@ -78,7 +78,10 @@ JSON_OUT     = "/home/node/GaussTune/run-logs/sb_calib_ro_hp.json"
 BASE_SB_MB   = 1024
 SB_LEVELS    = [1024, 2048, 4096, 6144, 8192, 12288, 16384]
 
-WARMUP_S     = 180
+WARMUP_S     = 600   # extended from 180s: drop_caches clears 25GB worth of OS
+                     # page cache; 180s warmup isn't enough to refill before
+                     # measurement starts → TPS stuck at cold-cache level (~220
+                     # in v2 across all SB sizes, masking HP effect entirely)
 MEASURE_S    = 60
 
 PERF_EVENTS  = ("dTLB-load-misses,longest_lat_cache.miss,longest_lat_cache.reference,"
