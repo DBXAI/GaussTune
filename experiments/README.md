@@ -1,11 +1,10 @@
-# Database Experiments
+# PostgreSQL Experiments
 
-This directory contains selected PostgreSQL and openGauss experiment assets.
+This directory contains selected PostgreSQL experiment assets.
 
 ## Layout
 
 - `postgresql/`: experiments copied from `/root/Huawei`.
-- `opengauss/`: experiments copied from `/root/Huawei2`.
 
 ## Selection policy
 
@@ -15,7 +14,6 @@ experiments:
 - experiment scripts, SQL files, and bpftrace programs;
 - analysis scripts;
 - README/report Markdown files;
-- aggregated CSV/JSON summaries;
 - generated result figures.
 
 Large or machine-specific artifacts are intentionally excluded:
@@ -24,4 +22,3 @@ Large or machine-specific artifacts are intentionally excluded:
 - transient logs;
 - Python bytecode/cache directories;
 - presentation binaries.
-
