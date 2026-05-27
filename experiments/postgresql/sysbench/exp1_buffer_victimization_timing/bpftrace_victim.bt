@@ -1,0 +1,89 @@
+#!/usr/bin/env bpftrace
+// bpftrace_victim.bt
+// 测量 PostgreSQL clock-sweep 选出 victim 的耗时
+// 以及 victim 是否为脏页（需要 flush 才能复用）
+//
+// 挂载点：
+//   uprobe:StrategyGetBuffer  — 开始寻找可用 buffer（含 clock-sweep）
+//   uretprobe:StrategyGetBuffer — 返回选中的 buffer id
+//   uprobe:FlushBuffer        — 开始将脏页写回磁盘
+//   uretprobe:FlushBuffer     — 脏页写回完成
+//
+// 用法（需要 root）：
+//   PG_BIN=$(pg_config --bindir 2>/dev/null || echo /usr/lib/postgresql/12/bin)
+//   bpftrace -p $(pgrep -f "postgres: tpcc") \
+//            --include /usr/include/postgresql/12/server \
+//            bpftrace_victim.bt
+//
+// 注意：PostgreSQL 12 默认不带调试符号，函数名需要通过以下方式确认：
+//   nm /usr/lib/postgresql/12/bin/postgres | grep -i strategy
+//   nm /usr/lib/postgresql/12/bin/postgres | grep -i FlushBuffer
+//
+// 如果符号不存在，改用 kprobe 方式（见下方注释）
+
+// ── 配置 ──────────────────────────────────────────────────────────────────
+// 替换为实际 postgres 二进制路径
+#define PG_BIN "/usr/lib/postgresql/12/bin/postgres"
+
+BEGIN {
+    printf("Tracing PostgreSQL buffer victimization... Hit Ctrl-C to stop.\n");
+    printf("%-10s %-8s %-12s %-12s %s\n",
+           "TIME(us)", "PID", "victim_us", "flush_us", "note");
+}
+
+// ── StrategyGetBuffer：clock-sweep 开始 ───────────────────────────────────
+uprobe:PG_BIN:StrategyGetBuffer {
+    @strategy_start[tid] = nsecs;
+}
+
+uretprobe:PG_BIN:StrategyGetBuffer {
+    if (@strategy_start[tid]) {
+        $elapsed_us = (nsecs - @strategy_start[tid]) / 1000;
+        @victim_lat_us = hist($elapsed_us);
+        @victim_total_us = sum($elapsed_us);
+        @victim_count = count();
+        delete(@strategy_start[tid]);
+    }
+}
+
+// ── FlushBuffer：脏页写回（victim 是脏页时触发）────────────────────────────
+uprobe:PG_BIN:FlushBuffer {
+    @flush_start[tid] = nsecs;
+}
+
+uretprobe:PG_BIN:FlushBuffer {
+    if (@flush_start[tid]) {
+        $elapsed_us = (nsecs - @flush_start[tid]) / 1000;
+        @flush_lat_us = hist($elapsed_us);
+        @flush_count = count();
+        delete(@flush_start[tid]);
+    }
+}
+
+// ── 备用：如果 uprobe 符号找不到，改用 kprobe 追踪内核 I/O ─────────────────
+// kprobe:submit_bio {
+//     if (comm == "postgres") {
+//         @bio_start[tid] = nsecs;
+//     }
+// }
+// kretprobe:submit_bio {
+//     if (@bio_start[tid]) {
+//         $us = (nsecs - @bio_start[tid]) / 1000;
+//         @bio_lat_us = hist($us);
+//         delete(@bio_start[tid]);
+//     }
+// }
+
+END {
+    printf("\n=== Victim Selection Latency (us) ===\n");
+    print(@victim_lat_us);
+    printf("\n=== Dirty Page Flush Latency (us) ===\n");
+    print(@flush_lat_us);
+    printf("\nvictim_count=%d  flush_count=%d\n",
+           @victim_count, @flush_count);
+    printf("dirty_ratio=%.2f%%\n",
+           100.0 * (uint64)@flush_count / ((uint64)@victim_count + 1));
+
+    clear(@strategy_start);
+    clear(@flush_start);
+}

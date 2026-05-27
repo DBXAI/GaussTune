@@ -1,0 +1,66 @@
+#!/usr/bin/env bpftrace
+// bpftrace_trace.bt
+// 高精度 page access trace：追踪每次 ReadBuffer_common 调用
+// 输出格式：timestamp_us,pid,relfilenode,blocknum,is_hit
+//
+// 用法：
+//   bpftrace bpftrace_trace.bt > trace_ebpf.log
+//   # 然后用 sbpx_mrc.py 解析
+
+#define PG_BIN "/usr/lib/postgresql/12/bin/postgres"
+
+// ReadBuffer_common 参数（PG12）：
+//   arg0: SMgrRelation smgr
+//   arg1: char relpersistence
+//   arg2: ForkNumber forkNum
+//   arg3: BlockNumber blockNum
+//   arg4: ReadBufferMode mode
+//   arg5: BufferAccessStrategy strategy
+//   arg6: bool *hit  (输出参数)
+
+BEGIN {
+    // 输出 CSV 头到 stderr（不混入数据流）
+    printf("# timestamp_us,pid,blocknum,is_hit\n");
+    printf("# Note: relfilenode requires reading SMgrRelation struct\n");
+    printf("# Simplified: tracking blocknum + pid for stack distance\n");
+}
+
+uprobe:PG_BIN:ReadBuffer_common {
+    @args_blocknum[tid] = (uint64)arg3;
+    @args_hit_ptr[tid]  = (uint64)arg6;
+    // SMgrRelation->smgr_rnode.node.relNode (offset depends on PG version)
+    // PG12: SMgrRelationData.smgr_rnode = RelFileNodeBackend
+    //       RelFileNodeBackend.node = RelFileNode { spcNode, dbNode, relNode }
+    //       relNode is at offset 8 (after spcNode=4, dbNode=4)
+    @args_relnode[tid]  = *(uint32*)(arg0 + 8);
+}
+
+uretprobe:PG_BIN:ReadBuffer_common {
+    if (!@args_blocknum[tid]) { return; }
+
+    $blocknum  = @args_blocknum[tid];
+    $relnode   = @args_relnode[tid];
+    $hit_ptr   = @args_hit_ptr[tid];
+    $is_hit    = *(uint8*)$hit_ptr;
+    $ts_us     = nsecs / 1000;
+
+    // 输出 trace 行（只输出 miss，节省空间；如需全量去掉 if）
+    // 全量 trace 用于精确 MRC，只 miss 用于快速估算
+    printf("%llu,%d,%u,%u,%d\n", $ts_us, pid, $relnode, $blocknum, $is_hit);
+
+    delete(@args_blocknum[tid]);
+    delete(@args_hit_ptr[tid]);
+    delete(@args_relnode[tid]);
+}
+
+// 每 10 秒打印采集进度到 stderr
+interval:s:10 {
+    printf("# [%s] trace running...\n", strftime("%H:%M:%S", nsecs));
+}
+
+END {
+    printf("# Trace complete.\n");
+    clear(@args_blocknum);
+    clear(@args_hit_ptr);
+    clear(@args_relnode);
+}

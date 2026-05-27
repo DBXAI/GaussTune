@@ -1,0 +1,74 @@
+#!/usr/bin/env bpftrace
+// bpftrace_io.bt
+// 测量 PostgreSQL page 从磁盘读入 shared buffer 的端到端延迟
+//
+// 两层测量：
+//   Layer 1 (用户态)：uprobe smgrread → uretprobe smgrread
+//     覆盖：page fault 触发 → OS 返回数据给 PG
+//   Layer 2 (内核态)：kprobe blk_account_io_start → kprobe blk_account_io_done
+//     覆盖：纯磁盘服务时间（不含 page cache 命中）
+//
+// 用法：
+//   bpftrace bpftrace_io.bt
+//   # 或只追踪特定 PG 进程：
+//   bpftrace -p $(pgrep -f "postgres: tpcc" | head -1) bpftrace_io.bt
+
+#define PG_BIN "/usr/lib/postgresql/12/bin/postgres"
+
+BEGIN {
+    printf("Tracing PostgreSQL disk read latency... Ctrl-C to stop.\n");
+}
+
+// ── Layer 1: smgrread（PG 发起一次 8KB page 读）────────────────────────────
+uprobe:PG_BIN:smgrread {
+    @smgr_start[tid] = nsecs;
+}
+
+uretprobe:PG_BIN:smgrread {
+    if (@smgr_start[tid]) {
+        $us = (nsecs - @smgr_start[tid]) / 1000;
+        @smgr_read_us = hist($us);
+        @smgr_read_count = count();
+        @smgr_read_total_us = sum($us);
+        delete(@smgr_start[tid]);
+    }
+}
+
+// ── Layer 2: 内核 block I/O（实际磁盘延迟）────────────────────────────────
+// 只追踪 postgres 进程发出的 bio
+kprobe:blk_account_io_start {
+    if (comm == "postgres") {
+        @bio_start[arg0] = nsecs;  // arg0 = struct request *
+    }
+}
+
+// 内核 5.4 用 blk_account_io_done，更新内核可能是 blk_mq_end_request
+kprobe:blk_account_io_done {
+    if (@bio_start[arg0]) {
+        $us = (nsecs - @bio_start[arg0]) / 1000;
+        @bio_lat_us = hist($us);
+        @bio_count = count();
+        delete(@bio_start[arg0]);
+    }
+}
+
+// ── 每 10 秒打印一次实时统计 ──────────────────────────────────────────────
+interval:s:10 {
+    printf("\n[%s] smgr_reads=%d  bio_ios=%d\n",
+           strftime("%H:%M:%S", nsecs), @smgr_read_count, @bio_count);
+    printf("smgr avg=%.1f us\n",
+           (uint64)@smgr_read_total_us / ((uint64)@smgr_read_count + 1));
+}
+
+END {
+    printf("\n=== smgrread Latency (us) — PG user-space view ===\n");
+    print(@smgr_read_us);
+    printf("\n=== Block I/O Latency (us) — kernel view ===\n");
+    print(@bio_lat_us);
+    printf("\nTotal smgr reads : %d\n", @smgr_read_count);
+    printf("Total block IOs  : %d\n", @bio_count);
+    printf("\nNote: smgr_reads > bio_ios means OS page cache absorbed some reads.\n");
+
+    clear(@smgr_start);
+    clear(@bio_start);
+}

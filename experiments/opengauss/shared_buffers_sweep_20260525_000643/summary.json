@@ -1,0 +1,28 @@
+[
+{
+"timestamp":"20260525_000705",
+"mode":"warm",
+"workload":"tp200",
+"db":"postgres",
+"shared_buffers":"4GB",
+"data_dir":"/opt/openGauss/data",
+"gaussdb_pids":"1479541 1479866 ",
+"label":"phase=measure,shared_buffers=4GB,step=1/2",
+"delta_blks_hit":41963476,
+"delta_blks_read":1521947,
+"sb_hit_ratio":0.965001,
+"mem_available_kb_start":28790136,
+"mem_available_kb_end":24424024,
+"disk_dev":"nvme0n1p3",
+"disk_read_source":"diskstats",
+"proc_io_available":0,
+"disk_read_bytes":1694138368,
+"logical_read_bytes":12467789824,
+"os_cache_hit_ratio":0.864119,
+"start_iso":"2026-05-25T00:07:06+08:00",
+"end_iso":"2026-05-25T00:08:08+08:00",
+"elapsed_s":62,
+"sysbench_transactions_line":"    transactions:                        186346 (3047.83 per sec.)",
+"workload_rc":0
+},
+{"shared_buffers":"8GB","error":"restart_failed_or_timeout","rc":1}]

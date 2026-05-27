@@ -1,0 +1,106 @@
+#!/usr/bin/env bpftrace
+// bpftrace_cachemiss.bt
+// 通过 uprobe 追踪 PostgreSQL buffer miss，区分 TP/AP 进程
+//
+// 原理：
+//   ReadBuffer_common 是 PG 所有 buffer 请求的核心路径
+//   参数中 hit 标志（第 4 个参数）= 1 表示命中，= 0 表示 miss
+//   通过 pid 映射到 application_name（需提前建立映射）
+//
+// 用法：
+//   # 先建立 pid→type 映射（在 PostgreSQL 中查询）
+//   sudo -u postgres psql -c "
+//     SELECT pid, application_name FROM pg_stat_activity
+//     WHERE application_name IN ('tpcc','tpch');" > /tmp/pg_pids.txt
+//
+//   # 然后运行（追踪所有 postgres 进程）
+//   bpftrace bpftrace_cachemiss.bt
+//
+// 注意：ReadBuffer_common 在 PG12 中可能内联，
+//       备用符号：ReadBufferExtended, ReadBuffer
+
+#define PG_BIN "/usr/lib/postgresql/12/bin/postgres"
+
+BEGIN {
+    printf("Tracing PostgreSQL cache misses... Ctrl-C to stop.\n");
+    printf("Tip: set application_name='tpcc' or 'tpch' in your connections.\n\n");
+
+    // 初始化计数器
+    @hit_total   = 0;
+    @miss_total  = 0;
+    @hit_tp      = 0;
+    @miss_tp     = 0;
+    @hit_ap      = 0;
+    @miss_ap     = 0;
+}
+
+// ── ReadBuffer_common：每次 buffer 请求 ───────────────────────────────────
+// 函数签名（PG12）：
+//   Buffer ReadBuffer_common(SMgrRelation smgr, char relpersistence,
+//                            ForkNumber forkNum, BlockNumber blockNum,
+//                            ReadBufferMode mode, BufferAccessStrategy strategy,
+//                            bool *hit)
+// 注意：hit 是输出参数（指针），在 uretprobe 中读取
+uprobe:PG_BIN:ReadBuffer_common {
+    @req_start[tid] = nsecs;
+    @req_hit_ptr[tid] = arg6;   // bool *hit 指针
+}
+
+uretprobe:PG_BIN:ReadBuffer_common {
+    if (!@req_start[tid]) { return; }
+
+    $hit_ptr = @req_hit_ptr[tid];
+    $is_hit  = *(uint8*)$hit_ptr;   // 读取 *hit 的值
+
+    if ($is_hit) {
+        @hit_total++;
+    } else {
+        @miss_total++;
+        @miss_lat_us = hist((nsecs - @req_start[tid]) / 1000);
+    }
+
+    // 按 application_name 区分 TP/AP
+    // comm 是进程名（postgres），用 curtask->comm 无法区分
+    // 实际区分方式：通过 pid 查表（见下方 interval 中的提示）
+    // 简化版：假设 tpcc 进程 pid 范围已知，或用 cgroup 区分
+    // 这里用 @tp_pids / @ap_pids map 来标记（由外部脚本填充）
+    if (@tp_pids[pid]) {
+        if ($is_hit) { @hit_tp++; } else { @miss_tp++; }
+    } else if (@ap_pids[pid]) {
+        if ($is_hit) { @hit_ap++; } else { @miss_ap++; }
+    }
+
+    delete(@req_start[tid]);
+    delete(@req_hit_ptr[tid]);
+}
+
+// ── 每 5 秒打印实时统计 ───────────────────────────────────────────────────
+interval:s:5 {
+    $total = @hit_total + @miss_total;
+    $tp    = @hit_tp + @miss_tp;
+    $ap    = @hit_ap + @miss_ap;
+
+    printf("[%s]\n", strftime("%H:%M:%S", nsecs));
+    printf("  TOTAL: hit=%d miss=%d miss_rate=%.2f%%\n",
+           @hit_total, @miss_total,
+           100.0 * (uint64)@miss_total / ($total + 1));
+    printf("  TP:    hit=%d miss=%d miss_rate=%.2f%%\n",
+           @hit_tp, @miss_tp,
+           100.0 * (uint64)@miss_tp / ($tp + 1));
+    printf("  AP:    hit=%d miss=%d miss_rate=%.2f%%\n",
+           @hit_ap, @miss_ap,
+           100.0 * (uint64)@miss_ap / ($ap + 1));
+    printf("\n");
+}
+
+END {
+    $total = @hit_total + @miss_total;
+    printf("\n=== Final Cache Miss Summary ===\n");
+    printf("TOTAL  : %d hits, %d misses, miss_rate=%.4f%%\n",
+           @hit_total, @miss_total,
+           100.0 * (uint64)@miss_total / ($total + 1));
+    printf("TP     : %d hits, %d misses\n", @hit_tp, @miss_tp);
+    printf("AP     : %d hits, %d misses\n", @hit_ap, @miss_ap);
+    printf("\n=== Miss Latency Distribution (us) ===\n");
+    print(@miss_lat_us);
+}
