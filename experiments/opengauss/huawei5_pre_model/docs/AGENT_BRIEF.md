@@ -17,7 +17,18 @@ shared buffers and OS page cache.
 
 ## Current Workload
 
-The validation workload is a continuous five-stage TPC-C + TPC-H mix:
+The validation workload is a continuous five-stage TPC-C + TPC-H mix. Current
+scripts support two boundary modes:
+
+```text
+time:       old fixed stage_seconds split
+tpch_query: stage starts at first active TPC-H query and ends after the stage's
+            TPC-H query batch completes
+```
+
+The example runner uses `tpch_query`.
+
+The stable workload shape is:
 
 | Stage | TP Load | AP Load |
 |---|---|---|

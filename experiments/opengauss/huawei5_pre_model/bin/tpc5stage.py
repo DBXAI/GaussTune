@@ -40,6 +40,7 @@ TPCH_ALL_WEIGHTS = ",".join(["1"] * 22)
 TPCH_HEAVY_WEIGHTS = "1,0,1,0,1,0,1,0,1,0,0,0,1,0,0,0,0,1,0,0,1,0"
 TPCH_HEAVY_QUERY_IDS = [1, 3, 5, 7, 9, 13, 18, 21]
 DEFAULT_STABLE_TP_HIGH_RATE = "180"
+DEFAULT_QUERY_BOUNDARY_TP_SECONDS = 7200
 
 
 @dataclass(frozen=True)
@@ -238,6 +239,10 @@ def stable_workload_enabled(args: argparse.Namespace) -> bool:
     return bool(getattr(args, "stable_workload", False))
 
 
+def tpch_query_boundary_enabled(args: argparse.Namespace) -> bool:
+    return getattr(args, "stage_boundary_mode", "time") == "tpch_query"
+
+
 def fixed_ap_clients_enabled(args: argparse.Namespace) -> bool:
     return bool(getattr(args, "ap_fixed_query_clients", False) or stable_workload_enabled(args))
 
@@ -249,6 +254,34 @@ def effective_tp_high_rate(args: argparse.Namespace) -> str:
     return rate
 
 
+def tp_background_seconds(args: argparse.Namespace) -> int:
+    configured = int(getattr(args, "tp_run_seconds", 0) or 0)
+    if configured > 0:
+        return configured
+    if tpch_query_boundary_enabled(args):
+        timeout = float(getattr(args, "tpch_query_timeout_seconds", 0.0) or 0.0)
+        if timeout > 0:
+            return int(max(args.stage_seconds * 5 + 60, timeout * 5 + 300))
+        return DEFAULT_QUERY_BOUNDARY_TP_SECONDS
+    return args.stage_seconds * 5 + 60
+
+
+def tp_high_seconds(args: argparse.Namespace) -> int:
+    if tpch_query_boundary_enabled(args):
+        return tp_background_seconds(args)
+    return args.stage_seconds + 20
+
+
+def ap_run_seconds(args: argparse.Namespace) -> int:
+    if tpch_query_boundary_enabled(args):
+        return 0
+    return int(args.total_seconds)
+
+
+def configure_runtime_args(args: argparse.Namespace) -> None:
+    args.total_seconds = tp_background_seconds(args)
+
+
 def ap_group_configs(
     args: argparse.Namespace,
     key: str,
@@ -257,7 +290,13 @@ def ap_group_configs(
     stage_index: int,
 ) -> Path | list[Path]:
     ap_rate = str(getattr(args, "ap_rate", "unlimited"))
-    ap_serial = bool(getattr(args, "ap_serial", False) or stable_workload_enabled(args))
+    ap_serial = bool(
+        getattr(args, "ap_serial", False)
+        or stable_workload_enabled(args)
+        or tpch_query_boundary_enabled(args)
+    )
+    if tpch_query_boundary_enabled(args) and not fixed_ap_clients_enabled(args):
+        raise SystemExit("--stage-boundary-mode tpch_query requires --stable-workload or --ap-fixed-query-clients")
     if not fixed_ap_clients_enabled(args):
         path = CONF / f"tpch_{key}.xml"
         write(
@@ -267,7 +306,7 @@ def ap_group_configs(
                 args.tpch_scale,
                 terminals,
                 ap_rate,
-                args.total_seconds,
+                ap_run_seconds(args),
                 setup,
                 serial=ap_serial,
                 weights=TPCH_HEAVY_WEIGHTS,
@@ -288,7 +327,7 @@ def ap_group_configs(
                 args.tpch_scale,
                 1,
                 ap_rate,
-                args.total_seconds,
+                ap_run_seconds(args),
                 setup,
                 serial=ap_serial,
                 weights=tpch_single_query_weights(query_id),
@@ -299,6 +338,7 @@ def ap_group_configs(
 
 
 def render_configs(args: argparse.Namespace) -> dict[str, Path | list[Path]]:
+    configure_runtime_args(args)
     CONF.mkdir(parents=True, exist_ok=True)
     RESULTS.mkdir(parents=True, exist_ok=True)
 
@@ -328,7 +368,7 @@ def render_configs(args: argparse.Namespace) -> dict[str, Path | list[Path]]:
     write(paths["tpcc_load"], tpcc_xml(args.seed, args.tpcc_warehouses, 1, "1", 1))
     write(paths["tpch_load"], tpch_xml(args.seed, args.tpch_scale, 1, "1", 1, ap_setup))
     write(paths["tpcc_low"], tpcc_xml(args.seed, args.tpcc_warehouses, args.tp_low_terminals, str(args.tp_low_rate), args.total_seconds))
-    write(paths["tpcc_high"], tpcc_xml(args.seed, args.tpcc_warehouses, args.tp_high_terminals, effective_tp_high_rate(args), args.stage_seconds + 20))
+    write(paths["tpcc_high"], tpcc_xml(args.seed, args.tpcc_warehouses, args.tp_high_terminals, effective_tp_high_rate(args), tp_high_seconds(args)))
     for stage_index, (key, terms) in enumerate([
         ("ap_s1", args.ap_s1),
         ("ap_s2", args.ap_s2),
@@ -424,6 +464,68 @@ def start_configs(name: str, bench: str, configs: Path | list[Path], log_dir: Pa
     return specs
 
 
+def specs_done(specs: list[ProcSpec]) -> bool:
+    return all(spec.proc.poll() is not None for spec in specs)
+
+
+def tpch_activity_counts() -> tuple[int, int]:
+    out = gsql_output(
+        """
+SELECT count(*)::int || ' ' ||
+       COALESCE(sum(CASE WHEN state = 'active' THEN 1 ELSE 0 END), 0)::int
+FROM pg_stat_activity
+WHERE application_name LIKE 'tpch%'
+   OR application_name = 'tpch_ap';
+"""
+    )
+    sessions, active = out.split()
+    return int(sessions), int(active)
+
+
+def wait_for_tpch_query_start(
+    specs: list[ProcSpec],
+    timeout_seconds: float,
+    *,
+    poll_interval: float = 0.05,
+) -> tuple[int, int]:
+    deadline = time.time() + timeout_seconds
+    last_counts = (0, 0)
+    while time.time() < deadline:
+        last_counts = tpch_activity_counts()
+        if last_counts[1] > 0:
+            return last_counts
+        if specs_done(specs):
+            raise RuntimeError("TPC-H clients exited before an active query was observed")
+        time.sleep(poll_interval)
+    raise TimeoutError(
+        f"timed out waiting {timeout_seconds:.1f}s for TPC-H query start; "
+        f"last sessions={last_counts[0]} active={last_counts[1]}"
+    )
+
+
+def wait_for_tpch_query_end(
+    specs: list[ProcSpec],
+    timeout_seconds: float,
+    *,
+    poll_interval: float = 0.2,
+    tick=None,
+) -> tuple[int, int]:
+    deadline = time.time() + timeout_seconds if timeout_seconds > 0 else None
+    last_counts = tpch_activity_counts()
+    while True:
+        if tick is not None:
+            tick()
+        last_counts = tpch_activity_counts()
+        if specs_done(specs) and last_counts[1] == 0:
+            return last_counts
+        if deadline is not None and time.time() >= deadline:
+            raise TimeoutError(
+                f"timed out waiting {timeout_seconds:.1f}s for TPC-H query end; "
+                f"last sessions={last_counts[0]} active={last_counts[1]}"
+            )
+        time.sleep(poll_interval)
+
+
 def stop(spec: ProcSpec) -> None:
     if spec.proc.poll() is not None:
         return
@@ -493,7 +595,7 @@ END $$;
 
 
 def run_stages(args: argparse.Namespace) -> None:
-    args.total_seconds = args.stage_seconds * 5 + 60
+    configure_runtime_args(args)
     paths = render_configs(args)
     run_id = time.strftime("%Y%m%d_%H%M%S")
     run_dir = RESULTS / f"stagefit_{run_id}"
@@ -516,21 +618,41 @@ def run_stages(args: argparse.Namespace) -> None:
             ("stage4_backpressure", "ap_s4"),
         ]
         for stage, key in stages:
-            live.extend(start_configs(stage, "tpch", paths[key], run_dir))
-            end = time.time() + args.stage_seconds
-            while time.time() < end:
-                sample_db(stage, writer)
-                fh.flush()
-                time.sleep(args.sample_interval)
+            ap_specs = start_configs(stage, "tpch", paths[key], run_dir)
+            live.extend(ap_specs)
+            if tpch_query_boundary_enabled(args):
+                wait_for_tpch_query_start(ap_specs, args.tpch_start_timeout_seconds)
+                wait_for_tpch_query_end(
+                    ap_specs,
+                    args.tpch_query_timeout_seconds,
+                    poll_interval=min(1.0, max(0.1, args.sample_interval)),
+                    tick=lambda stage=stage: (sample_db(stage, writer), fh.flush()),
+                )
+            else:
+                end = time.time() + args.stage_seconds
+                while time.time() < end:
+                    sample_db(stage, writer)
+                    fh.flush()
+                    time.sleep(args.sample_interval)
 
         tp_high = start("stage5_tp_surge", benchbase_cmd("tpcc", paths["tpcc_high"], create=False, load=False, execute=True), run_dir / "tpcc_high.log")
         live.append(tp_high)
-        live.extend(start_configs("stage5_ap_pressure", "tpch", paths["ap_s5"], run_dir))
-        end = time.time() + args.stage_seconds
-        while time.time() < end:
-            sample_db("stage5_tp_surge", writer)
-            fh.flush()
-            time.sleep(args.sample_interval)
+        ap_specs = start_configs("stage5_ap_pressure", "tpch", paths["ap_s5"], run_dir)
+        live.extend(ap_specs)
+        if tpch_query_boundary_enabled(args):
+            wait_for_tpch_query_start(ap_specs, args.tpch_start_timeout_seconds)
+            wait_for_tpch_query_end(
+                ap_specs,
+                args.tpch_query_timeout_seconds,
+                poll_interval=min(1.0, max(0.1, args.sample_interval)),
+                tick=lambda: (sample_db("stage5_tp_surge", writer), fh.flush()),
+            )
+        else:
+            end = time.time() + args.stage_seconds
+            while time.time() < end:
+                sample_db("stage5_tp_surge", writer)
+                fh.flush()
+                time.sleep(args.sample_interval)
 
     for spec in reversed(live):
         stop(spec)
@@ -561,6 +683,10 @@ def add_common(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--ap-s5", type=int, default=8)
     parser.add_argument("--stage-seconds", type=int, default=120)
     parser.add_argument("--sample-interval", type=int, default=5)
+    parser.add_argument("--stage-boundary-mode", choices=["time", "tpch_query"], default="time")
+    parser.add_argument("--tpch-start-timeout-seconds", type=float, default=60.0)
+    parser.add_argument("--tpch-query-timeout-seconds", type=float, default=0.0)
+    parser.add_argument("--tp-run-seconds", type=int, default=0)
     parser.set_defaults(total_seconds=660)
 
 

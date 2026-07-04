@@ -154,12 +154,12 @@ def read_disk_stats(dev: str) -> tuple[int, int]:
     raise RuntimeError(f"device not found in /proc/diskstats: {dev}")
 
 
-def boundary(label: str, bpf_start_ns: int, dev: str) -> dict[str, object]:
+def boundary(label: str, bpf_start_ns: int, dev: str, **extra: object) -> dict[str, object]:
     hit, read = read_db_stats()
     disk_reads, sectors = read_disk_stats(dev)
     resident_mb = file_cache_mb()
     capacity_mb = os_cache_capacity_mb()
-    return {
+    row: dict[str, object] = {
         "label": label,
         "wall_time": time.strftime("%F %T"),
         "elapsed_ns": time.monotonic_ns() - bpf_start_ns,
@@ -171,6 +171,29 @@ def boundary(label: str, bpf_start_ns: int, dev: str) -> dict[str, object]:
         "os_cache_capacity_mb": capacity_mb,
         "os_cache_resident_mb": resident_mb,
     }
+    row.update(extra)
+    return row
+
+
+def query_boundary(
+    label: str,
+    bpf_start_ns: int,
+    dev: str,
+    *,
+    source: str,
+    ap_clients: int,
+    sessions: int,
+    active: int,
+) -> dict[str, object]:
+    return boundary(
+        label,
+        bpf_start_ns,
+        dev,
+        boundary_source=source,
+        ap_clients=ap_clients,
+        tpch_sessions=sessions,
+        tpch_active=active,
+    )
 
 
 def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
@@ -413,7 +436,8 @@ def write_report(out_dir: Path, summary_rows: list[dict[str, object]], args: arg
         f"- TPC-C warehouses: {args.tpcc_warehouses}",
         f"- TPC-H scale: SF{args.tpch_scale:g}",
         f"- Fixed seed: `{args.seed}`",
-        f"- Stage duration: {args.stage_seconds}s",
+        f"- Stage boundary mode: `{args.stage_boundary_mode}`",
+        f"- Fixed stage duration fallback: {args.stage_seconds}s",
         f"- `shared_buffers`: {summary_rows[0]['sb_mb']}MB",
         "",
         "## Summary",
@@ -458,7 +482,7 @@ def main() -> int:
     parser.add_argument("--stabilize-before-run", action="store_true")
     parser.add_argument("--drop-os-cache-before-run", action="store_true")
     args = parser.parse_args()
-    args.total_seconds = args.stage_seconds * 5 + 60
+    tpc5stage.configure_runtime_args(args)
     if args.stable_workload:
         args.stabilize_before_run = True
 
@@ -516,21 +540,89 @@ def main() -> int:
             ("stage4_backpressure", "ap_s4"),
         ]
         for stage, key in stage_specs:
-            boundaries.append(boundary(f"{stage}_start", bpf_start_ns, dev))
-            live.extend(tpc5stage.start_configs(stage, "tpch", paths[key], out_dir))
-            time.sleep(args.stage_seconds)
-            boundaries.append(boundary(f"{stage}_end", bpf_start_ns, dev))
+            if tpc5stage.tpch_query_boundary_enabled(args):
+                ap_specs = tpc5stage.start_configs(stage, "tpch", paths[key], out_dir)
+                live.extend(ap_specs)
+                sessions, active = tpc5stage.wait_for_tpch_query_start(
+                    ap_specs,
+                    args.tpch_start_timeout_seconds,
+                )
+                boundaries.append(
+                    query_boundary(
+                        f"{stage}_start",
+                        bpf_start_ns,
+                        dev,
+                        source="tpch_query_start",
+                        ap_clients=len(ap_specs),
+                        sessions=sessions,
+                        active=active,
+                    )
+                )
+                sessions, active = tpc5stage.wait_for_tpch_query_end(
+                    ap_specs,
+                    args.tpch_query_timeout_seconds,
+                )
+                boundaries.append(
+                    query_boundary(
+                        f"{stage}_end",
+                        bpf_start_ns,
+                        dev,
+                        source="tpch_query_end",
+                        ap_clients=len(ap_specs),
+                        sessions=sessions,
+                        active=active,
+                    )
+                )
+            else:
+                boundaries.append(boundary(f"{stage}_start", bpf_start_ns, dev, boundary_source="fixed_time_start"))
+                live.extend(tpc5stage.start_configs(stage, "tpch", paths[key], out_dir))
+                time.sleep(args.stage_seconds)
+                boundaries.append(boundary(f"{stage}_end", bpf_start_ns, dev, boundary_source="fixed_time_end"))
 
-        boundaries.append(boundary("stage5_tp_surge_start", bpf_start_ns, dev))
         tp_high = tpc5stage.start(
             "stage5_tp_surge",
             tpc5stage.benchbase_cmd("tpcc", paths["tpcc_high"], create=False, load=False, execute=True),
             out_dir / "tpcc_high.log",
         )
         live.append(tp_high)
-        live.extend(tpc5stage.start_configs("stage5_ap_pressure", "tpch", paths["ap_s5"], out_dir))
-        time.sleep(args.stage_seconds)
-        boundaries.append(boundary("stage5_tp_surge_end", bpf_start_ns, dev))
+        if tpc5stage.tpch_query_boundary_enabled(args):
+            ap_specs = tpc5stage.start_configs("stage5_ap_pressure", "tpch", paths["ap_s5"], out_dir)
+            live.extend(ap_specs)
+            sessions, active = tpc5stage.wait_for_tpch_query_start(
+                ap_specs,
+                args.tpch_start_timeout_seconds,
+            )
+            boundaries.append(
+                query_boundary(
+                    "stage5_tp_surge_start",
+                    bpf_start_ns,
+                    dev,
+                    source="tpch_query_start",
+                    ap_clients=len(ap_specs),
+                    sessions=sessions,
+                    active=active,
+                )
+            )
+            sessions, active = tpc5stage.wait_for_tpch_query_end(
+                ap_specs,
+                args.tpch_query_timeout_seconds,
+            )
+            boundaries.append(
+                query_boundary(
+                    "stage5_tp_surge_end",
+                    bpf_start_ns,
+                    dev,
+                    source="tpch_query_end",
+                    ap_clients=len(ap_specs),
+                    sessions=sessions,
+                    active=active,
+                )
+            )
+        else:
+            boundaries.append(boundary("stage5_tp_surge_start", bpf_start_ns, dev, boundary_source="fixed_time_start"))
+            live.extend(tpc5stage.start_configs("stage5_ap_pressure", "tpch", paths["ap_s5"], out_dir))
+            time.sleep(args.stage_seconds)
+            boundaries.append(boundary("stage5_tp_surge_end", bpf_start_ns, dev, boundary_source="fixed_time_end"))
 
     finally:
         for spec in reversed(live):
@@ -566,6 +658,10 @@ def main() -> int:
                 "tpcc_warehouses": args.tpcc_warehouses,
                 "tpch_scale": args.tpch_scale,
                 "stage_seconds": args.stage_seconds,
+                "stage_boundary_mode": args.stage_boundary_mode,
+                "tp_run_seconds": args.total_seconds,
+                "tpch_start_timeout_seconds": args.tpch_start_timeout_seconds,
+                "tpch_query_timeout_seconds": args.tpch_query_timeout_seconds,
                 "sample_interval": args.sample_interval,
                 "tp_low_terminals": args.tp_low_terminals,
                 "tp_low_rate": args.tp_low_rate,
@@ -577,7 +673,9 @@ def main() -> int:
                 "stable_tp_high_rate": args.stable_tp_high_rate,
                 "ap_rate": args.ap_rate,
                 "ap_serial": args.ap_serial,
-                "effective_ap_serial": args.ap_serial or args.stable_workload,
+                "effective_ap_serial": args.ap_serial
+                or args.stable_workload
+                or tpc5stage.tpch_query_boundary_enabled(args),
                 "ap_fixed_query_clients": args.ap_fixed_query_clients or args.stable_workload,
                 "ap_query_cycle": args.ap_query_cycle,
                 "stabilize_before_run": args.stabilize_before_run,

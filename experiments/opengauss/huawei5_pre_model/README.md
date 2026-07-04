@@ -20,7 +20,10 @@ The goal is to predict, under different `shared_buffers` allocations:
 combined = SB + (1 - SB) * OS
 ```
 
-The validation workload is a continuous five-stage TPC-C + TPC-H mix:
+The validation workload is a continuous five-stage TPC-C + TPC-H mix. The
+packaged run script uses TPC-H query boundaries: a stage starts when the first
+TPC-H query in that stage becomes active, and ends when all TPC-H queries in
+that stage finish.
 
 - TP side: TPC-C, 250 warehouses, low background load plus stage-5 surge.
 - AP side: TPC-H, SF85, fixed query sequence and staged AP concurrency.
@@ -96,6 +99,18 @@ cd experiments/opengauss/huawei5_pre_model
 This starts bpftrace, runs the TPC-C/TPC-H five-stage workload, writes
 `boundaries.csv`, computes actual hit rates, and runs the model prediction.
 
+The example passes:
+
+```text
+--stage-boundary-mode tpch_query
+```
+
+The older fixed-duration split is still available with:
+
+```text
+--stage-boundary-mode time
+```
+
 For a `shared_buffers` sweep, use the template:
 
 ```bash
@@ -115,6 +130,9 @@ The included sweep used:
 - 32GB failed to start on the validation host because openGauss could not
   allocate the required shared memory.
 - Model: `bulk_ring`, readahead `0`, OS scale `0.75`.
+- The included representative artifacts were generated with the earlier
+  fixed-duration split. New runs should prefer `tpch_query` boundaries when
+  comparing cache behavior around complete TPC-H query windows.
 
 Important interpretation:
 

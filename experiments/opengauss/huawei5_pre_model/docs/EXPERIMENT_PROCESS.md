@@ -36,7 +36,9 @@ ap_query_cycle: 1,3,5,7,9,13,18,21
 ```
 
 Stable mode assigns one fixed TPC-H query per AP client. This avoids random AP
-query selection drift between runs.
+query selection drift between runs. In `tpch_query` boundary mode, fixed AP
+clients are required because each client represents one complex query in the
+stage batch.
 
 ## 3. Run One Validation
 
@@ -53,8 +55,23 @@ query selection drift between runs.
 9. read final `pg_stat_database`
 10. split global SB trace and run prediction
 
+Boundary modes:
+
+```text
+--stage-boundary-mode time
+  Old behavior. Each stage ends after stage_seconds.
+
+--stage-boundary-mode tpch_query
+  Preferred behavior for query-window validation. Each TPC-H AP client is run
+  with BenchBase serial latency mode (`serial=true`, `time=0`), so each fixed
+  query executes once. The stage start boundary is recorded when the first
+  TPC-H query becomes active in pg_stat_activity. The stage end boundary is
+  recorded after all AP clients exit and no TPC-H query is active.
+```
+
 The global measurement window starts at `stage1_memory_rich_start` and ends at
-`global_measure_end_after_stop`.
+`global_measure_end_after_stop`. In `tpch_query` mode, the first label is the
+first TPC-H active-query timestamp rather than the Java process launch time.
 
 ## 4. Actual Metrics
 

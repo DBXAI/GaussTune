@@ -23,6 +23,8 @@ python3 "$PACKAGE_ROOT/bin/cache_hit_stage_eval.py" \
   --tp-high-rate unlimited \
   --stable-workload \
   --stable-tp-high-rate 180 \
+  --stage-boundary-mode tpch_query \
+  --tp-run-seconds 7200 \
   --ap-work-mem 64MB \
   --ap-rate unlimited \
   --ap-s1 1 \
