@@ -1,62 +1,55 @@
-# Manifest
+# Huawei5 Code Snapshot Manifest
 
-This package contains only code, documentation, small summary CSVs, and plots.
-It intentionally excludes raw bpftrace logs and database data.
+This Git snapshot includes source and documentation only. Raw traces,
+database files, generated results, class files, binaries, and presentations
+are intentionally excluded.
 
-## Code
+## Workload And Collection
 
-```text
-bin/tpc5stage.py
-bin/cache_hit_stage_eval.py
-bin/global_pgstat_eval.py
-bin/continuous_stage_model_eval.py
-bin/dual_cache_warmup.py
-bin/load_tpch_sf10_copy.sh
-bin/load_tpch_stream_copy.sh
-```
+- `bin/continuous_five_stage_workload.py`
+- `bin/tpc5stage.py`
+- `bin/cache_hit_stage_eval.py`
+- `bin/per_stage_pgstat_eval.py`
+- `bin/global_pgstat_eval.py`
+- `bin/sample_query_activity.py`
+- `bin/TpchSingleQueryRunner.java`
+- `bin/TpchQueryExtractor.java`
+- `bpftrace/trace_*.bt`
 
-## Tracing
+## Replay And Recommendation
 
-```text
-bpftrace/trace_both.bt
-bpftrace/trace_sb_hit_summary.bt
-bpftrace/trace_strategy_summary.bt
+- `bin/dual_cache_warmup.py`
+- `bin/multi_anchor_path_replay.py`
+- `bin/source_plan_replay.py`
+- `bin/one_shot_workload_replay.py`
+- `bin/joint_bidirectional_replay.py`
+- `bin/hash_join_memory_replay.py`
+- `bin/hash_agg_memory_replay.py`
+- `bin/sort_memory_replay.py`
+- evaluation, validation, plotting, and summary helpers under `bin/`
+
+## Runtime Control
+
+- `bin/autonomous_memory_state_machine.py`
+- `bin/runtime_memory_controller_replay.py`
+- `bin/tp_slo_controller_replay.py`
+- `bin/tp_slo_ap_resource_controller.py`
+- `bin/tp_slo_query_boundary_driver.py`
+- `bin/shared_buffers_runtime.py`
+
+## Kernel Prototype
+
+- `patches/opengauss-5.1-runtime-shared-buffers.patch`
+
+## Tests
+
+All `bin/test_*.py` files are included. The snapshot was checked with:
+
+```bash
+python3 -m unittest discover -s bin -p 'test_*.py' -v
 ```
 
 ## Documentation
 
-```text
-README.md
-docs/AGENT_BRIEF.md
-docs/EXPERIMENT_PROCESS.md
-docs/MODEL_NOTES.md
-artifacts/README.md
-```
-
-## Representative Artifacts
-
-```text
-artifacts/sb_sweep_30s_summary.csv
-artifacts/tpcc_tps_by_sb.csv
-artifacts/SB_SWEEP_30S_SUMMARY.md
-artifacts/SB8192_DIAGNOSIS.md
-artifacts/sb_os_actual_vs_predicted.png
-artifacts/sb_os_actual_vs_predicted.svg
-artifacts/combined_actual_vs_predicted.png
-artifacts/combined_actual_vs_predicted.svg
-```
-
-## Example Commands
-
-```text
-examples/run_one_cache_eval.sh
-examples/sb_sweep_template.sh
-```
-
-## Local Validation Performed Before Commit
-
-```bash
-python3 -m py_compile experiments/opengauss/huawei5_pre_model/bin/*.py
-python3 experiments/opengauss/huawei5_pre_model/bin/dual_cache_warmup.py --help
-python3 experiments/opengauss/huawei5_pre_model/bin/cache_hit_stage_eval.py --help
-```
+All Markdown files under `docs/` are included. Generated PowerPoint files are
+not included, but their source builders remain under `bin/`.

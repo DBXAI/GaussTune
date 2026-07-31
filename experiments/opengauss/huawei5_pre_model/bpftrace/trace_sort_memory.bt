@@ -1,0 +1,158 @@
+#!/usr/bin/env bpftrace
+
+/* openGauss 5.1.0 b5a8d5b0 row-engine tuplesort execution-path trace. */
+
+#define SORT_OFF_status              0
+#define SORT_OFF_availMem            24
+#define SORT_OFF_allowedMem          32
+#define SORT_OFF_memtupcount         128
+#define SORT_OFF_memtupsize          132
+#define SORT_OFF_width               408
+#define SORT_OFF_causedBySysRes      416
+#define SORT_OFF_maxMem              424
+#define SORT_OFF_spreadNum           432
+#define SORT_OFF_planId              436
+#define SORT_OFF_dop                 440
+#define SORT_OFF_peakMemorySize      448
+#define STANDARD_CHUNK_HEADER_BYTES  32
+#define STANDARD_CHUNK_SIZE_BACK      24
+
+BEGIN
+{
+    printf("# sort_memory_trace format=1 target_pid=%d tracer_pid=%d\n", $1, pid);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z32instr_stmt_report_debug_query_idm
+{
+    @query_id[tid] = (uint64)arg0;
+    printf("QUERY_TS,SORT,%d,%lld,%llu\n", tid, elapsed, @query_id[tid]);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z20tuplesort_begin_heapP9tupleDesciPsPjS2_PKblblii
+{
+    @begin_seen[tid] = 1;
+}
+
+uretprobe:/opt/openGauss/bin/gaussdb:_Z20tuplesort_begin_heapP9tupleDesciPsPjS2_PKblblii
+/@begin_seen[tid]/
+{
+    $state = (uint64)retval;
+    if ($state != 0) {
+        @sort_query[$state] = @query_id[tid];
+        printf("SORT_START,%d,%lld,%llu,%llu\n",
+            tid, elapsed, $state, @query_id[tid]);
+        printf("SORT_START_MEM,%llu,%lld,%lld,%d,%d\n",
+            $state,
+            *(int64*)($state + SORT_OFF_allowedMem),
+            *(int64*)($state + SORT_OFF_maxMem),
+            *(int32*)($state + SORT_OFF_planId),
+            *(int32*)($state + SORT_OFF_dop));
+    }
+    delete(@begin_seen[tid]);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z22tuplesort_puttupleslotP14TuplesortstateP14TupleTableSlot
+{
+    @put_state[tid] = (uint64)arg0;
+    @active_sort_state[tid] = (uint64)arg0;
+    @put_before_status[tid] = *(int32*)((uint64)arg0 + SORT_OFF_status);
+}
+
+uretprobe:/opt/openGauss/bin/gaussdb:_Z24ExecCopySlotMinimalTupleP14TupleTableSlotb
+/@active_sort_state[tid]/
+{
+    $state = (uint64)@active_sort_state[tid];
+    $tuple = (uint64)retval;
+    if ($tuple != 0) {
+        @tuple_width_sum[$state] += *(uint32*)$tuple;
+        @tuple_chunk_sum[$state] +=
+            *(uint64*)($tuple - (uint64)STANDARD_CHUNK_SIZE_BACK) + STANDARD_CHUNK_HEADER_BYTES;
+    }
+}
+
+uretprobe:/opt/openGauss/bin/gaussdb:_Z22tuplesort_puttupleslotP14TuplesortstateP14TupleTableSlot
+/@put_state[tid]/
+{
+    $state = (uint64)@put_state[tid];
+    @input_rows[$state] += 1;
+    if (@first_spill[$state] == 0 && *(int32*)($state + SORT_OFF_status) == 2) {
+        @first_spill[$state] = 1;
+        @spill_rows[$state] = @input_rows[$state];
+        printf("SORT_SPILL,%d,%lld,%llu,%llu,%lld\n",
+            tid, elapsed, $state, @sort_query[$state], @spill_rows[$state]);
+        printf("SORT_SPILL_MEM,%llu,%lld,%lld,%d,%d\n",
+            $state,
+            *(int64*)($state + SORT_OFF_allowedMem),
+            *(int64*)($state + SORT_OFF_availMem),
+            *(int32*)($state + SORT_OFF_memtupcount),
+            *(int32*)($state + SORT_OFF_memtupsize));
+        printf("SORT_SPILL_META,%llu,%lld,%lld,%d,%d\n",
+            $state,
+            *(int64*)($state + SORT_OFF_width),
+            *(int64*)($state + SORT_OFF_peakMemorySize),
+            *(int32*)($state + SORT_OFF_spreadNum),
+            *(uint8*)($state + SORT_OFF_causedBySysRes));
+    }
+    delete(@put_state[tid]);
+    delete(@active_sort_state[tid]);
+    delete(@put_before_status[tid]);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z21tuplesort_performsortP14Tuplesortstate
+{
+    $state = (uint64)arg0;
+    if (@input_rows[$state] > 0) {
+        printf("SORT_INPUT_END,%d,%lld,%llu,%llu,%lld,%d\n",
+            tid, elapsed, $state, @sort_query[$state], @input_rows[$state],
+            *(int32*)($state + SORT_OFF_status));
+        printf("SORT_INPUT_MEM,%llu,%lld,%lld,%d,%d\n",
+            $state,
+            *(int64*)($state + SORT_OFF_allowedMem),
+            *(int64*)($state + SORT_OFF_availMem),
+            *(int32*)($state + SORT_OFF_memtupcount),
+            *(int32*)($state + SORT_OFF_memtupsize));
+        printf("SORT_INPUT_META,%llu,%lld,%lld,%lld,%d\n",
+            $state,
+            *(int64*)($state + SORT_OFF_width),
+            *(int64*)($state + SORT_OFF_peakMemorySize),
+            *(int64*)($state + SORT_OFF_maxMem),
+            *(int32*)($state + SORT_OFF_spreadNum));
+        printf("SORT_INPUT_FLAGS,%llu,%d,%d\n",
+            $state,
+            *(uint8*)($state + SORT_OFF_causedBySysRes),
+            *(int32*)($state + SORT_OFF_dop));
+        printf("SORT_INPUT_TUPLES,%llu,%lld,%lld\n",
+            $state, @tuple_width_sum[$state], @tuple_chunk_sum[$state]);
+    }
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z13tuplesort_endP14Tuplesortstate
+{
+    $state = (uint64)arg0;
+    if (@input_rows[$state] > 0) {
+        printf("SORT_END,%d,%lld,%llu,%llu,%lld,%d\n",
+            tid, elapsed, $state, @sort_query[$state], @input_rows[$state],
+            *(int32*)($state + SORT_OFF_status));
+        delete(@sort_query[$state]);
+        delete(@input_rows[$state]);
+        delete(@first_spill[$state]);
+        delete(@spill_rows[$state]);
+        delete(@tuple_width_sum[$state]);
+        delete(@tuple_chunk_sum[$state]);
+    }
+}
+
+END
+{
+    clear(@query_id);
+    clear(@begin_seen);
+    clear(@sort_query);
+    clear(@put_state);
+    clear(@put_before_status);
+    clear(@active_sort_state);
+    clear(@input_rows);
+    clear(@first_spill);
+    clear(@spill_rows);
+    clear(@tuple_width_sum);
+    clear(@tuple_chunk_sum);
+}

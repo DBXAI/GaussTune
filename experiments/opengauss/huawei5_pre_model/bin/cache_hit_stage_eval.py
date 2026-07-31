@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gzip
 import json
 import os
 import signal
@@ -23,6 +24,12 @@ import tpc5stage  # noqa: E402
 HUAWEI4_MODEL = Path(os.environ.get("HUAWEI4_MODEL", PACKAGE_ROOT / "bin" / "dual_cache_warmup.py"))
 TRACE_BOTH = Path(os.environ.get("TRACE_BOTH", PACKAGE_ROOT / "bpftrace" / "trace_both.bt"))
 PAGE_SIZE = 8192
+
+
+def open_trace_text(path: Path):
+    if path.suffix == ".gz":
+        return gzip.open(path, "rt", errors="replace", encoding="utf-8")
+    return path.open("r", errors="replace", encoding="utf-8")
 
 
 def sh_out(cmd: list[str]) -> str:
@@ -145,6 +152,17 @@ def wait_workload_backends_gone(timeout_seconds: float) -> bool:
     return workload_backend_count() == 0
 
 
+def wait_tpch_backends_gone(timeout_seconds: float) -> bool:
+    deadline = time.time() + timeout_seconds
+    while time.time() < deadline:
+        sessions, _active = tpc5stage.tpch_activity_counts()
+        if sessions == 0:
+            return True
+        time.sleep(0.2)
+    sessions, _active = tpc5stage.tpch_activity_counts()
+    return sessions == 0
+
+
 def read_disk_stats(dev: str) -> tuple[int, int]:
     with open("/proc/diskstats", encoding="utf-8") as fh:
         for line in fh:
@@ -220,6 +238,10 @@ def trace_ts_ns(line: str) -> int | None:
         parts = line.rstrip("\n").split(",")
         if len(parts) >= 6:
             return int(parts[5])
+    elif line.startswith("OS_SUM,"):
+        parts = line.rstrip("\n").split(",")
+        if len(parts) >= 4:
+            return int(parts[1])
     return None
 
 
@@ -229,7 +251,26 @@ def rewrite_trace_ts(line: str, offset_ns: int) -> str:
         parts[4] = str(max(0, int(parts[4]) - offset_ns))
     elif parts[0] == "OS":
         parts[5] = str(max(0, int(parts[5]) - offset_ns))
+    elif parts[0] == "OS_SUM":
+        parts[1] = str(max(0, int(parts[1]) - offset_ns))
     return ",".join(parts) + "\n"
+
+
+def os_sum_delta(samples: list[tuple[int, int, int]], start_ns: int, end_ns: int) -> tuple[int, int]:
+    start_count = 0
+    start_bytes = 0
+    end_count = 0
+    end_bytes = 0
+    for ts, count, bytes_read in samples:
+        if ts <= start_ns:
+            start_count = count
+            start_bytes = bytes_read
+        if ts <= end_ns:
+            end_count = count
+            end_bytes = bytes_read
+        else:
+            break
+    return max(0, end_count - start_count), max(0, end_bytes - start_bytes)
 
 
 def split_stage_trace(
@@ -242,14 +283,14 @@ def split_stage_trace(
 ) -> int:
     out_trace.parent.mkdir(parents=True, exist_ok=True)
     count = 0
-    with full_trace.open("r", errors="replace", encoding="utf-8") as src, out_trace.open(
+    with open_trace_text(full_trace) as src, out_trace.open(
         "w", encoding="utf-8"
     ) as dst:
         dst.write(
             f"# split warm=[{warm_start},{warm_end}) measure=[{measure_start},{measure_end})\n"
         )
         for line in src:
-            if not (line.startswith("SB,") or line.startswith("OS,")):
+            if not (line.startswith("SB,") or line.startswith("OS,") or line.startswith("OS_SUM,")):
                 continue
             try:
                 ts = trace_ts_ns(line)
@@ -267,11 +308,12 @@ def count_measurement_trace_os(trace_path: Path, warm_seconds: float, measure_se
     first_ts: int | None = None
     os_events = 0
     os_bytes = 0
+    os_sum_samples: list[tuple[int, int, int]] = []
     warm_ns = int(warm_seconds * 1_000_000_000)
     end_ns = int((warm_seconds + measure_seconds) * 1_000_000_000)
-    with trace_path.open("r", errors="replace", encoding="utf-8") as fh:
+    with open_trace_text(trace_path) as fh:
         for line in fh:
-            if not (line.startswith("SB,") or line.startswith("OS,")):
+            if not (line.startswith("SB,") or line.startswith("OS,") or line.startswith("OS_SUM,")):
                 continue
             try:
                 ts = trace_ts_ns(line)
@@ -292,6 +334,15 @@ def count_measurement_trace_os(trace_path: Path, warm_seconds: float, measure_se
                         os_events += 1
                     except ValueError:
                         continue
+            elif line.startswith("OS_SUM,"):
+                parts = line.rstrip("\n").split(",")
+                if len(parts) >= 4:
+                    try:
+                        os_sum_samples.append((elapsed, int(parts[2]), int(parts[3])))
+                    except ValueError:
+                        continue
+    if os_events == 0 and os_bytes == 0 and os_sum_samples:
+        return os_sum_delta(os_sum_samples, warm_ns, end_ns)
     return os_events, os_bytes
 
 
@@ -479,8 +530,14 @@ def main() -> int:
     parser.add_argument("--stage-predictions", action="store_true")
     parser.add_argument("--global-readahead-grid", default="0")
     parser.add_argument("--global-os-scale-grid", default="0.5,0.75,1.0")
+    parser.add_argument("--global-sample-every", type=int, default=64)
+    parser.add_argument("--global-sample-mode", choices=["hash", "interval"], default="hash")
     parser.add_argument("--stabilize-before-run", action="store_true")
     parser.add_argument("--drop-os-cache-before-run", action="store_true")
+    parser.add_argument("--skip-global-eval", action="store_true")
+    parser.add_argument("--quick-stage-warmup-seconds", type=float, default=0.0)
+    parser.add_argument("--quick-heavy-stage-seconds", type=float, default=0.0)
+    parser.add_argument("--quick-single-query-clients", action="store_true")
     args = parser.parse_args()
     tpc5stage.configure_runtime_args(args)
     if args.stable_workload:
@@ -496,16 +553,18 @@ def main() -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     stages_dir = out_dir / "stages"
     stages_dir.mkdir(exist_ok=True)
+    benchbase_out_dir = out_dir / "benchbase"
 
     paths = tpc5stage.render_configs(args)
     dev = data_device()
     pid = gauss_pid()
     sb_mb = shared_buffers_mb()
-    trace_path = out_dir / "trace_full.log"
+    trace_path = out_dir / "trace_full.log.gz"
     run_log = out_dir / "workload.log"
     boundaries: list[dict[str, object]] = []
     live: list[tpc5stage.ProcSpec] = []
     bpf_proc: subprocess.Popen | None = None
+    gzip_proc: subprocess.Popen | None = None
     trace_fh = None
 
     print(f"[stage-eval] out={out_dir} pid={pid} dev={dev} sb={sb_mb}MB", flush=True)
@@ -514,20 +573,34 @@ def main() -> int:
             stabilize_before_run(args.drop_os_cache_before_run)
         if not args.no_reset_stats:
             reset_db_stats()
-        trace_fh = trace_path.open("w", encoding="utf-8")
+        trace_fh = trace_path.open("wb")
+        gzip_proc = subprocess.Popen(
+            ["gzip", "-1"],
+            stdin=subprocess.PIPE,
+            stdout=trace_fh,
+        )
+        if gzip_proc.stdin is None:
+            raise RuntimeError("failed to open gzip stdin")
         bpf_start_ns = time.monotonic_ns()
         bpf_proc = subprocess.Popen(
             ["bpftrace", str(TRACE_BOTH), str(pid)],
-            stdout=trace_fh,
+            stdout=gzip_proc.stdin,
             stderr=subprocess.STDOUT,
-            text=True,
         )
+        gzip_proc.stdin.close()
         time.sleep(2)
 
         boundaries.append(boundary("pre_tp_low_start", bpf_start_ns, dev))
         tp_low = tpc5stage.start(
             "tpcc_low",
-            tpc5stage.benchbase_cmd("tpcc", paths["tpcc_low"], create=False, load=False, execute=True),
+            tpc5stage.benchbase_cmd(
+                "tpcc",
+                paths["tpcc_low"],
+                create=False,
+                load=False,
+                execute=True,
+                output_dir=benchbase_out_dir,
+            ),
             out_dir / "tpcc_low.log",
         )
         live.append(tp_low)
@@ -541,7 +614,7 @@ def main() -> int:
         ]
         for stage, key in stage_specs:
             if tpc5stage.tpch_query_boundary_enabled(args):
-                ap_specs = tpc5stage.start_configs(stage, "tpch", paths[key], out_dir)
+                ap_specs = tpc5stage.start_tpch_query_configs(stage, paths[key], out_dir, args)
                 live.extend(ap_specs)
                 sessions, active = tpc5stage.wait_for_tpch_query_start(
                     ap_specs,
@@ -574,19 +647,63 @@ def main() -> int:
                     )
                 )
             else:
-                boundaries.append(boundary(f"{stage}_start", bpf_start_ns, dev, boundary_source="fixed_time_start"))
-                live.extend(tpc5stage.start_configs(stage, "tpch", paths[key], out_dir))
-                time.sleep(args.stage_seconds)
-                boundaries.append(boundary(f"{stage}_end", bpf_start_ns, dev, boundary_source="fixed_time_end"))
+                if args.quick_single_query_clients:
+                    ap_specs = tpc5stage.start_tpch_query_configs(stage, paths[key], out_dir, args)
+                    live.extend(ap_specs)
+                    tpc5stage.wait_for_tpch_query_start(
+                        ap_specs,
+                        args.tpch_start_timeout_seconds,
+                    )
+                else:
+                    ap_specs = tpc5stage.start_configs(stage, "tpch", paths[key], out_dir)
+                    live.extend(ap_specs)
+                if args.quick_stage_warmup_seconds > 0:
+                    time.sleep(args.quick_stage_warmup_seconds)
+                boundaries.append(
+                    boundary(
+                        f"{stage}_start",
+                        bpf_start_ns,
+                        dev,
+                        boundary_source="fixed_time_measure_start",
+                        warmup_seconds=args.quick_stage_warmup_seconds,
+                    )
+                )
+                measure_seconds = (
+                    args.quick_heavy_stage_seconds
+                    if stage == "stage4_backpressure" and args.quick_heavy_stage_seconds > 0
+                    else args.stage_seconds
+                )
+                time.sleep(measure_seconds)
+                boundaries.append(
+                    boundary(
+                        f"{stage}_end",
+                        bpf_start_ns,
+                        dev,
+                        boundary_source="fixed_time_measure_end",
+                        measure_seconds=measure_seconds,
+                    )
+                )
+                for spec in reversed(ap_specs):
+                    tpc5stage.stop(spec)
+                tpc5stage.terminate_residual_workload_backends()
+                if not wait_tpch_backends_gone(args.backend_wait_seconds):
+                    print(f"[warn] {stage} TPC-H backends still visible after stop", flush=True)
 
         tp_high = tpc5stage.start(
             "stage5_tp_surge",
-            tpc5stage.benchbase_cmd("tpcc", paths["tpcc_high"], create=False, load=False, execute=True),
+            tpc5stage.benchbase_cmd(
+                "tpcc",
+                paths["tpcc_high"],
+                create=False,
+                load=False,
+                execute=True,
+                output_dir=benchbase_out_dir,
+            ),
             out_dir / "tpcc_high.log",
         )
         live.append(tp_high)
         if tpc5stage.tpch_query_boundary_enabled(args):
-            ap_specs = tpc5stage.start_configs("stage5_ap_pressure", "tpch", paths["ap_s5"], out_dir)
+            ap_specs = tpc5stage.start_tpch_query_configs("stage5_ap_pressure", paths["ap_s5"], out_dir, args)
             live.extend(ap_specs)
             sessions, active = tpc5stage.wait_for_tpch_query_start(
                 ap_specs,
@@ -619,10 +736,52 @@ def main() -> int:
                 )
             )
         else:
-            boundaries.append(boundary("stage5_tp_surge_start", bpf_start_ns, dev, boundary_source="fixed_time_start"))
-            live.extend(tpc5stage.start_configs("stage5_ap_pressure", "tpch", paths["ap_s5"], out_dir))
-            time.sleep(args.stage_seconds)
-            boundaries.append(boundary("stage5_tp_surge_end", bpf_start_ns, dev, boundary_source="fixed_time_end"))
+            if args.quick_single_query_clients:
+                ap_specs = tpc5stage.start_tpch_query_configs(
+                    "stage5_ap_pressure", paths["ap_s5"], out_dir, args
+                )
+                live.extend(ap_specs)
+                tpc5stage.wait_for_tpch_query_start(
+                    ap_specs,
+                    args.tpch_start_timeout_seconds,
+                )
+            else:
+                ap_specs = tpc5stage.start_configs(
+                    "stage5_ap_pressure", "tpch", paths["ap_s5"], out_dir
+                )
+                live.extend(ap_specs)
+            if args.quick_stage_warmup_seconds > 0:
+                time.sleep(args.quick_stage_warmup_seconds)
+            boundaries.append(
+                boundary(
+                    "stage5_tp_surge_start",
+                    bpf_start_ns,
+                    dev,
+                    boundary_source="fixed_time_measure_start",
+                    warmup_seconds=args.quick_stage_warmup_seconds,
+                )
+            )
+            measure_seconds = (
+                args.quick_heavy_stage_seconds
+                if args.quick_heavy_stage_seconds > 0
+                else args.stage_seconds
+            )
+            time.sleep(measure_seconds)
+            boundaries.append(
+                boundary(
+                    "stage5_tp_surge_end",
+                    bpf_start_ns,
+                    dev,
+                    boundary_source="fixed_time_measure_end",
+                    measure_seconds=measure_seconds,
+                )
+            )
+            for spec in reversed(ap_specs):
+                tpc5stage.stop(spec)
+            tpc5stage.terminate_residual_workload_backends()
+            if not wait_tpch_backends_gone(args.backend_wait_seconds):
+                print("[warn] stage5 TPC-H backends still visible after stop", flush=True)
+            tpc5stage.stop(tp_high)
 
     finally:
         for spec in reversed(live):
@@ -647,6 +806,17 @@ def main() -> int:
             except subprocess.TimeoutExpired:
                 bpf_proc.kill()
                 bpf_proc.wait(timeout=10)
+        if gzip_proc is not None and gzip_proc.stdin is not None and not gzip_proc.stdin.closed:
+            try:
+                gzip_proc.stdin.close()
+            except BrokenPipeError:
+                pass
+        if gzip_proc is not None:
+            try:
+                gzip_proc.wait(timeout=30)
+            except subprocess.TimeoutExpired:
+                gzip_proc.kill()
+                gzip_proc.wait(timeout=10)
         if trace_fh is not None:
             trace_fh.close()
 
@@ -659,6 +829,9 @@ def main() -> int:
                 "tpch_scale": args.tpch_scale,
                 "stage_seconds": args.stage_seconds,
                 "stage_boundary_mode": args.stage_boundary_mode,
+                "quick_stage_warmup_seconds": args.quick_stage_warmup_seconds,
+                "quick_heavy_stage_seconds": args.quick_heavy_stage_seconds,
+                "quick_single_query_clients": args.quick_single_query_clients,
                 "tp_run_seconds": args.total_seconds,
                 "tpch_start_timeout_seconds": args.tpch_start_timeout_seconds,
                 "tpch_query_timeout_seconds": args.tpch_query_timeout_seconds,
@@ -695,6 +868,10 @@ def main() -> int:
         encoding="utf-8",
     )
 
+    if args.skip_global_eval:
+        print(f"[stage-eval] skip global eval; result: {out_dir}", flush=True)
+        return 0
+
     global_cmd = [
         "python3",
         str(SCRIPT_DIR / "global_pgstat_eval.py"),
@@ -706,6 +883,10 @@ def main() -> int:
         args.global_readahead_grid,
         "--os-scale-grid",
         args.global_os_scale_grid,
+        "--sample-every",
+        str(args.global_sample_every),
+        "--sample-mode",
+        args.global_sample_mode,
     ]
     subprocess.run(global_cmd, check=True)
 

@@ -83,3 +83,30 @@ The recommended next model is a ring-aware clock hybrid:
 3. track a lightweight per-buffer reference score
 4. reject ring-slot reuse when the buffer appears hot
 5. fall back to the global clock victim path
+
+## Multi-Anchor Execution-Path Replay
+
+`bin/multi_anchor_path_replay.py` adds a strict multi-anchor evaluation layer.
+It uses only designated anchor SB runs to model these positive path rates over
+`log2(shared_buffers)`:
+
+```text
+database block hits / second
+database block reads / second
+database pread bytes / second
+block-device read bytes / second
+```
+
+The model derives SB, conditional OS, and combined hit rates from the predicted
+flows.  This keeps the cache accounting physical and captures path changes such
+as stage4 concurrency pressure and stage5 Linux page-cache compensation.
+
+The original page trace replay remains the baseline and the fallback when
+multi-anchor measurements are unavailable.  The historical per-SB raw traces
+were deleted after summarization, so the current implementation replays path
+states rather than page identities.  A future sweep should retain compressed
+traces for true page-by-page multi-anchor replay.
+
+Anchor and test SB sets must be disjoint.  Existing held-out results are useful
+for retrospective comparison, but a newly collected unseen SB sweep is needed
+for a definitive predictive result.

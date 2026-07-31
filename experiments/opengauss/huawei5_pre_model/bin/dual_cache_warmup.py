@@ -4,6 +4,7 @@
 import argparse
 import bisect
 import csv
+import gzip
 import math
 import os
 import statistics
@@ -19,6 +20,13 @@ PHASE_MEASURE = 1
 PHASE_IGNORE = 2
 EMPTY = -1
 PAGE_SIZE_MB_DEFAULT = 8 / 1024.0
+
+
+def open_trace_text(path):
+    path = Path(path)
+    if path.suffix == ".gz":
+        return gzip.open(path, "rt", errors="replace", encoding="utf-8")
+    return path.open("r", errors="replace", encoding="utf-8")
 
 
 def encode_page(relnode, blocknum):
@@ -60,6 +68,7 @@ class TraceEvents:
         strategy_types=None,
         ring_pages=None,
         sb_hits=None,
+        query_ids=None,
         has_strategy_info=False,
     ):
         self.pages = pages
@@ -72,6 +81,7 @@ class TraceEvents:
         self.strategy_types = strategy_types
         self.ring_pages = ring_pages
         self.sb_hits = sb_hits
+        self.query_ids = query_ids
         self.has_strategy_info = has_strategy_info
 
     @property
@@ -124,14 +134,24 @@ def load_sb_trace(trace_file, warmup_seconds, measure_seconds, sample_every=1,
     strategy_types = array("b")
     ring_pages = array("I")
     sb_hits = bytearray()
+    query_ids = array("Q")
     first_ts_ns = None
     seen_sb = 0
     loaded = 0
     missing_ts = False
     has_strategy_info = False
+    current_query_ids = {}
 
-    with open(trace_file, "r", errors="replace") as f:
+    with open_trace_text(trace_file) as f:
         for line in f:
+            if line.startswith("QUERY,"):
+                parts = line.strip().split(",")
+                if len(parts) >= 4:
+                    try:
+                        current_query_ids[int(parts[1])] = int(parts[3])
+                    except ValueError:
+                        pass
+                continue
             if not line.startswith("SB,"):
                 continue
             parts = line.strip().split(",")
@@ -196,6 +216,9 @@ def load_sb_trace(trace_file, warmup_seconds, measure_seconds, sample_every=1,
             strategy_types.append(max(-1, min(127, strategy_type)))
             ring_pages.append(max(0, event_ring_pages))
             sb_hits.append(1 if hit else 0)
+            query_ids.append(
+                int(parts[9]) if len(parts) >= 10 else current_query_ids.get(pid, 0)
+            )
             loaded += 1
             if max_events and loaded >= max_events:
                 break
@@ -216,6 +239,7 @@ def load_sb_trace(trace_file, warmup_seconds, measure_seconds, sample_every=1,
         strategy_types=strategy_types,
         ring_pages=ring_pages,
         sb_hits=sb_hits,
+        query_ids=query_ids,
         has_strategy_info=has_strategy_info,
     )
 
@@ -328,6 +352,60 @@ class BulkReadRingSharedSimulator:
         self.buffers[idx] = page_id
         self.page_to_buf[page_id] = idx
         return False, evicted
+
+    def resize(self, num_buffers):
+        """Resize the shared table without discarding retained cache state.
+
+        Shrink victims are selected from the current clock hand.  This mirrors
+        the existing simulator's victim policy and, importantly, returns the
+        released pages so a caller can hand them to the OS page-cache replay.
+        Buffer indexes are compacted after a shrink and private ring references
+        are remapped or invalidated accordingly.
+        """
+        new_size = max(0, int(num_buffers))
+        old_size = self.num_buffers
+        if new_size == old_size:
+            return []
+        if new_size > old_size:
+            self.buffers.extend([EMPTY] * (new_size - old_size))
+            self.num_buffers = new_size
+            return []
+
+        release_count = old_size - new_size
+        victim_indexes = {
+            (self.clock_hand + offset) % old_size
+            for offset in range(release_count)
+        } if old_size else set()
+        evicted = [
+            self.buffers[index]
+            for index in sorted(victim_indexes)
+            if self.buffers[index] != EMPTY
+        ]
+        retained_indexes = [
+            index for index in range(old_size) if index not in victim_indexes
+        ]
+        index_map = {old: new for new, old in enumerate(retained_indexes)}
+        self.buffers = [self.buffers[index] for index in retained_indexes]
+        self.num_buffers = new_size
+        self.page_to_buf = {
+            page_id: index
+            for index, page_id in enumerate(self.buffers)
+            if page_id != EMPTY
+        }
+        self.clock_hand = 0
+
+        for ring in self.rings.values():
+            mapped = [
+                index_map.get(index, EMPTY) if index != EMPTY else EMPTY
+                for index in ring["buffers"]
+            ]
+            if new_size == 0:
+                mapped = []
+            elif len(mapped) > new_size:
+                mapped = mapped[:new_size]
+            ring["buffers"] = mapped
+            ring["next"] = ring["next"] % len(mapped) if mapped else 0
+        return evicted
 
     def _use_bulk_ring(self, strategy_type):
         if self.has_strategy_info:
@@ -1418,7 +1496,7 @@ def count_measurement_events(trace_file, warmup_seconds, measure_seconds):
     sb_direct_hits = 0
     sb_direct_seen = 0
 
-    with open(trace_file, "r", errors="replace") as f:
+    with open_trace_text(trace_file) as f:
         for line in f:
             if not (line.startswith("SB,") or line.startswith("OS,")):
                 continue

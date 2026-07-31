@@ -26,6 +26,7 @@ OG_JDBC = Path(os.environ.get("OPENGAUSS_JDBC_JAR", "/root/.m2/repository/org/op
 GSQL = os.environ.get("OPENGAUSS_GSQL", "/opt/openGauss/bin/gsql")
 LD_LIBRARY_PATH = os.environ.get("OPENGAUSS_LIB", "/opt/openGauss/lib")
 PORT = int(os.environ.get("OPENGAUSS_PORT", "5432"))
+TPCH_SINGLE_QUERY_JAVA = PACKAGE_ROOT / "bin" / "TpchSingleQueryRunner.java"
 
 TP_USER = "h5_tpuser"
 AP_USER = "h5_apuser"
@@ -88,8 +89,18 @@ def database_exists(name: str) -> bool:
     return out == "1"
 
 
-def benchbase_cmd(bench: str, config: Path, *, create: bool, load: bool, execute: bool) -> list[str]:
+def benchbase_cmd(
+    bench: str,
+    config: Path,
+    *,
+    create: bool,
+    load: bool,
+    execute: bool,
+    output_dir: Path | None = None,
+) -> list[str]:
     cp = f"{OG_JDBC}:{BENCHBASE / 'benchbase.jar'}:{BENCHBASE / 'lib/*'}"
+    result_dir = output_dir or RESULTS
+    result_dir.mkdir(parents=True, exist_ok=True)
     return [
         "java",
         "-Xmx2g",
@@ -104,11 +115,64 @@ def benchbase_cmd(bench: str, config: Path, *, create: bool, load: bool, execute
         f"--load={str(load).lower()}",
         f"--execute={str(execute).lower()}",
         "-d",
-        str(RESULTS),
+        str(result_dir),
         "--sample=1",
         "--interval-monitor=1000",
         "--monitor-type=throughput",
     ]
+
+
+def benchbase_classpath() -> str:
+    return f"{OG_JDBC}:{BENCHBASE / 'benchbase.jar'}:{BENCHBASE / 'lib/*'}"
+
+
+def ensure_tpch_single_query_runner() -> Path:
+    class_dir = CONF / "classes"
+    class_file = class_dir / "TpchSingleQueryRunner.class"
+    if not TPCH_SINGLE_QUERY_JAVA.exists():
+        raise SystemExit(f"missing TPC-H single-query runner source: {TPCH_SINGLE_QUERY_JAVA}")
+    needs_compile = (
+        not class_file.exists()
+        or class_file.stat().st_mtime < TPCH_SINGLE_QUERY_JAVA.stat().st_mtime
+    )
+    if needs_compile:
+        class_dir.mkdir(parents=True, exist_ok=True)
+        run(
+            [
+                "javac",
+                "-cp",
+                benchbase_classpath(),
+                "-d",
+                str(class_dir),
+                str(TPCH_SINGLE_QUERY_JAVA),
+            ],
+            cwd=PACKAGE_ROOT,
+        )
+    return class_dir
+
+
+def tpch_single_query_cmd(query_id: int, args: argparse.Namespace) -> list[str]:
+    class_dir = ensure_tpch_single_query_runner()
+    cp = f"{class_dir}:{benchbase_classpath()}"
+    database = getattr(args, "tpch_database", TPCH_DB)
+    url = f"jdbc:postgresql://127.0.0.1:{PORT}/{database}?ApplicationName=tpch_ap&batchMode=on"
+    command = [
+        "java",
+        "-Xmx1g",
+        "-cp",
+        cp,
+        "TpchSingleQueryRunner",
+        url,
+        AP_USER,
+        AP_PASS,
+        str(query_id),
+        str(args.tpch_scale),
+        str(args.ap_work_mem),
+    ]
+    application_name = getattr(args, "ap_application_name", "")
+    if application_name:
+        command.append(str(application_name))
+    return command
 
 
 def write(path: Path, text: str) -> None:
@@ -457,8 +521,31 @@ def start_configs(name: str, bench: str, configs: Path | list[Path], log_dir: Pa
         specs.append(
             start(
                 f"{name}{suffix}",
-                benchbase_cmd(bench, config, create=False, load=False, execute=True),
+                benchbase_cmd(bench, config, create=False, load=False, execute=True, output_dir=log_dir / "benchbase"),
                 log_dir / f"{name}{suffix}.log",
+            )
+        )
+    return specs
+
+
+def query_id_from_config(config: Path) -> int:
+    for part in config.stem.split("_"):
+        if part.startswith("q") and part[1:].isdigit():
+            return int(part[1:])
+    raise ValueError(f"could not infer TPC-H query id from config name: {config}")
+
+
+def start_tpch_query_configs(name: str, configs: Path | list[Path], log_dir: Path, args: argparse.Namespace) -> list[ProcSpec]:
+    config_list = config_paths(configs)
+    specs: list[ProcSpec] = []
+    for idx, config in enumerate(config_list):
+        suffix = "" if len(config_list) == 1 else f"_{idx + 1:02d}"
+        query_id = query_id_from_config(config)
+        specs.append(
+            start(
+                f"{name}{suffix}_q{query_id}",
+                tpch_single_query_cmd(query_id, args),
+                log_dir / f"{name}{suffix}_q{query_id}.log",
             )
         )
     return specs
@@ -466,6 +553,13 @@ def start_configs(name: str, bench: str, configs: Path | list[Path], log_dir: Pa
 
 def specs_done(specs: list[ProcSpec]) -> bool:
     return all(spec.proc.poll() is not None for spec in specs)
+
+
+def assert_specs_succeeded(specs: list[ProcSpec]) -> None:
+    failed = [(spec.name, spec.proc.returncode, spec.log) for spec in specs if spec.proc.poll() not in (None, 0)]
+    if failed:
+        details = "; ".join(f"{name} exit={code} log={log}" for name, code, log in failed)
+        raise RuntimeError(f"TPC-H client failed: {details}")
 
 
 def tpch_activity_counts() -> tuple[int, int]:
@@ -495,6 +589,7 @@ def wait_for_tpch_query_start(
         if last_counts[1] > 0:
             return last_counts
         if specs_done(specs):
+            assert_specs_succeeded(specs)
             raise RuntimeError("TPC-H clients exited before an active query was observed")
         time.sleep(poll_interval)
     raise TimeoutError(
@@ -517,6 +612,7 @@ def wait_for_tpch_query_end(
             tick()
         last_counts = tpch_activity_counts()
         if specs_done(specs) and last_counts[1] == 0:
+            assert_specs_succeeded(specs)
             return last_counts
         if deadline is not None and time.time() >= deadline:
             raise TimeoutError(
@@ -582,7 +678,7 @@ DECLARE
   r record;
 BEGIN
   FOR r IN
-    SELECT pid FROM pg_stat_activity WHERE application_name IN ('tpch_ap')
+    SELECT pid FROM pg_stat_activity WHERE application_name LIKE 'tpch_ap%'
   LOOP
     PERFORM pg_terminate_backend(r.pid);
   END LOOP;
@@ -592,6 +688,38 @@ END $$;
         gsql(sql)
     except subprocess.CalledProcessError as exc:
         print(f"[warn] failed to terminate residual workload backends: {exc}", flush=True)
+
+
+def terminate_application_backends(
+    application_name: str, timeout_seconds: float = 10.0
+) -> None:
+    quoted = application_name.replace("'", "''")
+    gsql(
+        f"""
+DO $$
+DECLARE
+  r record;
+BEGIN
+  FOR r IN
+    SELECT pid FROM pg_stat_activity WHERE application_name = '{quoted}'
+  LOOP
+    PERFORM pg_terminate_backend(r.pid);
+  END LOOP;
+END $$;
+"""
+    )
+    deadline = time.time() + timeout_seconds
+    while time.time() < deadline:
+        remaining = gsql_output(
+            "SELECT count(*) FROM pg_stat_activity "
+            f"WHERE application_name = '{quoted}';"
+        )
+        if remaining == "0":
+            return
+        time.sleep(0.1)
+    raise TimeoutError(
+        f"AP backend {application_name!r} remained after {timeout_seconds:g}s"
+    )
 
 
 def run_stages(args: argparse.Namespace) -> None:
@@ -607,7 +735,11 @@ def run_stages(args: argparse.Namespace) -> None:
         writer = csv.writer(fh)
         writer.writerow(["stage", "cpu_percent", "ts", "tpcc_sessions", "tpch_sessions", "tpch_active", "tpcc_db_bytes", "tpch_db_bytes", "fs_avail_bytes"])
 
-        tp_low = start("tpcc_low", benchbase_cmd("tpcc", paths["tpcc_low"], create=False, load=False, execute=True), run_dir / "tpcc_low.log")
+        tp_low = start(
+            "tpcc_low",
+            benchbase_cmd("tpcc", paths["tpcc_low"], create=False, load=False, execute=True, output_dir=run_dir / "benchbase"),
+            run_dir / "tpcc_low.log",
+        )
         live.append(tp_low)
         time.sleep(5)
 
@@ -618,7 +750,10 @@ def run_stages(args: argparse.Namespace) -> None:
             ("stage4_backpressure", "ap_s4"),
         ]
         for stage, key in stages:
-            ap_specs = start_configs(stage, "tpch", paths[key], run_dir)
+            if tpch_query_boundary_enabled(args):
+                ap_specs = start_tpch_query_configs(stage, paths[key], run_dir, args)
+            else:
+                ap_specs = start_configs(stage, "tpch", paths[key], run_dir)
             live.extend(ap_specs)
             if tpch_query_boundary_enabled(args):
                 wait_for_tpch_query_start(ap_specs, args.tpch_start_timeout_seconds)
@@ -635,9 +770,16 @@ def run_stages(args: argparse.Namespace) -> None:
                     fh.flush()
                     time.sleep(args.sample_interval)
 
-        tp_high = start("stage5_tp_surge", benchbase_cmd("tpcc", paths["tpcc_high"], create=False, load=False, execute=True), run_dir / "tpcc_high.log")
+        tp_high = start(
+            "stage5_tp_surge",
+            benchbase_cmd("tpcc", paths["tpcc_high"], create=False, load=False, execute=True, output_dir=run_dir / "benchbase"),
+            run_dir / "tpcc_high.log",
+        )
         live.append(tp_high)
-        ap_specs = start_configs("stage5_ap_pressure", "tpch", paths["ap_s5"], run_dir)
+        if tpch_query_boundary_enabled(args):
+            ap_specs = start_tpch_query_configs("stage5_ap_pressure", paths["ap_s5"], run_dir, args)
+        else:
+            ap_specs = start_configs("stage5_ap_pressure", "tpch", paths["ap_s5"], run_dir)
         live.extend(ap_specs)
         if tpch_query_boundary_enabled(args):
             wait_for_tpch_query_start(ap_specs, args.tpch_start_timeout_seconds)

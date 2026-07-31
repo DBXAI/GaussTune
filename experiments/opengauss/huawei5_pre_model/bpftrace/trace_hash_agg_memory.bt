@@ -1,0 +1,230 @@
+#!/usr/bin/env bpftrace
+
+/* openGauss 5.1.0 b5a8d5b0 row-engine HashAggregate memory trace. */
+
+#define TH_OFF_tablecxt              40
+#define TH_OFF_entrysize             56
+#define TH_OFF_width                 96
+#define TH_OFF_causedBySysRes        105
+
+#define AFC_OFF_spillToDisk          0
+#define AFC_OFF_totalMem             24
+#define AFC_OFF_inmemoryRownum       32
+#define AFC_OFF_filenum              56
+#define AFC_OFF_maxMem               64
+#define AFC_OFF_spreadNum            72
+
+#define ALLOCSET_OFF_totalSpace      304
+#define PLAN_OFF_plan_node_id        4
+#define AGGSTATE_OFF_plan            8
+#define AGGSTATE_OFF_hashtable       512
+#define AGGSTATE_OFF_file_control    576
+
+BEGIN
+{
+    printf("# hash_agg_memory_trace format=2 target_pid=%d tracer_pid=%d\n", $1, pid);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z32instr_stmt_report_debug_query_idm
+{
+    @query_id[tid] = (uint64)arg0;
+    printf("QUERY_TS,HASH_AGG,%d,%lld,%llu\n", tid, elapsed, @query_id[tid]);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z20LookupTupleHashEntryP18TupleHashTableDataP14TupleTableSlotPbb
+{
+    @lookup_table[tid] = (uint64)arg0;
+    @lookup_isnew_ptr[tid] = (uint64)arg2;
+    @lookup_insert[tid] = (int32)arg3;
+}
+
+uretprobe:/opt/openGauss/bin/gaussdb:_Z20LookupTupleHashEntryP18TupleHashTableDataP14TupleTableSlotPbb
+/@lookup_table[tid]/
+{
+    $table = (uint64)@lookup_table[tid];
+    $isnew_ptr = (uint64)@lookup_isnew_ptr[tid];
+    $inserted = (uint64)retval != 0
+        && $isnew_ptr != 0
+        && *(uint8*)$isnew_ptr != 0
+        && (int32)@lookup_insert[tid] != 0;
+    if ($inserted) {
+        $cxt = *(uint64*)($table + TH_OFF_tablecxt);
+        if ($cxt != 0) {
+            @context_table[$cxt] = $table;
+            @context_query[$cxt] = @query_id[tid];
+            @last_agg_context[tid] = $cxt;
+            if (@group_count[$cxt] == 0) {
+                @first_context_space[$cxt] = *(int64*)($cxt + ALLOCSET_OFF_totalSpace);
+                @entrysize[$cxt] = *(uint64*)($table + TH_OFF_entrysize);
+                @first_width[$cxt] = *(int64*)($table + TH_OFF_width);
+                printf("HAGG_START,%d,%lld,%llu,%llu\n",
+                    tid, elapsed, $cxt, @query_id[tid]);
+                printf("HAGG_START_META,%llu,%lld,%lld,%lld\n",
+                    $cxt,
+                    @first_context_space[$cxt],
+                    @entrysize[$cxt],
+                    @first_width[$cxt]);
+            }
+            @group_count[$cxt] += 1;
+            /* Track only the initial in-memory table, before partition replay. */
+            if (@did_spill[$cxt] == 0) {
+                @pre_space[$cxt] = *(int64*)($cxt + ALLOCSET_OFF_totalSpace);
+                if (@seen_space[$cxt] != @pre_space[$cxt]) {
+                    printf("HAGG_CONTEXT_GROW,%llu,%lld,%lld,%lld\n",
+                        $cxt, @group_count[$cxt], @seen_space[$cxt], @pre_space[$cxt]);
+                    @seen_space[$cxt] = @pre_space[$cxt];
+                }
+            }
+        }
+    }
+    delete(@lookup_table[tid]);
+    delete(@lookup_isnew_ptr[tid]);
+    delete(@lookup_insert[tid]);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_ZN14hashFileSourceC1EP14TupleTableSloti
+/@last_agg_context[tid]/
+{
+    $cxt = (uint64)@last_agg_context[tid];
+    $table = (uint64)@context_table[$cxt];
+    if (@did_spill[$cxt] == 0 && $table != 0) {
+        @did_spill[$cxt] = 1;
+        @spill_groups[$cxt] = @group_count[$cxt];
+        @spill_context_space[$cxt] = *(int64*)($cxt + ALLOCSET_OFF_totalSpace);
+        @spill_width[$cxt] = *(int64*)($table + TH_OFF_width);
+        @spill_filenum[$cxt] = (int32)arg2;
+        printf("HAGG_SPILL,%d,%lld,%llu,%llu\n",
+            tid, elapsed, $cxt, @context_query[$cxt]);
+        printf("HAGG_SPILL_MEM,%llu,%lld,%lld,%lld,%lld\n",
+            $cxt,
+            @spill_groups[$cxt],
+            @spill_context_space[$cxt],
+            @entrysize[$cxt],
+            @spill_width[$cxt]);
+        printf("HAGG_SPILL_PREINIT,%llu,%lld\n",
+            $cxt, @pre_space[$cxt]);
+        printf("HAGG_SPILL_FILE,%llu,%d\n", $cxt, @spill_filenum[$cxt]);
+    }
+    delete(@last_agg_context[tid]);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z10ExecEndAggP8AggState
+{
+    $state = (uint64)arg0;
+    $plan = *(uint64*)($state + AGGSTATE_OFF_plan);
+    $table = *(uint64*)($state + AGGSTATE_OFF_hashtable);
+    $ctrl = *(uint64*)($state + AGGSTATE_OFF_file_control);
+    $cxt = $table != 0 ? *(uint64*)($table + TH_OFF_tablecxt) : 0;
+    if ($cxt != 0 && @group_count[$cxt] > 0 && $ctrl != 0) {
+        $plan_id = $plan != 0 ? *(int32*)($plan + PLAN_OFF_plan_node_id) : 0;
+        printf("HAGG_END,%d,%lld,%llu,%llu,%d\n",
+            tid, elapsed, $cxt, @context_query[$cxt], $plan_id);
+        printf("HAGG_END_COUNTS,%llu,%lld,%lld,%lld,%d\n",
+            $cxt,
+            @group_count[$cxt],
+            @spill_groups[$cxt],
+            *(int64*)($ctrl + AFC_OFF_inmemoryRownum),
+            *(uint8*)($ctrl + AFC_OFF_spillToDisk));
+        printf("HAGG_END_MEM,%llu,%lld,%lld,%lld,%lld\n",
+            $cxt,
+            *(int64*)($ctrl + AFC_OFF_totalMem),
+            @first_context_space[$cxt],
+            @spill_context_space[$cxt],
+            @entrysize[$cxt]);
+        printf("HAGG_END_CONTEXT,%llu,%lld\n",
+            $cxt, *(int64*)($cxt + ALLOCSET_OFF_totalSpace));
+        printf("HAGG_END_META,%llu,%lld,%d,%d,%d\n",
+            $cxt,
+            @spill_width[$cxt],
+            @spill_filenum[$cxt],
+            *(int32*)($ctrl + AFC_OFF_spreadNum),
+            *(uint8*)($table + TH_OFF_causedBySysRes));
+        printf("HAGG_END_DYN,%llu,%lld\n",
+            $cxt, *(int64*)($ctrl + AFC_OFF_maxMem));
+        delete(@context_table[$cxt]);
+        delete(@context_query[$cxt]);
+        delete(@group_count[$cxt]);
+        delete(@first_context_space[$cxt]);
+        delete(@entrysize[$cxt]);
+        delete(@first_width[$cxt]);
+        delete(@did_spill[$cxt]);
+        delete(@spill_groups[$cxt]);
+        delete(@spill_context_space[$cxt]);
+        delete(@spill_width[$cxt]);
+        delete(@spill_filenum[$cxt]);
+        delete(@pre_space[$cxt]);
+        delete(@seen_space[$cxt]);
+    }
+}
+
+/* Some no-spill aggregates delete AggContext in early-free before ExecEndAgg. */
+uprobe:/opt/openGauss/bin/gaussdb:_Z24ExecEarlyFreeAggregationP8AggState
+{
+    $state = (uint64)arg0;
+    $plan = *(uint64*)($state + AGGSTATE_OFF_plan);
+    $table = *(uint64*)($state + AGGSTATE_OFF_hashtable);
+    $ctrl = *(uint64*)($state + AGGSTATE_OFF_file_control);
+    $cxt = $table != 0 ? *(uint64*)($table + TH_OFF_tablecxt) : 0;
+    if ($cxt != 0 && @group_count[$cxt] > 0 && $ctrl != 0) {
+        $plan_id = $plan != 0 ? *(int32*)($plan + PLAN_OFF_plan_node_id) : 0;
+        printf("HAGG_END,%d,%lld,%llu,%llu,%d\n",
+            tid, elapsed, $cxt, @context_query[$cxt], $plan_id);
+        printf("HAGG_END_COUNTS,%llu,%lld,%lld,%lld,%d\n",
+            $cxt,
+            @group_count[$cxt],
+            @spill_groups[$cxt],
+            *(int64*)($ctrl + AFC_OFF_inmemoryRownum),
+            *(uint8*)($ctrl + AFC_OFF_spillToDisk));
+        printf("HAGG_END_MEM,%llu,%lld,%lld,%lld,%lld\n",
+            $cxt,
+            *(int64*)($ctrl + AFC_OFF_totalMem),
+            @first_context_space[$cxt],
+            @spill_context_space[$cxt],
+            @entrysize[$cxt]);
+        printf("HAGG_END_CONTEXT,%llu,%lld\n",
+            $cxt, *(int64*)($cxt + ALLOCSET_OFF_totalSpace));
+        printf("HAGG_END_META,%llu,%lld,%d,%d,%d\n",
+            $cxt,
+            @spill_width[$cxt],
+            @spill_filenum[$cxt],
+            *(int32*)($ctrl + AFC_OFF_spreadNum),
+            *(uint8*)($table + TH_OFF_causedBySysRes));
+        printf("HAGG_END_DYN,%llu,%lld\n",
+            $cxt, *(int64*)($ctrl + AFC_OFF_maxMem));
+        delete(@context_table[$cxt]);
+        delete(@context_query[$cxt]);
+        delete(@group_count[$cxt]);
+        delete(@first_context_space[$cxt]);
+        delete(@entrysize[$cxt]);
+        delete(@first_width[$cxt]);
+        delete(@did_spill[$cxt]);
+        delete(@spill_groups[$cxt]);
+        delete(@spill_context_space[$cxt]);
+        delete(@spill_width[$cxt]);
+        delete(@spill_filenum[$cxt]);
+        delete(@pre_space[$cxt]);
+        delete(@seen_space[$cxt]);
+    }
+}
+
+END
+{
+    clear(@query_id);
+    clear(@lookup_table);
+    clear(@lookup_isnew_ptr);
+    clear(@lookup_insert);
+    clear(@context_table);
+    clear(@context_query);
+    clear(@last_agg_context);
+    clear(@group_count);
+    clear(@first_context_space);
+    clear(@entrysize);
+    clear(@first_width);
+    clear(@did_spill);
+    clear(@spill_groups);
+    clear(@spill_context_space);
+    clear(@spill_width);
+    clear(@spill_filenum);
+    clear(@pre_space);
+    clear(@seen_space);
+}

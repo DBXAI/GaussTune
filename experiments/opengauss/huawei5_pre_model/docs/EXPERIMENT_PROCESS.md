@@ -30,7 +30,7 @@ tp_low_terminals: 2
 tp_low_rate: 40
 tp_high_terminals: 12
 stable_tp_high_rate: 180
-ap_work_mem: 64MB
+ap_work_mem: 1024MB
 ap_s1/ap_s2/ap_s3/ap_s4/ap_s5: 1/1/2/4/4
 ap_query_cycle: 1,3,5,7,9,13,18,21
 ```

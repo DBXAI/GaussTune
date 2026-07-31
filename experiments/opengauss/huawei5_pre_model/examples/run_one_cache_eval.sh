@@ -25,7 +25,7 @@ python3 "$PACKAGE_ROOT/bin/cache_hit_stage_eval.py" \
   --stable-tp-high-rate 180 \
   --stage-boundary-mode tpch_query \
   --tp-run-seconds 7200 \
-  --ap-work-mem 64MB \
+  --ap-work-mem 1024MB \
   --ap-rate unlimited \
   --ap-s1 1 \
   --ap-s2 1 \

@@ -11,6 +11,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gzip
 import json
 import os
 import sys
@@ -65,11 +66,34 @@ def write_csv(path: Path, rows: list[dict[str, object]]) -> None:
         writer.writerows(rows)
 
 
+def open_trace_text(path: Path):
+    if path.suffix == ".gz":
+        return gzip.open(path, "rt", errors="replace", encoding="utf-8")
+    return path.open("r", errors="replace", encoding="utf-8")
+
+
 def stage_for_ts(ts: int, stage_ranges: dict[str, tuple[int, int]]) -> str | None:
     for stage, (start, end) in stage_ranges.items():
         if start <= ts < end:
             return stage
     return None
+
+
+def os_sum_delta(samples: list[tuple[int, int, int]], start_ns: int, end_ns: int) -> tuple[int, int]:
+    start_count = 0
+    start_bytes = 0
+    end_count = 0
+    end_bytes = 0
+    for ts, count, bytes_read in samples:
+        if ts <= start_ns:
+            start_count = count
+            start_bytes = bytes_read
+        if ts <= end_ns:
+            end_count = count
+            end_bytes = bytes_read
+        else:
+            break
+    return max(0, end_count - start_count), max(0, end_bytes - start_bytes)
 
 
 def load_boundaries(result_dir: Path) -> tuple[dict[str, dict[str, str]], dict[str, tuple[int, int]]]:
@@ -99,23 +123,36 @@ def load_actuals(result_dir: Path) -> dict[str, dict[str, str]]:
 
 def count_stage_os_bytes(trace: Path, stage_ranges: dict[str, tuple[int, int]]) -> dict[str, dict[str, int]]:
     stats: dict[str, dict[str, int]] = defaultdict(lambda: {"events": 0, "bytes": 0})
-    with trace.open("r", errors="replace", encoding="utf-8") as fh:
+    os_sum_samples: list[tuple[int, int, int]] = []
+    with open_trace_text(trace) as fh:
         for line in fh:
-            if not line.startswith("OS,"):
-                continue
-            parts = line.rstrip("\n").split(",")
-            if len(parts) < 6:
-                continue
-            try:
-                read_bytes = max(0, int(parts[4]))
-                ts = int(parts[5])
-            except ValueError:
-                continue
-            stage = stage_for_ts(ts, stage_ranges)
-            if stage is None:
-                continue
-            stats[stage]["events"] += 1
-            stats[stage]["bytes"] += read_bytes
+            if line.startswith("OS,"):
+                parts = line.rstrip("\n").split(",")
+                if len(parts) < 6:
+                    continue
+                try:
+                    read_bytes = max(0, int(parts[4]))
+                    ts = int(parts[5])
+                except ValueError:
+                    continue
+                stage = stage_for_ts(ts, stage_ranges)
+                if stage is None:
+                    continue
+                stats[stage]["events"] += 1
+                stats[stage]["bytes"] += read_bytes
+            elif line.startswith("OS_SUM,"):
+                parts = line.rstrip("\n").split(",")
+                if len(parts) < 4:
+                    continue
+                try:
+                    os_sum_samples.append((int(parts[1]), int(parts[2]), int(parts[3])))
+                except ValueError:
+                    continue
+    if not any(row["events"] or row["bytes"] for row in stats.values()) and os_sum_samples:
+        for stage, (start, end) in stage_ranges.items():
+            events, bytes_read = os_sum_delta(os_sum_samples, start, end)
+            stats[stage]["events"] = events
+            stats[stage]["bytes"] = bytes_read
     return stats
 
 
@@ -172,10 +209,10 @@ def compute_actuals_from_full_trace(result_dir: Path) -> list[dict[str, str]]:
     return rows
 
 
-def load_full_sb_pages(trace: Path) -> tuple[array, list[tuple[int, int]]]:
+def load_full_sb_pages(trace: Path, sample_every: int = 1) -> tuple[array, list[tuple[int, int]]]:
     pages = array("Q")
     events: list[tuple[int, int]] = []
-    with trace.open("r", errors="replace", encoding="utf-8") as fh:
+    with open_trace_text(trace) as fh:
         for line in fh:
             if not line.startswith("SB,"):
                 continue
@@ -186,6 +223,8 @@ def load_full_sb_pages(trace: Path) -> tuple[array, list[tuple[int, int]]]:
                 page_id = model.encode_page(int(parts[2]), int(parts[3]))
                 ts = int(parts[4])
             except ValueError:
+                continue
+            if sample_every > 1 and model.page_hash(page_id) % sample_every != 0:
                 continue
             pages.append(page_id)
             events.append((ts, page_id))
@@ -291,28 +330,45 @@ def build_predictions(
     os_scale_grid: list[float],
     bulk_read_ring_kb: int,
     insert_evicted: bool,
+    sample_every: int = 1,
+    scale_bulk_ring_for_sampling: bool = False,
 ) -> tuple[list[dict[str, object]], list[dict[str, object]]]:
     config = json.loads((result_dir / "run_config.json").read_text(encoding="utf-8"))
     trace = Path(config["trace"])
     sb_mb = int(config["shared_buffers_mb"])
     sb_pages = int(sb_mb / PAGE_SIZE_MB)
+    if sample_every > 1:
+        sb_pages = max(1, sb_pages // sample_every)
     _boundaries, stage_ranges = load_boundaries(result_dir)
     actuals = load_actuals(result_dir)
     os_mb_by_stage = {stage: int(float(row["os_cache_mb"])) for stage, row in actuals.items()}
 
-    pages, sb_events = load_full_sb_pages(trace)
+    print(f"[continuous] loading SB events (sample_every={sample_every})...", flush=True)
+    pages, sb_events = load_full_sb_pages(trace, sample_every)
+    print(f"[continuous] loaded {len(sb_events):,} sampled SB events", flush=True)
     readahead_index = model.ReadaheadIndex(pages)
     rows: list[dict[str, object]] = []
     best_rows: list[dict[str, object]] = []
+    effective_bulk_read_ring_kb = bulk_read_ring_kb
+    if scale_bulk_ring_for_sampling and sample_every > 1:
+        effective_bulk_read_ring_kb = max(
+            PAGE_SIZE_KB, int(bulk_read_ring_kb / sample_every)
+        )
+        print(
+            f"[continuous] scaled bulk ring: {bulk_read_ring_kb}KB -> "
+            f"{effective_bulk_read_ring_kb}KB",
+            flush=True,
+        )
 
     for strategy in strategies:
         sb_stats, miss_events, ring_pages = replay_sb(
-            sb_events, stage_ranges, sb_pages, strategy, bulk_read_ring_kb
+            sb_events, stage_ranges, sb_pages, strategy, effective_bulk_read_ring_kb
         )
+        print(f"[continuous] SB replay done for {strategy}: {len(miss_events):,} miss events", flush=True)
         for readahead in readahead_grid:
             for os_scale in os_scale_grid:
                 stage_os_pages = {
-                    stage: int((os_mb / PAGE_SIZE_MB) * os_scale)
+                    stage: max(1, int((os_mb / PAGE_SIZE_MB / max(1, sample_every)) * os_scale))
                     for stage, os_mb in os_mb_by_stage.items()
                 }
                 os_stats = replay_os(
@@ -435,6 +491,127 @@ def write_report(result_dir: Path, best_rows: list[dict[str, object]]) -> None:
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
+def render_continuous_stage_plots(
+    result_dir: Path,
+    best_rows: list[dict[str, object]],
+    all_rows: list[dict[str, object]],
+    sample_every: int,
+) -> None:
+    """Render per-stage effect plots from continuous predictions."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    import numpy as np
+
+    plot_dir = result_dir / "continuous_plots"
+    plot_dir.mkdir(parents=True, exist_ok=True)
+
+    best_by_stage: dict[str, dict[str, object]] = {}
+    for row in best_rows:
+        best_by_stage[str(row["mode"])] = row
+
+    for stage, best in best_by_stage.items():
+        actual_sb = float(best["meas_sb_hr"])
+        actual_os = float(best["meas_os_hr"])
+        actual_combined = float(best["meas_combined"])
+        pred_sb = float(best["sb_hit_rate"])
+        pred_os = float(best["physical_os_cond_hit_rate"])
+        pred_combined = float(best["physical_combined_hit_rate"])
+        sb_err = float(best["sb_err_pp"])
+        os_err = float(best["os_err_pp"])
+        combined_err = float(best["combined_err_pp"])
+
+        strategy = str(best.get("strategy", ""))
+        ra = best.get("readahead_pages", "")
+        os_scale = best.get("os_scale", "")
+        sub = (
+            f"Continuous | {strategy} | RA={ra} | scale={os_scale} | "
+            f"sample={sample_every} | combined error={combined_err:+.2f} pp"
+        )
+
+        fig = plt.figure(figsize=(11, 7.2), facecolor="#f4f6f8")
+        gs = fig.add_gridspec(2, 2, height_ratios=[1.05, 0.95], hspace=0.45, wspace=0.25)
+        fig.suptitle(
+            f"Huawei5 Continuous Per-Stage Prediction — {stage}",
+            fontsize=16, fontweight="bold", y=0.97,
+        )
+        fig.text(0.5, 0.915, sub, ha="center", fontsize=10, color="#334")
+
+        # Top: Actual vs Predicted
+        ax_top = fig.add_subplot(gs[0, :])
+        categories = ["SB", "OS", "Combined"]
+        actuals = [actual_sb * 100, actual_os * 100, actual_combined * 100]
+        preds = [pred_sb * 100, pred_os * 100, pred_combined * 100]
+        x = np.arange(len(categories))
+        width = 0.35
+        bars_a = ax_top.bar(x - width / 2, actuals, width, color="#2c3e50", label="Actual")
+        bars_p = ax_top.bar(x + width / 2, preds, width, color="#27ae60", label="Predicted")
+        for bar in list(bars_a) + list(bars_p):
+            h = bar.get_height()
+            ax_top.annotate(f"{h:.2f}%", xy=(bar.get_x() + bar.get_width() / 2, h),
+                            xytext=(0, 3), textcoords="offset points", ha="center", fontsize=10)
+        ax_top.set_xticks(x)
+        ax_top.set_xticklabels(categories, fontsize=11)
+        ax_top.set_ylabel("Hit rate", fontsize=11)
+        ax_top.set_title("Actual vs Predicted Hit Rates", fontsize=12, fontweight="bold")
+        ax_top.set_ylim(0, 105)
+        ax_top.set_yticks(np.arange(0, 101, 20))
+        ax_top.set_yticklabels([f"{v}%" for v in range(0, 101, 20)])
+        ax_top.legend(loc="upper right", frameon=False)
+        ax_top.grid(axis="y", linestyle=":", alpha=0.4)
+        ax_top.set_axisbelow(True)
+
+        # Bottom left: Best Model Error
+        ax_err = fig.add_subplot(gs[1, 0])
+        err_values = [sb_err, os_err, combined_err]
+        colors_err = ["#5b8def" if v < 0 else "#e67e22" for v in err_values]
+        bars_err = ax_err.bar(categories, err_values, color=colors_err, edgecolor="#222", linewidth=0.4, width=0.55)
+        for bar, v in zip(bars_err, err_values):
+            ax_err.annotate(f"{v:+.2f} pp", xy=(bar.get_x() + bar.get_width() / 2, v),
+                            xytext=(0, 3 if v >= 0 else -10), textcoords="offset points", ha="center", fontsize=10)
+        ax_err.axhline(0, color="#222", linewidth=0.8)
+        ax_err.set_ylabel("Prediction error (pp)", fontsize=11)
+        ax_err.set_title("Best Config Error", fontsize=12, fontweight="bold")
+        ax_err.set_ylim(-70, 70)
+        ax_err.grid(axis="y", linestyle=":", alpha=0.4)
+        ax_err.set_axisbelow(True)
+
+        # Bottom right: Candidate Error Check (by os_scale)
+        ax_cand = fig.add_subplot(gs[1, 1])
+        stage_rows = [r for r in all_rows if str(r["mode"]) == stage and str(r["strategy"]) == strategy]
+        best_ra = int(best["readahead_pages"])
+        ra_rows = [r for r in stage_rows if int(r["readahead_pages"]) == best_ra]
+        ra_rows.sort(key=lambda r: float(r["os_scale"]))
+        if ra_rows:
+            scales = [f"s={r['os_scale']}" for r in ra_rows]
+            cand_combined = [float(r["combined_err_pp"]) for r in ra_rows]
+            cand_os = [float(r["os_err_pp"]) for r in ra_rows]
+            cand_x = np.arange(len(scales))
+            cw = 0.35
+            ax_cand.bar(cand_x - cw / 2, cand_combined, cw, color="#27ae60", label="Combined", edgecolor="#222", linewidth=0.4)
+            ax_cand.bar(cand_x + cw / 2, cand_os, cw, color="#e67e22", label="OS", edgecolor="#222", linewidth=0.4)
+            ax_cand.set_xticks(cand_x)
+            ax_cand.set_xticklabels(scales, fontsize=8, rotation=30)
+        ax_cand.set_ylabel("Error (pp)", fontsize=11)
+        ax_cand.set_title("Candidate Error by OS Scale", fontsize=12, fontweight="bold")
+        ax_cand.legend(loc="upper left", frameon=False, fontsize=9)
+        ax_cand.grid(axis="y", linestyle=":", alpha=0.4)
+        ax_cand.set_axisbelow(True)
+        ax_cand.axhline(0, color="#222", linewidth=0.5)
+
+        fig.text(0.5, 0.015,
+                 "Continuous model: SB/OS cache state preserved across all 5 stages. "
+                 "Counters sliced by stage boundaries.",
+                 ha="center", fontsize=8, color="#666")
+
+        png = plot_dir / f"{stage}_continuous_effect.png"
+        svg = plot_dir / f"{stage}_continuous_effect.svg"
+        fig.savefig(png, dpi=150, bbox_inches="tight", facecolor=fig.get_facecolor())
+        fig.savefig(svg, bbox_inches="tight", facecolor=fig.get_facecolor())
+        plt.close(fig)
+        print(f"[continuous] plot: {png}")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--result-dir", required=True)
@@ -443,6 +620,10 @@ def main() -> int:
     parser.add_argument("--os-scale-grid", default=DEFAULT_OS_SCALE_GRID)
     parser.add_argument("--bulk-read-ring-kb", type=int, default=16 * 1024)
     parser.add_argument("--no-insert-evicted", action="store_true")
+    parser.add_argument("--sample-every", type=int, default=1,
+                        help="Hash-based sampling: only load 1/N of SB events (reduces memory)")
+    parser.add_argument("--scale-bulk-ring-for-sampling", action="store_true",
+                        help="Also divide bulk-read ring size by --sample-every (diagnostic only)")
     args = parser.parse_args()
 
     result_dir = Path(args.result_dir)
@@ -456,10 +637,13 @@ def main() -> int:
         os_scale_grid,
         args.bulk_read_ring_kb,
         insert_evicted=not args.no_insert_evicted,
+        sample_every=args.sample_every,
+        scale_bulk_ring_for_sampling=args.scale_bulk_ring_for_sampling,
     )
     write_csv(result_dir / "continuous_predictions.csv", rows)
     write_csv(result_dir / "continuous_best_predictions.csv", best_rows)
     write_report(result_dir, best_rows)
+    render_continuous_stage_plots(result_dir, best_rows, rows, args.sample_every)
     print(result_dir / "CONTINUOUS_OS_SB_EVALUATION.md")
     return 0
 

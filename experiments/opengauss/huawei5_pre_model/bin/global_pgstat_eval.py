@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import csv
+import gzip
 import os
 import subprocess
 import sys
@@ -61,8 +62,9 @@ def write_sb_model_trace(
 
     out_trace.parent.mkdir(parents=True, exist_ok=True)
     count = 0
-    with full_trace.open("r", errors="replace", encoding="utf-8") as src, out_trace.open(
-        "w", encoding="utf-8"
+    opener = gzip.open if out_trace.suffix == ".gz" else open
+    with stage_eval.open_trace_text(full_trace) as src, opener(
+        out_trace, "wt", encoding="utf-8"
     ) as dst:
         dst.write(f"# global sb-only warm_start={warm_start_ns} end={measure_end_ns}\n")
         for line in src:
@@ -82,21 +84,31 @@ def write_sb_model_trace(
 def count_os_trace_abs(full_trace: Path, measure_start_ns: int, measure_end_ns: int) -> tuple[int, int]:
     events = 0
     bytes_read = 0
-    with full_trace.open("r", errors="replace", encoding="utf-8") as fh:
+    os_sum_samples: list[tuple[int, int, int]] = []
+    with stage_eval.open_trace_text(full_trace) as fh:
         for line in fh:
-            if not line.startswith("OS,"):
-                continue
-            parts = line.rstrip("\n").split(",")
-            if len(parts) < 6:
-                continue
-            try:
-                ts = int(parts[5])
-                read_bytes = int(parts[4])
-            except ValueError:
-                continue
-            if measure_start_ns <= ts < measure_end_ns:
-                events += 1
-                bytes_read += max(0, read_bytes)
+            if line.startswith("OS,"):
+                parts = line.rstrip("\n").split(",")
+                if len(parts) < 6:
+                    continue
+                try:
+                    ts = int(parts[5])
+                    read_bytes = int(parts[4])
+                except ValueError:
+                    continue
+                if measure_start_ns <= ts < measure_end_ns:
+                    events += 1
+                    bytes_read += max(0, read_bytes)
+            elif line.startswith("OS_SUM,"):
+                parts = line.rstrip("\n").split(",")
+                if len(parts) < 4:
+                    continue
+                try:
+                    os_sum_samples.append((int(parts[1]), int(parts[2]), int(parts[3])))
+                except ValueError:
+                    continue
+    if events == 0 and bytes_read == 0 and os_sum_samples:
+        return stage_eval.os_sum_delta(os_sum_samples, measure_start_ns, measure_end_ns)
     return events, bytes_read
 
 
@@ -113,6 +125,8 @@ def run_predict(
     readahead_grid: str,
     os_scale_grid: str,
     bulk_read_ring_kb: int,
+    sample_every: int,
+    sample_mode: str,
 ) -> dict[str, str]:
     predictions = out_dir / f"global_predictions_{strategy}.csv"
     best_huawei4 = out_dir / f"global_best_huawei4_{strategy}.csv"
@@ -153,6 +167,8 @@ def run_predict(
         "--sb-strategy",
         strategy,
     ]
+    if sample_every > 1:
+        cmd += ["--sample-every", str(sample_every), "--sample-mode", sample_mode]
     if strategy == "bulk_ring":
         cmd += ["--bulk-read-ring-kb", str(bulk_read_ring_kb)]
     with log.open("w", encoding="utf-8") as fh:
@@ -162,6 +178,8 @@ def run_predict(
     row["prediction_file"] = str(predictions)
     row["accuracy_file"] = str(accuracy)
     row["best_selection"] = "min_abs_sb_plus_abs_os_plus_half_abs_combined"
+    row["sample_every"] = sample_every
+    row["sample_mode"] = sample_mode
     return row
 
 
@@ -172,6 +190,8 @@ def write_report(
     start_label: str,
     measure_start_label: str,
     end_label: str,
+    sample_every: int,
+    sample_mode: str,
 ) -> None:
     report = out_dir / "GLOBAL_PGSTAT_EVALUATION.md"
     lines = [
@@ -198,6 +218,8 @@ def write_report(
         f"| actual SB hit rate | {actual['meas_sb_hr']} |",
         f"| actual OS conditional hit rate | {actual['meas_os_hr']} |",
         f"| actual combined hit rate | {actual['meas_combined']} |",
+        f"| prediction sample every | {sample_every} |",
+        f"| prediction sample mode | {sample_mode} |",
         "",
         "## Best Global Prediction",
         "",
@@ -242,6 +264,8 @@ def main() -> int:
     parser.add_argument("--readahead-grid", default="0")
     parser.add_argument("--os-scale-grid", default="0.5")
     parser.add_argument("--bulk-read-ring-kb", type=int, default=16 * 1024)
+    parser.add_argument("--sample-every", type=int, default=1)
+    parser.add_argument("--sample-mode", choices=["hash", "interval"], default="hash")
     args = parser.parse_args()
 
     result_dir = Path(args.result_dir)
@@ -267,7 +291,7 @@ def main() -> int:
     measure_end = boundaries[args.measure_end_label]
     warm_seconds = (int(measure_start["elapsed_ns"]) - int(warm_start["elapsed_ns"])) / 1e9
     measure_seconds = (int(measure_end["elapsed_ns"]) - int(measure_start["elapsed_ns"])) / 1e9
-    global_trace = out_dir / "global_trace_sb.log"
+    global_trace = out_dir / "global_trace_sb.log.gz"
     trace_sb_events = write_sb_model_trace(
         full_trace,
         global_trace,
@@ -310,6 +334,8 @@ def main() -> int:
             args.readahead_grid,
             args.os_scale_grid,
             args.bulk_read_ring_kb,
+            args.sample_every,
+            args.sample_mode,
         )
         for strategy in strategies
     ]
@@ -321,6 +347,8 @@ def main() -> int:
         args.warm_start_label,
         args.measure_start_label,
         args.measure_end_label,
+        args.sample_every,
+        args.sample_mode,
     )
     print(out_dir / "GLOBAL_PGSTAT_EVALUATION.md")
     return 0

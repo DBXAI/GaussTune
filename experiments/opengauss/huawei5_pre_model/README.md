@@ -1,150 +1,133 @@
-# Huawei5 Five-Stage Cache Prediction Model
+# Huawei5 TP/AP Memory Autonomy Prototype
 
-This package is a self-contained handoff of the current Huawei5 cache-hit
-prediction experiment. It contains the workload generator, bpftrace probes,
-SB/OS cache prediction model, validation scripts, and representative result
-artifacts.
+This package contains the current Huawei5 openGauss prototype for predicting
+and controlling memory under a mixed transactional and analytical workload.
+It is an experimental research implementation, not an audited TPC result.
 
-The experiment is for internal model validation. It is not an audited TPC-C or
-TPC-H benchmark result.
+## Current Goal
 
-## What This Package Does
+Keep TP throughput stable while AP queries compete for shared buffers, dynamic
+operator memory, Linux page cache, CPU, and storage I/O. The intended runtime
+loop combines:
 
-The goal is to predict, under different `shared_buffers` allocations:
+1. trace- and source-based candidate generation;
+2. plan-aware operator memory and spill replay;
+3. joint `shared_buffers` and per-query `work_mem` evaluation;
+4. TP TPS feedback and AP progress observations;
+5. online SB resizing, AP admission, grant control, and resource throttling.
 
-- shared buffer hit rate (`SB`)
-- OS page-cache conditional hit rate (`OS`)
-- combined hit rate:
+The final five-stage acceptance target is a single uninterrupted workload in
+which AP statements finish naturally, no database restart occurs, and TP
+retention remains within the configured SLO.
 
-```text
-combined = SB + (1 - SB) * OS
-```
+## Main Components
 
-The validation workload is a continuous five-stage TPC-C + TPC-H mix. The
-packaged run script uses TPC-H query boundaries: a stage starts when the first
-TPC-H query in that stage becomes active, and ends when all TPC-H queries in
-that stage finish.
+### Continuous workload
 
-- TP side: TPC-C, 250 warehouses, low background load plus stage-5 surge.
-- AP side: TPC-H, SF85, fixed query sequence and staged AP concurrency.
-- Fixed seed: `20260614`.
-- Stable AP shape: `1 / 1 / 2 / 4 / 4` clients across stages.
+`bin/continuous_five_stage_workload.py` implements the PPT-defined trajectory:
 
-## Directory Layout
+- S1-S4 keep a calibrated low sysbench TP load.
+- AP requests start at zero and arrive at an increasing rate.
+- Running AP statements survive stage transitions.
+- S5 adds an incremental TP process to reach the calibrated high-CPU profile.
+- The normal path never cancels AP SQL and waits for natural completion.
+- An external JSON control file supplies AP admission and per-query grants.
 
-```text
-huawei5_pre_model/
-  bin/
-    tpc5stage.py                 # BenchBase TPC-C/TPC-H config generator and workload runner
-    cache_hit_stage_eval.py       # full workload + bpftrace + global/stage validation driver
-    global_pgstat_eval.py         # global pg_stat_database based validation
-    continuous_stage_model_eval.py# stage-aware continuous replay helper
-    dual_cache_warmup.py          # SB/OS cache prediction model
-    load_tpch_*.sh                # optional TPC-H loading helpers
-  bpftrace/
-    trace_both.bt                 # SB ReadBuffer_common + OS pread64 probe
-    trace_*_summary.bt            # debugging probes
-  docs/
-    AGENT_BRIEF.md                # short context for another agent
-    EXPERIMENT_PROCESS.md         # end-to-end workload and validation flow
-    MODEL_NOTES.md                # model mechanics and known caveats
-  artifacts/
-    sb_sweep_30s_summary.csv      # representative 0-24GB sweep summary
-    tpcc_tps_by_sb.csv            # TPC-C TPS parsed from the sweep
-    *.png, *.svg                  # result plots
-  examples/
-    run_one_cache_eval.sh         # one-run command template
-    sb_sweep_template.sh          # shared_buffers sweep template
-```
+See `docs/CONTINUOUS_FIVE_STAGE_WORKLOAD.md`.
+
+### Trace and cache replay
+
+- `bin/dual_cache_warmup.py`: SB and Linux page-cache replay.
+- `bin/multi_anchor_path_replay.py`: multi-anchor, path-aware cache replay.
+- `bin/continuous_stage_model_eval.py`: stage-aware replay and evaluation.
+- `bpftrace/trace_*.bt`: cache, operator-memory, and execution-path probes.
+
+### Plan and operator-memory replay
+
+- `bin/source_plan_replay.py`: source/EXPLAIN operator extraction and synthesis.
+- `bin/joint_bidirectional_replay.py`: coupled SB, dynamic-memory, spill, and OS-cache replay.
+- `bin/hash_join_memory_replay.py`: hash join grant and batch prediction.
+- `bin/hash_agg_memory_replay.py`: hash aggregate memory prediction.
+- `bin/sort_memory_replay.py`: sort spill-boundary prediction.
+- `bin/one_shot_workload_replay.py`: one-workload trace prediction flow.
+
+### Runtime control
+
+- `bin/tp_slo_controller_replay.py`: TP-first memory/admission policy.
+- `bin/tp_slo_ap_resource_controller.py`: dynamic AP CPU and I/O search.
+- `bin/tp_slo_query_boundary_driver.py`: historical query-batch executor.
+- `bin/shared_buffers_runtime.py`: runtime SB control interface.
+- `bin/autonomous_memory_state_machine.py`: five-stage memory action model.
+
+The historical query-boundary driver drains AP at stage transitions and is not
+the final continuous acceptance workload. New end-to-end work should use
+`continuous_five_stage_workload.py`.
+
+### openGauss kernel prototype
+
+`patches/opengauss-5.1-runtime-shared-buffers.patch` contains the current
+openGauss 5.1 runtime shared-buffer resizing prototype. It adds a runtime
+target, granule and interval GUCs, retires the buffer tail, excludes retired
+buffers from allocation, and releases retired pages with `MADV_REMOVE`.
+
+## Repository Scope
+
+Git tracks source, tests, documentation, small handoff summaries, and the
+kernel patch. Machine-specific outputs are intentionally excluded:
+
+- raw traces and experiment result directories;
+- generated BenchBase/Java configurations and class files;
+- database files and temporary spill data;
+- generated PPT/PDF reports and large figure archives;
+- compiled helper binaries and Python bytecode.
 
 ## Runtime Assumptions
 
-The scripts default to the paths used on the validation host:
+Defaults target the validation host and can be overridden by environment
+variables or command-line flags:
 
 ```text
 openGauss data dir: /opt/openGauss/data
 gsql:               /opt/openGauss/bin/gsql
 openGauss lib:      /opt/openGauss/lib
 BenchBase home:     /opt/benchbase/target/benchbase-postgres/benchbase-postgres
-openGauss JDBC jar: /root/.m2/repository/org/opengauss/opengauss-jdbc/5.1.0/opengauss-jdbc-5.1.0.jar
+openGauss JDBC:     /root/.m2/repository/org/opengauss/opengauss-jdbc/5.1.0/opengauss-jdbc-5.1.0.jar
 ```
 
-They can be overridden with environment variables:
+The bundled credentials are local benchmark-role defaults. Do not reuse them
+for a network-accessible or production database.
 
-```text
-HUAWEI5_TPC5_ROOT
-OPENGAUSS_DATA_DIR
-OPENGAUSS_GSQL
-OPENGAUSS_LIB
-OPENGAUSS_PORT
-BENCHBASE_POSTGRES_HOME
-OPENGAUSS_JDBC_JAR
-HUAWEI4_MODEL
-TRACE_BOTH
-```
+## Quick Checks
 
-The bpftrace scripts still contain static uprobes to
-`/opt/openGauss/bin/gaussdb`. If gaussdb is installed elsewhere, edit the probe
-path before running.
-
-## Quick Start For Existing Data
-
-Run one 5-stage validation using the current stable workload shape:
+Generate and statically validate the continuous five-stage protocol:
 
 ```bash
 cd experiments/opengauss/huawei5_pre_model
-./examples/run_one_cache_eval.sh
+python3 bin/continuous_five_stage_workload.py plan \
+  --out-dir results/continuous_five_stage_workload_plan
 ```
 
-This starts bpftrace, runs the TPC-C/TPC-H five-stage workload, writes
-`boundaries.csv`, computes actual hit rates, and runs the model prediction.
-
-The example passes:
-
-```text
---stage-boundary-mode tpch_query
-```
-
-The older fixed-duration split is still available with:
-
-```text
---stage-boundary-mode time
-```
-
-For a `shared_buffers` sweep, use the template:
+Run the unit suite:
 
 ```bash
-cd experiments/opengauss/huawei5_pre_model
-./examples/sb_sweep_template.sh
+python3 -m unittest discover -s bin -p 'test_*.py' -v
 ```
 
-Read the script before using it. It changes `shared_buffers`, restarts
-openGauss, and optionally drops OS page cache before each run.
+The latest local check completed 105 tests. A full database run is deliberately
+guarded by a minimum-free-space check because AP spill can exhaust the database
+volume.
 
-## Current Representative Results
+## Documentation
 
-The included sweep used:
+Start with:
 
-- `shared_buffers`: 128MB, 256MB, 512MB, 1GB, 1504MB, 2GB, 4GB, 8GB, 12GB,
-  16GB, 24GB.
-- 32GB failed to start on the validation host because openGauss could not
-  allocate the required shared memory.
-- Model: `bulk_ring`, readahead `0`, OS scale `0.75`.
-- The included representative artifacts were generated with the earlier
-  fixed-duration split. New runs should prefer `tpch_query` boundaries when
-  comparing cache behavior around complete TPC-H query windows.
+1. `docs/CONTINUOUS_FIVE_STAGE_WORKLOAD.md`
+2. `docs/TP_SLO_FIRST_MEMORY_CONTROLLER.md`
+3. `docs/JOINT_BIDIRECTIONAL_REPLAY.md`
+4. `docs/ONE_SHOT_SOURCE_PLAN_REPLAY.md`
+5. `docs/OPENGAUSS_RUNTIME_SB_KERNEL_DESIGN.md`
+6. `docs/GENERALIZATION_VALIDATION.md`
 
-Important interpretation:
-
-- Combined hit-rate prediction is close across the sweep.
-- At 8GB, SB and OS sub-metrics are both wrong, but the combined metric is close
-  due to error cancellation.
-- See `artifacts/SB8192_DIAGNOSIS.md` for the detailed 8GB diagnosis.
-
-## What Another Agent Should Read First
-
-1. `docs/AGENT_BRIEF.md`
-2. `docs/EXPERIMENT_PROCESS.md`
-3. `docs/MODEL_NOTES.md`
-4. `artifacts/sb_sweep_30s_summary.csv`
-5. `artifacts/tpcc_tps_by_sb.csv`
+Current results must be interpreted within their documented scope. Static
+protocol validation, replay accuracy, recommendation regret, and full
+continuous online acceptance are separate claims.

@@ -9,8 +9,8 @@
  *   strategy_meta = (strategy_ptr << 4) + (strategy_type + 1)
  * The model reads ring_pages from the configured bulk_read_ring_size fallback.
  *
- * OS lines:
- *   OS,pid,fd,offset,bytes,elapsed_ns
+ * OS summary lines:
+ *   OS_SUM,elapsed_ns,count,bytes
  *
  * Usage:
  *   GAUSS_PID=$(pgrep -x gaussdb | head -1)
@@ -71,21 +71,26 @@ uretprobe:/opt/openGauss/bin/gaussdb:_Z17ReadBuffer_commonP16SMgrRelationDatacij
 
 tracepoint:syscalls:sys_enter_pread64 /pid == (uint64)$1/
 {
-    printf("OS,%d,%d,%lld,%lld,%lld\n", pid, args->fd, args->pos, args->count, elapsed);
     @os_count += 1;
+    @os_bytes += args->count;
 }
 
-interval:s:10
+interval:s:1
 {
-    printf("# progress elapsed_ms=%d sb=%d sb_hit=%d os=%d\n",
-        elapsed / 1000000, @sb_count, @sb_hit_count, @os_count);
+    printf("OS_SUM,%lld,%d,%lld\n", elapsed, @os_count, @os_bytes);
+    printf("# progress elapsed_ms=%d sb=%d sb_hit=%d os=%d os_bytes=%lld\n",
+        elapsed / 1000000, @sb_count, @sb_hit_count, @os_count, @os_bytes);
 }
 
 END
 {
-    printf("# end sb_total=%d sb_hit=%d os_total=%d\n", @sb_count, @sb_hit_count, @os_count);
+    printf("OS_SUM,%lld,%d,%lld\n", elapsed, @os_count, @os_bytes);
+    printf("# end sb_total=%d sb_hit=%d os_total=%d os_bytes=%lld\n",
+        @sb_count, @sb_hit_count, @os_count, @os_bytes);
     clear(@sb_relnode);
     clear(@sb_blocknum);
     clear(@sb_hitptr);
     clear(@sb_strategy_meta);
+    clear(@os_count);
+    clear(@os_bytes);
 }
