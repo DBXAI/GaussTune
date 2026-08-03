@@ -1,0 +1,23 @@
+{
+  "schema": "huawei6.five-stage-equal-tps/v1",
+  "stage_seconds": 120,
+  "tp_warmup_seconds": 25,
+  "validation_tail_seconds": 45,
+  "tp_base": {
+    "threads": 128,
+    "offered_tps": 4000
+  },
+  "stages": [
+    {"stage": "S1", "shared_buffers_mb": 8192, "ap_queries": [18], "work_mem_mb": {"q18": 1150}, "block_new_ap": false},
+    {"stage": "S2", "shared_buffers_mb": 4096, "ap_queries": [18, 21], "work_mem_mb": {"q18": 1150, "q21": 1150}, "block_new_ap": false},
+    {"stage": "S3", "shared_buffers_mb": 4096, "ap_queries": [9, 13, 18, 21], "work_mem_mb": {"q9": 256, "q13": 256, "q18": 256, "q21": 256}, "block_new_ap": false},
+    {"stage": "S4", "shared_buffers_mb": 4096, "ap_queries": [9, 13, 18, 21], "work_mem_mb": {"q9": 256, "q13": 256, "q18": 256, "q21": 256}, "block_new_ap": true, "queued_ap_interval_seconds": 15},
+    {"stage": "S5", "shared_buffers_mb": 8192, "ap_queries": [18, 21], "work_mem_mb": {"q18": 256, "q21": 256}, "block_new_ap": true, "queued_ap_interval_seconds": 15, "protected_threads": 128, "protected_tps": 4000, "surge_threads": 16, "surge_tps": 300}
+  ],
+  "rules": {
+    "ap_natural_completion": true,
+    "cancel_running_ap": false,
+    "shared_buffers_change": "restart between stage episodes",
+    "acceptance": "(max(protected_tps)-min(protected_tps))/mean(protected_tps) <= 0.05"
+  }
+}

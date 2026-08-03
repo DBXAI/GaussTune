@@ -1,0 +1,60 @@
+#!/usr/bin/env bpftrace
+/*
+ * Direct shared-buffer hit/miss summary for openGauss ReadBuffer_common.
+ *
+ * ReadBuffer_common(..., BufferAccessStrategyData *strategy, bool *hit, ...)
+ * writes the shared-buffer hit flag through arg6.  This script stores arg6 on
+ * function entry and reads it on return, avoiding the older pread64-count
+ * proxy for SB misses.
+ *
+ * Usage:
+ *   bpftrace trace_sb_hit_summary.bt > /tmp/sb_hit_summary.log
+ */
+
+BEGIN
+{
+    printf("# sb_hit_summary tracer_pid=%d\n", pid);
+    @entry = 0;
+    @hit = 0;
+    @miss = 0;
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z17ReadBuffer_commonP16SMgrRelationDatacij14ReadBufferModeP24BufferAccessStrategyDataPbPK12XLogPhyBlock
+{
+    $smgr = (uint64)arg0;
+    $relnode = *(uint32*)($smgr + 8);
+
+    $hitptr = *(uint64*)(reg("sp") + 8);
+    if ($relnode > 0 && $relnode < 1000000000 && $hitptr != 0) {
+        @hitptr[tid] = $hitptr;
+        @entry += 1;
+    }
+}
+
+uretprobe:/opt/openGauss/bin/gaussdb:_Z17ReadBuffer_commonP16SMgrRelationDatacij14ReadBufferModeP24BufferAccessStrategyDataPbPK12XLogPhyBlock
+/@hitptr[tid]/
+{
+    $hitptr = (uint64)@hitptr[tid];
+    $hit = *(uint8*)$hitptr;
+
+    if ($hit != 0) {
+        @hit += 1;
+    } else {
+        @miss += 1;
+    }
+    delete(@hitptr[tid]);
+}
+
+interval:s:5
+{
+    printf("# progress entry=%d hit=%d miss=%d\n", @entry, @hit, @miss);
+}
+
+END
+{
+    printf("# end entry=%d hit=%d miss=%d\n", @entry, @hit, @miss);
+    clear(@hitptr);
+    clear(@entry);
+    clear(@hit);
+    clear(@miss);
+}

@@ -1,0 +1,166 @@
+#!/usr/bin/env bpftrace
+/*
+ * Path-aware openGauss cache trace.
+ *
+ * SB fields remain backward compatible with dual_cache_warmup.py:
+ *   SB,tid,relfilenode,blocknum,elapsed_ns,hit,strategy_meta
+ *
+ * Additional execution-path records:
+ *   QUERY,tid,elapsed_ns,query_id
+ * Path counters are emitted every five seconds as bpftrace map snapshots keyed
+ * by [tid, query_id].  This avoids one trace line per temporary-file syscall.
+ */
+
+BEGIN
+{
+    printf("# huawei5_path_trace target_pid=%d tracer_pid=%d format=2\n", $1, pid);
+    @sb_count = 0;
+    @sb_hit_count = 0;
+    @os_count = 0;
+    @temp_read_bytes = 0;
+    @temp_write_bytes = 0;
+    @hash_spills = 0;
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z32instr_stmt_report_debug_query_idm
+{
+    @query_id[tid] = (uint64)arg0;
+    printf("QUERY,%d,%lld,%llu\n", tid, elapsed, (uint64)arg0);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z17ReadBuffer_commonP16SMgrRelationDatacij14ReadBufferModeP24BufferAccessStrategyDataPbPK12XLogPhyBlock
+{
+    $smgr = (uint64)arg0;
+    $blocknum = (uint32)arg3;
+    $strategy = (uint64)arg5;
+    $relnode = *(uint32*)($smgr + 8);
+    $hitptr = *(uint64*)(reg("sp") + 8);
+
+    if ($relnode > 0 && $relnode < 1000000000 && $hitptr != 0) {
+        @sb_relnode[tid] = $relnode;
+        @sb_blocknum[tid] = $blocknum;
+        @sb_hitptr[tid] = $hitptr;
+        @sb_strategy_ptr[tid] = $strategy;
+        @sb_strategy_type[tid] = $strategy != 0 ? *(uint32*)$strategy : -1;
+    }
+}
+
+uretprobe:/opt/openGauss/bin/gaussdb:_Z17ReadBuffer_commonP16SMgrRelationDatacij14ReadBufferModeP24BufferAccessStrategyDataPbPK12XLogPhyBlock
+/@sb_hitptr[tid]/
+{
+    $hit = *(uint8*)((uint64)@sb_hitptr[tid]);
+    printf("SB,%d,%d,%d,%lld,%d,%llu\n",
+        tid,
+        @sb_relnode[tid],
+        @sb_blocknum[tid],
+        elapsed,
+        $hit,
+        @sb_strategy_ptr[tid] != 0
+            ? ((uint64)@sb_strategy_ptr[tid] << 4) + @sb_strategy_type[tid] + 1
+            : 0);
+    @sb_count += 1;
+    if ($hit != 0) {
+        @sb_hit_count += 1;
+    }
+
+    delete(@sb_relnode[tid]);
+    delete(@sb_blocknum[tid]);
+    delete(@sb_hitptr[tid]);
+    delete(@sb_strategy_ptr[tid]);
+    delete(@sb_strategy_type[tid]);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z11BufFileReadP7BufFilePvm
+{
+    @buf_read_active[tid] = 1;
+}
+
+uretprobe:/opt/openGauss/bin/gaussdb:_Z11BufFileReadP7BufFilePvm
+/@buf_read_active[tid]/
+{
+    $bytes = retval > 0 ? retval : 0;
+    if ($bytes > 0) {
+        @path_temp_read[tid, @query_id[tid]] += (uint64)$bytes;
+        @temp_read_bytes += (uint64)$bytes;
+    }
+    delete(@buf_read_active[tid]);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z12BufFileWriteP7BufFilePvm
+{
+    @path_temp_write[tid, @query_id[tid]] += (uint64)arg2;
+    @temp_write_bytes += (uint64)arg2;
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_ZN11HashJoinTbl11flushToDiskILb0EEEvv
+{
+    @path_hash_spill[tid, @query_id[tid]] += 1;
+    @hash_spills += 1;
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_ZN11HashJoinTbl11flushToDiskILb1EEEvv
+{
+    @path_hash_spill[tid, @query_id[tid]] += 1;
+    @hash_spills += 1;
+}
+
+tracepoint:syscalls:sys_enter_pread64 /pid == (uint64)$1/
+{
+    @path_os_read[tid, @query_id[tid]] += (uint64)args->count;
+    @os_count += 1;
+    @os_bytes += args->count;
+}
+
+interval:s:5
+{
+    printf("OS_SUM,%lld,%d,%lld\n", elapsed, @os_count, @os_bytes);
+    printf("# progress elapsed_ms=%d sb=%d sb_hit=%d os=%d os_bytes=%lld\n",
+        elapsed / 1000000,
+        @sb_count,
+        @sb_hit_count,
+        @os_count,
+        @os_bytes);
+    printf("# path temp_read=%lld temp_write=%lld hash_spills=%d\n",
+        @temp_read_bytes,
+        @temp_write_bytes,
+        @hash_spills);
+    print(@path_temp_read);
+    print(@path_temp_write);
+    print(@path_hash_spill);
+    print(@path_os_read);
+    clear(@path_temp_read);
+    clear(@path_temp_write);
+    clear(@path_hash_spill);
+    clear(@path_os_read);
+}
+
+END
+{
+    printf("OS_SUM,%lld,%d,%lld\n", elapsed, @os_count, @os_bytes);
+    printf("# end sb_total=%d sb_hit=%d os_total=%d os_bytes=%lld\n",
+        @sb_count,
+        @sb_hit_count,
+        @os_count,
+        @os_bytes);
+    printf("# path_end temp_read=%lld temp_write=%lld hash_spills=%d\n",
+        @temp_read_bytes,
+        @temp_write_bytes,
+        @hash_spills);
+    print(@path_temp_read);
+    print(@path_temp_write);
+    print(@path_hash_spill);
+    print(@path_os_read);
+    clear(@sb_relnode);
+    clear(@sb_blocknum);
+    clear(@sb_hitptr);
+    clear(@sb_strategy_ptr);
+    clear(@sb_strategy_type);
+    clear(@query_id);
+    clear(@buf_read_active);
+    clear(@path_temp_read);
+    clear(@path_temp_write);
+    clear(@path_hash_spill);
+    clear(@path_os_read);
+    clear(@os_count);
+    clear(@os_bytes);
+}

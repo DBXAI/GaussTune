@@ -1,0 +1,42 @@
+/* Low-perturbation TP/AP block I/O probe for Huawei6.
+ *
+ * The previous diagnostic probe printed every completion.  At thousands of
+ * IOPS that userspace printf path changes the latency being measured.  This
+ * version keeps count, bytes, and latency sums in kernel maps and emits only
+ * once per second.  Invoke: bpftrace lwtid_block_latency_aggregate.bt DEV_T
+ */
+
+BEGIN
+{
+    printf("HUAWEI6_AGGREGATE_V1\n");
+}
+
+tracepoint:block:block_rq_issue
+/args->dev == $1/
+{
+    @started[args->sector, args->nr_sector] = nsecs;
+    @issuer[args->sector, args->nr_sector] = tid;
+}
+
+tracepoint:block:block_rq_complete
+/args->dev == $1 && @started[args->sector, args->nr_sector]/
+{
+    $tid = @issuer[args->sector, args->nr_sector];
+    $latency_us = (nsecs - @started[args->sector, args->nr_sector]) / 1000;
+    @count[$tid] = count();
+    @latency_us[$tid] = sum($latency_us);
+    @bytes[$tid] = sum(args->nr_sector * 512);
+    delete(@started[args->sector, args->nr_sector]);
+    delete(@issuer[args->sector, args->nr_sector]);
+}
+
+interval:s:1
+{
+    printf("WINDOW,%llu\n", nsecs);
+    print(@count);
+    print(@latency_us);
+    print(@bytes);
+    clear(@count);
+    clear(@latency_us);
+    clear(@bytes);
+}

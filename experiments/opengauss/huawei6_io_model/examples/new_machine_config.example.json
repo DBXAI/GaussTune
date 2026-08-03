@@ -1,0 +1,75 @@
+{
+  "schema": "huawei6.portable-config/v1",
+  "workspace": "/var/lib/huawei6-model/run_001",
+  "device": "nvme0n1",
+  "database": {
+    "gausshome": "/opt/openGauss",
+    "data_dir": "/opt/openGauss/data",
+    "os_user": "omm",
+    "health_database": "postgres",
+    "gsql": "/opt/openGauss/bin/gsql",
+    "gs_ctl": "/opt/openGauss/bin/gs_ctl",
+    "library_path": "/opt/openGauss/lib:/opt/openGauss/lib/postgresql"
+  },
+  "storage_probe": {
+    "file_dir": "/var/lib/huawei6-model/fileio",
+    "file_num": 8,
+    "file_total_size": "4G",
+    "minimum_free_gib": 8,
+    "seconds": 15,
+    "repeats": 2,
+    "tp_cpus": "0-6",
+    "ap_cpus": "7",
+    "ap_block_kib": 128,
+    "drop_caches": true
+  },
+  "tp_anchor": {
+    "terminals": 8,
+    "application_prefix": "sysbench_tp_portable",
+    "command": [
+      "/usr/bin/sysbench",
+      "/path/to/your_tp_workload.lua",
+      "--db-driver=pgsql",
+      "--pgsql-host=127.0.0.1",
+      "--pgsql-port=5432",
+      "--pgsql-user=benchmark_user",
+      "--pgsql-password=${HUAWEI6_TP_PASSWORD}",
+      "--pgsql-db=benchmark_database",
+      "--db-ps-mode=disable",
+      "--threads={terminals}",
+      "--rate=0",
+      "--time={seconds}",
+      "--report-interval=1",
+      "--percentile=95",
+      "run"
+    ],
+    "seconds": 45,
+    "pre_start": 8,
+    "pre_end": 16,
+    "injection_start": 18,
+    "injection_seconds": 22,
+    "post_warmup": 5,
+    "post_tail": 2,
+    "anchor_depths": [6, 12, 24],
+    "anchor_repeats": 2,
+    "holdout_depths": [9, 18],
+    "holdout_repeats": 2
+  },
+  "validation": {
+    "enabled": true
+  },
+  "prediction": {
+    "enabled": true
+  },
+  "candidate_source": {
+    "path": "/path/to/candidates.csv",
+    "command": [
+      "/path/to/trace_operator_replay",
+      "--output",
+      "{output}"
+    ]
+  },
+  "search": {
+    "path_tolerance": 0.03
+  }
+}

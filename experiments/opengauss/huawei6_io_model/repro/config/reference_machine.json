@@ -1,0 +1,10 @@
+{
+  "schema": "huawei6.reference-machine/v1",
+  "kernel": "Linux 5.4.0-216-generic x86_64",
+  "cpu": {"logical_cpus": 16, "cores": 8, "threads_per_core": 2, "numa_nodes": 1, "model": "Intel Xeon Platinum"},
+  "memory_gib": 30,
+  "swap_gib": 0,
+  "storage": {"device": "nvme0n1", "model": "Alibaba Cloud Elastic Block Storage", "logical_block_bytes": 512},
+  "opengauss": {"version": "5.1.0 build b5a8d5b0", "gaussdb_sha256": "d317f2f755c9dd06674e9c064dcbced57a5b77301abe4590321fb7f3f1be6b0c", "gausshome": "/opt/openGauss", "data_dir": "/opt/openGauss/data"},
+  "benchmark": {"tp_database": "h5_tpcc", "tp_tables": 16, "tp_rows_per_table": 1000000, "ap_database": "h5_tpch", "tpch_scale_factor": 85}
+}

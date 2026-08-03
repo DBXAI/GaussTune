@@ -1,0 +1,13 @@
+{
+  "mode": "tp_only_reference_calibration_no_ap_candidate",
+  "source": "results/five_stage_io_validation_20260731/baseline_sb8192_tp_only",
+  "stage": "stage5_tp_surge",
+  "steady_windows": 31,
+  "reference_sb_mb": 8192,
+  "mean_tp_physical_iops": 403.354839,
+  "mean_tp_tps": 3882.637419,
+  "physical_iops_per_transaction": 0.103886816,
+  "replay_tp_sb_miss_fraction": 0.00449205,
+  "tp_logical_pages_per_transaction": 23.129682,
+  "note": "Calibrates only the TP miss-to-I/O scale from an AP-free baseline. It contains no AP candidate TPS, work_mem, or BPF candidate features."
+}

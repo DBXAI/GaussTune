@@ -1,0 +1,71 @@
+#!/usr/bin/env bpftrace
+/*
+ * Summarize BufferAccessStrategyData passed to openGauss ReadBuffer_common.
+ *
+ * BufferAccessStrategyData layout from openGauss bufmgr.h:
+ *   int  btype;                offset 0
+ *   int  ring_size;            offset 4
+ *   int  current;              offset 8
+ *   int  flush_rate;           offset 12
+ *   bool current_was_in_ring;  offset 16
+ *
+ * Usage:
+ *   bpftrace trace_strategy_summary.bt
+ */
+
+BEGIN
+{
+    printf("# strategy_summary tracer_pid=%d\n", pid);
+    @total = 0;
+    @strategy_null = 0;
+    @strategy_nonnull = 0;
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z17ReadBuffer_commonP16SMgrRelationDatacij14ReadBufferModeP24BufferAccessStrategyDataPbPK12XLogPhyBlock
+{
+    @total += 1;
+    $strategy = (uint64)arg5;
+
+    if ($strategy == 0) {
+        @strategy_null += 1;
+    } else {
+        @strategy_nonnull += 1;
+        $btype = *(int32*)$strategy;
+        $ring_size = *(int32*)($strategy + 4);
+        $current = *(int32*)($strategy + 8);
+        $flush_rate = *(int32*)($strategy + 12);
+        $was_in_ring = *(uint8*)($strategy + 16);
+
+        @by_type_ring[$btype, $ring_size] += 1;
+        @current_was_in_ring[$was_in_ring] += 1;
+        @flush_rate[$flush_rate] += 1;
+        @current_min = min($current);
+        @current_max = max($current);
+    }
+}
+
+interval:s:5
+{
+    printf("# progress total=%d null=%d nonnull=%d\n",
+        @total, @strategy_null, @strategy_nonnull);
+    print(@by_type_ring);
+}
+
+END
+{
+    printf("# end total=%d null=%d nonnull=%d\n",
+        @total, @strategy_null, @strategy_nonnull);
+    print(@by_type_ring);
+    print(@current_was_in_ring);
+    print(@flush_rate);
+    print(@current_min);
+    print(@current_max);
+    clear(@total);
+    clear(@strategy_null);
+    clear(@strategy_nonnull);
+    clear(@by_type_ring);
+    clear(@current_was_in_ring);
+    clear(@flush_rate);
+    clear(@current_min);
+    clear(@current_max);
+}

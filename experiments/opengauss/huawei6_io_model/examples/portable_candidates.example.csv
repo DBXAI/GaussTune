@@ -1,0 +1,5 @@
+candidate_id,stage,sb_mb,work_mem_mb,ap_cap,tp_terminals,tp_baseline_tps,tp_baseline_await_ms,tp_baseline_io_per_tx,tp_critical_io_per_tx,tp_block_kib,tp_issue_path,ap_queue_depth,ap_block_kib,ap_io_pattern,extra_non_io_ms,offered_tps,tps_slo,memory_safe,plan_supported,ap_utility
+s1_a,stage1,4096,1024,1,8,5600,1.37,0.95,0.95,8,opengauss_buffered_blocking_read,6,128,random_read,0,6000,5320,true,true,0.70
+s1_b,stage1,2048,1536,2,8,5450,1.42,1.05,1.05,8,opengauss_buffered_blocking_read,9,128,random_read,0,6000,5177,true,true,0.92
+s2_a,stage2,2048,1024,2,8,5450,1.42,1.05,1.05,8,opengauss_buffered_blocking_read,12,128,random_read,0,6000,5177,true,true,0.85
+s2_b,stage2,1024,1536,2,8,5100,1.55,1.25,1.25,8,opengauss_buffered_blocking_read,9,128,random_read,0,6000,4845,true,true,0.96

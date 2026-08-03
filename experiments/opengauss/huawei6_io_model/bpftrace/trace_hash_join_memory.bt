@@ -1,0 +1,206 @@
+#!/usr/bin/env bpftrace
+
+/*
+ * openGauss 5.1.0 (b5a8d5b0) row-engine Hash Join memory trace.
+ * Offsets are generated from bin/hash_join_layout.c and checked by the runner.
+ */
+
+#define HJ_OFF_nbuckets                 0
+#define HJ_OFF_nbuckets_optimal         20
+#define HJ_OFF_skewEnabled              29
+#define HJ_OFF_skewBucketLen            40
+#define HJ_OFF_nSkewBuckets             44
+#define HJ_OFF_nbatch                   56
+#define HJ_OFF_curbatch                 60
+#define HJ_OFF_nbatch_original          64
+#define HJ_OFF_totalTuples              80
+#define HJ_OFF_skewTuples               88
+#define HJ_OFF_spaceUsed                136
+#define HJ_OFF_spaceAllowed             144
+#define HJ_OFF_spacePeak                152
+#define HJ_OFF_spaceUsedSkew            160
+#define HJ_OFF_width_count              200
+#define HJ_OFF_width_sum_or_avg         208
+#define HJ_OFF_causedBySysRes           216
+#define HJ_OFF_maxMem                   224
+#define HJ_OFF_spreadNum                232
+#define HJ_OFF_spill_size               240
+#define HJ_OFF_spill_count              248
+
+#define PLAN_OFF_plan_rows              32
+#define PLAN_OFF_plan_width             48
+#define PLAN_OFF_dop                    52
+#define PLAN_OFF_lefttree               120
+
+BEGIN
+{
+    printf("# hash_join_memory_trace format=1 target_pid=%d tracer_pid=%d\n", $1, pid);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z32instr_stmt_report_debug_query_idm
+{
+    @query_id[tid] = (uint64)arg0;
+    printf("QUERY_TS,HASH_JOIN,%d,%lld,%llu\n", tid, elapsed, @query_id[tid]);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z23ExecChooseHashTableSizedibPiS_S_ibP9OpMemInfo
+{
+    /* The first source argument is a double in xmm0. Integer arguments start at rdi. */
+    @choose_useskew[tid] = (int32)arg1;
+    @choose_numskew_ptr[tid] = (uint64)arg4;
+    @choose_workmem_kb[tid] = (int32)arg5;
+}
+
+uretprobe:/opt/openGauss/bin/gaussdb:_Z23ExecChooseHashTableSizedibPiS_S_ibP9OpMemInfo
+/@choose_numskew_ptr[tid]/
+{
+    $ptr = (uint64)@choose_numskew_ptr[tid];
+    @choose_numskew[tid] = $ptr != 0 ? *(int32*)$ptr : 0;
+    delete(@choose_numskew_ptr[tid]);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z19ExecHashTableCreateP4HashP4ListbS2_
+{
+    @create_query[tid] = @query_id[tid];
+    @create_hash_node[tid] = (uint64)arg0;
+}
+
+uretprobe:/opt/openGauss/bin/gaussdb:_Z19ExecHashTableCreateP4HashP4ListbS2_
+/@create_query[tid]/
+{
+    $ht = (uint64)retval;
+    if ($ht != 0) {
+        @table_query[$ht] = @create_query[tid];
+        @active_table[tid] = $ht;
+        printf("HASH_CREATE,%d,%lld,%llu,%llu\n",
+            tid,
+            elapsed,
+            $ht,
+            @create_query[tid]);
+        printf("HASH_CREATE_MEM,%llu,%d,%d,%lld,%lld\n",
+            $ht,
+            *(int32*)($ht + HJ_OFF_nbuckets),
+            *(int32*)($ht + HJ_OFF_nbatch),
+            *(int64*)($ht + HJ_OFF_spaceAllowed),
+            *(int64*)($ht + HJ_OFF_maxMem));
+        printf("HASH_CREATE_SKEW,%llu,%d,%d,%d\n",
+            $ht,
+            *(uint8*)($ht + HJ_OFF_skewEnabled),
+            *(int32*)($ht + HJ_OFF_skewBucketLen),
+            *(int32*)($ht + HJ_OFF_nSkewBuckets));
+        printf("HASH_CREATE_PLAN,%llu,%d,%d,%d\n",
+            $ht,
+            (int32)@choose_useskew[tid],
+            (int32)@choose_numskew[tid],
+            (int32)@choose_workmem_kb[tid]);
+        $node = (uint64)@create_hash_node[tid];
+        $outer = $node != 0 ? *(uint64*)($node + PLAN_OFF_lefttree) : 0;
+        if ($outer != 0) {
+            printf("HASH_CREATE_EST,%llu,%llu,%d,%d\n",
+                $ht,
+                *(uint64*)($outer + PLAN_OFF_plan_rows),
+                *(int32*)($outer + PLAN_OFF_plan_width),
+                *(int32*)($node + PLAN_OFF_dop));
+        }
+    }
+    delete(@create_query[tid]);
+    delete(@create_hash_node[tid]);
+    delete(@choose_useskew[tid]);
+    delete(@choose_numskew[tid]);
+    delete(@choose_workmem_kb[tid]);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z19ExecHashTableInsertP17HashJoinTableDataP14TupleTableSlotjiiP15Instrumentation
+{
+    $ht = (uint64)arg0;
+    @insert_table[tid] = $ht;
+    @insert_nbatch[tid] = *(int32*)($ht + HJ_OFF_nbatch);
+    @insert_plan_id[tid] = (int32)arg3;
+}
+
+uretprobe:/opt/openGauss/bin/gaussdb:_Z19ExecHashTableInsertP17HashJoinTableDataP14TupleTableSlotjiiP15Instrumentation
+/@insert_table[tid]/
+{
+    $ht = (uint64)@insert_table[tid];
+    $before = (int32)@insert_nbatch[tid];
+    $after = *(int32*)($ht + HJ_OFF_nbatch);
+    if ($after > $before) {
+        printf("HASH_GROW,%d,%lld,%llu,%llu,%d\n",
+            tid,
+            elapsed,
+            $ht,
+            @table_query[$ht],
+            (int32)@insert_plan_id[tid]);
+        printf("HASH_GROW_STATE,%llu,%d,%d,%d,%lld\n",
+            $ht,
+            $before,
+            $after,
+            *(int32*)($ht + HJ_OFF_nbuckets_optimal),
+            *(int64*)($ht + HJ_OFF_spaceUsed));
+        printf("HASH_GROW_MEM,%llu,%lld,%lld,%lld\n",
+            $ht,
+            *(int64*)($ht + HJ_OFF_spaceAllowed),
+            *(int64*)($ht + HJ_OFF_width_count),
+            *(int64*)($ht + HJ_OFF_width_sum_or_avg));
+    }
+    delete(@insert_table[tid]);
+    delete(@insert_nbatch[tid]);
+    delete(@insert_plan_id[tid]);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z20ExecHashTableDestroyP17HashJoinTableData
+{
+    $ht = (uint64)arg0;
+    $spill_ptr = *(uint64*)($ht + HJ_OFF_spill_size);
+    $spill_bytes = $spill_ptr != 0 ? *(int64*)$spill_ptr : 0;
+    printf("HASH_END,%d,%lld,%llu,%llu\n",
+        tid,
+        elapsed,
+        $ht,
+        @table_query[$ht]);
+    printf("HASH_END_SHAPE,%llu,%d,%d,%d,%d\n",
+        $ht,
+        *(int32*)($ht + HJ_OFF_nbuckets),
+        *(int32*)($ht + HJ_OFF_nbuckets_optimal),
+        *(int32*)($ht + HJ_OFF_nbatch),
+        *(int32*)($ht + HJ_OFF_nbatch_original));
+    printf("HASH_END_ROWS,%llu,%llu,%llu,%lld,%lld\n",
+        $ht,
+        *(uint64*)($ht + HJ_OFF_totalTuples),
+        *(uint64*)($ht + HJ_OFF_skewTuples),
+        *(int64*)($ht + HJ_OFF_width_count),
+        *(int64*)($ht + HJ_OFF_width_sum_or_avg));
+    printf("HASH_END_MEM1,%llu,%lld,%lld,%lld,%lld\n",
+        $ht,
+        *(int64*)($ht + HJ_OFF_spaceUsed),
+        *(int64*)($ht + HJ_OFF_spaceAllowed),
+        *(int64*)($ht + HJ_OFF_spacePeak),
+        *(int64*)($ht + HJ_OFF_spaceUsedSkew));
+    printf("HASH_END_MEM2,%llu,%d,%lld,%d\n",
+        $ht,
+        *(uint8*)($ht + HJ_OFF_causedBySysRes),
+        *(int64*)($ht + HJ_OFF_maxMem),
+        *(int32*)($ht + HJ_OFF_spreadNum));
+    printf("HASH_END_SPILL,%llu,%lld,%llu\n",
+        $ht,
+        $spill_bytes,
+        *(uint64*)($ht + HJ_OFF_spill_count));
+    delete(@table_query[$ht]);
+    delete(@active_table[tid]);
+}
+
+END
+{
+    clear(@query_id);
+    clear(@choose_useskew);
+    clear(@choose_numskew_ptr);
+    clear(@choose_numskew);
+    clear(@choose_workmem_kb);
+    clear(@create_query);
+    clear(@create_hash_node);
+    clear(@table_query);
+    clear(@active_table);
+    clear(@insert_table);
+    clear(@insert_nbatch);
+    clear(@insert_plan_id);
+}

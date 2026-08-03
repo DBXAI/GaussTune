@@ -1,0 +1,26 @@
+{
+  "parameters": {
+    "read_service_ms": 0.579100145137881,
+    "write_service_ms": 0.5,
+    "effective_queues": 3,
+    "tp_blocks_per_io": 2.1507904380631264,
+    "ap_read_blocks_per_io": 557.1050590118645,
+    "ap_temp_write_bytes_per_io": 131072.0,
+    "tx_base_ms": 30.02784971729209,
+    "tp_io_delay_weight": 0.06000437598298634
+  },
+  "metrics": {
+    "train": {
+      "windows": 36,
+      "await_mae_ms": 8.946247777777778,
+      "tps_mae": 123.67568716666665,
+      "tps_mape_pct": 3.3661837786896505
+    },
+    "holdout": {
+      "windows": 13,
+      "await_mae_ms": 0.4799406923076923,
+      "tps_mae": 79.72461538461539,
+      "tps_mape_pct": 2.0287634685935285
+    }
+  }
+}

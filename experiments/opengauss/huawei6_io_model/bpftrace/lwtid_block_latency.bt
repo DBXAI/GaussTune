@@ -1,0 +1,32 @@
+/* Request-level NVMe latency probe for Huawei6.
+ *
+ * Invoke with the raw dev_t from block_rq_issue, for example:
+ * bpftrace lwtid_block_latency.bt 271581184
+ *
+ * Completion tracepoints do not retain the issuing task, so the issue TID is
+ * keyed by sector/nr_sector and emitted at completion.  The offline mapper
+ * joins the TID to pg_thread_wait_status.lwtid snapshots.
+ */
+
+BEGIN
+{
+    printf("complete_ns,issue_tid,bytes,latency_us,rwbs\n");
+}
+
+tracepoint:block:block_rq_issue
+/args->dev == $1/
+{
+    @started[args->sector, args->nr_sector] = nsecs;
+    @issuer[args->sector, args->nr_sector] = tid;
+}
+
+tracepoint:block:block_rq_complete
+/args->dev == $1 && @started[args->sector, args->nr_sector]/
+{
+    printf("%llu,%d,%u,%llu,%s\n", nsecs,
+           @issuer[args->sector, args->nr_sector], args->nr_sector * 512,
+           (nsecs - @started[args->sector, args->nr_sector]) / 1000,
+           args->rwbs);
+    delete(@started[args->sector, args->nr_sector]);
+    delete(@issuer[args->sector, args->nr_sector]);
+}

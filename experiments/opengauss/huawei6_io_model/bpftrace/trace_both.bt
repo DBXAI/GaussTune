@@ -1,0 +1,96 @@
+#!/usr/bin/env bpftrace
+/*
+ * Huawei4 dual-layer trace for openGauss.
+ *
+ * SB lines:
+ *   SB,pid,relfilenode,blocknum,elapsed_ns,shared_buffer_hit,strategy_meta
+ *
+ * strategy_meta is 0 when BufferAccessStrategy is NULL. Otherwise:
+ *   strategy_meta = (strategy_ptr << 4) + (strategy_type + 1)
+ * The model reads ring_pages from the configured bulk_read_ring_size fallback.
+ *
+ * OS summary lines:
+ *   OS_SUM,elapsed_ns,count,bytes
+ *
+ * Usage:
+ *   GAUSS_PID=$(pgrep -x gaussdb | head -1)
+ *   bpftrace trace_both.bt $GAUSS_PID > traces/run.log
+ */
+
+BEGIN
+{
+    printf("# huawei4_trace target_pid=%d tracer_pid=%d\n", $1, pid);
+    @sb_count = 0;
+    @sb_hit_count = 0;
+    @os_count = 0;
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z17ReadBuffer_commonP16SMgrRelationDatacij14ReadBufferModeP24BufferAccessStrategyDataPbPK12XLogPhyBlock
+{
+    $smgr = (uint64)arg0;
+    $blocknum = (uint32)arg3;
+    $strategy = (uint64)arg5;
+    $relnode = *(uint32*)($smgr + 8);
+    $hitptr = *(uint64*)(reg("sp") + 8);
+
+    if ($relnode > 0 && $relnode < 1000000000 && $hitptr != 0) {
+        @sb_relnode[tid] = $relnode;
+        @sb_blocknum[tid] = $blocknum;
+        @sb_hitptr[tid] = $hitptr;
+        if ($strategy != 0) {
+            @sb_strategy_meta[tid] = ($strategy << 4) + (*(uint32*)$strategy) + 1;
+        } else {
+            @sb_strategy_meta[tid] = 0;
+        }
+    }
+}
+
+uretprobe:/opt/openGauss/bin/gaussdb:_Z17ReadBuffer_commonP16SMgrRelationDatacij14ReadBufferModeP24BufferAccessStrategyDataPbPK12XLogPhyBlock
+/@sb_hitptr[tid]/
+{
+    $hitptr = (uint64)@sb_hitptr[tid];
+    $hit = *(uint8*)$hitptr;
+
+    printf("SB,%d,%d,%d,%lld,%d,%llu\n",
+        pid,
+        @sb_relnode[tid],
+        @sb_blocknum[tid],
+        elapsed,
+        $hit,
+        @sb_strategy_meta[tid]);
+    @sb_count += 1;
+    if ($hit != 0) {
+        @sb_hit_count += 1;
+    }
+
+    delete(@sb_relnode[tid]);
+    delete(@sb_blocknum[tid]);
+    delete(@sb_hitptr[tid]);
+    delete(@sb_strategy_meta[tid]);
+}
+
+tracepoint:syscalls:sys_enter_pread64 /pid == (uint64)$1/
+{
+    @os_count += 1;
+    @os_bytes += args->count;
+}
+
+interval:s:1
+{
+    printf("OS_SUM,%lld,%d,%lld\n", elapsed, @os_count, @os_bytes);
+    printf("# progress elapsed_ms=%d sb=%d sb_hit=%d os=%d os_bytes=%lld\n",
+        elapsed / 1000000, @sb_count, @sb_hit_count, @os_count, @os_bytes);
+}
+
+END
+{
+    printf("OS_SUM,%lld,%d,%lld\n", elapsed, @os_count, @os_bytes);
+    printf("# end sb_total=%d sb_hit=%d os_total=%d os_bytes=%lld\n",
+        @sb_count, @sb_hit_count, @os_count, @os_bytes);
+    clear(@sb_relnode);
+    clear(@sb_blocknum);
+    clear(@sb_hitptr);
+    clear(@sb_strategy_meta);
+    clear(@os_count);
+    clear(@os_bytes);
+}
