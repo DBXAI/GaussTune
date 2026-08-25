@@ -1,0 +1,38 @@
+{
+  "schema": "huawei7.reproduction-contract/v1",
+  "operating_system": "Ubuntu 20.04.6 LTS",
+  "kernel_prefix": "5.4.",
+  "cpu": {"physical_cores": 8, "logical_cpus": 16},
+  "memory_gib_range": [29, 31],
+  "swap_bytes": 0,
+  "storage_model_contains": "Elastic Block Storage",
+  "software": {
+    "opengauss_version": "5.1.0",
+    "opengauss_source_commit": "b5a8d5b056bbe660a6315cb424253717fb32cd04",
+    "gaussdb_sha256": "d317f2f755c9dd06674e9c064dcbced57a5b77301abe4590321fb7f3f1be6b0c",
+    "opengauss_jdbc_sha256": "8673d004230ab3fd947ff8850147c42a9ecf575fdba0a958b3d4253152499956",
+    "benchbase_commit": "33c00473807ebd49304d114a6d769d2d2b2bbb34",
+    "benchbase_postgres_jar_sha256": "df81d081842ad9c551c0a585cd718147abe22ffd997832fa09df64e75806ee10",
+    "tpch_dbgen_commit": "32f1c1b92d1664dba542e927d23d86ffa57aa253",
+    "sysbench_version": "1.0.18",
+    "fio_version": "fio-3.16",
+    "bpftrace_version": "v0.9.4"
+  },
+  "datasets": {
+    "ap": {
+      "generator": "TPC-H dbgen",
+      "scale_factor": 60,
+      "database_bytes_range_decimal_gb": [85, 100],
+      "largest_table_bytes_range_decimal_gb": [55, 63]
+    },
+    "sysbench": {
+      "tables": 16,
+      "rows_per_table": 4000000,
+      "database_bytes_range_decimal_gb": [18, 22]
+    },
+    "benchbase_tpcc": {
+      "warehouses": 125,
+      "database_bytes_range_decimal_gb": [18, 22]
+    }
+  }
+}

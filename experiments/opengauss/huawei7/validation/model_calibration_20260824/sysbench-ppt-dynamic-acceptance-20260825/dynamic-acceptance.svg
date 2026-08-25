@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+<rect width="100%%" height="100%%" fill="#ffffff"/>
+<text x="40.0" y="42.0" font-family="Arial,sans-serif" font-size="24" font-weight="bold" fill="#1f2933">Sysbench PPT 五阶段动态内存轨迹（planned replay）</text>
+<text x="40.0" y="68.0" font-family="Arial,sans-serif" font-size="14" font-weight="normal" fill="#9b2c2c">当前不是 runtime acceptance；红线表示验收能力尚未由实际运行证明</text>
+<line x1="90" y1="120" x2="1140" y2="120" stroke="#d9e2ec"/>
+<line x1="90" y1="320" x2="1140" y2="320" stroke="#d9e2ec"/>
+<line x1="90" y1="410" x2="1140" y2="410" stroke="#d9e2ec"/>
+<line x1="90" y1="590" x2="1140" y2="590" stroke="#d9e2ec"/>
+<text x="18.0" y="125.0" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1f2933">SB (MB)</text>
+<text x="18.0" y="415.0" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1f2933">query-level WM total (MB)</text>
+<polyline points="90.0,300.0 352.5,120.0 615.0,160.0 877.5,160.0 1140.0,160.0" fill="none" stroke="#7b8794" stroke-width="4"/>
+<polyline points="90.0,120.0 352.5,160.0 615.0,160.0 877.5,160.0 1140.0,120.0" fill="none" stroke="#1565c0" stroke-width="4"/>
+<circle cx="90.0" cy="300.0" r="6" fill="#7b8794"/><circle cx="352.5" cy="120.0" r="6" fill="#7b8794"/><circle cx="615.0" cy="160.0" r="6" fill="#7b8794"/><circle cx="877.5" cy="160.0" r="6" fill="#7b8794"/><circle cx="1140.0" cy="160.0" r="6" fill="#7b8794"/>
+<circle cx="90.0" cy="120.0" r="6" fill="#1565c0"/><circle cx="352.5" cy="160.0" r="6" fill="#1565c0"/><circle cx="615.0" cy="160.0" r="6" fill="#1565c0"/><circle cx="877.5" cy="160.0" r="6" fill="#1565c0"/><circle cx="1140.0" cy="120.0" r="6" fill="#1565c0"/>
+<polyline points="90.0,588.5 352.5,549.5 615.0,410.0 877.5,576.5 1140.0,578.0" fill="none" stroke="#d97706" stroke-width="4"/>
+<polyline points="90.0,551.0 352.5,413.0 615.0,578.0 877.5,575.0 1140.0,578.0" fill="none" stroke="#059669" stroke-width="4"/>
+<circle cx="90.0" cy="588.5" r="6" fill="#d97706"/><circle cx="352.5" cy="549.5" r="6" fill="#d97706"/><circle cx="615.0" cy="410.0" r="6" fill="#d97706"/><circle cx="877.5" cy="576.5" r="6" fill="#d97706"/><circle cx="1140.0" cy="578.0" r="6" fill="#d97706"/>
+<circle cx="90.0" cy="551.0" r="6" fill="#059669"/><circle cx="352.5" cy="413.0" r="6" fill="#059669"/><circle cx="615.0" cy="578.0" r="6" fill="#059669"/><circle cx="877.5" cy="575.0" r="6" fill="#059669"/><circle cx="1140.0" cy="578.0" r="6" fill="#059669"/>
+<line x1="90" y1="350" x2="1140" y2="350" stroke="#c53030" stroke-width="2" stroke-dasharray="7,5"/>
+<text x="90.0" y="690.0" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1f2933">S1→S2→S3→S4→S5</text>
+<text x="760.0" y="95.0" font-family="Arial,sans-serif" font-size="14" font-weight="normal" fill="#7b8794">SB before</text>
+<line x1="830" y1="90" x2="870" y2="90" stroke="#7b8794" stroke-width="4"/>
+<text x="900.0" y="95.0" font-family="Arial,sans-serif" font-size="14" font-weight="normal" fill="#1565c0">SB after</text>
+<line x1="965" y1="90" x2="1005" y2="90" stroke="#1565c0" stroke-width="4"/>
+<text x="760.0" y="385.0" font-family="Arial,sans-serif" font-size="14" font-weight="normal" fill="#d97706">WM before</text>
+<line x1="850" y1="380" x2="890" y2="380" stroke="#d97706" stroke-width="4"/>
+<text x="920.0" y="385.0" font-family="Arial,sans-serif" font-size="14" font-weight="normal" fill="#059669">WM after</text>
+<line x1="1005" y1="380" x2="1045" y2="380" stroke="#059669" stroke-width="4"/>
+<text x="76.0" y="620.0" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1f2933">S1</text>
+<text x="72.0" y="640.0" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#9b2c2c">Q1/0</text>
+<text x="338.5" y="620.0" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1f2933">S2</text>
+<text x="334.5" y="640.0" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#9b2c2c">Q2/0</text>
+<text x="601.0" y="620.0" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1f2933">S3</text>
+<text x="597.0" y="640.0" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#9b2c2c">Q4/0</text>
+<text x="863.5" y="620.0" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1f2933">S4</text>
+<text x="859.5" y="640.0" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#9b2c2c">Q4/1</text>
+<text x="1126.0" y="620.0" font-family="Arial,sans-serif" font-size="16" font-weight="bold" fill="#1f2933">S5</text>
+<text x="1122.0" y="640.0" font-family="Arial,sans-serif" font-size="12" font-weight="normal" fill="#9b2c2c">Q3/1</text>
+</svg>

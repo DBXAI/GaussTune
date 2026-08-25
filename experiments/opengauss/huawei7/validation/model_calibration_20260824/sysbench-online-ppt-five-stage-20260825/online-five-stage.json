@@ -1,0 +1,674 @@
+{
+  "schema": "huawei7.online-sysbench-ppt-five-stage/v1",
+  "trajectory": {
+    "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-ppt-dynamic-acceptance-20260825/dynamic-acceptance.json",
+    "sha256": "cbf75cda7c5f6772020e66aa250f4eb87c24619de0180816f2f8ca992f37038f"
+  },
+  "runtime_config": {
+    "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/current_dataset/stage_runtime.validation.json",
+    "sha256": "934a5d383d2abbefb846429e6bfc07c08b7aa97a1f28e0642b0fc26951be3a60"
+  },
+  "startup_shared_buffers_mb": 5120,
+  "initial_target_mb": 512,
+  "stage_seconds": 20,
+  "planned_stages": [
+    {
+      "stage": "S1",
+      "shared_buffers_before_mb": 512,
+      "shared_buffers_after_mb": 5120,
+      "work_mem_before": [
+        [
+          18,
+          32
+        ]
+      ],
+      "work_mem_after": [
+        [
+          18,
+          832
+        ]
+      ],
+      "requested_ap_queries": [
+        18
+      ],
+      "admitted_ap_queries": [
+        18
+      ],
+      "queued_ap_queries": []
+    },
+    {
+      "stage": "S2",
+      "shared_buffers_before_mb": 5120,
+      "shared_buffers_after_mb": 4096,
+      "work_mem_before": [
+        [
+          18,
+          832
+        ],
+        [
+          21,
+          32
+        ]
+      ],
+      "work_mem_after": [
+        [
+          18,
+          832
+        ],
+        [
+          21,
+          2944
+        ]
+      ],
+      "requested_ap_queries": [
+        18,
+        21
+      ],
+      "admitted_ap_queries": [
+        18,
+        21
+      ],
+      "queued_ap_queries": []
+    },
+    {
+      "stage": "S3",
+      "shared_buffers_before_mb": 4096,
+      "shared_buffers_after_mb": 4096,
+      "work_mem_before": [
+        [
+          9,
+          32
+        ],
+        [
+          13,
+          32
+        ],
+        [
+          18,
+          832
+        ],
+        [
+          21,
+          2944
+        ]
+      ],
+      "work_mem_after": [
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "requested_ap_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "admitted_ap_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "queued_ap_queries": []
+    },
+    {
+      "stage": "S4",
+      "shared_buffers_before_mb": 4096,
+      "shared_buffers_after_mb": 4096,
+      "work_mem_before": [
+        [
+          2,
+          32
+        ],
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_after": [
+        [
+          2,
+          64
+        ],
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "requested_ap_queries": [
+        2,
+        9,
+        13,
+        18,
+        21
+      ],
+      "admitted_ap_queries": [
+        2,
+        9,
+        13,
+        18
+      ],
+      "queued_ap_queries": [
+        21
+      ]
+    },
+    {
+      "stage": "S5",
+      "shared_buffers_before_mb": 4096,
+      "shared_buffers_after_mb": 5120,
+      "work_mem_before": [
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_after": [
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "requested_ap_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "admitted_ap_queries": [
+        9,
+        13,
+        18
+      ],
+      "queued_ap_queries": [
+        21
+      ]
+    }
+  ],
+  "before": {
+    "shared_buffers": "5GB",
+    "shared_buffers_target": "5GB",
+    "resize_granule": "256MB",
+    "resize_interval": "1s"
+  },
+  "initial_resize": {
+    "requested_target_mb": 512,
+    "before_target_mb": 5120.0,
+    "commit": {
+      "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-25_142859.log",
+      "offset": 94103,
+      "buffers": 65536,
+      "released_bytes": 268431360,
+      "line": 551
+    },
+    "after": {
+      "shared_buffers": "5GB",
+      "shared_buffers_target": "512MB",
+      "resize_granule": "256MB",
+      "resize_interval": "1s"
+    }
+  },
+  "stages": [
+    {
+      "stage": "S1",
+      "shared_buffers_before_mb": 512,
+      "shared_buffers_after_mb": 5120,
+      "target_transition": {
+        "requested_target_mb": 5120,
+        "before_target_mb": 512.0,
+        "commit": {
+          "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-25_142859.log",
+          "offset": 95128,
+          "buffers": 655360,
+          "released_bytes": 0,
+          "line": 557
+        },
+        "after": {
+          "shared_buffers": "5GB",
+          "shared_buffers_target": "5GB",
+          "resize_granule": "256MB",
+          "resize_interval": "1s"
+        }
+      },
+      "work_mem_before": [
+        [
+          18,
+          32
+        ]
+      ],
+      "work_mem_after": [
+        [
+          18,
+          832
+        ]
+      ],
+      "work_mem_probe": {
+        "18": "832MB"
+      },
+      "requested_ap_queries": [
+        18
+      ],
+      "admitted_ap_queries": [
+        18
+      ],
+      "queued_ap_queries": [],
+      "postmaster_pid": 1849846,
+      "measurement_seconds": 20,
+      "baseline_tps": 3771.07,
+      "baseline_tps_samples": 21,
+      "surge_tps": 0.0,
+      "surge_tps_samples": 0,
+      "total_tps": 3771.07,
+      "measurement_start_elapsed_seconds": 4.705296553904191,
+      "measurement_end_elapsed_seconds": 25.23060217197053
+    },
+    {
+      "stage": "S2",
+      "shared_buffers_before_mb": 5120,
+      "shared_buffers_after_mb": 4096,
+      "target_transition": {
+        "requested_target_mb": 4096,
+        "before_target_mb": 5120.0,
+        "commit": {
+          "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-25_142859.log",
+          "offset": 98875,
+          "buffers": 524288,
+          "released_bytes": 268431360,
+          "line": 608
+        },
+        "after": {
+          "shared_buffers": "5GB",
+          "shared_buffers_target": "4GB",
+          "resize_granule": "256MB",
+          "resize_interval": "1s"
+        }
+      },
+      "work_mem_before": [
+        [
+          18,
+          832
+        ],
+        [
+          21,
+          32
+        ]
+      ],
+      "work_mem_after": [
+        [
+          18,
+          832
+        ],
+        [
+          21,
+          2944
+        ]
+      ],
+      "work_mem_probe": {
+        "18": "832MB",
+        "21": "2944MB"
+      },
+      "requested_ap_queries": [
+        18,
+        21
+      ],
+      "admitted_ap_queries": [
+        18,
+        21
+      ],
+      "queued_ap_queries": [],
+      "postmaster_pid": 1849846,
+      "measurement_seconds": 20,
+      "baseline_tps": 8036.9565,
+      "baseline_tps_samples": 20,
+      "surge_tps": 0.0,
+      "surge_tps_samples": 0,
+      "total_tps": 8036.9565,
+      "measurement_start_elapsed_seconds": 33.58929643500596,
+      "measurement_end_elapsed_seconds": 54.11521580303088
+    },
+    {
+      "stage": "S3",
+      "shared_buffers_before_mb": 4096,
+      "shared_buffers_after_mb": 4096,
+      "target_transition": {
+        "requested_target_mb": 4096,
+        "before_target_mb": 4096.0,
+        "commit": null,
+        "after": {
+          "shared_buffers": "5GB",
+          "shared_buffers_target": "4GB",
+          "resize_granule": "256MB",
+          "resize_interval": "1s"
+        }
+      },
+      "work_mem_before": [
+        [
+          9,
+          32
+        ],
+        [
+          13,
+          32
+        ],
+        [
+          18,
+          832
+        ],
+        [
+          21,
+          2944
+        ]
+      ],
+      "work_mem_after": [
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_probe": {
+        "9": "64MB",
+        "13": "64MB",
+        "18": "64MB",
+        "21": "64MB"
+      },
+      "requested_ap_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "admitted_ap_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "queued_ap_queries": [],
+      "postmaster_pid": 1849846,
+      "measurement_seconds": 20,
+      "baseline_tps": 7910.823333333332,
+      "baseline_tps_samples": 21,
+      "surge_tps": 0.0,
+      "surge_tps_samples": 0,
+      "total_tps": 7910.823333333332,
+      "measurement_start_elapsed_seconds": 57.80902845598757,
+      "measurement_end_elapsed_seconds": 78.33626571390778
+    },
+    {
+      "stage": "S4",
+      "shared_buffers_before_mb": 4096,
+      "shared_buffers_after_mb": 4096,
+      "target_transition": {
+        "requested_target_mb": 4096,
+        "before_target_mb": 4096.0,
+        "commit": null,
+        "after": {
+          "shared_buffers": "5GB",
+          "shared_buffers_target": "4GB",
+          "resize_granule": "256MB",
+          "resize_interval": "1s"
+        }
+      },
+      "work_mem_before": [
+        [
+          2,
+          32
+        ],
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_after": [
+        [
+          2,
+          64
+        ],
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_probe": {
+        "2": "64MB",
+        "9": "64MB",
+        "13": "64MB",
+        "18": "64MB",
+        "21": "64MB"
+      },
+      "requested_ap_queries": [
+        2,
+        9,
+        13,
+        18,
+        21
+      ],
+      "admitted_ap_queries": [
+        2,
+        9,
+        13,
+        18
+      ],
+      "queued_ap_queries": [
+        21
+      ],
+      "postmaster_pid": 1849846,
+      "measurement_seconds": 20,
+      "baseline_tps": 7845.524285714286,
+      "baseline_tps_samples": 21,
+      "surge_tps": 0.0,
+      "surge_tps_samples": 0,
+      "total_tps": 7845.524285714286,
+      "measurement_start_elapsed_seconds": 82.67289727693424,
+      "measurement_end_elapsed_seconds": 103.20023843902163
+    },
+    {
+      "stage": "S5",
+      "shared_buffers_before_mb": 4096,
+      "shared_buffers_after_mb": 5120,
+      "target_transition": {
+        "requested_target_mb": 5120,
+        "before_target_mb": 4096.0,
+        "commit": {
+          "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-25_142859.log",
+          "offset": 109341,
+          "buffers": 655360,
+          "released_bytes": 0,
+          "line": 959
+        },
+        "after": {
+          "shared_buffers": "5GB",
+          "shared_buffers_target": "5GB",
+          "resize_granule": "256MB",
+          "resize_interval": "1s"
+        }
+      },
+      "work_mem_before": [
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_after": [
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_probe": {
+        "9": "64MB",
+        "13": "64MB",
+        "18": "64MB",
+        "21": "64MB"
+      },
+      "requested_ap_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "admitted_ap_queries": [
+        9,
+        13,
+        18
+      ],
+      "queued_ap_queries": [
+        21
+      ],
+      "postmaster_pid": 1849846,
+      "measurement_seconds": 20,
+      "baseline_tps": 6885.609523809525,
+      "baseline_tps_samples": 21,
+      "surge_tps": 840.201,
+      "surge_tps_samples": 20,
+      "total_tps": 7725.810523809525,
+      "measurement_start_elapsed_seconds": 109.95373397902586,
+      "measurement_end_elapsed_seconds": 130.4790824779775
+    }
+  ],
+  "after": {
+    "shared_buffers": "5GB",
+    "shared_buffers_target": "5GB",
+    "resize_granule": "256MB",
+    "resize_interval": "1s"
+  },
+  "postmaster_pid_before": 1849846,
+  "postmaster_pid_after": 1849846,
+  "postmaster_pid_unchanged": true,
+  "restart_count": 0,
+  "events": {
+    "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-online-ppt-five-stage-20260825/events.json",
+    "sha256": "607af38ec5de9cf1268473eca1b0d3ba044a3d5936fc05bda21212b5aa231a22"
+  },
+  "logs": {
+    "sysbench": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-online-ppt-five-stage-20260825/sysbench.log",
+      "sha256": "560545b58c012d9cfc42c7ae93fc2ae78868e80767aedcbe5136814f3c7e4630"
+    },
+    "sysbench_surge": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-online-ppt-five-stage-20260825/sysbench.surge.log",
+      "sha256": "08749b8e6965585f358b81ca05d754193a6895bb4f1d2423ebb65c03486042bd"
+    }
+  },
+  "passed": true
+}

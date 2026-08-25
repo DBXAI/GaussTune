@@ -1,0 +1,13 @@
+{
+  "schema": "huawei7.ppt-five-stages/v1",
+  "tp_low_terminals": 128,
+  "tp_surge_terminals": 16,
+  "stages": [
+    {"stage": "S1", "ap_queries": [18], "tp_terminals": 128, "tp_baseline_terminals": 128, "tp_surge_terminals": 0},
+    {"stage": "S2", "ap_queries": [18, 21], "tp_terminals": 128, "tp_baseline_terminals": 128, "tp_surge_terminals": 0},
+    {"stage": "S3", "ap_queries": [9, 13, 18, 21], "tp_terminals": 128, "tp_baseline_terminals": 128, "tp_surge_terminals": 0},
+    {"stage": "S4", "ap_queries": [2, 9, 13, 18, 21], "tp_terminals": 128, "tp_baseline_terminals": 128, "tp_surge_terminals": 0},
+    {"stage": "S5", "ap_queries": [9, 13, 18, 21], "tp_terminals": 144, "tp_baseline_terminals": 128, "tp_surge_terminals": 16}
+  ],
+  "benchmarks": ["sysbench", "benchbase-tpcc"]
+}

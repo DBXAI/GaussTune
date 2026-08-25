@@ -1,0 +1,56 @@
+{
+  "after": {
+    "resize_granule": "256MB",
+    "resize_interval": "1s",
+    "shared_buffers": "4GB",
+    "shared_buffers_target": "4GB"
+  },
+  "before": {
+    "resize_granule": "256MB",
+    "resize_interval": "1s",
+    "shared_buffers": "4GB",
+    "shared_buffers_target": "4GB"
+  },
+  "elapsed_seconds": 6.438,
+  "grow_commit": {
+    "buffers": 524288,
+    "line": 515,
+    "offset": 91443,
+    "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-25_131046.log",
+    "released_bytes": 0
+  },
+  "kernel_artifacts": {
+    "cluster_guc": {
+      "path": "/opt/openGauss/bin/cluster_guc.conf",
+      "sha256": "6e96dab3379dc895ec2b98bc7371d3e04b592628ee811f14b0950e019a1cb7e2"
+    },
+    "gaussdb_binary": {
+      "path": "/opt/openGauss/bin/gaussdb",
+      "sha256": "99a102b9b82557403534fd645953a5b503481eeca10a751eef99b2dcd855c8bf"
+    },
+    "source_revision": "b5a8d5b056bbe660a6315cb424253717fb32cd04-dirty"
+  },
+  "middle": {
+    "resize_granule": "256MB",
+    "resize_interval": "1s",
+    "shared_buffers": "4GB",
+    "shared_buffers_target": "3GB"
+  },
+  "passed": true,
+  "postmaster_pid_after": 1825240,
+  "postmaster_pid_before": 1825240,
+  "postmaster_pid_unchanged": true,
+  "probe_after": "1",
+  "probe_middle": "1",
+  "restart_count": 0,
+  "schema": "huawei7.online-shared-buffers-validation/v1",
+  "shrink_commit": {
+    "buffers": 393216,
+    "line": 509,
+    "offset": 90417,
+    "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-25_131046.log",
+    "released_bytes": 268431360
+  },
+  "shrink_target_mb": 3072,
+  "startup_shared_buffers_mb": 4096
+}

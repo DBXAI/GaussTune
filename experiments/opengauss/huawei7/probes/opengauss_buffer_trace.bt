@@ -1,0 +1,148 @@
+#!/usr/bin/env bpftrace
+
+/*
+ * Huawei7 openGauss 5.1.0 full Buffer Manager trace.
+ *
+ * This is intentionally a complete, unsampled trace: sampling would corrupt
+ * candidate cache state.  Keep calibration windows bounded and measure probe
+ * overhead with the paired no-probe control before accepting a trace.
+ *
+ * The raw stream is normalized by `python3 -m huawei7.trace`, which assigns a
+ * strict global sequence from monotonic timestamps and raw emission order.
+ * Invoke this script with the target database relfilenode OID as argument 1.
+ * Filtering in BPF is mandatory: tracing every database thread both pollutes
+ * the TP reference string and adds avoidable probe traffic.
+ *
+ * Layout provenance:
+ *   openGauss-server-5.1.0/src/include/storage/smgr/relfilenode.h
+ *   openGauss-server-5.1.0/src/include/storage/buf/buf_internals.h
+ *   openGauss-server-5.1.0/src/include/storage/buf/bufmgr.h
+ */
+
+#define BD_OFF_spcNode       0
+#define BD_OFF_dbNode        4
+#define BD_OFF_relNode       8
+#define BD_OFF_bucketNode   12
+#define BD_OFF_forkNum      16
+#define BD_OFF_blockNum     20
+#define BD_OFF_buf_id       24
+#define BD_OFF_state        28
+
+BEGIN
+{
+    printf("# HUAWEI7_BUFFER_TRACE_V2 tracer_pid=%d target_db_node=%d\n", pid, $1);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z17ReadBuffer_commonP16SMgrRelationDatacij14ReadBufferModeP24BufferAccessStrategyDataPbPK12XLogPhyBlock
+/ *(uint32*)(arg0 + 4) == (uint32)$1 /
+{
+    $smgr = (uint64)arg0;
+    $strategy = (uint64)arg5;
+    $stype = $strategy != 0 ? *(int32*)$strategy : -1;
+    $ring = $strategy != 0 ? *(int32*)($strategy + 4) : 0;
+    $hitptr = *(uint64*)(reg("sp") + 8);
+    @hitptr[tid] = $hitptr;
+    /* bpftrace 0.9.4 permits at most six values per printf.  Fragments carry
+     * the same monotonic timestamp/TID and are joined before sequencing. */
+    $ts = nsecs;
+    printf("ACCESS_A,%llu,%d,%u,%u,%u\n", $ts, tid,
+        *(uint32*)($smgr + 0), *(uint32*)($smgr + 4), *(uint32*)($smgr + 8));
+    printf("ACCESS_B,%llu,%d,%d,%d,%u\n", $ts, tid,
+        *(int16*)($smgr + 12), (int32)arg2, (uint32)arg3);
+    printf("ACCESS_C,%llu,%d,%d,%llu,%d,%d\n", $ts, tid,
+        (int32)arg4, $strategy, $stype, $ring);
+}
+
+uretprobe:/opt/openGauss/bin/gaussdb:_Z17ReadBuffer_commonP16SMgrRelationDatacij14ReadBufferModeP24BufferAccessStrategyDataPbPK12XLogPhyBlock
+/@hitptr[tid]/
+{
+    $buffer = (int32)retval;
+    printf("RETURN_RAW,%llu,%d,%d,%d,0\n",
+        nsecs, tid, $buffer, *(uint8*)((uint64)@hitptr[tid]));
+    @target_buffer[$buffer] = 1;
+    delete(@hitptr[tid]);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z9PinBufferP10BufferDescP24BufferAccessStrategyData
+{
+    $buf = (uint64)arg0;
+    $buffer = *(int32*)($buf + BD_OFF_buf_id) + 1;
+    if (*(uint32*)($buf + BD_OFF_dbNode) == (uint32)$1) {
+        @target_buffer[$buffer] = 1;
+        $ts = nsecs;
+        printf("PIN_A,%llu,%d,%d,%u,%u\n", $ts, tid, $buffer,
+            *(uint32*)($buf + BD_OFF_spcNode), *(uint32*)($buf + BD_OFF_dbNode));
+        printf("PIN_B,%llu,%d,%u,%d,%d,%u\n", $ts, tid,
+            *(uint32*)($buf + BD_OFF_relNode), *(int16*)($buf + BD_OFF_bucketNode),
+            *(int32*)($buf + BD_OFF_forkNum), *(uint32*)($buf + BD_OFF_blockNum));
+    } else {
+        delete(@target_buffer[$buffer]);
+    }
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z16PinBuffer_LockedPV10BufferDesc
+{
+    $buf = (uint64)arg0;
+    $buffer = *(int32*)($buf + BD_OFF_buf_id) + 1;
+    if (*(uint32*)($buf + BD_OFF_dbNode) == (uint32)$1) {
+        @target_buffer[$buffer] = 1;
+        $ts = nsecs;
+        printf("PIN_LOCKED_A,%llu,%d,%d,%u,%u\n", $ts, tid, $buffer,
+            *(uint32*)($buf + BD_OFF_spcNode), *(uint32*)($buf + BD_OFF_dbNode));
+        printf("PIN_LOCKED_B,%llu,%d,%u,%d,%d,%u\n", $ts, tid,
+            *(uint32*)($buf + BD_OFF_relNode), *(int16*)($buf + BD_OFF_bucketNode),
+            *(int32*)($buf + BD_OFF_forkNum), *(uint32*)($buf + BD_OFF_blockNum));
+    } else {
+        delete(@target_buffer[$buffer]);
+    }
+}
+
+/* Re-pinning a buffer already present in the backend's private refcount table
+ * bypasses PinBuffer and increments only the private count.  Without this
+ * event the later UnpinBuffer stream is unbalanced even though page ACCESS is
+ * complete.  @target_buffer was established by PinBuffer/RETURN and is
+ * cleared when the slot is observed for another database. */
+uprobe:/opt/openGauss/bin/gaussdb:_Z18IncrBufferRefCounti
+/@target_buffer[(int32)arg0]/
+{
+    printf("REF_RAW,%llu,%d,%d,0\n", nsecs, tid, (int32)arg0);
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z11UnpinBufferP10BufferDescb
+/ *(uint32*)(arg0 + BD_OFF_dbNode) == (uint32)$1 /
+{
+    $buf = (uint64)arg0;
+    $ts = nsecs;
+    printf("UNPIN_A,%llu,%d,%d,%u,%u\n", $ts, tid,
+        *(int32*)($buf + BD_OFF_buf_id) + 1,
+        *(uint32*)($buf + BD_OFF_spcNode), *(uint32*)($buf + BD_OFF_dbNode));
+    printf("UNPIN_B,%llu,%d,%u,%d,%d,%u\n", $ts, tid,
+        *(uint32*)($buf + BD_OFF_relNode), *(int16*)($buf + BD_OFF_bucketNode),
+        *(int32*)($buf + BD_OFF_forkNum), *(uint32*)($buf + BD_OFF_blockNum));
+}
+
+uprobe:/opt/openGauss/bin/gaussdb:_Z15MarkBufferDirtyi
+/@target_buffer[(int32)arg0]/
+{
+    printf("DIRTY_RAW,%llu,%d,%d,0\n", nsecs, tid, (int32)arg0);
+}
+
+/* smgrwrite is below FlushBuffer/StartBufferIO, so every record represents
+ * an actual database-page write submission rather than a failed flush try. */
+uprobe:/opt/openGauss/bin/gaussdb:_Z9smgrwriteP16SMgrRelationDataijPKcb
+/ *(uint32*)(arg0 + 4) == (uint32)$1 /
+{
+    $smgr = (uint64)arg0;
+    $ts = nsecs;
+    printf("FLUSH_A,%llu,%d,%d,%u,%u\n", $ts, tid, 0,
+        *(uint32*)($smgr + 0), *(uint32*)($smgr + 4));
+    printf("FLUSH_B,%llu,%d,%u,%d,%d,%u\n", $ts, tid,
+        *(uint32*)($smgr + 8), *(int16*)($smgr + 12),
+        (int32)arg1, (uint32)arg2);
+}
+
+END
+{
+    clear(@hitptr);
+    clear(@target_buffer);
+}

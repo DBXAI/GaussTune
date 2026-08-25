@@ -1,0 +1,38 @@
+#!/usr/bin/env bpftrace
+
+/* Exact whole-device completion counts for isolated AP/TP evidence.
+ *
+ * Linux 5.4 block tracepoints do not expose a request pointer. Correlating
+ * issue/complete by (sector,length) is ambiguous under concurrency. The AP
+ * request and TP cache models need completed counts/bytes, not per-request
+ * service time, so completions are counted directly. Four-class service time
+ * is calibrated independently with fio.
+ */
+
+BEGIN
+{
+    printf("# HUAWEI7_BLOCK_COMPLETION_TOTAL_V1 target_dev=%llu\n", $1);
+}
+
+tracepoint:block:block_rq_complete
+/args->dev == (uint32)$1/
+{
+    /* Linux 5.4 tracepoint rwbs[8] starts at context offset 32. */
+    $operation_byte = *(uint8*)((uint64)args + 32);
+    $is_write = $operation_byte == 87;
+    $is_read = $operation_byte == 82;
+    if ($is_read || $is_write) {
+        $write = $is_write ? 1 : 0;
+        @count[0, $write] = count();
+        @bytes[0, $write] = sum(args->nr_sector * 512);
+    }
+}
+
+interval:s:1
+{
+    printf("WINDOW,%llu\n", nsecs);
+    print(@count);
+    print(@bytes);
+    clear(@count);
+    clear(@bytes);
+}

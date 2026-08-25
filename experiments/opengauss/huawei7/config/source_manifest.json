@@ -1,0 +1,31 @@
+{
+  "schema": "huawei7.opengauss-source-manifest/v1",
+  "source_commit": "b5a8d5b056bbe660a6315cb424253717fb32cd04",
+  "reference_gaussdb_sha256": "d317f2f755c9dd06674e9c064dcbced57a5b77301abe4590321fb7f3f1be6b0c",
+  "source_files": {
+    "src/gausskernel/optimizer/path/costsize.cpp": "96ac5731f2352f59a8e350a25ab079a1b200847edad568bbde7b97f2320ff613",
+    "src/gausskernel/runtime/executor/nodeHash.cpp": "30bcb6cb7f9b1a2450b3e4dde5d9dfe0db70613b9aab07823be6de631043f445",
+    "src/gausskernel/runtime/executor/nodeAgg.cpp": "c429544c5e14cb1ec35232a6b5d8d6cc109b965b3208d1138a24e82004f6e98a",
+    "src/gausskernel/runtime/executor/nodeHashjoin.cpp": "09ce9e46980a8241d06492e70f503715164b960d28dd535ff4377323f9c757e9",
+    "src/gausskernel/runtime/executor/nodeSort.cpp": "17886c4695365711bdce40a0fd4033e96c69ef7c8a3b3f0ab02b56bc7e0b4ee7",
+    "src/gausskernel/runtime/executor/execGrouping.cpp": "4ff9349a9cdaad8d93bf9c4618ece6d24e07947823942a9c034a12b78cba9cfa",
+    "src/gausskernel/optimizer/commands/explain.cpp": "1076aeb6efc3456a1e50851a7760bce855efc8ecc18dcc469e8e288fc495adf6",
+    "src/common/backend/utils/sort/tuplesort.cpp": "88b08e8ccf63ec761d9065bc58ceb9fa630bee084c7df8df0ef3354ef90c1c75",
+    "src/common/backend/utils/mmgr/aset.cpp": "50d6ccb4fac5628637ca41a66fab3814388ba8f3c9990c7c0c6a41e94fddd9b6",
+    "src/include/access/htup.h": "0ab520727a25cd47128ed033a8d44a57b2ad9cec04b456c492f041990dd612ce",
+    "src/include/executor/hashjoin.h": "70725c683e42b4440c7fdc40dedf58aa76a0bd4dc1bd3c4e2a84789c0380830a",
+    "src/include/executor/node/nodeHash.h": "27113b490a513511f9177531afc52ed3836747b32f7666f4623686f0174a08e6",
+    "src/include/nodes/memnodes.h": "e41185e2da5f77fa9d99c26bdddd3f731a18c0c989e8627b3f95be34ecda68bc",
+    "src/include/nodes/relation.h": "136428881c97af554a72a7d5ef47c725ad9d698745baffc8cebfec9900797928",
+    "src/include/optimizer/cost.h": "8344b18c0794346b1d70461a1f3362e661574d3b0c48f139363fcec9cc77f34e"
+  },
+  "required_symbols": [
+    "_Z17ReadBuffer_commonP16SMgrRelationDatacij14ReadBufferModeP24BufferAccessStrategyDataPbPK12XLogPhyBlock",
+    "_Z9PinBufferP10BufferDescP24BufferAccessStrategyData",
+    "_Z16PinBuffer_LockedPV10BufferDesc",
+    "_Z18IncrBufferRefCounti",
+    "_Z11UnpinBufferP10BufferDescb",
+    "_Z15MarkBufferDirtyi",
+    "_Z9smgrwriteP16SMgrRelationDataijPKcb"
+  ]
+}

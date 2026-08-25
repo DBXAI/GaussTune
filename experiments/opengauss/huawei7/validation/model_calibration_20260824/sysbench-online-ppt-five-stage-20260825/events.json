@@ -1,0 +1,232 @@
+[
+  {
+    "elapsed_seconds": 4.705195274902508,
+    "event": "ap_start",
+    "generation": 1,
+    "query": 18,
+    "stage": "S1",
+    "work_mem_mb": 832
+  },
+  {
+    "elapsed_seconds": 25.575657832901925,
+    "event": "ap_stop",
+    "query": 18,
+    "returncode": -2,
+    "stage": "S2"
+  },
+  {
+    "elapsed_seconds": 33.58569095493294,
+    "event": "ap_start",
+    "generation": 2,
+    "query": 18,
+    "stage": "S2",
+    "work_mem_mb": 832
+  },
+  {
+    "elapsed_seconds": 33.589168620994315,
+    "event": "ap_start",
+    "generation": 1,
+    "query": 21,
+    "stage": "S2",
+    "work_mem_mb": 2944
+  },
+  {
+    "elapsed_seconds": 54.46237489301711,
+    "event": "ap_stop",
+    "query": 18,
+    "returncode": -2,
+    "stage": "S3"
+  },
+  {
+    "elapsed_seconds": 54.72629786701873,
+    "event": "ap_stop",
+    "query": 21,
+    "returncode": -2,
+    "stage": "S3"
+  },
+  {
+    "elapsed_seconds": 57.789168550865725,
+    "event": "ap_start",
+    "generation": 1,
+    "query": 9,
+    "stage": "S3",
+    "work_mem_mb": 64
+  },
+  {
+    "elapsed_seconds": 57.79179603094235,
+    "event": "ap_start",
+    "generation": 1,
+    "query": 13,
+    "stage": "S3",
+    "work_mem_mb": 64
+  },
+  {
+    "elapsed_seconds": 57.79374794801697,
+    "event": "ap_start",
+    "generation": 3,
+    "query": 18,
+    "stage": "S3",
+    "work_mem_mb": 64
+  },
+  {
+    "elapsed_seconds": 57.80890807695687,
+    "event": "ap_start",
+    "generation": 2,
+    "query": 21,
+    "stage": "S3",
+    "work_mem_mb": 64
+  },
+  {
+    "elapsed_seconds": 78.63544319197536,
+    "event": "ap_stop",
+    "query": 9,
+    "returncode": -2,
+    "stage": "S4"
+  },
+  {
+    "elapsed_seconds": 78.89935900899582,
+    "event": "ap_stop",
+    "query": 13,
+    "returncode": -2,
+    "stage": "S4"
+  },
+  {
+    "elapsed_seconds": 79.16329000587575,
+    "event": "ap_stop",
+    "query": 18,
+    "returncode": -2,
+    "stage": "S4"
+  },
+  {
+    "elapsed_seconds": 79.42720043403096,
+    "event": "ap_stop",
+    "query": 21,
+    "returncode": -2,
+    "stage": "S4"
+  },
+  {
+    "elapsed_seconds": 82.6665879918728,
+    "event": "ap_start",
+    "generation": 1,
+    "query": 2,
+    "stage": "S4",
+    "work_mem_mb": 64
+  },
+  {
+    "elapsed_seconds": 82.66876523685642,
+    "event": "ap_start",
+    "generation": 2,
+    "query": 9,
+    "stage": "S4",
+    "work_mem_mb": 64
+  },
+  {
+    "elapsed_seconds": 82.67078830394894,
+    "event": "ap_start",
+    "generation": 2,
+    "query": 13,
+    "stage": "S4",
+    "work_mem_mb": 64
+  },
+  {
+    "elapsed_seconds": 82.67273733206093,
+    "event": "ap_start",
+    "generation": 4,
+    "query": 18,
+    "stage": "S4",
+    "work_mem_mb": 64
+  },
+  {
+    "elapsed_seconds": 82.67276346986182,
+    "event": "ap_queued",
+    "query": 21,
+    "reason": "PPT admission cap",
+    "stage": "S4"
+  },
+  {
+    "elapsed_seconds": 103.45637418003753,
+    "event": "ap_stop",
+    "query": 2,
+    "returncode": -2,
+    "stage": "S5"
+  },
+  {
+    "elapsed_seconds": 103.72031212295406,
+    "event": "ap_stop",
+    "query": 9,
+    "returncode": -2,
+    "stage": "S5"
+  },
+  {
+    "elapsed_seconds": 103.98427546885796,
+    "event": "ap_stop",
+    "query": 13,
+    "returncode": -2,
+    "stage": "S5"
+  },
+  {
+    "elapsed_seconds": 104.24816904705949,
+    "event": "ap_stop",
+    "query": 18,
+    "returncode": -2,
+    "stage": "S5"
+  },
+  {
+    "elapsed_seconds": 109.94770235591568,
+    "event": "ap_start",
+    "generation": 3,
+    "query": 9,
+    "stage": "S5",
+    "work_mem_mb": 64
+  },
+  {
+    "elapsed_seconds": 109.94979140604846,
+    "event": "ap_start",
+    "generation": 3,
+    "query": 13,
+    "stage": "S5",
+    "work_mem_mb": 64
+  },
+  {
+    "elapsed_seconds": 109.95175443100743,
+    "event": "ap_start",
+    "generation": 5,
+    "query": 18,
+    "stage": "S5",
+    "work_mem_mb": 64
+  },
+  {
+    "elapsed_seconds": 109.95178127102554,
+    "event": "ap_queued",
+    "query": 21,
+    "reason": "PPT admission cap",
+    "stage": "S5"
+  },
+  {
+    "elapsed_seconds": 109.95359527505934,
+    "event": "tp_surge_start",
+    "stage": "S5",
+    "terminals": 16
+  },
+  {
+    "elapsed_seconds": 130.74304993404076,
+    "event": "ap_stop",
+    "query": 9,
+    "returncode": -2,
+    "stage": "complete"
+  },
+  {
+    "elapsed_seconds": 131.00694220303558,
+    "event": "ap_stop",
+    "query": 13,
+    "returncode": -2,
+    "stage": "complete"
+  },
+  {
+    "elapsed_seconds": 131.27085062186234,
+    "event": "ap_stop",
+    "query": 18,
+    "returncode": -2,
+    "stage": "complete"
+  }
+]

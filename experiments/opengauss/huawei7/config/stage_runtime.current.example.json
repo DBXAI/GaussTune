@@ -1,0 +1,42 @@
+{
+  "schema": "huawei7.stage-runtime/v1",
+  "machine_fingerprint": "19aba23b5f0cfa21f1691a1d97565ecb6cce6a10170c587984e500b8c601ea5e",
+  "dataset_audit": "/root/GaussTune/experiments/opengauss/huawei7/validation/current_dataset/dataset-audit.json",
+  "postgres": {
+    "host": "127.0.0.1",
+    "port": 5432,
+    "gsql": "/opt/openGauss/bin/gsql",
+    "ld_library_path": "/opt/openGauss/lib",
+    "ap_database": "h5_tpch",
+    "ap_user": "h5_apuser",
+    "ap_password_env": "HUAWEI7_AP_PASSWORD"
+  },
+  "ap_query_files": {
+    "2": "/root/GaussTune/experiments/opengauss/huawei7/validation/current_dataset/queries_sf85/q2.sql",
+    "9": "/root/GaussTune/experiments/opengauss/huawei7/validation/current_dataset/queries_sf85/q9.sql",
+    "13": "/root/GaussTune/experiments/opengauss/huawei7/validation/current_dataset/queries_sf85/q13.sql",
+    "18": "/root/GaussTune/experiments/opengauss/huawei7/validation/current_dataset/queries_sf85/q18.sql",
+    "21": "/root/GaussTune/experiments/opengauss/huawei7/validation/current_dataset/queries_sf85/q21.sql"
+  },
+  "tp": {
+    "sysbench": {
+      "binary": "/usr/bin/sysbench",
+      "script": "/usr/share/sysbench/oltp_read_only.lua",
+      "database": "h5_tpcc",
+      "user": "h5_tpuser",
+      "password_env": "HUAWEI7_SYSBENCH_PASSWORD",
+      "tables": 16,
+      "table_size": 1000000
+    },
+    "benchbase-tpcc": {
+      "java": "java",
+      "home": "/opt/benchbase/target/benchbase-postgres/benchbase-postgres",
+      "jdbc_jar": "/root/.m2/repository/org/opengauss/opengauss-jdbc/5.1.0/opengauss-jdbc-5.1.0.jar",
+      "database": "h5_tpcc_bench",
+      "user": "tpcc_bench",
+      "password_env": "HUAWEI7_TPCC_PASSWORD",
+      "warehouses": 100,
+      "batch_size": 128
+    }
+  }
+}

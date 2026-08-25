@@ -1,0 +1,31 @@
+{
+  "schema": "huawei7.pipeline-config/v1",
+  "machine_fingerprint": "REPLACE_WITH_MACHINE_FINGERPRINT",
+  "machine": "/var/lib/huawei7/evidence/machine.json",
+  "memory_budget": "/var/lib/huawei7/evidence/memory-budget.json",
+  "memory_grid_mb": 64,
+  "tp_benchmark": "sysbench",
+  "tp_collection": "/var/lib/huawei7/evidence/tp/sysbench-stage/collection.json",
+  "os_cache_model": "/var/lib/huawei7/evidence/tp/sysbench-os-model.json",
+  "buffer_probe_overhead": "/var/lib/huawei7/evidence/tp/probe-overhead/probe_overhead.json",
+  "tp_sweep": "/var/lib/huawei7/evidence/tp/sysbench-sweep.json",
+  "tp_calibration": "/var/lib/huawei7/evidence/tp/sysbench-latency.json",
+  "ap_model_bundle": "/var/lib/huawei7/evidence/ap/ap-model-bundle.json",
+  "openGauss_data_dir": "/opt/openGauss/data",
+  "minimum_tp_access_fraction": 0.9,
+  "maximum_hit_mismatch_fraction": 0.01,
+  "hit_plateau_fraction": 0.99,
+  "practical_tps_tolerance": 0.03,
+  "stage": {
+    "ap_queries": [18],
+    "tp_terminals": 128,
+    "tp_baseline_terminals": 128,
+    "tp_surge_terminals": 0,
+    "sb_sample_count": 7
+  },
+  "storage": {
+    "ap_mix_tolerance": 0.05,
+    "fio_validation": "/var/lib/huawei7/evidence/fio/holdout-report.json",
+    "service_calibration": "/var/lib/huawei7/evidence/fio/service-times/service_times.json"
+  }
+}

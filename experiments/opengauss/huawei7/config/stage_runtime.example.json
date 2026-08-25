@@ -1,0 +1,42 @@
+{
+  "schema": "huawei7.stage-runtime/v1",
+  "machine_fingerprint": "REPLACE_WITH_fingerprint_machine.py_OUTPUT",
+  "dataset_audit": "/var/lib/huawei7/evidence/dataset-audit.json",
+  "postgres": {
+    "host": "127.0.0.1",
+    "port": 5432,
+    "gsql": "/opt/openGauss/bin/gsql",
+    "ld_library_path": "/opt/openGauss/lib",
+    "ap_database": "h7_tpch_sf60",
+    "ap_user": "h7_ap",
+    "ap_password_env": "HUAWEI7_AP_PASSWORD"
+  },
+  "ap_query_files": {
+    "2": "/var/lib/huawei7/queries/q2.sql",
+    "9": "/var/lib/huawei7/queries/q9.sql",
+    "13": "/var/lib/huawei7/queries/q13.sql",
+    "18": "/var/lib/huawei7/queries/q18.sql",
+    "21": "/var/lib/huawei7/queries/q21.sql"
+  },
+  "tp": {
+    "sysbench": {
+      "binary": "/usr/bin/sysbench",
+      "script": "/usr/share/sysbench/oltp_read_only.lua",
+      "database": "h7_sysbench_20gb",
+      "user": "h7_tp",
+      "password_env": "HUAWEI7_SYSBENCH_PASSWORD",
+      "tables": 16,
+      "table_size": 4000000
+    },
+    "benchbase-tpcc": {
+      "java": "java",
+      "home": "/opt/benchbase/target/benchbase-postgres/benchbase-postgres",
+      "jdbc_jar": "/opt/opengauss-jdbc-5.1.0.jar",
+      "database": "h7_tpcc_20gb",
+      "user": "h7_tp",
+      "password_env": "HUAWEI7_TPCC_PASSWORD",
+      "warehouses": 125,
+      "batch_size": 128
+    }
+  }
+}

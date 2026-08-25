@@ -1,0 +1,335 @@
+{
+  "schema": "huawei7.online-sysbench-ppt-five-stage-acceptance/v1",
+  "status": "ppt_five_stage_runtime_acceptance_passed",
+  "startup_shared_buffers_mb": 5120,
+  "initial_target_mb": 512,
+  "stage_seconds": 20,
+  "settle_seconds": 10,
+  "runs": [
+    {
+      "name": "sysbench-online-ppt-five-stage-20260825-repeat4",
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-online-ppt-five-stage-20260825-repeat4/online-five-stage.json",
+      "sha256": "f83208be76d00e3a66efa1937165196fbcd5ea58c363f8de370964896a9377c0"
+    },
+    {
+      "name": "sysbench-online-ppt-five-stage-20260825-repeat5",
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-online-ppt-five-stage-20260825-repeat5/online-five-stage.json",
+      "sha256": "62ee97291d5021eb4ab32f5a7cd219cae4b186d5615a64714fcf90df53daa3bf"
+    }
+  ],
+  "stages": [
+    {
+      "stage": "S1",
+      "shared_buffers_before_mb": 512,
+      "shared_buffers_after_mb": 5120,
+      "work_mem_after": [
+        [
+          18,
+          832
+        ]
+      ],
+      "work_mem_probe": {
+        "18": "832MB"
+      },
+      "requested_ap_queries": [
+        18
+      ],
+      "admitted_ap_queries": [
+        18
+      ],
+      "queued_ap_queries": [],
+      "postmaster_pids": [
+        1849846
+      ],
+      "tps_samples": [
+        7593.421,
+        7589.615
+      ],
+      "mean_tps": 7591.518,
+      "tps_relative_range": 0.0005013490055612718,
+      "io_blocks_samples": [
+        52,
+        12
+      ],
+      "spill_temp_bytes_samples": [
+        0,
+        0
+      ],
+      "spill_temp_files_samples": [
+        0,
+        0
+      ],
+      "all_runs_have_sb_commit": true
+    },
+    {
+      "stage": "S2",
+      "shared_buffers_before_mb": 5120,
+      "shared_buffers_after_mb": 4096,
+      "work_mem_after": [
+        [
+          18,
+          832
+        ],
+        [
+          21,
+          2944
+        ]
+      ],
+      "work_mem_probe": {
+        "18": "832MB",
+        "21": "2944MB"
+      },
+      "requested_ap_queries": [
+        18,
+        21
+      ],
+      "admitted_ap_queries": [
+        18,
+        21
+      ],
+      "queued_ap_queries": [],
+      "postmaster_pids": [
+        1849846
+      ],
+      "tps_samples": [
+        7425.224,
+        7391.969999999999
+      ],
+      "mean_tps": 7408.597,
+      "tps_relative_range": 0.004488569158236143,
+      "io_blocks_samples": [
+        14,
+        14
+      ],
+      "spill_temp_bytes_samples": [
+        0,
+        0
+      ],
+      "spill_temp_files_samples": [
+        0,
+        0
+      ],
+      "all_runs_have_sb_commit": true
+    },
+    {
+      "stage": "S3",
+      "shared_buffers_before_mb": 4096,
+      "shared_buffers_after_mb": 4096,
+      "work_mem_after": [
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_probe": {
+        "9": "64MB",
+        "13": "64MB",
+        "18": "64MB",
+        "21": "64MB"
+      },
+      "requested_ap_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "admitted_ap_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "queued_ap_queries": [],
+      "postmaster_pids": [
+        1849846
+      ],
+      "tps_samples": [
+        7235.344999999998,
+        7230.960952380953
+      ],
+      "mean_tps": 7233.152976190476,
+      "tps_relative_range": 0.0006061046453014844,
+      "io_blocks_samples": [
+        52,
+        12
+      ],
+      "spill_temp_bytes_samples": [
+        0,
+        0
+      ],
+      "spill_temp_files_samples": [
+        0,
+        0
+      ],
+      "all_runs_have_sb_commit": true
+    },
+    {
+      "stage": "S4",
+      "shared_buffers_before_mb": 4096,
+      "shared_buffers_after_mb": 4096,
+      "work_mem_after": [
+        [
+          2,
+          64
+        ],
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_probe": {
+        "2": "64MB",
+        "9": "64MB",
+        "13": "64MB",
+        "18": "64MB",
+        "21": "64MB"
+      },
+      "requested_ap_queries": [
+        2,
+        9,
+        13,
+        18,
+        21
+      ],
+      "admitted_ap_queries": [
+        2,
+        9,
+        13,
+        18
+      ],
+      "queued_ap_queries": [
+        21
+      ],
+      "postmaster_pids": [
+        1849846
+      ],
+      "tps_samples": [
+        7383.521000000001,
+        7520.6714999999995
+      ],
+      "mean_tps": 7452.0962500000005,
+      "tps_relative_range": 0.018404284566238504,
+      "io_blocks_samples": [
+        12,
+        52
+      ],
+      "spill_temp_bytes_samples": [
+        0,
+        0
+      ],
+      "spill_temp_files_samples": [
+        0,
+        0
+      ],
+      "all_runs_have_sb_commit": true
+    },
+    {
+      "stage": "S5",
+      "shared_buffers_before_mb": 4096,
+      "shared_buffers_after_mb": 5120,
+      "work_mem_after": [
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_probe": {
+        "9": "64MB",
+        "13": "64MB",
+        "18": "64MB",
+        "21": "64MB"
+      },
+      "requested_ap_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "admitted_ap_queries": [
+        9,
+        13,
+        18
+      ],
+      "queued_ap_queries": [
+        21
+      ],
+      "postmaster_pids": [
+        1849846
+      ],
+      "tps_samples": [
+        7510.373476190478,
+        7432.205238095236
+      ],
+      "mean_tps": 7471.289357142858,
+      "tps_relative_range": 0.010462483027847068,
+      "io_blocks_samples": [
+        52,
+        12
+      ],
+      "spill_temp_bytes_samples": [
+        0,
+        0
+      ],
+      "spill_temp_files_samples": [
+        0,
+        0
+      ],
+      "all_runs_have_sb_commit": true
+    }
+  ],
+  "gates": {
+    "exactly_five_ppt_stages": true,
+    "online_sb_resize_executed": true,
+    "sb_before_after_match_trajectory": true,
+    "session_work_mem_transition_executed": true,
+    "runtime_backpressure_executed": true,
+    "zero_restart_runtime_evidence": true,
+    "tps_jitter_within_3_percent": true,
+    "io_spill_measured": true,
+    "spill_zero_in_all_runs": true
+  },
+  "limitations": [
+    "work_mem is applied to fresh AP sessions at each stage boundary; active in-flight sessions are intentionally not mutated",
+    "S4/S5 queue evidence is the runner admission controller, not an openGauss kernel queue",
+    "database-level IO counters were collected; the two-run data is used as a lightweight stability check"
+  ],
+  "acceptance_passed": true,
+  "work_mem_policy": "new_sessions_only",
+  "active_session_wm_reduction_required": false
+}

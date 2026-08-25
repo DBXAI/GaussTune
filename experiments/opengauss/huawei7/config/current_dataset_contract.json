@@ -1,0 +1,46 @@
+{
+  "schema": "huawei7.dataset-contract/v2",
+  "profile": "current-huawei6-databases",
+  "description": "Logical identities of the databases already loaded on the current host; physical byte sizes are observed, not forced to the PPT labels.",
+  "datasets": {
+    "ap": {
+      "database": "h5_tpch",
+      "generator": "TPC-H dbgen",
+      "scale_factor": 85,
+      "required_tables": [
+        "region", "nation", "supplier", "customer", "part",
+        "partsupp", "orders", "lineitem"
+      ],
+      "required_query_ids": [2, 9, 13, 18, 21]
+    },
+    "sysbench": {
+      "database": "h5_tpcc",
+      "tables": 16,
+      "rows_per_table": 1000000,
+      "required_columns": ["id", "k", "c", "pad"],
+      "required_index_columns": ["id", "k"]
+    },
+    "benchbase_tpcc": {
+      "database": "h5_tpcc_bench",
+      "warehouses": 100,
+      "required_tables": [
+        "warehouse", "district", "customer", "history", "oorder",
+        "new_order", "order_line", "stock", "item"
+      ],
+      "required_indexes": {
+        "warehouse": [["w_id"]],
+        "district": [["d_w_id", "d_id"]],
+        "customer": [
+          ["c_w_id", "c_d_id", "c_id"],
+          ["c_w_id", "c_d_id", "c_last", "c_first"]
+        ],
+        "oorder": [["o_w_id", "o_d_id", "o_id"]],
+        "new_order": [["no_w_id", "no_d_id", "no_o_id"]],
+        "order_line": [["ol_w_id", "ol_d_id", "ol_o_id", "ol_number"]],
+        "stock": [["s_w_id", "s_i_id"]],
+        "item": [["i_id"]]
+      },
+      "transaction_weights": [45, 43, 4, 4, 4]
+    }
+  }
+}

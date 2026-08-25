@@ -1,0 +1,558 @@
+diff --git a/src/bin/gs_guc/cluster_guc.conf b/src/bin/gs_guc/cluster_guc.conf
+index af5aaea..d57ff27 100755
+--- a/src/bin/gs_guc/cluster_guc.conf
++++ b/src/bin/gs_guc/cluster_guc.conf
+@@ -463,6 +463,9 @@ session_replication_role|enum|origin,replica,local|NULL|When this parameter is s
+ session_timeout|int|0,86400|s|GaussDB Kernel gsql client has an automatic reconnection mechanism, when the timeout, the gsql will be reconnection after disconnection.|
+ idle_in_transaction_session_timeout|int|0,86400|s|Sets the maximum allowed idle time between queries, when in a transaction.|
+ shared_buffers|int|16,1073741823|kB|NULL|
++shared_buffers_target|int|0,1073741823|kB|NULL|
++shared_buffers_resize_granule|int|1,1073741823|kB|NULL|
++shared_buffers_resize_interval|int|10,60000|ms|NULL|
+ huge_page_size|int|0,1073741823|kB|NULL|
+ pca_shared_buffers|int|8,1073741823|kB|NULL|
+ shared_preload_libraries|string|0,0|NULL|NULL|
+diff --git a/src/bin/gs_guc/cluster_guc.cpp b/src/bin/gs_guc/cluster_guc.cpp
+index c76ce0a..5fcdad6 100644
+--- a/src/bin/gs_guc/cluster_guc.cpp
++++ b/src/bin/gs_guc/cluster_guc.cpp
+@@ -275,6 +275,8 @@ const char* unit_eight_kB_parameter_list[] = {
+     "prefetch_quantity",
+     "segment_size",
+     "shared_buffers",
++    "shared_buffers_target",
++    "shared_buffers_resize_granule",
+     "temp_buffers",
+     "wal_buffers",
+     "wal_segment_size",
+diff --git a/src/common/backend/utils/misc/guc/guc_storage.cpp b/src/common/backend/utils/misc/guc/guc_storage.cpp
+index d7201f1..5faf02e 100755
+--- a/src/common/backend/utils/misc/guc/guc_storage.cpp
++++ b/src/common/backend/utils/misc/guc/guc_storage.cpp
+@@ -178,6 +178,7 @@ static bool check_enable_data_replicate(bool* newval, void** extra, GucSource so
+ static bool check_adio_debug_guc(bool* newval, void** extra, GucSource source);
+ static bool check_adio_function_guc(bool* newval, void** extra, GucSource source);
+ static bool check_temp_buffers(int* newval, void** extra, GucSource source);
++static bool check_shared_buffers_target(int* newval, void** extra, GucSource source);
+ static bool check_replication_type(int* newval, void** extra, GucSource source);
+ static void plog_merge_age_assign(int newval, void* extra);
+ static bool check_replconninfo(char** newval, void** extra, GucSource source);
+@@ -1317,6 +1318,48 @@ static void InitStorageConfigureNamesInt()
+             NULL,
+             NULL,
+             NULL},
++        {{"shared_buffers_target",
++            PGC_SIGHUP,
++            NODE_ALL,
++            RESOURCES_MEM,
++            gettext_noop("Sets the runtime allocation limit for normal shared buffers."),
++            gettext_noop("Zero uses the startup shared_buffers value. Shrink retires buffers online."),
++            GUC_UNIT_BLOCKS},
++            &g_instance.attr.attr_storage.NBuffersTarget,
++            0,
++            0,
++            INT_MAX / 2,
++            check_shared_buffers_target,
++            NULL,
++            NULL},
++        {{"shared_buffers_resize_granule",
++            PGC_SIGHUP,
++            NODE_ALL,
++            RESOURCES_MEM,
++            gettext_noop("Sets the maximum amount retired in one shared buffer resize step."),
++            NULL,
++            GUC_UNIT_BLOCKS},
++            &g_instance.attr.attr_storage.NBuffersResizeGranule,
++            32768,
++            1,
++            INT_MAX / 2,
++            NULL,
++            NULL,
++            NULL},
++        {{"shared_buffers_resize_interval",
++            PGC_SIGHUP,
++            NODE_ALL,
++            RESOURCES_MEM,
++            gettext_noop("Sets the delay between shared buffer shrink steps."),
++            NULL,
++            GUC_UNIT_MS},
++            &g_instance.attr.attr_storage.shared_buffers_resize_interval,
++            1000,
++            10,
++            60000,
++            NULL,
++            NULL,
++            NULL},
+         {{"huge_page_size",
+             PGC_POSTMASTER,
+             NODE_SINGLENODE,
+@@ -5117,6 +5160,26 @@ static bool check_temp_buffers(int* newval, void** extra, GucSource source)
+     return true;
+ }
+
++static bool check_shared_buffers_target(int* newval, void** extra, GucSource source)
++{
++    /*
++     * The startup shared_buffers value reserves the arena.  Runtime growth
++     * can only activate pages inside that arena; it must never claim a target
++     * larger than the startup maximum.  During very early startup NBuffers
++     * may not have been assigned yet, so defer that check until the buffer
++     * strategy has been initialized.
++     */
++    if (*newval > 0 && g_instance.attr.attr_storage.NBuffers > 0 &&
++        *newval > g_instance.attr.attr_storage.NBuffers) {
++        GUC_check_errdetail(
++            "\"shared_buffers_target\" (%d blocks) cannot exceed startup "
++            "\"shared_buffers\" (%d blocks).",
++            *newval, g_instance.attr.attr_storage.NBuffers);
++        return false;
++    }
++    return true;
++}
++
+ static bool check_replication_type(int* newval, void** extra, GucSource source)
+ {
+     if (*newval == RT_WITH_MULTI_STANDBY) {
+@@ -6529,4 +6592,3 @@ static void assign_logical_decode_options_default(const char* newval, void* extr
+ {
+     u_sess->attr.attr_storage.logical_decode_options_default = extra;
+ }
+-
+diff --git a/src/gausskernel/Makefile b/src/gausskernel/Makefile
+index b54aaad..c272f42 100755
+--- a/src/gausskernel/Makefile
++++ b/src/gausskernel/Makefile
+@@ -173,7 +173,9 @@ JARPLJAVA = pljava.jar
+ # MOT component
+ ##############################################################################
+ ifeq ($(enable_mot), yes)
+-  LIBS += -latomic -lmot_engine -lmasstree
++  # libatomic must follow the static MOT archive on GNU ld so 16-byte
++  # atomic references emitted by MOT are resolved.
++  LIBS += -lmot_engine -lmasstree -latomic
+   LDFLAGS += -L$(top_builddir)/src/gausskernel/storage/mot/core/bin -L$(MASSTREE_LIB_PATH) -L$(with_3rd)/$(BUILD_TOOLS_PATH)/gcc$(subst $(SUB_CC_VERSION),,$(CC_VERSION))/gcc/lib64
+   CXXFLAGS += -I$(JEMALLOC_INCLUDE_PATH)
+ endif
+diff --git a/src/gausskernel/process/postmaster/bgwriter.cpp b/src/gausskernel/process/postmaster/bgwriter.cpp
+index ede8843..3446102 100755
+--- a/src/gausskernel/process/postmaster/bgwriter.cpp
++++ b/src/gausskernel/process/postmaster/bgwriter.cpp
+@@ -47,6 +47,7 @@
+ #include "postmaster/bgwriter.h"
+ #include "postmaster/pagewriter.h"
+ #include "storage/buf/bufmgr.h"
++#include "storage/buf/buf_internals.h"
+ #include "storage/ipc.h"
+ #include "storage/lock/lwlock.h"
+ #include "storage/proc.h"
+@@ -563,6 +564,7 @@ void invalid_buffer_bgwriter_main()
+     MemoryContext bgwriter_context;
+     char name[MAX_THREAD_NAME_LEN] = {0};
+     WritebackContext wb_context;
++    TimestampTz next_resize_time = 0;
+     t_thrd.role = SPBGWRITER;
+
+     setup_bgwriter_signalhook();
+@@ -607,13 +609,18 @@ void invalid_buffer_bgwriter_main()
+     pgstat_report_appname("InvalidBufferBgWriter");
+     pgstat_report_activity(STATE_IDLE, NULL);
+     g_instance.bgwriter_cxt.invalid_buf_proc_latch = &t_thrd.proc->procLatch;
+-	/* Loop forever */
++    ProcessConfigFile(PGC_SIGHUP);
++    StrategySetBufferResizeTarget(g_instance.attr.attr_storage.NBuffersTarget);
++    /* Loop forever */
+     for (;;) {
+         int rc;
++        bool resize_complete;
++        uint wait_time;
+
+         if (t_thrd.bgwriter_cxt.got_SIGHUP) {
+             t_thrd.bgwriter_cxt.got_SIGHUP = false;
+             ProcessConfigFile(PGC_SIGHUP);
++            StrategySetBufferResizeTarget(g_instance.attr.attr_storage.NBuffersTarget);
+         }
+
+         if (t_thrd.bgwriter_cxt.shutdown_requested) {
+@@ -622,7 +629,28 @@ void invalid_buffer_bgwriter_main()
+             proc_exit(0);
+         }
+
+-        rc = WaitLatch(&t_thrd.proc->procLatch, WL_LATCH_SET | WL_TIMEOUT | WL_POSTMASTER_DEATH, THREAD_SLEEP_TIME);
++        TimestampTz now = GetCurrentTimestamp();
++        if (next_resize_time > now &&
++            StrategyGetBufferResizeTarget() < StrategyGetActiveBufferCount()) {
++            long secs;
++            int usecs;
++            TimestampDifference(now, next_resize_time, &secs, &usecs);
++            wait_time = (uint)Max(1L, secs * 1000L + (usecs + 999) / 1000);
++            resize_complete = false;
++        } else {
++            int old_active_buffers = StrategyGetActiveBufferCount();
++            resize_complete = RetireSharedBufferTail(&wb_context);
++            if (!resize_complete && StrategyGetActiveBufferCount() < old_active_buffers) {
++                next_resize_time = TimestampTzPlusMilliseconds(GetCurrentTimestamp(),
++                    g_instance.attr.attr_storage.shared_buffers_resize_interval);
++            } else if (resize_complete) {
++                next_resize_time = 0;
++            }
++            wait_time = resize_complete ? THREAD_SLEEP_TIME :
++                g_instance.attr.attr_storage.shared_buffers_resize_interval;
++        }
++        rc = WaitLatch(&t_thrd.proc->procLatch, WL_LATCH_SET | WL_TIMEOUT | WL_POSTMASTER_DEATH,
++            wait_time);
+         if (rc & WL_POSTMASTER_DEATH) {
+             gs_thread_exit(1);
+         }
+diff --git a/src/gausskernel/process/postmaster/pagewriter.cpp b/src/gausskernel/process/postmaster/pagewriter.cpp
+index 36f4501..c1d7a3e 100755
+--- a/src/gausskernel/process/postmaster/pagewriter.cpp
++++ b/src/gausskernel/process/postmaster/pagewriter.cpp
+@@ -31,6 +31,7 @@
+ #include "postmaster/pagewriter.h"
+ #include "storage/barrier.h"
+ #include "storage/buf/bufmgr.h"
++#include "storage/buf/buf_internals.h"
+ #include "storage/ipc.h"
+ #include "storage/smgr/smgr.h"
+ #include "storage/smgr/segment.h"
+@@ -2418,7 +2419,11 @@ static uint32 get_candidate_buf_and_flush_list(uint32 start, uint32 end, uint32
+         if (!(local_buf_state & BM_DIRTY)) {
+             if (g_instance.ckpt_cxt_ctl->candidate_free_map[buf_id] == false) {
+                 if (buf_id < (uint32)NvmBufferStartID) {
+-                    candidate_buf_push(&pgwr->normal_list, buf_id);
++                    if (buf_id < (uint32)StrategyGetBufferAllocationLimit()) {
++                        candidate_buf_push(&pgwr->normal_list, buf_id);
++                    } else {
++                        goto UNLOCK;
++                    }
+                 } else if (buf_id < (uint32)SegmentBufferStartID) {
+                     candidate_buf_push(&pgwr->nvm_list, buf_id);
+                 } else {
+@@ -2469,6 +2474,10 @@ static void push_to_candidate_list(BufferDesc *buf_desc)
+     uint32 buf_state = pg_atomic_read_u32(&buf_desc->state);
+     bool emptyUsageCount = (!NEED_CONSIDER_USECOUNT || BUF_STATE_GET_USAGECOUNT(buf_state) == 0);
+
++    if (buf_id < NvmBufferStartID && buf_id >= StrategyGetBufferAllocationLimit()) {
++        return;
++    }
++
+     if (BUF_STATE_GET_REFCOUNT(buf_state) > 0 || !emptyUsageCount) {
+         return;
+     }
+diff --git a/src/gausskernel/storage/buffer/bufmgr.cpp b/src/gausskernel/storage/buffer/bufmgr.cpp
+index 5e042a3..45e6065 100644
+--- a/src/gausskernel/storage/buffer/bufmgr.cpp
++++ b/src/gausskernel/storage/buffer/bufmgr.cpp
+@@ -33,6 +33,8 @@
+ #include "knl/knl_variable.h"
+
+ #include <sys/file.h>
++#include <sys/mman.h>
++#include <unistd.h>
+
+ #include "access/xlog.h"
+ #include "access/cstore_am.h"
+@@ -3193,6 +3195,99 @@ retry:
+     LWLockRelease(old_partition_lock);
+ }
+
++static bool TryRetireBufferForResize(BufferDesc *buf)
++{
++    BufferTag old_tag;
++    uint32 old_hash;
++    uint32 buf_state = LockBufHdr(buf);
++
++    if (!(buf_state & BM_TAG_VALID)) {
++        bool reusable = BUF_STATE_GET_REFCOUNT(buf_state) == 0 &&
++            !(buf_state & (BM_DIRTY | BM_IO_IN_PROGRESS));
++        UnlockBufHdr(buf, buf_state);
++        if (reusable) {
++            g_instance.ckpt_cxt_ctl->candidate_free_map[buf->buf_id] = false;
++        }
++        return reusable;
++    }
++
++    old_tag = buf->tag;
++    UnlockBufHdr(buf, buf_state);
++    old_hash = BufTableHashCode(&old_tag);
++    LWLock *partition_lock = BufMappingPartitionLock(old_hash);
++    (void)LWLockAcquire(partition_lock, LW_EXCLUSIVE);
++    buf_state = LockBufHdr(buf);
++
++    if (!BUFFERTAGS_EQUAL(buf->tag, old_tag) || BUF_STATE_GET_REFCOUNT(buf_state) != 0 ||
++        (buf_state & (BM_DIRTY | BM_IO_IN_PROGRESS)) || ENABLE_DMS) {
++        UnlockBufHdr(buf, buf_state);
++        LWLockRelease(partition_lock);
++        return false;
++    }
++
++    uint32 old_flags = buf_state & BUF_FLAG_MASK;
++    CLEAR_BUFFERTAG(buf->tag);
++    buf_state &= ~(BUF_FLAG_MASK | BUF_USAGECOUNT_MASK);
++    UnlockBufHdr(buf, buf_state);
++    if (old_flags & BM_TAG_VALID) {
++        BufTableDelete(&old_tag, old_hash);
++    }
++    g_instance.ckpt_cxt_ctl->candidate_free_map[buf->buf_id] = false;
++    LWLockRelease(partition_lock);
++    return true;
++}
++
++bool RetireSharedBufferTail(WritebackContext* wb_context)
++{
++    int active = StrategyGetActiveBufferCount();
++    int resize_target = StrategyGetBufferResizeTarget();
++
++    if (resize_target >= active) {
++        return true;
++    }
++    int target = StrategyStartBufferResizeStep();
++    if (g_instance.attr.attr_storage.enable_huge_pages || ENABLE_DMS) {
++        ereport(WARNING,
++            (errmsg("shared buffer resize requires huge pages and DMS to be disabled")));
++        return false;
++    }
++
++    bool all_retired = true;
++    for (int buf_id = active - 1; buf_id >= target; --buf_id) {
++        BufferDesc *buf = GetBufferDescriptor(buf_id);
++        uint32 state = pg_atomic_read_u32(&buf->state);
++        if (state & BM_DIRTY) {
++            ResourceOwnerEnlargeBuffers(t_thrd.utils_cxt.CurrentResourceOwner);
++            (void)SyncOneBuffer(buf_id, false, wb_context);
++        }
++        if (!TryRetireBufferForResize(buf)) {
++            all_retired = false;
++        }
++    }
++    IssuePendingWritebacks(wb_context);
++
++    if (!all_retired || target != StrategyGetBufferAllocationLimit()) {
++        return false;
++    }
++
++    long page_size = sysconf(_SC_PAGESIZE);
++    uintptr_t raw_begin = (uintptr_t)t_thrd.storage_cxt.BufferBlocks + (uintptr_t)target * BLCKSZ;
++    uintptr_t raw_end = (uintptr_t)t_thrd.storage_cxt.BufferBlocks + (uintptr_t)active * BLCKSZ;
++    uintptr_t begin = TYPEALIGN((uintptr_t)page_size, raw_begin);
++    uintptr_t end = TYPEALIGN_DOWN((uintptr_t)page_size, raw_end);
++    if (end > begin && madvise((void*)begin, end - begin, MADV_REMOVE) != 0) {
++        ereport(WARNING,
++            (errmsg("could not release retired shared buffer pages: %m")));
++        return false;
++    }
++
++    StrategyCommitBufferResize(target);
++    ereport(LOG,
++        (errmsg("shared buffer resize committed: active buffers %d, released %lu bytes",
++            target, (unsigned long)(end - begin))));
++    return target == StrategyGetBufferResizeTarget();
++}
++
+ #ifdef USE_ASSERT_CHECKING
+ static void recheck_page_content(const BufferDesc *buf_desc)
+ {
+diff --git a/src/gausskernel/storage/buffer/freelist.cpp b/src/gausskernel/storage/buffer/freelist.cpp
+index 8fd8e08..f007000 100644
+--- a/src/gausskernel/storage/buffer/freelist.cpp
++++ b/src/gausskernel/storage/buffer/freelist.cpp
+@@ -45,6 +45,9 @@ typedef struct BufferStrategyControl {
+      * get an actual buffer, it needs to be used modulo NBuffers.
+      */
+     pg_atomic_uint32 nextVictimBuffer;
++    pg_atomic_uint32 activeNormalBuffers;
++    pg_atomic_uint32 desiredNormalBuffers;
++    pg_atomic_uint32 allocationNormalBuffers;
+
+     /*
+      * Statistics.	These counters should be wide enough that they can't
+@@ -159,6 +162,78 @@ static inline uint32 ClockSweepTick(int max_nbuffer_can_use)
+     return victim;
+ }
+
++void StrategySetBufferResizeTarget(int target_buffers)
++{
++    if (target_buffers <= 0 || target_buffers > NORMAL_SHARED_BUFFER_NUM) {
++        target_buffers = NORMAL_SHARED_BUFFER_NUM;
++    }
++    if (t_thrd.storage_cxt.StrategyControl != NULL) {
++        pg_atomic_write_u32(&t_thrd.storage_cxt.StrategyControl->desiredNormalBuffers, (uint32)target_buffers);
++        int active_buffers = StrategyGetActiveBufferCount();
++        if (target_buffers >= active_buffers) {
++            if (target_buffers > active_buffers) {
++                StrategyCommitBufferResize(target_buffers);
++                ereport(LOG,
++                    (errmsg("shared buffer resize committed: active buffers %d, released 0 bytes",
++                        target_buffers)));
++            }
++        } else {
++            pg_atomic_write_u32(&t_thrd.storage_cxt.StrategyControl->allocationNormalBuffers,
++                (uint32)active_buffers);
++        }
++    }
++}
++
++int StrategyGetBufferResizeTarget(void)
++{
++    if (t_thrd.storage_cxt.StrategyControl == NULL) {
++        return NORMAL_SHARED_BUFFER_NUM;
++    }
++    return (int)pg_atomic_read_u32(&t_thrd.storage_cxt.StrategyControl->desiredNormalBuffers);
++}
++
++int StrategyStartBufferResizeStep(void)
++{
++    int target = StrategyGetBufferResizeTarget();
++    int active = StrategyGetActiveBufferCount();
++
++    if (target >= active) {
++        return active;
++    }
++    int granule = INT_ACCESS_ONCE(g_instance.attr.attr_storage.NBuffersResizeGranule);
++    if (granule <= 0) {
++        granule = active - target;
++    }
++    int step_target = Max(target, active - granule);
++    pg_atomic_write_u32(&t_thrd.storage_cxt.StrategyControl->allocationNormalBuffers, (uint32)step_target);
++    return step_target;
++}
++
++int StrategyGetBufferAllocationLimit(void)
++{
++    if (t_thrd.storage_cxt.StrategyControl == NULL) {
++        return NORMAL_SHARED_BUFFER_NUM;
++    }
++    return (int)pg_atomic_read_u32(&t_thrd.storage_cxt.StrategyControl->allocationNormalBuffers);
++}
++
++int StrategyGetActiveBufferCount(void)
++{
++    if (t_thrd.storage_cxt.StrategyControl == NULL) {
++        return NORMAL_SHARED_BUFFER_NUM;
++    }
++    return (int)pg_atomic_read_u32(&t_thrd.storage_cxt.StrategyControl->activeNormalBuffers);
++}
++
++void StrategyCommitBufferResize(int active_buffers)
++{
++    if (t_thrd.storage_cxt.StrategyControl != NULL) {
++        pg_atomic_write_u32(&t_thrd.storage_cxt.StrategyControl->activeNormalBuffers, (uint32)active_buffers);
++        pg_atomic_write_u32(&t_thrd.storage_cxt.StrategyControl->allocationNormalBuffers,
++            (uint32)active_buffers);
++    }
++}
++
+ /*
+  * StrategyGetBuffer
+  *
+@@ -260,10 +335,11 @@ BufferDesc* StrategyGetBuffer(BufferAccessStrategy strategy, uint32* buf_state)
+
+ retry:
+     /* Nothing on the freelist, so run the "clock sweep" algorithm */
+-    if (am_standby)
+-        max_buffer_can_use = int(NORMAL_SHARED_BUFFER_NUM * u_sess->attr.attr_storage.shared_buffers_fraction);
+-    else
+-        max_buffer_can_use = NORMAL_SHARED_BUFFER_NUM;
++    max_buffer_can_use = StrategyGetBufferAllocationLimit();
++    if (am_standby) {
++        max_buffer_can_use = Min(max_buffer_can_use,
++            int(NORMAL_SHARED_BUFFER_NUM * u_sess->attr.attr_storage.shared_buffers_fraction));
++    }
+     try_counter = max_buffer_can_use;
+     int try_get_loc_times = max_buffer_can_use;
+     for (;;) {
+@@ -441,6 +517,12 @@ void StrategyInitialize(bool init)
+
+         /* Initialize the clock sweep pointer */
+         pg_atomic_init_u32(&t_thrd.storage_cxt.StrategyControl->nextVictimBuffer, 0);
++        pg_atomic_init_u32(&t_thrd.storage_cxt.StrategyControl->activeNormalBuffers,
++            (uint32)NORMAL_SHARED_BUFFER_NUM);
++        pg_atomic_init_u32(&t_thrd.storage_cxt.StrategyControl->desiredNormalBuffers,
++            (uint32)NORMAL_SHARED_BUFFER_NUM);
++        pg_atomic_init_u32(&t_thrd.storage_cxt.StrategyControl->allocationNormalBuffers,
++            (uint32)NORMAL_SHARED_BUFFER_NUM);
+
+         /* Clear statistics */
+         t_thrd.storage_cxt.StrategyControl->completePasses = 0;
+@@ -594,6 +676,11 @@ RETRY:
+         strategy->current_was_in_ring = false;
+         return NULL;
+     }
++    if (buf_num > StrategyGetBufferAllocationLimit()) {
++        strategy->buffers[strategy->current] = InvalidBuffer;
++        strategy->current_was_in_ring = false;
++        return NULL;
++    }
+
+     /*
+      * If the buffer is pinned we cannot use it under any circumstances.
+@@ -733,6 +820,10 @@ static BufferDesc* get_buf_from_candidate_list(BufferAccessStrategy strategy, ui
+         Assert(thread_id > 0 && thread_id <= list_num);
+         while (candidate_buf_pop(&g_instance.ckpt_cxt_ctl->pgwr_procs.writer_proc[thread_id].normal_list, &buf_id)) {
+             Assert(buf_id < SegmentBufferStartID);
++            if (buf_id >= StrategyGetBufferAllocationLimit()) {
++                g_instance.ckpt_cxt_ctl->candidate_free_map[buf_id] = false;
++                continue;
++            }
+             buf = GetBufferDescriptor(buf_id);
+             local_buf_state = LockBufHdr(buf);
+
+@@ -788,4 +879,3 @@ static BufferDesc* get_buf_from_candidate_list(BufferAccessStrategy strategy, ui
+     }
+     return NULL;
+ }
+-
+diff --git a/src/include/communication/commproxy_interface.h b/src/include/communication/commproxy_interface.h
+index 67dab2f..4a609ae 100644
+--- a/src/include/communication/commproxy_interface.h
++++ b/src/include/communication/commproxy_interface.h
+@@ -165,8 +165,12 @@ extern ErrorLevel min_debug_level;
+ #define INIT_TX_ALLOC_BUFF_NUM 5
+
+ #if (!defined WITH_OPENEULER_OS) && (!defined OPENEULER_MAJOR)
++#if defined(__GLIBC__)
++extern int gettimeofday(struct timeval* tp, void* tzp);
++#else
+ extern int gettimeofday(struct timeval* tp, struct timezone* tzp);
+ #endif
++#endif
+ //extern THR_LOCAL knl_thrd_context t_thrd;
+
+ #define COMM_ELOG(elevel, format, ...)                     \
+diff --git a/src/include/knl/knl_guc/knl_instance_attr_storage.h b/src/include/knl/knl_guc/knl_instance_attr_storage.h
+index 2077bb6..225f6e3 100755
+--- a/src/include/knl/knl_guc/knl_instance_attr_storage.h
++++ b/src/include/knl/knl_guc/knl_instance_attr_storage.h
+@@ -148,6 +148,9 @@ typedef struct knl_instance_attr_storage {
+     int WalReceiverBufSize;
+     int DataQueueBufSize;
+     int NBuffers;
++    int NBuffersTarget;
++    int NBuffersResizeGranule;
++    int shared_buffers_resize_interval;
+     int NNvmBuffers;
+     int NPcaBuffers;
+     int NSegBuffers;
+@@ -228,4 +231,3 @@ typedef struct knl_instance_attr_storage {
+ } knl_instance_attr_storage;
+
+ #endif /* SRC_INCLUDE_KNL_KNL_INSTANCE_ATTR_STORAGE_H_ */
+-
+diff --git a/src/include/storage/buf/buf_internals.h b/src/include/storage/buf/buf_internals.h
+index c233d89..ac41030 100644
+--- a/src/include/storage/buf/buf_internals.h
++++ b/src/include/storage/buf/buf_internals.h
+@@ -352,6 +352,13 @@ extern void ScheduleBufferTagForWriteback(WritebackContext* context, BufferTag*
+
+ /* freelist.c */
+ extern BufferDesc *StrategyGetBuffer(BufferAccessStrategy strategy, uint32 *buf_state);
++extern void StrategySetBufferResizeTarget(int target_buffers);
++extern int StrategyGetBufferResizeTarget(void);
++extern int StrategyStartBufferResizeStep(void);
++extern int StrategyGetBufferAllocationLimit(void);
++extern int StrategyGetActiveBufferCount(void);
++extern void StrategyCommitBufferResize(int active_buffers);
++extern bool RetireSharedBufferTail(WritebackContext* wb_context);
+
+ extern void StrategyFreeBuffer(volatile BufferDesc* buf);
+ extern bool StrategyRejectBuffer(BufferAccessStrategy strategy, BufferDesc* buf);

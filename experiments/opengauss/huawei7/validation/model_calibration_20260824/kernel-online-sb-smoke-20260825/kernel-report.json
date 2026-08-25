@@ -1,0 +1,107 @@
+{
+  "build": {
+    "cluster_guc": {
+      "path": "/opt/openGauss/bin/cluster_guc.conf",
+      "sha256": "6e96dab3379dc895ec2b98bc7371d3e04b592628ee811f14b0950e019a1cb7e2"
+    },
+    "command": "PATH=/root/binarylibs_5_0_centos/buildtools/gcc7.3/gcc/bin:$PATH LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu make -C src/gausskernel -j2 gaussdb",
+    "compiler": "gcc/g++ 7.3.0",
+    "gaussdb_binary": {
+      "path": "/opt/openGauss/bin/gaussdb",
+      "sha256": "99a102b9b82557403534fd645953a5b503481eeca10a751eef99b2dcd855c8bf"
+    },
+    "log": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/kernel-online-sb-smoke-20260825/build.log",
+      "sha256": "78a20600565eff88e9ff78d8807439bd47ff9cd0547826670dc4364096abb8ad"
+    },
+    "result": "passed"
+  },
+  "date": "2026-08-25",
+  "remaining_acceptance": [
+    "continuous five-stage Sysbench trajectory has not yet been run with this target GUC",
+    "active-session work_mem graceful reduction is not provided by this kernel patch",
+    "runtime backpressure queue is a controller-layer feature, not part of the SB kernel patch",
+    "TPS/IO/spill <=3% must be measured during the continuous trajectory"
+  ],
+  "runtime_smoke": {
+    "after": {
+      "resize_granule": "256MB",
+      "resize_interval": "1s",
+      "shared_buffers": "4GB",
+      "shared_buffers_target": "4GB"
+    },
+    "before": {
+      "resize_granule": "256MB",
+      "resize_interval": "1s",
+      "shared_buffers": "4GB",
+      "shared_buffers_target": "4GB"
+    },
+    "elapsed_seconds": 6.438,
+    "grow_commit": {
+      "buffers": 524288,
+      "line": 515,
+      "offset": 91443,
+      "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-25_131046.log",
+      "released_bytes": 0
+    },
+    "kernel_artifacts": {
+      "cluster_guc": {
+        "path": "/opt/openGauss/bin/cluster_guc.conf",
+        "sha256": "6e96dab3379dc895ec2b98bc7371d3e04b592628ee811f14b0950e019a1cb7e2"
+      },
+      "gaussdb_binary": {
+        "path": "/opt/openGauss/bin/gaussdb",
+        "sha256": "99a102b9b82557403534fd645953a5b503481eeca10a751eef99b2dcd855c8bf"
+      },
+      "source_revision": "b5a8d5b056bbe660a6315cb424253717fb32cd04-dirty"
+    },
+    "middle": {
+      "resize_granule": "256MB",
+      "resize_interval": "1s",
+      "shared_buffers": "4GB",
+      "shared_buffers_target": "3GB"
+    },
+    "passed": true,
+    "postmaster_pid_after": 1825240,
+    "postmaster_pid_before": 1825240,
+    "postmaster_pid_unchanged": true,
+    "probe_after": "1",
+    "probe_middle": "1",
+    "restart_count": 0,
+    "schema": "huawei7.online-shared-buffers-validation/v1",
+    "shrink_commit": {
+      "buffers": 393216,
+      "line": 509,
+      "offset": 90417,
+      "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-25_131046.log",
+      "released_bytes": 268431360
+    },
+    "shrink_target_mb": 3072,
+    "startup_shared_buffers_mb": 4096
+  },
+  "upper_bound_validation": {
+    "attempted_target": "5GB",
+    "effective_target_after_reload": "4GB",
+    "postmaster_pid_unchanged": true,
+    "result": "rejected_by_guc_check",
+    "detail": "shared_buffers_target cannot exceed startup shared_buffers"
+  },
+  "schema": "huawei7.openGauss-online-sb-kernel-report/v1",
+  "scope": {
+    "no_cpu_model": true,
+    "no_new_ppt_stage": true,
+    "no_tpcc_model": true,
+    "online_sb_resize_kernel": true,
+    "work_mem_kernel_change": false
+  },
+  "source": {
+    "dirty": true,
+    "focused_patch": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/kernel-online-sb-smoke-20260825/openGauss-online-sb-focused.patch",
+      "sha256": "2b54cfc5f0c4443e727fb4aa8ec6a7cdba9e3ea4cac04bc5116d90bb44f6cc5f"
+    },
+    "head": "b5a8d5b056bbe660a6315cb424253717fb32cd04",
+    "path": "/root/openGauss-server-5.1.0",
+    "working_tree_diff_sha256": "4d9325def787fc6cb3baa5c4d266590bd674021faa2a74d4eb15d398d6656a9c"
+  }
+}

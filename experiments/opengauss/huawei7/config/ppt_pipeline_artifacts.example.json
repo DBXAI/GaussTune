@@ -1,0 +1,53 @@
+{
+  "schema": "huawei7.ppt-pipeline-artifacts/v1",
+  "machine_fingerprint": "REPLACE_WITH_MACHINE_FINGERPRINT",
+  "common": {
+    "machine": "/path/to/machine.json",
+    "memory_budget": "/path/to/memory-budget.json",
+    "ap_model_bundle": "/path/to/ap-model-bundle.json",
+    "openGauss_data_dir": "/opt/openGauss/data"
+  },
+  "storage": {
+    "fio_validation": "/path/to/fio/holdout-report-v2.json",
+    "service_calibration": "/path/to/fio/service-times-v2.json"
+  },
+  "topologies": {
+    "sysbench": {
+      "128": {
+        "os_cache_model": "/path/to/sysbench-n128/os-cache-model.json",
+        "tp_sweep": "/path/to/sysbench-n128/tp-sweep.json",
+        "tp_calibration": "/path/to/sysbench-n128/tp-latency-calibration.json",
+        "tp_collection": "/path/to/sysbench-n128/representative-collection.json",
+        "buffer_probe_overhead": "/path/to/sysbench-n128/probe-overhead.json"
+      },
+      "144": {
+        "os_cache_model": "/path/to/sysbench-n144/os-cache-model.json",
+        "tp_sweep": "/path/to/sysbench-n144/tp-sweep.json",
+        "tp_calibration": "/path/to/sysbench-n144/tp-latency-calibration.json",
+        "tp_collection": "/path/to/sysbench-n144/representative-collection.json",
+        "buffer_probe_overhead": "/path/to/sysbench-n144/probe-overhead.json"
+      }
+    },
+    "benchbase-tpcc": {
+      "128": {
+        "os_cache_model": "/path/to/tpcc-n128/os-cache-model.json",
+        "tp_sweep": "/path/to/tpcc-n128/tp-sweep.json",
+        "tp_calibration": "/path/to/tpcc-n128/tp-latency-calibration.json",
+        "tp_collection": "/path/to/tpcc-n128/representative-collection.json",
+        "buffer_probe_overhead": "/path/to/tpcc-n128/probe-overhead.json"
+      },
+      "144": {
+        "os_cache_model": "/path/to/tpcc-n144/os-cache-model.json",
+        "tp_sweep": "/path/to/tpcc-n144/tp-sweep.json",
+        "tp_calibration": "/path/to/tpcc-n144/tp-latency-calibration.json",
+        "tp_collection": "/path/to/tpcc-n144/representative-collection.json",
+        "buffer_probe_overhead": "/path/to/tpcc-n144/probe-overhead.json"
+      }
+    }
+  },
+  "memory_grid_mb": 64,
+  "sb_sample_count": 7,
+  "hit_plateau_fraction": 0.99,
+  "ap_mix_tolerance": 0.05,
+  "practical_tps_tolerance": 0.03
+}
