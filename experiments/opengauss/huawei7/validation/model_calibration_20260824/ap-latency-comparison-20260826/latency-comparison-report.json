@@ -1,0 +1,90 @@
+{
+  "schema": "huawei7.sysbench-default-vs-recommended-report/v1",
+  "date": "2026-08-26",
+  "five_stage_validation": {
+    "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-ppt-dynamic-acceptance-20260825/dynamic-acceptance.json",
+    "status": "ppt_five_stage_runtime_acceptance_passed",
+    "acceptance_passed": true
+  },
+  "profiles": {
+    "default": {
+      "shared_buffers_target_mb": 512,
+      "work_mem_mb": 32
+    },
+    "recommended_s4_q2": {
+      "shared_buffers_target_mb": 4096,
+      "work_mem_mb": 64
+    }
+  },
+  "sysbench_tp": {
+    "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-default-vs-recommended-20260826/comparison.json",
+    "terminals": 128,
+    "warmup_seconds": 20,
+    "measurement_seconds": 60,
+    "profiles": {
+      "default": {
+        "samples": [
+          7389.6213333333335,
+          7322.977
+        ],
+        "mean_tps": 7356.299166666667,
+        "median_tps": 7356.299166666667
+      },
+      "recommended": {
+        "samples": [
+          7874.9366666666665,
+          7886.5765
+        ],
+        "mean_tps": 7880.756583333334,
+        "median_tps": 7880.756583333334
+      }
+    },
+    "mean_tps_gain": 524.4574166666671,
+    "mean_tps_gain_percent": 7.129364980738173
+  },
+  "ap_query_latency": {
+    "query_id": "2",
+    "measurement": "client wall time of EXPLAIN ANALYZE/BUFFERS, no concurrent TP in this focused arm",
+    "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-ap-latency-q2-isolated-default-vs-s4-20260826-rerun2/comparison.json",
+    "profiles": {
+      "default": {
+        "samples": [
+          105.67797697894275,
+          43.958459090208635
+        ],
+        "mean_wall_seconds": 74.8182180345757,
+        "median_wall_seconds": 74.8182180345757,
+        "min_wall_seconds": 43.958459090208635,
+        "max_wall_seconds": 105.67797697894275
+      },
+      "recommended": {
+        "samples": [
+          39.743030632147565,
+          39.502835700055584
+        ],
+        "mean_wall_seconds": 39.622933166101575,
+        "median_wall_seconds": 39.622933166101575,
+        "min_wall_seconds": 39.502835700055584,
+        "max_wall_seconds": 39.743030632147565
+      }
+    },
+    "matched_warm_pair": {
+      "repeat": 2,
+      "default_wall_seconds": 43.958459090208635,
+      "recommended_wall_seconds": 39.502835700055584,
+      "latency_reduction_percent": 10.135986297903472,
+      "latency_reduction_seconds": 4.45562339015305
+    },
+    "median_reduction_percent": 47.041062715780456
+  },
+  "concurrent_ap_latency_attempt": {
+    "status": "not_completed",
+    "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-ap-latency-q2-default-vs-s4-20260826.console.log",
+    "reason": "q2 EXPLAIN ANALYZE did not complete within the 180-second client timeout while 128 Sysbench terminals were active; server backends were terminated after the attempt"
+  },
+  "conclusion": {
+    "recommended_s4_q2_latency_result": "warm matched arm: about 4.46 seconds faster, 10.14% lower wall latency",
+    "recommendation_update": "not_updated",
+    "scope_limit": "This is a q2/S4 focused latency measurement; it is not a claim for all five AP query types. q9/q18/q21 are multi-minute queries on SF85 and need a separate long-duration latency campaign."
+  }
+}

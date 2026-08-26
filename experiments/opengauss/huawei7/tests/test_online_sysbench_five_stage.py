@@ -8,6 +8,7 @@ from scripts.run_sysbench_online_ppt_five_stage import (
     _validate_trajectory,
     run,
 )
+from scripts.compare_sysbench_ap_latency import _find_execution_time
 
 
 class OnlineSysbenchFiveStageTest(unittest.TestCase):
@@ -85,6 +86,12 @@ class OnlineSysbenchFiveStageTest(unittest.TestCase):
                 handle.write("[ 3s ] thds: 1 tps: 30.0\n")
                 handle.write("[ 4s ] thds: 1 tps: 50.0\n")
             self.assertEqual(_read_tps_window(path, offset), (40.0, 2))
+
+    def test_reads_opengauss_total_runtime_from_explain_json(self):
+        self.assertEqual(
+            _find_execution_time([{"Plan": {}, "Total Runtime": 123.5}]),
+            123.5,
+        )
 
     def test_dry_run_does_not_touch_database(self):
         with tempfile.TemporaryDirectory() as directory:

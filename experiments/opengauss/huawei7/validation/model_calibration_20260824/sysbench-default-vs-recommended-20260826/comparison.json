@@ -1,0 +1,128 @@
+{
+  "schema": "huawei7.sysbench-default-vs-recommended/v1",
+  "sysbench": {
+    "terminals": 128,
+    "warmup_seconds": 20,
+    "measurement_seconds": 60
+  },
+  "profiles": {
+    "default": {
+      "shared_buffers_target_mb": 512,
+      "work_mem_mb": 32
+    },
+    "recommended": {
+      "shared_buffers_target_mb": 4096,
+      "work_mem_mb": 64
+    }
+  },
+  "repeats": [
+    {
+      "repeat": 1,
+      "profile": "default",
+      "shared_buffers_target_mb": 512,
+      "work_mem_mb": 32,
+      "transition": {
+        "before": {
+          "shared_buffers": "4GB",
+          "shared_buffers_target": "512MB",
+          "resize_granule": "256MB",
+          "resize_interval": "1s"
+        },
+        "after": {
+          "shared_buffers": "4GB",
+          "shared_buffers_target": "512MB",
+          "resize_granule": "256MB",
+          "resize_interval": "1s"
+        },
+        "commit": null
+      },
+      "tps": 7389.6213333333335,
+      "samples": 60,
+      "wall_seconds": 80.5800934669096
+    },
+    {
+      "repeat": 1,
+      "profile": "recommended",
+      "shared_buffers_target_mb": 4096,
+      "work_mem_mb": 64,
+      "transition": {
+        "before": {
+          "shared_buffers": "4GB",
+          "shared_buffers_target": "512MB",
+          "resize_granule": "256MB",
+          "resize_interval": "1s"
+        },
+        "after": {
+          "shared_buffers": "4GB",
+          "shared_buffers_target": "4GB",
+          "resize_granule": "256MB",
+          "resize_interval": "1s"
+        },
+        "commit": {
+          "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-26_000000.log",
+          "offset": 1308868,
+          "buffers": 524288,
+          "released_bytes": 0,
+          "line": 7290
+        }
+      },
+      "tps": 7874.9366666666665,
+      "samples": 60,
+      "wall_seconds": 80.58821153012104
+    },
+    {
+      "repeat": 2,
+      "profile": "recommended",
+      "shared_buffers_target_mb": 4096,
+      "work_mem_mb": 64,
+      "transition": {
+        "before": {
+          "shared_buffers": "4GB",
+          "shared_buffers_target": "4GB",
+          "resize_granule": "256MB",
+          "resize_interval": "1s"
+        },
+        "after": {
+          "shared_buffers": "4GB",
+          "shared_buffers_target": "4GB",
+          "resize_granule": "256MB",
+          "resize_interval": "1s"
+        },
+        "commit": null
+      },
+      "tps": 7886.5765,
+      "samples": 60,
+      "wall_seconds": 80.56626795395277
+    },
+    {
+      "repeat": 2,
+      "profile": "default",
+      "shared_buffers_target_mb": 512,
+      "work_mem_mb": 32,
+      "transition": {
+        "before": {
+          "shared_buffers": "4GB",
+          "shared_buffers_target": "4GB",
+          "resize_granule": "256MB",
+          "resize_interval": "1s"
+        },
+        "after": {
+          "shared_buffers": "4GB",
+          "shared_buffers_target": "512MB",
+          "resize_granule": "256MB",
+          "resize_interval": "1s"
+        },
+        "commit": {
+          "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-26_000000.log",
+          "offset": 1317242,
+          "buffers": 65536,
+          "released_bytes": 268431360,
+          "line": 7336
+        }
+      },
+      "tps": 7322.977,
+      "samples": 60,
+      "wall_seconds": 80.58847586903721
+    }
+  ]
+}
