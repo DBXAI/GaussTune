@@ -1,0 +1,802 @@
+{
+  "schema": "huawei7.remote-model-validation/v1",
+  "generated_at": "2026-08-26T09:08:20.032152+00:00",
+  "remote": {
+    "address": "123.57.230.122",
+    "hostname": "iZ2zebh7f6yuijpdossa2yZ",
+    "observed_at": "2026-08-26T16:48:25+08:00",
+    "kernel_line": "Linux iZ2zebh7f6yuijpdossa2yZ 5.4.0-216-generic #236-Ubuntu SMP Fri Apr 11 19:53:21 UTC 2025 x86_64 x86_64 x86_64 GNU/Linux",
+    "memory_line": "Mem:           15Gi       757Mi       1.3Gi       4.3Gi        13Gi       9.7Gi",
+    "note": "Remote password is intentionally excluded from this report."
+  },
+  "deployment": {
+    "model_schema": "huawei7.five-stage-recommendations/v3",
+    "model_artifact": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/full_current_20260815/final/five-stage-recommendations-native.json",
+      "sha256": "b9d166b587240451358aae63b035d8cfa9767fa9f5cceefd650f570517a56f34"
+    },
+    "trajectory_artifact": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-ppt-dynamic-acceptance-20260825/dynamic-acceptance.json",
+      "sha256": "c81edd5ee95c1dd7cbde736d510ec276b95361e8b42e28c0f765628e310e9788"
+    },
+    "gauss_tune_branch": "feature/online-shared-buffers-ppt-five-stage-20260825",
+    "gauss_tune_commit": "b6a326380d2488b7db3e1d7f74dc8739b9c83c0c",
+    "openGauss_branch": "feature/online-shared-buffers-ppt-five-stage-20260825",
+    "openGauss_commit": "b314224d8b0a0c25e5212297914ca89d43275929",
+    "online_sb_source_revision": "b314224d8b0a0c25e5212297914ca89d43275929",
+    "remote_binary_sha256": "99a102b9b82557403534fd645953a5b503481eeca10a751eef99b2dcd855c8bf",
+    "remote_cluster_guc_sha256": "6e96dab3379dc895ec2b98bc7371d3e04b592628ee811f14b0950e019a1cb7e2",
+    "runtime_code_remote": "/root/GaussTune/experiments/opengauss/huawei7",
+    "remote_openGauss_home": "/opt/openGauss"
+  },
+  "dataset": {
+    "sysbench_tables": 16,
+    "sysbench_table_size": 1000000,
+    "tpch_remote_scale_factor": 10,
+    "tpch_remote_database_size_bytes": 14563786756,
+    "comparability": "Sysbench shape matches the local 16 x 1,000,000 setup; TPC-H is remote SF10, not the local SF85 dataset, so AP numbers are not cross-machine comparable."
+  },
+  "kernel_smoke": {
+    "after": {
+      "resize_granule": "256MB",
+      "resize_interval": "1s",
+      "shared_buffers": "4GB",
+      "shared_buffers_target": "4GB"
+    },
+    "before": {
+      "resize_granule": "256MB",
+      "resize_interval": "1s",
+      "shared_buffers": "4GB",
+      "shared_buffers_target": "4GB"
+    },
+    "elapsed_seconds": 13.758,
+    "grow_commit": {
+      "buffers": 524288,
+      "line": 1079,
+      "offset": 179402,
+      "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-26_155748.log",
+      "released_bytes": 0
+    },
+    "kernel_artifacts": {
+      "cluster_guc": {
+        "path": "/opt/openGauss/bin/cluster_guc.conf",
+        "sha256": "6e96dab3379dc895ec2b98bc7371d3e04b592628ee811f14b0950e019a1cb7e2"
+      },
+      "gaussdb_binary": {
+        "path": "/opt/openGauss/bin/gaussdb",
+        "sha256": "99a102b9b82557403534fd645953a5b503481eeca10a751eef99b2dcd855c8bf"
+      },
+      "source_revision": "b314224d8b0a0c25e5212297914ca89d43275929"
+    },
+    "middle": {
+      "resize_granule": "256MB",
+      "resize_interval": "1s",
+      "shared_buffers": "4GB",
+      "shared_buffers_target": "512MB"
+    },
+    "passed": true,
+    "postmaster_pid_after": 18487,
+    "postmaster_pid_before": 18487,
+    "postmaster_pid_unchanged": true,
+    "probe_after": "1",
+    "probe_middle": "1",
+    "restart_count": 0,
+    "schema": "huawei7.online-shared-buffers-validation/v1",
+    "shrink_commit": {
+      "buffers": 65536,
+      "line": 1073,
+      "offset": 178377,
+      "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-26_155748.log",
+      "released_bytes": 268431360
+    },
+    "shrink_target_mb": 512,
+    "startup_shared_buffers_mb": 4096
+  },
+  "sysbench_default_vs_recommended": {
+    "schema": "huawei7.remote-sysbench-default-vs-recommended/v1",
+    "machine": {
+      "hostname": "iZ2zebh7f6yuijpdossa2yZ",
+      "kernel": "5.4.0-216-generic",
+      "cpu_count": 8,
+      "memory_total_kb": 15828712
+    },
+    "sysbench": {
+      "terminals": 128,
+      "warmup_seconds": 20,
+      "measurement_seconds": 60,
+      "tables": 16,
+      "table_size": 1000000
+    },
+    "profiles": {
+      "default": {
+        "shared_buffers_target_mb": 512,
+        "work_mem_mb": 32
+      },
+      "recommended": {
+        "shared_buffers_target_mb": 4096,
+        "work_mem_mb": 64
+      }
+    },
+    "runs": [
+      {
+        "profile": "default",
+        "repeat": 1,
+        "shared_buffers_target_mb": 512,
+        "work_mem_mb": 32,
+        "tps_samples": 60,
+        "tps_mean": 5902.255833333334,
+        "tps_min": 5126.24,
+        "tps_max": 6461.91,
+        "log": "/opt/openGauss/remote/sysbench-default-recommended-20260826/default-r1.sysbench.log"
+      },
+      {
+        "profile": "default",
+        "repeat": 2,
+        "shared_buffers_target_mb": 512,
+        "work_mem_mb": 32,
+        "tps_samples": 60,
+        "tps_mean": 5975.296833333334,
+        "tps_min": 5252.56,
+        "tps_max": 6528.86,
+        "log": "/opt/openGauss/remote/sysbench-default-recommended-20260826/default-r2.sysbench.log"
+      },
+      {
+        "profile": "recommended",
+        "repeat": 1,
+        "shared_buffers_target_mb": 4096,
+        "work_mem_mb": 64,
+        "tps_samples": 60,
+        "tps_mean": 6195.4935,
+        "tps_min": 5252.66,
+        "tps_max": 6779.56,
+        "log": "/opt/openGauss/remote/sysbench-default-recommended-20260826/recommended-r1.sysbench.log"
+      },
+      {
+        "profile": "recommended",
+        "repeat": 2,
+        "shared_buffers_target_mb": 4096,
+        "work_mem_mb": 64,
+        "tps_samples": 60,
+        "tps_mean": 6214.3966666666665,
+        "tps_min": 5290.94,
+        "tps_max": 6823.51,
+        "log": "/opt/openGauss/remote/sysbench-default-recommended-20260826/recommended-r2.sysbench.log"
+      }
+    ],
+    "mean_tps": {
+      "default": 5938.776333333333,
+      "recommended": 6204.945083333333
+    },
+    "recommended_vs_default_gain_pct": 4.481878674332962
+  },
+  "online_five_stage_runs": [
+    {
+      "artifact_dir": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/online-five-stage",
+      "passed": true,
+      "postmaster_pid_before": 23236,
+      "postmaster_pid_after": 23236,
+      "postmaster_pid_unchanged": true,
+      "stages": [
+        {
+          "stage": "S1",
+          "shared_buffers_before_mb": 512,
+          "shared_buffers_after_mb": 5120,
+          "work_mem_after": [
+            [
+              18,
+              832
+            ]
+          ],
+          "work_mem_probe": {
+            "18": "832MB"
+          },
+          "requested_ap_queries": [
+            18
+          ],
+          "admitted_ap_queries": [
+            18
+          ],
+          "queued_ap_queries": [],
+          "baseline_tps": 6362.699500000001,
+          "baseline_tps_samples": 20,
+          "surge_tps": 0.0,
+          "surge_tps_samples": 0,
+          "total_tps": 6362.699500000001,
+          "database_stats_delta": {
+            "blks_read": 9,
+            "blks_hit": 45,
+            "temp_files": 0,
+            "temp_bytes": 0,
+            "tup_returned": 18,
+            "tup_fetched": 8,
+            "io_blocks": 54
+          }
+        },
+        {
+          "stage": "S2",
+          "shared_buffers_before_mb": 5120,
+          "shared_buffers_after_mb": 4096,
+          "work_mem_after": [
+            [
+              18,
+              832
+            ],
+            [
+              21,
+              2944
+            ]
+          ],
+          "work_mem_probe": {
+            "18": "832MB",
+            "21": "2944MB"
+          },
+          "requested_ap_queries": [
+            18,
+            21
+          ],
+          "admitted_ap_queries": [
+            18,
+            21
+          ],
+          "queued_ap_queries": [],
+          "baseline_tps": 6144.189047619048,
+          "baseline_tps_samples": 21,
+          "surge_tps": 0.0,
+          "surge_tps_samples": 0,
+          "total_tps": 6144.189047619048,
+          "database_stats_delta": {
+            "blks_read": 0,
+            "blks_hit": 14,
+            "temp_files": 0,
+            "temp_bytes": 0,
+            "tup_returned": 0,
+            "tup_fetched": 0,
+            "io_blocks": 14
+          }
+        },
+        {
+          "stage": "S3",
+          "shared_buffers_before_mb": 4096,
+          "shared_buffers_after_mb": 4096,
+          "work_mem_after": [
+            [
+              9,
+              64
+            ],
+            [
+              13,
+              64
+            ],
+            [
+              18,
+              64
+            ],
+            [
+              21,
+              64
+            ]
+          ],
+          "work_mem_probe": {
+            "9": "64MB",
+            "13": "64MB",
+            "18": "64MB",
+            "21": "64MB"
+          },
+          "requested_ap_queries": [
+            9,
+            13,
+            18,
+            21
+          ],
+          "admitted_ap_queries": [
+            9,
+            13,
+            18,
+            21
+          ],
+          "queued_ap_queries": [],
+          "baseline_tps": 5929.798571428572,
+          "baseline_tps_samples": 21,
+          "surge_tps": 0.0,
+          "surge_tps_samples": 0,
+          "total_tps": 5929.798571428572,
+          "database_stats_delta": {
+            "blks_read": 9,
+            "blks_hit": 45,
+            "temp_files": 0,
+            "temp_bytes": 0,
+            "tup_returned": 18,
+            "tup_fetched": 8,
+            "io_blocks": 54
+          }
+        },
+        {
+          "stage": "S4",
+          "shared_buffers_before_mb": 4096,
+          "shared_buffers_after_mb": 4096,
+          "work_mem_after": [
+            [
+              2,
+              64
+            ],
+            [
+              9,
+              64
+            ],
+            [
+              13,
+              64
+            ],
+            [
+              18,
+              64
+            ],
+            [
+              21,
+              64
+            ]
+          ],
+          "work_mem_probe": {
+            "2": "64MB",
+            "9": "64MB",
+            "13": "64MB",
+            "18": "64MB",
+            "21": "64MB"
+          },
+          "requested_ap_queries": [
+            2,
+            9,
+            13,
+            18,
+            21
+          ],
+          "admitted_ap_queries": [
+            2,
+            9,
+            13,
+            18
+          ],
+          "queued_ap_queries": [
+            21
+          ],
+          "baseline_tps": 5904.467,
+          "baseline_tps_samples": 20,
+          "surge_tps": 0.0,
+          "surge_tps_samples": 0,
+          "total_tps": 5904.467,
+          "database_stats_delta": {
+            "blks_read": 2,
+            "blks_hit": 12,
+            "temp_files": 0,
+            "temp_bytes": 0,
+            "tup_returned": 0,
+            "tup_fetched": 0,
+            "io_blocks": 14
+          }
+        },
+        {
+          "stage": "S5",
+          "shared_buffers_before_mb": 4096,
+          "shared_buffers_after_mb": 5120,
+          "work_mem_after": [
+            [
+              9,
+              64
+            ],
+            [
+              13,
+              64
+            ],
+            [
+              18,
+              64
+            ],
+            [
+              21,
+              64
+            ]
+          ],
+          "work_mem_probe": {
+            "9": "64MB",
+            "13": "64MB",
+            "18": "64MB",
+            "21": "64MB"
+          },
+          "requested_ap_queries": [
+            9,
+            13,
+            18,
+            21
+          ],
+          "admitted_ap_queries": [
+            9,
+            13,
+            18
+          ],
+          "queued_ap_queries": [
+            21
+          ],
+          "baseline_tps": 5455.719523809524,
+          "baseline_tps_samples": 21,
+          "surge_tps": 645.0457142857144,
+          "surge_tps_samples": 21,
+          "total_tps": 6100.765238095239,
+          "database_stats_delta": {
+            "blks_read": 1,
+            "blks_hit": 13,
+            "temp_files": 0,
+            "temp_bytes": 0,
+            "tup_returned": 0,
+            "tup_fetched": 0,
+            "io_blocks": 14
+          }
+        }
+      ]
+    },
+    {
+      "artifact_dir": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/online-five-stage-repeat2",
+      "passed": true,
+      "postmaster_pid_before": 23236,
+      "postmaster_pid_after": 23236,
+      "postmaster_pid_unchanged": true,
+      "stages": [
+        {
+          "stage": "S1",
+          "shared_buffers_before_mb": 512,
+          "shared_buffers_after_mb": 5120,
+          "work_mem_after": [
+            [
+              18,
+              832
+            ]
+          ],
+          "work_mem_probe": {
+            "18": "832MB"
+          },
+          "requested_ap_queries": [
+            18
+          ],
+          "admitted_ap_queries": [
+            18
+          ],
+          "queued_ap_queries": [],
+          "baseline_tps": 6262.71,
+          "baseline_tps_samples": 21,
+          "surge_tps": 0.0,
+          "surge_tps_samples": 0,
+          "total_tps": 6262.71,
+          "database_stats_delta": {
+            "blks_read": 0,
+            "blks_hit": 12,
+            "temp_files": 0,
+            "temp_bytes": 0,
+            "tup_returned": 0,
+            "tup_fetched": 0,
+            "io_blocks": 12
+          }
+        },
+        {
+          "stage": "S2",
+          "shared_buffers_before_mb": 5120,
+          "shared_buffers_after_mb": 4096,
+          "work_mem_after": [
+            [
+              18,
+              832
+            ],
+            [
+              21,
+              2944
+            ]
+          ],
+          "work_mem_probe": {
+            "18": "832MB",
+            "21": "2944MB"
+          },
+          "requested_ap_queries": [
+            18,
+            21
+          ],
+          "admitted_ap_queries": [
+            18,
+            21
+          ],
+          "queued_ap_queries": [],
+          "baseline_tps": 5895.2789999999995,
+          "baseline_tps_samples": 20,
+          "surge_tps": 0.0,
+          "surge_tps_samples": 0,
+          "total_tps": 5895.2789999999995,
+          "database_stats_delta": {
+            "blks_read": 0,
+            "blks_hit": 14,
+            "temp_files": 0,
+            "temp_bytes": 0,
+            "tup_returned": 0,
+            "tup_fetched": 0,
+            "io_blocks": 14
+          }
+        },
+        {
+          "stage": "S3",
+          "shared_buffers_before_mb": 4096,
+          "shared_buffers_after_mb": 4096,
+          "work_mem_after": [
+            [
+              9,
+              64
+            ],
+            [
+              13,
+              64
+            ],
+            [
+              18,
+              64
+            ],
+            [
+              21,
+              64
+            ]
+          ],
+          "work_mem_probe": {
+            "9": "64MB",
+            "13": "64MB",
+            "18": "64MB",
+            "21": "64MB"
+          },
+          "requested_ap_queries": [
+            9,
+            13,
+            18,
+            21
+          ],
+          "admitted_ap_queries": [
+            9,
+            13,
+            18,
+            21
+          ],
+          "queued_ap_queries": [],
+          "baseline_tps": 5399.714285714285,
+          "baseline_tps_samples": 21,
+          "surge_tps": 0.0,
+          "surge_tps_samples": 0,
+          "total_tps": 5399.714285714285,
+          "database_stats_delta": {
+            "blks_read": 11,
+            "blks_hit": 43,
+            "temp_files": 0,
+            "temp_bytes": 0,
+            "tup_returned": 18,
+            "tup_fetched": 8,
+            "io_blocks": 54
+          }
+        },
+        {
+          "stage": "S4",
+          "shared_buffers_before_mb": 4096,
+          "shared_buffers_after_mb": 4096,
+          "work_mem_after": [
+            [
+              2,
+              64
+            ],
+            [
+              9,
+              64
+            ],
+            [
+              13,
+              64
+            ],
+            [
+              18,
+              64
+            ],
+            [
+              21,
+              64
+            ]
+          ],
+          "work_mem_probe": {
+            "2": "64MB",
+            "9": "64MB",
+            "13": "64MB",
+            "18": "64MB",
+            "21": "64MB"
+          },
+          "requested_ap_queries": [
+            2,
+            9,
+            13,
+            18,
+            21
+          ],
+          "admitted_ap_queries": [
+            2,
+            9,
+            13,
+            18
+          ],
+          "queued_ap_queries": [
+            21
+          ],
+          "baseline_tps": 5428.970500000001,
+          "baseline_tps_samples": 20,
+          "surge_tps": 0.0,
+          "surge_tps_samples": 0,
+          "total_tps": 5428.970500000001,
+          "database_stats_delta": {
+            "blks_read": 333306,
+            "blks_hit": 102964,
+            "temp_files": 0,
+            "temp_bytes": 0,
+            "tup_returned": 20200339,
+            "tup_fetched": 558,
+            "io_blocks": 436270
+          }
+        },
+        {
+          "stage": "S5",
+          "shared_buffers_before_mb": 4096,
+          "shared_buffers_after_mb": 5120,
+          "work_mem_after": [
+            [
+              9,
+              64
+            ],
+            [
+              13,
+              64
+            ],
+            [
+              18,
+              64
+            ],
+            [
+              21,
+              64
+            ]
+          ],
+          "work_mem_probe": {
+            "9": "64MB",
+            "13": "64MB",
+            "18": "64MB",
+            "21": "64MB"
+          },
+          "requested_ap_queries": [
+            9,
+            13,
+            18,
+            21
+          ],
+          "admitted_ap_queries": [
+            9,
+            13,
+            18
+          ],
+          "queued_ap_queries": [
+            21
+          ],
+          "baseline_tps": 5471.265714285715,
+          "baseline_tps_samples": 21,
+          "surge_tps": 635.2852380952381,
+          "surge_tps_samples": 21,
+          "total_tps": 6106.550952380953,
+          "database_stats_delta": {
+            "blks_read": 14,
+            "blks_hit": 40,
+            "temp_files": 0,
+            "temp_bytes": 0,
+            "tup_returned": 18,
+            "tup_fetched": 8,
+            "io_blocks": 54
+          }
+        }
+      ]
+    }
+  ],
+  "online_five_stage_stage_statistics": [
+    {
+      "stage": "S1",
+      "baseline_tps_runs": [
+        6362.699500000001,
+        6262.71
+      ],
+      "baseline_tps_mean": 6312.704750000001,
+      "baseline_tps_relative_span_pct": 1.583940703071858,
+      "total_tps_runs": [
+        6362.699500000001,
+        6262.71
+      ],
+      "total_tps_mean": 6312.704750000001
+    },
+    {
+      "stage": "S2",
+      "baseline_tps_runs": [
+        6144.189047619048,
+        5895.2789999999995
+      ],
+      "baseline_tps_mean": 6019.734023809524,
+      "baseline_tps_relative_span_pct": 4.134901087565472,
+      "total_tps_runs": [
+        6144.189047619048,
+        5895.2789999999995
+      ],
+      "total_tps_mean": 6019.734023809524
+    },
+    {
+      "stage": "S3",
+      "baseline_tps_runs": [
+        5929.798571428572,
+        5399.714285714285
+      ],
+      "baseline_tps_mean": 5664.756428571429,
+      "baseline_tps_relative_span_pct": 9.35758302052833,
+      "total_tps_runs": [
+        5929.798571428572,
+        5399.714285714285
+      ],
+      "total_tps_mean": 5664.756428571429
+    },
+    {
+      "stage": "S4",
+      "baseline_tps_runs": [
+        5904.467,
+        5428.970500000001
+      ],
+      "baseline_tps_mean": 5666.71875,
+      "baseline_tps_relative_span_pct": 8.391037582375134,
+      "total_tps_runs": [
+        5904.467,
+        5428.970500000001
+      ],
+      "total_tps_mean": 5666.71875
+    },
+    {
+      "stage": "S5",
+      "baseline_tps_runs": [
+        5455.719523809524,
+        5471.265714285715
+      ],
+      "baseline_tps_mean": 5463.49261904762,
+      "baseline_tps_relative_span_pct": 0.28454674619660064,
+      "total_tps_runs": [
+        6100.765238095239,
+        6106.550952380953
+      ],
+      "total_tps_mean": 6103.6580952380955
+    }
+  ],
+  "ap_latency_probe": {
+    "status": "not_accepted_as_effect_evidence",
+    "attempted_queries": [
+      "q2",
+      "q13"
+    ],
+    "reason": "The isolated AP attempts on remote SF10 did not produce a completed comparison artifact within the bounded run window and were stopped to avoid an unbounded no-index query. The online five-stage AP workers are stage-boundary probes and are intentionally cancelled at boundaries, not latency measurements.",
+    "therefore": "No remote AP latency gain percentage is claimed."
+  },
+  "conclusions": {
+    "deployed": true,
+    "online_shared_buffers_no_restart_passed": true,
+    "sysbench_recommended_profile_positive": true,
+    "sysbench_recommended_mean_tps": 6204.945083333333,
+    "sysbench_default_mean_tps": 5938.776333333333,
+    "sysbench_gain_pct": 4.481878674332962,
+    "five_stage_run_passed_all": true,
+    "five_stage_pid_unchanged_all": true,
+    "five_stage_trajectory_exact": "S1 512->5120, S2 5120->4096, S3 4096->4096, S4 4096->4096, S5 4096->5120",
+    "final_remote_state": "shared_buffers=5GB, shared_buffers_target=5GB, work_mem=32MB; database remains running.",
+    "cross_machine_final_model_validation": false,
+    "cross_machine_reason": "The host, memory/cache state, storage and TPC-H scale differ. The remote result validates deployment and relative Sysbench behavior, not a new machine-specific V3 recommendation."
+  },
+  "artifacts": {
+    "local_report_dir": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826",
+    "remote_smoke": "/opt/openGauss/remote/online-shared-buffers-validation-4096-512.json",
+    "remote_sysbench_comparison": "/opt/openGauss/remote/sysbench-default-recommended-20260826/comparison.json",
+    "remote_online_run1": "/opt/openGauss/remote/online-sysbench-ppt-five-stage-20260826/online-five-stage.json",
+    "remote_online_run2": "/opt/openGauss/remote/online-sysbench-ppt-five-stage-20260826-repeat2/online-five-stage.json"
+  }
+}
