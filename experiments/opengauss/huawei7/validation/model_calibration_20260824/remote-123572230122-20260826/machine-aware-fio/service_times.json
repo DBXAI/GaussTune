@@ -1,0 +1,162 @@
+{
+  "evidence": {
+    "ap_read_ms": {
+      "raw_sha256": [
+        "741e122add4b44eed793022fd71f2d94b60d00a4ece62c1616066dc43c6da3b5",
+        "acff0c1fe76c1628b367642a0a5fca2238bb9a38de9b66ffe2912513d56e3193",
+        "d843ee8eb3130e4cfd0cc10d751fd255c82df3a491fd8016148db6627ef27535"
+      ],
+      "repeats": 3,
+      "samples_ms": [
+        0.70772861242,
+        0.705885570839,
+        0.7761193939679999
+      ]
+    },
+    "ap_write_ms": {
+      "raw_sha256": [
+        "cf2948bf98db3323b6fe9285b87dcee9369bf3c294cd95e166f765b10e516d10",
+        "f284dac05479faeb0f1e33facce8d4b5da99d06400edf549869fc8f6b97f6351",
+        "743ba7958af6f6ba78623e1183bb91f293ff655316f57cda7e85518432ec9726"
+      ],
+      "repeats": 3,
+      "samples_ms": [
+        0.739179984326,
+        0.8153680736769999,
+        0.737030350067
+      ]
+    },
+    "tp_read_ms": {
+      "raw_sha256": [
+        "6e01753a66e8377d1b818f4546673de43b0ae63b653dd0f9bf767ea3bf3a0094",
+        "d3b169a0bd51dd11e0f0f62164c4a57c1b6ac20578e5fcff5ae33c22192471da",
+        "56d4d73c6be897153500688950f3a39b8bb5ec4de2f97b763fe7431c63895f23"
+      ],
+      "repeats": 3,
+      "samples_ms": [
+        0.538075665658,
+        0.542446904996,
+        0.5398729183669999
+      ]
+    },
+    "tp_write_ms": {
+      "raw_sha256": [
+        "91e3488fe11727aa58333e28f20a45b54908c25b087cd5c5ef74658edd2bc90d",
+        "90ee668cf1b99b16cbee27c53d25f7b2970f5eea8713b96d07c5426e80bd6cfa",
+        "bee5b1772ffe0c43001f2d7b25988aefc4fdd9f29e2f4a92332c967e24993b7e"
+      ],
+      "repeats": 3,
+      "samples_ms": [
+        0.435744821087,
+        0.43365085836399997,
+        0.43381134792799997
+      ]
+    }
+  },
+  "machine_fingerprint": "065e8e53c042fb520b8a2319f3f2ebd6c4a2372a381d51bac7e8eba2dc69ff8",
+  "method": "fio direct=1 iodepth=1 class-specific block size",
+  "schema": "huawei7.service-times/v2",
+  "service_times_ms": {
+    "ap_read_ms": 0.70772861242,
+    "ap_write_ms": 0.739179984326,
+    "tp_read_ms": 0.5398729183669999,
+    "tp_write_ms": 0.43381134792799997
+  },
+  "source_artifacts": [
+    {
+      "kind": "fio_raw",
+      "path": "/opt/openGauss/remote/fio-machine-adaptation-20260826-r4/ap_read_ms-repeat-03.json",
+      "repeat": 3,
+      "service_class": "ap_read_ms",
+      "sha256": "741e122add4b44eed793022fd71f2d94b60d00a4ece62c1616066dc43c6da3b5"
+    },
+    {
+      "kind": "fio_raw",
+      "path": "/opt/openGauss/remote/fio-machine-adaptation-20260826-r4/tp_read_ms-repeat-01.json",
+      "repeat": 1,
+      "service_class": "tp_read_ms",
+      "sha256": "6e01753a66e8377d1b818f4546673de43b0ae63b653dd0f9bf767ea3bf3a0094"
+    },
+    {
+      "kind": "fio_raw",
+      "path": "/opt/openGauss/remote/fio-machine-adaptation-20260826-r4/ap_read_ms-repeat-01.json",
+      "repeat": 1,
+      "service_class": "ap_read_ms",
+      "sha256": "acff0c1fe76c1628b367642a0a5fca2238bb9a38de9b66ffe2912513d56e3193"
+    },
+    {
+      "kind": "fio_raw",
+      "path": "/opt/openGauss/remote/fio-machine-adaptation-20260826-r4/tp_write_ms-repeat-02.json",
+      "repeat": 2,
+      "service_class": "tp_write_ms",
+      "sha256": "91e3488fe11727aa58333e28f20a45b54908c25b087cd5c5ef74658edd2bc90d"
+    },
+    {
+      "kind": "fio_raw",
+      "path": "/opt/openGauss/remote/fio-machine-adaptation-20260826-r4/tp_write_ms-repeat-03.json",
+      "repeat": 3,
+      "service_class": "tp_write_ms",
+      "sha256": "90ee668cf1b99b16cbee27c53d25f7b2970f5eea8713b96d07c5426e80bd6cfa"
+    },
+    {
+      "kind": "fio_raw",
+      "path": "/opt/openGauss/remote/fio-machine-adaptation-20260826-r4/tp_write_ms-repeat-01.json",
+      "repeat": 1,
+      "service_class": "tp_write_ms",
+      "sha256": "bee5b1772ffe0c43001f2d7b25988aefc4fdd9f29e2f4a92332c967e24993b7e"
+    },
+    {
+      "kind": "fio_raw",
+      "path": "/opt/openGauss/remote/fio-machine-adaptation-20260826-r4/ap_write_ms-repeat-02.json",
+      "repeat": 2,
+      "service_class": "ap_write_ms",
+      "sha256": "cf2948bf98db3323b6fe9285b87dcee9369bf3c294cd95e166f765b10e516d10"
+    },
+    {
+      "kind": "fio_raw",
+      "path": "/opt/openGauss/remote/fio-machine-adaptation-20260826-r4/ap_write_ms-repeat-01.json",
+      "repeat": 1,
+      "service_class": "ap_write_ms",
+      "sha256": "f284dac05479faeb0f1e33facce8d4b5da99d06400edf549869fc8f6b97f6351"
+    },
+    {
+      "kind": "fio_raw",
+      "path": "/opt/openGauss/remote/fio-machine-adaptation-20260826-r4/ap_read_ms-repeat-02.json",
+      "repeat": 2,
+      "service_class": "ap_read_ms",
+      "sha256": "d843ee8eb3130e4cfd0cc10d751fd255c82df3a491fd8016148db6627ef27535"
+    },
+    {
+      "kind": "fio_raw",
+      "path": "/opt/openGauss/remote/fio-machine-adaptation-20260826-r4/tp_read_ms-repeat-02.json",
+      "repeat": 2,
+      "service_class": "tp_read_ms",
+      "sha256": "d3b169a0bd51dd11e0f0f62164c4a57c1b6ac20578e5fcff5ae33c22192471da"
+    },
+    {
+      "kind": "fio_raw",
+      "path": "/opt/openGauss/remote/fio-machine-adaptation-20260826-r4/tp_read_ms-repeat-03.json",
+      "repeat": 3,
+      "service_class": "tp_read_ms",
+      "sha256": "56d4d73c6be897153500688950f3a39b8bb5ec4de2f97b763fe7431c63895f23"
+    },
+    {
+      "kind": "fio_raw",
+      "path": "/opt/openGauss/remote/fio-machine-adaptation-20260826-r4/ap_write_ms-repeat-03.json",
+      "repeat": 3,
+      "service_class": "ap_write_ms",
+      "sha256": "743ba7958af6f6ba78623e1183bb91f293ff655316f57cda7e85518432ec9726"
+    }
+  ],
+  "target": {
+    "created_unix": 1787753532.7705686,
+    "device": "259:3",
+    "inode": 408134,
+    "path": "/opt/openGauss/remote/huawei7-fio-target-2g.bin",
+    "precondition_command": "fio direct sequential write bs=1MiB iodepth=16 end_fsync=1",
+    "preconditioned": true,
+    "schema": "huawei7.fio-target/v1",
+    "size_bytes": 2147483648
+  },
+  "valid": true
+}

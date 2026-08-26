@@ -1,0 +1,648 @@
+{
+  "acceptance_gates": {
+    "exactly_five_ppt_stages": true,
+    "io_spill_measured": true,
+    "memory_target_max_respected_in_plan": true,
+    "online_sb_resize_executed": true,
+    "only_existing_v3_candidates": true,
+    "runtime_backpressure_executed": true,
+    "sb_before_after_recorded": true,
+    "session_work_mem_transition_executed": true,
+    "spill_zero_in_all_runs": true,
+    "tps_jitter_within_3_percent": true,
+    "wm_before_after_recorded": true,
+    "zero_restart_runtime_evidence": true
+  },
+  "acceptance_passed": false,
+  "benchmark": "sysbench",
+  "inputs": {
+    "continuous_runtime_evidence": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-online-ppt-five-stage-20260825/online-acceptance-report.json",
+      "sha256": "565e030af85eeb5eb9840e3ab6666e17f3ff7eafb390b7704e20754b17954069"
+    },
+    "effect_evidence": {
+      "available": true,
+      "note": "These are independent stage probes, not one continuous no-restart dynamic-memory trajectory.",
+      "sets": [
+        {
+          "directory": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/effect-test-20260825",
+          "stage_summaries": {
+            "S1": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/effect-test-20260825/sysbench-S1/stage_summary.json",
+              "sha256": "49b6736749d14087f260cf1efad385dde0ea713828cd12f16982f6a60ff33f43"
+            },
+            "S2": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/effect-test-20260825/sysbench-S2/stage_summary.json",
+              "sha256": "e2a756c6f445c66c3d0b724878eb47ab6e18fd90a5843e6744ab3b4b105863ea"
+            },
+            "S3": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/effect-test-20260825/sysbench-S3/stage_summary.json",
+              "sha256": "cdb7ac9a2eb7102fc02d96a2ab0191812b3b3b3f702ebdced4a78d97b3f4e398"
+            },
+            "S4": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/effect-test-20260825/sysbench-S4/stage_summary.json",
+              "sha256": "99a4c3b30deaf0dc7fbea27a2ca4511f78dd4cca12c2be9c6043b488a6d8759b"
+            },
+            "S5": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/effect-test-20260825/sysbench-S5/stage_summary.json",
+              "sha256": "b1bf4e3a5e80025034041ecdb51e45f762c05830840ba10b5813408adec4b90b"
+            }
+          }
+        },
+        {
+          "directory": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-sb4096",
+          "stage_summaries": {
+            "S1": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-sb4096/S1/stage_summary.json",
+              "sha256": "b6c37e32a5e825188f73b5b90a0bbb36eab1dffd88fea22e16db556378ce0d46"
+            },
+            "S2": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-sb4096/S2/stage_summary.json",
+              "sha256": "744c6ebfd8e9bbda196254924a6edcc739ee92e5bd983315e8a0ec6cd9b4136f"
+            },
+            "S3": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-sb4096/S3/stage_summary.json",
+              "sha256": "263f4bbd7feeb095d2b96e891960e754edfb3007a2618ed1efb0d9c2de8500b0"
+            },
+            "S4": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-sb4096/S4/stage_summary.json",
+              "sha256": "f6b6bb36bc4840a31766c737d899ef36a0abdeb92cfdcc7efb40a360512366e9"
+            },
+            "S5": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-sb4096/S5/stage_summary.json",
+              "sha256": "b9fbf4c0a05fb66015ee81debd41dd572f2fa1e49342eb82b9adfe7c139cf4c0"
+            }
+          }
+        },
+        {
+          "directory": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-nostable",
+          "stage_summaries": {
+            "S1": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-nostable/S1/stage_summary.json",
+              "sha256": "8f8c004a4a47ee3686cd9df2e9d0300be057f402fed4aef63120c6fad7b83cd1"
+            },
+            "S2": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-nostable/S2/stage_summary.json",
+              "sha256": "34734b8f0c70055d0b9a3c8b8047126d62c4dd825c49d9c827812cf145c7eec0"
+            },
+            "S3": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-nostable/S3/stage_summary.json",
+              "sha256": "f46533736374eb38fccc7ca4488e5d95d628026d8ce66e4f34abb07703fcd906"
+            },
+            "S4": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-nostable/S4/stage_summary.json",
+              "sha256": "a114f1e35e34040dc75a40b81ced12206a499809e19499266a230fa3f3f0f8c1"
+            },
+            "S5": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-nostable/S5/stage_summary.json",
+              "sha256": "f4574b2dd1a5f7cf5062bf55c8f192f91e7089d709052bf3dbb54188d2cf65ad"
+            }
+          }
+        },
+        {
+          "directory": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-sb4096-repeat2",
+          "stage_summaries": {
+            "S1": {
+              "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-resource-aware-20260825/effect-test-sb4096-repeat2/S1/stage_summary.json",
+              "sha256": "a8c29cbd6bbababb31ddec77036ea0417d8bfcbd7a02bd7ed4ff9021b4be1fa6"
+            }
+          }
+        }
+      ]
+    },
+    "kernel_online_resize_evidence": {
+      "after": {
+        "resize_granule": "256MB",
+        "resize_interval": "1s",
+        "shared_buffers": "4GB",
+        "shared_buffers_target": "4GB"
+      },
+      "before": {
+        "resize_granule": "256MB",
+        "resize_interval": "1s",
+        "shared_buffers": "4GB",
+        "shared_buffers_target": "4GB"
+      },
+      "elapsed_seconds": 6.438,
+      "grow_commit": {
+        "buffers": 524288,
+        "line": 515,
+        "offset": 91443,
+        "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-25_131046.log",
+        "released_bytes": 0
+      },
+      "kernel_artifacts": {
+        "cluster_guc": {
+          "path": "/opt/openGauss/bin/cluster_guc.conf",
+          "sha256": "6e96dab3379dc895ec2b98bc7371d3e04b592628ee811f14b0950e019a1cb7e2"
+        },
+        "gaussdb_binary": {
+          "path": "/opt/openGauss/bin/gaussdb",
+          "sha256": "99a102b9b82557403534fd645953a5b503481eeca10a751eef99b2dcd855c8bf"
+        },
+        "source_revision": "b5a8d5b056bbe660a6315cb424253717fb32cd04-dirty"
+      },
+      "middle": {
+        "resize_granule": "256MB",
+        "resize_interval": "1s",
+        "shared_buffers": "4GB",
+        "shared_buffers_target": "3GB"
+      },
+      "passed": true,
+      "postmaster_pid_after": 1825240,
+      "postmaster_pid_before": 1825240,
+      "postmaster_pid_unchanged": true,
+      "probe_after": "1",
+      "probe_middle": "1",
+      "restart_count": 0,
+      "schema": "huawei7.online-shared-buffers-validation/v1",
+      "shrink_commit": {
+        "buffers": 393216,
+        "line": 509,
+        "offset": 90417,
+        "path": "/opt/openGauss/data/pg_log/postgresql-2026-08-25_131046.log",
+        "released_bytes": 268431360
+      },
+      "shrink_target_mb": 3072,
+      "startup_shared_buffers_mb": 4096
+    },
+    "memory_budget": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/full_current_20260815/memory/memory-budget.json",
+      "sha256": "21a45d141118774c1a010026c53320030abfeb504cea0c448e295a9ef54bfb59"
+    },
+    "model_dir": "/root/GaussTune/experiments/opengauss/huawei7/validation/full_current_20260815/pipeline-native-v2/sysbench",
+    "recommendations": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/full_current_20260815/final/five-stage-recommendations-native.json",
+      "sha256": "b9d166b587240451358aae63b035d8cfa9767fa9f5cceefd650f570517a56f34"
+    }
+  },
+  "limitations": [
+    "This is a target-machine Sysbench adaptation of the existing PPT five-stage state machine, not a replacement V3 model.",
+    "The remote SB response was measured on 128 terminals, 16 tables x 1,000,000 rows, with 20s warmup and 40s retained measurement per point.",
+    "The remote AP Work_mem assignments are retained only to replay the same PPT stage transitions; AP latency was not promoted as evidence.",
+    "A new machine fingerprint and target-device service measurements are required before using this profile on another host.",
+    "The endpoint/middle plateau thresholds are an explicit conservative selection policy for this adaptation; they are not a new global V3 parameter and must be re-evaluated on another machine."
+  ],
+  "policy": {
+    "active_session_wm_reduction_required": false,
+    "baseline_shared_buffers_mb": 512,
+    "baseline_work_mem_mb": 32,
+    "candidate_policy": "remote measured Sysbench SB plateau: S1/S5=3072MB, S2-S4=2048MB; retain existing PPT AP admission/Work_mem transitions",
+    "granule_mb": 64,
+    "memory_target_max_mb": 25536,
+    "tps_tolerance_fraction": 0.03,
+    "work_mem_policy": "new_sessions_only",
+    "remote_memory_budget_used_for_sb": "host memory is 15.1GiB; 5120MB startup maximum is retained; AP memory is not re-calibrated in this Sysbench-only artifact"
+  },
+  "ppt_alignment": {
+    "same_stage_count": true,
+    "stage_order": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5"
+    ],
+    "new_model_stage": false,
+    "cpu_model_added": false,
+    "tpcc_model_added": false,
+    "new_trace_collection": false,
+    "new_parameter_fit": true
+  },
+  "schema": "huawei7.sysbench-ppt-dynamic-acceptance/v1",
+  "status": "machine_adapted_sysbench_only",
+  "transitions": [
+    {
+      "action": "establish the rich-stage SB target and increase per-query AP memory",
+      "admitted_ap_clients": 1,
+      "candidate": {
+        "shared_buffers_mb": 3072,
+        "work_mem": [
+          [
+            18,
+            832
+          ]
+        ]
+      },
+      "constraints": {
+        "evidence_status": "continuous_online_runtime_evidence",
+        "granule_mb": 64,
+        "memory_invariant_holds": true,
+        "memory_target_max_mb": 25536,
+        "restart_required_by_current_runner": false,
+        "runtime_action_executed": true,
+        "remote_machine_adapted": true,
+        "remote_ap_latency_validated": false
+      },
+      "queued_ap_clients": 0,
+      "requested_ap_clients": 1,
+      "shared_buffers_after_mb": 3072,
+      "shared_buffers_before_mb": 512,
+      "shared_buffers_delta_mb": 2560,
+      "stage": "S1",
+      "state": "memory_rich",
+      "trigger": "AP pressure is below the managed-memory limit",
+      "work_mem_after": [
+        [
+          18,
+          832
+        ]
+      ],
+      "work_mem_before": [
+        [
+          18,
+          32
+        ]
+      ],
+      "work_mem_changed": true,
+      "work_mem_policy": "new_sessions_only"
+    },
+    {
+      "action": "shrink shared_buffers by granules and transfer capacity to AP",
+      "admitted_ap_clients": 2,
+      "candidate": {
+        "shared_buffers_mb": 2048,
+        "work_mem": [
+          [
+            18,
+            832
+          ],
+          [
+            21,
+            2944
+          ]
+        ]
+      },
+      "constraints": {
+        "evidence_status": "continuous_online_runtime_evidence",
+        "granule_mb": 64,
+        "memory_invariant_holds": true,
+        "memory_target_max_mb": 25536,
+        "restart_required_by_current_runner": false,
+        "runtime_action_executed": true,
+        "remote_machine_adapted": true,
+        "remote_ap_latency_validated": false
+      },
+      "queued_ap_clients": 0,
+      "requested_ap_clients": 2,
+      "shared_buffers_after_mb": 2048,
+      "shared_buffers_before_mb": 3072,
+      "shared_buffers_delta_mb": -1024,
+      "stage": "S2",
+      "state": "reach_limit",
+      "trigger": "AP pressure reaches memory_target_max",
+      "work_mem_after": [
+        [
+          18,
+          832
+        ],
+        [
+          21,
+          2944
+        ]
+      ],
+      "work_mem_before": [
+        [
+          18,
+          832
+        ],
+        [
+          21,
+          32
+        ]
+      ],
+      "work_mem_changed": true,
+      "work_mem_policy": "new_sessions_only"
+    },
+    {
+      "action": "hold shared_buffers and lower per-query AP grants",
+      "admitted_ap_clients": 4,
+      "candidate": {
+        "shared_buffers_mb": 2048,
+        "work_mem": [
+          [
+            9,
+            64
+          ],
+          [
+            13,
+            64
+          ],
+          [
+            18,
+            64
+          ],
+          [
+            21,
+            64
+          ]
+        ]
+      },
+      "constraints": {
+        "evidence_status": "continuous_online_runtime_evidence",
+        "granule_mb": 64,
+        "memory_invariant_holds": true,
+        "memory_target_max_mb": 25536,
+        "restart_required_by_current_runner": false,
+        "runtime_action_executed": true,
+        "remote_machine_adapted": true,
+        "remote_ap_latency_validated": false
+      },
+      "queued_ap_clients": 0,
+      "requested_ap_clients": 4,
+      "shared_buffers_after_mb": 2048,
+      "shared_buffers_before_mb": 2048,
+      "shared_buffers_delta_mb": 0,
+      "stage": "S3",
+      "state": "protect_tp",
+      "trigger": "AP pressure continues after the memory limit is reached",
+      "work_mem_after": [
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_before": [
+        [
+          9,
+          32
+        ],
+        [
+          13,
+          32
+        ],
+        [
+          18,
+          832
+        ],
+        [
+          21,
+          2944
+        ]
+      ],
+      "work_mem_changed": true,
+      "work_mem_policy": "new_sessions_only"
+    },
+    {
+      "action": "hold shared_buffers and queue new AP requests",
+      "admitted_ap_clients": 4,
+      "candidate": {
+        "shared_buffers_mb": 2048,
+        "work_mem": [
+          [
+            2,
+            64
+          ],
+          [
+            9,
+            64
+          ],
+          [
+            13,
+            64
+          ],
+          [
+            18,
+            64
+          ],
+          [
+            21,
+            64
+          ]
+        ]
+      },
+      "constraints": {
+        "evidence_status": "continuous_online_runtime_evidence",
+        "granule_mb": 64,
+        "memory_invariant_holds": true,
+        "memory_target_max_mb": 25536,
+        "restart_required_by_current_runner": false,
+        "runtime_action_executed": true,
+        "remote_machine_adapted": true,
+        "remote_ap_latency_validated": false
+      },
+      "queued_ap_clients": 1,
+      "requested_ap_clients": 5,
+      "shared_buffers_after_mb": 2048,
+      "shared_buffers_before_mb": 2048,
+      "shared_buffers_delta_mb": 0,
+      "stage": "S4",
+      "state": "backpressure",
+      "trigger": "new AP requests continue after safe grants are exhausted",
+      "work_mem_after": [
+        [
+          2,
+          64
+        ],
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_before": [
+        [
+          2,
+          32
+        ],
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_changed": true,
+      "work_mem_policy": "new_sessions_only"
+    },
+    {
+      "action": "raise shared_buffers and keep AP grants bounded",
+      "admitted_ap_clients": 3,
+      "candidate": {
+        "shared_buffers_mb": 3072,
+        "work_mem": [
+          [
+            9,
+            64
+          ],
+          [
+            13,
+            64
+          ],
+          [
+            18,
+            64
+          ],
+          [
+            21,
+            64
+          ]
+        ]
+      },
+      "constraints": {
+        "evidence_status": "continuous_online_runtime_evidence",
+        "granule_mb": 64,
+        "memory_invariant_holds": true,
+        "memory_target_max_mb": 25536,
+        "restart_required_by_current_runner": false,
+        "runtime_action_executed": true,
+        "remote_machine_adapted": true,
+        "remote_ap_latency_validated": false
+      },
+      "queued_ap_clients": 1,
+      "requested_ap_clients": 4,
+      "shared_buffers_after_mb": 3072,
+      "shared_buffers_before_mb": 2048,
+      "shared_buffers_delta_mb": 1024,
+      "stage": "S5",
+      "state": "tp_surge",
+      "trigger": "the TP stream changes from low load to the PPT surge",
+      "work_mem_after": [
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_before": [
+        [
+          9,
+          64
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          64
+        ],
+        [
+          21,
+          64
+        ]
+      ],
+      "work_mem_changed": false,
+      "work_mem_policy": "new_sessions_only"
+    }
+  ],
+  "machine_adaptation": {
+    "method": "same PPT S1-S5 state machine; target-machine Sysbench SB response re-fit; no extra stage or CPU model",
+    "source_machine_fingerprint": "065e8e53c042fb520b8a2319f3f2ebd6c4a2372a381d51bac7e8eba2dc69ff8c",
+    "source_v3_model": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/full_current_20260815/final/five-stage-recommendations-native.json",
+      "sha256": "b9d166b587240451358aae63b035d8cfa9767fa9f5cceefd650f570517a56f34",
+      "schema": "huawei7.five-stage-recommendations/v3"
+    },
+    "source_local_trajectory": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/sysbench-ppt-dynamic-acceptance-20260825/dynamic-acceptance.json",
+      "sha256": "c81edd5ee95c1dd7cbde736d510ec276b95361e8b42e28c0f765628e310e9788"
+    },
+    "remote_machine_artifact": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/remote-machine-current.json",
+      "sha256": "d3064575175786751fdd5461088b0e53955d44540bbc6150cf05de1746064df1"
+    },
+    "remote_sweep_artifacts": [
+      {
+        "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/remote-machine-aware-sweep-summary.json",
+        "sha256": "1bbfae235130e4c80dfb544db3188b7b532fc96a80d9752e1b89bd64f310933f"
+      },
+      {
+        "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-high64/summary.json",
+        "sha256": "0ecf5a3512e0a4b6e898789a1565cab6a70d37f9ac92a6314bba6fff6beefc01"
+      }
+    ],
+    "sb_selection_rule": "two-level measured plateau policy: endpoint is the smallest SB reaching >=99.5% of the best response, middle is the smallest SB reaching >=98% of the best response; applied to the remote 128-terminal Sysbench sweep, yielding endpoint=3072MB and middle=2048MB",
+    "selected_sb_mb": {
+      "endpoint": 3072,
+      "middle": 2048
+    },
+    "work_mem_scope": "existing PPT AP Work_mem assignments are retained for structural replay; no remote AP latency claim is made"
+  },
+  "remote_validation_contract": {
+    "benchmark": "sysbench",
+    "terminals": 128,
+    "tables": 16,
+    "table_size": 1000000,
+    "startup_shared_buffers_mb": 5120,
+    "initial_target_mb": 512,
+    "stages": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5"
+    ],
+    "target_trajectory": [
+      [
+        "S1",
+        512,
+        3072
+      ],
+      [
+        "S2",
+        3072,
+        2048
+      ],
+      [
+        "S3",
+        2048,
+        2048
+      ],
+      [
+        "S4",
+        2048,
+        2048
+      ],
+      [
+        "S5",
+        2048,
+        3072
+      ]
+    ]
+  }
+}

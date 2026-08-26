@@ -1,0 +1,79 @@
+{
+  "schema": "huawei7.machine-aware-sysbench-default-vs-adapted/v1",
+  "sysbench": {
+    "terminals": 128,
+    "warmup_seconds": 20,
+    "measurement_seconds": 60,
+    "tables": 16,
+    "table_size": 1000000
+  },
+  "profiles": {
+    "default": {
+      "shared_buffers_target_mb": 512,
+      "work_mem_mb": 32
+    },
+    "adapted": {
+      "shared_buffers_target_mb": 3072,
+      "work_mem_mb": 32
+    }
+  },
+  "runs": [
+    {
+      "profile": "adapted",
+      "repeat": 1,
+      "shared_buffers_target_mb": 3072,
+      "work_mem_mb": 32,
+      "tps_samples": 60,
+      "tps_mean": 6530.886833333333,
+      "tps_stdev": 410.80325382209327,
+      "tps_min": 5952.53,
+      "tps_max": 7117.16,
+      "latency_p95_ms": 24.83,
+      "log": "/opt/openGauss/remote/sysbench-machine-adapted-3072-vs-default-20260826/adapted-r1.sysbench.log"
+    },
+    {
+      "profile": "adapted",
+      "repeat": 2,
+      "shared_buffers_target_mb": 3072,
+      "work_mem_mb": 32,
+      "tps_samples": 60,
+      "tps_mean": 6558.768333333333,
+      "tps_stdev": 411.714780392671,
+      "tps_min": 5974.19,
+      "tps_max": 7166.03,
+      "latency_p95_ms": 23.95,
+      "log": "/opt/openGauss/remote/sysbench-machine-adapted-3072-vs-default-20260826/adapted-r2.sysbench.log"
+    },
+    {
+      "profile": "default",
+      "repeat": 1,
+      "shared_buffers_target_mb": 512,
+      "work_mem_mb": 32,
+      "tps_samples": 60,
+      "tps_mean": 6154.819833333333,
+      "tps_stdev": 395.7935438382485,
+      "tps_min": 5565.98,
+      "tps_max": 6756.5,
+      "latency_p95_ms": 26.2,
+      "log": "/opt/openGauss/remote/sysbench-machine-adapted-3072-vs-default-20260826/default-r1.sysbench.log"
+    },
+    {
+      "profile": "default",
+      "repeat": 2,
+      "shared_buffers_target_mb": 512,
+      "work_mem_mb": 32,
+      "tps_samples": 60,
+      "tps_mean": 6162.062333333333,
+      "tps_stdev": 374.3650782341256,
+      "tps_min": 5534.79,
+      "tps_max": 6749.4,
+      "latency_p95_ms": 26.68,
+      "log": "/opt/openGauss/remote/sysbench-machine-adapted-3072-vs-default-20260826/default-r2.sysbench.log"
+    }
+  ],
+  "mean_tps": {
+    "default": 6158.441083333333,
+    "adapted": 6544.827583333334
+  },
+  "adapted_vs_default_gain_pct": 6.274095907902466
+}

@@ -1,0 +1,500 @@
+{
+  "schema": "huawei7.machine-aware-sysbench-five-stage/v2",
+  "machine_fingerprint": "065e8e53c042fb520b8a2319f3f2ebd6c4a2372a381d51bac7e8eba2dc69ff8c",
+  "sysbench": {
+    "terminals": 128,
+    "tables": 16,
+    "table_size": 1000000,
+    "stage_seconds": 20,
+    "settle_seconds": 10
+  },
+  "trajectory": [
+    [
+      "S1",
+      512,
+      3072
+    ],
+    [
+      "S2",
+      3072,
+      2048
+    ],
+    [
+      "S3",
+      2048,
+      2048
+    ],
+    [
+      "S4",
+      2048,
+      2048
+    ],
+    [
+      "S5",
+      2048,
+      3072
+    ]
+  ],
+  "runs": [
+    {
+      "schema": "huawei7.machine-aware-sysbench-five-stage-run/v2",
+      "repeat": 1,
+      "postmaster_pid": 58998,
+      "trajectory": [
+        [
+          "S1",
+          512,
+          3072
+        ],
+        [
+          "S2",
+          3072,
+          2048
+        ],
+        [
+          "S3",
+          2048,
+          2048
+        ],
+        [
+          "S4",
+          2048,
+          2048
+        ],
+        [
+          "S5",
+          2048,
+          3072
+        ]
+      ],
+      "stages": [
+        {
+          "stage": "S1",
+          "samples": 20,
+          "tps_mean": 6423.910499999999,
+          "tps_min": 5819.3,
+          "tps_max": 7042.53,
+          "seconds": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "shared_buffers_before_mb": 512,
+          "shared_buffers_after_mb": 3072,
+          "work_mem_global_mb": 32
+        },
+        {
+          "stage": "S2",
+          "samples": 20,
+          "tps_mean": 6602.568999999999,
+          "tps_min": 5939.67,
+          "tps_max": 7136.73,
+          "seconds": [
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "shared_buffers_before_mb": 3072,
+          "shared_buffers_after_mb": 2048,
+          "work_mem_global_mb": 32
+        },
+        {
+          "stage": "S3",
+          "samples": 20,
+          "tps_mean": 6592.594,
+          "tps_min": 5974.33,
+          "tps_max": 7101.32,
+          "seconds": [
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97
+          ],
+          "shared_buffers_before_mb": 2048,
+          "shared_buffers_after_mb": 2048,
+          "work_mem_global_mb": 32
+        },
+        {
+          "stage": "S4",
+          "samples": 20,
+          "tps_mean": 6508.476500000001,
+          "tps_min": 5956.98,
+          "tps_max": 7117.32,
+          "seconds": [
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127
+          ],
+          "shared_buffers_before_mb": 2048,
+          "shared_buffers_after_mb": 2048,
+          "work_mem_global_mb": 32
+        },
+        {
+          "stage": "S5",
+          "samples": 20,
+          "tps_mean": 5671.437999999998,
+          "tps_min": 5140.76,
+          "tps_max": 6218.24,
+          "seconds": [
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157
+          ],
+          "shared_buffers_before_mb": 2048,
+          "shared_buffers_after_mb": 3072,
+          "work_mem_global_mb": 32,
+          "surge": {
+            "stage": "S5_surge",
+            "samples": 20,
+            "tps_mean": 711.8409999999999,
+            "tps_min": 654.65,
+            "tps_max": 783.87,
+            "seconds": [
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29
+            ],
+            "work_mem_global_mb": 32
+          }
+        }
+      ]
+    },
+    {
+      "schema": "huawei7.machine-aware-sysbench-five-stage-run/v2",
+      "repeat": 2,
+      "postmaster_pid": 60037,
+      "trajectory": [
+        [
+          "S1",
+          512,
+          3072
+        ],
+        [
+          "S2",
+          3072,
+          2048
+        ],
+        [
+          "S3",
+          2048,
+          2048
+        ],
+        [
+          "S4",
+          2048,
+          2048
+        ],
+        [
+          "S5",
+          2048,
+          3072
+        ]
+      ],
+      "stages": [
+        {
+          "stage": "S1",
+          "samples": 20,
+          "tps_mean": 6468.727500000002,
+          "tps_min": 5907.83,
+          "tps_max": 7063.49,
+          "seconds": [
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32
+          ],
+          "shared_buffers_before_mb": 512,
+          "shared_buffers_after_mb": 3072,
+          "work_mem_global_mb": 32
+        },
+        {
+          "stage": "S2",
+          "samples": 20,
+          "tps_mean": 6626.452499999999,
+          "tps_min": 5878.98,
+          "tps_max": 7136.35,
+          "seconds": [
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67
+          ],
+          "shared_buffers_before_mb": 3072,
+          "shared_buffers_after_mb": 2048,
+          "work_mem_global_mb": 32
+        },
+        {
+          "stage": "S3",
+          "samples": 20,
+          "tps_mean": 6615.419500000001,
+          "tps_min": 5927.39,
+          "tps_max": 7150.14,
+          "seconds": [
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97
+          ],
+          "shared_buffers_before_mb": 2048,
+          "shared_buffers_after_mb": 2048,
+          "work_mem_global_mb": 32
+        },
+        {
+          "stage": "S4",
+          "samples": 20,
+          "tps_mean": 6544.704000000001,
+          "tps_min": 5961.87,
+          "tps_max": 7146.47,
+          "seconds": [
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115,
+            116,
+            117,
+            118,
+            119,
+            120,
+            121,
+            122,
+            123,
+            124,
+            125,
+            126,
+            127
+          ],
+          "shared_buffers_before_mb": 2048,
+          "shared_buffers_after_mb": 2048,
+          "work_mem_global_mb": 32
+        },
+        {
+          "stage": "S5",
+          "samples": 20,
+          "tps_mean": 5687.2705,
+          "tps_min": 5238.96,
+          "tps_max": 6223.26,
+          "seconds": [
+            138,
+            139,
+            140,
+            141,
+            142,
+            143,
+            144,
+            145,
+            146,
+            147,
+            148,
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157
+          ],
+          "shared_buffers_before_mb": 2048,
+          "shared_buffers_after_mb": 3072,
+          "work_mem_global_mb": 32,
+          "surge": {
+            "stage": "S5_surge",
+            "samples": 20,
+            "tps_mean": 713.9394999999998,
+            "tps_min": 650.65,
+            "tps_max": 787.38,
+            "seconds": [
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29
+            ],
+            "work_mem_global_mb": 32
+          }
+        }
+      ]
+    }
+  ],
+  "stage_mean_tps": {
+    "S1": 6446.319,
+    "S2": 6614.5107499999995,
+    "S3": 6604.0067500000005,
+    "S4": 6526.590250000001,
+    "S5": 5679.3542499999985
+  },
+  "postmaster_pids": [
+    58998,
+    60037
+  ],
+  "passed": true
+}

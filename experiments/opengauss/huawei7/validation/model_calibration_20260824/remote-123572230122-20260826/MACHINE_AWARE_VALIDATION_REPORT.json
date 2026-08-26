@@ -1,0 +1,1025 @@
+{
+  "schema": "huawei7.machine-aware-cross-host-validation/v2",
+  "generated_at": "2026-08-26T15:08:11.554304+00:00",
+  "scope": "PPT-compatible five stages; Sysbench-focused target-machine adaptation; no CPU model or extra stage added",
+  "direct_v3_portability": {
+    "valid": false,
+    "base_model_schema": "huawei7.five-stage-recommendations/v3",
+    "base_model_machine_fingerprint": "19aba23b5f0cfa21f1691a1d97565ecb6cce6a10170c587984e500b8c601ea5e",
+    "remote_machine_fingerprint": "065e8e53c042fb520b8a2319f3f2ebd6c4a2372a381d51bac7e8eba2dc69ff8c",
+    "fingerprint_matches": false,
+    "reason": "The V3 model embeds a machine_fingerprint and its TP/FIO/memory evidence is required to belong to that machine. The original V3 file was calibrated on the 30GiB/16-thread host, not on this 15GiB/8-thread host.",
+    "hardware_contract": {
+      "original_local": {
+        "schema": "huawei7.machine/v1",
+        "kernel_release": "5.4.0-216-generic",
+        "architecture": "x86_64",
+        "logical_cpus": 16,
+        "physical_cores": 8,
+        "memory_bytes": 32564359168,
+        "swap_bytes": 0,
+        "device": "/dev/nvme0n1",
+        "device_model": "Alibaba Cloud Elastic Block Storage",
+        "device_serial": "2zedyfmijk0yg6c29b72",
+        "device_bytes": 322122547200,
+        "gaussdb_sha256": "99a102b9b82557403534fd645953a5b503481eeca10a751eef99b2dcd855c8bf",
+        "source_commit": "b314224d8b0a0c25e5212297914ca89d43275929",
+        "machine_fingerprint": "a883a0effbfc7776aa87611badc5fff98e9a040b3d10540ba19570443f728235"
+      },
+      "remote": {
+        "schema": "huawei7.machine/v1",
+        "kernel_release": "5.4.0-216-generic",
+        "architecture": "x86_64",
+        "logical_cpus": 8,
+        "physical_cores": 4,
+        "memory_bytes": 16208601088,
+        "swap_bytes": 0,
+        "device": "/dev/nvme0n1",
+        "device_model": "Alibaba Cloud Elastic Block Storage",
+        "device_serial": "2zebh7f6yuijpdoq9k4a",
+        "device_bytes": 214748364800,
+        "gaussdb_sha256": "99a102b9b82557403534fd645953a5b503481eeca10a751eef99b2dcd855c8bf",
+        "source_commit": "b314224d8b0a0c25e5212297914ca89d43275929",
+        "machine_fingerprint": "065e8e53c042fb520b8a2319f3f2ebd6c4a2372a381d51bac7e8eba2dc69ff8c"
+      }
+    }
+  },
+  "machine_difference": {
+    "logical_cpu_ratio_remote_to_local": 0.5,
+    "physical_core_ratio_remote_to_local": 0.5,
+    "memory_ratio_remote_to_local": 0.4977405206833518,
+    "device_capacity_ratio_remote_to_local": 0.6666666666666666,
+    "fio_service_times_local_ms": {
+      "ap_read_ms": 0.6844785941099999,
+      "ap_write_ms": 0.669950510842,
+      "tp_read_ms": 0.5528723200669999,
+      "tp_write_ms": 0.44362860458500003
+    },
+    "fio_service_times_remote_ms": {
+      "ap_read_ms": 0.70772861242,
+      "ap_write_ms": 0.739179984326,
+      "tp_read_ms": 0.5398729183669999,
+      "tp_write_ms": 0.43381134792799997
+    },
+    "fio_remote_to_local_ratio": {
+      "ap_read_ms": 1.0339674878222176,
+      "ap_write_ms": 1.1033352051586494,
+      "tp_read_ms": 0.9764875157822611,
+      "tp_write_ms": 0.9778705508266677
+    }
+  },
+  "remote_adaptation": {
+    "target_machine_fingerprint": "065e8e53c042fb520b8a2319f3f2ebd6c4a2372a381d51bac7e8eba2dc69ff8c",
+    "sweep_artifact": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/remote-machine-aware-sweep-summary.json",
+      "sha256": "1bbfae235130e4c80dfb544db3188b7b532fc96a80d9752e1b89bd64f310933f"
+    },
+    "source_v3_artifact": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/full_current_20260815/final/five-stage-recommendations-native.json",
+      "sha256": "b9d166b587240451358aae63b035d8cfa9767fa9f5cceefd650f570517a56f34"
+    },
+    "adapted_trajectory_artifact": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-adapted-sysbench-trajectory.json",
+      "sha256": "ef18db6faf52331d48bdab9ec493da703c11e90833bbe15c9f7b8963e33dee76"
+    },
+    "selected_sysbench_profile": {
+      "shared_buffers_endpoint_mb": 3072,
+      "shared_buffers_middle_mb": 2048,
+      "work_mem_mb": 32
+    },
+    "selection_rule": "endpoint = smallest measured SB >=99.5% of the best response; middle = smallest measured SB >=98% of the best response; Work_mem kept at 32MB because 64MB did not show a stable positive gain in the remote sweep.",
+    "trajectory": [
+      [
+        "S1",
+        512,
+        3072
+      ],
+      [
+        "S2",
+        3072,
+        2048
+      ],
+      [
+        "S3",
+        2048,
+        2048
+      ],
+      [
+        "S4",
+        2048,
+        2048
+      ],
+      [
+        "S5",
+        2048,
+        3072
+      ]
+    ],
+    "sweep_rows": [
+      {
+        "shared_buffers_target_mb": 512,
+        "work_mem_mb": 32,
+        "tps_samples": 40,
+        "tps_mean": 6177.383,
+        "tps_stdev": 395.1478416751291,
+        "tps_min": 5505.58,
+        "tps_max": 6735.46,
+        "latency_p95_ms": 27.17,
+        "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb512-wm32.sysbench.log"
+      },
+      {
+        "shared_buffers_target_mb": 1024,
+        "work_mem_mb": 32,
+        "tps_samples": 40,
+        "tps_mean": 6320.2775,
+        "tps_stdev": 417.10595732333445,
+        "tps_min": 5778.55,
+        "tps_max": 6894.86,
+        "latency_p95_ms": 26.2,
+        "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb1024-wm32.sysbench.log"
+      },
+      {
+        "shared_buffers_target_mb": 2048,
+        "work_mem_mb": 32,
+        "tps_samples": 40,
+        "tps_mean": 6474.4977499999995,
+        "tps_stdev": 389.2167381338137,
+        "tps_min": 5889.78,
+        "tps_max": 7109.08,
+        "latency_p95_ms": 24.83,
+        "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb2048-wm32.sysbench.log"
+      },
+      {
+        "shared_buffers_target_mb": 3072,
+        "work_mem_mb": 32,
+        "tps_samples": 40,
+        "tps_mean": 6570.2735,
+        "tps_stdev": 417.0136514063187,
+        "tps_min": 5941.05,
+        "tps_max": 7174.15,
+        "latency_p95_ms": 24.38,
+        "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb3072-wm32.sysbench.log"
+      },
+      {
+        "shared_buffers_target_mb": 4096,
+        "work_mem_mb": 32,
+        "tps_samples": 40,
+        "tps_mean": 6600.17,
+        "tps_stdev": 403.63655056091983,
+        "tps_min": 5995.11,
+        "tps_max": 7192.23,
+        "latency_p95_ms": 24.38,
+        "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb4096-wm32.sysbench.log"
+      },
+      {
+        "shared_buffers_target_mb": 5120,
+        "work_mem_mb": 32,
+        "tps_samples": 40,
+        "tps_mean": 6552.9345,
+        "tps_stdev": 393.7351342115206,
+        "tps_min": 5961.23,
+        "tps_max": 7175.45,
+        "latency_p95_ms": 24.38,
+        "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb5120-wm32.sysbench.log"
+      },
+      {
+        "shared_buffers_target_mb": 512,
+        "work_mem_mb": 64,
+        "tps_samples": 40,
+        "tps_mean": 6199.60825,
+        "tps_stdev": 390.9163446208546,
+        "tps_min": 5685.26,
+        "tps_max": 6769.04,
+        "latency_p95_ms": 26.68,
+        "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb512-wm64.sysbench.log"
+      },
+      {
+        "shared_buffers_target_mb": 1024,
+        "work_mem_mb": 64,
+        "tps_samples": 40,
+        "tps_mean": 6325.71275,
+        "tps_stdev": 429.085368620323,
+        "tps_min": 5692.7,
+        "tps_max": 6932.2,
+        "latency_p95_ms": 26.2,
+        "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb1024-wm64.sysbench.log"
+      },
+      {
+        "shared_buffers_target_mb": 2048,
+        "work_mem_mb": 64,
+        "tps_samples": 40,
+        "tps_mean": 6519.41325,
+        "tps_stdev": 426.8891635793468,
+        "tps_min": 5794.6,
+        "tps_max": 7101.69,
+        "latency_p95_ms": 25.28,
+        "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb2048-wm64.sysbench.log"
+      },
+      {
+        "shared_buffers_target_mb": 3072,
+        "work_mem_mb": 64,
+        "tps_samples": 40,
+        "tps_mean": 6548.05225,
+        "tps_stdev": 426.3739141037372,
+        "tps_min": 5876.07,
+        "tps_max": 7139.56,
+        "latency_p95_ms": 25.28,
+        "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-high64/sb3072-wm64.sysbench.log"
+      },
+      {
+        "shared_buffers_target_mb": 4096,
+        "work_mem_mb": 64,
+        "tps_samples": 40,
+        "tps_mean": 6517.6145,
+        "tps_stdev": 429.50928528782885,
+        "tps_min": 5799.07,
+        "tps_max": 7127.01,
+        "latency_p95_ms": 24.83,
+        "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-high64/sb4096-wm64.sysbench.log"
+      },
+      {
+        "shared_buffers_target_mb": 5120,
+        "work_mem_mb": 64,
+        "tps_samples": 40,
+        "tps_mean": 6565.041,
+        "tps_stdev": 405.34177049332914,
+        "tps_min": 5923.24,
+        "tps_max": 7158.39,
+        "latency_p95_ms": 24.38,
+        "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-high64/sb5120-wm64.sysbench.log"
+      }
+    ]
+  },
+  "effect_validation": {
+    "default_vs_adapted": {
+      "schema": "huawei7.machine-aware-sysbench-default-vs-adapted/v1",
+      "sysbench": {
+        "terminals": 128,
+        "warmup_seconds": 20,
+        "measurement_seconds": 60,
+        "tables": 16,
+        "table_size": 1000000
+      },
+      "profiles": {
+        "default": {
+          "shared_buffers_target_mb": 512,
+          "work_mem_mb": 32
+        },
+        "adapted": {
+          "shared_buffers_target_mb": 3072,
+          "work_mem_mb": 32
+        }
+      },
+      "runs": [
+        {
+          "profile": "adapted",
+          "repeat": 1,
+          "shared_buffers_target_mb": 3072,
+          "work_mem_mb": 32,
+          "tps_samples": 60,
+          "tps_mean": 6530.886833333333,
+          "tps_stdev": 410.80325382209327,
+          "tps_min": 5952.53,
+          "tps_max": 7117.16,
+          "latency_p95_ms": 24.83,
+          "log": "/opt/openGauss/remote/sysbench-machine-adapted-3072-vs-default-20260826/adapted-r1.sysbench.log"
+        },
+        {
+          "profile": "adapted",
+          "repeat": 2,
+          "shared_buffers_target_mb": 3072,
+          "work_mem_mb": 32,
+          "tps_samples": 60,
+          "tps_mean": 6558.768333333333,
+          "tps_stdev": 411.714780392671,
+          "tps_min": 5974.19,
+          "tps_max": 7166.03,
+          "latency_p95_ms": 23.95,
+          "log": "/opt/openGauss/remote/sysbench-machine-adapted-3072-vs-default-20260826/adapted-r2.sysbench.log"
+        },
+        {
+          "profile": "default",
+          "repeat": 1,
+          "shared_buffers_target_mb": 512,
+          "work_mem_mb": 32,
+          "tps_samples": 60,
+          "tps_mean": 6154.819833333333,
+          "tps_stdev": 395.7935438382485,
+          "tps_min": 5565.98,
+          "tps_max": 6756.5,
+          "latency_p95_ms": 26.2,
+          "log": "/opt/openGauss/remote/sysbench-machine-adapted-3072-vs-default-20260826/default-r1.sysbench.log"
+        },
+        {
+          "profile": "default",
+          "repeat": 2,
+          "shared_buffers_target_mb": 512,
+          "work_mem_mb": 32,
+          "tps_samples": 60,
+          "tps_mean": 6162.062333333333,
+          "tps_stdev": 374.3650782341256,
+          "tps_min": 5534.79,
+          "tps_max": 6749.4,
+          "latency_p95_ms": 26.68,
+          "log": "/opt/openGauss/remote/sysbench-machine-adapted-3072-vs-default-20260826/default-r2.sysbench.log"
+        }
+      ],
+      "mean_tps": {
+        "default": 6158.441083333333,
+        "adapted": 6544.827583333334
+      },
+      "adapted_vs_default_gain_pct": 6.274095907902466
+    },
+    "previous_unadapted_remote_comparison": {
+      "schema": "huawei7.remote-sysbench-default-vs-recommended/v1",
+      "machine": {
+        "hostname": "iZ2zebh7f6yuijpdossa2yZ",
+        "kernel": "5.4.0-216-generic",
+        "cpu_count": 8,
+        "memory_total_kb": 15828712
+      },
+      "sysbench": {
+        "terminals": 128,
+        "warmup_seconds": 20,
+        "measurement_seconds": 60,
+        "tables": 16,
+        "table_size": 1000000
+      },
+      "profiles": {
+        "default": {
+          "shared_buffers_target_mb": 512,
+          "work_mem_mb": 32
+        },
+        "recommended": {
+          "shared_buffers_target_mb": 4096,
+          "work_mem_mb": 64
+        }
+      },
+      "runs": [
+        {
+          "profile": "default",
+          "repeat": 1,
+          "shared_buffers_target_mb": 512,
+          "work_mem_mb": 32,
+          "tps_samples": 60,
+          "tps_mean": 5902.255833333334,
+          "tps_min": 5126.24,
+          "tps_max": 6461.91,
+          "log": "/opt/openGauss/remote/sysbench-default-recommended-20260826/default-r1.sysbench.log"
+        },
+        {
+          "profile": "default",
+          "repeat": 2,
+          "shared_buffers_target_mb": 512,
+          "work_mem_mb": 32,
+          "tps_samples": 60,
+          "tps_mean": 5975.296833333334,
+          "tps_min": 5252.56,
+          "tps_max": 6528.86,
+          "log": "/opt/openGauss/remote/sysbench-default-recommended-20260826/default-r2.sysbench.log"
+        },
+        {
+          "profile": "recommended",
+          "repeat": 1,
+          "shared_buffers_target_mb": 4096,
+          "work_mem_mb": 64,
+          "tps_samples": 60,
+          "tps_mean": 6195.4935,
+          "tps_min": 5252.66,
+          "tps_max": 6779.56,
+          "log": "/opt/openGauss/remote/sysbench-default-recommended-20260826/recommended-r1.sysbench.log"
+        },
+        {
+          "profile": "recommended",
+          "repeat": 2,
+          "shared_buffers_target_mb": 4096,
+          "work_mem_mb": 64,
+          "tps_samples": 60,
+          "tps_mean": 6214.3966666666665,
+          "tps_min": 5290.94,
+          "tps_max": 6823.51,
+          "log": "/opt/openGauss/remote/sysbench-default-recommended-20260826/recommended-r2.sysbench.log"
+        }
+      ],
+      "mean_tps": {
+        "default": 5938.776333333333,
+        "recommended": 6204.945083333333
+      },
+      "recommended_vs_default_gain_pct": 4.481878674332962
+    },
+    "adapted_five_stage": {
+      "schema": "huawei7.machine-aware-sysbench-five-stage/v2",
+      "machine_fingerprint": "065e8e53c042fb520b8a2319f3f2ebd6c4a2372a381d51bac7e8eba2dc69ff8c",
+      "sysbench": {
+        "terminals": 128,
+        "tables": 16,
+        "table_size": 1000000,
+        "stage_seconds": 20,
+        "settle_seconds": 10
+      },
+      "trajectory": [
+        [
+          "S1",
+          512,
+          3072
+        ],
+        [
+          "S2",
+          3072,
+          2048
+        ],
+        [
+          "S3",
+          2048,
+          2048
+        ],
+        [
+          "S4",
+          2048,
+          2048
+        ],
+        [
+          "S5",
+          2048,
+          3072
+        ]
+      ],
+      "runs": [
+        {
+          "schema": "huawei7.machine-aware-sysbench-five-stage-run/v2",
+          "repeat": 1,
+          "postmaster_pid": 58998,
+          "trajectory": [
+            [
+              "S1",
+              512,
+              3072
+            ],
+            [
+              "S2",
+              3072,
+              2048
+            ],
+            [
+              "S3",
+              2048,
+              2048
+            ],
+            [
+              "S4",
+              2048,
+              2048
+            ],
+            [
+              "S5",
+              2048,
+              3072
+            ]
+          ],
+          "stages": [
+            {
+              "stage": "S1",
+              "samples": 20,
+              "tps_mean": 6423.910499999999,
+              "tps_min": 5819.3,
+              "tps_max": 7042.53,
+              "seconds": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+              ],
+              "shared_buffers_before_mb": 512,
+              "shared_buffers_after_mb": 3072,
+              "work_mem_global_mb": 32
+            },
+            {
+              "stage": "S2",
+              "samples": 20,
+              "tps_mean": 6602.568999999999,
+              "tps_min": 5939.67,
+              "tps_max": 7136.73,
+              "seconds": [
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67
+              ],
+              "shared_buffers_before_mb": 3072,
+              "shared_buffers_after_mb": 2048,
+              "work_mem_global_mb": 32
+            },
+            {
+              "stage": "S3",
+              "samples": 20,
+              "tps_mean": 6592.594,
+              "tps_min": 5974.33,
+              "tps_max": 7101.32,
+              "seconds": [
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97
+              ],
+              "shared_buffers_before_mb": 2048,
+              "shared_buffers_after_mb": 2048,
+              "work_mem_global_mb": 32
+            },
+            {
+              "stage": "S4",
+              "samples": 20,
+              "tps_mean": 6508.476500000001,
+              "tps_min": 5956.98,
+              "tps_max": 7117.32,
+              "seconds": [
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125,
+                126,
+                127
+              ],
+              "shared_buffers_before_mb": 2048,
+              "shared_buffers_after_mb": 2048,
+              "work_mem_global_mb": 32
+            },
+            {
+              "stage": "S5",
+              "samples": 20,
+              "tps_mean": 5671.437999999998,
+              "tps_min": 5140.76,
+              "tps_max": 6218.24,
+              "seconds": [
+                138,
+                139,
+                140,
+                141,
+                142,
+                143,
+                144,
+                145,
+                146,
+                147,
+                148,
+                149,
+                150,
+                151,
+                152,
+                153,
+                154,
+                155,
+                156,
+                157
+              ],
+              "shared_buffers_before_mb": 2048,
+              "shared_buffers_after_mb": 3072,
+              "work_mem_global_mb": 32,
+              "surge": {
+                "stage": "S5_surge",
+                "samples": 20,
+                "tps_mean": 711.8409999999999,
+                "tps_min": 654.65,
+                "tps_max": 783.87,
+                "seconds": [
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19,
+                  20,
+                  21,
+                  22,
+                  23,
+                  24,
+                  25,
+                  26,
+                  27,
+                  28,
+                  29
+                ],
+                "work_mem_global_mb": 32
+              }
+            }
+          ]
+        },
+        {
+          "schema": "huawei7.machine-aware-sysbench-five-stage-run/v2",
+          "repeat": 2,
+          "postmaster_pid": 60037,
+          "trajectory": [
+            [
+              "S1",
+              512,
+              3072
+            ],
+            [
+              "S2",
+              3072,
+              2048
+            ],
+            [
+              "S3",
+              2048,
+              2048
+            ],
+            [
+              "S4",
+              2048,
+              2048
+            ],
+            [
+              "S5",
+              2048,
+              3072
+            ]
+          ],
+          "stages": [
+            {
+              "stage": "S1",
+              "samples": 20,
+              "tps_mean": 6468.727500000002,
+              "tps_min": 5907.83,
+              "tps_max": 7063.49,
+              "seconds": [
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32
+              ],
+              "shared_buffers_before_mb": 512,
+              "shared_buffers_after_mb": 3072,
+              "work_mem_global_mb": 32
+            },
+            {
+              "stage": "S2",
+              "samples": 20,
+              "tps_mean": 6626.452499999999,
+              "tps_min": 5878.98,
+              "tps_max": 7136.35,
+              "seconds": [
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67
+              ],
+              "shared_buffers_before_mb": 3072,
+              "shared_buffers_after_mb": 2048,
+              "work_mem_global_mb": 32
+            },
+            {
+              "stage": "S3",
+              "samples": 20,
+              "tps_mean": 6615.419500000001,
+              "tps_min": 5927.39,
+              "tps_max": 7150.14,
+              "seconds": [
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97
+              ],
+              "shared_buffers_before_mb": 2048,
+              "shared_buffers_after_mb": 2048,
+              "work_mem_global_mb": 32
+            },
+            {
+              "stage": "S4",
+              "samples": 20,
+              "tps_mean": 6544.704000000001,
+              "tps_min": 5961.87,
+              "tps_max": 7146.47,
+              "seconds": [
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125,
+                126,
+                127
+              ],
+              "shared_buffers_before_mb": 2048,
+              "shared_buffers_after_mb": 2048,
+              "work_mem_global_mb": 32
+            },
+            {
+              "stage": "S5",
+              "samples": 20,
+              "tps_mean": 5687.2705,
+              "tps_min": 5238.96,
+              "tps_max": 6223.26,
+              "seconds": [
+                138,
+                139,
+                140,
+                141,
+                142,
+                143,
+                144,
+                145,
+                146,
+                147,
+                148,
+                149,
+                150,
+                151,
+                152,
+                153,
+                154,
+                155,
+                156,
+                157
+              ],
+              "shared_buffers_before_mb": 2048,
+              "shared_buffers_after_mb": 3072,
+              "work_mem_global_mb": 32,
+              "surge": {
+                "stage": "S5_surge",
+                "samples": 20,
+                "tps_mean": 713.9394999999998,
+                "tps_min": 650.65,
+                "tps_max": 787.38,
+                "seconds": [
+                  10,
+                  11,
+                  12,
+                  13,
+                  14,
+                  15,
+                  16,
+                  17,
+                  18,
+                  19,
+                  20,
+                  21,
+                  22,
+                  23,
+                  24,
+                  25,
+                  26,
+                  27,
+                  28,
+                  29
+                ],
+                "work_mem_global_mb": 32
+              }
+            }
+          ]
+        }
+      ],
+      "stage_mean_tps": {
+        "S1": 6446.319,
+        "S2": 6614.5107499999995,
+        "S3": 6604.0067500000005,
+        "S4": 6526.590250000001,
+        "S5": 5679.3542499999985
+      },
+      "postmaster_pids": [
+        58998,
+        60037
+      ],
+      "passed": true
+    },
+    "stage_rows": [
+      {
+        "stage": "S1",
+        "sb_before_mb": 512,
+        "sb_after_mb": 3072,
+        "work_mem_mb": 32,
+        "run1_tps": 6423.910499999999,
+        "run2_tps": 6468.727500000002,
+        "mean_tps": 6446.319,
+        "jitter_pct": 0.6976591594793025,
+        "run1_samples": 20,
+        "run2_samples": 20,
+        "s5_surge_run1_tps": null,
+        "s5_surge_run2_tps": null
+      },
+      {
+        "stage": "S2",
+        "sb_before_mb": 3072,
+        "sb_after_mb": 2048,
+        "work_mem_mb": 32,
+        "run1_tps": 6602.568999999999,
+        "run2_tps": 6626.452499999999,
+        "mean_tps": 6614.5107499999995,
+        "jitter_pct": 0.3617304112990105,
+        "run1_samples": 20,
+        "run2_samples": 20,
+        "s5_surge_run1_tps": null,
+        "s5_surge_run2_tps": null
+      },
+      {
+        "stage": "S3",
+        "sb_before_mb": 2048,
+        "sb_after_mb": 2048,
+        "work_mem_mb": 32,
+        "run1_tps": 6592.594,
+        "run2_tps": 6615.419500000001,
+        "mean_tps": 6604.0067500000005,
+        "jitter_pct": 0.34622942046789174,
+        "run1_samples": 20,
+        "run2_samples": 20,
+        "s5_surge_run1_tps": null,
+        "s5_surge_run2_tps": null
+      },
+      {
+        "stage": "S4",
+        "sb_before_mb": 2048,
+        "sb_after_mb": 2048,
+        "work_mem_mb": 32,
+        "run1_tps": 6508.476500000001,
+        "run2_tps": 6544.704000000001,
+        "mean_tps": 6526.590250000001,
+        "jitter_pct": 0.5566202781864593,
+        "run1_samples": 20,
+        "run2_samples": 20,
+        "s5_surge_run1_tps": null,
+        "s5_surge_run2_tps": null
+      },
+      {
+        "stage": "S5",
+        "sb_before_mb": 2048,
+        "sb_after_mb": 3072,
+        "work_mem_mb": 32,
+        "run1_tps": 5671.437999999998,
+        "run2_tps": 5687.2705,
+        "mean_tps": 5679.3542499999985,
+        "jitter_pct": 0.27916200441584493,
+        "run1_samples": 20,
+        "run2_samples": 20,
+        "s5_surge_run1_tps": 711.8409999999999,
+        "s5_surge_run2_tps": 713.9394999999998
+      }
+    ],
+    "runtime_integrity": {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/final-runtime-integrity.txt",
+      "sha256": "4ec83d174f0c17415c37136f2ae2bdc64143595ba77c1f21f99b76350828eccb",
+      "parsed": {
+        "postmaster_pid": "23236",
+        "proc_start_ticks": "19324364",
+        "ready_markers_total": "2",
+        "shutdown_markers_total": "1"
+      },
+      "interpretation": "The postmaster PID observed after the adapted runs is 23236. The only ready/shutdown markers are the initial cluster startup and the planned preparation restart at 16:38:58; no additional restart marker was observed during the adaptation runs."
+    }
+  },
+  "conclusion": {
+    "current_v3_directly_valid_on_remote": false,
+    "machine_aware_remote_sysbench_profile_validated": true,
+    "default_profile": {
+      "sb_mb": 512,
+      "work_mem_mb": 32,
+      "mean_tps": 6158.441083333333
+    },
+    "adapted_profile": {
+      "sb_mb": 3072,
+      "work_mem_mb": 32,
+      "mean_tps": 6544.827583333334
+    },
+    "adapted_gain_pct": 6.274095907902466,
+    "old_migrated_profile_gain_pct": 4.481878674332962,
+    "adapted_sb_reduction_vs_old_migrated_profile_pct": 25.0,
+    "adapted_sb_reduction_vs_original_v3_max_pct": 40.0,
+    "same_ppt_stage_count": true,
+    "extra_stage_added": false,
+    "cpu_surface_added": false,
+    "ap_latency_claim": false,
+    "why_ap_not_claimed": "Remote AP was SF10 and did not produce a completed latency comparison; this result is intentionally Sysbench-only."
+  },
+  "artifacts": {
+    "local_report_dir": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826",
+    "remote_report_path": "/opt/openGauss/remote/MACHINE_AWARE_VALIDATION.md",
+    "remote_adapted_trajectory": "/root/GaussTune/remote_artifacts/machine-adapted-sysbench-trajectory.json",
+    "remote_sweep": "/opt/openGauss/remote/remote-machine-aware-sweep-summary.json",
+    "remote_adapted_compare": "/opt/openGauss/remote/sysbench-machine-adapted-3072-vs-default-20260826/comparison.json",
+    "remote_adapted_five_stage": "/opt/openGauss/remote/machine-adapted-sysbench-five-stage-20260826-v2/summary.json"
+  }
+}

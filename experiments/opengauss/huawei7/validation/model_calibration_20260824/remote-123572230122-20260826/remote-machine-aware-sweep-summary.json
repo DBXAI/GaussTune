@@ -1,0 +1,149 @@
+{
+  "schema": "huawei7.remote-machine-aware-sysbench-sweep/v1",
+  "machine_fingerprint": "065e8e53c042fb520b8a2319f3f2ebd6c4a2372a381d51bac7e8eba2dc69ff8c",
+  "sysbench": {
+    "terminals": 128,
+    "warmup_seconds": 20,
+    "measurement_seconds": 40,
+    "tables": 16,
+    "table_size": 1000000
+  },
+  "selection_rule": "smallest measured SB within 2% of the best measured TPS at the selected Work_mem; use a 3072MB endpoint and 2048MB middle plateau for the same five-state pattern",
+  "rows": [
+    {
+      "shared_buffers_target_mb": 512,
+      "work_mem_mb": 32,
+      "tps_samples": 40,
+      "tps_mean": 6177.383,
+      "tps_stdev": 395.1478416751291,
+      "tps_min": 5505.58,
+      "tps_max": 6735.46,
+      "latency_p95_ms": 27.17,
+      "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb512-wm32.sysbench.log"
+    },
+    {
+      "shared_buffers_target_mb": 1024,
+      "work_mem_mb": 32,
+      "tps_samples": 40,
+      "tps_mean": 6320.2775,
+      "tps_stdev": 417.10595732333445,
+      "tps_min": 5778.55,
+      "tps_max": 6894.86,
+      "latency_p95_ms": 26.2,
+      "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb1024-wm32.sysbench.log"
+    },
+    {
+      "shared_buffers_target_mb": 2048,
+      "work_mem_mb": 32,
+      "tps_samples": 40,
+      "tps_mean": 6474.4977499999995,
+      "tps_stdev": 389.2167381338137,
+      "tps_min": 5889.78,
+      "tps_max": 7109.08,
+      "latency_p95_ms": 24.83,
+      "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb2048-wm32.sysbench.log"
+    },
+    {
+      "shared_buffers_target_mb": 3072,
+      "work_mem_mb": 32,
+      "tps_samples": 40,
+      "tps_mean": 6570.2735,
+      "tps_stdev": 417.0136514063187,
+      "tps_min": 5941.05,
+      "tps_max": 7174.15,
+      "latency_p95_ms": 24.38,
+      "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb3072-wm32.sysbench.log"
+    },
+    {
+      "shared_buffers_target_mb": 4096,
+      "work_mem_mb": 32,
+      "tps_samples": 40,
+      "tps_mean": 6600.17,
+      "tps_stdev": 403.63655056091983,
+      "tps_min": 5995.11,
+      "tps_max": 7192.23,
+      "latency_p95_ms": 24.38,
+      "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb4096-wm32.sysbench.log"
+    },
+    {
+      "shared_buffers_target_mb": 5120,
+      "work_mem_mb": 32,
+      "tps_samples": 40,
+      "tps_mean": 6552.9345,
+      "tps_stdev": 393.7351342115206,
+      "tps_min": 5961.23,
+      "tps_max": 7175.45,
+      "latency_p95_ms": 24.38,
+      "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb5120-wm32.sysbench.log"
+    },
+    {
+      "shared_buffers_target_mb": 512,
+      "work_mem_mb": 64,
+      "tps_samples": 40,
+      "tps_mean": 6199.60825,
+      "tps_stdev": 390.9163446208546,
+      "tps_min": 5685.26,
+      "tps_max": 6769.04,
+      "latency_p95_ms": 26.68,
+      "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb512-wm64.sysbench.log"
+    },
+    {
+      "shared_buffers_target_mb": 1024,
+      "work_mem_mb": 64,
+      "tps_samples": 40,
+      "tps_mean": 6325.71275,
+      "tps_stdev": 429.085368620323,
+      "tps_min": 5692.7,
+      "tps_max": 6932.2,
+      "latency_p95_ms": 26.2,
+      "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb1024-wm64.sysbench.log"
+    },
+    {
+      "shared_buffers_target_mb": 2048,
+      "work_mem_mb": 64,
+      "tps_samples": 40,
+      "tps_mean": 6519.41325,
+      "tps_stdev": 426.8891635793468,
+      "tps_min": 5794.6,
+      "tps_max": 7101.69,
+      "latency_p95_ms": 25.28,
+      "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-sweep/sb2048-wm64.sysbench.log"
+    },
+    {
+      "shared_buffers_target_mb": 3072,
+      "work_mem_mb": 64,
+      "tps_samples": 40,
+      "tps_mean": 6548.05225,
+      "tps_stdev": 426.3739141037372,
+      "tps_min": 5876.07,
+      "tps_max": 7139.56,
+      "latency_p95_ms": 25.28,
+      "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-high64/sb3072-wm64.sysbench.log"
+    },
+    {
+      "shared_buffers_target_mb": 4096,
+      "work_mem_mb": 64,
+      "tps_samples": 40,
+      "tps_mean": 6517.6145,
+      "tps_stdev": 429.50928528782885,
+      "tps_min": 5799.07,
+      "tps_max": 7127.01,
+      "latency_p95_ms": 24.83,
+      "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-high64/sb4096-wm64.sysbench.log"
+    },
+    {
+      "shared_buffers_target_mb": 5120,
+      "work_mem_mb": 64,
+      "tps_samples": 40,
+      "tps_mean": 6565.041,
+      "tps_stdev": 405.34177049332914,
+      "tps_min": 5923.24,
+      "tps_max": 7158.39,
+      "latency_p95_ms": 24.38,
+      "log": "/root/GaussTune/experiments/opengauss/huawei7/validation/model_calibration_20260824/remote-123572230122-20260826/machine-aware-sysbench-high64/sb5120-wm64.sysbench.log"
+    }
+  ],
+  "completed_points": 12,
+  "expected_points": 12,
+  "selection_basis": "The 64MB sweep is complete after the high64 supplement; the 32MB sweep is complete. No extrapolated point is used."
+}
