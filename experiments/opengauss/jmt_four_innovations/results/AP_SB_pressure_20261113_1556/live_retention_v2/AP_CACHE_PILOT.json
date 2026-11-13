@@ -1,0 +1,335 @@
+{
+  "schema": "jmt.readonly-AP-cache-pressure-pilot/v1",
+  "created_at": "2026-11-13T15:54:09.150081+08:00",
+  "suite": "retention",
+  "postmaster": {
+    "start": "2026-10-20 10:52:53.974417+08",
+    "database_oid": 17648
+  },
+  "policy": {
+    "page_bytes": 8192,
+    "startup_shared_buffer_pages": 1048576,
+    "target_shared_buffer_pages": 1048576,
+    "bulk_read_ring_size_kb": 16384,
+    "allow_bulk_read": true,
+    "executor": "row",
+    "query_dop": 1,
+    "replacement_policy": "candidate_fifo"
+  },
+  "native_settings": [
+    {
+      "name": "bulk_read_ring_size",
+      "setting": "16384",
+      "unit": "kB"
+    },
+    {
+      "name": "enable_incremental_checkpoint",
+      "setting": "on",
+      "unit": null
+    },
+    {
+      "name": "jmt_buffer_trace_epoch",
+      "setting": "0",
+      "unit": ""
+    },
+    {
+      "name": "jmt_buffer_trace_sample_ppm",
+      "setting": "0",
+      "unit": ""
+    },
+    {
+      "name": "pagewriter_thread_num",
+      "setting": "4",
+      "unit": ""
+    },
+    {
+      "name": "shared_buffers",
+      "setting": "1048576",
+      "unit": "8kB"
+    },
+    {
+      "name": "shared_buffers_target",
+      "setting": "1048576",
+      "unit": "8kB"
+    }
+  ],
+  "cases": [
+    {
+      "case": "lineitem_same_1m_first",
+      "sql_sha256": "14c18d254394048718d8a8d4d9ba0d0412b55d1be268d046a3e69e4fba2bff11",
+      "prediction_precedes_execution": true,
+      "execution_start_ns": 2575197589661179,
+      "execution_end_ns": 2575198314396451,
+      "execution_exit_code": 0,
+      "forecast_compute_seconds": 0.03206276893615723,
+      "actual_wall_seconds": 0.7239416618831456,
+      "nominal_prediction_mib": 16.0,
+      "base_accesses": [
+        {
+          "path": ".0.0",
+          "node_type": "Seq Scan",
+          "relation": "lineitem",
+          "physical_relation": "h5_tpch:17670",
+          "relation_pages": 10590677.0,
+          "predicted_calls": 1.0,
+          "predicted_total_page_visits": 20762.725627584725,
+          "predicted_unique_pages_per_call": 20763,
+          "strategy": "bulk_read_ring",
+          "nominal_resident_pages": 2048,
+          "sequential_filter_output_not_used_as_page_selectivity": true,
+          "uses_innovation2_scan_volume": true
+        }
+      ],
+      "resident_before_mib": 88.296875,
+      "resident_after_mib": 104.296875,
+      "net_resident_change_mib": 16.0,
+      "post_snapshot_not_query_peak_or_unique_ownership": true,
+      "TP_effect_or_mixed_accuracy_validated": false,
+      "incoming_state_retention_scenario": {
+        "available": true,
+        "incoming_pages_by_relation": {
+          "h5_tpch:17655": 18884,
+          "h5_tpch:17667": 8838,
+          "h5_tpch:17658": 2048,
+          "h5_tpch:17670": 11302,
+          "h5_tpch:17652": 1
+        },
+        "conditional_post_pages_low_by_relation": {
+          "h5_tpch:17655": 18884,
+          "h5_tpch:17667": 8838,
+          "h5_tpch:17658": 2048,
+          "h5_tpch:17670": 11302,
+          "h5_tpch:17652": 1
+        },
+        "conditional_post_pages_high_by_relation": {
+          "h5_tpch:17655": 18884,
+          "h5_tpch:17667": 8838,
+          "h5_tpch:17658": 2048,
+          "h5_tpch:17670": 13350,
+          "h5_tpch:17652": 1
+        },
+        "conditional_post_total_low_mib": 320.8828125,
+        "conditional_post_total_high_mib": 336.8828125,
+        "assumptions": [
+          "all incoming AP pages retained; no global victim eviction",
+          "ideal ring reuse, no fallback; fresh ring slots may be allocated",
+          "unknown page-set overlap gives a scenario envelope, not a confidence interval"
+        ],
+        "is_physical_upper_bound_or_TP_loss_prediction": false,
+        "automatic_recommendation_qualified": false
+      },
+      "actual_runtime_ms": 711.244
+    },
+    {
+      "case": "lineitem_same_1m_second",
+      "sql_sha256": "14c18d254394048718d8a8d4d9ba0d0412b55d1be268d046a3e69e4fba2bff11",
+      "prediction_precedes_execution": true,
+      "execution_start_ns": 2575198959048969,
+      "execution_end_ns": 2575199684882831,
+      "execution_exit_code": 0,
+      "forecast_compute_seconds": 0.004009900148957968,
+      "actual_wall_seconds": 0.7250194880180061,
+      "nominal_prediction_mib": 16.0,
+      "base_accesses": [
+        {
+          "path": ".0.0",
+          "node_type": "Seq Scan",
+          "relation": "lineitem",
+          "physical_relation": "h5_tpch:17670",
+          "relation_pages": 10590677.0,
+          "predicted_calls": 1.0,
+          "predicted_total_page_visits": 20762.725627584725,
+          "predicted_unique_pages_per_call": 20763,
+          "strategy": "bulk_read_ring",
+          "nominal_resident_pages": 2048,
+          "sequential_filter_output_not_used_as_page_selectivity": true,
+          "uses_innovation2_scan_volume": true
+        }
+      ],
+      "resident_before_mib": 104.296875,
+      "resident_after_mib": 120.296875,
+      "net_resident_change_mib": 16.0,
+      "post_snapshot_not_query_peak_or_unique_ownership": true,
+      "TP_effect_or_mixed_accuracy_validated": false,
+      "incoming_state_retention_scenario": {
+        "available": true,
+        "incoming_pages_by_relation": {
+          "h5_tpch:17655": 18884,
+          "h5_tpch:17667": 8838,
+          "h5_tpch:17658": 2048,
+          "h5_tpch:17670": 13350,
+          "h5_tpch:17652": 1
+        },
+        "conditional_post_pages_low_by_relation": {
+          "h5_tpch:17655": 18884,
+          "h5_tpch:17667": 8838,
+          "h5_tpch:17658": 2048,
+          "h5_tpch:17670": 13350,
+          "h5_tpch:17652": 1
+        },
+        "conditional_post_pages_high_by_relation": {
+          "h5_tpch:17655": 18884,
+          "h5_tpch:17667": 8838,
+          "h5_tpch:17658": 2048,
+          "h5_tpch:17670": 15398,
+          "h5_tpch:17652": 1
+        },
+        "conditional_post_total_low_mib": 336.8828125,
+        "conditional_post_total_high_mib": 352.8828125,
+        "assumptions": [
+          "all incoming AP pages retained; no global victim eviction",
+          "ideal ring reuse, no fallback; fresh ring slots may be allocated",
+          "unknown page-set overlap gives a scenario envelope, not a confidence interval"
+        ],
+        "is_physical_upper_bound_or_TP_loss_prediction": false,
+        "automatic_recommendation_qualified": false
+      },
+      "actual_runtime_ms": 712.404
+    },
+    {
+      "case": "lineitem_same_1m_third",
+      "sql_sha256": "14c18d254394048718d8a8d4d9ba0d0412b55d1be268d046a3e69e4fba2bff11",
+      "prediction_precedes_execution": true,
+      "execution_start_ns": 2575200333767760,
+      "execution_end_ns": 2575201059294574,
+      "execution_exit_code": 0,
+      "forecast_compute_seconds": 0.004753573797643185,
+      "actual_wall_seconds": 0.7246933309361339,
+      "nominal_prediction_mib": 16.0,
+      "base_accesses": [
+        {
+          "path": ".0.0",
+          "node_type": "Seq Scan",
+          "relation": "lineitem",
+          "physical_relation": "h5_tpch:17670",
+          "relation_pages": 10590677.0,
+          "predicted_calls": 1.0,
+          "predicted_total_page_visits": 20762.725627584725,
+          "predicted_unique_pages_per_call": 20763,
+          "strategy": "bulk_read_ring",
+          "nominal_resident_pages": 2048,
+          "sequential_filter_output_not_used_as_page_selectivity": true,
+          "uses_innovation2_scan_volume": true
+        }
+      ],
+      "resident_before_mib": 120.296875,
+      "resident_after_mib": 136.296875,
+      "net_resident_change_mib": 16.0,
+      "post_snapshot_not_query_peak_or_unique_ownership": true,
+      "TP_effect_or_mixed_accuracy_validated": false,
+      "incoming_state_retention_scenario": {
+        "available": true,
+        "incoming_pages_by_relation": {
+          "h5_tpch:17655": 18884,
+          "h5_tpch:17667": 8838,
+          "h5_tpch:17658": 2048,
+          "h5_tpch:17670": 15398,
+          "h5_tpch:17652": 1
+        },
+        "conditional_post_pages_low_by_relation": {
+          "h5_tpch:17655": 18884,
+          "h5_tpch:17667": 8838,
+          "h5_tpch:17658": 2048,
+          "h5_tpch:17670": 15398,
+          "h5_tpch:17652": 1
+        },
+        "conditional_post_pages_high_by_relation": {
+          "h5_tpch:17655": 18884,
+          "h5_tpch:17667": 8838,
+          "h5_tpch:17658": 2048,
+          "h5_tpch:17670": 17446,
+          "h5_tpch:17652": 1
+        },
+        "conditional_post_total_low_mib": 352.8828125,
+        "conditional_post_total_high_mib": 368.8828125,
+        "assumptions": [
+          "all incoming AP pages retained; no global victim eviction",
+          "ideal ring reuse, no fallback; fresh ring slots may be allocated",
+          "unknown page-set overlap gives a scenario envelope, not a confidence interval"
+        ],
+        "is_physical_upper_bound_or_TP_loss_prediction": false,
+        "automatic_recommendation_qualified": false
+      },
+      "actual_runtime_ms": 711.761
+    },
+    {
+      "case": "supplier_full_again",
+      "sql_sha256": "d616ccc1e9113bc8caefff3068bf1d27f22759773c97aee448d2987e348df382",
+      "prediction_precedes_execution": true,
+      "execution_start_ns": 2575201705581289,
+      "execution_end_ns": 2575201958657909,
+      "execution_exit_code": 0,
+      "forecast_compute_seconds": 0.003529495093971491,
+      "actual_wall_seconds": 0.25247144093737006,
+      "nominal_prediction_mib": 147.53125,
+      "base_accesses": [
+        {
+          "path": ".0",
+          "node_type": "Seq Scan",
+          "relation": "supplier",
+          "physical_relation": "h5_tpch:17655",
+          "relation_pages": 18884.0,
+          "predicted_calls": 1.0,
+          "predicted_total_page_visits": 18884.0,
+          "predicted_unique_pages_per_call": 18884.0,
+          "strategy": "normal",
+          "nominal_resident_pages": 18884.0,
+          "sequential_filter_output_not_used_as_page_selectivity": true,
+          "uses_innovation2_scan_volume": true
+        }
+      ],
+      "resident_before_mib": 147.53125,
+      "resident_after_mib": 147.53125,
+      "net_resident_change_mib": 0.0,
+      "post_snapshot_not_query_peak_or_unique_ownership": true,
+      "TP_effect_or_mixed_accuracy_validated": false,
+      "incoming_state_retention_scenario": {
+        "available": true,
+        "incoming_pages_by_relation": {
+          "h5_tpch:17655": 18884,
+          "h5_tpch:17667": 8838,
+          "h5_tpch:17658": 2048,
+          "h5_tpch:17670": 17446,
+          "h5_tpch:17652": 1
+        },
+        "conditional_post_pages_low_by_relation": {
+          "h5_tpch:17655": 18884,
+          "h5_tpch:17667": 8838,
+          "h5_tpch:17658": 2048,
+          "h5_tpch:17670": 17446,
+          "h5_tpch:17652": 1
+        },
+        "conditional_post_pages_high_by_relation": {
+          "h5_tpch:17655": 18884.0,
+          "h5_tpch:17667": 8838,
+          "h5_tpch:17658": 2048,
+          "h5_tpch:17670": 17446,
+          "h5_tpch:17652": 1
+        },
+        "conditional_post_total_low_mib": 368.8828125,
+        "conditional_post_total_high_mib": 368.8828125,
+        "assumptions": [
+          "all incoming AP pages retained; no global victim eviction",
+          "ideal ring reuse, no fallback; fresh ring slots may be allocated",
+          "unknown page-set overlap gives a scenario envelope, not a confidence interval"
+        ],
+        "is_physical_upper_bound_or_TP_loss_prediction": false,
+        "automatic_recommendation_qualified": false
+      },
+      "actual_runtime_ms": 240.049
+    }
+  ],
+  "prediction_was_before_target_execution": true,
+  "new_actual_AP_queries_executed": 4,
+  "new_actual_TP_or_mixed_queries_executed": false,
+  "cache_dropped_or_database_resized_or_restarted": false,
+  "AP_post_snapshot_is_not_peak_or_TP_loss_label": true,
+  "model_code_sha256": {
+    "tools/test_ap_cache_pressure_live.py": "dff065856d22551693ec2a9621da4290cce926347e3ce793eda5c094e8839275",
+    "src/jmt/innovation_2_spill/cache_pressure.py": "e38d850dfe0556f9413dc69a3ce9c2b670edf6f74066ebe59daec38a02ccb252",
+    "src/jmt/innovation_2_spill/forecast.py": "558daa3c3aecdd033f3b5aa2844f0000084a8a3a0b89226215c1751aa0e84959",
+    "src/jmt/innovation_2_spill/ap_plan_model.py": "33e6d4f016e524afccad77d84b37974de594f6add324ae2a76a30ae2827ceee2"
+  },
+  "empirical_mixed_pressure_accuracy_qualified": false,
+  "configuration_applied": false
+}

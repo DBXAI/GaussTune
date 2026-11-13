@@ -35,9 +35,10 @@ class ForecastSession:
     """Request-local preparation, shared across plans/WMs; no global SQL cache."""
 
     def __init__(self, sql, catalog, joint_synopsis=None, group_synopsis=None,
-                 cardinality_provider=None, key_group_sample=None):
+                 cardinality_provider=None, key_group_sample=None, cache_policy=None):
         started = time.perf_counter()
         self.sql, self.catalog = sql, catalog
+        self.cache_policy = copy.deepcopy(cache_policy)
         self.joint_synopsis = joint_synopsis
         self.group_synopsis = group_synopsis
         self.cardinality_provider = cardinality_provider
@@ -309,6 +310,10 @@ class ForecastSession:
                 "diagnostic_replacements": diagnostic,
                 "diagnostic_pass_through_row_effects": passthrough,
             })
+        if self.cache_policy is not None:
+            from .cache_pressure import predict_cache_pressure
+            result["AP_cache_pressure"] = predict_cache_pressure(
+                changed, self.catalog, self.cache_policy, operator_forecast=result)
         return result
 
 

@@ -12,3 +12,9 @@
 - 先安装 `requirements-offline.txt` 的剩余必要依赖；冻结复核主脚本不连数据库、不刷新样本 TTL。
 
 当前候选没有混合最优/物理内存安全认证；不可把旧 2/4 GiB 或探索域 8 GiB 当生产最优。
+
+## 新压力测试版本
+
+旧快照清单 `GIT_SNAPSHOT_MANIFEST.json` 只对应回退标签 `jmt-before-ap-sb-pressure-20261113`，不要求新版源码仍等于旧哈希。
+新版状态见 `GIT_CURRENT_MANIFEST.json`、`CURRENT_AP_SB_PRESSURE.json` 和 `AP_SB_PRESSURE_CURRENT.md`。
+新测试离线复核：`bash results/AP_SB_pressure_20261113_1556/REPRODUCE_OFFLINE.sh`。

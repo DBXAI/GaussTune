@@ -1,0 +1,68 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Aggregate",
+      "Strategy": "Plain",
+      "Startup Cost": 1.31,
+      "Total Cost": 1.32,
+      "Plan Rows": 1,
+      "Plan Width": 12,
+      "Actual Startup Time": 0.014,
+      "Actual Total Time": 0.014,
+      "Actual Rows": 1,
+      "Actual Loops": 1,
+      "Output": [
+        "sum(n_nationkey)"
+      ],
+      "Shared Hit Blocks": 1,
+      "Shared Read Blocks": 0,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "IO Read Time": 0.0,
+      "IO Write Time": 0.0,
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Relation Name": "nation",
+          "Schema": "public",
+          "Alias": "nation",
+          "Startup Cost": 0.0,
+          "Total Cost": 1.25,
+          "Plan Rows": 25,
+          "Plan Width": 4,
+          "Actual Startup Time": 0.006,
+          "Actual Total Time": 0.007,
+          "Actual Rows": 25,
+          "Actual Loops": 1,
+          "Output": [
+            "n_nationkey",
+            "n_name",
+            "n_regionkey",
+            "n_comment"
+          ],
+          "Shared Hit Blocks": 1,
+          "Shared Read Blocks": 0,
+          "Shared Dirtied Blocks": 0,
+          "Shared Written Blocks": 0,
+          "Local Hit Blocks": 0,
+          "Local Read Blocks": 0,
+          "Local Dirtied Blocks": 0,
+          "Local Written Blocks": 0,
+          "Temp Read Blocks": 0,
+          "Temp Written Blocks": 0,
+          "IO Read Time": 0.0,
+          "IO Write Time": 0.0
+        }
+      ]
+    },
+    "Triggers": [],
+    "Total Runtime": 0.05
+  }
+]

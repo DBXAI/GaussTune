@@ -1,0 +1,295 @@
+{
+  "schema": "jmt.readonly-AP-cache-pressure-pilot/v1",
+  "created_at": "2026-11-13T15:47:52.018667+08:00",
+  "postmaster": {
+    "start": "2026-10-20 10:52:53.974417+08",
+    "database_oid": 17648
+  },
+  "policy": {
+    "page_bytes": 8192,
+    "startup_shared_buffer_pages": 1048576,
+    "target_shared_buffer_pages": 1048576,
+    "bulk_read_ring_size_kb": 16384,
+    "allow_bulk_read": true,
+    "executor": "row",
+    "query_dop": 1,
+    "replacement_policy": "candidate_fifo"
+  },
+  "native_settings": [
+    {
+      "name": "bulk_read_ring_size",
+      "setting": "16384",
+      "unit": "kB"
+    },
+    {
+      "name": "enable_incremental_checkpoint",
+      "setting": "on",
+      "unit": null
+    },
+    {
+      "name": "jmt_buffer_trace_epoch",
+      "setting": "0",
+      "unit": ""
+    },
+    {
+      "name": "jmt_buffer_trace_sample_ppm",
+      "setting": "0",
+      "unit": ""
+    },
+    {
+      "name": "pagewriter_thread_num",
+      "setting": "4",
+      "unit": ""
+    },
+    {
+      "name": "shared_buffers",
+      "setting": "1048576",
+      "unit": "8kB"
+    },
+    {
+      "name": "shared_buffers_target",
+      "setting": "1048576",
+      "unit": "8kB"
+    }
+  ],
+  "cases": [
+    {
+      "case": "supplier_full_normal",
+      "sql_sha256": "d616ccc1e9113bc8caefff3068bf1d27f22759773c97aee448d2987e348df382",
+      "prediction_precedes_execution": true,
+      "execution_start_ns": 2574817970414790,
+      "execution_end_ns": 2574818223516759,
+      "execution_exit_code": 0,
+      "forecast_compute_seconds": 0.03289762092754245,
+      "actual_wall_seconds": 0.25250117434188724,
+      "nominal_prediction_mib": 147.53125,
+      "base_accesses": [
+        {
+          "path": ".0",
+          "node_type": "Seq Scan",
+          "relation": "supplier",
+          "physical_relation": "h5_tpch:17655",
+          "relation_pages": 18884.0,
+          "predicted_calls": 1.0,
+          "predicted_total_page_visits": 18884.0,
+          "predicted_unique_pages_per_call": 18884.0,
+          "strategy": "normal",
+          "nominal_resident_pages": 18884.0,
+          "sequential_filter_output_not_used_as_page_selectivity": true,
+          "uses_innovation2_scan_volume": true
+        }
+      ],
+      "resident_before_mib": 147.53125,
+      "resident_after_mib": 147.53125,
+      "net_resident_change_mib": 0.0,
+      "post_snapshot_not_query_peak_or_unique_ownership": true,
+      "TP_effect_or_mixed_accuracy_validated": false,
+      "actual_runtime_ms": 239.944
+    },
+    {
+      "case": "nation_full_normal",
+      "sql_sha256": "d8e8c55617035907a86eee7ff14d237205bcfa010fff23e8f4fb5dad4931187a",
+      "prediction_precedes_execution": true,
+      "execution_start_ns": 2574818859948194,
+      "execution_end_ns": 2574818872262414,
+      "execution_exit_code": 0,
+      "forecast_compute_seconds": 0.003703721798956394,
+      "actual_wall_seconds": 0.011683270335197449,
+      "nominal_prediction_mib": 0.0078125,
+      "base_accesses": [
+        {
+          "path": ".0",
+          "node_type": "Seq Scan",
+          "relation": "nation",
+          "physical_relation": "h5_tpch:17652",
+          "relation_pages": 1.0,
+          "predicted_calls": 1.0,
+          "predicted_total_page_visits": 1.0,
+          "predicted_unique_pages_per_call": 1.0,
+          "strategy": "normal",
+          "nominal_resident_pages": 1.0,
+          "sequential_filter_output_not_used_as_page_selectivity": true,
+          "uses_innovation2_scan_volume": true
+        }
+      ],
+      "resident_before_mib": 0.0078125,
+      "resident_after_mib": 0.0078125,
+      "net_resident_change_mib": 0.0,
+      "post_snapshot_not_query_peak_or_unique_ownership": true,
+      "TP_effect_or_mixed_accuracy_validated": false,
+      "actual_runtime_ms": 0.053
+    },
+    {
+      "case": "lineitem_250k_ring",
+      "sql_sha256": "0887e7f98039f1eb6e6146ee58d9e262979fc9936941dadfe4540fdc5cb342ab",
+      "prediction_precedes_execution": true,
+      "execution_start_ns": 2574819509836176,
+      "execution_end_ns": 2574819707497226,
+      "execution_exit_code": 0,
+      "forecast_compute_seconds": 0.003906299825757742,
+      "actual_wall_seconds": 0.19683123705908656,
+      "nominal_prediction_mib": 16.0,
+      "base_accesses": [
+        {
+          "path": ".0.0",
+          "node_type": "Seq Scan",
+          "relation": "lineitem",
+          "physical_relation": "h5_tpch:17670",
+          "relation_pages": 10590677.0,
+          "predicted_calls": 1.0,
+          "predicted_total_page_visits": 5190.681406896181,
+          "predicted_unique_pages_per_call": 5191,
+          "strategy": "bulk_read_ring",
+          "nominal_resident_pages": 2048,
+          "sequential_filter_output_not_used_as_page_selectivity": true,
+          "uses_innovation2_scan_volume": true
+        }
+      ],
+      "resident_before_mib": 40.296875,
+      "resident_after_mib": 56.296875,
+      "net_resident_change_mib": 16.0,
+      "post_snapshot_not_query_peak_or_unique_ownership": true,
+      "TP_effect_or_mixed_accuracy_validated": false,
+      "actual_runtime_ms": 183.989
+    },
+    {
+      "case": "lineitem_1m_ring",
+      "sql_sha256": "14c18d254394048718d8a8d4d9ba0d0412b55d1be268d046a3e69e4fba2bff11",
+      "prediction_precedes_execution": true,
+      "execution_start_ns": 2574820344311408,
+      "execution_end_ns": 2574821083917957,
+      "execution_exit_code": 0,
+      "forecast_compute_seconds": 0.003931356128305197,
+      "actual_wall_seconds": 0.7387730786576867,
+      "nominal_prediction_mib": 16.0,
+      "base_accesses": [
+        {
+          "path": ".0.0",
+          "node_type": "Seq Scan",
+          "relation": "lineitem",
+          "physical_relation": "h5_tpch:17670",
+          "relation_pages": 10590677.0,
+          "predicted_calls": 1.0,
+          "predicted_total_page_visits": 20762.725627584725,
+          "predicted_unique_pages_per_call": 20763,
+          "strategy": "bulk_read_ring",
+          "nominal_resident_pages": 2048,
+          "sequential_filter_output_not_used_as_page_selectivity": true,
+          "uses_innovation2_scan_volume": true
+        }
+      ],
+      "resident_before_mib": 56.296875,
+      "resident_after_mib": 72.296875,
+      "net_resident_change_mib": 16.0,
+      "post_snapshot_not_query_peak_or_unique_ownership": true,
+      "TP_effect_or_mixed_accuracy_validated": false,
+      "actual_runtime_ms": 726.059
+    },
+    {
+      "case": "lineitem_2m_ring",
+      "sql_sha256": "c8edea502657f722a968bb531cd42ae30e7d7485cde548d500ccffa3c78b9fd7",
+      "prediction_precedes_execution": true,
+      "execution_start_ns": 2574821716026693,
+      "execution_end_ns": 2574823156124768,
+      "execution_exit_code": 0,
+      "forecast_compute_seconds": 0.0040608360432088375,
+      "actual_wall_seconds": 1.4392779027111828,
+      "nominal_prediction_mib": 16.0,
+      "base_accesses": [
+        {
+          "path": ".0.0",
+          "node_type": "Seq Scan",
+          "relation": "lineitem",
+          "physical_relation": "h5_tpch:17670",
+          "relation_pages": 10590677.0,
+          "predicted_calls": 1.0,
+          "predicted_total_page_visits": 41525.45125516945,
+          "predicted_unique_pages_per_call": 41526,
+          "strategy": "bulk_read_ring",
+          "nominal_resident_pages": 2048,
+          "sequential_filter_output_not_used_as_page_selectivity": true,
+          "uses_innovation2_scan_volume": true
+        }
+      ],
+      "resident_before_mib": 72.296875,
+      "resident_after_mib": 88.296875,
+      "net_resident_change_mib": 16.0,
+      "post_snapshot_not_query_peak_or_unique_ownership": true,
+      "TP_effect_or_mixed_accuracy_validated": false,
+      "actual_runtime_ms": 1426.633
+    },
+    {
+      "case": "orders_250k_ring",
+      "sql_sha256": "8b38148b1c8e64d560970d6218e41066f0b7543414225819bde56655af386078",
+      "prediction_precedes_execution": true,
+      "execution_start_ns": 2574823792678785,
+      "execution_end_ns": 2574823972832843,
+      "execution_exit_code": 0,
+      "forecast_compute_seconds": 0.003907010890543461,
+      "actual_wall_seconds": 0.1793322809971869,
+      "nominal_prediction_mib": 16.0,
+      "base_accesses": [
+        {
+          "path": ".0.0",
+          "node_type": "Seq Scan",
+          "relation": "orders",
+          "physical_relation": "h5_tpch:17667",
+          "relation_pages": 2348016.0,
+          "predicted_calls": 1.0,
+          "predicted_total_page_visits": 4603.701127751648,
+          "predicted_unique_pages_per_call": 4604,
+          "strategy": "bulk_read_ring",
+          "nominal_resident_pages": 2048,
+          "sequential_filter_output_not_used_as_page_selectivity": true,
+          "uses_innovation2_scan_volume": true
+        }
+      ],
+      "resident_before_mib": 53.046875,
+      "resident_after_mib": 69.046875,
+      "net_resident_change_mib": 16.0,
+      "post_snapshot_not_query_peak_or_unique_ownership": true,
+      "TP_effect_or_mixed_accuracy_validated": false,
+      "actual_runtime_ms": 166.983
+    },
+    {
+      "case": "customer_250k_ring",
+      "sql_sha256": "5774fcbead0af78a39f4d73a9665ee170dc4fc7cbc70e495b87bcc21a3611ac4",
+      "prediction_precedes_execution": true,
+      "execution_start_ns": 2574824610590898,
+      "execution_end_ns": 2574824831101741,
+      "execution_exit_code": 0,
+      "forecast_compute_seconds": 0.003822319209575653,
+      "actual_wall_seconds": 0.2196999778971076,
+      "nominal_prediction_mib": 16.0,
+      "base_accesses": [
+        {
+          "path": ".0.0",
+          "node_type": "Seq Scan",
+          "relation": "customer",
+          "physical_relation": "h5_tpch:17658",
+          "relation_pages": 305130.0,
+          "predicted_calls": 1.0,
+          "predicted_total_page_visits": 5982.45460349617,
+          "predicted_unique_pages_per_call": 5983,
+          "strategy": "bulk_read_ring",
+          "nominal_resident_pages": 2048,
+          "sequential_filter_output_not_used_as_page_selectivity": true,
+          "uses_innovation2_scan_volume": true
+        }
+      ],
+      "resident_before_mib": 0.0,
+      "resident_after_mib": 16.0,
+      "net_resident_change_mib": 16.0,
+      "post_snapshot_not_query_peak_or_unique_ownership": true,
+      "TP_effect_or_mixed_accuracy_validated": false,
+      "actual_runtime_ms": 207.141
+    }
+  ],
+  "prediction_was_before_target_execution": true,
+  "new_actual_AP_queries_executed": 7,
+  "new_actual_TP_or_mixed_queries_executed": false,
+  "cache_dropped_or_database_resized_or_restarted": false,
+  "AP_post_snapshot_is_not_peak_or_TP_loss_label": true,
+  "empirical_mixed_pressure_accuracy_qualified": false,
+  "configuration_applied": false
+}

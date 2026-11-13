@@ -1,3 +1,9 @@
+> **AP→SB 压力首轮测试（2026-11-13 16点）：** 见 `AP_SB_PRESSURE_CURRENT.md` /
+> `CURRENT_AP_SB_PRESSURE.json`。旧设计已推送并标记 `jmt-before-ap-sb-pressure-20261113`；
+> 新增算子名义压力与执行前残留页情景，已实际完成25次受限只读查询，默认SB/ring未改。
+> 491个冻结query×WM、65个阶段/SB点可复核，756项回归通过。
+> 已确认单次ring大小不等于跨查询累积驻留；TP等效容量损失/混合TPS尚未校准，不冒充新最优SB。
+>
 > **混合 SB 竞争缺项已定位（2026-11-13 14点）：** 见 `MIXED_SB_COMPETITION_CURRENT.md` /
 > `CURRENT_MIXED_CACHE_SCOPE.json`。此前 TP-only 4 GiB 被误用为混合硬上界，6/8 GiB 在比较前被排除；
 > 原 2/4 GiB 排名不能作为混合最优。已取消该默认剪枝，五阶段 65 个冻结 spill 点独立核对一致，
