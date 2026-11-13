@@ -1,0 +1,56 @@
+{
+  "schema": "jmt.database-allowed-AP-budget-final-audit/v1",
+  "created_at": "2026-11-13T11:45:56.290110+08:00",
+  "source_artifacts_verified_across_frontiers": 18,
+  "summary_artifact_hashes_verified": 7,
+  "v2_default_is_database_configured": true,
+  "primary_native_remainder_cap_removed": true,
+  "accepted_actual_SET_values_mib": [
+    4096,
+    8192,
+    16384
+  ],
+  "two_independent_unpruned_audits_passed_points": 110,
+  "normal_expired_statistics_rejected": true,
+  "new_five_stage_prediction_or_optimum_claimed": false,
+  "frozen_budget_sensitivity_only": true,
+  "native_protection_not_bypassed": true,
+  "native_quota_coordination_still_required_for_primary_points": 55,
+  "current_database_state": {
+    "start": "2026-10-20 10:52:53.974417+08",
+    "target_buffers": 1048576,
+    "startup_buffers": 1048576,
+    "max_process_memory_kib": 20971520,
+    "effective_memory_protect": "on",
+    "disable_memory_protect": "off",
+    "other_workload_sessions": 0
+  },
+  "model_and_budget_sources_bound_and_unchanged_during_final_preparation": true,
+  "regression": {
+    "tests_run": 711,
+    "failures": 0,
+    "errors": 0,
+    "seconds": 7.423742308281362,
+    "all_imports_from_candidate": true
+  },
+  "legacy_step4_frozen_replay_matches": true,
+  "changed_source_files": [
+    "src/jmt/common/database_memory_domain.py",
+    "src/jmt/innovation_3_search/memory_budget.py",
+    "tools/search_sb_spill_budgets.py",
+    "tools/collect_machine_memory_budget.py",
+    "tools/predict_operator_spill_curves.py",
+    "tools/probe_database_work_mem_domain.py",
+    "tools/replay_sb_spill_budgets.py",
+    "src/jmt/innovation_4_performance/config_evaluation.py",
+    "tools/evaluate_spill_frontier_performance.py",
+    "tools/replay_innovation4_evaluation.py",
+    "tests/test_config_evaluation.py",
+    "tests/test_database_allowed_AP_budget.py"
+  ],
+  "code_manifest_files": 391,
+  "code_manifest_sha256": "f84254a53695e5e1576ae6496a8fad824b812b7d5f2477845589d30610c74817",
+  "configuration_applied_or_postmaster_restarted": false,
+  "AP_query_or_large_WM_allocation_executed": false,
+  "report": "AP_MEMORY_POLICY_CURRENT.md"
+}

@@ -1,0 +1,157 @@
+{
+  "schema": "jmt.current-full-AP-collection/v1",
+  "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+  "rows": [
+    {
+      "query_id": 2,
+      "work_mem_mib": 512,
+      "status": "measured",
+      "statement_completed": true,
+      "measurement": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q2_wm512/MEASUREMENT.json",
+      "measurement_sha256": "50740b6b42a109c2c92c5863a7c0379642a5d9ee56f7b0c3a11210f4ee6c82f2",
+      "work": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q2_wm512/FROZEN_WORK.json",
+      "wall_seconds": 147.218859638,
+      "cpu_seconds": 50.821183144,
+      "error": null,
+      "logical_spill_label": {
+        "counter_path": ".0",
+        "read_bytes": 0,
+        "write_bytes": 0,
+        "runtime_ms": 147215.504,
+        "largest_cardinality_discrepancies": [
+          {
+            "path": ".0.0",
+            "node_type": "Hash Join",
+            "planned_rows": 26,
+            "actual_rows_per_loop": 40322,
+            "qerror": 1550.8461538461538
+          },
+          {
+            "path": ".0.0.0.0",
+            "node_type": "Hash Join",
+            "planned_rows": 9529280,
+            "actual_rows_per_loop": 272968,
+            "qerror": 34.90987954632045
+          },
+          {
+            "path": ".0.0.1.0.0.0.0",
+            "node_type": "Hash Join",
+            "planned_rows": 9529280,
+            "actual_rows_per_loop": 272968,
+            "qerror": 34.90987954632045
+          }
+        ]
+      }
+    },
+    {
+      "query_id": 13,
+      "work_mem_mib": 512,
+      "status": "measured",
+      "statement_completed": true,
+      "measurement": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q13_wm512/MEASUREMENT.json",
+      "measurement_sha256": "36e6a9fcff736016d830511499ff0f16b7a722e3bc09db7b26c47a677ae5767c",
+      "work": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q13_wm512/FROZEN_WORK.json",
+      "wall_seconds": 265.034911691,
+      "cpu_seconds": 253.319500979,
+      "error": null,
+      "logical_spill_label": {
+        "counter_path": "",
+        "read_bytes": 3490930688,
+        "write_bytes": 3490652160,
+        "runtime_ms": 265033.736,
+        "largest_cardinality_discrepancies": [
+          {
+            "path": "",
+            "node_type": "Sort",
+            "planned_rows": 200,
+            "actual_rows_per_loop": 46,
+            "qerror": 4.3478260869565215
+          },
+          {
+            "path": ".0",
+            "node_type": "Aggregate",
+            "planned_rows": 200,
+            "actual_rows_per_loop": 46,
+            "qerror": 4.3478260869565215
+          },
+          {
+            "path": ".0.0.0.0",
+            "node_type": "Hash Join",
+            "planned_rows": 126219883,
+            "actual_rows_per_loop": 130378793,
+            "qerror": 1.0329497215585282
+          }
+        ]
+      }
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 512,
+      "status": "failed",
+      "statement_completed": false,
+      "measurement": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q9_wm512/MEASUREMENT.json",
+      "measurement_sha256": "7e52b6449c7dc6bcbac84d8026e71fac1ca41b6a350c566f34aecd94c6052095",
+      "work": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q9_wm512/FROZEN_WORK.json",
+      "wall_seconds": 789.459286588,
+      "cpu_seconds": null,
+      "error": "ConfigurationLimitExceeded: temporary file size exceeds temp_file_limit (16777216kB)\n"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 512,
+      "status": "failed",
+      "statement_completed": false,
+      "measurement": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q18_wm512/MEASUREMENT.json",
+      "measurement_sha256": "85850eeb1639e018f61958810af1745e2fe0d9c6d4038e7537df9ba5a78ee3f2",
+      "work": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q18_wm512/FROZEN_WORK.json",
+      "wall_seconds": 1800.172266482,
+      "cpu_seconds": null,
+      "error": "QueryCanceled: canceling statement due to statement timeout\n"
+    },
+    {
+      "query_id": 21,
+      "work_mem_mib": 512,
+      "status": "measured",
+      "statement_completed": true,
+      "measurement": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q21_wm512/MEASUREMENT.json",
+      "measurement_sha256": "a336380d20e15ad794f0c7be7253d592f581a1f000b0b4a9937349e2680fa2de",
+      "work": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q21_wm512/FROZEN_WORK.json",
+      "wall_seconds": 1640.404018491,
+      "cpu_seconds": 648.721955569,
+      "error": null,
+      "logical_spill_label": {
+        "counter_path": ".0",
+        "read_bytes": 15563874304,
+        "write_bytes": 15562727424,
+        "runtime_ms": 1640396.654,
+        "largest_cardinality_discrepancies": [
+          {
+            "path": ".0.0.0",
+            "node_type": "Hash Join",
+            "planned_rows": 2998,
+            "actual_rows_per_loop": 337446,
+            "qerror": 112.55703802535024
+          },
+          {
+            "path": ".0.0",
+            "node_type": "Aggregate",
+            "planned_rows": 2998,
+            "actual_rows_per_loop": 34050,
+            "qerror": 11.357571714476318
+          },
+          {
+            "path": ".0.0.0.1.0.0.0",
+            "node_type": "Hash Join",
+            "planned_rows": 6801083,
+            "actual_rows_per_loop": 12921083,
+            "qerror": 1.8998566845897926
+          }
+        ]
+      }
+    }
+  ],
+  "completed_query_executions": 3,
+  "requested_query_executions": 5,
+  "independent_accuracy_holdout": false,
+  "automatic_recommendation_qualified": false
+}

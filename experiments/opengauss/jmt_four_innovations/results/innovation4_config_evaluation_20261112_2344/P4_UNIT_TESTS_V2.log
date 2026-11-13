@@ -1,0 +1,112 @@
+test_different_postmaster_rejected (test_config_evaluation.BudgetFreshnessTests) ... ok
+test_fresh_budget_accepted_without_time_renewal (test_config_evaluation.BudgetFreshnessTests) ... ok
+test_future_budget_rejected (test_config_evaluation.BudgetFreshnessTests) ... ok
+test_native_limit_change_rejected (test_config_evaluation.BudgetFreshnessTests) ... ok
+test_stale_budget_rejected (test_config_evaluation.BudgetFreshnessTests) ... ok
+test_duplicated_capacities_rejected (test_config_evaluation.CacheResponseTests) ... ok
+test_fit_identifiable_path_and_real_holdout (test_config_evaluation.CacheResponseTests) ... ok
+test_holdout_never_trains_coefficients (test_config_evaluation.CacheResponseTests) ... ok
+test_invalid_cache_partition_rejected (test_config_evaluation.CacheResponseTests) ... ok
+test_missing_training_split_rejected (test_config_evaluation.CacheResponseTests) ... ok
+test_no_OS_probability_variation_rejected (test_config_evaluation.CacheResponseTests) ... ok
+test_no_small_SB_extrapolation (test_config_evaluation.CacheResponseTests) ... ok
+test_no_unidentified_disk_path_change (test_config_evaluation.CacheResponseTests) ... ok
+test_varying_disk_is_not_silently_folded_into_intercept (test_config_evaluation.CacheResponseTests) ... ok
+test_P3_objective_not_TPS (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_SB_above_step1_upper_bound_rejected (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_TPS_identity_and_bounded_residual (test_config_evaluation.ConfigEvaluationTests) ... ERROR
+test_engine_legal_WM_above_four_GiB_not_clipped (test_config_evaluation.ConfigEvaluationTests) ... ERROR
+test_inconsistent_resource_IO_features_rejected (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_measured_baseline_cross_check_never_changes_primary_selection (test_config_evaluation.ConfigEvaluationTests) ... ERROR
+test_missing_plan_identity_rejected (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_no_future_cohort_injection (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_partial_spill_is_not_zero (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_plan_identity_mismatch_rejected (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_preserves_exact_step3_WMs_and_does_not_mutate_inputs (test_config_evaluation.ConfigEvaluationTests) ... ERROR
+test_unknown_CPU_capacity_is_not_fake_TPS (test_config_evaluation.ConfigEvaluationTests) ... ERROR
+test_unsupported_SB_explicitly_skipped_not_zero (test_config_evaluation.ConfigEvaluationTests) ... ERROR
+test_wrong_aggregate_spill_rejected (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_wrong_stage_topology_rejected (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_added_result_field_is_not_ignored (test_config_evaluation.ReplayComparisonTests) ... ok
+test_exact_structured_replay (test_config_evaluation.ReplayComparisonTests) ... ok
+test_last_decimal_roundoff_tolerated (test_config_evaluation.ReplayComparisonTests) ... ok
+test_lost_result_field_is_not_ignored (test_config_evaluation.ReplayComparisonTests) ... ok
+test_numeric_drift_is_not_ignored (test_config_evaluation.ReplayComparisonTests) ... ok
+test_unknown_boolean_is_not_numeric (test_config_evaluation.ReplayComparisonTests) ... ok
+
+======================================================================
+ERROR: test_TPS_identity_and_bounded_residual (test_config_evaluation.ConfigEvaluationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/tests/test_config_evaluation.py", line 186, in test_TPS_identity_and_bounded_residual
+    result, _ = evaluate_frontier(f, c, p, **kw)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/src/jmt/innovation_4_performance/config_evaluation.py", line 245, in evaluate_frontier
+    check_forecast_matches_point(forecast, point)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/src/jmt/innovation_4_performance/config_evaluation.py", line 172, in check_forecast_matches_point
+    raise ValueError("curve R+W differs from read plus write")
+ValueError: curve R+W differs from read plus write
+
+======================================================================
+ERROR: test_engine_legal_WM_above_four_GiB_not_clipped (test_config_evaluation.ConfigEvaluationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/tests/test_config_evaluation.py", line 173, in test_engine_legal_WM_above_four_GiB_not_clipped
+    result, _ = evaluate_frontier(f, c, p, **kw)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/src/jmt/innovation_4_performance/config_evaluation.py", line 245, in evaluate_frontier
+    check_forecast_matches_point(forecast, point)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/src/jmt/innovation_4_performance/config_evaluation.py", line 172, in check_forecast_matches_point
+    raise ValueError("curve R+W differs from read plus write")
+ValueError: curve R+W differs from read plus write
+
+======================================================================
+ERROR: test_measured_baseline_cross_check_never_changes_primary_selection (test_config_evaluation.ConfigEvaluationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/tests/test_config_evaluation.py", line 259, in test_measured_baseline_cross_check_never_changes_primary_selection
+    first, _ = evaluate_frontier(f, c, p, **kw)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/src/jmt/innovation_4_performance/config_evaluation.py", line 245, in evaluate_frontier
+    check_forecast_matches_point(forecast, point)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/src/jmt/innovation_4_performance/config_evaluation.py", line 172, in check_forecast_matches_point
+    raise ValueError("curve R+W differs from read plus write")
+ValueError: curve R+W differs from read plus write
+
+======================================================================
+ERROR: test_preserves_exact_step3_WMs_and_does_not_mutate_inputs (test_config_evaluation.ConfigEvaluationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/tests/test_config_evaluation.py", line 161, in test_preserves_exact_step3_WMs_and_does_not_mutate_inputs
+    result, _ = evaluate_frontier(frontier, curves, forecasts, **kwargs)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/src/jmt/innovation_4_performance/config_evaluation.py", line 245, in evaluate_frontier
+    check_forecast_matches_point(forecast, point)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/src/jmt/innovation_4_performance/config_evaluation.py", line 172, in check_forecast_matches_point
+    raise ValueError("curve R+W differs from read plus write")
+ValueError: curve R+W differs from read plus write
+
+======================================================================
+ERROR: test_unknown_CPU_capacity_is_not_fake_TPS (test_config_evaluation.ConfigEvaluationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/tests/test_config_evaluation.py", line 246, in test_unknown_CPU_capacity_is_not_fake_TPS
+    result, _ = evaluate_frontier(f, c, p, **kw)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/src/jmt/innovation_4_performance/config_evaluation.py", line 245, in evaluate_frontier
+    check_forecast_matches_point(forecast, point)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/src/jmt/innovation_4_performance/config_evaluation.py", line 172, in check_forecast_matches_point
+    raise ValueError("curve R+W differs from read plus write")
+ValueError: curve R+W differs from read plus write
+
+======================================================================
+ERROR: test_unsupported_SB_explicitly_skipped_not_zero (test_config_evaluation.ConfigEvaluationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/tests/test_config_evaluation.py", line 179, in test_unsupported_SB_explicitly_skipped_not_zero
+    result, _ = evaluate_frontier(f, c, p, **kw)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/src/jmt/innovation_4_performance/config_evaluation.py", line 245, in evaluate_frontier
+    check_forecast_matches_point(forecast, point)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/src/jmt/innovation_4_performance/config_evaluation.py", line 172, in check_forecast_matches_point
+    raise ValueError("curve R+W differs from read plus write")
+ValueError: curve R+W differs from read plus write
+
+----------------------------------------------------------------------
+Ran 35 tests in 0.078s
+
+FAILED (errors=6)

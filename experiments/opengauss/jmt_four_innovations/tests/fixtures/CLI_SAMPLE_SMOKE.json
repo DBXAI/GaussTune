@@ -1,0 +1,3429 @@
+{
+  "schema": "jmt.sample-default-experiment/v1",
+  "backend": "direct_sample",
+  "statistics_index_sha256": "333c509e1a30105ae40e421a69e77eee26387f62e77bc7d0b90c8559d6219fec",
+  "statistics_expires_unix": 1794384739.568208,
+  "sample_frames_loaded": 11,
+  "learned_models_loaded": 0,
+  "heavy_modules_imported": [],
+  "warm_prediction_batch_ms": 80.73943573981524,
+  "predictions": [
+    {
+      "wm_mib": 8,
+      "forecast": {
+        "schema": "huawei7.ap-plan-service-demand/v3.8.0-experimental",
+        "work_mem_mib": 8,
+        "executor_profile": {
+          "allocation_header_bytes": 32,
+          "sort_algorithm": "5.1 quicksort batches + polyphase merge",
+          "qualification": "build-dependent; verify for a different executor binary"
+        },
+        "plan_structure_sha256": "0701481cb6d4293f1cfd371a5cbf3e68843a35a29e0d5b32207f54fcf16ccdff",
+        "features": {
+          "scan_tuples": 62089303.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 359936118.0,
+          "projection_evaluations": 10341846.0,
+          "hash_build_tuples": 2099950.0,
+          "hash_probe_tuples": 13506000.0,
+          "join_comparisons": 9004000.0,
+          "aggregate_transitions": 2251000.0,
+          "aggregate_groups": 1488896.0,
+          "aggregate_argument_evaluations": 2251000.0,
+          "sort_comparisons": 9892010.905530827,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 10558464000.0,
+          "logical_temp_read_bytes": 285294592.0,
+          "logical_temp_write_bytes": 281100288.0
+        },
+        "operators": [
+          {
+            "path": "",
+            "node_type": "Limit",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 1488896.0,
+            "output_rows_per_call": 100.0,
+            "width": 67.0,
+            "mode": "limit",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 0.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "subtree_structural_peak_upper_mib": 24.191375732421875
+            },
+            "uncertainties": [],
+            "recognized": true
+          },
+          {
+            "path": ".0",
+            "node_type": "Sort",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 1488896.0,
+            "output_rows_per_call": 100.0,
+            "width": 67.0,
+            "mode": "top_n_heap",
+            "memory_mib": 0.05413818359375,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 0.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 9892010.905530827,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "mode": "top_n_heap",
+              "memory_mib": 0.05413818359375,
+              "retained_heap_mib": 0.038726806640625,
+              "comparisons": 9892010.905530827,
+              "read_bytes": 0.0,
+              "write_bytes": 0.0,
+              "write_bytes_lower": 0.0,
+              "write_bytes_upper": 0.0,
+              "passes": 0,
+              "required_mib": 0.038726806640625,
+              "subtree_structural_peak_upper_mib": 24.191375732421875
+            },
+            "uncertainties": [
+              "session_work_mem_not_verified_operator_grant",
+              "top_n_later_wider_tuples_can_exceed_initial_heap_estimate"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0",
+            "node_type": "Aggregate",
+            "strategy": "Hashed",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 2251000.0,
+            "output_rows_per_call": 1488896.0,
+            "width": 67.0,
+            "mode": "hash_aggregate_spill",
+            "memory_mib": 11.322540283203125,
+            "temp_read_bytes": 117440512.0,
+            "temp_write_bytes": 113246208.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 1488896.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 9004000.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 2251000.0,
+              "aggregate_groups": 1488896.0,
+              "aggregate_argument_evaluations": 2251000.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 117440512.0,
+              "logical_temp_write_bytes": 113246208.0
+            },
+            "details": {
+              "aggregate_functions": {
+                "sum": 1
+              },
+              "mode": "hash_aggregate_spill",
+              "memory_mib": 11.322540283203125,
+              "required_mib": 253.4296875,
+              "spill_trigger_required_mib": 253.4296875,
+              "child_dynahash_memory_mib_estimate": 3.330352783203125,
+              "memory_qualification": "physical_parent_plus_child_estimate_NOT_capped_by_spill_check_grant",
+              "entry_bytes_lower_without_byref_payload": 128,
+              "executor_spill_check_entry_bytes": 176,
+              "aggregate_transition_payload_bytes": 48,
+              "counted_entry_state_bytes": 32,
+              "parent_context_layout": {
+                "resident_groups": 29062,
+                "required_spill_check_bytes": 265740288,
+                "parent_reserved_bytes_at_residency": 8380416,
+                "spill_check_bytes_at_residency": 9310400,
+                "persistent_parent_bytes_per_group": 144,
+                "manual_entry_state_bytes": 32,
+                "binary_search_steps": 21,
+                "allocator_events_per_evaluation": 10,
+                "accounting": "parent_AllocSet_totalSpace_plus_one_entrysize; child_dynahash_excluded",
+                "qualification": "8KiB..8MiB parent blocks; expected persistent chunk packing; mixed/variable widths and allocation ordering remain approximate"
+              },
+              "dynahash_child_excluded_from_spill_check": true,
+              "planner_partition_groups_proxy": 2376235,
+              "aggregate_state_slots": 1,
+              "resident_groups": 29062,
+              "group_discovery_model": "complete_group_frequency_sample_random_order",
+              "frequency_histogram_budget_exceeded": {
+                "group": false,
+                "setop": false
+              },
+              "frequency_solve_bins_max": 256,
+              "estimated_discovery_rows": 30723.395362899642,
+              "setop_frequency_demand": null,
+              "spill_row_bytes_estimate": 51.0,
+              "write_bytes": 113246208.0,
+              "read_bytes": 117440512.0,
+              "write_bytes_lower": 0.0,
+              "write_bytes_upper": 118995304.0,
+              "reachable_partition_files": 512,
+              "nonempty_partition_files_estimate": 512,
+              "eof_read_block_equivalent_bytes": 4194304.0,
+              "partitions": 512,
+              "repartition_levels": 1,
+              "aggregate_transition_layouts": [
+                {
+                  "function": "sum",
+                  "argument_type": "numeric",
+                  "payload_bytes": 48,
+                  "collect_initial_payload_bytes": 0,
+                  "persistent_payload_bytes": 48,
+                  "qualification": "Numeric_BI64_lower_payload"
+                }
+              ],
+              "stored_group_keys_width": 27.0,
+              "subtree_structural_peak_upper_mib": 24.137237548828125
+            },
+            "uncertainties": [
+              "session_work_mem_not_verified_operator_grant",
+              "numeric_transition_can_grow_beyond_bi64",
+              "hashagg_input_order_unknown_despite_frequency_evidence",
+              "hashagg_spill_projection_width_not_measured",
+              "hashagg_stored_group_projection_width_not_measured",
+              "by_reference_aggregate_transition_payload_not_measured"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0",
+            "node_type": "Hash Join",
+            "strategy": "",
+            "join_type": "Inner",
+            "calls": 1.0,
+            "input_rows_per_call": 2251000.0,
+            "output_rows_per_call": 2251000.0,
+            "width": 35.0,
+            "mode": "hash_join_inner",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 2251000.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 2251000.0,
+              "join_comparisons": 4502000.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "batches": 1,
+              "required_build_mib": 4.814697265625,
+              "hash_directory": {
+                "planner_input_rows_proxy": 100000,
+                "planner_input_width_proxy": 8,
+                "initial_buckets": 131072,
+                "initial_batches": 1,
+                "runtime_buckets": 131072,
+                "batches": 1,
+                "dynamic_bucket_growth_events": 0,
+                "estimated_first_spill_inner_row": null,
+                "simulator_event_budget": 64,
+                "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+                "required_full_memory_mib": 4.814697265625,
+                "structural_resident_memory_mib": 4.814697265625,
+                "executor_reported_peak_mib_estimate": 4.814697265625,
+                "executor_reported_tuple_bytes": 40.0,
+                "read_bytes": 0,
+                "write_bytes": 0
+              },
+              "physical_hash_input_width_evidence": {
+                "outer": null,
+                "inner": {
+                  "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                  "relation": "supplier",
+                  "output_columns": [
+                    "s.s_nationkey",
+                    "s.s_suppkey"
+                  ],
+                  "planner_width": 8.0,
+                  "estimated_output_data_width": 8,
+                  "data_width": 8.0,
+                  "expanded_beyond_planner_width": false,
+                  "uses_average_variable_width": false,
+                  "field_budget": 64,
+                  "wrapper_budget": 8,
+                  "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+                }
+              },
+              "unvalidated_physical_slot_width": false,
+              "independent_ndv_join_rows_diagnostic": 2251000.0,
+              "subtree_structural_peak_upper_mib": 12.814697265625
+            },
+            "uncertainties": [
+              "join_key_ndv_after_filters_and_correlations_unknown"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.0",
+            "node_type": "Hash Join",
+            "strategy": "",
+            "join_type": "Inner",
+            "calls": 1.0,
+            "input_rows_per_call": 2251000.0,
+            "output_rows_per_call": 2251000.0,
+            "width": 35.0,
+            "mode": "hash_join_inner",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 167854080.0,
+            "temp_write_bytes": 167854080.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 2251000.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 2251000.0,
+              "join_comparisons": 4502000.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 167854080.0,
+              "logical_temp_write_bytes": 167854080.0
+            },
+            "details": {
+              "batches": 16,
+              "required_build_mib": 114.80885314941406,
+              "hash_directory": {
+                "planner_input_rows_proxy": 1999950,
+                "planner_input_width_proxy": 19,
+                "initial_buckets": 131072,
+                "initial_batches": 16,
+                "runtime_buckets": 131072,
+                "batches": 16,
+                "dynamic_bucket_growth_events": 0,
+                "estimated_first_spill_inner_row": null,
+                "simulator_event_budget": 64,
+                "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+                "required_full_memory_mib": 114.80885314941406,
+                "structural_resident_memory_mib": 8.0,
+                "executor_reported_peak_mib_estimate": 7.198728084564209,
+                "executor_reported_tuple_bytes": 52,
+                "read_bytes": 167854080.0,
+                "write_bytes": 167854080.0
+              },
+              "physical_hash_input_width_evidence": {
+                "outer": {
+                  "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                  "relation": "lineitem",
+                  "output_columns": [
+                    "l.l_shipdate",
+                    "l.l_extendedprice",
+                    "l.l_partkey",
+                    "l.l_suppkey"
+                  ],
+                  "planner_width": 24.0,
+                  "estimated_output_data_width": 24,
+                  "data_width": 24.0,
+                  "expanded_beyond_planner_width": false,
+                  "uses_average_variable_width": true,
+                  "field_budget": 64,
+                  "wrapper_budget": 8,
+                  "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+                },
+                "inner": {
+                  "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                  "relation": "part",
+                  "output_columns": [
+                    "p.p_size",
+                    "p.p_brand",
+                    "p.p_partkey"
+                  ],
+                  "planner_width": 19.0,
+                  "estimated_output_data_width": 20,
+                  "data_width": 20,
+                  "expanded_beyond_planner_width": true,
+                  "uses_average_variable_width": true,
+                  "field_budget": 64,
+                  "wrapper_budget": 8,
+                  "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+                }
+              },
+              "unvalidated_physical_slot_width": true,
+              "independent_ndv_join_rows_diagnostic": 2251000.0,
+              "subtree_structural_peak_upper_mib": 8.0
+            },
+            "uncertainties": [
+              "dynamic_batch_growth_skew_and_repartition_not_observed",
+              "join_key_ndv_after_filters_and_correlations_unknown"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.0.0",
+            "node_type": "Seq Scan",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 2251000.0,
+            "output_rows_per_call": 2251000.0,
+            "width": 24.0,
+            "mode": "sequential_scan",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 59989353.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 359936118.0,
+              "projection_evaluations": 2251000.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 10204020736.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "subtree_structural_peak_upper_mib": 0.0
+            },
+            "uncertainties": [],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.0.1",
+            "node_type": "Hash",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 1999950.0,
+            "output_rows_per_call": 1999950.0,
+            "width": 19.0,
+            "mode": "hash_build",
+            "memory_mib": 8.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 0.0,
+              "hash_build_tuples": 1999950.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "planner_input_rows_proxy": 1999950,
+              "planner_input_width_proxy": 19,
+              "initial_buckets": 131072,
+              "initial_batches": 16,
+              "runtime_buckets": 131072,
+              "batches": 16,
+              "dynamic_bucket_growth_events": 0,
+              "estimated_first_spill_inner_row": null,
+              "simulator_event_budget": 64,
+              "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+              "required_full_memory_mib": 114.80885314941406,
+              "structural_resident_memory_mib": 8.0,
+              "executor_reported_peak_mib_estimate": 7.198728084564209,
+              "executor_reported_tuple_bytes": 52,
+              "read_bytes": 75005952.0,
+              "write_bytes": 75005952.0,
+              "physical_hash_input_width_evidence": {
+                "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                "relation": "part",
+                "output_columns": [
+                  "p.p_size",
+                  "p.p_brand",
+                  "p.p_partkey"
+                ],
+                "planner_width": 19.0,
+                "estimated_output_data_width": 20,
+                "data_width": 20,
+                "expanded_beyond_planner_width": true,
+                "uses_average_variable_width": true,
+                "field_budget": 64,
+                "wrapper_budget": 8,
+                "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+              },
+              "unvalidated_physical_slot_width": true,
+              "required_memory_mib": 114.80885314941406,
+              "subtree_structural_peak_upper_mib": 8.0
+            },
+            "uncertainties": [
+              "session_work_mem_not_verified_operator_grant"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.0.1.0",
+            "node_type": "Seq Scan",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 1999950.0,
+            "output_rows_per_call": 1999950.0,
+            "width": 19.0,
+            "mode": "sequential_scan",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 1999950.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 1999950.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 336248832.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "subtree_structural_peak_upper_mib": 0.0
+            },
+            "uncertainties": [],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.1",
+            "node_type": "Hash",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 100000.0,
+            "output_rows_per_call": 100000.0,
+            "width": 8.0,
+            "mode": "hash_build",
+            "memory_mib": 4.814697265625,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 0.0,
+              "hash_build_tuples": 100000.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "planner_input_rows_proxy": 100000,
+              "planner_input_width_proxy": 8,
+              "initial_buckets": 131072,
+              "initial_batches": 1,
+              "runtime_buckets": 131072,
+              "batches": 1,
+              "dynamic_bucket_growth_events": 0,
+              "estimated_first_spill_inner_row": null,
+              "simulator_event_budget": 64,
+              "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+              "required_full_memory_mib": 4.814697265625,
+              "structural_resident_memory_mib": 4.814697265625,
+              "executor_reported_peak_mib_estimate": 4.814697265625,
+              "executor_reported_tuple_bytes": 40.0,
+              "read_bytes": 0,
+              "write_bytes": 0,
+              "physical_hash_input_width_evidence": {
+                "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                "relation": "supplier",
+                "output_columns": [
+                  "s.s_nationkey",
+                  "s.s_suppkey"
+                ],
+                "planner_width": 8.0,
+                "estimated_output_data_width": 8,
+                "data_width": 8.0,
+                "expanded_beyond_planner_width": false,
+                "uses_average_variable_width": false,
+                "field_budget": 64,
+                "wrapper_budget": 8,
+                "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+              },
+              "unvalidated_physical_slot_width": false,
+              "required_memory_mib": 4.814697265625,
+              "subtree_structural_peak_upper_mib": 4.814697265625
+            },
+            "uncertainties": [
+              "session_work_mem_not_verified_operator_grant"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.1.0",
+            "node_type": "Seq Scan",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 100000.0,
+            "output_rows_per_call": 100000.0,
+            "width": 8.0,
+            "mode": "sequential_scan",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 100000.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 100000.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 18194432.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "subtree_structural_peak_upper_mib": 0.0
+            },
+            "uncertainties": [],
+            "recognized": true
+          }
+        ],
+        "dataflow": {
+          "nodes": [
+            {
+              "path": "",
+              "semantics": "stream"
+            },
+            {
+              "path": ".0",
+              "semantics": "consume_input_then_produce"
+            },
+            {
+              "path": ".0.0",
+              "semantics": "consume_input_then_produce"
+            },
+            {
+              "path": ".0.0.0",
+              "semantics": "build_hash_then_stream_probe"
+            },
+            {
+              "path": ".0.0.0.0",
+              "semantics": "build_hash_then_stream_probe"
+            },
+            {
+              "path": ".0.0.0.0.0",
+              "semantics": "stream"
+            },
+            {
+              "path": ".0.0.0.0.1",
+              "semantics": "consume_input_then_produce"
+            },
+            {
+              "path": ".0.0.0.0.1.0",
+              "semantics": "stream"
+            },
+            {
+              "path": ".0.0.0.1",
+              "semantics": "consume_input_then_produce"
+            },
+            {
+              "path": ".0.0.0.1.0",
+              "semantics": "stream"
+            }
+          ],
+          "edges": [
+            {
+              "producer": ".0",
+              "consumer": "",
+              "relationship": "Outer",
+              "producer_semantics": "consume_input_then_produce"
+            },
+            {
+              "producer": ".0.0",
+              "consumer": ".0",
+              "relationship": "Outer",
+              "producer_semantics": "consume_input_then_produce"
+            },
+            {
+              "producer": ".0.0.0",
+              "consumer": ".0.0",
+              "relationship": "Outer",
+              "producer_semantics": "build_hash_then_stream_probe"
+            },
+            {
+              "producer": ".0.0.0.0",
+              "consumer": ".0.0.0",
+              "relationship": "Outer",
+              "producer_semantics": "build_hash_then_stream_probe"
+            },
+            {
+              "producer": ".0.0.0.0.0",
+              "consumer": ".0.0.0.0",
+              "relationship": "Outer",
+              "producer_semantics": "stream"
+            },
+            {
+              "producer": ".0.0.0.0.1",
+              "consumer": ".0.0.0.0",
+              "relationship": "Inner",
+              "producer_semantics": "consume_input_then_produce"
+            },
+            {
+              "producer": ".0.0.0.0.1.0",
+              "consumer": ".0.0.0.0.1",
+              "relationship": "Outer",
+              "producer_semantics": "stream"
+            },
+            {
+              "producer": ".0.0.0.1",
+              "consumer": ".0.0.0",
+              "relationship": "Inner",
+              "producer_semantics": "consume_input_then_produce"
+            },
+            {
+              "producer": ".0.0.0.1.0",
+              "consumer": ".0.0.0.1",
+              "relationship": "Outer",
+              "producer_semantics": "stream"
+            }
+          ],
+          "qualification": "execution dependency skeleton; CTE reuse/parameter dependencies and an actual resource-constrained scheduler are not yet implemented"
+        },
+        "node_types": {
+          "Limit": 1,
+          "Sort": 1,
+          "Aggregate": 1,
+          "Hash Join": 2,
+          "Seq Scan": 3,
+          "Hash": 2
+        },
+        "modes": {
+          "limit": 1,
+          "top_n_heap": 1,
+          "hash_aggregate_spill": 1,
+          "hash_join_inner": 2,
+          "sequential_scan": 3,
+          "hash_build": 2
+        },
+        "unsupported_operators": [],
+        "uncertainties": {
+          "session_work_mem_not_verified_operator_grant": 4,
+          "top_n_later_wider_tuples_can_exceed_initial_heap_estimate": 1,
+          "numeric_transition_can_grow_beyond_bi64": 1,
+          "hashagg_input_order_unknown_despite_frequency_evidence": 1,
+          "hashagg_spill_projection_width_not_measured": 1,
+          "hashagg_stored_group_projection_width_not_measured": 1,
+          "by_reference_aggregate_transition_payload_not_measured": 1,
+          "join_key_ndv_after_filters_and_correlations_unknown": 2,
+          "dynamic_batch_growth_skew_and_repartition_not_observed": 1
+        },
+        "logical_temp_estimate_complete": true,
+        "logical_temp_read_bytes_estimate": 285294592.0,
+        "logical_temp_write_bytes_estimate": 281100288.0,
+        "feature_qualification": "logical_temp_* features include modeled components only; an incomplete temp estimate must never be interpreted as zero total spill",
+        "structural_peak_upper_mib": 24.191375732421875,
+        "peak_qualification": "structural approximation, NOT a measured or certified safety bound",
+        "latency_seconds": null,
+        "physical_read_requests": null,
+        "physical_write_requests": null,
+        "status": "experimental_resource_estimate",
+        "qualification": "no per-query/family calibration; cardinality remains planner/statistics dependent; not production-qualified, not a physical IOPS or latency prediction",
+        "experimental_cardinality_input": {
+          "schema": "jmt.preexecution-cardinality-evidence/v1",
+          "database": "h5_tpch_sf10",
+          "rows": {
+            ".0.0.0": 2251000.0,
+            ".0.0.0.0": 2251000.0,
+            ".0.0.0.0.0": 2251000.0
+          },
+          "groups": {
+            ".0.0": 1488896.0
+          },
+          "items": [
+            {
+              "path": ".0.0",
+              "estimate": 1488896.0,
+              "kind": "G",
+              "source": "complete_group_sample_NOT_DeepDB",
+              "sample_profile": "group_shipping_full",
+              "sample_group_support": 1454,
+              "fact_grain": [
+                "lineitem.l_orderkey",
+                "lineitem.l_linenumber"
+              ],
+              "sampled_fact_rows": 2090,
+              "frequency_bins": 5,
+              "sampled_sampling_key_units": 1454,
+              "functional_dependency_keys_eliminated_in_statistics_only": []
+            },
+            {
+              "path": ".0.0.0",
+              "estimate": 2251000.0,
+              "kind": "N",
+              "source": "sample",
+              "model": "lineitem_ps",
+              "node_type": "Hash Join",
+              "sample_support": 2251,
+              "relations": [
+                "lineitem",
+                "part",
+                "supplier"
+              ],
+              "conditions": [
+                [
+                  "lineitem.l_shipdate",
+                  "<",
+                  "1995-05-09 00:00:00"
+                ],
+                [
+                  "lineitem.l_shipdate",
+                  ">=",
+                  "1995-02-09 00:00:00"
+                ]
+              ]
+            },
+            {
+              "path": ".0.0.0.0",
+              "estimate": 2251000.0,
+              "kind": "N",
+              "source": "sample",
+              "model": "lineitem_ps",
+              "node_type": "Hash Join",
+              "sample_support": 2251,
+              "relations": [
+                "lineitem",
+                "part"
+              ],
+              "conditions": [
+                [
+                  "lineitem.l_shipdate",
+                  "<",
+                  "1995-05-09 00:00:00"
+                ],
+                [
+                  "lineitem.l_shipdate",
+                  ">=",
+                  "1995-02-09 00:00:00"
+                ]
+              ]
+            },
+            {
+              "path": ".0.0.0.0.0",
+              "estimate": 2251000.0,
+              "kind": "N",
+              "source": "sample",
+              "model": "lineitem_oc",
+              "node_type": "Seq Scan",
+              "sample_support": 2251,
+              "relations": [
+                "lineitem"
+              ],
+              "conditions": [
+                [
+                  "lineitem.l_shipdate",
+                  "<",
+                  "1995-05-09 00:00:00"
+                ],
+                [
+                  "lineitem.l_shipdate",
+                  ">=",
+                  "1995-02-09 00:00:00"
+                ]
+              ]
+            }
+          ],
+          "abstentions": [],
+          "group_histograms": {
+            ".0.0": [
+              {
+                "jmt_n": 1.0,
+                "jmt_groups": 970752.0
+              },
+              {
+                "jmt_n": 2.0,
+                "jmt_groups": 399360.0
+              },
+              {
+                "jmt_n": 3.0,
+                "jmt_groups": 105472.0
+              },
+              {
+                "jmt_n": 4.0,
+                "jmt_groups": 12288.0
+              },
+              {
+                "jmt_n": 5.0,
+                "jmt_groups": 1024.0
+              }
+            ]
+          },
+          "sensitivity_ranges": {
+            ".0.0": {
+              "kind": "G",
+              "lower": 1410802.9912476155,
+              "upper": 1566989.0087523845,
+              "relative_probe_radius": 0.052450277757737605,
+              "qualification": "support-derived sensitivity scenario, NOT statistical confidence/safety bound"
+            },
+            ".0.0.0": {
+              "kind": "N",
+              "lower": 2138450.0,
+              "upper": 2363550.0,
+              "relative_probe_radius": 0.05,
+              "qualification": "support-derived sensitivity scenario, NOT statistical confidence/safety bound"
+            },
+            ".0.0.0.0": {
+              "kind": "N",
+              "lower": 2138450.0,
+              "upper": 2363550.0,
+              "relative_probe_radius": 0.05,
+              "qualification": "support-derived sensitivity scenario, NOT statistical confidence/safety bound"
+            },
+            ".0.0.0.0.0": {
+              "kind": "N",
+              "lower": 2138450.0,
+              "upper": 2363550.0,
+              "relative_probe_radius": 0.05,
+              "qualification": "support-derived sensitivity scenario, NOT statistical confidence/safety bound"
+            }
+          },
+          "certified_nested_loop_bindings": {},
+          "certified_scan_bindings": {
+            ".0.0.0.0.0": {
+              "relation": "lineitem",
+              "population_fact": "lineitem",
+              "predicate_scope_complete": true,
+              "metadata_sha256": "d3ac741a9b1f51f941ea249f4916faa9bcd31fa739bcef14ebc5c3334e01a6cc"
+            }
+          },
+          "certified_existence_bindings": {},
+          "input_quality_issues": [],
+          "uses_target_execution_labels": false,
+          "sensitivity_profile": {
+            "passes": 2,
+            "max_plan_nodes": 256,
+            "qualification": "scenario probe, not exhaustive bounds"
+          },
+          "scope": "guarded inner FK Hash/Nested Join + complete-key G/frequency; static benchmark"
+        },
+        "spill_input_guard": {
+          "schema": "jmt.spill-input-reliability/v1",
+          "status": "unvalidated_physical_slot_width",
+          "unbound_join_paths": [],
+          "unbound_group_paths": [],
+          "unbound_scan_paths": [],
+          "IO_magnitude_sensitive_paths": [],
+          "unvalidated_physical_slot_width_paths": [
+            ".0.0.0.0",
+            ".0.0.0.0.1"
+          ],
+          "input_quality_issues": [],
+          "sensitive_operator_paths": [],
+          "sensitivity_scenarios_NOT_bounds": [
+            {
+              "scenario": "lower",
+              "read_bytes": 276455424.0,
+              "write_bytes": 272261120.0
+            },
+            {
+              "scenario": "upper",
+              "read_bytes": 298328064.0,
+              "write_bytes": 294133760.0
+            }
+          ],
+          "sensitivity_passes": 2,
+          "trusted_zero": false,
+          "automatic_recommendation_qualified": false,
+          "safe_for_automatic_control": false,
+          "point_input_screen_passed": false,
+          "qualification": "Two global input perturbations, NOT confidence intervals, exhaustive extrema or physical memory safety. Base scan N, widths, grants remain unvalidated. Numeric provisional/fallback predictions must not be silently dropped from accuracy metrics."
+        },
+        "experimental_cardinality_effects": [
+          {
+            "path": ".0.0.0.0.0",
+            "node_type": "Seq Scan",
+            "before": 2376235.0,
+            "after": 2251000.0,
+            "source": "pre_execution_N"
+          },
+          {
+            "path": ".0.0.0.0",
+            "node_type": "Hash Join",
+            "before": 2376235.0,
+            "after": 2251000.0,
+            "source": "pre_execution_N"
+          },
+          {
+            "path": ".0.0.0",
+            "node_type": "Hash Join",
+            "before": 2376235.0,
+            "after": 2251000.0,
+            "source": "pre_execution_N"
+          },
+          {
+            "path": ".0.0",
+            "node_type": "Aggregate",
+            "before": 2376235.0,
+            "after": 1488896.0,
+            "source": "independent_complete_key_G"
+          },
+          {
+            "path": ".0",
+            "node_type": "Sort",
+            "before": 2376235.0,
+            "after": 1488896.0,
+            "source": "semantic_pass_through"
+          },
+          {
+            "path": "",
+            "node_type": "Limit",
+            "before": 100.0,
+            "after": 100.0,
+            "source": "limit_upper_bound"
+          }
+        ],
+        "release_schema": "jmt.ap-forecast/1.0.0rc4",
+        "reliability": {
+          "operator_coverage_complete": true,
+          "join_cardinality_independently_validated": false,
+          "join_nodes_requiring_input_validation": [
+            {
+              "path": ".0.0.0",
+              "node_type": "Hash Join"
+            },
+            {
+              "path": ".0.0.0.0",
+              "node_type": "Hash Join"
+            }
+          ],
+          "classification": "unvalidated_join_cardinality",
+          "qualification": "An implementation-complete numeric result is NOT a confidence interval, a safety guarantee or qualification for automatic WM recommendation."
+        },
+        "forecasted_at": "2026-11-11T06:45:35.366398+00:00",
+        "forecast_pipeline_schema": "huawei7.ap-light-cardinality/v1.1-experimental",
+        "uses_preflight_statistics": false,
+        "cardinality_evidence_status": "planner_only",
+        "automatic_recommendation_qualified": false,
+        "preflight_estimates": [],
+        "cardinality_propagation": [],
+        "light_cardinality_effects": [],
+        "dimension_evidence": [],
+        "group_occupancy_evidence": {},
+        "offline_group_frequency_evidence": {},
+        "offline_group_frequency_effects": [],
+        "offline_group_frequency_assumptions": [],
+        "unique_union_group_evidence": {},
+        "unique_union_group_effects": [],
+        "joint_synopsis_evidence": null,
+        "joint_cardinality_effects": [],
+        "sql_metadata_available": true,
+        "expression_type_evidence": {
+          "schema": "huawei7.ap-expression-types/v1-experimental",
+          "available": true,
+          "scope_preparation_available": true,
+          "resolved_argument_expressions": {
+            "l.l_extendedprice": "numeric"
+          },
+          "unresolved_argument_expressions": [],
+          "qualification": "type-only bounded AST inference; no new row/NDV/width evidence"
+        },
+        "formula_compute_ms": 19.55604227259755,
+        "shared_preparation_ms": 37.341338116675615,
+        "forecast_qualification": "experimental logical temp buffer-equivalent bytes; no target runtime labels; a numeric estimate is not a certified accuracy or zero-spill guarantee"
+      }
+    },
+    {
+      "wm_mib": 32,
+      "forecast": {
+        "schema": "huawei7.ap-plan-service-demand/v3.8.0-experimental",
+        "work_mem_mib": 32,
+        "executor_profile": {
+          "allocation_header_bytes": 32,
+          "sort_algorithm": "5.1 quicksort batches + polyphase merge",
+          "qualification": "build-dependent; verify for a different executor binary"
+        },
+        "plan_structure_sha256": "0701481cb6d4293f1cfd371a5cbf3e68843a35a29e0d5b32207f54fcf16ccdff",
+        "features": {
+          "scan_tuples": 62089303.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 359936118.0,
+          "projection_evaluations": 10341846.0,
+          "hash_build_tuples": 2099950.0,
+          "hash_probe_tuples": 13506000.0,
+          "join_comparisons": 9004000.0,
+          "aggregate_transitions": 2251000.0,
+          "aggregate_groups": 1488896.0,
+          "aggregate_argument_evaluations": 2251000.0,
+          "sort_comparisons": 9892010.905530827,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 10558464000.0,
+          "logical_temp_read_bytes": 233897984.0,
+          "logical_temp_write_bytes": 233373696.0
+        },
+        "operators": [
+          {
+            "path": "",
+            "node_type": "Limit",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 1488896.0,
+            "output_rows_per_call": 100.0,
+            "width": 67.0,
+            "mode": "limit",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 0.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "subtree_structural_peak_upper_mib": 84.85787963867188
+            },
+            "uncertainties": [],
+            "recognized": true
+          },
+          {
+            "path": ".0",
+            "node_type": "Sort",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 1488896.0,
+            "output_rows_per_call": 100.0,
+            "width": 67.0,
+            "mode": "top_n_heap",
+            "memory_mib": 0.05413818359375,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 0.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 9892010.905530827,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "mode": "top_n_heap",
+              "memory_mib": 0.05413818359375,
+              "retained_heap_mib": 0.038726806640625,
+              "comparisons": 9892010.905530827,
+              "read_bytes": 0.0,
+              "write_bytes": 0.0,
+              "write_bytes_lower": 0.0,
+              "write_bytes_upper": 0.0,
+              "passes": 0,
+              "required_mib": 0.038726806640625,
+              "subtree_structural_peak_upper_mib": 84.85787963867188
+            },
+            "uncertainties": [
+              "session_work_mem_not_verified_operator_grant",
+              "top_n_later_wider_tuples_can_exceed_initial_heap_estimate"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0",
+            "node_type": "Aggregate",
+            "strategy": "Hashed",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 2251000.0,
+            "output_rows_per_call": 1488896.0,
+            "width": 67.0,
+            "mode": "hash_aggregate_spill",
+            "memory_mib": 47.989044189453125,
+            "temp_read_bytes": 99614720.0,
+            "temp_write_bytes": 99090432.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 1488896.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 9004000.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 2251000.0,
+              "aggregate_groups": 1488896.0,
+              "aggregate_argument_evaluations": 2251000.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 99614720.0,
+              "logical_temp_write_bytes": 99090432.0
+            },
+            "details": {
+              "aggregate_functions": {
+                "sum": 1
+              },
+              "mode": "hash_aggregate_spill",
+              "memory_mib": 47.989044189453125,
+              "required_mib": 253.4296875,
+              "spill_trigger_required_mib": 253.4296875,
+              "child_dynahash_memory_mib_estimate": 15.996856689453125,
+              "memory_qualification": "physical_parent_plus_child_estimate_NOT_capped_by_spill_check_grant",
+              "entry_bytes_lower_without_byref_payload": 128,
+              "executor_spill_check_entry_bytes": 176,
+              "aggregate_transition_payload_bytes": 48,
+              "counted_entry_state_bytes": 32,
+              "parent_context_layout": {
+                "resident_groups": 174694,
+                "required_spill_check_bytes": 265740288,
+                "parent_reserved_bytes_at_residency": 33546240,
+                "spill_check_bytes_at_residency": 39136448,
+                "persistent_parent_bytes_per_group": 144,
+                "manual_entry_state_bytes": 32,
+                "binary_search_steps": 21,
+                "allocator_events_per_evaluation": 11,
+                "accounting": "parent_AllocSet_totalSpace_plus_one_entrysize; child_dynahash_excluded",
+                "qualification": "8KiB..8MiB parent blocks; expected persistent chunk packing; mixed/variable widths and allocation ordering remain approximate"
+              },
+              "dynahash_child_excluded_from_spill_check": true,
+              "planner_partition_groups_proxy": 2376235,
+              "aggregate_state_slots": 1,
+              "resident_groups": 174694,
+              "group_discovery_model": "complete_group_frequency_sample_random_order",
+              "frequency_histogram_budget_exceeded": {
+                "group": false,
+                "setop": false
+              },
+              "frequency_solve_bins_max": 256,
+              "estimated_discovery_rows": 189606.8986443162,
+              "setop_frequency_demand": null,
+              "spill_row_bytes_estimate": 51.0,
+              "write_bytes": 99090432.0,
+              "read_bytes": 99614720.0,
+              "write_bytes_lower": 0.0,
+              "write_bytes_upper": 115325288.0,
+              "reachable_partition_files": 64,
+              "nonempty_partition_files_estimate": 64,
+              "eof_read_block_equivalent_bytes": 524288.0,
+              "partitions": 64,
+              "repartition_levels": 1,
+              "aggregate_transition_layouts": [
+                {
+                  "function": "sum",
+                  "argument_type": "numeric",
+                  "payload_bytes": 48,
+                  "collect_initial_payload_bytes": 0,
+                  "persistent_payload_bytes": 48,
+                  "qualification": "Numeric_BI64_lower_payload"
+                }
+              ],
+              "stored_group_keys_width": 27.0,
+              "subtree_structural_peak_upper_mib": 84.80374145507812
+            },
+            "uncertainties": [
+              "session_work_mem_not_verified_operator_grant",
+              "numeric_transition_can_grow_beyond_bi64",
+              "hashagg_input_order_unknown_despite_frequency_evidence",
+              "hashagg_spill_projection_width_not_measured",
+              "hashagg_stored_group_projection_width_not_measured",
+              "by_reference_aggregate_transition_payload_not_measured"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0",
+            "node_type": "Hash Join",
+            "strategy": "",
+            "join_type": "Inner",
+            "calls": 1.0,
+            "input_rows_per_call": 2251000.0,
+            "output_rows_per_call": 2251000.0,
+            "width": 35.0,
+            "mode": "hash_join_inner",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 2251000.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 2251000.0,
+              "join_comparisons": 4502000.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "batches": 1,
+              "required_build_mib": 4.814697265625,
+              "hash_directory": {
+                "planner_input_rows_proxy": 100000,
+                "planner_input_width_proxy": 8,
+                "initial_buckets": 131072,
+                "initial_batches": 1,
+                "runtime_buckets": 131072,
+                "batches": 1,
+                "dynamic_bucket_growth_events": 0,
+                "estimated_first_spill_inner_row": null,
+                "simulator_event_budget": 64,
+                "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+                "required_full_memory_mib": 4.814697265625,
+                "structural_resident_memory_mib": 4.814697265625,
+                "executor_reported_peak_mib_estimate": 4.814697265625,
+                "executor_reported_tuple_bytes": 40.0,
+                "read_bytes": 0,
+                "write_bytes": 0
+              },
+              "physical_hash_input_width_evidence": {
+                "outer": null,
+                "inner": {
+                  "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                  "relation": "supplier",
+                  "output_columns": [
+                    "s.s_nationkey",
+                    "s.s_suppkey"
+                  ],
+                  "planner_width": 8.0,
+                  "estimated_output_data_width": 8,
+                  "data_width": 8.0,
+                  "expanded_beyond_planner_width": false,
+                  "uses_average_variable_width": false,
+                  "field_budget": 64,
+                  "wrapper_budget": 8,
+                  "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+                }
+              },
+              "unvalidated_physical_slot_width": false,
+              "independent_ndv_join_rows_diagnostic": 2251000.0,
+              "subtree_structural_peak_upper_mib": 36.814697265625
+            },
+            "uncertainties": [
+              "join_key_ndv_after_filters_and_correlations_unknown"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.0",
+            "node_type": "Hash Join",
+            "strategy": "",
+            "join_type": "Inner",
+            "calls": 1.0,
+            "input_rows_per_call": 2251000.0,
+            "output_rows_per_call": 2251000.0,
+            "width": 35.0,
+            "mode": "hash_join_inner",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 134283264.0,
+            "temp_write_bytes": 134283264.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 2251000.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 2251000.0,
+              "join_comparisons": 4502000.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 134283264.0,
+              "logical_temp_write_bytes": 134283264.0
+            },
+            "details": {
+              "batches": 4,
+              "required_build_mib": 122.80885314941406,
+              "hash_directory": {
+                "planner_input_rows_proxy": 1999950,
+                "planner_input_width_proxy": 19,
+                "initial_buckets": 524288,
+                "initial_batches": 4,
+                "runtime_buckets": 524288,
+                "batches": 4,
+                "dynamic_bucket_growth_events": 0,
+                "estimated_first_spill_inner_row": null,
+                "simulator_event_budget": 64,
+                "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+                "required_full_memory_mib": 122.80885314941406,
+                "structural_resident_memory_mib": 32.0,
+                "executor_reported_peak_mib_estimate": 28.794912338256836,
+                "executor_reported_tuple_bytes": 52,
+                "read_bytes": 134283264.0,
+                "write_bytes": 134283264.0
+              },
+              "physical_hash_input_width_evidence": {
+                "outer": {
+                  "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                  "relation": "lineitem",
+                  "output_columns": [
+                    "l.l_shipdate",
+                    "l.l_extendedprice",
+                    "l.l_partkey",
+                    "l.l_suppkey"
+                  ],
+                  "planner_width": 24.0,
+                  "estimated_output_data_width": 24,
+                  "data_width": 24.0,
+                  "expanded_beyond_planner_width": false,
+                  "uses_average_variable_width": true,
+                  "field_budget": 64,
+                  "wrapper_budget": 8,
+                  "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+                },
+                "inner": {
+                  "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                  "relation": "part",
+                  "output_columns": [
+                    "p.p_size",
+                    "p.p_brand",
+                    "p.p_partkey"
+                  ],
+                  "planner_width": 19.0,
+                  "estimated_output_data_width": 20,
+                  "data_width": 20,
+                  "expanded_beyond_planner_width": true,
+                  "uses_average_variable_width": true,
+                  "field_budget": 64,
+                  "wrapper_budget": 8,
+                  "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+                }
+              },
+              "unvalidated_physical_slot_width": true,
+              "independent_ndv_join_rows_diagnostic": 2251000.0,
+              "subtree_structural_peak_upper_mib": 32.0
+            },
+            "uncertainties": [
+              "dynamic_batch_growth_skew_and_repartition_not_observed",
+              "join_key_ndv_after_filters_and_correlations_unknown"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.0.0",
+            "node_type": "Seq Scan",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 2251000.0,
+            "output_rows_per_call": 2251000.0,
+            "width": 24.0,
+            "mode": "sequential_scan",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 59989353.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 359936118.0,
+              "projection_evaluations": 2251000.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 10204020736.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "subtree_structural_peak_upper_mib": 0.0
+            },
+            "uncertainties": [],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.0.1",
+            "node_type": "Hash",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 1999950.0,
+            "output_rows_per_call": 1999950.0,
+            "width": 19.0,
+            "mode": "hash_build",
+            "memory_mib": 32.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 0.0,
+              "hash_build_tuples": 1999950.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "planner_input_rows_proxy": 1999950,
+              "planner_input_width_proxy": 19,
+              "initial_buckets": 524288,
+              "initial_batches": 4,
+              "runtime_buckets": 524288,
+              "batches": 4,
+              "dynamic_bucket_growth_events": 0,
+              "estimated_first_spill_inner_row": null,
+              "simulator_event_budget": 64,
+              "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+              "required_full_memory_mib": 122.80885314941406,
+              "structural_resident_memory_mib": 32.0,
+              "executor_reported_peak_mib_estimate": 28.794912338256836,
+              "executor_reported_tuple_bytes": 52,
+              "read_bytes": 60006400.0,
+              "write_bytes": 60006400.0,
+              "physical_hash_input_width_evidence": {
+                "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                "relation": "part",
+                "output_columns": [
+                  "p.p_size",
+                  "p.p_brand",
+                  "p.p_partkey"
+                ],
+                "planner_width": 19.0,
+                "estimated_output_data_width": 20,
+                "data_width": 20,
+                "expanded_beyond_planner_width": true,
+                "uses_average_variable_width": true,
+                "field_budget": 64,
+                "wrapper_budget": 8,
+                "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+              },
+              "unvalidated_physical_slot_width": true,
+              "required_memory_mib": 122.80885314941406,
+              "subtree_structural_peak_upper_mib": 32.0
+            },
+            "uncertainties": [
+              "session_work_mem_not_verified_operator_grant"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.0.1.0",
+            "node_type": "Seq Scan",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 1999950.0,
+            "output_rows_per_call": 1999950.0,
+            "width": 19.0,
+            "mode": "sequential_scan",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 1999950.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 1999950.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 336248832.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "subtree_structural_peak_upper_mib": 0.0
+            },
+            "uncertainties": [],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.1",
+            "node_type": "Hash",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 100000.0,
+            "output_rows_per_call": 100000.0,
+            "width": 8.0,
+            "mode": "hash_build",
+            "memory_mib": 4.814697265625,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 0.0,
+              "hash_build_tuples": 100000.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "planner_input_rows_proxy": 100000,
+              "planner_input_width_proxy": 8,
+              "initial_buckets": 131072,
+              "initial_batches": 1,
+              "runtime_buckets": 131072,
+              "batches": 1,
+              "dynamic_bucket_growth_events": 0,
+              "estimated_first_spill_inner_row": null,
+              "simulator_event_budget": 64,
+              "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+              "required_full_memory_mib": 4.814697265625,
+              "structural_resident_memory_mib": 4.814697265625,
+              "executor_reported_peak_mib_estimate": 4.814697265625,
+              "executor_reported_tuple_bytes": 40.0,
+              "read_bytes": 0,
+              "write_bytes": 0,
+              "physical_hash_input_width_evidence": {
+                "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                "relation": "supplier",
+                "output_columns": [
+                  "s.s_nationkey",
+                  "s.s_suppkey"
+                ],
+                "planner_width": 8.0,
+                "estimated_output_data_width": 8,
+                "data_width": 8.0,
+                "expanded_beyond_planner_width": false,
+                "uses_average_variable_width": false,
+                "field_budget": 64,
+                "wrapper_budget": 8,
+                "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+              },
+              "unvalidated_physical_slot_width": false,
+              "required_memory_mib": 4.814697265625,
+              "subtree_structural_peak_upper_mib": 4.814697265625
+            },
+            "uncertainties": [
+              "session_work_mem_not_verified_operator_grant"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.1.0",
+            "node_type": "Seq Scan",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 100000.0,
+            "output_rows_per_call": 100000.0,
+            "width": 8.0,
+            "mode": "sequential_scan",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 100000.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 100000.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 18194432.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "subtree_structural_peak_upper_mib": 0.0
+            },
+            "uncertainties": [],
+            "recognized": true
+          }
+        ],
+        "dataflow": {
+          "nodes": [
+            {
+              "path": "",
+              "semantics": "stream"
+            },
+            {
+              "path": ".0",
+              "semantics": "consume_input_then_produce"
+            },
+            {
+              "path": ".0.0",
+              "semantics": "consume_input_then_produce"
+            },
+            {
+              "path": ".0.0.0",
+              "semantics": "build_hash_then_stream_probe"
+            },
+            {
+              "path": ".0.0.0.0",
+              "semantics": "build_hash_then_stream_probe"
+            },
+            {
+              "path": ".0.0.0.0.0",
+              "semantics": "stream"
+            },
+            {
+              "path": ".0.0.0.0.1",
+              "semantics": "consume_input_then_produce"
+            },
+            {
+              "path": ".0.0.0.0.1.0",
+              "semantics": "stream"
+            },
+            {
+              "path": ".0.0.0.1",
+              "semantics": "consume_input_then_produce"
+            },
+            {
+              "path": ".0.0.0.1.0",
+              "semantics": "stream"
+            }
+          ],
+          "edges": [
+            {
+              "producer": ".0",
+              "consumer": "",
+              "relationship": "Outer",
+              "producer_semantics": "consume_input_then_produce"
+            },
+            {
+              "producer": ".0.0",
+              "consumer": ".0",
+              "relationship": "Outer",
+              "producer_semantics": "consume_input_then_produce"
+            },
+            {
+              "producer": ".0.0.0",
+              "consumer": ".0.0",
+              "relationship": "Outer",
+              "producer_semantics": "build_hash_then_stream_probe"
+            },
+            {
+              "producer": ".0.0.0.0",
+              "consumer": ".0.0.0",
+              "relationship": "Outer",
+              "producer_semantics": "build_hash_then_stream_probe"
+            },
+            {
+              "producer": ".0.0.0.0.0",
+              "consumer": ".0.0.0.0",
+              "relationship": "Outer",
+              "producer_semantics": "stream"
+            },
+            {
+              "producer": ".0.0.0.0.1",
+              "consumer": ".0.0.0.0",
+              "relationship": "Inner",
+              "producer_semantics": "consume_input_then_produce"
+            },
+            {
+              "producer": ".0.0.0.0.1.0",
+              "consumer": ".0.0.0.0.1",
+              "relationship": "Outer",
+              "producer_semantics": "stream"
+            },
+            {
+              "producer": ".0.0.0.1",
+              "consumer": ".0.0.0",
+              "relationship": "Inner",
+              "producer_semantics": "consume_input_then_produce"
+            },
+            {
+              "producer": ".0.0.0.1.0",
+              "consumer": ".0.0.0.1",
+              "relationship": "Outer",
+              "producer_semantics": "stream"
+            }
+          ],
+          "qualification": "execution dependency skeleton; CTE reuse/parameter dependencies and an actual resource-constrained scheduler are not yet implemented"
+        },
+        "node_types": {
+          "Limit": 1,
+          "Sort": 1,
+          "Aggregate": 1,
+          "Hash Join": 2,
+          "Seq Scan": 3,
+          "Hash": 2
+        },
+        "modes": {
+          "limit": 1,
+          "top_n_heap": 1,
+          "hash_aggregate_spill": 1,
+          "hash_join_inner": 2,
+          "sequential_scan": 3,
+          "hash_build": 2
+        },
+        "unsupported_operators": [],
+        "uncertainties": {
+          "session_work_mem_not_verified_operator_grant": 4,
+          "top_n_later_wider_tuples_can_exceed_initial_heap_estimate": 1,
+          "numeric_transition_can_grow_beyond_bi64": 1,
+          "hashagg_input_order_unknown_despite_frequency_evidence": 1,
+          "hashagg_spill_projection_width_not_measured": 1,
+          "hashagg_stored_group_projection_width_not_measured": 1,
+          "by_reference_aggregate_transition_payload_not_measured": 1,
+          "join_key_ndv_after_filters_and_correlations_unknown": 2,
+          "dynamic_batch_growth_skew_and_repartition_not_observed": 1
+        },
+        "logical_temp_estimate_complete": true,
+        "logical_temp_read_bytes_estimate": 233897984.0,
+        "logical_temp_write_bytes_estimate": 233373696.0,
+        "feature_qualification": "logical_temp_* features include modeled components only; an incomplete temp estimate must never be interpreted as zero total spill",
+        "structural_peak_upper_mib": 84.85787963867188,
+        "peak_qualification": "structural approximation, NOT a measured or certified safety bound",
+        "latency_seconds": null,
+        "physical_read_requests": null,
+        "physical_write_requests": null,
+        "status": "experimental_resource_estimate",
+        "qualification": "no per-query/family calibration; cardinality remains planner/statistics dependent; not production-qualified, not a physical IOPS or latency prediction",
+        "experimental_cardinality_input": {
+          "schema": "jmt.preexecution-cardinality-evidence/v1",
+          "database": "h5_tpch_sf10",
+          "rows": {
+            ".0.0.0": 2251000.0,
+            ".0.0.0.0": 2251000.0,
+            ".0.0.0.0.0": 2251000.0
+          },
+          "groups": {
+            ".0.0": 1488896.0
+          },
+          "items": [
+            {
+              "path": ".0.0",
+              "estimate": 1488896.0,
+              "kind": "G",
+              "source": "complete_group_sample_NOT_DeepDB",
+              "sample_profile": "group_shipping_full",
+              "sample_group_support": 1454,
+              "fact_grain": [
+                "lineitem.l_orderkey",
+                "lineitem.l_linenumber"
+              ],
+              "sampled_fact_rows": 2090,
+              "frequency_bins": 5,
+              "sampled_sampling_key_units": 1454,
+              "functional_dependency_keys_eliminated_in_statistics_only": []
+            },
+            {
+              "path": ".0.0.0",
+              "estimate": 2251000.0,
+              "kind": "N",
+              "source": "sample",
+              "model": "lineitem_ps",
+              "node_type": "Hash Join",
+              "sample_support": 2251,
+              "relations": [
+                "lineitem",
+                "part",
+                "supplier"
+              ],
+              "conditions": [
+                [
+                  "lineitem.l_shipdate",
+                  "<",
+                  "1995-05-09 00:00:00"
+                ],
+                [
+                  "lineitem.l_shipdate",
+                  ">=",
+                  "1995-02-09 00:00:00"
+                ]
+              ]
+            },
+            {
+              "path": ".0.0.0.0",
+              "estimate": 2251000.0,
+              "kind": "N",
+              "source": "sample",
+              "model": "lineitem_ps",
+              "node_type": "Hash Join",
+              "sample_support": 2251,
+              "relations": [
+                "lineitem",
+                "part"
+              ],
+              "conditions": [
+                [
+                  "lineitem.l_shipdate",
+                  "<",
+                  "1995-05-09 00:00:00"
+                ],
+                [
+                  "lineitem.l_shipdate",
+                  ">=",
+                  "1995-02-09 00:00:00"
+                ]
+              ]
+            },
+            {
+              "path": ".0.0.0.0.0",
+              "estimate": 2251000.0,
+              "kind": "N",
+              "source": "sample",
+              "model": "lineitem_oc",
+              "node_type": "Seq Scan",
+              "sample_support": 2251,
+              "relations": [
+                "lineitem"
+              ],
+              "conditions": [
+                [
+                  "lineitem.l_shipdate",
+                  "<",
+                  "1995-05-09 00:00:00"
+                ],
+                [
+                  "lineitem.l_shipdate",
+                  ">=",
+                  "1995-02-09 00:00:00"
+                ]
+              ]
+            }
+          ],
+          "abstentions": [],
+          "group_histograms": {
+            ".0.0": [
+              {
+                "jmt_n": 1.0,
+                "jmt_groups": 970752.0
+              },
+              {
+                "jmt_n": 2.0,
+                "jmt_groups": 399360.0
+              },
+              {
+                "jmt_n": 3.0,
+                "jmt_groups": 105472.0
+              },
+              {
+                "jmt_n": 4.0,
+                "jmt_groups": 12288.0
+              },
+              {
+                "jmt_n": 5.0,
+                "jmt_groups": 1024.0
+              }
+            ]
+          },
+          "sensitivity_ranges": {
+            ".0.0": {
+              "kind": "G",
+              "lower": 1410802.9912476155,
+              "upper": 1566989.0087523845,
+              "relative_probe_radius": 0.052450277757737605,
+              "qualification": "support-derived sensitivity scenario, NOT statistical confidence/safety bound"
+            },
+            ".0.0.0": {
+              "kind": "N",
+              "lower": 2138450.0,
+              "upper": 2363550.0,
+              "relative_probe_radius": 0.05,
+              "qualification": "support-derived sensitivity scenario, NOT statistical confidence/safety bound"
+            },
+            ".0.0.0.0": {
+              "kind": "N",
+              "lower": 2138450.0,
+              "upper": 2363550.0,
+              "relative_probe_radius": 0.05,
+              "qualification": "support-derived sensitivity scenario, NOT statistical confidence/safety bound"
+            },
+            ".0.0.0.0.0": {
+              "kind": "N",
+              "lower": 2138450.0,
+              "upper": 2363550.0,
+              "relative_probe_radius": 0.05,
+              "qualification": "support-derived sensitivity scenario, NOT statistical confidence/safety bound"
+            }
+          },
+          "certified_nested_loop_bindings": {},
+          "certified_scan_bindings": {
+            ".0.0.0.0.0": {
+              "relation": "lineitem",
+              "population_fact": "lineitem",
+              "predicate_scope_complete": true,
+              "metadata_sha256": "d3ac741a9b1f51f941ea249f4916faa9bcd31fa739bcef14ebc5c3334e01a6cc"
+            }
+          },
+          "certified_existence_bindings": {},
+          "input_quality_issues": [],
+          "uses_target_execution_labels": false,
+          "sensitivity_profile": {
+            "passes": 2,
+            "max_plan_nodes": 256,
+            "qualification": "scenario probe, not exhaustive bounds"
+          },
+          "scope": "guarded inner FK Hash/Nested Join + complete-key G/frequency; static benchmark"
+        },
+        "spill_input_guard": {
+          "schema": "jmt.spill-input-reliability/v1",
+          "status": "unvalidated_physical_slot_width",
+          "unbound_join_paths": [],
+          "unbound_group_paths": [],
+          "unbound_scan_paths": [],
+          "IO_magnitude_sensitive_paths": [],
+          "unvalidated_physical_slot_width_paths": [
+            ".0.0.0.0",
+            ".0.0.0.0.1"
+          ],
+          "input_quality_issues": [],
+          "sensitive_operator_paths": [],
+          "sensitivity_scenarios_NOT_bounds": [
+            {
+              "scenario": "lower",
+              "read_bytes": 224419840.0,
+              "write_bytes": 223895552.0
+            },
+            {
+              "scenario": "upper",
+              "read_bytes": 243384320.0,
+              "write_bytes": 242860032.0
+            }
+          ],
+          "sensitivity_passes": 2,
+          "trusted_zero": false,
+          "automatic_recommendation_qualified": false,
+          "safe_for_automatic_control": false,
+          "point_input_screen_passed": false,
+          "qualification": "Two global input perturbations, NOT confidence intervals, exhaustive extrema or physical memory safety. Base scan N, widths, grants remain unvalidated. Numeric provisional/fallback predictions must not be silently dropped from accuracy metrics."
+        },
+        "experimental_cardinality_effects": [
+          {
+            "path": ".0.0.0.0.0",
+            "node_type": "Seq Scan",
+            "before": 2376235.0,
+            "after": 2251000.0,
+            "source": "pre_execution_N"
+          },
+          {
+            "path": ".0.0.0.0",
+            "node_type": "Hash Join",
+            "before": 2376235.0,
+            "after": 2251000.0,
+            "source": "pre_execution_N"
+          },
+          {
+            "path": ".0.0.0",
+            "node_type": "Hash Join",
+            "before": 2376235.0,
+            "after": 2251000.0,
+            "source": "pre_execution_N"
+          },
+          {
+            "path": ".0.0",
+            "node_type": "Aggregate",
+            "before": 2376235.0,
+            "after": 1488896.0,
+            "source": "independent_complete_key_G"
+          },
+          {
+            "path": ".0",
+            "node_type": "Sort",
+            "before": 2376235.0,
+            "after": 1488896.0,
+            "source": "semantic_pass_through"
+          },
+          {
+            "path": "",
+            "node_type": "Limit",
+            "before": 100.0,
+            "after": 100.0,
+            "source": "limit_upper_bound"
+          }
+        ],
+        "release_schema": "jmt.ap-forecast/1.0.0rc4",
+        "reliability": {
+          "operator_coverage_complete": true,
+          "join_cardinality_independently_validated": false,
+          "join_nodes_requiring_input_validation": [
+            {
+              "path": ".0.0.0",
+              "node_type": "Hash Join"
+            },
+            {
+              "path": ".0.0.0.0",
+              "node_type": "Hash Join"
+            }
+          ],
+          "classification": "unvalidated_join_cardinality",
+          "qualification": "An implementation-complete numeric result is NOT a confidence interval, a safety guarantee or qualification for automatic WM recommendation."
+        },
+        "forecasted_at": "2026-11-11T06:45:35.378146+00:00",
+        "forecast_pipeline_schema": "huawei7.ap-light-cardinality/v1.1-experimental",
+        "uses_preflight_statistics": false,
+        "cardinality_evidence_status": "planner_only",
+        "automatic_recommendation_qualified": false,
+        "preflight_estimates": [],
+        "cardinality_propagation": [],
+        "light_cardinality_effects": [],
+        "dimension_evidence": [],
+        "group_occupancy_evidence": {},
+        "offline_group_frequency_evidence": {},
+        "offline_group_frequency_effects": [],
+        "offline_group_frequency_assumptions": [],
+        "unique_union_group_evidence": {},
+        "unique_union_group_effects": [],
+        "joint_synopsis_evidence": null,
+        "joint_cardinality_effects": [],
+        "sql_metadata_available": true,
+        "expression_type_evidence": {
+          "schema": "huawei7.ap-expression-types/v1-experimental",
+          "available": true,
+          "scope_preparation_available": true,
+          "resolved_argument_expressions": {
+            "l.l_extendedprice": "numeric"
+          },
+          "unresolved_argument_expressions": [],
+          "qualification": "type-only bounded AST inference; no new row/NDV/width evidence"
+        },
+        "formula_compute_ms": 11.724047362804413,
+        "shared_preparation_ms": 37.341338116675615,
+        "forecast_qualification": "experimental logical temp buffer-equivalent bytes; no target runtime labels; a numeric estimate is not a certified accuracy or zero-spill guarantee"
+      }
+    },
+    {
+      "wm_mib": 128,
+      "forecast": {
+        "schema": "huawei7.ap-plan-service-demand/v3.8.0-experimental",
+        "work_mem_mib": 128,
+        "executor_profile": {
+          "allocation_header_bytes": 32,
+          "sort_algorithm": "5.1 quicksort batches + polyphase merge",
+          "qualification": "build-dependent; verify for a different executor binary"
+        },
+        "plan_structure_sha256": "0701481cb6d4293f1cfd371a5cbf3e68843a35a29e0d5b32207f54fcf16ccdff",
+        "features": {
+          "scan_tuples": 62089303.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 359936118.0,
+          "projection_evaluations": 10341846.0,
+          "hash_build_tuples": 2099950.0,
+          "hash_probe_tuples": 13506000.0,
+          "join_comparisons": 9004000.0,
+          "aggregate_transitions": 2251000.0,
+          "aggregate_groups": 1488896.0,
+          "aggregate_argument_evaluations": 2251000.0,
+          "sort_comparisons": 9892010.905530827,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 10558464000.0,
+          "logical_temp_read_bytes": 49545216.0,
+          "logical_temp_write_bytes": 49283072.0
+        },
+        "operators": [
+          {
+            "path": "",
+            "node_type": "Limit",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 1488896.0,
+            "output_rows_per_call": 100.0,
+            "width": 67.0,
+            "mode": "limit",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 0.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "subtree_structural_peak_upper_mib": 306.3328399658203
+            },
+            "uncertainties": [],
+            "recognized": true
+          },
+          {
+            "path": ".0",
+            "node_type": "Sort",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 1488896.0,
+            "output_rows_per_call": 100.0,
+            "width": 67.0,
+            "mode": "top_n_heap",
+            "memory_mib": 0.05413818359375,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 0.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 9892010.905530827,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "mode": "top_n_heap",
+              "memory_mib": 0.05413818359375,
+              "retained_heap_mib": 0.038726806640625,
+              "comparisons": 9892010.905530827,
+              "read_bytes": 0.0,
+              "write_bytes": 0.0,
+              "write_bytes_lower": 0.0,
+              "write_bytes_upper": 0.0,
+              "passes": 0,
+              "required_mib": 0.038726806640625,
+              "subtree_structural_peak_upper_mib": 306.3328399658203
+            },
+            "uncertainties": [
+              "session_work_mem_not_verified_operator_grant",
+              "top_n_later_wider_tuples_can_exceed_initial_heap_estimate"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0",
+            "node_type": "Aggregate",
+            "strategy": "Hashed",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 2251000.0,
+            "output_rows_per_call": 1488896.0,
+            "width": 67.0,
+            "mode": "hash_aggregate_spill",
+            "memory_mib": 178.6551513671875,
+            "temp_read_bytes": 49545216.0,
+            "temp_write_bytes": 49283072.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 1488896.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 9004000.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 2251000.0,
+              "aggregate_groups": 1488896.0,
+              "aggregate_argument_evaluations": 2251000.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 49545216.0,
+              "logical_temp_write_bytes": 49283072.0
+            },
+            "details": {
+              "aggregate_functions": {
+                "sum": 1
+              },
+              "mode": "hash_aggregate_spill",
+              "memory_mib": 178.6551513671875,
+              "required_mib": 253.4296875,
+              "spill_trigger_required_mib": 253.4296875,
+              "child_dynahash_memory_mib_estimate": 66.6629638671875,
+              "memory_qualification": "physical_parent_plus_child_estimate_NOT_capped_by_spill_check_grant",
+              "entry_bytes_lower_without_byref_payload": 128,
+              "executor_spill_check_entry_bytes": 176,
+              "aggregate_transition_payload_bytes": 48,
+              "counted_entry_state_bytes": 32,
+              "parent_context_layout": {
+                "resident_groups": 757224,
+                "required_spill_check_bytes": 265740288,
+                "parent_reserved_bytes_at_residency": 117432320,
+                "spill_check_bytes_at_residency": 141663488,
+                "persistent_parent_bytes_per_group": 144,
+                "manual_entry_state_bytes": 32,
+                "binary_search_steps": 20,
+                "allocator_events_per_evaluation": 11,
+                "accounting": "parent_AllocSet_totalSpace_plus_one_entrysize; child_dynahash_excluded",
+                "qualification": "8KiB..8MiB parent blocks; expected persistent chunk packing; mixed/variable widths and allocation ordering remain approximate"
+              },
+              "dynahash_child_excluded_from_spill_check": true,
+              "planner_partition_groups_proxy": 2376235,
+              "aggregate_state_slots": 1,
+              "resident_groups": 757224,
+              "group_discovery_model": "complete_group_frequency_sample_random_order",
+              "frequency_histogram_budget_exceeded": {
+                "group": false,
+                "setop": false
+              },
+              "frequency_solve_bins_max": 256,
+              "estimated_discovery_rows": 927685.4689412669,
+              "setop_frequency_demand": null,
+              "spill_row_bytes_estimate": 51.0,
+              "write_bytes": 49283072.0,
+              "read_bytes": 49545216.0,
+              "write_bytes_lower": 0.0,
+              "write_bytes_upper": 115063144.0,
+              "reachable_partition_files": 32,
+              "nonempty_partition_files_estimate": 32,
+              "eof_read_block_equivalent_bytes": 262144.0,
+              "partitions": 48,
+              "repartition_levels": 1,
+              "aggregate_transition_layouts": [
+                {
+                  "function": "sum",
+                  "argument_type": "numeric",
+                  "payload_bytes": 48,
+                  "collect_initial_payload_bytes": 0,
+                  "persistent_payload_bytes": 48,
+                  "qualification": "Numeric_BI64_lower_payload"
+                }
+              ],
+              "stored_group_keys_width": 27.0,
+              "subtree_structural_peak_upper_mib": 306.27870178222656
+            },
+            "uncertainties": [
+              "session_work_mem_not_verified_operator_grant",
+              "numeric_transition_can_grow_beyond_bi64",
+              "hashagg_input_order_unknown_despite_frequency_evidence",
+              "hashagg_spill_projection_width_not_measured",
+              "hashagg_stored_group_projection_width_not_measured",
+              "by_reference_aggregate_transition_payload_not_measured"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0",
+            "node_type": "Hash Join",
+            "strategy": "",
+            "join_type": "Inner",
+            "calls": 1.0,
+            "input_rows_per_call": 2251000.0,
+            "output_rows_per_call": 2251000.0,
+            "width": 35.0,
+            "mode": "hash_join_inner",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 2251000.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 2251000.0,
+              "join_comparisons": 4502000.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "batches": 1,
+              "required_build_mib": 4.814697265625,
+              "hash_directory": {
+                "planner_input_rows_proxy": 100000,
+                "planner_input_width_proxy": 8,
+                "initial_buckets": 131072,
+                "initial_batches": 1,
+                "runtime_buckets": 131072,
+                "batches": 1,
+                "dynamic_bucket_growth_events": 0,
+                "estimated_first_spill_inner_row": null,
+                "simulator_event_budget": 64,
+                "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+                "required_full_memory_mib": 4.814697265625,
+                "structural_resident_memory_mib": 4.814697265625,
+                "executor_reported_peak_mib_estimate": 4.814697265625,
+                "executor_reported_tuple_bytes": 40.0,
+                "read_bytes": 0,
+                "write_bytes": 0
+              },
+              "physical_hash_input_width_evidence": {
+                "outer": null,
+                "inner": {
+                  "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                  "relation": "supplier",
+                  "output_columns": [
+                    "s.s_nationkey",
+                    "s.s_suppkey"
+                  ],
+                  "planner_width": 8.0,
+                  "estimated_output_data_width": 8,
+                  "data_width": 8.0,
+                  "expanded_beyond_planner_width": false,
+                  "uses_average_variable_width": false,
+                  "field_budget": 64,
+                  "wrapper_budget": 8,
+                  "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+                }
+              },
+              "unvalidated_physical_slot_width": false,
+              "independent_ndv_join_rows_diagnostic": 2251000.0,
+              "subtree_structural_peak_upper_mib": 127.62355041503906
+            },
+            "uncertainties": [
+              "join_key_ndv_after_filters_and_correlations_unknown"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.0",
+            "node_type": "Hash Join",
+            "strategy": "",
+            "join_type": "Inner",
+            "calls": 1.0,
+            "input_rows_per_call": 2251000.0,
+            "output_rows_per_call": 2251000.0,
+            "width": 35.0,
+            "mode": "hash_join_inner",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 2251000.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 2251000.0,
+              "join_comparisons": 4502000.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "batches": 1,
+              "required_build_mib": 122.80885314941406,
+              "hash_directory": {
+                "planner_input_rows_proxy": 1999950,
+                "planner_input_width_proxy": 19,
+                "initial_buckets": 2097152,
+                "initial_batches": 1,
+                "runtime_buckets": 2097152,
+                "batches": 1,
+                "dynamic_bucket_growth_events": 0,
+                "estimated_first_spill_inner_row": null,
+                "simulator_event_budget": 64,
+                "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+                "required_full_memory_mib": 122.80885314941406,
+                "structural_resident_memory_mib": 122.80885314941406,
+                "executor_reported_peak_mib_estimate": 115.17964935302734,
+                "executor_reported_tuple_bytes": 52,
+                "read_bytes": 0,
+                "write_bytes": 0
+              },
+              "physical_hash_input_width_evidence": {
+                "outer": {
+                  "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                  "relation": "lineitem",
+                  "output_columns": [
+                    "l.l_orderkey",
+                    "l.l_partkey",
+                    "l.l_suppkey",
+                    "l.l_linenumber",
+                    "l.l_quantity",
+                    "l.l_extendedprice",
+                    "l.l_discount",
+                    "l.l_tax",
+                    "l.l_returnflag",
+                    "l.l_linestatus",
+                    "l.l_shipdate",
+                    "l.l_commitdate",
+                    "l.l_receiptdate",
+                    "l.l_shipinstruct",
+                    "l.l_shipmode",
+                    "l.l_comment"
+                  ],
+                  "planner_width": 24.0,
+                  "estimated_output_data_width": 136.0,
+                  "data_width": 136.0,
+                  "expanded_beyond_planner_width": true,
+                  "uses_average_variable_width": true,
+                  "field_budget": 64,
+                  "wrapper_budget": 8,
+                  "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+                },
+                "inner": {
+                  "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                  "relation": "part",
+                  "output_columns": [
+                    "p.p_size",
+                    "p.p_brand",
+                    "p.p_partkey"
+                  ],
+                  "planner_width": 19.0,
+                  "estimated_output_data_width": 20,
+                  "data_width": 20,
+                  "expanded_beyond_planner_width": true,
+                  "uses_average_variable_width": true,
+                  "field_budget": 64,
+                  "wrapper_budget": 8,
+                  "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+                }
+              },
+              "unvalidated_physical_slot_width": true,
+              "independent_ndv_join_rows_diagnostic": 2251000.0,
+              "subtree_structural_peak_upper_mib": 122.80885314941406
+            },
+            "uncertainties": [
+              "join_key_ndv_after_filters_and_correlations_unknown"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.0.0",
+            "node_type": "Seq Scan",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 2251000.0,
+            "output_rows_per_call": 2251000.0,
+            "width": 24.0,
+            "mode": "sequential_scan",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 59989353.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 359936118.0,
+              "projection_evaluations": 2251000.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 10204020736.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "subtree_structural_peak_upper_mib": 0.0
+            },
+            "uncertainties": [],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.0.1",
+            "node_type": "Hash",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 1999950.0,
+            "output_rows_per_call": 1999950.0,
+            "width": 19.0,
+            "mode": "hash_build",
+            "memory_mib": 122.80885314941406,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 0.0,
+              "hash_build_tuples": 1999950.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "planner_input_rows_proxy": 1999950,
+              "planner_input_width_proxy": 19,
+              "initial_buckets": 2097152,
+              "initial_batches": 1,
+              "runtime_buckets": 2097152,
+              "batches": 1,
+              "dynamic_bucket_growth_events": 0,
+              "estimated_first_spill_inner_row": null,
+              "simulator_event_budget": 64,
+              "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+              "required_full_memory_mib": 122.80885314941406,
+              "structural_resident_memory_mib": 122.80885314941406,
+              "executor_reported_peak_mib_estimate": 115.17964935302734,
+              "executor_reported_tuple_bytes": 52,
+              "read_bytes": 0,
+              "write_bytes": 0,
+              "physical_hash_input_width_evidence": {
+                "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                "relation": "part",
+                "output_columns": [
+                  "p.p_size",
+                  "p.p_brand",
+                  "p.p_partkey"
+                ],
+                "planner_width": 19.0,
+                "estimated_output_data_width": 20,
+                "data_width": 20,
+                "expanded_beyond_planner_width": true,
+                "uses_average_variable_width": true,
+                "field_budget": 64,
+                "wrapper_budget": 8,
+                "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+              },
+              "unvalidated_physical_slot_width": true,
+              "required_memory_mib": 122.80885314941406,
+              "subtree_structural_peak_upper_mib": 122.80885314941406
+            },
+            "uncertainties": [
+              "session_work_mem_not_verified_operator_grant"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.0.1.0",
+            "node_type": "Seq Scan",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 1999950.0,
+            "output_rows_per_call": 1999950.0,
+            "width": 19.0,
+            "mode": "sequential_scan",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 1999950.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 1999950.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 336248832.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "subtree_structural_peak_upper_mib": 0.0
+            },
+            "uncertainties": [],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.1",
+            "node_type": "Hash",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 100000.0,
+            "output_rows_per_call": 100000.0,
+            "width": 8.0,
+            "mode": "hash_build",
+            "memory_mib": 4.814697265625,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 0.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 0.0,
+              "hash_build_tuples": 100000.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 0.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "planner_input_rows_proxy": 100000,
+              "planner_input_width_proxy": 8,
+              "initial_buckets": 131072,
+              "initial_batches": 1,
+              "runtime_buckets": 131072,
+              "batches": 1,
+              "dynamic_bucket_growth_events": 0,
+              "estimated_first_spill_inner_row": null,
+              "simulator_event_budget": 64,
+              "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+              "required_full_memory_mib": 4.814697265625,
+              "structural_resident_memory_mib": 4.814697265625,
+              "executor_reported_peak_mib_estimate": 4.814697265625,
+              "executor_reported_tuple_bytes": 40.0,
+              "read_bytes": 0,
+              "write_bytes": 0,
+              "physical_hash_input_width_evidence": {
+                "source": "blind_SeqScan_Output_catalog_physical_tuple",
+                "relation": "supplier",
+                "output_columns": [
+                  "s.s_nationkey",
+                  "s.s_suppkey"
+                ],
+                "planner_width": 8.0,
+                "estimated_output_data_width": 8,
+                "data_width": 8.0,
+                "expanded_beyond_planner_width": false,
+                "uses_average_variable_width": false,
+                "field_budget": 64,
+                "wrapper_budget": 8,
+                "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+              },
+              "unvalidated_physical_slot_width": false,
+              "required_memory_mib": 4.814697265625,
+              "subtree_structural_peak_upper_mib": 4.814697265625
+            },
+            "uncertainties": [
+              "session_work_mem_not_verified_operator_grant"
+            ],
+            "recognized": true
+          },
+          {
+            "path": ".0.0.0.1.0",
+            "node_type": "Seq Scan",
+            "strategy": "",
+            "join_type": "",
+            "calls": 1.0,
+            "input_rows_per_call": 100000.0,
+            "output_rows_per_call": 100000.0,
+            "width": 8.0,
+            "mode": "sequential_scan",
+            "memory_mib": 0.0,
+            "temp_read_bytes": 0.0,
+            "temp_write_bytes": 0.0,
+            "features": {
+              "scan_tuples": 100000.0,
+              "index_probes": 0.0,
+              "index_tuples": 0.0,
+              "predicate_evaluations": 0.0,
+              "projection_evaluations": 100000.0,
+              "hash_build_tuples": 0.0,
+              "hash_probe_tuples": 0.0,
+              "join_comparisons": 0.0,
+              "aggregate_transitions": 0.0,
+              "aggregate_groups": 0.0,
+              "aggregate_argument_evaluations": 0.0,
+              "sort_comparisons": 0.0,
+              "window_evaluations": 0.0,
+              "store_put_tuples": 0.0,
+              "store_get_tuples": 0.0,
+              "setop_tuples": 0.0,
+              "logical_scan_bytes": 18194432.0,
+              "logical_temp_read_bytes": 0.0,
+              "logical_temp_write_bytes": 0.0
+            },
+            "details": {
+              "subtree_structural_peak_upper_mib": 0.0
+            },
+            "uncertainties": [],
+            "recognized": true
+          }
+        ],
+        "dataflow": {
+          "nodes": [
+            {
+              "path": "",
+              "semantics": "stream"
+            },
+            {
+              "path": ".0",
+              "semantics": "consume_input_then_produce"
+            },
+            {
+              "path": ".0.0",
+              "semantics": "consume_input_then_produce"
+            },
+            {
+              "path": ".0.0.0",
+              "semantics": "build_hash_then_stream_probe"
+            },
+            {
+              "path": ".0.0.0.0",
+              "semantics": "build_hash_then_stream_probe"
+            },
+            {
+              "path": ".0.0.0.0.0",
+              "semantics": "stream"
+            },
+            {
+              "path": ".0.0.0.0.1",
+              "semantics": "consume_input_then_produce"
+            },
+            {
+              "path": ".0.0.0.0.1.0",
+              "semantics": "stream"
+            },
+            {
+              "path": ".0.0.0.1",
+              "semantics": "consume_input_then_produce"
+            },
+            {
+              "path": ".0.0.0.1.0",
+              "semantics": "stream"
+            }
+          ],
+          "edges": [
+            {
+              "producer": ".0",
+              "consumer": "",
+              "relationship": "Outer",
+              "producer_semantics": "consume_input_then_produce"
+            },
+            {
+              "producer": ".0.0",
+              "consumer": ".0",
+              "relationship": "Outer",
+              "producer_semantics": "consume_input_then_produce"
+            },
+            {
+              "producer": ".0.0.0",
+              "consumer": ".0.0",
+              "relationship": "Outer",
+              "producer_semantics": "build_hash_then_stream_probe"
+            },
+            {
+              "producer": ".0.0.0.0",
+              "consumer": ".0.0.0",
+              "relationship": "Outer",
+              "producer_semantics": "build_hash_then_stream_probe"
+            },
+            {
+              "producer": ".0.0.0.0.0",
+              "consumer": ".0.0.0.0",
+              "relationship": "Outer",
+              "producer_semantics": "stream"
+            },
+            {
+              "producer": ".0.0.0.0.1",
+              "consumer": ".0.0.0.0",
+              "relationship": "Inner",
+              "producer_semantics": "consume_input_then_produce"
+            },
+            {
+              "producer": ".0.0.0.0.1.0",
+              "consumer": ".0.0.0.0.1",
+              "relationship": "Outer",
+              "producer_semantics": "stream"
+            },
+            {
+              "producer": ".0.0.0.1",
+              "consumer": ".0.0.0",
+              "relationship": "Inner",
+              "producer_semantics": "consume_input_then_produce"
+            },
+            {
+              "producer": ".0.0.0.1.0",
+              "consumer": ".0.0.0.1",
+              "relationship": "Outer",
+              "producer_semantics": "stream"
+            }
+          ],
+          "qualification": "execution dependency skeleton; CTE reuse/parameter dependencies and an actual resource-constrained scheduler are not yet implemented"
+        },
+        "node_types": {
+          "Limit": 1,
+          "Sort": 1,
+          "Aggregate": 1,
+          "Hash Join": 2,
+          "Seq Scan": 3,
+          "Hash": 2
+        },
+        "modes": {
+          "limit": 1,
+          "top_n_heap": 1,
+          "hash_aggregate_spill": 1,
+          "hash_join_inner": 2,
+          "sequential_scan": 3,
+          "hash_build": 2
+        },
+        "unsupported_operators": [],
+        "uncertainties": {
+          "session_work_mem_not_verified_operator_grant": 4,
+          "top_n_later_wider_tuples_can_exceed_initial_heap_estimate": 1,
+          "numeric_transition_can_grow_beyond_bi64": 1,
+          "hashagg_input_order_unknown_despite_frequency_evidence": 1,
+          "hashagg_spill_projection_width_not_measured": 1,
+          "hashagg_stored_group_projection_width_not_measured": 1,
+          "by_reference_aggregate_transition_payload_not_measured": 1,
+          "join_key_ndv_after_filters_and_correlations_unknown": 2
+        },
+        "logical_temp_estimate_complete": true,
+        "logical_temp_read_bytes_estimate": 49545216.0,
+        "logical_temp_write_bytes_estimate": 49283072.0,
+        "feature_qualification": "logical_temp_* features include modeled components only; an incomplete temp estimate must never be interpreted as zero total spill",
+        "structural_peak_upper_mib": 306.3328399658203,
+        "peak_qualification": "structural approximation, NOT a measured or certified safety bound",
+        "latency_seconds": null,
+        "physical_read_requests": null,
+        "physical_write_requests": null,
+        "status": "experimental_resource_estimate",
+        "qualification": "no per-query/family calibration; cardinality remains planner/statistics dependent; not production-qualified, not a physical IOPS or latency prediction",
+        "experimental_cardinality_input": {
+          "schema": "jmt.preexecution-cardinality-evidence/v1",
+          "database": "h5_tpch_sf10",
+          "rows": {
+            ".0.0.0": 2251000.0,
+            ".0.0.0.0": 2251000.0,
+            ".0.0.0.0.0": 2251000.0
+          },
+          "groups": {
+            ".0.0": 1488896.0
+          },
+          "items": [
+            {
+              "path": ".0.0",
+              "estimate": 1488896.0,
+              "kind": "G",
+              "source": "complete_group_sample_NOT_DeepDB",
+              "sample_profile": "group_shipping_full",
+              "sample_group_support": 1454,
+              "fact_grain": [
+                "lineitem.l_orderkey",
+                "lineitem.l_linenumber"
+              ],
+              "sampled_fact_rows": 2090,
+              "frequency_bins": 5,
+              "sampled_sampling_key_units": 1454,
+              "functional_dependency_keys_eliminated_in_statistics_only": []
+            },
+            {
+              "path": ".0.0.0",
+              "estimate": 2251000.0,
+              "kind": "N",
+              "source": "sample",
+              "model": "lineitem_ps",
+              "node_type": "Hash Join",
+              "sample_support": 2251,
+              "relations": [
+                "lineitem",
+                "part",
+                "supplier"
+              ],
+              "conditions": [
+                [
+                  "lineitem.l_shipdate",
+                  "<",
+                  "1995-05-09 00:00:00"
+                ],
+                [
+                  "lineitem.l_shipdate",
+                  ">=",
+                  "1995-02-09 00:00:00"
+                ]
+              ]
+            },
+            {
+              "path": ".0.0.0.0",
+              "estimate": 2251000.0,
+              "kind": "N",
+              "source": "sample",
+              "model": "lineitem_ps",
+              "node_type": "Hash Join",
+              "sample_support": 2251,
+              "relations": [
+                "lineitem",
+                "part"
+              ],
+              "conditions": [
+                [
+                  "lineitem.l_shipdate",
+                  "<",
+                  "1995-05-09 00:00:00"
+                ],
+                [
+                  "lineitem.l_shipdate",
+                  ">=",
+                  "1995-02-09 00:00:00"
+                ]
+              ]
+            },
+            {
+              "path": ".0.0.0.0.0",
+              "estimate": 2251000.0,
+              "kind": "N",
+              "source": "sample",
+              "model": "lineitem_oc",
+              "node_type": "Seq Scan",
+              "sample_support": 2251,
+              "relations": [
+                "lineitem"
+              ],
+              "conditions": [
+                [
+                  "lineitem.l_shipdate",
+                  "<",
+                  "1995-05-09 00:00:00"
+                ],
+                [
+                  "lineitem.l_shipdate",
+                  ">=",
+                  "1995-02-09 00:00:00"
+                ]
+              ]
+            }
+          ],
+          "abstentions": [],
+          "group_histograms": {
+            ".0.0": [
+              {
+                "jmt_n": 1.0,
+                "jmt_groups": 970752.0
+              },
+              {
+                "jmt_n": 2.0,
+                "jmt_groups": 399360.0
+              },
+              {
+                "jmt_n": 3.0,
+                "jmt_groups": 105472.0
+              },
+              {
+                "jmt_n": 4.0,
+                "jmt_groups": 12288.0
+              },
+              {
+                "jmt_n": 5.0,
+                "jmt_groups": 1024.0
+              }
+            ]
+          },
+          "sensitivity_ranges": {
+            ".0.0": {
+              "kind": "G",
+              "lower": 1410802.9912476155,
+              "upper": 1566989.0087523845,
+              "relative_probe_radius": 0.052450277757737605,
+              "qualification": "support-derived sensitivity scenario, NOT statistical confidence/safety bound"
+            },
+            ".0.0.0": {
+              "kind": "N",
+              "lower": 2138450.0,
+              "upper": 2363550.0,
+              "relative_probe_radius": 0.05,
+              "qualification": "support-derived sensitivity scenario, NOT statistical confidence/safety bound"
+            },
+            ".0.0.0.0": {
+              "kind": "N",
+              "lower": 2138450.0,
+              "upper": 2363550.0,
+              "relative_probe_radius": 0.05,
+              "qualification": "support-derived sensitivity scenario, NOT statistical confidence/safety bound"
+            },
+            ".0.0.0.0.0": {
+              "kind": "N",
+              "lower": 2138450.0,
+              "upper": 2363550.0,
+              "relative_probe_radius": 0.05,
+              "qualification": "support-derived sensitivity scenario, NOT statistical confidence/safety bound"
+            }
+          },
+          "certified_nested_loop_bindings": {},
+          "certified_scan_bindings": {
+            ".0.0.0.0.0": {
+              "relation": "lineitem",
+              "population_fact": "lineitem",
+              "predicate_scope_complete": true,
+              "metadata_sha256": "d3ac741a9b1f51f941ea249f4916faa9bcd31fa739bcef14ebc5c3334e01a6cc"
+            }
+          },
+          "certified_existence_bindings": {},
+          "input_quality_issues": [],
+          "uses_target_execution_labels": false,
+          "sensitivity_profile": {
+            "passes": 2,
+            "max_plan_nodes": 256,
+            "qualification": "scenario probe, not exhaustive bounds"
+          },
+          "scope": "guarded inner FK Hash/Nested Join + complete-key G/frequency; static benchmark"
+        },
+        "spill_input_guard": {
+          "schema": "jmt.spill-input-reliability/v1",
+          "status": "unvalidated_physical_slot_width",
+          "unbound_join_paths": [],
+          "unbound_group_paths": [],
+          "unbound_scan_paths": [],
+          "IO_magnitude_sensitive_paths": [],
+          "unvalidated_physical_slot_width_paths": [
+            ".0.0.0.0",
+            ".0.0.0.0.1"
+          ],
+          "input_quality_issues": [],
+          "sensitive_operator_paths": [],
+          "sensitivity_scenarios_NOT_bounds": [
+            {
+              "scenario": "lower",
+              "read_bytes": 44040192.0,
+              "write_bytes": 43778048.0
+            },
+            {
+              "scenario": "upper",
+              "read_bytes": 55050240.0,
+              "write_bytes": 54788096.0
+            }
+          ],
+          "sensitivity_passes": 2,
+          "trusted_zero": false,
+          "automatic_recommendation_qualified": false,
+          "safe_for_automatic_control": false,
+          "point_input_screen_passed": false,
+          "qualification": "Two global input perturbations, NOT confidence intervals, exhaustive extrema or physical memory safety. Base scan N, widths, grants remain unvalidated. Numeric provisional/fallback predictions must not be silently dropped from accuracy metrics."
+        },
+        "experimental_cardinality_effects": [
+          {
+            "path": ".0.0.0.0.0",
+            "node_type": "Seq Scan",
+            "before": 2376235.0,
+            "after": 2251000.0,
+            "source": "pre_execution_N"
+          },
+          {
+            "path": ".0.0.0.0",
+            "node_type": "Hash Join",
+            "before": 2376235.0,
+            "after": 2251000.0,
+            "source": "pre_execution_N"
+          },
+          {
+            "path": ".0.0.0",
+            "node_type": "Hash Join",
+            "before": 2376235.0,
+            "after": 2251000.0,
+            "source": "pre_execution_N"
+          },
+          {
+            "path": ".0.0",
+            "node_type": "Aggregate",
+            "before": 2376235.0,
+            "after": 1488896.0,
+            "source": "independent_complete_key_G"
+          },
+          {
+            "path": ".0",
+            "node_type": "Sort",
+            "before": 2376235.0,
+            "after": 1488896.0,
+            "source": "semantic_pass_through"
+          },
+          {
+            "path": "",
+            "node_type": "Limit",
+            "before": 100.0,
+            "after": 100.0,
+            "source": "limit_upper_bound"
+          }
+        ],
+        "release_schema": "jmt.ap-forecast/1.0.0rc4",
+        "reliability": {
+          "operator_coverage_complete": true,
+          "join_cardinality_independently_validated": false,
+          "join_nodes_requiring_input_validation": [
+            {
+              "path": ".0.0.0",
+              "node_type": "Hash Join"
+            },
+            {
+              "path": ".0.0.0.0",
+              "node_type": "Hash Join"
+            }
+          ],
+          "classification": "unvalidated_join_cardinality",
+          "qualification": "An implementation-complete numeric result is NOT a confidence interval, a safety guarantee or qualification for automatic WM recommendation."
+        },
+        "forecasted_at": "2026-11-11T06:45:35.390235+00:00",
+        "forecast_pipeline_schema": "huawei7.ap-light-cardinality/v1.1-experimental",
+        "uses_preflight_statistics": false,
+        "cardinality_evidence_status": "planner_only",
+        "automatic_recommendation_qualified": false,
+        "preflight_estimates": [],
+        "cardinality_propagation": [],
+        "light_cardinality_effects": [],
+        "dimension_evidence": [],
+        "group_occupancy_evidence": {},
+        "offline_group_frequency_evidence": {},
+        "offline_group_frequency_effects": [],
+        "offline_group_frequency_assumptions": [],
+        "unique_union_group_evidence": {},
+        "unique_union_group_effects": [],
+        "joint_synopsis_evidence": null,
+        "joint_cardinality_effects": [],
+        "sql_metadata_available": true,
+        "expression_type_evidence": {
+          "schema": "huawei7.ap-expression-types/v1-experimental",
+          "available": true,
+          "scope_preparation_available": true,
+          "resolved_argument_expressions": {
+            "l.l_extendedprice": "numeric"
+          },
+          "unresolved_argument_expressions": [],
+          "qualification": "type-only bounded AST inference; no new row/NDV/width evidence"
+        },
+        "formula_compute_ms": 12.079997919499874,
+        "shared_preparation_ms": 37.341338116675615,
+        "forecast_qualification": "experimental logical temp buffer-equivalent bytes; no target runtime labels; a numeric estimate is not a certified accuracy or zero-spill guarantee"
+      }
+    }
+  ],
+  "automatic_recommendation_qualified": false,
+  "physical_request_prediction": null,
+  "ap_runtime_prediction_seconds": null,
+  "physical_memory_safety_qualified": false,
+  "qualification": "Experimental logical temp IO only. No database call, target observation, fake clock, TTL extension or five-stage control in this entrypoint."
+}

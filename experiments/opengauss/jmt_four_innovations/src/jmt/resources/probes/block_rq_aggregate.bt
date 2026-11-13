@@ -1,0 +1,72 @@
+#!/usr/bin/env bpftrace
+
+/* Low-overhead request/service-time calibration for one target block device.
+ * Invoke with Linux new_encode_dev(dev_t), computed by huawei7.block_trace.
+ * Request collisions and unmatched completions are emitted as quality gates.
+ */
+
+BEGIN
+{
+    printf("# HUAWEI7_BLOCK_AGGREGATE_V1 target_dev=%llu\n", $1);
+}
+
+tracepoint:block:block_rq_issue
+/args->dev == (uint32)$1/
+{
+    if (@started[args->sector, args->nr_sector]) {
+        @collisions = count();
+    }
+    @started[args->sector, args->nr_sector] = nsecs;
+    @issuer[args->sector, args->nr_sector] = tid;
+    /* Linux 5.4 tracepoint format: rwbs[8] is at context offset 32.
+     * bpftrace 0.9.4 exposes it as a display string but cannot index it, so
+     * read the first byte of the tracepoint context (R=82, W=87).  doctor.py
+     * validates this offset against tracefs before a real run. */
+    $operation_byte = *(uint8*)((uint64)args + 32);
+    $is_write = $operation_byte == 87;
+    $is_read = $operation_byte == 82;
+    @operation[args->sector, args->nr_sector] = $is_write ? 2 : ($is_read ? 1 : 0);
+}
+
+tracepoint:block:block_rq_complete
+/args->dev == (uint32)$1/
+{
+    if (@started[args->sector, args->nr_sector]) {
+        $tid = @issuer[args->sector, args->nr_sector];
+        $operation = @operation[args->sector, args->nr_sector];
+        $latency_ns = nsecs - @started[args->sector, args->nr_sector];
+        if ($operation > 0) {
+            $write = $operation - 1;
+            @count[$tid, $write] = count();
+            @bytes[$tid, $write] = sum(args->nr_sector * 512);
+            @latency_ns[$tid, $write] = sum($latency_ns);
+        }
+        delete(@started[args->sector, args->nr_sector]);
+        delete(@issuer[args->sector, args->nr_sector]);
+        delete(@operation[args->sector, args->nr_sector]);
+    } else {
+        @orphans = count();
+    }
+}
+
+interval:s:1
+{
+    printf("WINDOW,%llu\n", nsecs);
+    print(@count);
+    print(@bytes);
+    print(@latency_ns);
+    print(@collisions);
+    print(@orphans);
+    clear(@count);
+    clear(@bytes);
+    clear(@latency_ns);
+    clear(@collisions);
+    clear(@orphans);
+}
+
+END
+{
+    clear(@started);
+    clear(@issuer);
+    clear(@operation);
+}

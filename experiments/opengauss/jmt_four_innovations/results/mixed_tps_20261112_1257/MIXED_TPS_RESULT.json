@@ -1,0 +1,190 @@
+{
+  "schema": "jmt.real-five-stage-mixed-overlap-TPS/v1",
+  "created_at": "2026-11-12T13:06:46.688508+08:00",
+  "recommendation_sha256": "51eb63901869ca995fcd91fef3b9b72f4f4a0574953b8ef1460b23662a031971",
+  "rows": [
+    {
+      "stage": "S1",
+      "AP_queries": [
+        18
+      ],
+      "shared_buffers_mib": 2048,
+      "work_mem": [
+        [
+          18,
+          2048
+        ]
+      ],
+      "repeat_TPS": [
+        7295.55,
+        7208.0,
+        7197.85
+      ],
+      "observed_mean_TPS": 7233.8,
+      "observed_min_TPS": 7197.85,
+      "observed_max_TPS": 7295.55,
+      "observed_sample_std_TPS": 53.71733891398566,
+      "frozen_predicted_TPS": 7478.208600925653,
+      "prediction_minus_actual_relative": 0.033787027693004026
+    },
+    {
+      "stage": "S2",
+      "AP_queries": [
+        18,
+        21
+      ],
+      "shared_buffers_mib": 2048,
+      "work_mem": [
+        [
+          18,
+          2048
+        ],
+        [
+          21,
+          512
+        ]
+      ],
+      "repeat_TPS": [
+        7205.4,
+        7236.95,
+        7187.65
+      ],
+      "observed_mean_TPS": 7210.0,
+      "observed_min_TPS": 7187.65,
+      "observed_max_TPS": 7236.95,
+      "observed_sample_std_TPS": 24.969831797591368,
+      "frozen_predicted_TPS": 7533.226458332687,
+      "prediction_minus_actual_relative": 0.04483029935266115
+    },
+    {
+      "stage": "S3",
+      "AP_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "shared_buffers_mib": 2048,
+      "work_mem": [
+        [
+          9,
+          2048
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          2048
+        ],
+        [
+          21,
+          512
+        ]
+      ],
+      "repeat_TPS": [
+        7081.8,
+        6589.55,
+        6881.5
+      ],
+      "observed_mean_TPS": 6850.95,
+      "observed_min_TPS": 6589.55,
+      "observed_max_TPS": 7081.8,
+      "observed_sample_std_TPS": 247.5429104216075,
+      "frozen_predicted_TPS": 7461.080914328246,
+      "prediction_minus_actual_relative": 0.08905785538184428
+    },
+    {
+      "stage": "S4",
+      "AP_queries": [
+        2,
+        9,
+        13,
+        18,
+        21
+      ],
+      "shared_buffers_mib": 2048,
+      "work_mem": [
+        [
+          2,
+          64
+        ],
+        [
+          9,
+          2048
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          2048
+        ],
+        [
+          21,
+          512
+        ]
+      ],
+      "repeat_TPS": [
+        6994.9,
+        6628.15,
+        6547.1
+      ],
+      "observed_mean_TPS": 6723.383333333333,
+      "observed_min_TPS": 6547.1,
+      "observed_max_TPS": 6994.9,
+      "observed_sample_std_TPS": 238.60689603054897,
+      "frozen_predicted_TPS": 7476.317315290867,
+      "prediction_minus_actual_relative": 0.11198736478769868
+    },
+    {
+      "stage": "S5",
+      "AP_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "shared_buffers_mib": 4096,
+      "work_mem": [
+        [
+          9,
+          2048
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          2048
+        ],
+        [
+          21,
+          512
+        ]
+      ],
+      "repeat_TPS": [
+        6944.35,
+        7073.25,
+        7065.25
+      ],
+      "observed_mean_TPS": 7027.616666666667,
+      "observed_min_TPS": 6944.35,
+      "observed_max_TPS": 7073.25,
+      "observed_sample_std_TPS": 72.22190341809957,
+      "frozen_predicted_TPS": 7290.760767541453,
+      "prediction_minus_actual_relative": 0.03744428778008468
+    }
+  ],
+  "TP_only_control_before_TPS": 7547.5,
+  "error": null,
+  "cleanup_errors": [],
+  "complete": true,
+  "restoration_verified": true,
+  "full_AP_lifecycle_validation": false,
+  "configuration_optimality_validated": false,
+  "automatic_recommendation_qualified": false
+}

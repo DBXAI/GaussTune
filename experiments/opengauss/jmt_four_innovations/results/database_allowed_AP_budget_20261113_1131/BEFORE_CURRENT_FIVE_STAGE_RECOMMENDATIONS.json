@@ -1,0 +1,42 @@
+{
+  "schema": "jmt.current-five-stage-evaluation-pointer/v2",
+  "created_at": "2026-11-13T00:19:57.385336+08:00",
+  "result": "results/innovation4_config_evaluation_20261112_2344/performance_v4/CONFIGURATION_EVALUATION.json",
+  "result_sha256": "9e129ee4d3c31fa2a4554dba81221a2d468405ee7a18415fa0d328f991dc67cd",
+  "report": "INNOVATION4_CURRENT.md",
+  "kind": "fixed-step3-config-evaluation_with_cache-path_and_measured-TP-baseline_cross-check",
+  "evaluated_primary_configurations": 70,
+  "measured_TP_baseline_cross_checks": 50,
+  "WM_reoptimized_by_step4": false,
+  "primary_cache_path_SB_sequence_mib": [
+    4096,
+    4096,
+    4096,
+    4096,
+    4096
+  ],
+  "measured_TP_baseline_cross_check_SB_sequence_mib": [
+    2048,
+    2048,
+    2048,
+    2048,
+    4096
+  ],
+  "single_unambiguous_TPS_optimum_verified": false,
+  "new_same_machine_fio_calibration": true,
+  "new_target_mixed_TPS_executions": false,
+  "automatic_recommendation_qualified": false,
+  "configuration_applied": false,
+  "source_AP_curves_pointer": "CURRENT_AP_SPILL_CURVES.json",
+  "source_step3_frontiers_pointer": "CURRENT_SB_SPILL_FRONTIER.json",
+  "source_memory_budget_pointer": "CURRENT_MEMORY_BUDGET.json",
+  "all_configurations_CSV": "results/innovation4_config_evaluation_20261112_2344/performance_v4/CONFIGURATION_COMPARISON.csv",
+  "measured_baseline_cross_check_CSV": "results/innovation4_config_evaluation_20261112_2344/performance_v4/MEASURED_TP_BASELINE_CROSS_CHECK.csv",
+  "frozen_replay_inputs": "results/innovation4_config_evaluation_20261112_2344/performance_v4/FROZEN_REPLAY_INPUTS.json",
+  "frozen_replay_inputs_sha256": "764cb6c1554f234f6b5b1060c8f300a9957ac384832fcd3a4668d4c9d6817add",
+  "historical_recommendation_result": "results/miss_plateau_20261112_1740/five_stage_bounded_v2/FIVE_STAGE_RECOMMENDATIONS.json",
+  "historical_recommendation_result_sha256": "256e68c22bc859c57dc51a5c0451d30f180438d941723945f9770f1d5d992143",
+  "not_a_continuous_deployable_schedule": true,
+  "historical_apply_scripts_must_not_consume_this_schema": true,
+  "new_end_to_end_TPS_evaluation_under_operator_and_machine_budget_contract_generated": true
+}

@@ -1,0 +1,28 @@
+test_duplicated_capacities_rejected (test_config_evaluation.CacheResponseTests) ... ok
+test_fit_identifiable_path_and_real_holdout (test_config_evaluation.CacheResponseTests) ... ok
+test_holdout_never_trains_coefficients (test_config_evaluation.CacheResponseTests) ... ok
+test_invalid_cache_partition_rejected (test_config_evaluation.CacheResponseTests) ... ok
+test_missing_training_split_rejected (test_config_evaluation.CacheResponseTests) ... ok
+test_no_OS_probability_variation_rejected (test_config_evaluation.CacheResponseTests) ... ok
+test_no_small_SB_extrapolation (test_config_evaluation.CacheResponseTests) ... ok
+test_no_unidentified_disk_path_change (test_config_evaluation.CacheResponseTests) ... ok
+test_varying_disk_is_not_silently_folded_into_intercept (test_config_evaluation.CacheResponseTests) ... ok
+test_P3_objective_not_TPS (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_SB_above_step1_upper_bound_rejected (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_TPS_identity_and_bounded_residual (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_engine_legal_WM_above_four_GiB_not_clipped (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_inconsistent_resource_IO_features_rejected (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_missing_plan_identity_rejected (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_no_future_cohort_injection (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_partial_spill_is_not_zero (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_plan_identity_mismatch_rejected (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_preserves_exact_step3_WMs_and_does_not_mutate_inputs (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_unknown_CPU_capacity_is_not_fake_TPS (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_unsupported_SB_explicitly_skipped_not_zero (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_wrong_aggregate_spill_rejected (test_config_evaluation.ConfigEvaluationTests) ... ok
+test_wrong_stage_topology_rejected (test_config_evaluation.ConfigEvaluationTests) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.064s
+
+OK

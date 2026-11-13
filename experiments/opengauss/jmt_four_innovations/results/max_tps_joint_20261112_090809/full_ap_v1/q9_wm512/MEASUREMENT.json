@@ -1,0 +1,3993 @@
+{
+  "status": "failed",
+  "statement_completed": false,
+  "wall_seconds": 789.459286588,
+  "cpu_seconds_consumed_before_failure": 496.513028301,
+  "error": "ConfigurationLimitExceeded: temporary file size exceeds temp_file_limit (16777216kB)\n",
+  "partial_result_is_not_full_query_latency": true,
+  "block_issue": {
+    "coverage": "foreground_issued",
+    "device": "/dev/nvme0n1",
+    "snapshot_before": {
+      "monotonic_ns": 2465879171508454,
+      "device_totals": {
+        "read_requests": 6,
+        "write_requests": 0,
+        "read_bytes": 151552,
+        "write_bytes": 0
+      },
+      "foreground_totals": {
+        "read_requests": 0,
+        "write_requests": 0,
+        "read_bytes": 0,
+        "write_bytes": 0
+      }
+    },
+    "snapshot_after": {
+      "monotonic_ns": 2466668632192502,
+      "device_totals": {
+        "read_requests": 896040,
+        "write_requests": 79645,
+        "read_bytes": 116179288064,
+        "write_bytes": 19126689792
+      },
+      "foreground_totals": {
+        "read_requests": 882720,
+        "write_requests": 0,
+        "read_bytes": 115549265920,
+        "write_bytes": 0
+      }
+    },
+    "query_lifecycle_complete": false,
+    "qualification": "Exact issuer-thread block ISSUE count; unowned/background writeback excluded.",
+    "read_requests": 882720,
+    "write_requests": 0,
+    "read_bytes": 115549265920,
+    "write_bytes": 0
+  },
+  "application_name": "jmt_ap_current_9457e5aa19",
+  "observer_scope": "foreground issued, whole-device separately visible; NOT lifecycle ownership",
+  "resource_samples": [
+    {
+      "monotonic_ns": 2465880172990849,
+      "free_disk_bytes": 40030826496,
+      "mem_available_bytes": 26667872256
+    },
+    {
+      "monotonic_ns": 2465881174210699,
+      "free_disk_bytes": 40030826496,
+      "mem_available_bytes": 26544168960
+    },
+    {
+      "monotonic_ns": 2465882175092310,
+      "free_disk_bytes": 40030826496,
+      "mem_available_bytes": 26414206976
+    },
+    {
+      "monotonic_ns": 2465883176309388,
+      "free_disk_bytes": 40030826496,
+      "mem_available_bytes": 26319048704
+    },
+    {
+      "monotonic_ns": 2465884177543572,
+      "free_disk_bytes": 40030826496,
+      "mem_available_bytes": 26227007488
+    },
+    {
+      "monotonic_ns": 2465885178394465,
+      "free_disk_bytes": 40030826496,
+      "mem_available_bytes": 26218188800
+    },
+    {
+      "monotonic_ns": 2465886179628739,
+      "free_disk_bytes": 39907520512,
+      "mem_available_bytes": 26217824256
+    },
+    {
+      "monotonic_ns": 2465887180855108,
+      "free_disk_bytes": 39871901696,
+      "mem_available_bytes": 26217480192
+    },
+    {
+      "monotonic_ns": 2465888181252681,
+      "free_disk_bytes": 39871901696,
+      "mem_available_bytes": 26217902080
+    },
+    {
+      "monotonic_ns": 2465889182448594,
+      "free_disk_bytes": 39871897600,
+      "mem_available_bytes": 26217754624
+    },
+    {
+      "monotonic_ns": 2465890183662546,
+      "free_disk_bytes": 39871893504,
+      "mem_available_bytes": 26217672704
+    },
+    {
+      "monotonic_ns": 2465891184910096,
+      "free_disk_bytes": 39871893504,
+      "mem_available_bytes": 26218500096
+    },
+    {
+      "monotonic_ns": 2465892185731102,
+      "free_disk_bytes": 39774040064,
+      "mem_available_bytes": 26217762816
+    },
+    {
+      "monotonic_ns": 2465893186899741,
+      "free_disk_bytes": 39731695616,
+      "mem_available_bytes": 26218483712
+    },
+    {
+      "monotonic_ns": 2465894188125773,
+      "free_disk_bytes": 39731695616,
+      "mem_available_bytes": 26221297664
+    },
+    {
+      "monotonic_ns": 2465895189348105,
+      "free_disk_bytes": 39731695616,
+      "mem_available_bytes": 26220740608
+    },
+    {
+      "monotonic_ns": 2465896190602219,
+      "free_disk_bytes": 39731691520,
+      "mem_available_bytes": 26220769280
+    },
+    {
+      "monotonic_ns": 2465897191191461,
+      "free_disk_bytes": 39731691520,
+      "mem_available_bytes": 26221133824
+    },
+    {
+      "monotonic_ns": 2465898192353451,
+      "free_disk_bytes": 39726530560,
+      "mem_available_bytes": 26221043712
+    },
+    {
+      "monotonic_ns": 2465899193583917,
+      "free_disk_bytes": 39591493632,
+      "mem_available_bytes": 26221260800
+    },
+    {
+      "monotonic_ns": 2465900194795198,
+      "free_disk_bytes": 39591493632,
+      "mem_available_bytes": 26222600192
+    },
+    {
+      "monotonic_ns": 2465901196027019,
+      "free_disk_bytes": 39591387136,
+      "mem_available_bytes": 26212712448
+    },
+    {
+      "monotonic_ns": 2465902197200576,
+      "free_disk_bytes": 39591387136,
+      "mem_available_bytes": 26211614720
+    },
+    {
+      "monotonic_ns": 2465903198419379,
+      "free_disk_bytes": 39591383040,
+      "mem_available_bytes": 26211950592
+    },
+    {
+      "monotonic_ns": 2465904199670518,
+      "free_disk_bytes": 39451185152,
+      "mem_available_bytes": 26211782656
+    },
+    {
+      "monotonic_ns": 2465905200254518,
+      "free_disk_bytes": 39451185152,
+      "mem_available_bytes": 26212368384
+    },
+    {
+      "monotonic_ns": 2465906201512455,
+      "free_disk_bytes": 39451185152,
+      "mem_available_bytes": 26212315136
+    },
+    {
+      "monotonic_ns": 2465907202748324,
+      "free_disk_bytes": 39451185152,
+      "mem_available_bytes": 26211618816
+    },
+    {
+      "monotonic_ns": 2465908204005843,
+      "free_disk_bytes": 39451185152,
+      "mem_available_bytes": 26211766272
+    },
+    {
+      "monotonic_ns": 2465909205255830,
+      "free_disk_bytes": 39316107264,
+      "mem_available_bytes": 26211192832
+    },
+    {
+      "monotonic_ns": 2465910206518226,
+      "free_disk_bytes": 39310987264,
+      "mem_available_bytes": 26211614720
+    },
+    {
+      "monotonic_ns": 2465911207739189,
+      "free_disk_bytes": 39310983168,
+      "mem_available_bytes": 26211520512
+    },
+    {
+      "monotonic_ns": 2465912208999171,
+      "free_disk_bytes": 39310983168,
+      "mem_available_bytes": 26211577856
+    },
+    {
+      "monotonic_ns": 2465913210242888,
+      "free_disk_bytes": 39310983168,
+      "mem_available_bytes": 26212392960
+    },
+    {
+      "monotonic_ns": 2465914211487078,
+      "free_disk_bytes": 39253737472,
+      "mem_available_bytes": 26212114432
+    },
+    {
+      "monotonic_ns": 2465915212183668,
+      "free_disk_bytes": 39170785280,
+      "mem_available_bytes": 26212298752
+    },
+    {
+      "monotonic_ns": 2465916213411524,
+      "free_disk_bytes": 39170785280,
+      "mem_available_bytes": 26211536896
+    },
+    {
+      "monotonic_ns": 2465917214691381,
+      "free_disk_bytes": 39170785280,
+      "mem_available_bytes": 26211745792
+    },
+    {
+      "monotonic_ns": 2465918215940500,
+      "free_disk_bytes": 39170785280,
+      "mem_available_bytes": 26211463168
+    },
+    {
+      "monotonic_ns": 2465919216285081,
+      "free_disk_bytes": 39170785280,
+      "mem_available_bytes": 26211463168
+    },
+    {
+      "monotonic_ns": 2465920217542690,
+      "free_disk_bytes": 39030587392,
+      "mem_available_bytes": 26210406400
+    },
+    {
+      "monotonic_ns": 2465921218755119,
+      "free_disk_bytes": 39030587392,
+      "mem_available_bytes": 26211012608
+    },
+    {
+      "monotonic_ns": 2465922220013402,
+      "free_disk_bytes": 39030587392,
+      "mem_available_bytes": 26210246656
+    },
+    {
+      "monotonic_ns": 2465923221246904,
+      "free_disk_bytes": 39030587392,
+      "mem_available_bytes": 26216366080
+    },
+    {
+      "monotonic_ns": 2465924222026953,
+      "free_disk_bytes": 39030587392,
+      "mem_available_bytes": 26216349696
+    },
+    {
+      "monotonic_ns": 2465925223250430,
+      "free_disk_bytes": 38890389504,
+      "mem_available_bytes": 26215989248
+    },
+    {
+      "monotonic_ns": 2465926224208845,
+      "free_disk_bytes": 38890389504,
+      "mem_available_bytes": 26216865792
+    },
+    {
+      "monotonic_ns": 2465927225433828,
+      "free_disk_bytes": 38890389504,
+      "mem_available_bytes": 26216873984
+    },
+    {
+      "monotonic_ns": 2465928226674562,
+      "free_disk_bytes": 38890389504,
+      "mem_available_bytes": 26216882176
+    },
+    {
+      "monotonic_ns": 2465929227860320,
+      "free_disk_bytes": 38890389504,
+      "mem_available_bytes": 26216890368
+    },
+    {
+      "monotonic_ns": 2465930229111058,
+      "free_disk_bytes": 38817968128,
+      "mem_available_bytes": 26216546304
+    },
+    {
+      "monotonic_ns": 2465931230194348,
+      "free_disk_bytes": 38750179328,
+      "mem_available_bytes": 26217480192
+    },
+    {
+      "monotonic_ns": 2465932231422402,
+      "free_disk_bytes": 38750179328,
+      "mem_available_bytes": 26217222144
+    },
+    {
+      "monotonic_ns": 2465933232018059,
+      "free_disk_bytes": 38750179328,
+      "mem_available_bytes": 26216706048
+    },
+    {
+      "monotonic_ns": 2465934233269465,
+      "free_disk_bytes": 38750179328,
+      "mem_available_bytes": 26215923712
+    },
+    {
+      "monotonic_ns": 2465935234416855,
+      "free_disk_bytes": 38750179328,
+      "mem_available_bytes": 26216472576
+    },
+    {
+      "monotonic_ns": 2465936235671220,
+      "free_disk_bytes": 38609981440,
+      "mem_available_bytes": 26216210432
+    },
+    {
+      "monotonic_ns": 2465937236917657,
+      "free_disk_bytes": 38609981440,
+      "mem_available_bytes": 26216243200
+    },
+    {
+      "monotonic_ns": 2465938237424274,
+      "free_disk_bytes": 38609981440,
+      "mem_available_bytes": 26216226816
+    },
+    {
+      "monotonic_ns": 2465939238263023,
+      "free_disk_bytes": 38609981440,
+      "mem_available_bytes": 26216259584
+    },
+    {
+      "monotonic_ns": 2465940239297254,
+      "free_disk_bytes": 38609981440,
+      "mem_available_bytes": 26216075264
+    },
+    {
+      "monotonic_ns": 2465941240532680,
+      "free_disk_bytes": 38469783552,
+      "mem_available_bytes": 26215616512
+    },
+    {
+      "monotonic_ns": 2465942241735937,
+      "free_disk_bytes": 38469783552,
+      "mem_available_bytes": 26215989248
+    },
+    {
+      "monotonic_ns": 2465943242117865,
+      "free_disk_bytes": 38469775360,
+      "mem_available_bytes": 26215755776
+    },
+    {
+      "monotonic_ns": 2465944243374709,
+      "free_disk_bytes": 38469775360,
+      "mem_available_bytes": 26221797376
+    },
+    {
+      "monotonic_ns": 2465945243869873,
+      "free_disk_bytes": 38469767168,
+      "mem_available_bytes": 26213511168
+    },
+    {
+      "monotonic_ns": 2465946244292302,
+      "free_disk_bytes": 38422286336,
+      "mem_available_bytes": 26212065280
+    },
+    {
+      "monotonic_ns": 2465947245247703,
+      "free_disk_bytes": 38329569280,
+      "mem_available_bytes": 26213572608
+    },
+    {
+      "monotonic_ns": 2465948246343262,
+      "free_disk_bytes": 38329569280,
+      "mem_available_bytes": 26213572608
+    },
+    {
+      "monotonic_ns": 2465949246875211,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26744385536
+    },
+    {
+      "monotonic_ns": 2465950248106369,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26729205760
+    },
+    {
+      "monotonic_ns": 2465951249332762,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26727251968
+    },
+    {
+      "monotonic_ns": 2465952250577691,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26724851712
+    },
+    {
+      "monotonic_ns": 2465953251820459,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26721734656
+    },
+    {
+      "monotonic_ns": 2465954252113055,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26718466048
+    },
+    {
+      "monotonic_ns": 2465955253382609,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26716155904
+    },
+    {
+      "monotonic_ns": 2465956254218457,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26711867392
+    },
+    {
+      "monotonic_ns": 2465957255446972,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26708889600
+    },
+    {
+      "monotonic_ns": 2465958256686106,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26706391040
+    },
+    {
+      "monotonic_ns": 2465959257912693,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26703622144
+    },
+    {
+      "monotonic_ns": 2465960259163905,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26700328960
+    },
+    {
+      "monotonic_ns": 2465961260415311,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26696925184
+    },
+    {
+      "monotonic_ns": 2465962261670427,
+      "free_disk_bytes": 38259154944,
+      "mem_available_bytes": 26694385664
+    },
+    {
+      "monotonic_ns": 2465963262530475,
+      "free_disk_bytes": 38259150848,
+      "mem_available_bytes": 26691317760
+    },
+    {
+      "monotonic_ns": 2465964263821101,
+      "free_disk_bytes": 38259150848,
+      "mem_available_bytes": 26688262144
+    },
+    {
+      "monotonic_ns": 2465965264284574,
+      "free_disk_bytes": 38259150848,
+      "mem_available_bytes": 26687168512
+    },
+    {
+      "monotonic_ns": 2465966265582625,
+      "free_disk_bytes": 38259150848,
+      "mem_available_bytes": 26664992768
+    },
+    {
+      "monotonic_ns": 2465967265949012,
+      "free_disk_bytes": 38259150848,
+      "mem_available_bytes": 26656432128
+    },
+    {
+      "monotonic_ns": 2465968267169905,
+      "free_disk_bytes": 38259150848,
+      "mem_available_bytes": 26648887296
+    },
+    {
+      "monotonic_ns": 2465969268267141,
+      "free_disk_bytes": 38259150848,
+      "mem_available_bytes": 26642821120
+    },
+    {
+      "monotonic_ns": 2465970269575027,
+      "free_disk_bytes": 38259150848,
+      "mem_available_bytes": 26634424320
+    },
+    {
+      "monotonic_ns": 2465971270815903,
+      "free_disk_bytes": 38259150848,
+      "mem_available_bytes": 26627362816
+    },
+    {
+      "monotonic_ns": 2465972272146041,
+      "free_disk_bytes": 38259150848,
+      "mem_available_bytes": 26620076032
+    },
+    {
+      "monotonic_ns": 2465973272864294,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26612649984
+    },
+    {
+      "monotonic_ns": 2465974274094542,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26605244416
+    },
+    {
+      "monotonic_ns": 2465975275317848,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26598555648
+    },
+    {
+      "monotonic_ns": 2465976276221281,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26591465472
+    },
+    {
+      "monotonic_ns": 2465977277446420,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26583875584
+    },
+    {
+      "monotonic_ns": 2465978278569960,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26576662528
+    },
+    {
+      "monotonic_ns": 2465979279839269,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26569281536
+    },
+    {
+      "monotonic_ns": 2465980281167080,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26562039808
+    },
+    {
+      "monotonic_ns": 2465981282402812,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26554978304
+    },
+    {
+      "monotonic_ns": 2465982283710508,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26548039680
+    },
+    {
+      "monotonic_ns": 2465983285026257,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26537033728
+    },
+    {
+      "monotonic_ns": 2465984286342439,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26531315712
+    },
+    {
+      "monotonic_ns": 2465985287585219,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26525720576
+    },
+    {
+      "monotonic_ns": 2465986288920030,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26519773184
+    },
+    {
+      "monotonic_ns": 2465987289952674,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26512572416
+    },
+    {
+      "monotonic_ns": 2465988290841785,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26505134080
+    },
+    {
+      "monotonic_ns": 2465989291533966,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26498162688
+    },
+    {
+      "monotonic_ns": 2465990292767372,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26491445248
+    },
+    {
+      "monotonic_ns": 2465991294024979,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26484346880
+    },
+    {
+      "monotonic_ns": 2465992295260597,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26477375488
+    },
+    {
+      "monotonic_ns": 2465993296521933,
+      "free_disk_bytes": 38259142656,
+      "mem_available_bytes": 26470596608
+    },
+    {
+      "monotonic_ns": 2465994297773937,
+      "free_disk_bytes": 38259130368,
+      "mem_available_bytes": 26462867456
+    },
+    {
+      "monotonic_ns": 2465995299003496,
+      "free_disk_bytes": 38259130368,
+      "mem_available_bytes": 26452877312
+    },
+    {
+      "monotonic_ns": 2465996300214345,
+      "free_disk_bytes": 38259130368,
+      "mem_available_bytes": 26446233600
+    },
+    {
+      "monotonic_ns": 2465997301516399,
+      "free_disk_bytes": 38259130368,
+      "mem_available_bytes": 26439208960
+    },
+    {
+      "monotonic_ns": 2465998302820227,
+      "free_disk_bytes": 38259122176,
+      "mem_available_bytes": 26430791680
+    },
+    {
+      "monotonic_ns": 2465999304095653,
+      "free_disk_bytes": 38259122176,
+      "mem_available_bytes": 26419044352
+    },
+    {
+      "monotonic_ns": 2466000304821960,
+      "free_disk_bytes": 38259122176,
+      "mem_available_bytes": 26411327488
+    },
+    {
+      "monotonic_ns": 2466001306047789,
+      "free_disk_bytes": 38259122176,
+      "mem_available_bytes": 26395037696
+    },
+    {
+      "monotonic_ns": 2466002307290244,
+      "free_disk_bytes": 38259122176,
+      "mem_available_bytes": 26389831680
+    },
+    {
+      "monotonic_ns": 2466003308494970,
+      "free_disk_bytes": 38259122176,
+      "mem_available_bytes": 26384797696
+    },
+    {
+      "monotonic_ns": 2466004309734996,
+      "free_disk_bytes": 38259122176,
+      "mem_available_bytes": 26384539648
+    },
+    {
+      "monotonic_ns": 2466005310959554,
+      "free_disk_bytes": 38259122176,
+      "mem_available_bytes": 26377064448
+    },
+    {
+      "monotonic_ns": 2466006312214877,
+      "free_disk_bytes": 38259122176,
+      "mem_available_bytes": 26370486272
+    },
+    {
+      "monotonic_ns": 2466007313479102,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26363531264
+    },
+    {
+      "monotonic_ns": 2466008314748746,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26355785728
+    },
+    {
+      "monotonic_ns": 2466009316014689,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26348445696
+    },
+    {
+      "monotonic_ns": 2466010317260887,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26340179968
+    },
+    {
+      "monotonic_ns": 2466011318496797,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26332024832
+    },
+    {
+      "monotonic_ns": 2466012319730602,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26324865024
+    },
+    {
+      "monotonic_ns": 2466013320299048,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26318737408
+    },
+    {
+      "monotonic_ns": 2466014321523248,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26311208960
+    },
+    {
+      "monotonic_ns": 2466015322755206,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26304499712
+    },
+    {
+      "monotonic_ns": 2466016323476035,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26297118720
+    },
+    {
+      "monotonic_ns": 2466017324710808,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26291257344
+    },
+    {
+      "monotonic_ns": 2466018325957469,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26284462080
+    },
+    {
+      "monotonic_ns": 2466019327181102,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26276843520
+    },
+    {
+      "monotonic_ns": 2466020327484847,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26268868608
+    },
+    {
+      "monotonic_ns": 2466021328736618,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26261872640
+    },
+    {
+      "monotonic_ns": 2466022329891220,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26254938112
+    },
+    {
+      "monotonic_ns": 2466023331140925,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26246823936
+    },
+    {
+      "monotonic_ns": 2466024332337412,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26240069632
+    },
+    {
+      "monotonic_ns": 2466025333432910,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26231975936
+    },
+    {
+      "monotonic_ns": 2466026333906166,
+      "free_disk_bytes": 38259118080,
+      "mem_available_bytes": 26224152576
+    },
+    {
+      "monotonic_ns": 2466027335160283,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26217652224
+    },
+    {
+      "monotonic_ns": 2466028335720355,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26210050048
+    },
+    {
+      "monotonic_ns": 2466029336958628,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26202660864
+    },
+    {
+      "monotonic_ns": 2466030338205599,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26195574784
+    },
+    {
+      "monotonic_ns": 2466031339452977,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26188320768
+    },
+    {
+      "monotonic_ns": 2466032340675087,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26180460544
+    },
+    {
+      "monotonic_ns": 2466033341900297,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26173161472
+    },
+    {
+      "monotonic_ns": 2466034343158252,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26165833728
+    },
+    {
+      "monotonic_ns": 2466035344385176,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26158473216
+    },
+    {
+      "monotonic_ns": 2466036345608276,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26151702528
+    },
+    {
+      "monotonic_ns": 2466037346834011,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26144391168
+    },
+    {
+      "monotonic_ns": 2466038348076245,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26137219072
+    },
+    {
+      "monotonic_ns": 2466039349323178,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26130132992
+    },
+    {
+      "monotonic_ns": 2466040350574763,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26125275136
+    },
+    {
+      "monotonic_ns": 2466041351817037,
+      "free_disk_bytes": 38259105792,
+      "mem_available_bytes": 26125574144
+    },
+    {
+      "monotonic_ns": 2466042352248566,
+      "free_disk_bytes": 38053249024,
+      "mem_available_bytes": 26124894208
+    },
+    {
+      "monotonic_ns": 2466043353512765,
+      "free_disk_bytes": 38053249024,
+      "mem_available_bytes": 26125045760
+    },
+    {
+      "monotonic_ns": 2466044354744111,
+      "free_disk_bytes": 38053249024,
+      "mem_available_bytes": 26124718080
+    },
+    {
+      "monotonic_ns": 2466045355974157,
+      "free_disk_bytes": 38053249024,
+      "mem_available_bytes": 26125066240
+    },
+    {
+      "monotonic_ns": 2466046357223614,
+      "free_disk_bytes": 38053249024,
+      "mem_available_bytes": 26125369344
+    },
+    {
+      "monotonic_ns": 2466047358450372,
+      "free_disk_bytes": 38053249024,
+      "mem_available_bytes": 26126114816
+    },
+    {
+      "monotonic_ns": 2466048359253362,
+      "free_disk_bytes": 38053249024,
+      "mem_available_bytes": 26125512704
+    },
+    {
+      "monotonic_ns": 2466049360491099,
+      "free_disk_bytes": 38053249024,
+      "mem_available_bytes": 26126929920
+    },
+    {
+      "monotonic_ns": 2466050361730583,
+      "free_disk_bytes": 38053249024,
+      "mem_available_bytes": 26126655488
+    },
+    {
+      "monotonic_ns": 2466051362973264,
+      "free_disk_bytes": 38053249024,
+      "mem_available_bytes": 26127749120
+    },
+    {
+      "monotonic_ns": 2466052364228590,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26128203776
+    },
+    {
+      "monotonic_ns": 2466053365453303,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26126966784
+    },
+    {
+      "monotonic_ns": 2466054366559502,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26125230080
+    },
+    {
+      "monotonic_ns": 2466055367684301,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26124808192
+    },
+    {
+      "monotonic_ns": 2466056368234344,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26126532608
+    },
+    {
+      "monotonic_ns": 2466057369446568,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26125897728
+    },
+    {
+      "monotonic_ns": 2466058370111841,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26125942784
+    },
+    {
+      "monotonic_ns": 2466059371348551,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26126319616
+    },
+    {
+      "monotonic_ns": 2466060372598626,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26125717504
+    },
+    {
+      "monotonic_ns": 2466061373827659,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26125606912
+    },
+    {
+      "monotonic_ns": 2466062374808323,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26125053952
+    },
+    {
+      "monotonic_ns": 2466063376045079,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26125524992
+    },
+    {
+      "monotonic_ns": 2466064377301590,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26125819904
+    },
+    {
+      "monotonic_ns": 2466065378557812,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26125553664
+    },
+    {
+      "monotonic_ns": 2466066379830789,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26125987840
+    },
+    {
+      "monotonic_ns": 2466067380833265,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26126372864
+    },
+    {
+      "monotonic_ns": 2466068382053692,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26126708736
+    },
+    {
+      "monotonic_ns": 2466069383301845,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26126155776
+    },
+    {
+      "monotonic_ns": 2466070384518387,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26127654912
+    },
+    {
+      "monotonic_ns": 2466071385748427,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26126950400
+    },
+    {
+      "monotonic_ns": 2466072386973551,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26126221312
+    },
+    {
+      "monotonic_ns": 2466073388236812,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26125873152
+    },
+    {
+      "monotonic_ns": 2466074389472220,
+      "free_disk_bytes": 38053240832,
+      "mem_available_bytes": 26127507456
+    },
+    {
+      "monotonic_ns": 2466075390739453,
+      "free_disk_bytes": 38053228544,
+      "mem_available_bytes": 26126204928
+    },
+    {
+      "monotonic_ns": 2466076391969965,
+      "free_disk_bytes": 38053228544,
+      "mem_available_bytes": 26126385152
+    },
+    {
+      "monotonic_ns": 2466077393194479,
+      "free_disk_bytes": 38053228544,
+      "mem_available_bytes": 26126229504
+    },
+    {
+      "monotonic_ns": 2466078394455398,
+      "free_disk_bytes": 38053228544,
+      "mem_available_bytes": 26125934592
+    },
+    {
+      "monotonic_ns": 2466079395721084,
+      "free_disk_bytes": 38053228544,
+      "mem_available_bytes": 26126082048
+    },
+    {
+      "monotonic_ns": 2466080396106383,
+      "free_disk_bytes": 38053228544,
+      "mem_available_bytes": 26125467648
+    },
+    {
+      "monotonic_ns": 2466081397344309,
+      "free_disk_bytes": 38053228544,
+      "mem_available_bytes": 26126442496
+    },
+    {
+      "monotonic_ns": 2466082398587504,
+      "free_disk_bytes": 38053228544,
+      "mem_available_bytes": 26126467072
+    },
+    {
+      "monotonic_ns": 2466083399844323,
+      "free_disk_bytes": 38053224448,
+      "mem_available_bytes": 26126016512
+    },
+    {
+      "monotonic_ns": 2466084401112933,
+      "free_disk_bytes": 38053224448,
+      "mem_available_bytes": 26124877824
+    },
+    {
+      "monotonic_ns": 2466085401515119,
+      "free_disk_bytes": 38053224448,
+      "mem_available_bytes": 26124439552
+    },
+    {
+      "monotonic_ns": 2466086402743935,
+      "free_disk_bytes": 38053224448,
+      "mem_available_bytes": 26125041664
+    },
+    {
+      "monotonic_ns": 2466087403964088,
+      "free_disk_bytes": 38053224448,
+      "mem_available_bytes": 26125283328
+    },
+    {
+      "monotonic_ns": 2466088404463162,
+      "free_disk_bytes": 38053224448,
+      "mem_available_bytes": 26125271040
+    },
+    {
+      "monotonic_ns": 2466089405695659,
+      "free_disk_bytes": 38053224448,
+      "mem_available_bytes": 26124959744
+    },
+    {
+      "monotonic_ns": 2466090406928308,
+      "free_disk_bytes": 38053224448,
+      "mem_available_bytes": 26125856768
+    },
+    {
+      "monotonic_ns": 2466091407991484,
+      "free_disk_bytes": 38053224448,
+      "mem_available_bytes": 26123952128
+    },
+    {
+      "monotonic_ns": 2466092408944497,
+      "free_disk_bytes": 38053224448,
+      "mem_available_bytes": 26124570624
+    },
+    {
+      "monotonic_ns": 2466093410195077,
+      "free_disk_bytes": 38053224448,
+      "mem_available_bytes": 26124320768
+    },
+    {
+      "monotonic_ns": 2466094411072502,
+      "free_disk_bytes": 38053212160,
+      "mem_available_bytes": 26124759040
+    },
+    {
+      "monotonic_ns": 2466095412106753,
+      "free_disk_bytes": 38053212160,
+      "mem_available_bytes": 26124439552
+    },
+    {
+      "monotonic_ns": 2466096413344364,
+      "free_disk_bytes": 38053212160,
+      "mem_available_bytes": 26124013568
+    },
+    {
+      "monotonic_ns": 2466097414221505,
+      "free_disk_bytes": 38053212160,
+      "mem_available_bytes": 26124345344
+    },
+    {
+      "monotonic_ns": 2466098415446322,
+      "free_disk_bytes": 38053208064,
+      "mem_available_bytes": 26123935744
+    },
+    {
+      "monotonic_ns": 2466099416245457,
+      "free_disk_bytes": 38053208064,
+      "mem_available_bytes": 26123874304
+    },
+    {
+      "monotonic_ns": 2466100416537245,
+      "free_disk_bytes": 38053208064,
+      "mem_available_bytes": 26122846208
+    },
+    {
+      "monotonic_ns": 2466101416799897,
+      "free_disk_bytes": 38053208064,
+      "mem_available_bytes": 26122784768
+    },
+    {
+      "monotonic_ns": 2466102417352171,
+      "free_disk_bytes": 38053208064,
+      "mem_available_bytes": 26122805248
+    },
+    {
+      "monotonic_ns": 2466103418579077,
+      "free_disk_bytes": 38053208064,
+      "mem_available_bytes": 26122354688
+    },
+    {
+      "monotonic_ns": 2466104419811081,
+      "free_disk_bytes": 38053208064,
+      "mem_available_bytes": 26122772480
+    },
+    {
+      "monotonic_ns": 2466105421078378,
+      "free_disk_bytes": 38053208064,
+      "mem_available_bytes": 26122928128
+    },
+    {
+      "monotonic_ns": 2466106422307773,
+      "free_disk_bytes": 38053208064,
+      "mem_available_bytes": 26122625024
+    },
+    {
+      "monotonic_ns": 2466107423530500,
+      "free_disk_bytes": 38053208064,
+      "mem_available_bytes": 26123755520
+    },
+    {
+      "monotonic_ns": 2466108424760662,
+      "free_disk_bytes": 38053208064,
+      "mem_available_bytes": 26124148736
+    },
+    {
+      "monotonic_ns": 2466109426017700,
+      "free_disk_bytes": 38053208064,
+      "mem_available_bytes": 26122792960
+    },
+    {
+      "monotonic_ns": 2466110426432585,
+      "free_disk_bytes": 37869395968,
+      "mem_available_bytes": 26128019456
+    },
+    {
+      "monotonic_ns": 2466111427667118,
+      "free_disk_bytes": 37869395968,
+      "mem_available_bytes": 26127953920
+    },
+    {
+      "monotonic_ns": 2466112428925631,
+      "free_disk_bytes": 37869395968,
+      "mem_available_bytes": 26128134144
+    },
+    {
+      "monotonic_ns": 2466113430020859,
+      "free_disk_bytes": 37869395968,
+      "mem_available_bytes": 26128318464
+    },
+    {
+      "monotonic_ns": 2466114431312077,
+      "free_disk_bytes": 37869395968,
+      "mem_available_bytes": 26128265216
+    },
+    {
+      "monotonic_ns": 2466115432569780,
+      "free_disk_bytes": 37869395968,
+      "mem_available_bytes": 26127720448
+    },
+    {
+      "monotonic_ns": 2466116433783838,
+      "free_disk_bytes": 37869395968,
+      "mem_available_bytes": 26127892480
+    },
+    {
+      "monotonic_ns": 2466117435018358,
+      "free_disk_bytes": 37869395968,
+      "mem_available_bytes": 26127851520
+    },
+    {
+      "monotonic_ns": 2466118435924057,
+      "free_disk_bytes": 37869395968,
+      "mem_available_bytes": 26128392192
+    },
+    {
+      "monotonic_ns": 2466119437204377,
+      "free_disk_bytes": 37869395968,
+      "mem_available_bytes": 26130698240
+    },
+    {
+      "monotonic_ns": 2466120438506433,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26130198528
+    },
+    {
+      "monotonic_ns": 2466121439779651,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26129408000
+    },
+    {
+      "monotonic_ns": 2466122441062715,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26129825792
+    },
+    {
+      "monotonic_ns": 2466123442323609,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26129403904
+    },
+    {
+      "monotonic_ns": 2466124443603314,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26130690048
+    },
+    {
+      "monotonic_ns": 2466125444290172,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26131005440
+    },
+    {
+      "monotonic_ns": 2466126445130906,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26131238912
+    },
+    {
+      "monotonic_ns": 2466127446346822,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26131013632
+    },
+    {
+      "monotonic_ns": 2466128447593837,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26130989056
+    },
+    {
+      "monotonic_ns": 2466129448876057,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26129965056
+    },
+    {
+      "monotonic_ns": 2466130450135573,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26130305024
+    },
+    {
+      "monotonic_ns": 2466131451380189,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26130120704
+    },
+    {
+      "monotonic_ns": 2466132451927120,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26129862656
+    },
+    {
+      "monotonic_ns": 2466133453024458,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26129620992
+    },
+    {
+      "monotonic_ns": 2466134454246776,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26130440192
+    },
+    {
+      "monotonic_ns": 2466135455476056,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26130542592
+    },
+    {
+      "monotonic_ns": 2466136456695643,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26129760256
+    },
+    {
+      "monotonic_ns": 2466137457951946,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26129887232
+    },
+    {
+      "monotonic_ns": 2466138459226556,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26130276352
+    },
+    {
+      "monotonic_ns": 2466139460224032,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26129059840
+    },
+    {
+      "monotonic_ns": 2466140461450525,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26130472960
+    },
+    {
+      "monotonic_ns": 2466141462161614,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26132344832
+    },
+    {
+      "monotonic_ns": 2466142463420064,
+      "free_disk_bytes": 37869391872,
+      "mem_available_bytes": 26131652608
+    },
+    {
+      "monotonic_ns": 2466143463874079,
+      "free_disk_bytes": 37869387776,
+      "mem_available_bytes": 26129768448
+    },
+    {
+      "monotonic_ns": 2466144464910531,
+      "free_disk_bytes": 37869387776,
+      "mem_available_bytes": 26129793024
+    },
+    {
+      "monotonic_ns": 2466145465375262,
+      "free_disk_bytes": 37869387776,
+      "mem_available_bytes": 26130415616
+    },
+    {
+      "monotonic_ns": 2466146466616603,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26127552512
+    },
+    {
+      "monotonic_ns": 2466147467865058,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26127110144
+    },
+    {
+      "monotonic_ns": 2466148468824649,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26124345344
+    },
+    {
+      "monotonic_ns": 2466149470084836,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26125381632
+    },
+    {
+      "monotonic_ns": 2466150471344746,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26124795904
+    },
+    {
+      "monotonic_ns": 2466151472599076,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26124775424
+    },
+    {
+      "monotonic_ns": 2466152473831730,
+      "free_disk_bytes": 37869264896,
+      "mem_available_bytes": 26124578816
+    },
+    {
+      "monotonic_ns": 2466153475041859,
+      "free_disk_bytes": 37869289472,
+      "mem_available_bytes": 26125684736
+    },
+    {
+      "monotonic_ns": 2466154476243345,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26126024704
+    },
+    {
+      "monotonic_ns": 2466155477117170,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26125463552
+    },
+    {
+      "monotonic_ns": 2466156477904833,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26126020608
+    },
+    {
+      "monotonic_ns": 2466157478319782,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26126782464
+    },
+    {
+      "monotonic_ns": 2466158479315691,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26127151104
+    },
+    {
+      "monotonic_ns": 2466159480558309,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26126655488
+    },
+    {
+      "monotonic_ns": 2466160481825433,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26128670720
+    },
+    {
+      "monotonic_ns": 2466161483093387,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26127945728
+    },
+    {
+      "monotonic_ns": 2466162484363062,
+      "free_disk_bytes": 37869359104,
+      "mem_available_bytes": 26128547840
+    },
+    {
+      "monotonic_ns": 2466163485245029,
+      "free_disk_bytes": 37869355008,
+      "mem_available_bytes": 26120482816
+    },
+    {
+      "monotonic_ns": 2466164486467574,
+      "free_disk_bytes": 37869355008,
+      "mem_available_bytes": 26112516096
+    },
+    {
+      "monotonic_ns": 2466165487683957,
+      "free_disk_bytes": 37869355008,
+      "mem_available_bytes": 26103402496
+    },
+    {
+      "monotonic_ns": 2466166488065714,
+      "free_disk_bytes": 37869355008,
+      "mem_available_bytes": 26092900352
+    },
+    {
+      "monotonic_ns": 2466167489320450,
+      "free_disk_bytes": 37869355008,
+      "mem_available_bytes": 26085982208
+    },
+    {
+      "monotonic_ns": 2466168490043933,
+      "free_disk_bytes": 37869355008,
+      "mem_available_bytes": 26077880320
+    },
+    {
+      "monotonic_ns": 2466169490354360,
+      "free_disk_bytes": 37869355008,
+      "mem_available_bytes": 26070020096
+    },
+    {
+      "monotonic_ns": 2466170490966137,
+      "free_disk_bytes": 37869355008,
+      "mem_available_bytes": 26061066240
+    },
+    {
+      "monotonic_ns": 2466171491749015,
+      "free_disk_bytes": 37869355008,
+      "mem_available_bytes": 26052841472
+    },
+    {
+      "monotonic_ns": 2466172493003643,
+      "free_disk_bytes": 37869355008,
+      "mem_available_bytes": 26044891136
+    },
+    {
+      "monotonic_ns": 2466173494051500,
+      "free_disk_bytes": 37869355008,
+      "mem_available_bytes": 26036908032
+    },
+    {
+      "monotonic_ns": 2466174494531308,
+      "free_disk_bytes": 37869346816,
+      "mem_available_bytes": 26035990528
+    },
+    {
+      "monotonic_ns": 2466175495754988,
+      "free_disk_bytes": 37869346816,
+      "mem_available_bytes": 26034507776
+    },
+    {
+      "monotonic_ns": 2466176496986305,
+      "free_disk_bytes": 37869346816,
+      "mem_available_bytes": 26034589696
+    },
+    {
+      "monotonic_ns": 2466177497687983,
+      "free_disk_bytes": 37869346816,
+      "mem_available_bytes": 26034425856
+    },
+    {
+      "monotonic_ns": 2466178498926922,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26034630656
+    },
+    {
+      "monotonic_ns": 2466179500168244,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26034151424
+    },
+    {
+      "monotonic_ns": 2466180501419199,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26033963008
+    },
+    {
+      "monotonic_ns": 2466181502743827,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26037964800
+    },
+    {
+      "monotonic_ns": 2466182504027389,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26037633024
+    },
+    {
+      "monotonic_ns": 2466183505260830,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26037678080
+    },
+    {
+      "monotonic_ns": 2466184506498524,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26038497280
+    },
+    {
+      "monotonic_ns": 2466185507717062,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26037538816
+    },
+    {
+      "monotonic_ns": 2466186508957043,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26036436992
+    },
+    {
+      "monotonic_ns": 2466187510221179,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26036641792
+    },
+    {
+      "monotonic_ns": 2466188511491314,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26037768192
+    },
+    {
+      "monotonic_ns": 2466189512723054,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26037293056
+    },
+    {
+      "monotonic_ns": 2466190513964453,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26037739520
+    },
+    {
+      "monotonic_ns": 2466191515200669,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26037616640
+    },
+    {
+      "monotonic_ns": 2466192516421704,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26037465088
+    },
+    {
+      "monotonic_ns": 2466193517673856,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26038718464
+    },
+    {
+      "monotonic_ns": 2466194518891060,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26037530624
+    },
+    {
+      "monotonic_ns": 2466195520143048,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26039554048
+    },
+    {
+      "monotonic_ns": 2466196521380303,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26039365632
+    },
+    {
+      "monotonic_ns": 2466197522416005,
+      "free_disk_bytes": 37685534720,
+      "mem_available_bytes": 26040135680
+    },
+    {
+      "monotonic_ns": 2466198523671271,
+      "free_disk_bytes": 37685522432,
+      "mem_available_bytes": 26038878208
+    },
+    {
+      "monotonic_ns": 2466199524910010,
+      "free_disk_bytes": 37685522432,
+      "mem_available_bytes": 26038931456
+    },
+    {
+      "monotonic_ns": 2466200525468211,
+      "free_disk_bytes": 37685522432,
+      "mem_available_bytes": 26038087680
+    },
+    {
+      "monotonic_ns": 2466201526728999,
+      "free_disk_bytes": 37685522432,
+      "mem_available_bytes": 26038767616
+    },
+    {
+      "monotonic_ns": 2466202527971594,
+      "free_disk_bytes": 37685522432,
+      "mem_available_bytes": 26038644736
+    },
+    {
+      "monotonic_ns": 2466203529224641,
+      "free_disk_bytes": 37685518336,
+      "mem_available_bytes": 26037669888
+    },
+    {
+      "monotonic_ns": 2466204530474297,
+      "free_disk_bytes": 37685518336,
+      "mem_available_bytes": 26037882880
+    },
+    {
+      "monotonic_ns": 2466205531720656,
+      "free_disk_bytes": 37685518336,
+      "mem_available_bytes": 26038329344
+    },
+    {
+      "monotonic_ns": 2466206532230675,
+      "free_disk_bytes": 37685518336,
+      "mem_available_bytes": 26038214656
+    },
+    {
+      "monotonic_ns": 2466207533494218,
+      "free_disk_bytes": 37685518336,
+      "mem_available_bytes": 26038923264
+    },
+    {
+      "monotonic_ns": 2466208534748185,
+      "free_disk_bytes": 37685518336,
+      "mem_available_bytes": 26038431744
+    },
+    {
+      "monotonic_ns": 2466209535977916,
+      "free_disk_bytes": 37685518336,
+      "mem_available_bytes": 26037997568
+    },
+    {
+      "monotonic_ns": 2466210537227571,
+      "free_disk_bytes": 37685518336,
+      "mem_available_bytes": 26039083008
+    },
+    {
+      "monotonic_ns": 2466211538466913,
+      "free_disk_bytes": 37685518336,
+      "mem_available_bytes": 26039369728
+    },
+    {
+      "monotonic_ns": 2466212539716725,
+      "free_disk_bytes": 37685514240,
+      "mem_available_bytes": 26039123968
+    },
+    {
+      "monotonic_ns": 2466213540938708,
+      "free_disk_bytes": 37685514240,
+      "mem_available_bytes": 26038870016
+    },
+    {
+      "monotonic_ns": 2466214542168628,
+      "free_disk_bytes": 37685514240,
+      "mem_available_bytes": 26038996992
+    },
+    {
+      "monotonic_ns": 2466215543414505,
+      "free_disk_bytes": 37685514240,
+      "mem_available_bytes": 26039328768
+    },
+    {
+      "monotonic_ns": 2466216544641980,
+      "free_disk_bytes": 37685514240,
+      "mem_available_bytes": 26038263808
+    },
+    {
+      "monotonic_ns": 2466217545137960,
+      "free_disk_bytes": 37685514240,
+      "mem_available_bytes": 26038362112
+    },
+    {
+      "monotonic_ns": 2466218546368500,
+      "free_disk_bytes": 37685514240,
+      "mem_available_bytes": 26039812096
+    },
+    {
+      "monotonic_ns": 2466219547590358,
+      "free_disk_bytes": 37685514240,
+      "mem_available_bytes": 26038976512
+    },
+    {
+      "monotonic_ns": 2466220548225022,
+      "free_disk_bytes": 37685501952,
+      "mem_available_bytes": 26039808000
+    },
+    {
+      "monotonic_ns": 2466221549482129,
+      "free_disk_bytes": 37685501952,
+      "mem_available_bytes": 26039345152
+    },
+    {
+      "monotonic_ns": 2466222550738082,
+      "free_disk_bytes": 37685501952,
+      "mem_available_bytes": 26038894592
+    },
+    {
+      "monotonic_ns": 2466223551970370,
+      "free_disk_bytes": 37685501952,
+      "mem_available_bytes": 26041712640
+    },
+    {
+      "monotonic_ns": 2466224552224904,
+      "free_disk_bytes": 37685501952,
+      "mem_available_bytes": 26042036224
+    },
+    {
+      "monotonic_ns": 2466225553473536,
+      "free_disk_bytes": 37685501952,
+      "mem_available_bytes": 26043994112
+    },
+    {
+      "monotonic_ns": 2466226554698847,
+      "free_disk_bytes": 37685501952,
+      "mem_available_bytes": 26044686336
+    },
+    {
+      "monotonic_ns": 2466227555941058,
+      "free_disk_bytes": 37685501952,
+      "mem_available_bytes": 26044837888
+    },
+    {
+      "monotonic_ns": 2466228556539654,
+      "free_disk_bytes": 37685501952,
+      "mem_available_bytes": 26044231680
+    },
+    {
+      "monotonic_ns": 2466229557800430,
+      "free_disk_bytes": 37685501952,
+      "mem_available_bytes": 26044329984
+    },
+    {
+      "monotonic_ns": 2466230559032236,
+      "free_disk_bytes": 37685501952,
+      "mem_available_bytes": 26047209472
+    },
+    {
+      "monotonic_ns": 2466231560282036,
+      "free_disk_bytes": 37685493760,
+      "mem_available_bytes": 26045034496
+    },
+    {
+      "monotonic_ns": 2466232561137652,
+      "free_disk_bytes": 37685493760,
+      "mem_available_bytes": 26042642432
+    },
+    {
+      "monotonic_ns": 2466233561521153,
+      "free_disk_bytes": 37685493760,
+      "mem_available_bytes": 26042359808
+    },
+    {
+      "monotonic_ns": 2466234562784614,
+      "free_disk_bytes": 37685493760,
+      "mem_available_bytes": 26039595008
+    },
+    {
+      "monotonic_ns": 2466235564025920,
+      "free_disk_bytes": 37685493760,
+      "mem_available_bytes": 26040176640
+    },
+    {
+      "monotonic_ns": 2466236565250598,
+      "free_disk_bytes": 37685493760,
+      "mem_available_bytes": 26039205888
+    },
+    {
+      "monotonic_ns": 2466237566685853,
+      "free_disk_bytes": 37685493760,
+      "mem_available_bytes": 26038046720
+    },
+    {
+      "monotonic_ns": 2466238567902716,
+      "free_disk_bytes": 37685489664,
+      "mem_available_bytes": 26036097024
+    },
+    {
+      "monotonic_ns": 2466239569156735,
+      "free_disk_bytes": 37685489664,
+      "mem_available_bytes": 26034860032
+    },
+    {
+      "monotonic_ns": 2466240570428880,
+      "free_disk_bytes": 37685489664,
+      "mem_available_bytes": 26034487296
+    },
+    {
+      "monotonic_ns": 2466241571378780,
+      "free_disk_bytes": 37685489664,
+      "mem_available_bytes": 26034515968
+    },
+    {
+      "monotonic_ns": 2466242572234405,
+      "free_disk_bytes": 37685489664,
+      "mem_available_bytes": 26036822016
+    },
+    {
+      "monotonic_ns": 2466243573474511,
+      "free_disk_bytes": 37685489664,
+      "mem_available_bytes": 26035650560
+    },
+    {
+      "monotonic_ns": 2466244574691067,
+      "free_disk_bytes": 37685489664,
+      "mem_available_bytes": 26036969472
+    },
+    {
+      "monotonic_ns": 2466245575934928,
+      "free_disk_bytes": 37685489664,
+      "mem_available_bytes": 26037501952
+    },
+    {
+      "monotonic_ns": 2466246576251501,
+      "free_disk_bytes": 37685489664,
+      "mem_available_bytes": 26036707328
+    },
+    {
+      "monotonic_ns": 2466247577485527,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26037055488
+    },
+    {
+      "monotonic_ns": 2466248578565833,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036211712
+    },
+    {
+      "monotonic_ns": 2466249579800345,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035462144
+    },
+    {
+      "monotonic_ns": 2466250580730861,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035994624
+    },
+    {
+      "monotonic_ns": 2466251581203485,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036363264
+    },
+    {
+      "monotonic_ns": 2466252582460096,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035855360
+    },
+    {
+      "monotonic_ns": 2466253583685737,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035888128
+    },
+    {
+      "monotonic_ns": 2466254584307460,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035810304
+    },
+    {
+      "monotonic_ns": 2466255585535904,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036011008
+    },
+    {
+      "monotonic_ns": 2466256586766623,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036289536
+    },
+    {
+      "monotonic_ns": 2466257588016949,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26037460992
+    },
+    {
+      "monotonic_ns": 2466258589263380,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26037612544
+    },
+    {
+      "monotonic_ns": 2466259589859028,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26037645312
+    },
+    {
+      "monotonic_ns": 2466260591089448,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036551680
+    },
+    {
+      "monotonic_ns": 2466261592244638,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036424704
+    },
+    {
+      "monotonic_ns": 2466262593471884,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035625984
+    },
+    {
+      "monotonic_ns": 2466263594710858,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26034372608
+    },
+    {
+      "monotonic_ns": 2466264595937472,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26034130944
+    },
+    {
+      "monotonic_ns": 2466265597155492,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26034544640
+    },
+    {
+      "monotonic_ns": 2466266598390621,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035560448
+    },
+    {
+      "monotonic_ns": 2466267599615437,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035781632
+    },
+    {
+      "monotonic_ns": 2466268600840488,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035568640
+    },
+    {
+      "monotonic_ns": 2466269602070214,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035544064
+    },
+    {
+      "monotonic_ns": 2466270603308298,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26034536448
+    },
+    {
+      "monotonic_ns": 2466271604536656,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26034360320
+    },
+    {
+      "monotonic_ns": 2466272605768394,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26034417664
+    },
+    {
+      "monotonic_ns": 2466273607003173,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26034049024
+    },
+    {
+      "monotonic_ns": 2466274608240886,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035421184
+    },
+    {
+      "monotonic_ns": 2466275609482536,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035646464
+    },
+    {
+      "monotonic_ns": 2466276610710992,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035245056
+    },
+    {
+      "monotonic_ns": 2466277611899857,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035650560
+    },
+    {
+      "monotonic_ns": 2466278612154853,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036187136
+    },
+    {
+      "monotonic_ns": 2466279613424628,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035597312
+    },
+    {
+      "monotonic_ns": 2466280614657419,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035044352
+    },
+    {
+      "monotonic_ns": 2466281615508123,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26033643520
+    },
+    {
+      "monotonic_ns": 2466282616770385,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26034630656
+    },
+    {
+      "monotonic_ns": 2466283617602006,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26034700288
+    },
+    {
+      "monotonic_ns": 2466284617941930,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26033471488
+    },
+    {
+      "monotonic_ns": 2466285619187481,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26034573312
+    },
+    {
+      "monotonic_ns": 2466286620447966,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26035961856
+    },
+    {
+      "monotonic_ns": 2466287621733218,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036641792
+    },
+    {
+      "monotonic_ns": 2466288622947836,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036748288
+    },
+    {
+      "monotonic_ns": 2466289624169437,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26038575104
+    },
+    {
+      "monotonic_ns": 2466290625390177,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26039226368
+    },
+    {
+      "monotonic_ns": 2466291625879419,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26038800384
+    },
+    {
+      "monotonic_ns": 2466292627124395,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26038235136
+    },
+    {
+      "monotonic_ns": 2466293628230989,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26038030336
+    },
+    {
+      "monotonic_ns": 2466294629499946,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26037907456
+    },
+    {
+      "monotonic_ns": 2466295630733468,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036027392
+    },
+    {
+      "monotonic_ns": 2466296631974200,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036559872
+    },
+    {
+      "monotonic_ns": 2466297632604390,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036953088
+    },
+    {
+      "monotonic_ns": 2466298633851085,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036867072
+    },
+    {
+      "monotonic_ns": 2466299635108522,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036944896
+    },
+    {
+      "monotonic_ns": 2466300636252041,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036039680
+    },
+    {
+      "monotonic_ns": 2466301637510458,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036568064
+    },
+    {
+      "monotonic_ns": 2466302638733708,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26036355072
+    },
+    {
+      "monotonic_ns": 2466303639968077,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26037977088
+    },
+    {
+      "monotonic_ns": 2466304641199620,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26039083008
+    },
+    {
+      "monotonic_ns": 2466305642423895,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26039226368
+    },
+    {
+      "monotonic_ns": 2466306643666445,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26039197696
+    },
+    {
+      "monotonic_ns": 2466307644883027,
+      "free_disk_bytes": 37501677568,
+      "mem_available_bytes": 26037919744
+    },
+    {
+      "monotonic_ns": 2466308645664091,
+      "free_disk_bytes": 37501673472,
+      "mem_available_bytes": 26038226944
+    },
+    {
+      "monotonic_ns": 2466309646921976,
+      "free_disk_bytes": 37501673472,
+      "mem_available_bytes": 26037493760
+    },
+    {
+      "monotonic_ns": 2466310648162450,
+      "free_disk_bytes": 37501673472,
+      "mem_available_bytes": 26035073024
+    },
+    {
+      "monotonic_ns": 2466311649425518,
+      "free_disk_bytes": 37501673472,
+      "mem_available_bytes": 26035552256
+    },
+    {
+      "monotonic_ns": 2466312650658342,
+      "free_disk_bytes": 37501673472,
+      "mem_available_bytes": 26035695616
+    },
+    {
+      "monotonic_ns": 2466313651910100,
+      "free_disk_bytes": 37501673472,
+      "mem_available_bytes": 26035675136
+    },
+    {
+      "monotonic_ns": 2466314652212920,
+      "free_disk_bytes": 37501673472,
+      "mem_available_bytes": 26035605504
+    },
+    {
+      "monotonic_ns": 2466315653477567,
+      "free_disk_bytes": 37324144640,
+      "mem_available_bytes": 26035884032
+    },
+    {
+      "monotonic_ns": 2466316654001455,
+      "free_disk_bytes": 37317869568,
+      "mem_available_bytes": 26036031488
+    },
+    {
+      "monotonic_ns": 2466317655224582,
+      "free_disk_bytes": 37317869568,
+      "mem_available_bytes": 26036793344
+    },
+    {
+      "monotonic_ns": 2466318656451702,
+      "free_disk_bytes": 37317869568,
+      "mem_available_bytes": 26036764672
+    },
+    {
+      "monotonic_ns": 2466319657703022,
+      "free_disk_bytes": 37317869568,
+      "mem_available_bytes": 26036740096
+    },
+    {
+      "monotonic_ns": 2466320658927187,
+      "free_disk_bytes": 37317869568,
+      "mem_available_bytes": 26037075968
+    },
+    {
+      "monotonic_ns": 2466321660175156,
+      "free_disk_bytes": 37317869568,
+      "mem_available_bytes": 26037227520
+    },
+    {
+      "monotonic_ns": 2466322661420112,
+      "free_disk_bytes": 37317869568,
+      "mem_available_bytes": 26037428224
+    },
+    {
+      "monotonic_ns": 2466323662647440,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26037366784
+    },
+    {
+      "monotonic_ns": 2466324663863515,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26037194752
+    },
+    {
+      "monotonic_ns": 2466325665085491,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26037178368
+    },
+    {
+      "monotonic_ns": 2466326666322219,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26036400128
+    },
+    {
+      "monotonic_ns": 2466327667582362,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26035056640
+    },
+    {
+      "monotonic_ns": 2466328668680352,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26035105792
+    },
+    {
+      "monotonic_ns": 2466329669928951,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26035458048
+    },
+    {
+      "monotonic_ns": 2466330671176382,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26035396608
+    },
+    {
+      "monotonic_ns": 2466331672401877,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26036142080
+    },
+    {
+      "monotonic_ns": 2466332673630048,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26037485568
+    },
+    {
+      "monotonic_ns": 2466333674877551,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26037248000
+    },
+    {
+      "monotonic_ns": 2466334676116612,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26038341632
+    },
+    {
+      "monotonic_ns": 2466335676625874,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26038431744
+    },
+    {
+      "monotonic_ns": 2466336677211025,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26038566912
+    },
+    {
+      "monotonic_ns": 2466337677498029,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26038353920
+    },
+    {
+      "monotonic_ns": 2466338678386527,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26036473856
+    },
+    {
+      "monotonic_ns": 2466339679640170,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26036645888
+    },
+    {
+      "monotonic_ns": 2466340680254741,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26035908608
+    },
+    {
+      "monotonic_ns": 2466341681480903,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26036396032
+    },
+    {
+      "monotonic_ns": 2466342682712134,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26042388480
+    },
+    {
+      "monotonic_ns": 2466343683935204,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26041065472
+    },
+    {
+      "monotonic_ns": 2466344685150127,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26040950784
+    },
+    {
+      "monotonic_ns": 2466345686381273,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26041536512
+    },
+    {
+      "monotonic_ns": 2466346687616329,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26041012224
+    },
+    {
+      "monotonic_ns": 2466347688218095,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26040963072
+    },
+    {
+      "monotonic_ns": 2466348689475917,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26040958976
+    },
+    {
+      "monotonic_ns": 2466349690714989,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26040872960
+    },
+    {
+      "monotonic_ns": 2466350691930115,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26041573376
+    },
+    {
+      "monotonic_ns": 2466351692193553,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26041282560
+    },
+    {
+      "monotonic_ns": 2466352693428552,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26041077760
+    },
+    {
+      "monotonic_ns": 2466353694681101,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26041147392
+    },
+    {
+      "monotonic_ns": 2466354695892365,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26041155584
+    },
+    {
+      "monotonic_ns": 2466355697114209,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26040610816
+    },
+    {
+      "monotonic_ns": 2466356698203363,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26041290752
+    },
+    {
+      "monotonic_ns": 2466357699437778,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26040889344
+    },
+    {
+      "monotonic_ns": 2466358700217977,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26041372672
+    },
+    {
+      "monotonic_ns": 2466359701438900,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26043232256
+    },
+    {
+      "monotonic_ns": 2466360702681477,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26042937344
+    },
+    {
+      "monotonic_ns": 2466361703839192,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26044129280
+    },
+    {
+      "monotonic_ns": 2466362705064218,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26045071360
+    },
+    {
+      "monotonic_ns": 2466363705335730,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26046033920
+    },
+    {
+      "monotonic_ns": 2466364706590435,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26045984768
+    },
+    {
+      "monotonic_ns": 2466365707828058,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26045853696
+    },
+    {
+      "monotonic_ns": 2466366708726262,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26045157376
+    },
+    {
+      "monotonic_ns": 2466367709952235,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26045296640
+    },
+    {
+      "monotonic_ns": 2466368710812779,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26045374464
+    },
+    {
+      "monotonic_ns": 2466369711951006,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26045534208
+    },
+    {
+      "monotonic_ns": 2466370712604361,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26045157376
+    },
+    {
+      "monotonic_ns": 2466371713836193,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26044280832
+    },
+    {
+      "monotonic_ns": 2466372715058957,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26044526592
+    },
+    {
+      "monotonic_ns": 2466373716315439,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26043416576
+    },
+    {
+      "monotonic_ns": 2466374717564337,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26042941440
+    },
+    {
+      "monotonic_ns": 2466375718802368,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26043019264
+    },
+    {
+      "monotonic_ns": 2466376719994564,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26043711488
+    },
+    {
+      "monotonic_ns": 2466377721244468,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26043809792
+    },
+    {
+      "monotonic_ns": 2466378722488580,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26044321792
+    },
+    {
+      "monotonic_ns": 2466379723772566,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26043854848
+    },
+    {
+      "monotonic_ns": 2466380725044939,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26044588032
+    },
+    {
+      "monotonic_ns": 2466381726318573,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26043789312
+    },
+    {
+      "monotonic_ns": 2466382727623578,
+      "free_disk_bytes": 37317865472,
+      "mem_available_bytes": 26042712064
+    },
+    {
+      "monotonic_ns": 2466383728897851,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26040815616
+    },
+    {
+      "monotonic_ns": 2466384730207097,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26040832000
+    },
+    {
+      "monotonic_ns": 2466385731490556,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26041372672
+    },
+    {
+      "monotonic_ns": 2466386732787046,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26041851904
+    },
+    {
+      "monotonic_ns": 2466387734109081,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042179584
+    },
+    {
+      "monotonic_ns": 2466388735419381,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042470400
+    },
+    {
+      "monotonic_ns": 2466389736290567,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26041061376
+    },
+    {
+      "monotonic_ns": 2466390737579572,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26040733696
+    },
+    {
+      "monotonic_ns": 2466391738886597,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26041835520
+    },
+    {
+      "monotonic_ns": 2466392740202750,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26041991168
+    },
+    {
+      "monotonic_ns": 2466393741517452,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042167296
+    },
+    {
+      "monotonic_ns": 2466394742796039,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26041790464
+    },
+    {
+      "monotonic_ns": 2466395744112248,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042261504
+    },
+    {
+      "monotonic_ns": 2466396745400515,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042519552
+    },
+    {
+      "monotonic_ns": 2466397746556106,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042990592
+    },
+    {
+      "monotonic_ns": 2466398747692925,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042761216
+    },
+    {
+      "monotonic_ns": 2466399748999898,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042822656
+    },
+    {
+      "monotonic_ns": 2466400750256786,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042265600
+    },
+    {
+      "monotonic_ns": 2466401751528548,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042376192
+    },
+    {
+      "monotonic_ns": 2466402752832819,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042298368
+    },
+    {
+      "monotonic_ns": 2466403754145496,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042376192
+    },
+    {
+      "monotonic_ns": 2466404755446911,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26043031552
+    },
+    {
+      "monotonic_ns": 2466405756752664,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042155008
+    },
+    {
+      "monotonic_ns": 2466406758040566,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042970112
+    },
+    {
+      "monotonic_ns": 2466407759374032,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042712064
+    },
+    {
+      "monotonic_ns": 2466408760677012,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26043072512
+    },
+    {
+      "monotonic_ns": 2466409761715616,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26043297792
+    },
+    {
+      "monotonic_ns": 2466410762626635,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042671104
+    },
+    {
+      "monotonic_ns": 2466411763872421,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042159104
+    },
+    {
+      "monotonic_ns": 2466412765107109,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042236928
+    },
+    {
+      "monotonic_ns": 2466413766328712,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042195968
+    },
+    {
+      "monotonic_ns": 2466414767553992,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26041868288
+    },
+    {
+      "monotonic_ns": 2466415768238844,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26041778176
+    },
+    {
+      "monotonic_ns": 2466416769511980,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042761216
+    },
+    {
+      "monotonic_ns": 2466417770784017,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26043011072
+    },
+    {
+      "monotonic_ns": 2466418771406512,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042834944
+    },
+    {
+      "monotonic_ns": 2466419772276114,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26043170816
+    },
+    {
+      "monotonic_ns": 2466420773545051,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042298368
+    },
+    {
+      "monotonic_ns": 2466421774825565,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042122240
+    },
+    {
+      "monotonic_ns": 2466422775760001,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042208256
+    },
+    {
+      "monotonic_ns": 2466423776811894,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042490880
+    },
+    {
+      "monotonic_ns": 2466424778069906,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042482688
+    },
+    {
+      "monotonic_ns": 2466425779367077,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042355712
+    },
+    {
+      "monotonic_ns": 2466426780283993,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042437632
+    },
+    {
+      "monotonic_ns": 2466427781580332,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26044657664
+    },
+    {
+      "monotonic_ns": 2466428782876945,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26044420096
+    },
+    {
+      "monotonic_ns": 2466429784132315,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26044477440
+    },
+    {
+      "monotonic_ns": 2466430785375878,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26043928576
+    },
+    {
+      "monotonic_ns": 2466431785847711,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26044063744
+    },
+    {
+      "monotonic_ns": 2466432787106257,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26044235776
+    },
+    {
+      "monotonic_ns": 2466433788360948,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042855424
+    },
+    {
+      "monotonic_ns": 2466434789626072,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042277888
+    },
+    {
+      "monotonic_ns": 2466435790835050,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26043219968
+    },
+    {
+      "monotonic_ns": 2466436791653948,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042937344
+    },
+    {
+      "monotonic_ns": 2466437792254163,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26042769408
+    },
+    {
+      "monotonic_ns": 2466438793543556,
+      "free_disk_bytes": 37134049280,
+      "mem_available_bytes": 26090627072
+    },
+    {
+      "monotonic_ns": 2466439794239549,
+      "free_disk_bytes": 36982849536,
+      "mem_available_bytes": 26608754688
+    },
+    {
+      "monotonic_ns": 2466440794820930,
+      "free_disk_bytes": 36982849536,
+      "mem_available_bytes": 26545410048
+    },
+    {
+      "monotonic_ns": 2466441796036950,
+      "free_disk_bytes": 36982849536,
+      "mem_available_bytes": 26483109888
+    },
+    {
+      "monotonic_ns": 2466442797286670,
+      "free_disk_bytes": 36982849536,
+      "mem_available_bytes": 26420211712
+    },
+    {
+      "monotonic_ns": 2466443798577895,
+      "free_disk_bytes": 36982849536,
+      "mem_available_bytes": 26357821440
+    },
+    {
+      "monotonic_ns": 2466444799824564,
+      "free_disk_bytes": 36982849536,
+      "mem_available_bytes": 26294849536
+    },
+    {
+      "monotonic_ns": 2466445801088606,
+      "free_disk_bytes": 36982849536,
+      "mem_available_bytes": 26231996416
+    },
+    {
+      "monotonic_ns": 2466446802358453,
+      "free_disk_bytes": 36982849536,
+      "mem_available_bytes": 26168070144
+    },
+    {
+      "monotonic_ns": 2466447803643780,
+      "free_disk_bytes": 36982849536,
+      "mem_available_bytes": 26105098240
+    },
+    {
+      "monotonic_ns": 2466448804945852,
+      "free_disk_bytes": 36776165376,
+      "mem_available_bytes": 26032865280
+    },
+    {
+      "monotonic_ns": 2466449806182189,
+      "free_disk_bytes": 36754259968,
+      "mem_available_bytes": 26033262592
+    },
+    {
+      "monotonic_ns": 2466450807424896,
+      "free_disk_bytes": 36732313600,
+      "mem_available_bytes": 26031071232
+    },
+    {
+      "monotonic_ns": 2466451808280642,
+      "free_disk_bytes": 36710326272,
+      "mem_available_bytes": 26032599040
+    },
+    {
+      "monotonic_ns": 2466452809568038,
+      "free_disk_bytes": 36688191488,
+      "mem_available_bytes": 26030776320
+    },
+    {
+      "monotonic_ns": 2466453810815882,
+      "free_disk_bytes": 36666245120,
+      "mem_available_bytes": 26030821376
+    },
+    {
+      "monotonic_ns": 2466454812038339,
+      "free_disk_bytes": 36644249600,
+      "mem_available_bytes": 26031316992
+    },
+    {
+      "monotonic_ns": 2466455813268521,
+      "free_disk_bytes": 36622352384,
+      "mem_available_bytes": 26030788608
+    },
+    {
+      "monotonic_ns": 2466456814508416,
+      "free_disk_bytes": 36600446976,
+      "mem_available_bytes": 26030723072
+    },
+    {
+      "monotonic_ns": 2466457815739527,
+      "free_disk_bytes": 36389601280,
+      "mem_available_bytes": 26031005696
+    },
+    {
+      "monotonic_ns": 2466458816970202,
+      "free_disk_bytes": 36356038656,
+      "mem_available_bytes": 26031144960
+    },
+    {
+      "monotonic_ns": 2466459818185890,
+      "free_disk_bytes": 36322557952,
+      "mem_available_bytes": 26030571520
+    },
+    {
+      "monotonic_ns": 2466460819429769,
+      "free_disk_bytes": 36289052672,
+      "mem_available_bytes": 26029965312
+    },
+    {
+      "monotonic_ns": 2466461820692533,
+      "free_disk_bytes": 36255465472,
+      "mem_available_bytes": 26029920256
+    },
+    {
+      "monotonic_ns": 2466462821937524,
+      "free_disk_bytes": 36221730816,
+      "mem_available_bytes": 26029944832
+    },
+    {
+      "monotonic_ns": 2466463823164670,
+      "free_disk_bytes": 36188209152,
+      "mem_available_bytes": 26029580288
+    },
+    {
+      "monotonic_ns": 2466464824390439,
+      "free_disk_bytes": 36154548224,
+      "mem_available_bytes": 26029780992
+    },
+    {
+      "monotonic_ns": 2466465825635553,
+      "free_disk_bytes": 36120887296,
+      "mem_available_bytes": 26030493696
+    },
+    {
+      "monotonic_ns": 2466466826876362,
+      "free_disk_bytes": 36087422976,
+      "mem_available_bytes": 26030415872
+    },
+    {
+      "monotonic_ns": 2466467828122053,
+      "free_disk_bytes": 36053950464,
+      "mem_available_bytes": 26031046656
+    },
+    {
+      "monotonic_ns": 2466468829369161,
+      "free_disk_bytes": 36020379648,
+      "mem_available_bytes": 26031001600
+    },
+    {
+      "monotonic_ns": 2466469830546873,
+      "free_disk_bytes": 35986669568,
+      "mem_available_bytes": 26028761088
+    },
+    {
+      "monotonic_ns": 2466470831556189,
+      "free_disk_bytes": 35953115136,
+      "mem_available_bytes": 26031108096
+    },
+    {
+      "monotonic_ns": 2466471832791797,
+      "free_disk_bytes": 35919675392,
+      "mem_available_bytes": 26030243840
+    },
+    {
+      "monotonic_ns": 2466472833777478,
+      "free_disk_bytes": 35886178304,
+      "mem_available_bytes": 26031828992
+    },
+    {
+      "monotonic_ns": 2466473834898134,
+      "free_disk_bytes": 35852574720,
+      "mem_available_bytes": 26029125632
+    },
+    {
+      "monotonic_ns": 2466474836080224,
+      "free_disk_bytes": 35818954752,
+      "mem_available_bytes": 26029780992
+    },
+    {
+      "monotonic_ns": 2466475837117473,
+      "free_disk_bytes": 35601915904,
+      "mem_available_bytes": 26029932544
+    },
+    {
+      "monotonic_ns": 2466476838322701,
+      "free_disk_bytes": 35562405888,
+      "mem_available_bytes": 26029301760
+    },
+    {
+      "monotonic_ns": 2466477838949636,
+      "free_disk_bytes": 38576398336,
+      "mem_available_bytes": 26027479040
+    },
+    {
+      "monotonic_ns": 2466478840209561,
+      "free_disk_bytes": 38408691712,
+      "mem_available_bytes": 26012512256
+    },
+    {
+      "monotonic_ns": 2466479841274447,
+      "free_disk_bytes": 38240944128,
+      "mem_available_bytes": 26012852224
+    },
+    {
+      "monotonic_ns": 2466480842070070,
+      "free_disk_bytes": 38072909824,
+      "mem_available_bytes": 26013106176
+    },
+    {
+      "monotonic_ns": 2466481843280793,
+      "free_disk_bytes": 37903777792,
+      "mem_available_bytes": 26013331456
+    },
+    {
+      "monotonic_ns": 2466482844211189,
+      "free_disk_bytes": 37855207424,
+      "mem_available_bytes": 26012192768
+    },
+    {
+      "monotonic_ns": 2466483845438340,
+      "free_disk_bytes": 37843902464,
+      "mem_available_bytes": 26012172288
+    },
+    {
+      "monotonic_ns": 2466484846655524,
+      "free_disk_bytes": 37831954432,
+      "mem_available_bytes": 26011746304
+    },
+    {
+      "monotonic_ns": 2466485847869559,
+      "free_disk_bytes": 37695336448,
+      "mem_available_bytes": 26011820032
+    },
+    {
+      "monotonic_ns": 2466486848222126,
+      "free_disk_bytes": 37544292352,
+      "mem_available_bytes": 26011918336
+    },
+    {
+      "monotonic_ns": 2466487849483647,
+      "free_disk_bytes": 37393682432,
+      "mem_available_bytes": 26011959296
+    },
+    {
+      "monotonic_ns": 2466488850737980,
+      "free_disk_bytes": 37243023360,
+      "mem_available_bytes": 26013491200
+    },
+    {
+      "monotonic_ns": 2466489851694785,
+      "free_disk_bytes": 37094060032,
+      "mem_available_bytes": 26012692480
+    },
+    {
+      "monotonic_ns": 2466490852946027,
+      "free_disk_bytes": 37067935744,
+      "mem_available_bytes": 26013294592
+    },
+    {
+      "monotonic_ns": 2466491854178491,
+      "free_disk_bytes": 37057064960,
+      "mem_available_bytes": 26012938240
+    },
+    {
+      "monotonic_ns": 2466492855407452,
+      "free_disk_bytes": 37047635968,
+      "mem_available_bytes": 26012831744
+    },
+    {
+      "monotonic_ns": 2466493856634482,
+      "free_disk_bytes": 36977758208,
+      "mem_available_bytes": 26012790784
+    },
+    {
+      "monotonic_ns": 2466494857669670,
+      "free_disk_bytes": 36826796032,
+      "mem_available_bytes": 26011549696
+    },
+    {
+      "monotonic_ns": 2466495858920701,
+      "free_disk_bytes": 36675956736,
+      "mem_available_bytes": 26011824128
+    },
+    {
+      "monotonic_ns": 2466496860186316,
+      "free_disk_bytes": 36525445120,
+      "mem_available_bytes": 26012409856
+    },
+    {
+      "monotonic_ns": 2466497861410293,
+      "free_disk_bytes": 36374540288,
+      "mem_available_bytes": 26012270592
+    },
+    {
+      "monotonic_ns": 2466498862642051,
+      "free_disk_bytes": 36278468608,
+      "mem_available_bytes": 26012192768
+    },
+    {
+      "monotonic_ns": 2466499863864070,
+      "free_disk_bytes": 36173160448,
+      "mem_available_bytes": 26013065216
+    },
+    {
+      "monotonic_ns": 2466500865082381,
+      "free_disk_bytes": 36112224256,
+      "mem_available_bytes": 26013675520
+    },
+    {
+      "monotonic_ns": 2466501866301462,
+      "free_disk_bytes": 36038246400,
+      "mem_available_bytes": 26013351936
+    },
+    {
+      "monotonic_ns": 2466502867522073,
+      "free_disk_bytes": 35945943040,
+      "mem_available_bytes": 26013773824
+    },
+    {
+      "monotonic_ns": 2466503868757421,
+      "free_disk_bytes": 35851997184,
+      "mem_available_bytes": 26013020160
+    },
+    {
+      "monotonic_ns": 2466504869476451,
+      "free_disk_bytes": 35842256896,
+      "mem_available_bytes": 26011238400
+    },
+    {
+      "monotonic_ns": 2466505870700662,
+      "free_disk_bytes": 35833376768,
+      "mem_available_bytes": 26012409856
+    },
+    {
+      "monotonic_ns": 2466506871935350,
+      "free_disk_bytes": 35822055424,
+      "mem_available_bytes": 26011951104
+    },
+    {
+      "monotonic_ns": 2466507872244099,
+      "free_disk_bytes": 35812126720,
+      "mem_available_bytes": 26011926528
+    },
+    {
+      "monotonic_ns": 2466508873488171,
+      "free_disk_bytes": 35800121344,
+      "mem_available_bytes": 26011836416
+    },
+    {
+      "monotonic_ns": 2466509874709423,
+      "free_disk_bytes": 35791126528,
+      "mem_available_bytes": 26011947008
+    },
+    {
+      "monotonic_ns": 2466510875575664,
+      "free_disk_bytes": 35780149248,
+      "mem_available_bytes": 26011828224
+    },
+    {
+      "monotonic_ns": 2466511876800861,
+      "free_disk_bytes": 35770540032,
+      "mem_available_bytes": 26012078080
+    },
+    {
+      "monotonic_ns": 2466512878019959,
+      "free_disk_bytes": 35761856512,
+      "mem_available_bytes": 26011357184
+    },
+    {
+      "monotonic_ns": 2466513879263678,
+      "free_disk_bytes": 35753910272,
+      "mem_available_bytes": 26011914240
+    },
+    {
+      "monotonic_ns": 2466514880226140,
+      "free_disk_bytes": 35741794304,
+      "mem_available_bytes": 26011942912
+    },
+    {
+      "monotonic_ns": 2466515881466189,
+      "free_disk_bytes": 35731161088,
+      "mem_available_bytes": 26012049408
+    },
+    {
+      "monotonic_ns": 2466516882697545,
+      "free_disk_bytes": 35721338880,
+      "mem_available_bytes": 26013446144
+    },
+    {
+      "monotonic_ns": 2466517883916201,
+      "free_disk_bytes": 35710492672,
+      "mem_available_bytes": 26013347840
+    },
+    {
+      "monotonic_ns": 2466518884213741,
+      "free_disk_bytes": 35695525888,
+      "mem_available_bytes": 26013773824
+    },
+    {
+      "monotonic_ns": 2466519885428867,
+      "free_disk_bytes": 35544797184,
+      "mem_available_bytes": 26014625792
+    },
+    {
+      "monotonic_ns": 2466520886657114,
+      "free_disk_bytes": 35394199552,
+      "mem_available_bytes": 26015576064
+    },
+    {
+      "monotonic_ns": 2466521887880787,
+      "free_disk_bytes": 35243245568,
+      "mem_available_bytes": 26016063488
+    },
+    {
+      "monotonic_ns": 2466522888228860,
+      "free_disk_bytes": 35094888448,
+      "mem_available_bytes": 26017484800
+    },
+    {
+      "monotonic_ns": 2466523889481177,
+      "free_disk_bytes": 34944376832,
+      "mem_available_bytes": 26016837632
+    },
+    {
+      "monotonic_ns": 2466524890718219,
+      "free_disk_bytes": 34793287680,
+      "mem_available_bytes": 26017505280
+    },
+    {
+      "monotonic_ns": 2466525891943509,
+      "free_disk_bytes": 34642960384,
+      "mem_available_bytes": 26016911360
+    },
+    {
+      "monotonic_ns": 2466526893178952,
+      "free_disk_bytes": 34491842560,
+      "mem_available_bytes": 26017615872
+    },
+    {
+      "monotonic_ns": 2466527894403805,
+      "free_disk_bytes": 34341388288,
+      "mem_available_bytes": 26017931264
+    },
+    {
+      "monotonic_ns": 2466528895621870,
+      "free_disk_bytes": 34191130624,
+      "mem_available_bytes": 26015993856
+    },
+    {
+      "monotonic_ns": 2466529896847210,
+      "free_disk_bytes": 34040078336,
+      "mem_available_bytes": 26016997376
+    },
+    {
+      "monotonic_ns": 2466530898067403,
+      "free_disk_bytes": 33889779712,
+      "mem_available_bytes": 26017296384
+    },
+    {
+      "monotonic_ns": 2466531899284349,
+      "free_disk_bytes": 33782067200,
+      "mem_available_bytes": 26020036608
+    },
+    {
+      "monotonic_ns": 2466532900507508,
+      "free_disk_bytes": 33776414720,
+      "mem_available_bytes": 26020429824
+    },
+    {
+      "monotonic_ns": 2466533901731504,
+      "free_disk_bytes": 33770688512,
+      "mem_available_bytes": 26020556800
+    },
+    {
+      "monotonic_ns": 2466534902942191,
+      "free_disk_bytes": 33763479552,
+      "mem_available_bytes": 26012217344
+    },
+    {
+      "monotonic_ns": 2466535904188934,
+      "free_disk_bytes": 33757843456,
+      "mem_available_bytes": 26012196864
+    },
+    {
+      "monotonic_ns": 2466536905415513,
+      "free_disk_bytes": 33752190976,
+      "mem_available_bytes": 26013773824
+    },
+    {
+      "monotonic_ns": 2466537906641936,
+      "free_disk_bytes": 33746751488,
+      "mem_available_bytes": 26013847552
+    },
+    {
+      "monotonic_ns": 2466538907338953,
+      "free_disk_bytes": 33740279808,
+      "mem_available_bytes": 26017583104
+    },
+    {
+      "monotonic_ns": 2466539908566091,
+      "free_disk_bytes": 33734103040,
+      "mem_available_bytes": 26017013760
+    },
+    {
+      "monotonic_ns": 2466540908983663,
+      "free_disk_bytes": 33725747200,
+      "mem_available_bytes": 26017447936
+    },
+    {
+      "monotonic_ns": 2466541910238403,
+      "free_disk_bytes": 33721053184,
+      "mem_available_bytes": 26017980416
+    },
+    {
+      "monotonic_ns": 2466542911470116,
+      "free_disk_bytes": 33712484352,
+      "mem_available_bytes": 26018217984
+    },
+    {
+      "monotonic_ns": 2466543911804113,
+      "free_disk_bytes": 33583075328,
+      "mem_available_bytes": 26019090432
+    },
+    {
+      "monotonic_ns": 2466544912566165,
+      "free_disk_bytes": 33432391680,
+      "mem_available_bytes": 26019577856
+    },
+    {
+      "monotonic_ns": 2466545912816246,
+      "free_disk_bytes": 33281740800,
+      "mem_available_bytes": 26017935360
+    },
+    {
+      "monotonic_ns": 2466546914042357,
+      "free_disk_bytes": 33131515904,
+      "mem_available_bytes": 26017861632
+    },
+    {
+      "monotonic_ns": 2466547914709247,
+      "free_disk_bytes": 32980594688,
+      "mem_available_bytes": 26017234944
+    },
+    {
+      "monotonic_ns": 2466548915924822,
+      "free_disk_bytes": 32829878272,
+      "mem_available_bytes": 26017308672
+    },
+    {
+      "monotonic_ns": 2466549917142414,
+      "free_disk_bytes": 32679628800,
+      "mem_available_bytes": 26014318592
+    },
+    {
+      "monotonic_ns": 2466550918361194,
+      "free_disk_bytes": 32528543744,
+      "mem_available_bytes": 26014928896
+    },
+    {
+      "monotonic_ns": 2466551919606092,
+      "free_disk_bytes": 32377876480,
+      "mem_available_bytes": 26014695424
+    },
+    {
+      "monotonic_ns": 2466552920226210,
+      "free_disk_bytes": 32227340288,
+      "mem_available_bytes": 26014580736
+    },
+    {
+      "monotonic_ns": 2466553920908781,
+      "free_disk_bytes": 32080654336,
+      "mem_available_bytes": 26015207424
+    },
+    {
+      "monotonic_ns": 2466554922125967,
+      "free_disk_bytes": 31929962496,
+      "mem_available_bytes": 26016055296
+    },
+    {
+      "monotonic_ns": 2466555923189768,
+      "free_disk_bytes": 31779459072,
+      "mem_available_bytes": 26015449088
+    },
+    {
+      "monotonic_ns": 2466556924440283,
+      "free_disk_bytes": 31628611584,
+      "mem_available_bytes": 26014539776
+    },
+    {
+      "monotonic_ns": 2466557925666256,
+      "free_disk_bytes": 31478517760,
+      "mem_available_bytes": 26016100352
+    },
+    {
+      "monotonic_ns": 2466558925979841,
+      "free_disk_bytes": 31327678464,
+      "mem_available_bytes": 26015662080
+    },
+    {
+      "monotonic_ns": 2466559927229641,
+      "free_disk_bytes": 31181869056,
+      "mem_available_bytes": 26015928320
+    },
+    {
+      "monotonic_ns": 2466560928452320,
+      "free_disk_bytes": 31101300736,
+      "mem_available_bytes": 26015916032
+    },
+    {
+      "monotonic_ns": 2466561929706823,
+      "free_disk_bytes": 31024775168,
+      "mem_available_bytes": 26016718848
+    },
+    {
+      "monotonic_ns": 2466562930957684,
+      "free_disk_bytes": 30948876288,
+      "mem_available_bytes": 26018144256
+    },
+    {
+      "monotonic_ns": 2466563932196011,
+      "free_disk_bytes": 30871465984,
+      "mem_available_bytes": 26017710080
+    },
+    {
+      "monotonic_ns": 2466564933120216,
+      "free_disk_bytes": 30808027136,
+      "mem_available_bytes": 26018840576
+    },
+    {
+      "monotonic_ns": 2466565934333626,
+      "free_disk_bytes": 30799466496,
+      "mem_available_bytes": 26018840576
+    },
+    {
+      "monotonic_ns": 2466566935562959,
+      "free_disk_bytes": 30788292608,
+      "mem_available_bytes": 26018545664
+    },
+    {
+      "monotonic_ns": 2466567936775633,
+      "free_disk_bytes": 30779092992,
+      "mem_available_bytes": 26018672640
+    },
+    {
+      "monotonic_ns": 2466568937991091,
+      "free_disk_bytes": 30768500736,
+      "mem_available_bytes": 26018848768
+    },
+    {
+      "monotonic_ns": 2466569939228273,
+      "free_disk_bytes": 30758891520,
+      "mem_available_bytes": 26019192832
+    },
+    {
+      "monotonic_ns": 2466570940236568,
+      "free_disk_bytes": 30745407488,
+      "mem_available_bytes": 26018377728
+    },
+    {
+      "monotonic_ns": 2466571941473418,
+      "free_disk_bytes": 30730776576,
+      "mem_available_bytes": 26018463744
+    },
+    {
+      "monotonic_ns": 2466572942006513,
+      "free_disk_bytes": 30719152128,
+      "mem_available_bytes": 26019434496
+    },
+    {
+      "monotonic_ns": 2466573943224494,
+      "free_disk_bytes": 30705225728,
+      "mem_available_bytes": 26019225600
+    },
+    {
+      "monotonic_ns": 2466574944437571,
+      "free_disk_bytes": 30696681472,
+      "mem_available_bytes": 26019442688
+    },
+    {
+      "monotonic_ns": 2466575945655483,
+      "free_disk_bytes": 30683705344,
+      "mem_available_bytes": 26019557376
+    },
+    {
+      "monotonic_ns": 2466576946910461,
+      "free_disk_bytes": 30673047552,
+      "mem_available_bytes": 26020143104
+    },
+    {
+      "monotonic_ns": 2466577948249551,
+      "free_disk_bytes": 30584999936,
+      "mem_available_bytes": 26019700736
+    },
+    {
+      "monotonic_ns": 2466578948530896,
+      "free_disk_bytes": 30434807808,
+      "mem_available_bytes": 26019340288
+    },
+    {
+      "monotonic_ns": 2466579949791360,
+      "free_disk_bytes": 30283878400,
+      "mem_available_bytes": 26019147776
+    },
+    {
+      "monotonic_ns": 2466580951034308,
+      "free_disk_bytes": 30133407744,
+      "mem_available_bytes": 26018820096
+    },
+    {
+      "monotonic_ns": 2466581952287073,
+      "free_disk_bytes": 29982560256,
+      "mem_available_bytes": 26019266560
+    },
+    {
+      "monotonic_ns": 2466582953533802,
+      "free_disk_bytes": 29831811072,
+      "mem_available_bytes": 26019115008
+    },
+    {
+      "monotonic_ns": 2466583954781192,
+      "free_disk_bytes": 29681831936,
+      "mem_available_bytes": 26018750464
+    },
+    {
+      "monotonic_ns": 2466584956047650,
+      "free_disk_bytes": 29531148288,
+      "mem_available_bytes": 26017927168
+    },
+    {
+      "monotonic_ns": 2466585957270197,
+      "free_disk_bytes": 29379964928,
+      "mem_available_bytes": 26017169408
+    },
+    {
+      "monotonic_ns": 2466586958491499,
+      "free_disk_bytes": 29229322240,
+      "mem_available_bytes": 26018295808
+    },
+    {
+      "monotonic_ns": 2466587959632375,
+      "free_disk_bytes": 29078892544,
+      "mem_available_bytes": 26017583104
+    },
+    {
+      "monotonic_ns": 2466588960255411,
+      "free_disk_bytes": 28928077824,
+      "mem_available_bytes": 26018004992
+    },
+    {
+      "monotonic_ns": 2466589961482862,
+      "free_disk_bytes": 28777394176,
+      "mem_available_bytes": 26016403456
+    },
+    {
+      "monotonic_ns": 2466590962714574,
+      "free_disk_bytes": 28626677760,
+      "mem_available_bytes": 26016604160
+    },
+    {
+      "monotonic_ns": 2466591963943946,
+      "free_disk_bytes": 28527521792,
+      "mem_available_bytes": 26016317440
+    },
+    {
+      "monotonic_ns": 2466592965168667,
+      "free_disk_bytes": 28441661440,
+      "mem_available_bytes": 26016075776
+    },
+    {
+      "monotonic_ns": 2466593966343584,
+      "free_disk_bytes": 28429250560,
+      "mem_available_bytes": 26015690752
+    },
+    {
+      "monotonic_ns": 2466594967580750,
+      "free_disk_bytes": 28418174976,
+      "mem_available_bytes": 26017214464
+    },
+    {
+      "monotonic_ns": 2466595968220690,
+      "free_disk_bytes": 28406673408,
+      "mem_available_bytes": 26016894976
+    },
+    {
+      "monotonic_ns": 2466596969454914,
+      "free_disk_bytes": 28395171840,
+      "mem_available_bytes": 26017054720
+    },
+    {
+      "monotonic_ns": 2466597970678149,
+      "free_disk_bytes": 28384296960,
+      "mem_available_bytes": 26016481280
+    },
+    {
+      "monotonic_ns": 2466598971317464,
+      "free_disk_bytes": 28374364160,
+      "mem_available_bytes": 26016706560
+    },
+    {
+      "monotonic_ns": 2466599972536782,
+      "free_disk_bytes": 28363689984,
+      "mem_available_bytes": 26016337920
+    },
+    {
+      "monotonic_ns": 2466600973759021,
+      "free_disk_bytes": 28350504960,
+      "mem_available_bytes": 26016518144
+    },
+    {
+      "monotonic_ns": 2466601975001901,
+      "free_disk_bytes": 28340895744,
+      "mem_available_bytes": 26016817152
+    },
+    {
+      "monotonic_ns": 2466602976258365,
+      "free_disk_bytes": 28332523520,
+      "mem_available_bytes": 26024738816
+    },
+    {
+      "monotonic_ns": 2466603977479208,
+      "free_disk_bytes": 28326248448,
+      "mem_available_bytes": 26026401792
+    },
+    {
+      "monotonic_ns": 2466604978698945,
+      "free_disk_bytes": 28319023104,
+      "mem_available_bytes": 26020999168
+    },
+    {
+      "monotonic_ns": 2466605979897022,
+      "free_disk_bytes": 28311580672,
+      "mem_available_bytes": 26024464384
+    },
+    {
+      "monotonic_ns": 2466606980200611,
+      "free_disk_bytes": 28303224832,
+      "mem_available_bytes": 26013806592
+    },
+    {
+      "monotonic_ns": 2466607981390839,
+      "free_disk_bytes": 28293484544,
+      "mem_available_bytes": 26009505792
+    },
+    {
+      "monotonic_ns": 2466608982584823,
+      "free_disk_bytes": 28160020480,
+      "mem_available_bytes": 25985421312
+    },
+    {
+      "monotonic_ns": 2466609983789706,
+      "free_disk_bytes": 28011479040,
+      "mem_available_bytes": 25983299584
+    },
+    {
+      "monotonic_ns": 2466610985050237,
+      "free_disk_bytes": 27860697088,
+      "mem_available_bytes": 25983152128
+    },
+    {
+      "monotonic_ns": 2466611986305037,
+      "free_disk_bytes": 27710423040,
+      "mem_available_bytes": 25988587520
+    },
+    {
+      "monotonic_ns": 2466612987541312,
+      "free_disk_bytes": 27561553920,
+      "mem_available_bytes": 26022916096
+    },
+    {
+      "monotonic_ns": 2466613988819377,
+      "free_disk_bytes": 27414798336,
+      "mem_available_bytes": 26024771584
+    },
+    {
+      "monotonic_ns": 2466614989256530,
+      "free_disk_bytes": 27263307776,
+      "mem_available_bytes": 26024349696
+    },
+    {
+      "monotonic_ns": 2466615990471137,
+      "free_disk_bytes": 27112828928,
+      "mem_available_bytes": 26024345600
+    },
+    {
+      "monotonic_ns": 2466616991691186,
+      "free_disk_bytes": 26963136512,
+      "mem_available_bytes": 26024538112
+    },
+    {
+      "monotonic_ns": 2466617992941160,
+      "free_disk_bytes": 26812059648,
+      "mem_available_bytes": 26024574976
+    },
+    {
+      "monotonic_ns": 2466618993236400,
+      "free_disk_bytes": 26661580800,
+      "mem_available_bytes": 26023993344
+    },
+    {
+      "monotonic_ns": 2466619994490756,
+      "free_disk_bytes": 26510987264,
+      "mem_available_bytes": 26028408832
+    },
+    {
+      "monotonic_ns": 2466620995750415,
+      "free_disk_bytes": 26360066048,
+      "mem_available_bytes": 26028953600
+    },
+    {
+      "monotonic_ns": 2466621996977057,
+      "free_disk_bytes": 26209587200,
+      "mem_available_bytes": 26028765184
+    },
+    {
+      "monotonic_ns": 2466622998195915,
+      "free_disk_bytes": 26060341248,
+      "mem_available_bytes": 26025820160
+    },
+    {
+      "monotonic_ns": 2466623999450468,
+      "free_disk_bytes": 25909837824,
+      "mem_available_bytes": 26016899072
+    },
+    {
+      "monotonic_ns": 2466625000675607,
+      "free_disk_bytes": 25771851776,
+      "mem_available_bytes": 26014507008
+    },
+    {
+      "monotonic_ns": 2466626001913902,
+      "free_disk_bytes": 25681604608,
+      "mem_available_bytes": 26017333248
+    },
+    {
+      "monotonic_ns": 2466627003170289,
+      "free_disk_bytes": 25600258048,
+      "mem_available_bytes": 26017763328
+    },
+    {
+      "monotonic_ns": 2466628004400628,
+      "free_disk_bytes": 25520181248,
+      "mem_available_bytes": 26019811328
+    },
+    {
+      "monotonic_ns": 2466629005620463,
+      "free_disk_bytes": 25439653888,
+      "mem_available_bytes": 26019008512
+    },
+    {
+      "monotonic_ns": 2466630006838316,
+      "free_disk_bytes": 25409794048,
+      "mem_available_bytes": 26019737600
+    },
+    {
+      "monotonic_ns": 2466631008088127,
+      "free_disk_bytes": 25397039104,
+      "mem_available_bytes": 26020073472
+    },
+    {
+      "monotonic_ns": 2466632009338231,
+      "free_disk_bytes": 25386897408,
+      "mem_available_bytes": 26020290560
+    },
+    {
+      "monotonic_ns": 2466633010557169,
+      "free_disk_bytes": 25376845824,
+      "mem_available_bytes": 26021351424
+    },
+    {
+      "monotonic_ns": 2466634011824639,
+      "free_disk_bytes": 25367957504,
+      "mem_available_bytes": 26021453824
+    },
+    {
+      "monotonic_ns": 2466635012237293,
+      "free_disk_bytes": 25356349440,
+      "mem_available_bytes": 26021376000
+    },
+    {
+      "monotonic_ns": 2466636013500198,
+      "free_disk_bytes": 25345380352,
+      "mem_available_bytes": 26021302272
+    },
+    {
+      "monotonic_ns": 2466637014714860,
+      "free_disk_bytes": 25336492032,
+      "mem_available_bytes": 26021163008
+    },
+    {
+      "monotonic_ns": 2466638015943249,
+      "free_disk_bytes": 25324056576,
+      "mem_available_bytes": 26021593088
+    },
+    {
+      "monotonic_ns": 2466639016215345,
+      "free_disk_bytes": 25314545664,
+      "mem_available_bytes": 26020433920
+    },
+    {
+      "monotonic_ns": 2466640017461284,
+      "free_disk_bytes": 25302528000,
+      "mem_available_bytes": 26020028416
+    },
+    {
+      "monotonic_ns": 2466641018672740,
+      "free_disk_bytes": 25292902400,
+      "mem_available_bytes": 26020143104
+    },
+    {
+      "monotonic_ns": 2466642019334378,
+      "free_disk_bytes": 25280958464,
+      "mem_available_bytes": 26019966976
+    },
+    {
+      "monotonic_ns": 2466643020584974,
+      "free_disk_bytes": 25270079488,
+      "mem_available_bytes": 26020057088
+    },
+    {
+      "monotonic_ns": 2466644021762020,
+      "free_disk_bytes": 25260347392,
+      "mem_available_bytes": 26020016128
+    },
+    {
+      "monotonic_ns": 2466645022994905,
+      "free_disk_bytes": 25165516800,
+      "mem_available_bytes": 26020524032
+    },
+    {
+      "monotonic_ns": 2466646024219119,
+      "free_disk_bytes": 25014620160,
+      "mem_available_bytes": 26020691968
+    },
+    {
+      "monotonic_ns": 2466647025429133,
+      "free_disk_bytes": 24863821824,
+      "mem_available_bytes": 26020724736
+    },
+    {
+      "monotonic_ns": 2466648026672442,
+      "free_disk_bytes": 24713711616,
+      "mem_available_bytes": 26020851712
+    },
+    {
+      "monotonic_ns": 2466649027885782,
+      "free_disk_bytes": 24562593792,
+      "mem_available_bytes": 26020904960
+    },
+    {
+      "monotonic_ns": 2466650028222768,
+      "free_disk_bytes": 24411979776,
+      "mem_available_bytes": 26020392960
+    },
+    {
+      "monotonic_ns": 2466651029482970,
+      "free_disk_bytes": 24261279744,
+      "mem_available_bytes": 26020573184
+    },
+    {
+      "monotonic_ns": 2466652030698327,
+      "free_disk_bytes": 24110817280,
+      "mem_available_bytes": 26020626432
+    },
+    {
+      "monotonic_ns": 2466653031973527,
+      "free_disk_bytes": 24059478016,
+      "mem_available_bytes": 26020880384
+    },
+    {
+      "monotonic_ns": 2466654033206420,
+      "free_disk_bytes": 24047714304,
+      "mem_available_bytes": 26022350848
+    },
+    {
+      "monotonic_ns": 2466655034257141,
+      "free_disk_bytes": 24038096896,
+      "mem_available_bytes": 26024382464
+    },
+    {
+      "monotonic_ns": 2466656035484663,
+      "free_disk_bytes": 24029429760,
+      "mem_available_bytes": 26025209856
+    },
+    {
+      "monotonic_ns": 2466657036735208,
+      "free_disk_bytes": 24019087360,
+      "mem_available_bytes": 26022305792
+    },
+    {
+      "monotonic_ns": 2466658037680618,
+      "free_disk_bytes": 24008970240,
+      "mem_available_bytes": 26022559744
+    },
+    {
+      "monotonic_ns": 2466659038272359,
+      "free_disk_bytes": 24000491520,
+      "mem_available_bytes": 26021748736
+    },
+    {
+      "monotonic_ns": 2466660039523950,
+      "free_disk_bytes": 23923806208,
+      "mem_available_bytes": 26023800832
+    },
+    {
+      "monotonic_ns": 2466661040745171,
+      "free_disk_bytes": 23773081600,
+      "mem_available_bytes": 26024763392
+    },
+    {
+      "monotonic_ns": 2466662041999972,
+      "free_disk_bytes": 23622938624,
+      "mem_available_bytes": 26023534592
+    },
+    {
+      "monotonic_ns": 2466663043254119,
+      "free_disk_bytes": 23472230400,
+      "mem_available_bytes": 26023333888
+    },
+    {
+      "monotonic_ns": 2466664043858585,
+      "free_disk_bytes": 23321972736,
+      "mem_available_bytes": 26023366656
+    },
+    {
+      "monotonic_ns": 2466665044903764,
+      "free_disk_bytes": 23164518400,
+      "mem_available_bytes": 26519445504
+    },
+    {
+      "monotonic_ns": 2466666045507748,
+      "free_disk_bytes": 23023370240,
+      "mem_available_bytes": 26456719360
+    },
+    {
+      "monotonic_ns": 2466667046564509,
+      "free_disk_bytes": 22902300672,
+      "mem_available_bytes": 26366042112
+    },
+    {
+      "monotonic_ns": 2466668047458516,
+      "free_disk_bytes": 25305141248,
+      "mem_available_bytes": 26662043648
+    }
+  ],
+  "cancellation_reason": null
+}

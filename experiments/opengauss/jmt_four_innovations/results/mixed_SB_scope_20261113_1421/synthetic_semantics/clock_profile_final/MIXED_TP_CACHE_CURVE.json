@@ -1,0 +1,147 @@
+{
+  "schema": "jmt.conditional-mixed-TP-cache-curve/v1",
+  "context": {
+    "stage": "synthetic-not-a-real-GiB-experiment",
+    "TP_topology": "toy",
+    "AP_profile_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  },
+  "curve": [
+    {
+      "shared_buffer_pages": 2,
+      "os_cache_pages": 50,
+      "sampled_shared_buffer_pages": 2,
+      "sampled_os_cache_pages": 50,
+      "p_sb": 0.0,
+      "p_os": 1.0,
+      "p_disk": 0.0,
+      "sampled_TP_accesses": 120,
+      "sampled_AP_accesses": 320,
+      "sampled_background_accesses": 0,
+      "TP_SB_misses": 120,
+      "TP_OS_hits": 120,
+      "TP_disk_misses": 0,
+      "measured_state_anomalies": 0,
+      "state_anomalies": [],
+      "trace_state_screen_passed": true
+    },
+    {
+      "shared_buffer_pages": 3,
+      "os_cache_pages": 50,
+      "sampled_shared_buffer_pages": 3,
+      "sampled_os_cache_pages": 50,
+      "p_sb": 0.23333333333333334,
+      "p_os": 0.7666666666666667,
+      "p_disk": 0.0,
+      "sampled_TP_accesses": 120,
+      "sampled_AP_accesses": 320,
+      "sampled_background_accesses": 0,
+      "TP_SB_misses": 92,
+      "TP_OS_hits": 92,
+      "TP_disk_misses": 0,
+      "measured_state_anomalies": 0,
+      "state_anomalies": [],
+      "trace_state_screen_passed": true
+    },
+    {
+      "shared_buffer_pages": 4,
+      "os_cache_pages": 50,
+      "sampled_shared_buffer_pages": 4,
+      "sampled_os_cache_pages": 50,
+      "p_sb": 0.5333333333333333,
+      "p_os": 0.4666666666666667,
+      "p_disk": 0.0,
+      "sampled_TP_accesses": 120,
+      "sampled_AP_accesses": 320,
+      "sampled_background_accesses": 0,
+      "TP_SB_misses": 56,
+      "TP_OS_hits": 56,
+      "TP_disk_misses": 0,
+      "measured_state_anomalies": 0,
+      "state_anomalies": [],
+      "trace_state_screen_passed": true
+    },
+    {
+      "shared_buffer_pages": 6,
+      "os_cache_pages": 50,
+      "sampled_shared_buffer_pages": 6,
+      "sampled_os_cache_pages": 50,
+      "p_sb": 1.0,
+      "p_os": 0.0,
+      "p_disk": 0.0,
+      "sampled_TP_accesses": 120,
+      "sampled_AP_accesses": 320,
+      "sampled_background_accesses": 0,
+      "TP_SB_misses": 0,
+      "TP_OS_hits": 0,
+      "TP_disk_misses": 0,
+      "measured_state_anomalies": 0,
+      "state_anomalies": [],
+      "trace_state_screen_passed": true
+    },
+    {
+      "shared_buffer_pages": 8,
+      "os_cache_pages": 50,
+      "sampled_shared_buffer_pages": 8,
+      "sampled_os_cache_pages": 50,
+      "p_sb": 1.0,
+      "p_os": 0.0,
+      "p_disk": 0.0,
+      "sampled_TP_accesses": 120,
+      "sampled_AP_accesses": 320,
+      "sampled_background_accesses": 0,
+      "TP_SB_misses": 0,
+      "TP_OS_hits": 0,
+      "TP_disk_misses": 0,
+      "measured_state_anomalies": 0,
+      "state_anomalies": [],
+      "trace_state_screen_passed": true
+    }
+  ],
+  "events_replayed": 1100,
+  "sample_ppm": 1000000,
+  "buffer_policy": "clock",
+  "candidate_lists": 1,
+  "startup_shared_buffer_pages": null,
+  "sampled_startup_shared_buffer_pages": null,
+  "ring_scale": 1.0,
+  "supplied_session_thread_ids": [],
+  "session_thread_evidence_completeness_checked": false,
+  "initial_cache_state": "empty, then supplied warmup events; no native snapshot seeded",
+  "sample_policy": "same spatial page hash for TP/AP; all selected-page state transitions required",
+  "spatial_sample_membership_checked_by_this_replayer": false,
+  "measured_workload_classes": [
+    "tp"
+  ],
+  "AP_accesses_mutate_shared_and_OS_cache": true,
+  "AP_working_set_GiB_offset_fitted": false,
+  "offline_replay_complexity": "O(cache_variants * sampled_events), bounded reference implementation",
+  "online_use": "precomputed profile lookup; new WM/plan/rate/phase outside profile requires revalidation",
+  "online_mixed_performance_evaluator_profile_ingestion_implemented": false,
+  "counterfactual_schedule_feedback_modeled": false,
+  "native_trace_loss_and_real_capacity_validation_still_required": true,
+  "profile_transfer_to_other_AP_WM_or_rates_qualified": false,
+  "mixed_hard_upper_bound_qualified": false,
+  "automatic_recommendation_qualified": false,
+  "created_at": "2026-11-13T14:41:28.443645+08:00",
+  "offline_compute_seconds": 0.034683967009186745,
+  "source_artifacts": [
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/mixed_SB_scope_20261113_1421/synthetic_semantics/MIXED_TRACE.csv.gz",
+      "sha256": "ce16e834fe6695a5c83168da00e06630c5cc38d5a13483c4b8d2a215bdade3e2"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/mixed_SB_scope_20261113_1421/synthetic_semantics/CONTEXT.json",
+      "sha256": "4560dd2199f1c8d34ca2d86de5e4090cad7bfc5d0f31006fe65c44e0f500b8ff"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/mixed_SB_scope_20261113_1421/synthetic_semantics/VARIANTS.json",
+      "sha256": "1c2ad36c5d7f57b5a6aa7fc9efdfbd04c3e7284543c1dd794790cc7891624320"
+    }
+  ],
+  "model_code_sha256": {
+    "tools/replay_mixed_cache_curve.py": "eee57506fca10b6e8e5d0f79ac43e7e78c714eb57276a1471084eff31cbe1468",
+    "src/jmt/innovation_1_cache/mixed_replay.py": "f28e3524e270ecb1762d4b6adbb379a60beb27c8d6cfb8329cdf3b9da206a762",
+    "src/jmt/innovation_1_cache/cache_replay.py": "93b6a3b405213332cbd84fd65589dcdcc51b69f099cd6fd4fad67ce581b0a7bb",
+    "src/jmt/innovation_1_cache/schema.py": "71717f9723c0749bae696d7f9b5d2b60f77e38a6b97c20d301dedf4b99b54685"
+  }
+}

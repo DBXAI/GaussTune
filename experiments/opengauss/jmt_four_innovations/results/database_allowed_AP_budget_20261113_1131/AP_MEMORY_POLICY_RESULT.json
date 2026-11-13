@@ -1,0 +1,90 @@
+{
+  "schema": "jmt.database-allowed-AP-memory-policy-evaluation/v1",
+  "created_at": "2026-11-13T11:42:36.262718+08:00",
+  "latest_budget_observation_at": "2026-11-13T11:39:47.922610+08:00",
+  "verified_database_work_mem_range_mib": [
+    1,
+    2097151
+  ],
+  "actually_accepted_session_SET_work_mem_mib": [
+    4096,
+    8192,
+    16384
+  ],
+  "WM_SET_maximum_is_not_actual_memory_grant": true,
+  "per_query_WM_was_not_previously_capped_at_six_GiB": true,
+  "corrected_component": "step3 default concurrent AP budget; step2 already used actual engine GUC range",
+  "default_planning_scenario": "database_configured",
+  "database_current_max_process_memory_mib": 20480,
+  "database_configured_SB_AP_planning_pool_mib": 15182,
+  "AP_planning_formula": "database_configured_SB_AP_pool_mib - candidate_SB_mib",
+  "fixed_AP_six_GiB_or_native_remainder_cap_used_in_primary_planning": false,
+  "explicit_TP_common_reserve_mib": 1861,
+  "native_protector_threshold_mib": 8850,
+  "conservative_protector_remainder_is_diagnostic_only_mib": 6989,
+  "SB_budget_examples": [
+    {
+      "SB_mib": 1024,
+      "AP_planning_budget_mib": 14158
+    },
+    {
+      "SB_mib": 2048,
+      "AP_planning_budget_mib": 13134
+    },
+    {
+      "SB_mib": 3072,
+      "AP_planning_budget_mib": 12110
+    },
+    {
+      "SB_mib": 4096,
+      "AP_planning_budget_mib": 11086
+    }
+  ],
+  "frozen_AP_curve_prepared_at": "2026-11-12T20:34:37.084125+08:00",
+  "frozen_replay_only": true,
+  "AP_statistics_refreshed_or_TTL_renewed": false,
+  "new_primary_points": 55,
+  "new_primary_points_requiring_native_quota_coordination": 55,
+  "new_best_SB_or_mixed_TPS_generated": false,
+  "old_all_four_GiB_conclusion_not_validated_under_new_policy": true,
+  "normal_expired_AP_planning_rejected": true,
+  "AP_allocation_or_full_query_execution_performed": false,
+  "configuration_applied_or_database_restarted": false,
+  "offline_regression": {
+    "tests_run": 711,
+    "failures": 0,
+    "errors": 0,
+    "log": "results/database_allowed_AP_budget_20261113_1131/ALL_TESTS_FINAL.log"
+  },
+  "main_budget": {
+    "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/database_allowed_AP_budget_20261113_1131/memory_final/MEMORY_BUDGET.json",
+    "sha256": "d68feb08cdb526be57b5f4a5a2c98ade7f1a75bdfdc3496526f5b0deeb4234c7"
+  },
+  "SET_probe": {
+    "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/database_allowed_AP_budget_20261113_1131/SET_probe/DATABASE_WM_SET_PROBE.json",
+    "sha256": "ee01650b00fdca2818ae7d5aaf75941181067362f311149521577809741d7f82"
+  },
+  "new_frozen_frontier": {
+    "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/database_allowed_AP_budget_20261113_1131/database_configured_frozen_frontier_final/SB_SPILL_FRONTIER.json",
+    "sha256": "77753dbc36021aec7ecd8412a83e91261db3a9503bec500edf6df75f6bbdcf8c"
+  },
+  "legacy_protector_diagnostic_frontier": {
+    "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/database_allowed_AP_budget_20261113_1131/native_protector_diagnostic_frozen_frontier_final/SB_SPILL_FRONTIER.json",
+    "sha256": "2ba33d6e83ca87946b97458e24de16a9a3692499a3453b1e3a1b4fc420f123d6"
+  },
+  "comparison_CSV": {
+    "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/database_allowed_AP_budget_20261113_1131/BUDGET_POLICY_COMPARISON.csv",
+    "sha256": "31860d0a5e74001d8547b58c358d08b4ffc29fcb7b8ce43b39e14a7dbc3beae6"
+  },
+  "independent_audits": [
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/database_allowed_AP_budget_20261113_1131/AUDIT_database_configured_UNPRUNED_FINAL.json",
+      "sha256": "b92a98e55ef1cc8e87c6687da6cd8757dae75d76b25f4c6f6fca46ddb5d9ae8d"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/database_allowed_AP_budget_20261113_1131/AUDIT_native_protector_diagnostic_UNPRUNED_FINAL.json",
+      "sha256": "40a49ed982c6769009ce22541d005430c385610beb521e281b66b5605cf499bf"
+    }
+  ],
+  "physical_memory_or_native_execution_safety_qualified": false
+}

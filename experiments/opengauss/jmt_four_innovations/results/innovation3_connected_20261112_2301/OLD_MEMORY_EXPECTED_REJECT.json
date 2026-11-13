@@ -1,0 +1,20 @@
+{
+  "exit_code": 1,
+  "expired_memory_rejected": true,
+  "no_frontier_exported": true,
+  "did_not_use_frozen_replay_to_mislabel_current": true,
+  "command": [
+    "/root/JMT_CARDINALITY_LAB_20261110/.venv/bin/python",
+    "tools/search_sb_spill_budgets.py",
+    "--spill-curves",
+    "results/operator_candidates_machine_budget_20261112_2025/operator_curves_v2/SPILL_CURVES.json",
+    "--tp-cache-boundary",
+    "results/miss_plateau_20261112_1740/boundary_v2/TP_CACHE_BOUNDARY.json",
+    "--tp-profile",
+    "current_16x1M_sysbench_readonly_omm_local_socket",
+    "--memory-budget",
+    "results/operator_candidates_machine_budget_20261112_2025/memory_v3/MEMORY_BUDGET.json",
+    "--out",
+    "results/innovation3_connected_20261112_2301/old_memory_expected_reject"
+  ]
+}

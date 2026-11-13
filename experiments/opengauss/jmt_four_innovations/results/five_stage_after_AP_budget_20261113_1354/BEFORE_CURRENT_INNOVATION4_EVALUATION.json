@@ -1,0 +1,43 @@
+{
+  "schema": "jmt.current-innovation4-evaluation-pointer/v1",
+  "created_at": "2026-11-13T00:19:57.385336+08:00",
+  "result": "results/innovation4_config_evaluation_20261112_2344/performance_v4/CONFIGURATION_EVALUATION.json",
+  "result_sha256": "9e129ee4d3c31fa2a4554dba81221a2d468405ee7a18415fa0d328f991dc67cd",
+  "report": "INNOVATION4_CURRENT.md",
+  "kind": "fixed-step3-config-evaluation_with_cache-path_and_measured-TP-baseline_cross-check",
+  "evaluated_primary_configurations": 70,
+  "measured_TP_baseline_cross_checks": 50,
+  "WM_reoptimized_by_step4": false,
+  "primary_cache_path_SB_sequence_mib": [
+    4096,
+    4096,
+    4096,
+    4096,
+    4096
+  ],
+  "measured_TP_baseline_cross_check_SB_sequence_mib": [
+    2048,
+    2048,
+    2048,
+    2048,
+    4096
+  ],
+  "single_unambiguous_TPS_optimum_verified": false,
+  "new_same_machine_fio_calibration": true,
+  "new_target_mixed_TPS_executions": false,
+  "automatic_recommendation_qualified": false,
+  "configuration_applied": false,
+  "source_AP_curves_pointer": "CURRENT_AP_SPILL_CURVES.json",
+  "source_step3_frontiers_pointer": "CURRENT_SB_SPILL_FRONTIER.json",
+  "source_memory_budget_pointer": "CURRENT_MEMORY_BUDGET.json",
+  "all_configurations_CSV": "results/innovation4_config_evaluation_20261112_2344/performance_v4/CONFIGURATION_COMPARISON.csv",
+  "measured_baseline_cross_check_CSV": "results/innovation4_config_evaluation_20261112_2344/performance_v4/MEASURED_TP_BASELINE_CROSS_CHECK.csv",
+  "frozen_replay_inputs": "results/innovation4_config_evaluation_20261112_2344/performance_v4/FROZEN_REPLAY_INPUTS.json",
+  "frozen_replay_inputs_sha256": "764cb6c1554f234f6b5b1060c8f300a9957ac384832fcd3a4668d4c9d6817add",
+  "budget_policy_superseded_on": "2026-11-13T11:42:36.262718+08:00",
+  "result_is_historical_under_previous_budget_policy": true,
+  "valid_as_current_recommendation_under_new_AP_policy": false,
+  "current_AP_memory_policy_pointer": "CURRENT_AP_MEMORY_POLICY.json",
+  "new_AP_statistics_and_end_to_end_evaluation_required": true,
+  "new_policy_frozen_budget_sensitivity_result": "results/database_allowed_AP_budget_20261113_1131/AP_MEMORY_POLICY_RESULT.json"
+}

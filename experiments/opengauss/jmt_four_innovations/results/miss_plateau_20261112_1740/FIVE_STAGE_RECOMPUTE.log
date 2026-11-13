@@ -1,0 +1,245 @@
+{
+  "stages": [
+    {
+      "stage": "S1",
+      "B_high_mib": 4096,
+      "selected": {
+        "shared_buffers_mb": 2048,
+        "work_mem": [
+          [
+            18,
+            2048
+          ]
+        ],
+        "ap_dynamic_peak_mb": 3430.2228622436523,
+        "ap_execution_seconds": 1063.5674159575167,
+        "ap_cpu_seconds_per_second": 0.6939232299757351,
+        "ap_read_iops": 1375.8220372413966,
+        "ap_write_iops": 45.82487171116021,
+        "predicted_tps": 7478.208600925653,
+        "prediction_details": {
+          "predicted_tps": 7478.208600925653,
+          "transaction_latency_ms": 17.11639873137923,
+          "cpu_queue_extra_ms": 0.4268892701587804,
+          "io_queue_extra_ms": 0.00046034587043608706,
+          "ap_cpu_seconds_per_second_after_media_closure": 0.6839550026578208,
+          "ap_response_seconds_after_media_closure": [
+            1079.0682628392453
+          ],
+          "media_additional_seconds_per_request": 1.0251765360588475e-05,
+          "media_utilization": 0.9999999999997067,
+          "cpu_utilization": 0.9359473053625351,
+          "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+          "automatic_recommendation_qualified": false,
+          "fixed_point_relative_residual": 1.6396335400514772e-09,
+          "iterations": 27
+        }
+      },
+      "reason": null
+    },
+    {
+      "stage": "S2",
+      "B_high_mib": 4096,
+      "selected": {
+        "shared_buffers_mb": 2048,
+        "work_mem": [
+          [
+            18,
+            2048
+          ],
+          [
+            21,
+            512
+          ]
+        ],
+        "ap_dynamic_peak_mb": 4491.322952270508,
+        "ap_execution_seconds": 2508.4485920305333,
+        "ap_cpu_seconds_per_second": 0.9760967577308316,
+        "ap_read_iops": 2798.7815447760313,
+        "ap_write_iops": 66.74305069583377,
+        "predicted_tps": 7533.222858278453,
+        "prediction_details": {
+          "predicted_tps": 7533.222858278453,
+          "transaction_latency_ms": 16.99139963540994,
+          "cpu_queue_extra_ms": 0.2700882678563955,
+          "io_queue_extra_ms": 0.03226225220353437,
+          "ap_cpu_seconds_per_second_after_media_closure": 0.48178440851299326,
+          "ap_response_seconds_after_media_closure": [
+            2149.907630094681,
+            2943.7776084322177
+          ],
+          "media_additional_seconds_per_request": 0.0007184707430555356,
+          "media_utilization": 0.9999999999997645,
+          "cpu_utilization": 0.9298825673314055,
+          "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+          "automatic_recommendation_qualified": false,
+          "fixed_point_relative_residual": 9.969869374515383e-10,
+          "iterations": 26
+        }
+      },
+      "reason": null
+    },
+    {
+      "stage": "S3",
+      "B_high_mib": 4096,
+      "selected": {
+        "shared_buffers_mb": 2048,
+        "work_mem": [
+          [
+            9,
+            2048
+          ],
+          [
+            13,
+            64
+          ],
+          [
+            18,
+            2048
+          ],
+          [
+            21,
+            512
+          ]
+        ],
+        "ap_dynamic_peak_mb": 10868.147323608398,
+        "ap_execution_seconds": 3405.079095396779,
+        "ap_cpu_seconds_per_second": 2.665359057694067,
+        "ap_read_iops": 5179.523696937825,
+        "ap_write_iops": 320.8483730442141,
+        "predicted_tps": 7463.659467459471,
+        "prediction_details": {
+          "predicted_tps": 7463.659467459471,
+          "transaction_latency_ms": 17.149764249270202,
+          "cpu_queue_extra_ms": 0.36215776120252474,
+          "io_queue_extra_ms": 0.09855737271766518,
+          "ap_cpu_seconds_per_second_after_media_closure": 0.6738693247655798,
+          "ap_response_seconds_after_media_closure": [
+            2926.150484923651,
+            645.4629248333654,
+            4382.20855444491,
+            6023.832869129979
+          ],
+          "media_additional_seconds_per_request": 0.002194843322262074,
+          "media_utilization": 0.9999999999993641,
+          "cpu_utilization": 0.933579196385249,
+          "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+          "automatic_recommendation_qualified": false,
+          "fixed_point_relative_residual": 2.373152341306195e-09,
+          "iterations": 27
+        }
+      },
+      "reason": null
+    },
+    {
+      "stage": "S4",
+      "B_high_mib": 4096,
+      "selected": {
+        "shared_buffers_mb": 2048,
+        "work_mem": [
+          [
+            2,
+            64
+          ],
+          [
+            9,
+            2048
+          ],
+          [
+            13,
+            64
+          ],
+          [
+            18,
+            2048
+          ],
+          [
+            21,
+            512
+          ]
+        ],
+        "ap_dynamic_peak_mb": 11033.114364624023,
+        "ap_execution_seconds": 3555.428700028818,
+        "ap_cpu_seconds_per_second": 2.9874024278381883,
+        "ap_read_iops": 6642.072171226328,
+        "ap_write_iops": 320.8483730442141,
+        "predicted_tps": 7478.124656803906,
+        "prediction_details": {
+          "predicted_tps": 7478.124656803906,
+          "transaction_latency_ms": 17.11659087810422,
+          "cpu_queue_extra_ms": 0.2974278588502045,
+          "io_queue_extra_ms": 0.13011390390400018,
+          "ap_cpu_seconds_per_second_after_media_closure": 0.6053393438897551,
+          "ap_response_seconds_after_media_closure": [
+            787.5127874443667,
+            3631.1959826809702,
+            796.9051679805214,
+            5444.785606726267,
+            7489.941673761034
+          ],
+          "media_additional_seconds_per_request": 0.0028975978685555747,
+          "media_utilization": 0.9999999999998583,
+          "cpu_utilization": 0.9310238003712741,
+          "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+          "automatic_recommendation_qualified": false,
+          "fixed_point_relative_residual": 2.2341872796260986e-09,
+          "iterations": 26
+        }
+      },
+      "reason": null
+    },
+    {
+      "stage": "S5",
+      "B_high_mib": 4096,
+      "selected": {
+        "shared_buffers_mb": 4096,
+        "work_mem": [
+          [
+            9,
+            2048
+          ],
+          [
+            13,
+            64
+          ],
+          [
+            18,
+            2048
+          ],
+          [
+            21,
+            512
+          ]
+        ],
+        "ap_dynamic_peak_mb": 10868.147323608398,
+        "ap_execution_seconds": 3405.079095396779,
+        "ap_cpu_seconds_per_second": 2.665359057694067,
+        "ap_read_iops": 5179.523696937825,
+        "ap_write_iops": 320.8483730442141,
+        "predicted_tps": 7293.3302361298365,
+        "prediction_details": {
+          "predicted_tps": 7293.3302361298365,
+          "transaction_latency_ms": 19.74406688292847,
+          "cpu_queue_extra_ms": 0.436091461939095,
+          "io_queue_extra_ms": 0.01963482104160954,
+          "ap_cpu_seconds_per_second_after_media_closure": 0.6816932349743791,
+          "ap_response_seconds_after_media_closure": [
+            2892.303016932297,
+            638.1925621493012,
+            4331.196892247444,
+            5953.448658473444
+          ],
+          "media_additional_seconds_per_request": 0.002161105837110959,
+          "media_utilization": 0.9999999999999617,
+          "cpu_utilization": 0.9337262050329724,
+          "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+          "automatic_recommendation_qualified": false,
+          "fixed_point_relative_residual": 1.2894474377134202e-10,
+          "iterations": 27
+        }
+      },
+      "reason": null
+    }
+  ],
+  "search_seconds": 0.14010224398225546
+}

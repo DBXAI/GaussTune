@@ -1,0 +1,31 @@
+{
+  "schema": "jmt.next-experiment-policy/v1",
+  "created_local_date": "2026-11-11",
+  "default_cardinality_backend": "direct_sample",
+  "default_statistics_index": "sample_statistics/20261131/models/INDEX.json",
+  "deepdb_status": "archived_comparator_only_no_further_tuning_or_training",
+  "factorjoin_status": "not_scheduled",
+  "online_database_queries": 0,
+  "offline_statistics_refresh": "explicit_only_new_artifacts_original_TTL_not_extended",
+  "default_entrypoint": "tools/forecast_sample.py",
+  "reference_spill_kernel": "V36_clean_core_unchanged",
+  "priority_order": [
+    "current_AP_logical_to_physical_requests_and_runtime_bridge",
+    "synchronized_TP_transaction_IO_probe_overhead_evidence",
+    "actual_operator_grants_and_whole_query_concurrent_physical_memory",
+    "fresh_counterfactual_cache_holdout",
+    "frozen_five_stage_mixed_workload_validation"
+  ],
+  "automatic_recommendation_qualified": false,
+  "allowed_automatic_machine_changes": [],
+  "notes": [
+    "Sample parity replay is not a new independent query validation.",
+    "No query-ID correction coefficient and no target ANALYZE input.",
+    "Physical request, runtime and memory truth stay unknown until actually measured.",
+    "Do not rerun large cardinality model comparisons merely to choose a default."
+  ],
+  "default_performance_backend": "calibrated_resource_cost_v3",
+  "default_performance_entrypoint": "tools/forecast_performance.py",
+  "performance_status": "experimental_not_production_qualified",
+  "current_framework": "CURRENT_FRAMEWORK.json"
+}

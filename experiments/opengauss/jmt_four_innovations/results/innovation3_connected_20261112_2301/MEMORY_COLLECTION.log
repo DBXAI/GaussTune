@@ -1,0 +1,65 @@
+{
+  "schema": "jmt.capacity-minus-reserves-budget/v1",
+  "effective_capacity_mib": 31055.7890625,
+  "physical_capacity_mib": 31055.7890625,
+  "host_reserve_mib": 3106,
+  "observed_host_non_database_mib": 1675.1630859375,
+  "non_SB_shared_ceiling_mib": 2577.0,
+  "database_fixed_reserve_mib": 3437,
+  "TP_and_common_dynamic_reserve_mib": 1861,
+  "observed_TP_only_dynamic_max_mib": 1605,
+  "host_database_ceiling_after_reserve_mib": 27949,
+  "current_max_process_memory_mib": 20480,
+  "current_max_dynamic_memory_mib": 8850,
+  "policy": {
+    "host_safety_fraction": 0.1,
+    "host_min_reserve_mib": 2048,
+    "host_extra_headroom_mib": 512,
+    "dynamic_headroom_mib": 256,
+    "host_reserve_override_mib": null,
+    "reserve_values_are_initial_policy_not_measured_peak_guarantees": true
+  },
+  "scenarios": {
+    "current_instance": {
+      "shared_pool_mib": 15182,
+      "AP_dynamic_hard_cap_mib": 6989,
+      "pool_formula": "min(host_after_reserve, current_max_process_memory) - DB_fixed - TP_common_dynamic_reserve",
+      "AP_budget_formula": "min(pool - candidate_SB, startup_max_dynamic_memory - TP_common_dynamic_reserve)",
+      "requires_database_restart_or_memory_protector_change": false
+    },
+    "host_after_reserve": {
+      "shared_pool_mib": 22651,
+      "AP_dynamic_hard_cap_mib": null,
+      "pool_formula": "effective_physical_capacity - explicit_host_reserve - DB_fixed - TP_common_dynamic_reserve",
+      "AP_budget_formula": "pool - candidate_SB",
+      "required_max_process_memory_mib_at_least": 27949,
+      "requires_database_restart_or_memory_protector_change": true,
+      "preconditions": [
+        "raise max_process_memory if below the derived host database ceiling",
+        "initialize/recompute the native dynamic-memory protector for the chosen SB; shrinking active SB alone is insufficient",
+        "verify TP common-memory reserve and concurrent AP physical peaks before apply"
+      ],
+      "scenario_not_currently_executable_configuration": true
+    }
+  },
+  "fixed_16_GiB_experimental_pool_used": false,
+  "MemAvailable_used_as_total_pool": false,
+  "SB_already_subtracted_from_pool": false,
+  "reserve_policy_physically_validated": false,
+  "configuration_applied": false,
+  "created_at": "2026-11-12T23:03:12.503269+08:00",
+  "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+  "postmaster_identity": {
+    "start": "2026-10-20 10:52:53.974417+08"
+  },
+  "postmaster_pid": 2296200,
+  "observation_path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation3_connected_20261112_2301/memory_v1/MEMORY_OBSERVATION.json",
+  "observation_sha256": "b27d710f52c9ae392437876a7ffc9a5cc376741dac384eeafed81e8504e292f6",
+  "model_code_sha256": {
+    "tools/collect_machine_memory_budget.py": "05e748971892d62e27ec54bb2d3ead35abd16f41330e29a07026eee0c60feb1a",
+    "src/jmt/innovation_3_search/memory_budget.py": "027dea305028d49ec22a0d02d9a65466c14b94088e1bc8818b0cd362c314588d",
+    "src/jmt/innovation_3_search/legacy_memory_budget.py": "d755403bdcbd8f50928b6ae81bbb8bc7c5fa4b4f07af8cc859bd046f6b0993dc",
+    "src/jmt/common/db.py": "1e825a3198d2f351637fcb772c7f34048b1c3fb6f8821e5eb2bf249850e99580",
+    "src/jmt/common/memory_units.py": "f5b8372f51c881bfbc15ebfbe500e765f43dfaab46b0295290bc384001622e35"
+  }
+}

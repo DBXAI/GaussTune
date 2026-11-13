@@ -1,0 +1,1 @@
+Synthetic page-unit semantic example only. NOT native evidence, NOT real GiB results, NOT calibration/validation of a mixed-workload optimum. Clock policy toy versus native partitioned candidate FIFO differ.

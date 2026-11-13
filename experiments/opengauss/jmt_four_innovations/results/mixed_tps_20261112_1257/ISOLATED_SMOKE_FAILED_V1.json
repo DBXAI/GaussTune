@@ -1,0 +1,69 @@
+{
+  "schema": "jmt.relocated-opengauss-isolated-smoke/v1",
+  "started_at": "2026-11-12T13:17:12.738065+08:00",
+  "release": "/root/JMT_RELEASE_20261112/jmt-modified-opengauss-5.1.0",
+  "separate_port": 15439,
+  "network_listen_enabled": false,
+  "production_data_used": false,
+  "commands": [
+    {
+      "argv": [
+        "/root/JMT_RELEASE_20261112/jmt-modified-opengauss-5.1.0/opengauss/bin/gaussdb",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "gaussdb (openGauss 5.1.0 build b5a8d5b0) compiled at 2026-07-27 22:42:53 commit 0 last mr  \n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/root/JMT_RELEASE_20261112/jmt-modified-opengauss-5.1.0/opengauss/bin/gsql",
+        "--version"
+      ],
+      "returncode": 0,
+      "stdout": "gsql (openGauss 5.1.0 build b5a8d5b0) compiled at 2023-09-28 00:08:33 commit 0 last mr  \n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/root/JMT_RELEASE_20261112/jmt-modified-opengauss-5.1.0/opengauss/bin/gs_initdb",
+        "-D",
+        "/var/tmp/jmt-release-smoke-z1f1h3fg/data",
+        "--nodename=jmt_release_smoke",
+        "--pwfile=/var/tmp/jmt-release-smoke-z1f1h3fg/init.password.private",
+        "--auth-local=trust",
+        "--auth-host=sha256",
+        "--locale=C"
+      ],
+      "returncode": 0,
+      "stdout": "The files belonging to this database system will be owned by user \"omm\".\nThis user must also own the server process.\n\nThe database cluster will be initialized with locale \"C\".\nThe default database encoding has accordingly been set to \"SQL_ASCII\".\nThe default text search configuration will be set to \"english\".\n\ncreating directory /var/tmp/jmt-release-smoke-z1f1h3fg/data ... ok\ncreating subdirectories ... in ordinary occasionok\ncreating configuration files ... ok\nselecting default max_connections ... 100\nselecting default shared_buffers ... 1024MB\nBegin init undo subsystem meta.\n[INIT UNDO] Init undo subsystem meta successfully.\ncreating template1 database in /var/tmp/jmt-release-smoke-z1f1h3fg/data/base/1 ... 2026-11-12 13:17:13.336 [unknown] [unknown] localhost 140491072983360 0[0:0#0]  [BACKEND] WARNING:  macAddr is 22/1045791374, sysidentifier is 1457749/2190388791, randomNum is 765242935\nok\ninitializing pg_authid ... ok\nsetting password ... ok\ninitializing dependencies ... ok\nloading PL/pgSQL server-side language ... ok\ncreating system views ... ok\ncreating performance views ... ok\nloading system objects' descriptions ... ok\ncreating collations ... ok\ncreating conversions ... ok\ncreating dictionaries ... ok\nsetting privileges on built-in objects ... ok\ninitialize global configure for bucketmap length ... ok\ncreating information schema ... ok\nloading foreign-data wrapper for distfs access ... ok\nloading foreign-data wrapper for log access ... ok\nloading hstore extension ... ok\nloading foreign-data wrapper for MOT access ... ok\nloading security plugin ... ok\nupdate system tables ... ok\ncreating snapshots catalog ... ok\nvacuuming database template1 ... ok\ncopying template1 to template0 ... ok\ncopying template1 to postgres ... ok\nfreezing database template0 ... ok\nfreezing database template1 ... ok\nfreezing database postgres ... ok\n\nSuccess. You can now start the database server of single node using:\n\n    /root/JMT_RELEASE_20261112/jmt-modified-opengauss-5.1.0/opengauss/bin/gaussdb -D /var/tmp/jmt-release-smoke-z1f1h3fg/data --single_node\nor\n    /root/JMT_RELEASE_20261112/jmt-modified-opengauss-5.1.0/opengauss/bin/gs_ctl start -D /var/tmp/jmt-release-smoke-z1f1h3fg/data -Z single_node -l logfile\n\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "/root/JMT_RELEASE_20261112/jmt-modified-opengauss-5.1.0/opengauss/bin/gs_ctl",
+        "start",
+        "-D",
+        "/var/tmp/jmt-release-smoke-z1f1h3fg/data",
+        "-M",
+        "primary",
+        "-l",
+        "/var/tmp/jmt-release-smoke-z1f1h3fg/start.log",
+        "-w",
+        "-t",
+        "60"
+      ],
+      "returncode": 1,
+      "stdout": "[2026-11-12 13:17:22.724][2975251][][gs_ctl]: gs_ctl started,datadir is /var/tmp/jmt-release-smoke-z1f1h3fg/data \n[2026-11-12 13:17:22.740][2975251][][gs_ctl]: waiting for server to start...\n.[2026-11-12 13:17:23.740][2975251][][gs_ctl]: waitpid 2975255 failed, exitstatus is 256, ret is 2\n\n[2026-11-12 13:17:23.740][2975251][][gs_ctl]: stopped waiting\n[2026-11-12 13:17:23.740][2975251][][gs_ctl]: could not start server\nExamine the log output.\n",
+      "stderr": ""
+    }
+  ],
+  "cross_machine_validation": false,
+  "passed": false,
+  "error": "RuntimeError: isolated smoke command failed: ['/root/JMT_RELEASE_20261112/jmt-modified-opengauss-5.1.0/opengauss/bin/gs_ctl', 'start', '-D', '/var/tmp/jmt-release-smoke-z1f1h3fg/data', '-M', 'primary', '-l', '/var/tmp/jmt-release-smoke-z1f1h3fg/start.log', '-w', '-t', '60']",
+  "start.log": "0 LOG:  [Alarm Module]can not read GAUSS_WARNING_TYPE env.\n\t\n0 LOG:  [Alarm Module]Host Name: iZ2zedyfmijk0yg6c3ivwdZ \n\t\n0 LOG:  [Alarm Module]Host IP: iZ2zedyfmijk0yg6c3ivwdZ. Copy hostname directly in case of taking 10s to use 'gethostbyname' when /etc/hosts does not contain <HOST IP>\n\t\n0 LOG:  [Alarm Module]Get ENV GS_CLUSTER_NAME failed!\n\t\n0 LOG:  [Alarm Module]Invalid data in AlarmItem file! Read alarm English name failed! line: 57\n\t\n0 WARNING:  failed to open feature control file, please check whether it exists: FileName=gaussdb.version, Errno=2, Errmessage=No such file or directory.\n0 WARNING:  failed to parse feature control file: gaussdb.version.\n0 WARNING:  Failed to load the product control file, so gaussdb cannot distinguish product version.\n2026-11-12 13:17:22.769 [unknown] [unknown] localhost 140281815793984 0[0:0#0]  0 [GUC] LOG:  listen_addresses can not set to empty\n2026-11-12 13:17:22.769 [unknown] [unknown] localhost 140281815793984 0[0:0#0]  0 [BACKEND] LOG:  1 is outside the valid range for parameter \"shared_buffers_resize_interval\" (10 .. 60000)\n2026-11-12 13:17:22.769 [unknown] [unknown] localhost 140281815793984 0[0:0#0]  0 [BACKEND] FATAL:  configuration file \"/var/tmp/jmt-release-smoke-z1f1h3fg/data/postgresql.conf\" contains errors\n",
+  "production_postmaster_unchanged": true,
+  "production_config_unchanged": true,
+  "ended_at": "2026-11-12T13:17:23.742728+08:00",
+  "disposable_directory_removed": true
+}

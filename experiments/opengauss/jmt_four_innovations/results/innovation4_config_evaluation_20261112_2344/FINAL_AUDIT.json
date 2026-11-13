@@ -1,0 +1,47 @@
+{
+  "schema": "jmt.innovation4-complete-turn-audit/v1",
+  "created_at": "2026-11-13T00:23:45.445075+08:00",
+  "primary_result": "results/innovation4_config_evaluation_20261112_2344/performance_v4/CONFIGURATION_EVALUATION.json",
+  "result_sha256": "9e129ee4d3c31fa2a4554dba81221a2d468405ee7a18415fa0d328f991dc67cd",
+  "main_source_artifacts_verified": 87,
+  "innovation2_source_artifacts_verified": 509,
+  "bound_model_code_files_verified": 40,
+  "primary_configurations_evaluated": 70,
+  "measured_TP_baseline_cross_checks": 50,
+  "maximum_fixed_point_relative_residual": 9.708845283284973e-09,
+  "both_P3_independent_unpruned_audits_passed": true,
+  "memory_budget_live_gate": {
+    "memory_observation_age_seconds": 685.0433835983276,
+    "maximum_age_seconds": 900,
+    "native_configuration_and_postmaster_unchanged": true,
+    "observation_timestamp_renewed": false
+  },
+  "native_after": {
+    "target_buffers": 1048576,
+    "maximum_buffers": 1048576,
+    "postmaster_start": "2026-10-20 10:52:53.974417+08",
+    "other_workload_sessions": 0
+  },
+  "gaussdb_binary_unchanged": true,
+  "fio_disposable_scratch_removed": true,
+  "regression": {
+    "tests_run": 692,
+    "failures": 0,
+    "errors": 0,
+    "elapsed_seconds": 7.453175054863095,
+    "all_JMT_imports_from_candidate": true,
+    "JMT_modules_loaded": 99,
+    "foreign_modules": {}
+  },
+  "code_manifest_files": 386,
+  "code_manifest_verified": true,
+  "code_manifest_sha256": "080253fd4c76387cbbc17412ee4da6eb64baf208f0484412a48ef5dcd9c8003e",
+  "portable_demo_audit": "results/innovation4_config_evaluation_20261112_2344/PORTABLE_DEMO_AUDIT.json",
+  "PPT_mapping_report": "INNOVATION4_CURRENT.md",
+  "normal_prediction_prepared_before_actual_statistics_expiry": true,
+  "sample_TTL_renewed": false,
+  "strict_physical_IO_or_mixed_TPS_accuracy_qualified": false,
+  "whole_five_stage_lifecycle_or_native_grant_or_physical_peak_qualified": false,
+  "configuration_applied_or_postmaster_restarted": false,
+  "intermediate_failed_v1_run_retained_for_diagnosis": true
+}

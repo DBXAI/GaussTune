@@ -1,0 +1,152 @@
+{
+  "TP128": {
+    "formula": "L_TP_only_ms = intercept_ms + beta_OS_ms * P_OS",
+    "latency_coefficients": [
+      16.926404551351414,
+      39.235298483158246
+    ],
+    "cpu_seconds_coefficients": [
+      0.001934491606404174,
+      0.00436015395540268
+    ],
+    "SB_domain_mib": [
+      512,
+      4096
+    ],
+    "calibrated_p_disk": 3.610890445583881e-05,
+    "terminals": 128.0,
+    "published_buffer_accesses_per_published_commit_proxy": 412.33096723103256,
+    "TP_physical_reads_rule": "P_disk * published_accesses_per_published_commit_proxy",
+    "TP_physical_reads_qualified": false,
+    "native_counter_ratio_not_kernel_window_ratio": true,
+    "no_counter_window_rescaling": true,
+    "training_SB_mib": [
+      512,
+      1024,
+      1536,
+      2048,
+      4096
+    ],
+    "training_repeats": [
+      1,
+      2
+    ],
+    "holdout_repeat": 3,
+    "cache_service_components_separately_identified": false,
+    "nonidentifiability": "constant P_disk: L_other + A*C_SB + A*P_disk*(C_disk-C_SB) is a single intercept; beta_OS = A*(C_OS-C_SB)",
+    "automatic_recommendation_qualified": false,
+    "TP_only_holdout": {
+      "rows": [
+        {
+          "SB_mib": 512,
+          "predicted_TP_only_TPS": 6999.865655604702,
+          "heldout_repeat_3_TPS": 7106.6,
+          "absolute_relative_error": 0.015019044887189192
+        },
+        {
+          "SB_mib": 1024,
+          "predicted_TP_only_TPS": 7323.2244765330815,
+          "heldout_repeat_3_TPS": 7325.8,
+          "absolute_relative_error": 0.00035156890263432494
+        },
+        {
+          "SB_mib": 1536,
+          "predicted_TP_only_TPS": 7471.9350811302775,
+          "heldout_repeat_3_TPS": 7410.0,
+          "absolute_relative_error": 0.00835831054389713
+        },
+        {
+          "SB_mib": 2048,
+          "predicted_TP_only_TPS": 7539.090748599618,
+          "heldout_repeat_3_TPS": 7568.6,
+          "absolute_relative_error": 0.00389890487017186
+        },
+        {
+          "SB_mib": 4096,
+          "predicted_TP_only_TPS": 7561.832935182092,
+          "heldout_repeat_3_TPS": 7308.3,
+          "absolute_relative_error": 0.03469109576537521
+        }
+      ],
+      "MAPE": 0.012463784993853543,
+      "maximum_absolute_relative_error": 0.03469109576537521,
+      "not_mixed_load_validation": true
+    },
+    "sha256": "d2212b100ceee53f1eb08af0503ca82bb5ab6529af3aae709dd1875f18d0c533"
+  },
+  "S5_128_plus_16": {
+    "formula": "L_TP_only_ms = intercept_ms + beta_OS_ms * P_OS",
+    "latency_coefficients": [
+      19.30455628604899,
+      43.11102866594426
+    ],
+    "cpu_seconds_coefficients": [
+      0.0019531954659694766,
+      0.004415803757990833
+    ],
+    "SB_domain_mib": [
+      512,
+      4096
+    ],
+    "calibrated_p_disk": 1.2218068079075337e-05,
+    "terminals": 144.0,
+    "published_buffer_accesses_per_published_commit_proxy": 407.1024917877226,
+    "TP_physical_reads_rule": "P_disk * published_accesses_per_published_commit_proxy",
+    "TP_physical_reads_qualified": false,
+    "native_counter_ratio_not_kernel_window_ratio": true,
+    "no_counter_window_rescaling": true,
+    "training_SB_mib": [
+      512,
+      1024,
+      1536,
+      2048,
+      4096
+    ],
+    "training_repeats": [
+      1,
+      2
+    ],
+    "holdout_repeat": 3,
+    "cache_service_components_separately_identified": false,
+    "nonidentifiability": "constant P_disk: L_other + A*C_SB + A*P_disk*(C_disk-C_SB) is a single intercept; beta_OS = A*(C_OS-C_SB)",
+    "automatic_recommendation_qualified": false,
+    "TP_only_holdout": {
+      "rows": [
+        {
+          "SB_mib": 512,
+          "predicted_TP_only_TPS": 6923.706355337273,
+          "heldout_repeat_3_TPS": 7054.9,
+          "absolute_relative_error": 0.018596102660948688
+        },
+        {
+          "SB_mib": 1024,
+          "predicted_TP_only_TPS": 7235.308744597792,
+          "heldout_repeat_3_TPS": 7200.4,
+          "absolute_relative_error": 0.0048481674070595115
+        },
+        {
+          "SB_mib": 1536,
+          "predicted_TP_only_TPS": 7377.027970479436,
+          "heldout_repeat_3_TPS": 7283.4,
+          "absolute_relative_error": 0.01285498125592932
+        },
+        {
+          "SB_mib": 2048,
+          "predicted_TP_only_TPS": 7439.637756151707,
+          "heldout_repeat_3_TPS": 7451.45,
+          "absolute_relative_error": 0.0015852275527974413
+        },
+        {
+          "SB_mib": 4096,
+          "predicted_TP_only_TPS": 7459.30258469098,
+          "heldout_repeat_3_TPS": 7467.0,
+          "absolute_relative_error": 0.0010308578155912018
+        }
+      ],
+      "MAPE": 0.007783067338465233,
+      "maximum_absolute_relative_error": 0.018596102660948688,
+      "not_mixed_load_validation": true
+    },
+    "sha256": "e7aaf65b6939c2c19831e838847f79c5224847a56d973d8440b902334b4e5756"
+  }
+}

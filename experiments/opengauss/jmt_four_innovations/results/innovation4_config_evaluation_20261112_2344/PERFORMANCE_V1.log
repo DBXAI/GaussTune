@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "tools/evaluate_spill_frontier_performance.py", line 311, in <module>
+    main()
+  File "tools/evaluate_spill_frontier_performance.py", line 267, in main
+    "model_code_sha256": {
+  File "tools/evaluate_spill_frontier_performance.py", line 268, in <dictcomp>
+    str(p.relative_to(ROOT)): sha(p) for p in sorted(
+  File "/usr/lib/python3.8/pathlib.py", line 908, in relative_to
+    raise ValueError("{!r} does not start with {!r}"
+ValueError: 'tools/evaluate_spill_frontier_performance.py' does not start with '/root/JMT_AP_STAGE_CANDIDATE_20261111'

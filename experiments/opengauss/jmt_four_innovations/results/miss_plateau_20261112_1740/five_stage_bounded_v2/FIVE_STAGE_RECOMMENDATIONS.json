@@ -1,0 +1,4856 @@
+{
+  "schema": "jmt.cache-bounded-five-stage-component-preview/v1",
+  "created_at": "2026-11-12T17:41:25.240664+08:00",
+  "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+  "stages": [
+    {
+      "stage": "S1",
+      "AP_queries": [
+        18
+      ],
+      "TP_baseline_terminals": 128,
+      "TP_surge_terminals": 0,
+      "cache_topology": "TP128",
+      "B_high_mib": 4096,
+      "boundary_rule": {
+        "B_high_mib": 4096,
+        "criterion": "first_small_adjacent_SB_miss_reduction_right_endpoint",
+        "metric": "SB_miss_rate = 1 - P_SB",
+        "max_miss_reduction_per_10000_per_gib": 1.0,
+        "plateau_interval_mib": [
+          3072,
+          4096
+        ],
+        "selected_interval": {
+          "left_SB_mib": 3072,
+          "right_SB_mib": 4096,
+          "step_gib": 1.0,
+          "left_SB_miss_rate": 6.168604511203046e-05,
+          "right_SB_miss_rate": 5.4163356683734065e-05,
+          "signed_miss_reduction_per_10000": 0.07522688428296398,
+          "miss_reduction_per_10000_per_gib": 0.07522688428296398,
+          "negligible_miss_reduction": true,
+          "miss_rate_increased": false
+        },
+        "endpoint_policy": "right_endpoint_not_left_endpoint",
+        "left_censored": false,
+        "curve_domain_mib": [
+          32,
+          64,
+          128,
+          256,
+          512,
+          768,
+          1024,
+          1536,
+          2048,
+          3072,
+          4096,
+          6144,
+          8192
+        ],
+        "intervals": [
+          {
+            "left_SB_mib": 32,
+            "right_SB_mib": 64,
+            "step_gib": 0.03125,
+            "left_SB_miss_rate": 0.6503288919380852,
+            "right_SB_miss_rate": 0.45205339303338865,
+            "signed_miss_reduction_per_10000": 1982.7549890469659,
+            "miss_reduction_per_10000_per_gib": 63448.15964950291,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 64,
+            "right_SB_mib": 128,
+            "step_gib": 0.0625,
+            "left_SB_miss_rate": 0.45205339303338865,
+            "right_SB_miss_rate": 0.20777514985195344,
+            "signed_miss_reduction_per_10000": 2442.782431814352,
+            "miss_reduction_per_10000_per_gib": 39084.51890902963,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 128,
+            "right_SB_mib": 256,
+            "step_gib": 0.125,
+            "left_SB_miss_rate": 0.20777514985195344,
+            "right_SB_miss_rate": 0.07539539250379146,
+            "signed_miss_reduction_per_10000": 1323.7975734816198,
+            "miss_reduction_per_10000_per_gib": 10590.380587852958,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 256,
+            "right_SB_mib": 512,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.07539539250379146,
+            "right_SB_miss_rate": 0.03469012541826144,
+            "signed_miss_reduction_per_10000": 407.05267085530016,
+            "miss_reduction_per_10000_per_gib": 1628.2106834212007,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 512,
+            "right_SB_mib": 768,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.03469012541826144,
+            "right_SB_miss_rate": 0.021347885221829066,
+            "signed_miss_reduction_per_10000": 133.42240196432377,
+            "miss_reduction_per_10000_per_gib": 533.6896078572951,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 768,
+            "right_SB_mib": 1024,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.021347885221829066,
+            "right_SB_miss_rate": 0.014111058953804712,
+            "signed_miss_reduction_per_10000": 72.36826268024355,
+            "miss_reduction_per_10000_per_gib": 289.4730507209742,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 1024,
+            "right_SB_mib": 1536,
+            "step_gib": 0.5,
+            "left_SB_miss_rate": 0.014111058953804712,
+            "right_SB_miss_rate": 0.00524481837221058,
+            "signed_miss_reduction_per_10000": 88.66240581594131,
+            "miss_reduction_per_10000_per_gib": 177.32481163188262,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 1536,
+            "right_SB_mib": 2048,
+            "step_gib": 0.5,
+            "left_SB_miss_rate": 0.00524481837221058,
+            "right_SB_miss_rate": 0.001355588454779566,
+            "signed_miss_reduction_per_10000": 38.89229917431014,
+            "miss_reduction_per_10000_per_gib": 77.78459834862028,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 2048,
+            "right_SB_mib": 3072,
+            "step_gib": 1.0,
+            "left_SB_miss_rate": 0.001355588454779566,
+            "right_SB_miss_rate": 6.168604511203046e-05,
+            "signed_miss_reduction_per_10000": 12.939024096675356,
+            "miss_reduction_per_10000_per_gib": 12.939024096675356,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 3072,
+            "right_SB_mib": 4096,
+            "step_gib": 1.0,
+            "left_SB_miss_rate": 6.168604511203046e-05,
+            "right_SB_miss_rate": 5.4163356683734065e-05,
+            "signed_miss_reduction_per_10000": 0.07522688428296398,
+            "miss_reduction_per_10000_per_gib": 0.07522688428296398,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 4096,
+            "right_SB_mib": 6144,
+            "step_gib": 2.0,
+            "left_SB_miss_rate": 5.4163356683734065e-05,
+            "right_SB_miss_rate": 5.1154281312415506e-05,
+            "signed_miss_reduction_per_10000": 0.030090753713185592,
+            "miss_reduction_per_10000_per_gib": 0.015045376856592796,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 6144,
+            "right_SB_mib": 8192,
+            "step_gib": 2.0,
+            "left_SB_miss_rate": 5.1154281312415506e-05,
+            "right_SB_miss_rate": 3.610890445582271e-05,
+            "signed_miss_reduction_per_10000": 0.15045376856592796,
+            "miss_reduction_per_10000_per_gib": 0.07522688428296398,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          }
+        ],
+        "later_significant_miss_reductions": [],
+        "hard_pruning_supported_by_curve": true,
+        "TPS_was_used_to_choose_bound": false,
+        "OS_hit_ratio_was_used_to_choose_bound": false,
+        "bound_is_grid_resolution_and_criterion_dependent": true,
+        "physical_IO_and_TPS_plateau_not_proven_by_this_rule": true
+      },
+      "preserved_running_WM": {},
+      "result": {
+        "selected": {
+          "shared_buffers_mb": 2048,
+          "work_mem": [
+            [
+              18,
+              2048
+            ]
+          ],
+          "ap_dynamic_peak_mb": 3430.2228622436523,
+          "ap_execution_seconds": 1063.5674159575167,
+          "ap_cpu_seconds_per_second": 0.6939232299757351,
+          "ap_read_iops": 1375.8220372413966,
+          "ap_write_iops": 45.82487171116021,
+          "predicted_tps": 7478.208600925653,
+          "prediction_details": {
+            "predicted_tps": 7478.208600925653,
+            "transaction_latency_ms": 17.11639873137923,
+            "cpu_queue_extra_ms": 0.4268892701587804,
+            "io_queue_extra_ms": 0.00046034587043608706,
+            "ap_cpu_seconds_per_second_after_media_closure": 0.6839550026578208,
+            "ap_response_seconds_after_media_closure": [
+              1079.0682628392453
+            ],
+            "media_additional_seconds_per_request": 1.0251765360588475e-05,
+            "media_utilization": 0.9999999999997067,
+            "cpu_utilization": 0.9359473053625351,
+            "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+            "automatic_recommendation_qualified": false,
+            "fixed_point_relative_residual": 1.6396335400514772e-09,
+            "iterations": 27
+          }
+        },
+        "candidates": [
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                18,
+                2048
+              ]
+            ],
+            "ap_dynamic_peak_mb": 3430.2228622436523,
+            "ap_execution_seconds": 1063.5674159575167,
+            "ap_cpu_seconds_per_second": 0.6939232299757351,
+            "ap_read_iops": 1375.8220372413966,
+            "ap_write_iops": 45.82487171116021,
+            "predicted_tps": 6877.6589354813095,
+            "prediction_details": {
+              "predicted_tps": 6877.6589354813095,
+              "transaction_latency_ms": 18.61098411622238,
+              "cpu_queue_extra_ms": 0.46126262134860796,
+              "io_queue_extra_ms": 4.75937087568236e-07,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6936136896932311,
+              "ap_response_seconds_after_media_closure": [
+                1064.042056183466
+              ],
+              "media_additional_seconds_per_request": 3.1391189554064104e-07,
+              "media_utilization": 0.9999999999996625,
+              "cpu_utilization": 0.9347157069248142,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 9.41435596146789e-09,
+              "iterations": 23
+            }
+          },
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                18,
+                4096
+              ]
+            ],
+            "ap_dynamic_peak_mb": 5704.496864318848,
+            "ap_execution_seconds": 1047.5907576775953,
+            "ap_cpu_seconds_per_second": 0.7303275793513412,
+            "ap_read_iops": 1389.0539863656124,
+            "ap_write_iops": 38.83332078429743,
+            "predicted_tps": 6867.311699094624,
+            "prediction_details": {
+              "predicted_tps": 6867.311699094624,
+              "transaction_latency_ms": 18.63902571923036,
+              "cpu_queue_extra_ms": 0.48930422714983357,
+              "io_queue_extra_ms": 4.731438441516855e-07,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7300022902037328,
+              "ap_response_seconds_after_media_closure": [
+                1048.0575643016023
+              ],
+              "media_additional_seconds_per_request": 3.12069567303361e-07,
+              "media_utilization": 0.9999999999994007,
+              "cpu_utilization": 0.9356489621505386,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 4.8328419044452176e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                18,
+                2048
+              ]
+            ],
+            "ap_dynamic_peak_mb": 3430.2228622436523,
+            "ap_execution_seconds": 1063.5674159575167,
+            "ap_cpu_seconds_per_second": 0.6939232299757351,
+            "ap_read_iops": 1375.8220372413966,
+            "ap_write_iops": 45.82487171116021,
+            "predicted_tps": 7035.676598192005,
+            "prediction_details": {
+              "predicted_tps": 7035.676598192005,
+              "transaction_latency_ms": 18.192990761191314,
+              "cpu_queue_extra_ms": 0.43408181922772227,
+              "io_queue_extra_ms": 4.931412369016854e-09,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6938913551668136,
+              "ap_response_seconds_after_media_closure": [
+                1063.6162723208456
+              ],
+              "media_additional_seconds_per_request": 3.231203927378632e-08,
+              "media_utilization": 0.9999999999993989,
+              "cpu_utilization": 0.9322127809201846,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.080960208125873e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                18,
+                4096
+              ]
+            ],
+            "ap_dynamic_peak_mb": 5704.496864318848,
+            "ap_execution_seconds": 1047.5907576775953,
+            "ap_cpu_seconds_per_second": 0.7303275793513412,
+            "ap_read_iops": 1389.0539863656124,
+            "ap_write_iops": 38.83332078429743,
+            "predicted_tps": 7025.4208010639995,
+            "prediction_details": {
+              "predicted_tps": 7025.4208010639995,
+              "transaction_latency_ms": 18.2195491627635,
+              "cpu_queue_extra_ms": 0.4606402208286171,
+              "io_queue_extra_ms": 4.902702907544128e-09,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7302940812386988,
+              "ap_response_seconds_after_media_closure": [
+                1047.638809981599
+              ],
+              "media_additional_seconds_per_request": 3.2123926583705015e-08,
+              "media_utilization": 0.9999999999994086,
+              "cpu_utilization": 0.9331922962942828,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.5461963648609753e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                18,
+                2048
+              ]
+            ],
+            "ap_dynamic_peak_mb": 3430.2228622436523,
+            "ap_execution_seconds": 1063.5674159575167,
+            "ap_cpu_seconds_per_second": 0.6939232299757351,
+            "ap_read_iops": 1375.8220372413966,
+            "ap_write_iops": 45.82487171116021,
+            "predicted_tps": 7199.9494225859635,
+            "prediction_details": {
+              "predicted_tps": 7199.9494225859635,
+              "transaction_latency_ms": 17.77790273985912,
+              "cpu_queue_extra_ms": 0.423852592449823,
+              "io_queue_extra_ms": 4.172105347250659e-07,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6936267000617713,
+              "ap_response_seconds_after_media_closure": [
+                1064.022097927401
+              ],
+              "media_additional_seconds_per_request": 3.0071214202103525e-07,
+              "media_utilization": 0.9999999999996234,
+              "cpu_utilization": 0.9321837741391852,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 4.426859989692389e-09,
+              "iterations": 24
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                18,
+                4096
+              ]
+            ],
+            "ap_dynamic_peak_mb": 5704.496864318848,
+            "ap_execution_seconds": 1047.5907576775953,
+            "ap_cpu_seconds_per_second": 0.7303275793513412,
+            "ap_read_iops": 1389.0539863656124,
+            "ap_write_iops": 38.83332078429743,
+            "predicted_tps": 7189.462002682685,
+            "prediction_details": {
+              "predicted_tps": 7189.462002682685,
+              "transaction_latency_ms": 17.80383566131427,
+              "cpu_queue_extra_ms": 0.44978551633365005,
+              "io_queue_extra_ms": 4.1478185967174957e-07,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7300159475763713,
+              "ap_response_seconds_after_media_closure": [
+                1048.0379569043257
+              ],
+              "media_additional_seconds_per_request": 2.989616299491455e-07,
+              "media_utilization": 0.999999999999881,
+              "cpu_utilization": 0.933163432526385,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 8.573508569753585e-11,
+              "iterations": 23
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                18,
+                2048
+              ]
+            ],
+            "ap_dynamic_peak_mb": 3430.2228622436523,
+            "ap_execution_seconds": 1063.5674159575167,
+            "ap_cpu_seconds_per_second": 0.6939232299757351,
+            "ap_read_iops": 1375.8220372413966,
+            "ap_write_iops": 45.82487171116021,
+            "predicted_tps": 7478.208600925653,
+            "prediction_details": {
+              "predicted_tps": 7478.208600925653,
+              "transaction_latency_ms": 17.11639873137923,
+              "cpu_queue_extra_ms": 0.4268892701587804,
+              "io_queue_extra_ms": 0.00046034587043608706,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6839550026578208,
+              "ap_response_seconds_after_media_closure": [
+                1079.0682628392453
+              ],
+              "media_additional_seconds_per_request": 1.0251765360588475e-05,
+              "media_utilization": 0.9999999999997067,
+              "cpu_utilization": 0.9359473053625351,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 1.6396335400514772e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                18,
+                4096
+              ]
+            ],
+            "ap_dynamic_peak_mb": 5704.496864318848,
+            "ap_execution_seconds": 1047.5907576775953,
+            "ap_cpu_seconds_per_second": 0.7303275793513412,
+            "ap_read_iops": 1389.0539863656124,
+            "ap_write_iops": 38.83332078429743,
+            "predicted_tps": 7466.938888292016,
+            "prediction_details": {
+              "predicted_tps": 7466.938888292016,
+              "transaction_latency_ms": 17.142232301671577,
+              "cpu_queue_extra_ms": 0.4527255530975106,
+              "io_queue_extra_ms": 0.0004576332240532387,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7198522127759646,
+              "ap_response_seconds_after_media_closure": [
+                1062.8354106950956
+              ],
+              "media_additional_seconds_per_request": 1.0191355533957758e-05,
+              "media_utilization": 0.9999999999996546,
+              "cpu_utilization": 0.9368448221741578,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 7.85536746761295e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 4096,
+            "work_mem": [
+              [
+                18,
+                2048
+              ]
+            ],
+            "ap_dynamic_peak_mb": 3430.2228622436523,
+            "ap_execution_seconds": 1063.5674159575167,
+            "ap_cpu_seconds_per_second": 0.6939232299757351,
+            "ap_read_iops": 1375.8220372413966,
+            "ap_write_iops": 45.82487171116021,
+            "predicted_tps": 7401.693985774182,
+            "prediction_details": {
+              "predicted_tps": 7401.693985774182,
+              "transaction_latency_ms": 17.293338440473722,
+              "cpu_queue_extra_ms": 0.44429829402857623,
+              "io_queue_extra_ms": 6.826823589605609e-06,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6927078468251843,
+              "ap_response_seconds_after_media_closure": [
+                1065.4334868021795
+              ],
+              "media_additional_seconds_per_request": 1.2341596940917456e-06,
+              "media_utilization": 0.9999999999995751,
+              "cpu_utilization": 0.9371571306634218,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 6.806157637484489e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 4096,
+            "work_mem": [
+              [
+                18,
+                4096
+              ]
+            ],
+            "ap_dynamic_peak_mb": 5704.496864318848,
+            "ap_execution_seconds": 1047.5907576775953,
+            "ap_cpu_seconds_per_second": 0.7303275793513412,
+            "ap_read_iops": 1389.0539863656124,
+            "ap_write_iops": 38.83332078429743,
+            "predicted_tps": 7390.226427139714,
+            "prediction_details": {
+              "predicted_tps": 7390.226427139714,
+              "transaction_latency_ms": 17.32017303095809,
+              "cpu_queue_extra_ms": 0.4711329248978302,
+              "io_queue_extra_ms": 6.786438707357815e-06,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7290504170075364,
+              "ap_response_seconds_after_media_closure": [
+                1049.425944156077
+              ],
+              "media_additional_seconds_per_request": 1.2268588764762506e-06,
+              "media_utilization": 0.9999999999996111,
+              "cpu_utilization": 0.9380436657396204,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 3.5626488426032665e-09,
+              "iterations": 26
+            }
+          }
+        ],
+        "failures": [],
+        "selection_policy": "max_tps_then_AP_time_then_memory",
+        "shared_SB_AP_pool_mib": 16384,
+        "SB_domain_mib": [
+          512,
+          1024,
+          1536,
+          2048,
+          4096
+        ],
+        "computed_SB_optimum": true,
+        "simulated_cache_B_high_mib": 4096,
+        "SB_candidates_excluded_by_simulated_bound": [
+          6144,
+          8192
+        ],
+        "prediction_is_independent_measured_optimum": false,
+        "search_complete": true,
+        "search_work": {
+          "expanded_states": 10,
+          "dominance_checks": 0,
+          "predictions": 10,
+          "max_expanded_states": 100000,
+          "max_dominance_checks": 1000000,
+          "max_predictions": 512
+        },
+        "automatic_recommendation_qualified": false
+      }
+    },
+    {
+      "stage": "S2",
+      "AP_queries": [
+        18,
+        21
+      ],
+      "TP_baseline_terminals": 128,
+      "TP_surge_terminals": 0,
+      "cache_topology": "TP128",
+      "B_high_mib": 4096,
+      "boundary_rule": {
+        "B_high_mib": 4096,
+        "criterion": "first_small_adjacent_SB_miss_reduction_right_endpoint",
+        "metric": "SB_miss_rate = 1 - P_SB",
+        "max_miss_reduction_per_10000_per_gib": 1.0,
+        "plateau_interval_mib": [
+          3072,
+          4096
+        ],
+        "selected_interval": {
+          "left_SB_mib": 3072,
+          "right_SB_mib": 4096,
+          "step_gib": 1.0,
+          "left_SB_miss_rate": 6.168604511203046e-05,
+          "right_SB_miss_rate": 5.4163356683734065e-05,
+          "signed_miss_reduction_per_10000": 0.07522688428296398,
+          "miss_reduction_per_10000_per_gib": 0.07522688428296398,
+          "negligible_miss_reduction": true,
+          "miss_rate_increased": false
+        },
+        "endpoint_policy": "right_endpoint_not_left_endpoint",
+        "left_censored": false,
+        "curve_domain_mib": [
+          32,
+          64,
+          128,
+          256,
+          512,
+          768,
+          1024,
+          1536,
+          2048,
+          3072,
+          4096,
+          6144,
+          8192
+        ],
+        "intervals": [
+          {
+            "left_SB_mib": 32,
+            "right_SB_mib": 64,
+            "step_gib": 0.03125,
+            "left_SB_miss_rate": 0.6503288919380852,
+            "right_SB_miss_rate": 0.45205339303338865,
+            "signed_miss_reduction_per_10000": 1982.7549890469659,
+            "miss_reduction_per_10000_per_gib": 63448.15964950291,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 64,
+            "right_SB_mib": 128,
+            "step_gib": 0.0625,
+            "left_SB_miss_rate": 0.45205339303338865,
+            "right_SB_miss_rate": 0.20777514985195344,
+            "signed_miss_reduction_per_10000": 2442.782431814352,
+            "miss_reduction_per_10000_per_gib": 39084.51890902963,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 128,
+            "right_SB_mib": 256,
+            "step_gib": 0.125,
+            "left_SB_miss_rate": 0.20777514985195344,
+            "right_SB_miss_rate": 0.07539539250379146,
+            "signed_miss_reduction_per_10000": 1323.7975734816198,
+            "miss_reduction_per_10000_per_gib": 10590.380587852958,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 256,
+            "right_SB_mib": 512,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.07539539250379146,
+            "right_SB_miss_rate": 0.03469012541826144,
+            "signed_miss_reduction_per_10000": 407.05267085530016,
+            "miss_reduction_per_10000_per_gib": 1628.2106834212007,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 512,
+            "right_SB_mib": 768,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.03469012541826144,
+            "right_SB_miss_rate": 0.021347885221829066,
+            "signed_miss_reduction_per_10000": 133.42240196432377,
+            "miss_reduction_per_10000_per_gib": 533.6896078572951,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 768,
+            "right_SB_mib": 1024,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.021347885221829066,
+            "right_SB_miss_rate": 0.014111058953804712,
+            "signed_miss_reduction_per_10000": 72.36826268024355,
+            "miss_reduction_per_10000_per_gib": 289.4730507209742,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 1024,
+            "right_SB_mib": 1536,
+            "step_gib": 0.5,
+            "left_SB_miss_rate": 0.014111058953804712,
+            "right_SB_miss_rate": 0.00524481837221058,
+            "signed_miss_reduction_per_10000": 88.66240581594131,
+            "miss_reduction_per_10000_per_gib": 177.32481163188262,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 1536,
+            "right_SB_mib": 2048,
+            "step_gib": 0.5,
+            "left_SB_miss_rate": 0.00524481837221058,
+            "right_SB_miss_rate": 0.001355588454779566,
+            "signed_miss_reduction_per_10000": 38.89229917431014,
+            "miss_reduction_per_10000_per_gib": 77.78459834862028,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 2048,
+            "right_SB_mib": 3072,
+            "step_gib": 1.0,
+            "left_SB_miss_rate": 0.001355588454779566,
+            "right_SB_miss_rate": 6.168604511203046e-05,
+            "signed_miss_reduction_per_10000": 12.939024096675356,
+            "miss_reduction_per_10000_per_gib": 12.939024096675356,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 3072,
+            "right_SB_mib": 4096,
+            "step_gib": 1.0,
+            "left_SB_miss_rate": 6.168604511203046e-05,
+            "right_SB_miss_rate": 5.4163356683734065e-05,
+            "signed_miss_reduction_per_10000": 0.07522688428296398,
+            "miss_reduction_per_10000_per_gib": 0.07522688428296398,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 4096,
+            "right_SB_mib": 6144,
+            "step_gib": 2.0,
+            "left_SB_miss_rate": 5.4163356683734065e-05,
+            "right_SB_miss_rate": 5.1154281312415506e-05,
+            "signed_miss_reduction_per_10000": 0.030090753713185592,
+            "miss_reduction_per_10000_per_gib": 0.015045376856592796,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 6144,
+            "right_SB_mib": 8192,
+            "step_gib": 2.0,
+            "left_SB_miss_rate": 5.1154281312415506e-05,
+            "right_SB_miss_rate": 3.610890445582271e-05,
+            "signed_miss_reduction_per_10000": 0.15045376856592796,
+            "miss_reduction_per_10000_per_gib": 0.07522688428296398,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          }
+        ],
+        "later_significant_miss_reductions": [],
+        "hard_pruning_supported_by_curve": true,
+        "TPS_was_used_to_choose_bound": false,
+        "OS_hit_ratio_was_used_to_choose_bound": false,
+        "bound_is_grid_resolution_and_criterion_dependent": true,
+        "physical_IO_and_TPS_plateau_not_proven_by_this_rule": true
+      },
+      "preserved_running_WM": {
+        "18": 2048
+      },
+      "result": {
+        "selected": {
+          "shared_buffers_mb": 2048,
+          "work_mem": [
+            [
+              18,
+              2048
+            ],
+            [
+              21,
+              512
+            ]
+          ],
+          "ap_dynamic_peak_mb": 4491.322952270508,
+          "ap_execution_seconds": 2508.4485920305333,
+          "ap_cpu_seconds_per_second": 0.9760967577308316,
+          "ap_read_iops": 2798.7815447760313,
+          "ap_write_iops": 66.74305069583377,
+          "predicted_tps": 7533.222858278453,
+          "prediction_details": {
+            "predicted_tps": 7533.222858278453,
+            "transaction_latency_ms": 16.99139963540994,
+            "cpu_queue_extra_ms": 0.2700882678563955,
+            "io_queue_extra_ms": 0.03226225220353437,
+            "ap_cpu_seconds_per_second_after_media_closure": 0.48178440851299326,
+            "ap_response_seconds_after_media_closure": [
+              2149.907630094681,
+              2943.7776084322177
+            ],
+            "media_additional_seconds_per_request": 0.0007184707430555356,
+            "media_utilization": 0.9999999999997645,
+            "cpu_utilization": 0.9298825673314055,
+            "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+            "automatic_recommendation_qualified": false,
+            "fixed_point_relative_residual": 9.969869374515383e-10,
+            "iterations": 26
+          }
+        },
+        "candidates": [
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                64
+              ]
+            ],
+            "ap_dynamic_peak_mb": 3595.322952270508,
+            "ap_execution_seconds": 2511.5572934562742,
+            "ap_cpu_seconds_per_second": 0.9764581873032487,
+            "ap_read_iops": 2796.8176444959495,
+            "ap_write_iops": 67.78074429926163,
+            "predicted_tps": 6933.588721664251,
+            "prediction_details": {
+              "predicted_tps": 6933.588721664251,
+              "transaction_latency_ms": 18.460858404795438,
+              "cpu_queue_extra_ms": 0.31007786222404876,
+              "io_queue_extra_ms": 0.0010595236347084342,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.48877444078629084,
+              "ap_response_seconds_after_media_closure": [
+                2120.2039977925224,
+                2908.101733439657
+              ],
+              "media_additional_seconds_per_request": 0.0006988257087524184,
+              "media_utilization": 0.9999999999999329,
+              "cpu_utilization": 0.9291619188590721,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.908356555586522e-09,
+              "iterations": 25
+            }
+          },
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 4491.322952270508,
+            "ap_execution_seconds": 2508.4485920305333,
+            "ap_cpu_seconds_per_second": 0.9760967577308316,
+            "ap_read_iops": 2798.7815447760313,
+            "ap_write_iops": 66.74305069583377,
+            "predicted_tps": 6933.627709940822,
+            "prediction_details": {
+              "predicted_tps": 6933.627709940822,
+              "transaction_latency_ms": 18.46075470511904,
+              "cpu_queue_extra_ms": 0.30997450242286195,
+              "io_queue_extra_ms": 0.001059183759496868,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.4886275038812601,
+              "ap_response_seconds_after_media_closure": [
+                2119.865048693101,
+                2902.3258445228284
+              ],
+              "media_additional_seconds_per_request": 0.0006986015386368782,
+              "media_utilization": 0.9999999999999944,
+              "cpu_utilization": 0.9291577882979635,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.8893263337437247e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                2048
+              ]
+            ],
+            "ap_dynamic_peak_mb": 6205.81413269043,
+            "ap_execution_seconds": 2456.877186299559,
+            "ap_cpu_seconds_per_second": 0.9909934469976438,
+            "ap_read_iops": 2832.6400072354554,
+            "ap_write_iops": 48.85277883611434,
+            "predicted_tps": 6931.517456335203,
+            "prediction_details": {
+              "predicted_tps": 6931.517456335203,
+              "transaction_latency_ms": 18.466374988320872,
+              "cpu_queue_extra_ms": 0.31560059463355095,
+              "io_queue_extra_ms": 0.0010533747506396175,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.4965892588522901,
+              "ap_response_seconds_after_media_closure": [
+                2114.0718685678994,
+                2806.4843576520984
+              ],
+              "media_additional_seconds_per_request": 0.0006947701142128877,
+              "media_utilization": 0.9999999999996629,
+              "cpu_utilization": 0.9293819029021051,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 4.5842023510545005e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                4096
+              ]
+            ],
+            "ap_dynamic_peak_mb": 7066.309455871582,
+            "ap_execution_seconds": 2448.5108660075334,
+            "ap_cpu_seconds_per_second": 0.9900664560314582,
+            "ap_read_iops": 2838.3705115298985,
+            "ap_write_iops": 45.82487171116021,
+            "predicted_tps": 6931.615399930253,
+            "prediction_details": {
+              "predicted_tps": 6931.615399930253,
+              "transaction_latency_ms": 18.466114078840484,
+              "cpu_queue_extra_ms": 0.31534065883279294,
+              "io_queue_extra_ms": 0.0010524010710102328,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.49622100221947985,
+              "ap_response_seconds_after_media_closure": [
+                2113.1008420785483,
+                2790.9321036010015
+              ],
+              "media_additional_seconds_per_request": 0.0006941279082867406,
+              "media_utilization": 0.9999999999995103,
+              "cpu_utilization": 0.9293715806408965,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.669996472335015e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                64
+              ]
+            ],
+            "ap_dynamic_peak_mb": 3595.322952270508,
+            "ap_execution_seconds": 2511.5572934562742,
+            "ap_cpu_seconds_per_second": 0.9764581873032487,
+            "ap_read_iops": 2796.8176444959495,
+            "ap_write_iops": 67.78074429926163,
+            "predicted_tps": 7091.133266915381,
+            "prediction_details": {
+              "predicted_tps": 7091.133266915381,
+              "transaction_latency_ms": 18.050711439329266,
+              "cpu_queue_extra_ms": 0.29169593463736065,
+              "io_queue_extra_ms": 0.00010656765972591711,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.4889713945330364,
+              "ap_response_seconds_after_media_closure": [
+                2119.351826806964,
+                2906.924162096119
+              ],
+              "media_additional_seconds_per_request": 0.0006982621100627657,
+              "media_utilization": 0.9999999999999544,
+              "cpu_utilization": 0.9264113414682221,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.9602951201468386e-09,
+              "iterations": 25
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 4491.322952270508,
+            "ap_execution_seconds": 2508.4485920305333,
+            "ap_cpu_seconds_per_second": 0.9760967577308316,
+            "ap_read_iops": 2798.7815447760313,
+            "ap_write_iops": 66.74305069583377,
+            "predicted_tps": 7091.171663257106,
+            "prediction_details": {
+              "predicted_tps": 7091.171663257106,
+              "transaction_latency_ms": 18.050613620211873,
+              "cpu_queue_extra_ms": 0.2915981497054536,
+              "io_queue_extra_ms": 0.00010653347423932437,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.48882438584512555,
+              "ap_response_seconds_after_media_closure": [
+                2119.01314522275,
+                2901.150416184812
+              ],
+              "media_additional_seconds_per_request": 0.000698038116873245,
+              "media_utilization": 0.9999999999993252,
+              "cpu_utilization": 0.9264070041854099,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 1.4996155428548263e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                2048
+              ]
+            ],
+            "ap_dynamic_peak_mb": 6205.81413269043,
+            "ap_execution_seconds": 2456.877186299559,
+            "ap_cpu_seconds_per_second": 0.9909934469976438,
+            "ap_read_iops": 2832.6400072354554,
+            "ap_write_iops": 48.85277883611434,
+            "predicted_tps": 7089.0881649825715,
+            "prediction_details": {
+              "predicted_tps": 7089.0881649825715,
+              "transaction_latency_ms": 18.055918801475826,
+              "cpu_queue_extra_ms": 0.29690391522010073,
+              "io_queue_extra_ms": 0.0001059492235468192,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.49678908455193793,
+              "ap_response_seconds_after_media_closure": [
+                2113.224871606144,
+                2805.344948315082
+              ],
+              "media_additional_seconds_per_request": 0.0006942099374574304,
+              "media_utilization": 0.9999999999998763,
+              "cpu_utilization": 0.9266415813601058,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.214285643731273e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                4096
+              ]
+            ],
+            "ap_dynamic_peak_mb": 7066.309455871582,
+            "ap_execution_seconds": 2448.5108660075334,
+            "ap_cpu_seconds_per_second": 0.9900664560314582,
+            "ap_read_iops": 2838.3705115298985,
+            "ap_write_iops": 45.82487171116021,
+            "predicted_tps": 7089.184665998069,
+            "prediction_details": {
+              "predicted_tps": 7089.184665998069,
+              "transaction_latency_ms": 18.055672832662744,
+              "cpu_queue_extra_ms": 0.2966580443421998,
+              "io_queue_extra_ms": 0.00010585128836522864,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.49642064385114776,
+              "ap_response_seconds_after_media_closure": [
+                2112.25461066335,
+                2789.798464844545
+              ],
+              "media_additional_seconds_per_request": 0.000693568237839341,
+              "media_utilization": 0.9999999999999203,
+              "cpu_utilization": 0.9266307451674216,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 7.971948101648252e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                64
+              ]
+            ],
+            "ap_dynamic_peak_mb": 3595.322952270508,
+            "ap_execution_seconds": 2511.5572934562742,
+            "ap_cpu_seconds_per_second": 0.9764581873032487,
+            "ap_read_iops": 2796.8176444959495,
+            "ap_write_iops": 67.78074429926163,
+            "predicted_tps": 7256.489387172462,
+            "prediction_details": {
+              "predicted_tps": 7256.489387172462,
+              "transaction_latency_ms": 17.639383548401344,
+              "cpu_queue_extra_ms": 0.2843642984671747,
+              "io_queue_extra_ms": 0.0009695197354083805,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.488783727311684,
+              "ap_response_seconds_after_media_closure": [
+                2120.163801827179,
+                2908.046188698383
+              ],
+              "media_additional_seconds_per_request": 0.0006987991244239438,
+              "media_utilization": 0.999999999999888,
+              "cpu_utilization": 0.9263609340068009,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 3.787196334315013e-09,
+              "iterations": 25
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 4491.322952270508,
+            "ap_execution_seconds": 2508.4485920305333,
+            "ap_cpu_seconds_per_second": 0.9760967577308316,
+            "ap_read_iops": 2798.7815447760313,
+            "ap_write_iops": 66.74305069583377,
+            "predicted_tps": 7256.528734230995,
+            "prediction_details": {
+              "predicted_tps": 7256.528734230995,
+              "transaction_latency_ms": 17.63928805999432,
+              "cpu_queue_extra_ms": 0.28426912106422597,
+              "io_queue_extra_ms": 0.0009692087313324647,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.4886367870640055,
+              "ap_response_seconds_after_media_closure": [
+                2119.8248651654467,
+                2902.270400615425
+              ],
+              "media_additional_seconds_per_request": 0.0006985749625342936,
+              "media_utilization": 0.9999999999993926,
+              "cpu_utilization": 0.9263566076266752,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.14630071890565e-09,
+              "iterations": 23
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                2048
+              ]
+            ],
+            "ap_dynamic_peak_mb": 6205.81413269043,
+            "ap_execution_seconds": 2456.877186299559,
+            "ap_cpu_seconds_per_second": 0.9909934469976438,
+            "ap_read_iops": 2832.6400072354554,
+            "ap_write_iops": 48.85277883611434,
+            "predicted_tps": 7254.39970665872,
+            "prediction_details": {
+              "predicted_tps": 7254.39970665872,
+              "transaction_latency_ms": 17.644464749261953,
+              "cpu_queue_extra_ms": 0.28945112586065636,
+              "io_queue_extra_ms": 0.0009638932025378851,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.4965986785125486,
+              "ap_response_seconds_after_media_closure": [
+                2114.031926344069,
+                2806.4306260039
+              ],
+              "media_additional_seconds_per_request": 0.0006947436977009502,
+              "media_utilization": 0.9999999999997471,
+              "cpu_utilization": 0.9265913978765636,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 7.719059835764597e-10,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                4096
+              ]
+            ],
+            "ap_dynamic_peak_mb": 7066.309455871582,
+            "ap_execution_seconds": 2448.5108660075334,
+            "ap_cpu_seconds_per_second": 0.9900664560314582,
+            "ap_read_iops": 2838.3705115298985,
+            "ap_write_iops": 45.82487171116021,
+            "predicted_tps": 7254.498513936996,
+            "prediction_details": {
+              "predicted_tps": 7254.498513936996,
+              "transaction_latency_ms": 17.644224324369972,
+              "cpu_queue_extra_ms": 0.2892115919378292,
+              "io_queue_extra_ms": 0.0009630022333825188,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.4962304133118357,
+              "ap_response_seconds_after_media_closure": [
+                2113.060935496642,
+                2790.878643463415
+              ],
+              "media_additional_seconds_per_request": 0.0006941015153472343,
+              "media_utilization": 0.9999999999998729,
+              "cpu_utilization": 0.9265805790373673,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 6.713180011885811e-09,
+              "iterations": 22
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                64
+              ]
+            ],
+            "ap_dynamic_peak_mb": 3595.322952270508,
+            "ap_execution_seconds": 2511.5572934562742,
+            "ap_cpu_seconds_per_second": 0.9764581873032487,
+            "ap_read_iops": 2796.8176444959495,
+            "ap_write_iops": 67.78074429926163,
+            "predicted_tps": 7533.1788576155905,
+            "prediction_details": {
+              "predicted_tps": 7533.1788576155905,
+              "transaction_latency_ms": 16.9914988489455,
+              "cpu_queue_extra_ms": 0.2701771353451642,
+              "io_queue_extra_ms": 0.032272598250324594,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.48192885869825863,
+              "ap_response_seconds_after_media_closure": [
+                2150.256003996623,
+                2949.6290582623633
+              ],
+              "media_additional_seconds_per_request": 0.0007187011464346356,
+              "media_utilization": 0.9999999999994917,
+              "cpu_utilization": 0.9298863400118528,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 8.744072133026748e-10,
+              "iterations": 25
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 4491.322952270508,
+            "ap_execution_seconds": 2508.4485920305333,
+            "ap_cpu_seconds_per_second": 0.9760967577308316,
+            "ap_read_iops": 2798.7815447760313,
+            "ap_write_iops": 66.74305069583377,
+            "predicted_tps": 7533.222858278453,
+            "prediction_details": {
+              "predicted_tps": 7533.222858278453,
+              "transaction_latency_ms": 16.99139963540994,
+              "cpu_queue_extra_ms": 0.2700882678563955,
+              "io_queue_extra_ms": 0.03226225220353437,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.48178440851299326,
+              "ap_response_seconds_after_media_closure": [
+                2149.907630094681,
+                2943.7776084322177
+              ],
+              "media_additional_seconds_per_request": 0.0007184707430555356,
+              "media_utilization": 0.9999999999997645,
+              "cpu_utilization": 0.9298825673314055,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 9.969869374515383e-10,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                2048
+              ]
+            ],
+            "ap_dynamic_peak_mb": 6205.81413269043,
+            "ap_execution_seconds": 2456.877186299559,
+            "ap_cpu_seconds_per_second": 0.9909934469976438,
+            "ap_read_iops": 2832.6400072354554,
+            "ap_write_iops": 48.85277883611434,
+            "predicted_tps": 7530.97213865742,
+            "prediction_details": {
+              "predicted_tps": 7530.97213865742,
+              "transaction_latency_ms": 16.996477599286017,
+              "cpu_queue_extra_ms": 0.27534341421002184,
+              "io_queue_extra_ms": 0.03208506972598518,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.4896436967146215,
+              "ap_response_seconds_after_media_closure": [
+                2143.9415106375573,
+                2846.6660237078663
+              ],
+              "media_additional_seconds_per_request": 0.0007145249420774118,
+              "media_utilization": 0.9999999999998006,
+              "cpu_utilization": 0.9301049460249534,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.816109815981463e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                4096
+              ]
+            ],
+            "ap_dynamic_peak_mb": 7066.309455871582,
+            "ap_execution_seconds": 2448.5108660075334,
+            "ap_cpu_seconds_per_second": 0.9900664560314582,
+            "ap_read_iops": 2838.3705115298985,
+            "ap_write_iops": 45.82487171116021,
+            "predicted_tps": 7531.083340332656,
+            "prediction_details": {
+              "predicted_tps": 7531.083340332656,
+              "transaction_latency_ms": 16.99622665099298,
+              "cpu_queue_extra_ms": 0.27512210453616615,
+              "io_queue_extra_ms": 0.03205543110680307,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.48928181433380014,
+              "ap_response_seconds_after_media_closure": [
+                2142.9435138546332,
+                2830.9103042609795
+              ],
+              "media_additional_seconds_per_request": 0.0007138648988599524,
+              "media_utilization": 0.9999999999996185,
+              "cpu_utilization": 0.9300956103471039,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 4.8452255541064915e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 4096,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                64
+              ]
+            ],
+            "ap_dynamic_peak_mb": 3595.322952270508,
+            "ap_execution_seconds": 2511.5572934562742,
+            "ap_cpu_seconds_per_second": 0.9764581873032487,
+            "ap_read_iops": 2796.8176444959495,
+            "ap_write_iops": 67.78074429926163,
+            "predicted_tps": 7463.309296104126,
+            "prediction_details": {
+              "predicted_tps": 7463.309296104126,
+              "transaction_latency_ms": 17.150568913660198,
+              "cpu_queue_extra_ms": 0.29765980994257313,
+              "io_queue_extra_ms": 0.003875784096071676,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.4881317601189883,
+              "ap_response_seconds_after_media_closure": [
+                2122.989503983754,
+                2911.9508814670244
+              ],
+              "media_additional_seconds_per_request": 0.0007006679536375436,
+              "media_utilization": 0.9999999999992966,
+              "cpu_utilization": 0.9318120758537285,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 3.178082685906247e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 4096,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 4491.322952270508,
+            "ap_execution_seconds": 2508.4485920305333,
+            "ap_cpu_seconds_per_second": 0.9760967577308316,
+            "ap_read_iops": 2798.7815447760313,
+            "ap_write_iops": 66.74305069583377,
+            "predicted_tps": 7463.35282237269,
+            "prediction_details": {
+              "predicted_tps": 7463.35282237269,
+              "transaction_latency_ms": 17.15046898267923,
+              "cpu_queue_extra_ms": 0.2975611221674399,
+              "io_queue_extra_ms": 0.003874540890234346,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.4879850572064668,
+              "ap_response_seconds_after_media_closure": [
+                2122.649681204315,
+                2906.1679887076552
+              ],
+              "media_additional_seconds_per_request": 0.0007004432056979266,
+              "media_utilization": 0.9999999999998148,
+              "cpu_utilization": 0.9318081633557358,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 8.491361613849335e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 4096,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                2048
+              ]
+            ],
+            "ap_dynamic_peak_mb": 6205.81413269043,
+            "ap_execution_seconds": 2456.877186299559,
+            "ap_cpu_seconds_per_second": 0.9909934469976438,
+            "ap_read_iops": 2832.6400072354554,
+            "ap_write_iops": 48.85277883611434,
+            "predicted_tps": 7461.008007382043,
+            "prediction_details": {
+              "predicted_tps": 7461.008007382043,
+              "transaction_latency_ms": 17.15585869808242,
+              "cpu_queue_extra_ms": 0.3029720901094408,
+              "io_queue_extra_ms": 0.0038532883514210423,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.49593721312746764,
+              "ap_response_seconds_after_media_closure": [
+                2116.8404285505703,
+                2810.208719411091
+              ],
+              "media_additional_seconds_per_request": 0.0006966011514165716,
+              "media_utilization": 0.9999999999999916,
+              "cpu_utilization": 0.9320220023687147,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 6.875720326426915e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 4096,
+            "work_mem": [
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                4096
+              ]
+            ],
+            "ap_dynamic_peak_mb": 7066.309455871582,
+            "ap_execution_seconds": 2448.5108660075334,
+            "ap_cpu_seconds_per_second": 0.9900664560314582,
+            "ap_read_iops": 2838.3705115298985,
+            "ap_write_iops": 45.82487171116021,
+            "predicted_tps": 7461.117417365313,
+            "prediction_details": {
+              "predicted_tps": 7461.117417365313,
+              "transaction_latency_ms": 17.15560726265589,
+              "cpu_queue_extra_ms": 0.30272421622850687,
+              "io_queue_extra_ms": 0.003849726805828871,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.49556955647619727,
+              "ap_response_seconds_after_media_closure": [
+                2115.866901652701,
+                2794.637605759878
+              ],
+              "media_additional_seconds_per_request": 0.0006959572918000407,
+              "media_utilization": 0.9999999999998498,
+              "cpu_utilization": 0.9320122366849664,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 1.1943805944270025e-09,
+              "iterations": 22
+            }
+          }
+        ],
+        "failures": [],
+        "selection_policy": "max_tps_then_AP_time_then_memory",
+        "shared_SB_AP_pool_mib": 16384,
+        "SB_domain_mib": [
+          512,
+          1024,
+          1536,
+          2048,
+          4096
+        ],
+        "computed_SB_optimum": true,
+        "simulated_cache_B_high_mib": 4096,
+        "SB_candidates_excluded_by_simulated_bound": [
+          6144,
+          8192
+        ],
+        "prediction_is_independent_measured_optimum": false,
+        "search_complete": true,
+        "search_work": {
+          "expanded_states": 25,
+          "dominance_checks": 0,
+          "predictions": 20,
+          "max_expanded_states": 100000,
+          "max_dominance_checks": 1000000,
+          "max_predictions": 512
+        },
+        "automatic_recommendation_qualified": false
+      }
+    },
+    {
+      "stage": "S3",
+      "AP_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "TP_baseline_terminals": 128,
+      "TP_surge_terminals": 0,
+      "cache_topology": "TP128",
+      "B_high_mib": 4096,
+      "boundary_rule": {
+        "B_high_mib": 4096,
+        "criterion": "first_small_adjacent_SB_miss_reduction_right_endpoint",
+        "metric": "SB_miss_rate = 1 - P_SB",
+        "max_miss_reduction_per_10000_per_gib": 1.0,
+        "plateau_interval_mib": [
+          3072,
+          4096
+        ],
+        "selected_interval": {
+          "left_SB_mib": 3072,
+          "right_SB_mib": 4096,
+          "step_gib": 1.0,
+          "left_SB_miss_rate": 6.168604511203046e-05,
+          "right_SB_miss_rate": 5.4163356683734065e-05,
+          "signed_miss_reduction_per_10000": 0.07522688428296398,
+          "miss_reduction_per_10000_per_gib": 0.07522688428296398,
+          "negligible_miss_reduction": true,
+          "miss_rate_increased": false
+        },
+        "endpoint_policy": "right_endpoint_not_left_endpoint",
+        "left_censored": false,
+        "curve_domain_mib": [
+          32,
+          64,
+          128,
+          256,
+          512,
+          768,
+          1024,
+          1536,
+          2048,
+          3072,
+          4096,
+          6144,
+          8192
+        ],
+        "intervals": [
+          {
+            "left_SB_mib": 32,
+            "right_SB_mib": 64,
+            "step_gib": 0.03125,
+            "left_SB_miss_rate": 0.6503288919380852,
+            "right_SB_miss_rate": 0.45205339303338865,
+            "signed_miss_reduction_per_10000": 1982.7549890469659,
+            "miss_reduction_per_10000_per_gib": 63448.15964950291,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 64,
+            "right_SB_mib": 128,
+            "step_gib": 0.0625,
+            "left_SB_miss_rate": 0.45205339303338865,
+            "right_SB_miss_rate": 0.20777514985195344,
+            "signed_miss_reduction_per_10000": 2442.782431814352,
+            "miss_reduction_per_10000_per_gib": 39084.51890902963,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 128,
+            "right_SB_mib": 256,
+            "step_gib": 0.125,
+            "left_SB_miss_rate": 0.20777514985195344,
+            "right_SB_miss_rate": 0.07539539250379146,
+            "signed_miss_reduction_per_10000": 1323.7975734816198,
+            "miss_reduction_per_10000_per_gib": 10590.380587852958,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 256,
+            "right_SB_mib": 512,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.07539539250379146,
+            "right_SB_miss_rate": 0.03469012541826144,
+            "signed_miss_reduction_per_10000": 407.05267085530016,
+            "miss_reduction_per_10000_per_gib": 1628.2106834212007,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 512,
+            "right_SB_mib": 768,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.03469012541826144,
+            "right_SB_miss_rate": 0.021347885221829066,
+            "signed_miss_reduction_per_10000": 133.42240196432377,
+            "miss_reduction_per_10000_per_gib": 533.6896078572951,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 768,
+            "right_SB_mib": 1024,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.021347885221829066,
+            "right_SB_miss_rate": 0.014111058953804712,
+            "signed_miss_reduction_per_10000": 72.36826268024355,
+            "miss_reduction_per_10000_per_gib": 289.4730507209742,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 1024,
+            "right_SB_mib": 1536,
+            "step_gib": 0.5,
+            "left_SB_miss_rate": 0.014111058953804712,
+            "right_SB_miss_rate": 0.00524481837221058,
+            "signed_miss_reduction_per_10000": 88.66240581594131,
+            "miss_reduction_per_10000_per_gib": 177.32481163188262,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 1536,
+            "right_SB_mib": 2048,
+            "step_gib": 0.5,
+            "left_SB_miss_rate": 0.00524481837221058,
+            "right_SB_miss_rate": 0.001355588454779566,
+            "signed_miss_reduction_per_10000": 38.89229917431014,
+            "miss_reduction_per_10000_per_gib": 77.78459834862028,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 2048,
+            "right_SB_mib": 3072,
+            "step_gib": 1.0,
+            "left_SB_miss_rate": 0.001355588454779566,
+            "right_SB_miss_rate": 6.168604511203046e-05,
+            "signed_miss_reduction_per_10000": 12.939024096675356,
+            "miss_reduction_per_10000_per_gib": 12.939024096675356,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 3072,
+            "right_SB_mib": 4096,
+            "step_gib": 1.0,
+            "left_SB_miss_rate": 6.168604511203046e-05,
+            "right_SB_miss_rate": 5.4163356683734065e-05,
+            "signed_miss_reduction_per_10000": 0.07522688428296398,
+            "miss_reduction_per_10000_per_gib": 0.07522688428296398,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 4096,
+            "right_SB_mib": 6144,
+            "step_gib": 2.0,
+            "left_SB_miss_rate": 5.4163356683734065e-05,
+            "right_SB_miss_rate": 5.1154281312415506e-05,
+            "signed_miss_reduction_per_10000": 0.030090753713185592,
+            "miss_reduction_per_10000_per_gib": 0.015045376856592796,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 6144,
+            "right_SB_mib": 8192,
+            "step_gib": 2.0,
+            "left_SB_miss_rate": 5.1154281312415506e-05,
+            "right_SB_miss_rate": 3.610890445582271e-05,
+            "signed_miss_reduction_per_10000": 0.15045376856592796,
+            "miss_reduction_per_10000_per_gib": 0.07522688428296398,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          }
+        ],
+        "later_significant_miss_reductions": [],
+        "hard_pruning_supported_by_curve": true,
+        "TPS_was_used_to_choose_bound": false,
+        "OS_hit_ratio_was_used_to_choose_bound": false,
+        "bound_is_grid_resolution_and_criterion_dependent": true,
+        "physical_IO_and_TPS_plateau_not_proven_by_this_rule": true
+      },
+      "preserved_running_WM": {
+        "18": 2048,
+        "21": 512
+      },
+      "result": {
+        "selected": {
+          "shared_buffers_mb": 2048,
+          "work_mem": [
+            [
+              9,
+              2048
+            ],
+            [
+              13,
+              64
+            ],
+            [
+              18,
+              2048
+            ],
+            [
+              21,
+              512
+            ]
+          ],
+          "ap_dynamic_peak_mb": 10868.147323608398,
+          "ap_execution_seconds": 3405.079095396779,
+          "ap_cpu_seconds_per_second": 2.665359057694067,
+          "ap_read_iops": 5179.523696937825,
+          "ap_write_iops": 320.8483730442141,
+          "predicted_tps": 7463.659467459471,
+          "prediction_details": {
+            "predicted_tps": 7463.659467459471,
+            "transaction_latency_ms": 17.149764249270202,
+            "cpu_queue_extra_ms": 0.36215776120252474,
+            "io_queue_extra_ms": 0.09855737271766518,
+            "ap_cpu_seconds_per_second_after_media_closure": 0.6738693247655798,
+            "ap_response_seconds_after_media_closure": [
+              2926.150484923651,
+              645.4629248333654,
+              4382.20855444491,
+              6023.832869129979
+            ],
+            "media_additional_seconds_per_request": 0.002194843322262074,
+            "media_utilization": 0.9999999999993641,
+            "cpu_utilization": 0.933579196385249,
+            "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+            "automatic_recommendation_qualified": false,
+            "fixed_point_relative_residual": 2.373152341306195e-09,
+            "iterations": 27
+          }
+        },
+        "candidates": [
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 10868.147323608398,
+            "ap_execution_seconds": 3405.079095396779,
+            "ap_cpu_seconds_per_second": 2.665359057694067,
+            "ap_read_iops": 5179.523696937825,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 6880.064070769025,
+            "prediction_details": {
+              "predicted_tps": 6880.064070769025,
+              "transaction_latency_ms": 18.60447787529303,
+              "cpu_queue_extra_ms": 0.4514907723629642,
+              "io_queue_extra_ms": 0.003266083993385428,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6833177193265207,
+              "ap_response_seconds_after_media_closure": [
+                2885.3724396218586,
+                636.7038891806259,
+                4320.751789863897,
+                5939.036850372646
+              ],
+              "media_additional_seconds_per_request": 0.0021541977797886417,
+              "media_utilization": 0.9999999999994929,
+              "cpu_utilization": 0.9343839213928078,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 1.6779623246421238e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                512
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11946.16567993164,
+            "ap_execution_seconds": 3419.802351565347,
+            "ap_cpu_seconds_per_second": 2.659674972520248,
+            "ap_read_iops": 5026.296491727422,
+            "ap_write_iops": 240.05515492942624,
+            "predicted_tps": 6863.307886832954,
+            "prediction_details": {
+              "predicted_tps": 6863.307886832954,
+              "transaction_latency_ms": 18.64989931472473,
+              "cpu_queue_extra_ms": 0.4970216375645906,
+              "io_queue_extra_ms": 0.003156658223461483,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7423377138075056,
+              "ap_response_seconds_after_media_closure": [
+                2812.96364539734,
+                582.9623995712009,
+                4211.624189771315,
+                5788.466183539134
+              ],
+              "media_additional_seconds_per_request": 0.0020820242682992795,
+              "media_utilization": 0.9999999999997381,
+              "cpu_utilization": 0.9359010202662645,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 8.245240268323073e-09,
+              "iterations": 23
+            }
+          },
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                2048
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 12820.263572692871,
+            "ap_execution_seconds": 3415.491297973931,
+            "ap_cpu_seconds_per_second": 2.652262301865207,
+            "ap_read_iops": 4958.52470622361,
+            "ap_write_iops": 153.14737138677754,
+            "predicted_tps": 6846.948311403023,
+            "prediction_details": {
+              "predicted_tps": 6846.948311403023,
+              "transaction_latency_ms": 18.69445995406367,
+              "cpu_queue_extra_ms": 0.5417096218980859,
+              "io_queue_extra_ms": 0.003029313228902356,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7989920163919052,
+              "ap_response_seconds_after_media_closure": [
+                2728.6974116485335,
+                497.41619709429756,
+                4084.626192410188,
+                5613.238531387318
+              ],
+              "media_additional_seconds_per_request": 0.0019980318464564726,
+              "media_utilization": 0.9999999999998653,
+              "cpu_utilization": 0.9373216650265102,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 7.930216261442524e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                4096
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 12820.263572692871,
+            "ap_execution_seconds": 3415.491297973931,
+            "ap_cpu_seconds_per_second": 2.652262301865207,
+            "ap_read_iops": 4958.52470622361,
+            "ap_write_iops": 153.14737138677754,
+            "predicted_tps": 6846.948311403023,
+            "prediction_details": {
+              "predicted_tps": 6846.948311403023,
+              "transaction_latency_ms": 18.69445995406367,
+              "cpu_queue_extra_ms": 0.5417096218980859,
+              "io_queue_extra_ms": 0.003029313228902356,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7989920163919052,
+              "ap_response_seconds_after_media_closure": [
+                2728.6974116485335,
+                497.41619709429756,
+                4084.626192410188,
+                5613.238531387318
+              ],
+              "media_additional_seconds_per_request": 0.0019980318464564726,
+              "media_utilization": 0.9999999999998653,
+              "cpu_utilization": 0.9373216650265102,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 7.930216261442524e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                9,
+                4096
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 14151.32209777832,
+            "ap_execution_seconds": 3296.6862132789565,
+            "ap_cpu_seconds_per_second": 2.7075773270801013,
+            "ap_read_iops": 5318.732900987978,
+            "ap_write_iops": 247.29244861861412,
+            "predicted_tps": 6877.182826621458,
+            "prediction_details": {
+              "predicted_tps": 6877.182826621458,
+              "transaction_latency_ms": 18.61227230748629,
+              "cpu_queue_extra_ms": 0.45932273586626393,
+              "io_queue_extra_ms": 0.003228552683345266,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6935515178497352,
+              "ap_response_seconds_after_media_closure": [
+                2518.451195284705,
+                631.3693695401064,
+                4283.322747364492,
+                5887.393490825712
+              ],
+              "media_additional_seconds_per_request": 0.0021294434057661685,
+              "media_utilization": 0.9999999999999577,
+              "cpu_utilization": 0.9346501160743169,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 4.08244649197087e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                9,
+                4096
+              ],
+              [
+                13,
+                512
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 15229.340454101562,
+            "ap_execution_seconds": 3311.409469447525,
+            "ap_cpu_seconds_per_second": 2.7018932419062818,
+            "ap_read_iops": 5165.505695777575,
+            "ap_write_iops": 166.49923050382625,
+            "predicted_tps": 6860.173586701602,
+            "prediction_details": {
+              "predicted_tps": 6860.173586701602,
+              "transaction_latency_ms": 18.658419996275516,
+              "cpu_queue_extra_ms": 0.5055800447747627,
+              "io_queue_extra_ms": 0.0031189325640703326,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.753271821705233,
+              "ap_response_seconds_after_media_closure": [
+                2453.8484626892987,
+                578.2326086377685,
+                4174.001327495565,
+                5736.555397851196
+              ],
+              "media_additional_seconds_per_request": 0.002057141708063209,
+              "media_utilization": 0.9999999999994519,
+              "cpu_utilization": 0.9361781874829848,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.1901813695990313e-10,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 10868.147323608398,
+            "ap_execution_seconds": 3405.079095396779,
+            "ap_cpu_seconds_per_second": 2.665359057694067,
+            "ap_read_iops": 5179.523696937825,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7038.501709724218,
+            "prediction_details": {
+              "predicted_tps": 7038.501709724218,
+              "transaction_latency_ms": 18.185688507933765,
+              "cpu_queue_extra_ms": 0.4264509768375555,
+              "io_queue_extra_ms": 0.0003285940640313736,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6835899627419257,
+              "ap_response_seconds_after_media_closure": [
+                2884.214184367361,
+                636.4550984650821,
+                4319.006178469984,
+                5936.628313289537
+              ],
+              "media_additional_seconds_per_request": 0.0021530432881303654,
+              "media_utilization": 0.9999999999995045,
+              "cpu_utilization": 0.9319258512945676,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.6905947470012848e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                512
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11946.16567993164,
+            "ap_execution_seconds": 3419.802351565347,
+            "ap_cpu_seconds_per_second": 2.659674972520248,
+            "ap_read_iops": 5026.296491727422,
+            "ap_write_iops": 240.05515492942624,
+            "predicted_tps": 7021.866696050762,
+            "prediction_details": {
+              "predicted_tps": 7021.866696050762,
+              "transaction_latency_ms": 18.228770954831855,
+              "cpu_queue_extra_ms": 0.4695444362497678,
+              "io_queue_extra_ms": 0.0003175815499047649,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.742628831861395,
+              "ap_response_seconds_after_media_closure": [
+                2811.8217791451634,
+                582.7460536866896,
+                4209.90327831213,
+                5786.091726612096
+              ],
+              "media_additional_seconds_per_request": 0.002080886112389443,
+              "media_utilization": 0.9999999999995929,
+              "cpu_utilization": 0.9335142142065987,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.5181933205331575e-09,
+              "iterations": 24
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                2048
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 12820.263572692871,
+            "ap_execution_seconds": 3415.491297973931,
+            "ap_cpu_seconds_per_second": 2.652262301865207,
+            "ap_read_iops": 4958.52470622361,
+            "ap_write_iops": 153.14737138677754,
+            "predicted_tps": 7005.605764777958,
+            "prediction_details": {
+              "predicted_tps": 7005.605764777958,
+              "transaction_latency_ms": 18.27108226140446,
+              "cpu_queue_extra_ms": 0.5118685576076638,
+              "io_queue_extra_ms": 0.00030476676461352786,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.79929896662378,
+              "ap_response_seconds_after_media_closure": [
+                2727.5818754344223,
+                497.2411625684589,
+                4082.944963062758,
+                5610.918826530546
+              ],
+              "media_additional_seconds_per_request": 0.0019969199350287486,
+              "media_utilization": 0.9999999999994539,
+              "cpu_utilization": 0.93500179051562,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 6.0997862316725104e-09,
+              "iterations": 25
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                4096
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 12820.263572692871,
+            "ap_execution_seconds": 3415.491297973931,
+            "ap_cpu_seconds_per_second": 2.652262301865207,
+            "ap_read_iops": 4958.52470622361,
+            "ap_write_iops": 153.14737138677754,
+            "predicted_tps": 7005.605764777958,
+            "prediction_details": {
+              "predicted_tps": 7005.605764777958,
+              "transaction_latency_ms": 18.27108226140446,
+              "cpu_queue_extra_ms": 0.5118685576076638,
+              "io_queue_extra_ms": 0.00030476676461352786,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.79929896662378,
+              "ap_response_seconds_after_media_closure": [
+                2727.5818754344223,
+                497.2411625684589,
+                4082.944963062758,
+                5610.918826530546
+              ],
+              "media_additional_seconds_per_request": 0.0019969199350287486,
+              "media_utilization": 0.9999999999994539,
+              "cpu_utilization": 0.93500179051562,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 6.0997862316725104e-09,
+              "iterations": 25
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                9,
+                4096
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 14151.32209777832,
+            "ap_execution_seconds": 3296.6862132789565,
+            "ap_cpu_seconds_per_second": 2.7075773270801013,
+            "ap_read_iops": 5318.732900987978,
+            "ap_write_iops": 247.29244861861412,
+            "predicted_tps": 7035.63992028795,
+            "prediction_details": {
+              "predicted_tps": 7035.63992028795,
+              "transaction_latency_ms": 18.193085700674345,
+              "cpu_queue_extra_ms": 0.43385194547461925,
+              "io_queue_extra_ms": 0.00032481816754457895,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6938277789448045,
+              "ap_response_seconds_after_media_closure": [
+                2517.431798067967,
+                631.1235114973044,
+                4281.597712731016,
+                5885.0133448786455
+              ],
+              "media_additional_seconds_per_request": 0.002128302522920462,
+              "media_utilization": 0.9999999999994535,
+              "cpu_utilization": 0.9322041737430858,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.2565860291479112e-10,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                9,
+                4096
+              ],
+              [
+                13,
+                512
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 15229.340454101562,
+            "ap_execution_seconds": 3311.409469447525,
+            "ap_cpu_seconds_per_second": 2.7018932419062818,
+            "ap_read_iops": 5165.505695777575,
+            "ap_write_iops": 166.49923050382625,
+            "predicted_tps": 7018.750577839091,
+            "prediction_details": {
+              "predicted_tps": 7018.750577839091,
+              "transaction_latency_ms": 18.236864026499497,
+              "cpu_queue_extra_ms": 0.47764130335861066,
+              "io_queue_extra_ms": 0.00031378610870625145,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7535671453219149,
+              "ap_response_seconds_after_media_closure": [
+                2452.8437721773644,
+                578.0188730755585,
+                4172.301179701798,
+                5734.209589945534
+              ],
+              "media_additional_seconds_per_request": 0.00205601728457893,
+              "media_utilization": 0.99999999999988,
+              "cpu_utilization": 0.9338041873837571,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.940133940285364e-10,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 10868.147323608398,
+            "ap_execution_seconds": 3405.079095396779,
+            "ap_cpu_seconds_per_second": 2.665359057694067,
+            "ap_read_iops": 5179.523696937825,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7202.366299170255,
+            "prediction_details": {
+              "predicted_tps": 7202.366299170255,
+              "transaction_latency_ms": 17.771937091358698,
+              "cpu_queue_extra_ms": 0.4148986842926551,
+              "io_queue_extra_ms": 0.002988676867281193,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6833304798139797,
+              "ap_response_seconds_after_media_closure": [
+                2885.318129711733,
+                636.6922235297698,
+                4320.669939168596,
+                5938.923915480265
+              ],
+              "media_additional_seconds_per_request": 0.0021541436463513378,
+              "media_utilization": 0.9999999999997091,
+              "cpu_utilization": 0.9318386232338779,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 6.0763729603507954e-09,
+              "iterations": 25
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                512
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11946.16567993164,
+            "ap_execution_seconds": 3419.802351565347,
+            "ap_cpu_seconds_per_second": 2.659674972520248,
+            "ap_read_iops": 5026.296491727422,
+            "ap_write_iops": 240.05515492942624,
+            "predicted_tps": 7185.3836470931765,
+            "prediction_details": {
+              "predicted_tps": 7185.3836470931765,
+              "transaction_latency_ms": 17.813941107341048,
+              "cpu_queue_extra_ms": 0.4570028332137349,
+              "io_queue_extra_ms": 0.002888543928554002,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7423513349919824,
+              "ap_response_seconds_after_media_closure": [
+                2812.9101983602463,
+                582.9522731255752,
+                4211.54363951561,
+                5788.355042950458
+              ],
+              "media_additional_seconds_per_request": 0.0020819709949312162,
+              "media_utilization": 0.9999999999997975,
+              "cpu_utilization": 0.9334309221774374,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 8.77319750181016e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                2048
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 12820.263572692871,
+            "ap_execution_seconds": 3415.491297973931,
+            "ap_cpu_seconds_per_second": 2.652262301865207,
+            "ap_read_iops": 4958.52470622361,
+            "ap_write_iops": 153.14737138677754,
+            "predicted_tps": 7168.783584710957,
+            "prediction_details": {
+              "predicted_tps": 7168.783584710957,
+              "transaction_latency_ms": 17.85519101129053,
+              "cpu_queue_extra_ms": 0.4983692671250527,
+              "io_queue_extra_ms": 0.002772013966716308,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7990063544402302,
+              "ap_response_seconds_after_media_closure": [
+                2728.6452842931244,
+                497.4080179900947,
+                4084.5476310523327,
+                5613.13013501436
+              ],
+              "media_additional_seconds_per_request": 0.0019979798884819638,
+              "media_utilization": 0.999999999999444,
+              "cpu_utilization": 0.934922586997996,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 1.7470169755284815e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                4096
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 12820.263572692871,
+            "ap_execution_seconds": 3415.491297973931,
+            "ap_cpu_seconds_per_second": 2.652262301865207,
+            "ap_read_iops": 4958.52470622361,
+            "ap_write_iops": 153.14737138677754,
+            "predicted_tps": 7168.783584710957,
+            "prediction_details": {
+              "predicted_tps": 7168.783584710957,
+              "transaction_latency_ms": 17.85519101129053,
+              "cpu_queue_extra_ms": 0.4983692671250527,
+              "io_queue_extra_ms": 0.002772013966716308,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7990063544402302,
+              "ap_response_seconds_after_media_closure": [
+                2728.6452842931244,
+                497.4080179900947,
+                4084.5476310523327,
+                5613.13013501436
+              ],
+              "media_additional_seconds_per_request": 0.0019979798884819638,
+              "media_utilization": 0.999999999999444,
+              "cpu_utilization": 0.934922586997996,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 1.7470169755284815e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                9,
+                4096
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 14151.32209777832,
+            "ap_execution_seconds": 3296.6862132789565,
+            "ap_cpu_seconds_per_second": 2.7075773270801013,
+            "ap_read_iops": 5318.732900987978,
+            "ap_write_iops": 247.29244861861412,
+            "predicted_tps": 7199.447692635656,
+            "prediction_details": {
+              "predicted_tps": 7199.447692635656,
+              "transaction_latency_ms": 17.779141703715673,
+              "cpu_queue_extra_ms": 0.4221376401665259,
+              "io_queue_extra_ms": 0.0029543333503872387,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6935644626688228,
+              "ap_response_seconds_after_media_closure": [
+                2518.4034110534412,
+                631.3578449475506,
+                4283.241886388504,
+                5887.281921515427
+              ],
+              "media_additional_seconds_per_request": 0.002129389926897628,
+              "media_utilization": 0.9999999999996687,
+              "cpu_utilization": 0.9321179458547989,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.592641905138862e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 10868.147323608398,
+            "ap_execution_seconds": 3405.079095396779,
+            "ap_cpu_seconds_per_second": 2.665359057694067,
+            "ap_read_iops": 5179.523696937825,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7463.659467459471,
+            "prediction_details": {
+              "predicted_tps": 7463.659467459471,
+              "transaction_latency_ms": 17.149764249270202,
+              "cpu_queue_extra_ms": 0.36215776120252474,
+              "io_queue_extra_ms": 0.09855737271766518,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6738693247655798,
+              "ap_response_seconds_after_media_closure": [
+                2926.150484923651,
+                645.4629248333654,
+                4382.20855444491,
+                6023.832869129979
+              ],
+              "media_additional_seconds_per_request": 0.002194843322262074,
+              "media_utilization": 0.9999999999993641,
+              "cpu_utilization": 0.933579196385249,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.373152341306195e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                512
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11946.16567993164,
+            "ap_execution_seconds": 3419.802351565347,
+            "ap_cpu_seconds_per_second": 2.659674972520248,
+            "ap_read_iops": 5026.296491727422,
+            "ap_write_iops": 240.05515492942624,
+            "predicted_tps": 7446.435150834919,
+            "prediction_details": {
+              "predicted_tps": 7446.435150834919,
+              "transaction_latency_ms": 17.189433174120456,
+              "cpu_queue_extra_ms": 0.40509316715311205,
+              "io_queue_extra_ms": 0.09529089161733283,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7322310112156022,
+              "ap_response_seconds_after_media_closure": [
+                2853.169783093661,
+                590.58013273926,
+                4272.219029980734,
+                5872.072947449107
+              ],
+              "media_additional_seconds_per_request": 0.002122099761504851,
+              "media_utilization": 0.9999999999999905,
+              "cpu_utilization": 0.9351695227717958,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 4.603918579704214e-09,
+              "iterations": 25
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                2048
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 12820.263572692871,
+            "ap_execution_seconds": 3415.491297973931,
+            "ap_cpu_seconds_per_second": 2.652262301865207,
+            "ap_read_iops": 4958.52470622361,
+            "ap_write_iops": 153.14737138677754,
+            "predicted_tps": 7429.663469600678,
+            "prediction_details": {
+              "predicted_tps": 7429.663469600678,
+              "transaction_latency_ms": 17.22823673090133,
+              "cpu_queue_extra_ms": 0.4477095700124797,
+              "io_queue_extra_ms": 0.09147804553883518,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7883316576841838,
+              "ap_response_seconds_after_media_closure": [
+                2767.982030820987,
+                503.58019661544523,
+                4143.832208153912,
+                5694.929041061541
+              ],
+              "media_additional_seconds_per_request": 0.002037188815489914,
+              "media_utilization": 0.9999999999994588,
+              "cpu_utilization": 0.936672597104985,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 8.478204804873712e-09,
+              "iterations": 20
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                4096
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 12820.263572692871,
+            "ap_execution_seconds": 3415.491297973931,
+            "ap_cpu_seconds_per_second": 2.652262301865207,
+            "ap_read_iops": 4958.52470622361,
+            "ap_write_iops": 153.14737138677754,
+            "predicted_tps": 7429.663469600678,
+            "prediction_details": {
+              "predicted_tps": 7429.663469600678,
+              "transaction_latency_ms": 17.22823673090133,
+              "cpu_queue_extra_ms": 0.4477095700124797,
+              "io_queue_extra_ms": 0.09147804553883518,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7883316576841838,
+              "ap_response_seconds_after_media_closure": [
+                2767.982030820987,
+                503.58019661544523,
+                4143.832208153912,
+                5694.929041061541
+              ],
+              "media_additional_seconds_per_request": 0.002037188815489914,
+              "media_utilization": 0.9999999999994588,
+              "cpu_utilization": 0.936672597104985,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 8.478204804873712e-09,
+              "iterations": 20
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                9,
+                4096
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 14151.32209777832,
+            "ap_execution_seconds": 3296.6862132789565,
+            "ap_cpu_seconds_per_second": 2.7075773270801013,
+            "ap_read_iops": 5318.732900987978,
+            "ap_write_iops": 247.29244861861412,
+            "predicted_tps": 7460.809538811445,
+            "prediction_details": {
+              "predicted_tps": 7460.809538811445,
+              "transaction_latency_ms": 17.156315170165445,
+              "cpu_queue_extra_ms": 0.36984170578650366,
+              "io_queue_extra_ms": 0.09742434902893163,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6839633399956699,
+              "ap_response_seconds_after_media_closure": [
+                2554.3417870001945,
+                640.025456185513,
+                4344.057182095697,
+                5971.192862657179
+              ],
+              "media_additional_seconds_per_request": 0.002169611222332772,
+              "media_utilization": 0.9999999999999051,
+              "cpu_utilization": 0.9338696757609325,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 9.966729663801743e-10,
+              "iterations": 24
+            }
+          },
+          {
+            "shared_buffers_mb": 4096,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 10868.147323608398,
+            "ap_execution_seconds": 3405.079095396779,
+            "ap_cpu_seconds_per_second": 2.665359057694067,
+            "ap_read_iops": 5179.523696937825,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7402.891835477203,
+            "prediction_details": {
+              "predicted_tps": 7402.891835477203,
+              "transaction_latency_ms": 17.29054034712599,
+              "cpu_queue_extra_ms": 0.4295700973222665,
+              "io_queue_extra_ms": 0.011936930182169377,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6824297759655198,
+              "ap_response_seconds_after_media_closure": [
+                2889.156604471246,
+                637.5167195795899,
+                4326.454920716869,
+                5946.9058424043815
+              ],
+              "media_additional_seconds_per_request": 0.002157969648498236,
+              "media_utilization": 0.9999999999994533,
+              "cpu_utilization": 0.9366594091197215,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.59936294710883e-10,
+              "iterations": 25
+            }
+          },
+          {
+            "shared_buffers_mb": 4096,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                512
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11946.16567993164,
+            "ap_execution_seconds": 3419.802351565347,
+            "ap_cpu_seconds_per_second": 2.659674972520248,
+            "ap_read_iops": 5026.296491727422,
+            "ap_write_iops": 240.05515492942624,
+            "predicted_tps": 7384.409925271757,
+            "prediction_details": {
+              "predicted_tps": 7384.409925271757,
+              "transaction_latency_ms": 17.333815636959056,
+              "cpu_queue_extra_ms": 0.47324491576756045,
+              "io_queue_extra_ms": 0.011537401569940877,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.7413882589765439,
+              "ap_response_seconds_after_media_closure": [
+                2816.693982413221,
+                583.66917504485,
+                4217.246196468698,
+                5796.223243134042
+              ],
+              "media_additional_seconds_per_request": 0.002085742484081745,
+              "media_utilization": 0.9999999999994189,
+              "cpu_utilization": 0.9381123531237424,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 1.8155565939537155e-09,
+              "iterations": 27
+            }
+          }
+        ],
+        "failures": [],
+        "selection_policy": "max_tps_then_AP_time_then_memory",
+        "shared_SB_AP_pool_mib": 16384,
+        "SB_domain_mib": [
+          512,
+          1024,
+          1536,
+          2048,
+          4096
+        ],
+        "computed_SB_optimum": true,
+        "simulated_cache_B_high_mib": 4096,
+        "SB_candidates_excluded_by_simulated_bound": [
+          6144,
+          8192
+        ],
+        "prediction_is_independent_measured_optimum": false,
+        "search_complete": true,
+        "search_work": {
+          "expanded_states": 122,
+          "dominance_checks": 0,
+          "predictions": 24,
+          "max_expanded_states": 100000,
+          "max_dominance_checks": 1000000,
+          "max_predictions": 512
+        },
+        "automatic_recommendation_qualified": false
+      }
+    },
+    {
+      "stage": "S4",
+      "AP_queries": [
+        2,
+        9,
+        13,
+        18,
+        21
+      ],
+      "TP_baseline_terminals": 128,
+      "TP_surge_terminals": 0,
+      "cache_topology": "TP128",
+      "B_high_mib": 4096,
+      "boundary_rule": {
+        "B_high_mib": 4096,
+        "criterion": "first_small_adjacent_SB_miss_reduction_right_endpoint",
+        "metric": "SB_miss_rate = 1 - P_SB",
+        "max_miss_reduction_per_10000_per_gib": 1.0,
+        "plateau_interval_mib": [
+          3072,
+          4096
+        ],
+        "selected_interval": {
+          "left_SB_mib": 3072,
+          "right_SB_mib": 4096,
+          "step_gib": 1.0,
+          "left_SB_miss_rate": 6.168604511203046e-05,
+          "right_SB_miss_rate": 5.4163356683734065e-05,
+          "signed_miss_reduction_per_10000": 0.07522688428296398,
+          "miss_reduction_per_10000_per_gib": 0.07522688428296398,
+          "negligible_miss_reduction": true,
+          "miss_rate_increased": false
+        },
+        "endpoint_policy": "right_endpoint_not_left_endpoint",
+        "left_censored": false,
+        "curve_domain_mib": [
+          32,
+          64,
+          128,
+          256,
+          512,
+          768,
+          1024,
+          1536,
+          2048,
+          3072,
+          4096,
+          6144,
+          8192
+        ],
+        "intervals": [
+          {
+            "left_SB_mib": 32,
+            "right_SB_mib": 64,
+            "step_gib": 0.03125,
+            "left_SB_miss_rate": 0.6503288919380852,
+            "right_SB_miss_rate": 0.45205339303338865,
+            "signed_miss_reduction_per_10000": 1982.7549890469659,
+            "miss_reduction_per_10000_per_gib": 63448.15964950291,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 64,
+            "right_SB_mib": 128,
+            "step_gib": 0.0625,
+            "left_SB_miss_rate": 0.45205339303338865,
+            "right_SB_miss_rate": 0.20777514985195344,
+            "signed_miss_reduction_per_10000": 2442.782431814352,
+            "miss_reduction_per_10000_per_gib": 39084.51890902963,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 128,
+            "right_SB_mib": 256,
+            "step_gib": 0.125,
+            "left_SB_miss_rate": 0.20777514985195344,
+            "right_SB_miss_rate": 0.07539539250379146,
+            "signed_miss_reduction_per_10000": 1323.7975734816198,
+            "miss_reduction_per_10000_per_gib": 10590.380587852958,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 256,
+            "right_SB_mib": 512,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.07539539250379146,
+            "right_SB_miss_rate": 0.03469012541826144,
+            "signed_miss_reduction_per_10000": 407.05267085530016,
+            "miss_reduction_per_10000_per_gib": 1628.2106834212007,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 512,
+            "right_SB_mib": 768,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.03469012541826144,
+            "right_SB_miss_rate": 0.021347885221829066,
+            "signed_miss_reduction_per_10000": 133.42240196432377,
+            "miss_reduction_per_10000_per_gib": 533.6896078572951,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 768,
+            "right_SB_mib": 1024,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.021347885221829066,
+            "right_SB_miss_rate": 0.014111058953804712,
+            "signed_miss_reduction_per_10000": 72.36826268024355,
+            "miss_reduction_per_10000_per_gib": 289.4730507209742,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 1024,
+            "right_SB_mib": 1536,
+            "step_gib": 0.5,
+            "left_SB_miss_rate": 0.014111058953804712,
+            "right_SB_miss_rate": 0.00524481837221058,
+            "signed_miss_reduction_per_10000": 88.66240581594131,
+            "miss_reduction_per_10000_per_gib": 177.32481163188262,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 1536,
+            "right_SB_mib": 2048,
+            "step_gib": 0.5,
+            "left_SB_miss_rate": 0.00524481837221058,
+            "right_SB_miss_rate": 0.001355588454779566,
+            "signed_miss_reduction_per_10000": 38.89229917431014,
+            "miss_reduction_per_10000_per_gib": 77.78459834862028,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 2048,
+            "right_SB_mib": 3072,
+            "step_gib": 1.0,
+            "left_SB_miss_rate": 0.001355588454779566,
+            "right_SB_miss_rate": 6.168604511203046e-05,
+            "signed_miss_reduction_per_10000": 12.939024096675356,
+            "miss_reduction_per_10000_per_gib": 12.939024096675356,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 3072,
+            "right_SB_mib": 4096,
+            "step_gib": 1.0,
+            "left_SB_miss_rate": 6.168604511203046e-05,
+            "right_SB_miss_rate": 5.4163356683734065e-05,
+            "signed_miss_reduction_per_10000": 0.07522688428296398,
+            "miss_reduction_per_10000_per_gib": 0.07522688428296398,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 4096,
+            "right_SB_mib": 6144,
+            "step_gib": 2.0,
+            "left_SB_miss_rate": 5.4163356683734065e-05,
+            "right_SB_miss_rate": 5.1154281312415506e-05,
+            "signed_miss_reduction_per_10000": 0.030090753713185592,
+            "miss_reduction_per_10000_per_gib": 0.015045376856592796,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 6144,
+            "right_SB_mib": 8192,
+            "step_gib": 2.0,
+            "left_SB_miss_rate": 5.1154281312415506e-05,
+            "right_SB_miss_rate": 3.610890445582271e-05,
+            "signed_miss_reduction_per_10000": 0.15045376856592796,
+            "miss_reduction_per_10000_per_gib": 0.07522688428296398,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          }
+        ],
+        "later_significant_miss_reductions": [],
+        "hard_pruning_supported_by_curve": true,
+        "TPS_was_used_to_choose_bound": false,
+        "OS_hit_ratio_was_used_to_choose_bound": false,
+        "bound_is_grid_resolution_and_criterion_dependent": true,
+        "physical_IO_and_TPS_plateau_not_proven_by_this_rule": true
+      },
+      "preserved_running_WM": {
+        "9": 2048,
+        "13": 64,
+        "18": 2048,
+        "21": 512
+      },
+      "result": {
+        "selected": {
+          "shared_buffers_mb": 2048,
+          "work_mem": [
+            [
+              2,
+              64
+            ],
+            [
+              9,
+              2048
+            ],
+            [
+              13,
+              64
+            ],
+            [
+              18,
+              2048
+            ],
+            [
+              21,
+              512
+            ]
+          ],
+          "ap_dynamic_peak_mb": 11033.114364624023,
+          "ap_execution_seconds": 3555.428700028818,
+          "ap_cpu_seconds_per_second": 2.9874024278381883,
+          "ap_read_iops": 6642.072171226328,
+          "ap_write_iops": 320.8483730442141,
+          "predicted_tps": 7478.124656803906,
+          "prediction_details": {
+            "predicted_tps": 7478.124656803906,
+            "transaction_latency_ms": 17.11659087810422,
+            "cpu_queue_extra_ms": 0.2974278588502045,
+            "io_queue_extra_ms": 0.13011390390400018,
+            "ap_cpu_seconds_per_second_after_media_closure": 0.6053393438897551,
+            "ap_response_seconds_after_media_closure": [
+              787.5127874443667,
+              3631.1959826809702,
+              796.9051679805214,
+              5444.785606726267,
+              7489.941673761034
+            ],
+            "media_additional_seconds_per_request": 0.0028975978685555747,
+            "media_utilization": 0.9999999999998583,
+            "cpu_utilization": 0.9310238003712741,
+            "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+            "automatic_recommendation_qualified": false,
+            "fixed_point_relative_residual": 2.2341872796260986e-09,
+            "iterations": 26
+          }
+        },
+        "candidates": [
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                2,
+                64
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 6899.256549087167,
+            "prediction_details": {
+              "predicted_tps": 6899.256549087167,
+              "transaction_latency_ms": 18.55272345524181,
+              "cpu_queue_extra_ms": 0.3986856383465629,
+              "io_queue_extra_ms": 0.004316797958567302,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6138449868413821,
+              "ap_response_seconds_after_media_closure": [
+                776.4334627972526,
+                3580.6467917837053,
+                786.0473114547988,
+                5368.602707282646,
+                7384.827019349092
+              ],
+              "media_additional_seconds_per_request": 0.0028472129305231945,
+              "media_utilization": 0.9999999999997071,
+              "cpu_utilization": 0.93252927732039,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 9.359530039887431e-09,
+              "iterations": 24
+            }
+          },
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                2,
+                512
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 6899.256549087167,
+            "prediction_details": {
+              "predicted_tps": 6899.256549087167,
+              "transaction_latency_ms": 18.55272345524181,
+              "cpu_queue_extra_ms": 0.3986856383465629,
+              "io_queue_extra_ms": 0.004316797958567302,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6138449868413821,
+              "ap_response_seconds_after_media_closure": [
+                776.4334627972526,
+                3580.6467917837053,
+                786.0473114547988,
+                5368.602707282646,
+                7384.827019349092
+              ],
+              "media_additional_seconds_per_request": 0.0028472129305231945,
+              "media_utilization": 0.9999999999997071,
+              "cpu_utilization": 0.93252927732039,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 9.359530039887431e-09,
+              "iterations": 24
+            }
+          },
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                2,
+                2048
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 6899.256549087167,
+            "prediction_details": {
+              "predicted_tps": 6899.256549087167,
+              "transaction_latency_ms": 18.55272345524181,
+              "cpu_queue_extra_ms": 0.3986856383465629,
+              "io_queue_extra_ms": 0.004316797958567302,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6138449868413821,
+              "ap_response_seconds_after_media_closure": [
+                776.4334627972526,
+                3580.6467917837053,
+                786.0473114547988,
+                5368.602707282646,
+                7384.827019349092
+              ],
+              "media_additional_seconds_per_request": 0.0028472129305231945,
+              "media_utilization": 0.9999999999997071,
+              "cpu_utilization": 0.93252927732039,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 9.359530039887431e-09,
+              "iterations": 24
+            }
+          },
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                2,
+                4096
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 6899.256549087167,
+            "prediction_details": {
+              "predicted_tps": 6899.256549087167,
+              "transaction_latency_ms": 18.55272345524181,
+              "cpu_queue_extra_ms": 0.3986856383465629,
+              "io_queue_extra_ms": 0.004316797958567302,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6138449868413821,
+              "ap_response_seconds_after_media_closure": [
+                776.4334627972526,
+                3580.6467917837053,
+                786.0473114547988,
+                5368.602707282646,
+                7384.827019349092
+              ],
+              "media_additional_seconds_per_request": 0.0028472129305231945,
+              "media_utilization": 0.9999999999997071,
+              "cpu_utilization": 0.93252927732039,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 9.359530039887431e-09,
+              "iterations": 24
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                2,
+                64
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7057.6631489820775,
+            "prediction_details": {
+              "predicted_tps": 7057.6631489820775,
+              "transaction_latency_ms": 18.136314820366685,
+              "cpu_queue_extra_ms": 0.37697156480061556,
+              "io_queue_extra_ms": 0.0004343185338869223,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6140902835882133,
+              "ap_response_seconds_after_media_closure": [
+                776.1184968827023,
+                3579.2097662746746,
+                785.7386414934424,
+                5366.436960058821,
+                7381.838792691422
+              ],
+              "media_additional_seconds_per_request": 0.002845780574437207,
+              "media_utilization": 0.9999999999989979,
+              "cpu_utilization": 0.930002860991112,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.9846831934606826e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                2,
+                512
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7057.6631489820775,
+            "prediction_details": {
+              "predicted_tps": 7057.6631489820775,
+              "transaction_latency_ms": 18.136314820366685,
+              "cpu_queue_extra_ms": 0.37697156480061556,
+              "io_queue_extra_ms": 0.0004343185338869223,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6140902835882133,
+              "ap_response_seconds_after_media_closure": [
+                776.1184968827023,
+                3579.2097662746746,
+                785.7386414934424,
+                5366.436960058821,
+                7381.838792691422
+              ],
+              "media_additional_seconds_per_request": 0.002845780574437207,
+              "media_utilization": 0.9999999999989979,
+              "cpu_utilization": 0.930002860991112,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.9846831934606826e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                2,
+                2048
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7057.6631489820775,
+            "prediction_details": {
+              "predicted_tps": 7057.6631489820775,
+              "transaction_latency_ms": 18.136314820366685,
+              "cpu_queue_extra_ms": 0.37697156480061556,
+              "io_queue_extra_ms": 0.0004343185338869223,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6140902835882133,
+              "ap_response_seconds_after_media_closure": [
+                776.1184968827023,
+                3579.2097662746746,
+                785.7386414934424,
+                5366.436960058821,
+                7381.838792691422
+              ],
+              "media_additional_seconds_per_request": 0.002845780574437207,
+              "media_utilization": 0.9999999999989979,
+              "cpu_utilization": 0.930002860991112,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.9846831934606826e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                2,
+                4096
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7057.6631489820775,
+            "prediction_details": {
+              "predicted_tps": 7057.6631489820775,
+              "transaction_latency_ms": 18.136314820366685,
+              "cpu_queue_extra_ms": 0.37697156480061556,
+              "io_queue_extra_ms": 0.0004343185338869223,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6140902835882133,
+              "ap_response_seconds_after_media_closure": [
+                776.1184968827023,
+                3579.2097662746746,
+                785.7386414934424,
+                5366.436960058821,
+                7381.838792691422
+              ],
+              "media_additional_seconds_per_request": 0.002845780574437207,
+              "media_utilization": 0.9999999999989979,
+              "cpu_utilization": 0.930002860991112,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.9846831934606826e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                2,
+                64
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7221.786655394733,
+            "prediction_details": {
+              "predicted_tps": 7221.786655394733,
+              "transaction_latency_ms": 17.724145942713946,
+              "cpu_queue_extra_ms": 0.3661460589189308,
+              "io_queue_extra_ms": 0.003950153596254352,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6138565085502861,
+              "ap_response_seconds_after_media_closure": [
+                776.4186630582645,
+                3580.5792682788738,
+                786.0328075524699,
+                5368.500942322865,
+                7384.68660741076
+              ],
+              "media_additional_seconds_per_request": 0.002847145626427001,
+              "media_utilization": 0.9999999999994171,
+              "cpu_utilization": 0.9298939385530327,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.057502194816266e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                2,
+                512
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7221.786655394733,
+            "prediction_details": {
+              "predicted_tps": 7221.786655394733,
+              "transaction_latency_ms": 17.724145942713946,
+              "cpu_queue_extra_ms": 0.3661460589189308,
+              "io_queue_extra_ms": 0.003950153596254352,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6138565085502861,
+              "ap_response_seconds_after_media_closure": [
+                776.4186630582645,
+                3580.5792682788738,
+                786.0328075524699,
+                5368.500942322865,
+                7384.68660741076
+              ],
+              "media_additional_seconds_per_request": 0.002847145626427001,
+              "media_utilization": 0.9999999999994171,
+              "cpu_utilization": 0.9298939385530327,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.057502194816266e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                2,
+                2048
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7221.786655394733,
+            "prediction_details": {
+              "predicted_tps": 7221.786655394733,
+              "transaction_latency_ms": 17.724145942713946,
+              "cpu_queue_extra_ms": 0.3661460589189308,
+              "io_queue_extra_ms": 0.003950153596254352,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6138565085502861,
+              "ap_response_seconds_after_media_closure": [
+                776.4186630582645,
+                3580.5792682788738,
+                786.0328075524699,
+                5368.500942322865,
+                7384.68660741076
+              ],
+              "media_additional_seconds_per_request": 0.002847145626427001,
+              "media_utilization": 0.9999999999994171,
+              "cpu_utilization": 0.9298939385530327,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.057502194816266e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                2,
+                4096
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7221.786655394733,
+            "prediction_details": {
+              "predicted_tps": 7221.786655394733,
+              "transaction_latency_ms": 17.724145942713946,
+              "cpu_queue_extra_ms": 0.3661460589189308,
+              "io_queue_extra_ms": 0.003950153596254352,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6138565085502861,
+              "ap_response_seconds_after_media_closure": [
+                776.4186630582645,
+                3580.5792682788738,
+                786.0328075524699,
+                5368.500942322865,
+                7384.68660741076
+              ],
+              "media_additional_seconds_per_request": 0.002847145626427001,
+              "media_utilization": 0.9999999999994171,
+              "cpu_utilization": 0.9298939385530327,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.057502194816266e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                2,
+                64
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7478.124656803906,
+            "prediction_details": {
+              "predicted_tps": 7478.124656803906,
+              "transaction_latency_ms": 17.11659087810422,
+              "cpu_queue_extra_ms": 0.2974278588502045,
+              "io_queue_extra_ms": 0.13011390390400018,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6053393438897551,
+              "ap_response_seconds_after_media_closure": [
+                787.5127874443667,
+                3631.1959826809702,
+                796.9051679805214,
+                5444.785606726267,
+                7489.941673761034
+              ],
+              "media_additional_seconds_per_request": 0.0028975978685555747,
+              "media_utilization": 0.9999999999998583,
+              "cpu_utilization": 0.9310238003712741,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.2341872796260986e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                2,
+                512
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7478.124656803906,
+            "prediction_details": {
+              "predicted_tps": 7478.124656803906,
+              "transaction_latency_ms": 17.11659087810422,
+              "cpu_queue_extra_ms": 0.2974278588502045,
+              "io_queue_extra_ms": 0.13011390390400018,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6053393438897551,
+              "ap_response_seconds_after_media_closure": [
+                787.5127874443667,
+                3631.1959826809702,
+                796.9051679805214,
+                5444.785606726267,
+                7489.941673761034
+              ],
+              "media_additional_seconds_per_request": 0.0028975978685555747,
+              "media_utilization": 0.9999999999998583,
+              "cpu_utilization": 0.9310238003712741,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.2341872796260986e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                2,
+                2048
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7478.124656803906,
+            "prediction_details": {
+              "predicted_tps": 7478.124656803906,
+              "transaction_latency_ms": 17.11659087810422,
+              "cpu_queue_extra_ms": 0.2974278588502045,
+              "io_queue_extra_ms": 0.13011390390400018,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6053393438897551,
+              "ap_response_seconds_after_media_closure": [
+                787.5127874443667,
+                3631.1959826809702,
+                796.9051679805214,
+                5444.785606726267,
+                7489.941673761034
+              ],
+              "media_additional_seconds_per_request": 0.0028975978685555747,
+              "media_utilization": 0.9999999999998583,
+              "cpu_utilization": 0.9310238003712741,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.2341872796260986e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                2,
+                4096
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7478.124656803906,
+            "prediction_details": {
+              "predicted_tps": 7478.124656803906,
+              "transaction_latency_ms": 17.11659087810422,
+              "cpu_queue_extra_ms": 0.2974278588502045,
+              "io_queue_extra_ms": 0.13011390390400018,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6053393438897551,
+              "ap_response_seconds_after_media_closure": [
+                787.5127874443667,
+                3631.1959826809702,
+                796.9051679805214,
+                5444.785606726267,
+                7489.941673761034
+              ],
+              "media_additional_seconds_per_request": 0.0028975978685555747,
+              "media_utilization": 0.9999999999998583,
+              "cpu_utilization": 0.9310238003712741,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 2.2341872796260986e-09,
+              "iterations": 26
+            }
+          },
+          {
+            "shared_buffers_mb": 4096,
+            "work_mem": [
+              [
+                2,
+                64
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7423.645375412889,
+            "prediction_details": {
+              "predicted_tps": 7423.645375412889,
+              "transaction_latency_ms": 17.242202789874483,
+              "cpu_queue_extra_ms": 0.37739406583613055,
+              "io_queue_extra_ms": 0.015775404416797804,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6130449237295046,
+              "ap_response_seconds_after_media_closure": [
+                777.4625118234843,
+                3585.3418068073133,
+                787.0557904948698,
+                5375.67858428643,
+                7394.590081287481
+              ],
+              "media_additional_seconds_per_request": 0.002851892689720654,
+              "media_utilization": 0.9999999999990766,
+              "cpu_utilization": 0.9348291495797869,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 7.789195954899242e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 4096,
+            "work_mem": [
+              [
+                2,
+                512
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7423.645375412889,
+            "prediction_details": {
+              "predicted_tps": 7423.645375412889,
+              "transaction_latency_ms": 17.242202789874483,
+              "cpu_queue_extra_ms": 0.37739406583613055,
+              "io_queue_extra_ms": 0.015775404416797804,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6130449237295046,
+              "ap_response_seconds_after_media_closure": [
+                777.4625118234843,
+                3585.3418068073133,
+                787.0557904948698,
+                5375.67858428643,
+                7394.590081287481
+              ],
+              "media_additional_seconds_per_request": 0.002851892689720654,
+              "media_utilization": 0.9999999999990766,
+              "cpu_utilization": 0.9348291495797869,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 7.789195954899242e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 4096,
+            "work_mem": [
+              [
+                2,
+                2048
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7423.645375412889,
+            "prediction_details": {
+              "predicted_tps": 7423.645375412889,
+              "transaction_latency_ms": 17.242202789874483,
+              "cpu_queue_extra_ms": 0.37739406583613055,
+              "io_queue_extra_ms": 0.015775404416797804,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6130449237295046,
+              "ap_response_seconds_after_media_closure": [
+                777.4625118234843,
+                3585.3418068073133,
+                787.0557904948698,
+                5375.67858428643,
+                7394.590081287481
+              ],
+              "media_additional_seconds_per_request": 0.002851892689720654,
+              "media_utilization": 0.9999999999990766,
+              "cpu_utilization": 0.9348291495797869,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 7.789195954899242e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 4096,
+            "work_mem": [
+              [
+                2,
+                4096
+              ],
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 11033.114364624023,
+            "ap_execution_seconds": 3555.428700028818,
+            "ap_cpu_seconds_per_second": 2.9874024278381883,
+            "ap_read_iops": 6642.072171226328,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7423.645375412889,
+            "prediction_details": {
+              "predicted_tps": 7423.645375412889,
+              "transaction_latency_ms": 17.242202789874483,
+              "cpu_queue_extra_ms": 0.37739406583613055,
+              "io_queue_extra_ms": 0.015775404416797804,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6130449237295046,
+              "ap_response_seconds_after_media_closure": [
+                777.4625118234843,
+                3585.3418068073133,
+                787.0557904948698,
+                5375.67858428643,
+                7394.590081287481
+              ],
+              "media_additional_seconds_per_request": 0.002851892689720654,
+              "media_utilization": 0.9999999999990766,
+              "cpu_utilization": 0.9348291495797869,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 7.789195954899242e-09,
+              "iterations": 27
+            }
+          }
+        ],
+        "failures": [],
+        "selection_policy": "max_tps_then_AP_time_then_memory",
+        "shared_SB_AP_pool_mib": 16384,
+        "SB_domain_mib": [
+          512,
+          1024,
+          1536,
+          2048,
+          4096
+        ],
+        "computed_SB_optimum": true,
+        "simulated_cache_B_high_mib": 4096,
+        "SB_candidates_excluded_by_simulated_bound": [
+          6144,
+          8192
+        ],
+        "prediction_is_independent_measured_optimum": false,
+        "search_complete": true,
+        "search_work": {
+          "expanded_states": 100,
+          "dominance_checks": 0,
+          "predictions": 20,
+          "max_expanded_states": 100000,
+          "max_dominance_checks": 1000000,
+          "max_predictions": 512
+        },
+        "automatic_recommendation_qualified": false
+      }
+    },
+    {
+      "stage": "S5",
+      "AP_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "TP_baseline_terminals": 128,
+      "TP_surge_terminals": 16,
+      "cache_topology": "S5_128_plus_16",
+      "B_high_mib": 4096,
+      "boundary_rule": {
+        "B_high_mib": 4096,
+        "criterion": "first_small_adjacent_SB_miss_reduction_right_endpoint",
+        "metric": "SB_miss_rate = 1 - P_SB",
+        "max_miss_reduction_per_10000_per_gib": 1.0,
+        "plateau_interval_mib": [
+          3072,
+          4096
+        ],
+        "selected_interval": {
+          "left_SB_mib": 3072,
+          "right_SB_mib": 4096,
+          "step_gib": 1.0,
+          "left_SB_miss_rate": 2.5963394667982698e-05,
+          "right_SB_miss_rate": 1.6799843608694687e-05,
+          "signed_miss_reduction_per_10000": 0.09163551059288011,
+          "miss_reduction_per_10000_per_gib": 0.09163551059288011,
+          "negligible_miss_reduction": true,
+          "miss_rate_increased": false
+        },
+        "endpoint_policy": "right_endpoint_not_left_endpoint",
+        "left_censored": false,
+        "curve_domain_mib": [
+          32,
+          64,
+          128,
+          256,
+          512,
+          768,
+          1024,
+          1536,
+          2048,
+          3072,
+          4096,
+          6144,
+          8192
+        ],
+        "intervals": [
+          {
+            "left_SB_mib": 32,
+            "right_SB_mib": 64,
+            "step_gib": 0.03125,
+            "left_SB_miss_rate": 0.6506518339320186,
+            "right_SB_miss_rate": 0.4526091684382866,
+            "signed_miss_reduction_per_10000": 1980.4266549373206,
+            "miss_reduction_per_10000_per_gib": 63373.65295799426,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 64,
+            "right_SB_mib": 128,
+            "step_gib": 0.0625,
+            "left_SB_miss_rate": 0.4526091684382866,
+            "right_SB_miss_rate": 0.2095108496444542,
+            "signed_miss_reduction_per_10000": 2430.9831879383237,
+            "miss_reduction_per_10000_per_gib": 38895.73100701318,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 128,
+            "right_SB_mib": 256,
+            "step_gib": 0.125,
+            "left_SB_miss_rate": 0.2095108496444542,
+            "right_SB_miss_rate": 0.07592307504337414,
+            "signed_miss_reduction_per_10000": 1335.8777460108006,
+            "miss_reduction_per_10000_per_gib": 10687.021968086405,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 256,
+            "right_SB_mib": 512,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.07592307504337414,
+            "right_SB_miss_rate": 0.0346565501062972,
+            "signed_miss_reduction_per_10000": 412.6652493707694,
+            "miss_reduction_per_10000_per_gib": 1650.6609974830776,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 512,
+            "right_SB_mib": 768,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.0346565501062972,
+            "right_SB_miss_rate": 0.021409109791559744,
+            "signed_miss_reduction_per_10000": 132.47440314737457,
+            "miss_reduction_per_10000_per_gib": 529.8976125894983,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 768,
+            "right_SB_mib": 1024,
+            "step_gib": 0.25,
+            "left_SB_miss_rate": 0.021409109791559744,
+            "right_SB_miss_rate": 0.013879725337829552,
+            "signed_miss_reduction_per_10000": 75.29384453730192,
+            "miss_reduction_per_10000_per_gib": 301.1753781492077,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 1024,
+            "right_SB_mib": 1536,
+            "step_gib": 0.5,
+            "left_SB_miss_rate": 0.013879725337829552,
+            "right_SB_miss_rate": 0.005010935170930764,
+            "signed_miss_reduction_per_10000": 88.68790166898788,
+            "miss_reduction_per_10000_per_gib": 177.37580333797575,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 1536,
+            "right_SB_mib": 2048,
+            "step_gib": 0.5,
+            "left_SB_miss_rate": 0.005010935170930764,
+            "right_SB_miss_rate": 0.001200425188769172,
+            "signed_miss_reduction_per_10000": 38.105099821615916,
+            "miss_reduction_per_10000_per_gib": 76.21019964323183,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 2048,
+            "right_SB_mib": 3072,
+            "step_gib": 1.0,
+            "left_SB_miss_rate": 0.001200425188769172,
+            "right_SB_miss_rate": 2.5963394667982698e-05,
+            "signed_miss_reduction_per_10000": 11.744617941011892,
+            "miss_reduction_per_10000_per_gib": 11.744617941011892,
+            "negligible_miss_reduction": false,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 3072,
+            "right_SB_mib": 4096,
+            "step_gib": 1.0,
+            "left_SB_miss_rate": 2.5963394667982698e-05,
+            "right_SB_miss_rate": 1.6799843608694687e-05,
+            "signed_miss_reduction_per_10000": 0.09163551059288011,
+            "miss_reduction_per_10000_per_gib": 0.09163551059288011,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          },
+          {
+            "left_SB_mib": 4096,
+            "right_SB_mib": 6144,
+            "step_gib": 2.0,
+            "left_SB_miss_rate": 1.6799843608694687e-05,
+            "right_SB_miss_rate": 1.9854360628457357e-05,
+            "signed_miss_reduction_per_10000": -0.030545170197626703,
+            "miss_reduction_per_10000_per_gib": 0.0,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": true
+          },
+          {
+            "left_SB_mib": 6144,
+            "right_SB_mib": 8192,
+            "step_gib": 2.0,
+            "left_SB_miss_rate": 1.9854360628457357e-05,
+            "right_SB_miss_rate": 1.2218068079050681e-05,
+            "signed_miss_reduction_per_10000": 0.07636292549406676,
+            "miss_reduction_per_10000_per_gib": 0.03818146274703338,
+            "negligible_miss_reduction": true,
+            "miss_rate_increased": false
+          }
+        ],
+        "later_significant_miss_reductions": [],
+        "hard_pruning_supported_by_curve": true,
+        "TPS_was_used_to_choose_bound": false,
+        "OS_hit_ratio_was_used_to_choose_bound": false,
+        "bound_is_grid_resolution_and_criterion_dependent": true,
+        "physical_IO_and_TPS_plateau_not_proven_by_this_rule": true
+      },
+      "preserved_running_WM": {
+        "9": 2048,
+        "13": 64,
+        "18": 2048,
+        "21": 512
+      },
+      "result": {
+        "selected": {
+          "shared_buffers_mb": 4096,
+          "work_mem": [
+            [
+              9,
+              2048
+            ],
+            [
+              13,
+              64
+            ],
+            [
+              18,
+              2048
+            ],
+            [
+              21,
+              512
+            ]
+          ],
+          "ap_dynamic_peak_mb": 10868.147323608398,
+          "ap_execution_seconds": 3405.079095396779,
+          "ap_cpu_seconds_per_second": 2.665359057694067,
+          "ap_read_iops": 5179.523696937825,
+          "ap_write_iops": 320.8483730442141,
+          "predicted_tps": 7293.3302361298365,
+          "prediction_details": {
+            "predicted_tps": 7293.3302361298365,
+            "transaction_latency_ms": 19.74406688292847,
+            "cpu_queue_extra_ms": 0.436091461939095,
+            "io_queue_extra_ms": 0.01963482104160954,
+            "ap_cpu_seconds_per_second_after_media_closure": 0.6816932349743791,
+            "ap_response_seconds_after_media_closure": [
+              2892.303016932297,
+              638.1925621493012,
+              4331.196892247444,
+              5953.448658473444
+            ],
+            "media_additional_seconds_per_request": 0.002161105837110959,
+            "media_utilization": 0.9999999999999617,
+            "cpu_utilization": 0.9337262050329724,
+            "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+            "automatic_recommendation_qualified": false,
+            "fixed_point_relative_residual": 1.2894474377134202e-10,
+            "iterations": 27
+          }
+        },
+        "candidates": [
+          {
+            "shared_buffers_mb": 512,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 10868.147323608398,
+            "ap_execution_seconds": 3405.079095396779,
+            "ap_cpu_seconds_per_second": 2.665359057694067,
+            "ap_read_iops": 5179.523696937825,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 6767.3128093585365,
+            "prediction_details": {
+              "predicted_tps": 6767.3128093585365,
+              "transaction_latency_ms": 21.278756501046125,
+              "cpu_queue_extra_ms": 0.48561973211941134,
+              "io_queue_extra_ms": 0.00026410361254790586,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6835970642555445,
+              "ap_response_seconds_after_media_closure": [
+                2884.183983440648,
+                636.4486113715524,
+                4318.960662525572,
+                5936.5655118891955
+              ],
+              "media_additional_seconds_per_request": 0.002153013185337542,
+              "media_utilization": 0.9999999999998184,
+              "cpu_utilization": 0.9344712399909552,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 9.977435100338994e-09,
+              "iterations": 25
+            }
+          },
+          {
+            "shared_buffers_mb": 1024,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 10868.147323608398,
+            "ap_execution_seconds": 3405.079095396779,
+            "ap_cpu_seconds_per_second": 2.665359057694067,
+            "ap_read_iops": 5179.523696937825,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7084.961864792555,
+            "prediction_details": {
+              "predicted_tps": 7084.961864792555,
+              "transaction_latency_ms": 20.324738915793812,
+              "cpu_queue_extra_ms": 0.44293108355018374,
+              "io_queue_extra_ms": 0.0008176484825318006,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.683542940363761,
+              "ap_response_seconds_after_media_closure": [
+                2884.4141743902587,
+                636.4980558880725,
+                4319.307584279526,
+                5937.044183094167
+              ],
+              "media_additional_seconds_per_request": 0.0021532426283123133,
+              "media_utilization": 0.9999999999996514,
+              "cpu_utilization": 0.9316779025085574,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 9.046134952228613e-10,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 1536,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 10868.147323608398,
+            "ap_execution_seconds": 3405.079095396779,
+            "ap_cpu_seconds_per_second": 2.665359057694067,
+            "ap_read_iops": 5179.523696937825,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7177.08708082363,
+            "prediction_details": {
+              "predicted_tps": 7177.08708082363,
+              "transaction_latency_ms": 20.063850093382506,
+              "cpu_queue_extra_ms": 0.4297502315625521,
+              "io_queue_extra_ms": 0.0019303707566830244,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6834340523950905,
+              "ap_response_seconds_after_media_closure": [
+                2884.8773895067957,
+                636.5975534900444,
+                4320.005697741235,
+                5938.007417045668
+              ],
+              "media_additional_seconds_per_request": 0.0021537043382730088,
+              "media_utilization": 0.9999999999999151,
+              "cpu_utilization": 0.9306903775545051,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 4.883350279705212e-09,
+              "iterations": 27
+            }
+          },
+          {
+            "shared_buffers_mb": 2048,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 10868.147323608398,
+            "ap_execution_seconds": 3405.079095396779,
+            "ap_cpu_seconds_per_second": 2.665359057694067,
+            "ap_read_iops": 5179.523696937825,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7266.621135034412,
+            "prediction_details": {
+              "predicted_tps": 7266.621135034412,
+              "transaction_latency_ms": 19.816638044784586,
+              "cpu_queue_extra_ms": 0.3347243623257916,
+              "io_queue_extra_ms": 0.19518770464522953,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6651415045427984,
+              "ap_response_seconds_after_media_closure": [
+                2964.8482222999874,
+                653.775114857461,
+                4440.530078150971,
+                6104.302985834809
+              ],
+              "media_additional_seconds_per_request": 0.002233415316493647,
+              "media_utilization": 0.9999999999999485,
+              "cpu_utilization": 0.9304311741808662,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 5.844157380252568e-09,
+              "iterations": 25
+            }
+          },
+          {
+            "shared_buffers_mb": 4096,
+            "work_mem": [
+              [
+                9,
+                2048
+              ],
+              [
+                13,
+                64
+              ],
+              [
+                18,
+                2048
+              ],
+              [
+                21,
+                512
+              ]
+            ],
+            "ap_dynamic_peak_mb": 10868.147323608398,
+            "ap_execution_seconds": 3405.079095396779,
+            "ap_cpu_seconds_per_second": 2.665359057694067,
+            "ap_read_iops": 5179.523696937825,
+            "ap_write_iops": 320.8483730442141,
+            "predicted_tps": 7293.3302361298365,
+            "prediction_details": {
+              "predicted_tps": 7293.3302361298365,
+              "transaction_latency_ms": 19.74406688292847,
+              "cpu_queue_extra_ms": 0.436091461939095,
+              "io_queue_extra_ms": 0.01963482104160954,
+              "ap_cpu_seconds_per_second_after_media_closure": 0.6816932349743791,
+              "ap_response_seconds_after_media_closure": [
+                2892.303016932297,
+                638.1925621493012,
+                4331.196892247444,
+                5953.448658473444
+              ],
+              "media_additional_seconds_per_request": 0.002161105837110959,
+              "media_utilization": 0.9999999999999617,
+              "cpu_utilization": 0.9337262050329724,
+              "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+              "automatic_recommendation_qualified": false,
+              "fixed_point_relative_residual": 1.2894474377134202e-10,
+              "iterations": 27
+            }
+          }
+        ],
+        "failures": [],
+        "selection_policy": "max_tps_then_AP_time_then_memory",
+        "shared_SB_AP_pool_mib": 16384,
+        "SB_domain_mib": [
+          512,
+          1024,
+          1536,
+          2048,
+          4096
+        ],
+        "computed_SB_optimum": true,
+        "simulated_cache_B_high_mib": 4096,
+        "SB_candidates_excluded_by_simulated_bound": [
+          8192
+        ],
+        "prediction_is_independent_measured_optimum": false,
+        "search_complete": true,
+        "search_work": {
+          "expanded_states": 20,
+          "dominance_checks": 0,
+          "predictions": 5,
+          "max_expanded_states": 100000,
+          "max_dominance_checks": 1000000,
+          "max_predictions": 512
+        },
+        "automatic_recommendation_qualified": false
+      }
+    }
+  ],
+  "innovation_1_cache_boundary_connected": true,
+  "B_high_is_derived_from_simulated_P_SB_not_TPS": true,
+  "all_five_stages_have_numeric_recommendations": true,
+  "frozen_AP_preparation_time": "2026-11-12T16:52:49.411299+08:00",
+  "frozen_AP_statistics_TTL_not_renewed": true,
+  "not_a_claim_of_current_live_cardinality_refresh": true,
+  "TP_response": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/miss_plateau_20261112_1740/TP128_RESPONSE/TP_MODEL.json",
+  "S5_topology": "128-warmed-plus-16-first-event-gated-at-measurement",
+  "five_stage_search_seconds": 0.14010224398225546,
+  "physical_IO_is_proxy_not_lifecycle_truth": true,
+  "CPU_capacity_is_logical_CPU_assumption": 16,
+  "shared_SB_AP_pool_mib": 16384,
+  "pool_is_trial_policy_not_physical_safety_proof": true,
+  "automatic_recommendation_qualified": false,
+  "configuration_applied": false,
+  "mixed_TPS_measured_for_these_new_configurations": false,
+  "source_artifacts": [
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/cache_boundary_20261112_1643/connected_search_old_domain/FIVE_STAGE_RECOMMENDATIONS.json",
+      "sha256": "9938edd8ed71af946b28640eeae596746c769e3f717504019915540a399b6b4d"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/cache_boundary_20261112_1643/connected_search_old_domain/RESOURCE_OPTIONS_FREEZE.json",
+      "sha256": "c7054e188b7c2ac72dacdb0a2c61781718ad377c7ee5bc8af3b45db39be62bce"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/cache_boundary_20261112_1643/connected_search_old_domain/QUERY_OPTIONS.json",
+      "sha256": "3f403366f7f63435e931d37affe186e4c8eb1738ffef58b1ff8fe93b7fb4a7a8"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/miss_plateau_20261112_1740/TP128_RESPONSE/TP_MODEL.json",
+      "sha256": "d658a92d834a66687ad43593613b74951a2c4bed0ac4fbfc53ee007d29cf8f71"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/miss_plateau_20261112_1740/S5_RESPONSE/MATRIX.json",
+      "sha256": "11d63c169bc68d17db4bf49b82742ddc49c7bf78b137033dd3c44b69d6748aac"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/miss_plateau_20261112_1740/boundary_v2/TP_CACHE_BOUNDARY.json",
+      "sha256": "83d24c7a84a1481a4d4e8e11e48b3d8f6b79893333213fea0a751e725558e21b"
+    },
+    {
+      "path": "/root/GaussTune/experiments/opengauss/huawei7/validation/fio-saturation-20261015/saturation.json",
+      "sha256": "4a2ccac846b987877e78a840fa3ed02b9af964427a1ec47aabe5b900557ff17b"
+    }
+  ]
+}

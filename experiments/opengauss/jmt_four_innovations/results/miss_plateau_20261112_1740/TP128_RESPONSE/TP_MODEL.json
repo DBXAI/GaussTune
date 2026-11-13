@@ -1,0 +1,267 @@
+{
+  "schema": "jmt.current-TP-response/v1",
+  "created_at": "2026-11-12T17:41:24.057883+08:00",
+  "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+  "matrix": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/miss_plateau_20261112_1740/TP128_RESPONSE/MATRIX.json",
+  "matrix_sha256": "d7f418b5f539ea8cd32419bb1988f7e7a4d524afbac25398b9ad1fba435c28c8",
+  "benchmark_profile": "current_16x1M_sysbench_readonly_omm_local_socket",
+  "baseline_terminals": 128,
+  "surge_terminals": 0,
+  "selection_policy": "max_TPS",
+  "rows": [
+    {
+      "shared_buffers_mib": 512,
+      "sustainable_tps": 7052.450000000001,
+      "tp_cpu_seconds_per_tx": 0.002073647116685022,
+      "native_publication_window_hit_ratio": 0.9640206802443456,
+      "TPS_training_values": [
+        7019.1,
+        7085.8
+      ],
+      "TPS_training_range": [
+        7019.1,
+        7085.8
+      ],
+      "heldout_TPS": 7106.6,
+      "heldout_absolute_relative_error": 0.007619677482903165,
+      "repeat_3_not_used_for_selection": true,
+      "whole_device_read_events_per_tx_training_proxy": 0.001516148621091736,
+      "whole_device_events_are_not_qualified_TP_owned_physical_requests": true
+    },
+    {
+      "shared_buffers_mib": 1024,
+      "sustainable_tps": 7207.65,
+      "tp_cpu_seconds_per_tx": 0.0020213426443180626,
+      "native_publication_window_hit_ratio": 0.9853278568745438,
+      "TPS_training_values": [
+        7176.8,
+        7238.5
+      ],
+      "TPS_training_range": [
+        7176.8,
+        7238.5
+      ],
+      "heldout_TPS": 7325.8,
+      "heldout_absolute_relative_error": 0.016127931420459273,
+      "repeat_3_not_used_for_selection": true,
+      "whole_device_read_events_per_tx_training_proxy": 0.00015261841963090035,
+      "whole_device_events_are_not_qualified_TP_owned_physical_requests": true
+    },
+    {
+      "shared_buffers_mib": 1536,
+      "sustainable_tps": 7375.799999999999,
+      "tp_cpu_seconds_per_tx": 0.001975196331456646,
+      "native_publication_window_hit_ratio": 0.9946191974225853,
+      "TPS_training_values": [
+        7405.2,
+        7346.4
+      ],
+      "TPS_training_range": [
+        7346.4,
+        7405.2
+      ],
+      "heldout_TPS": 7410.0,
+      "heldout_absolute_relative_error": 0.004615384615384714,
+      "repeat_3_not_used_for_selection": true,
+      "whole_device_read_events_per_tx_training_proxy": 0.0013874083431452576,
+      "whole_device_events_are_not_qualified_TP_owned_physical_requests": true
+    },
+    {
+      "shared_buffers_mib": 2048,
+      "sustainable_tps": 7669.7,
+      "tp_cpu_seconds_per_tx": 0.0019110461670424352,
+      "native_publication_window_hit_ratio": 0.9990407730588045,
+      "TPS_training_values": [
+        7728.45,
+        7610.95
+      ],
+      "TPS_training_range": [
+        7610.95,
+        7728.45
+      ],
+      "heldout_TPS": 7568.6,
+      "heldout_absolute_relative_error": 0.01335782046877883,
+      "repeat_3_not_used_for_selection": true,
+      "whole_device_read_events_per_tx_training_proxy": 0.044904058398158864,
+      "whole_device_events_are_not_qualified_TP_owned_physical_requests": true
+    },
+    {
+      "shared_buffers_mib": 4096,
+      "sustainable_tps": 7596.875,
+      "tp_cpu_seconds_per_tx": 0.0019322341981818183,
+      "native_publication_window_hit_ratio": 0.999801947125478,
+      "TPS_training_values": [
+        7584.0,
+        7609.75
+      ],
+      "TPS_training_range": [
+        7584.0,
+        7609.75
+      ],
+      "heldout_TPS": 7308.3,
+      "heldout_absolute_relative_error": 0.039485926959758055,
+      "repeat_3_not_used_for_selection": true,
+      "whole_device_read_events_per_tx_training_proxy": 0.005531556104357848,
+      "whole_device_events_are_not_qualified_TP_owned_physical_requests": true
+    },
+    {
+      "shared_buffers_mib": 6144,
+      "sustainable_tps": 7491.825000000001,
+      "tp_cpu_seconds_per_tx": 0.0019596062483817045,
+      "native_publication_window_hit_ratio": 0.9998853614060284,
+      "TPS_training_values": [
+        7487.05,
+        7496.6
+      ],
+      "TPS_training_range": [
+        7487.05,
+        7496.6
+      ],
+      "heldout_TPS": 7558.3,
+      "heldout_absolute_relative_error": 0.00879496712223641,
+      "repeat_3_not_used_for_selection": true,
+      "whole_device_read_events_per_tx_training_proxy": 0.008479903084366,
+      "whole_device_events_are_not_qualified_TP_owned_physical_requests": true
+    },
+    {
+      "shared_buffers_mib": 8192,
+      "sustainable_tps": 7543.450000000001,
+      "tp_cpu_seconds_per_tx": 0.0019471157736692974,
+      "native_publication_window_hit_ratio": 0.9998678727255452,
+      "TPS_training_values": [
+        7557.1,
+        7529.8
+      ],
+      "TPS_training_range": [
+        7529.8,
+        7557.1
+      ],
+      "heldout_TPS": 7648.4,
+      "heldout_absolute_relative_error": 0.013721824172375779,
+      "repeat_3_not_used_for_selection": true,
+      "whole_device_read_events_per_tx_training_proxy": 0.028422680304835034,
+      "whole_device_events_are_not_qualified_TP_owned_physical_requests": true
+    }
+  ],
+  "source_artifacts": [
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/cache_boundary_20261112_1643/tp_small_domain/sb512_r01/WINDOW.json",
+      "sha256": "ef361b701cbb45e6a8cc9eb8a3f1614eb0697aba5a15dd9e6944c8e2159dabec",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/cache_boundary_20261112_1643/tp_small_domain/sb512_r02/WINDOW.json",
+      "sha256": "a70c828fcb3166597b37994eb3d6d3f778e7a42674cae12858648e7778dfa8a3",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/cache_boundary_20261112_1643/tp_small_domain/sb512_r03/WINDOW.json",
+      "sha256": "31c82fb03b1d3fbac48fc5dafc72cdac063b6cd030ae7690e7d6efb48242c9aa",
+      "role": "holdout"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/cache_boundary_20261112_1643/tp_small_domain/sb1024_r01/WINDOW.json",
+      "sha256": "e04c0579b39f85c338eb07438f0c9f4f50745cf34912679d328c4bc6ae700c22",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/cache_boundary_20261112_1643/tp_small_domain/sb1024_r02/WINDOW.json",
+      "sha256": "03cd0e7003079d174290cc9ea3153429eca4c5fbb9fe4cdf9f765974f4236dd7",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/cache_boundary_20261112_1643/tp_small_domain/sb1024_r03/WINDOW.json",
+      "sha256": "e295f9626dfb8d2c8efa0f0f45c5cca171d6a73cef81ea88945bee16f3e1e49b",
+      "role": "holdout"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/cache_boundary_20261112_1643/tp_small_domain/sb1536_r01/WINDOW.json",
+      "sha256": "45911d6d055f3c9bec0eede194629bd8b5c0c72cf8dec082940d60ab887e21b6",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/cache_boundary_20261112_1643/tp_small_domain/sb1536_r02/WINDOW.json",
+      "sha256": "bc1290f3d9ccc6bd44cf27b86ba2f176739481801108627feaf8354ba98f4e85",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/cache_boundary_20261112_1643/tp_small_domain/sb1536_r03/WINDOW.json",
+      "sha256": "45a9cf4313f1ddc29ebb612324d5b47df43579557e5fe1eb2515c364791432c0",
+      "role": "holdout"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/tp_matrix_v1/sb2048_r01/WINDOW.json",
+      "sha256": "77f37288c2916929118f5a98680befadb28ecd16cbe2d4f178c65cad0de7dfe6",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/tp_matrix_v1/sb2048_r02/WINDOW.json",
+      "sha256": "bfbe91352bb1f1dfa28976f9ad677eecb357cfbcc115ee31b62d0c8a3bb5b313",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/tp_matrix_v1/sb2048_r03/WINDOW.json",
+      "sha256": "9127568928804f5b1de10be646e6836df6a2f5862c90e6b77c0f0f73a23a0574",
+      "role": "holdout"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/tp_matrix_v1/sb4096_r01/WINDOW.json",
+      "sha256": "9e4f7bf45fa40ba94297e2d89e2de8b3e24fd903ffb4881dc8b32ba94cc035a5",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/tp_matrix_v1/sb4096_r02/WINDOW.json",
+      "sha256": "5a2341d7952bb9ed25289c7af5c3155daf559c903827ca2a89451cd58a7ddf14",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/tp_matrix_v1/sb4096_r03/WINDOW.json",
+      "sha256": "3af998f3b9084ac84772d3f8c816e41e071a55bd0e0f3b93a2366d53e257f92d",
+      "role": "holdout"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/tp_matrix_v1/sb6144_r01/WINDOW.json",
+      "sha256": "43ebec35c5fbbbecc998a342d8f7d509a971908f67fa0da16d1bb549f8246635",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/tp_matrix_v1/sb6144_r02/WINDOW.json",
+      "sha256": "e48d8421fa06d50e169c11c78c91cf482aba6e3e6e213ac9fa515410d369b322",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/tp_matrix_v1/sb6144_r03/WINDOW.json",
+      "sha256": "9d6cf398b6290bdf48ac6e8fed92c978b6596a25e035664d3c6cbfbd88545375",
+      "role": "holdout"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/tp_matrix_v1/sb8192_r01/WINDOW.json",
+      "sha256": "542784fb07acf439b2d5a4ab2ef2dee317b3aaddcc00e23936003962cafe6f34",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/tp_matrix_v1/sb8192_r02/WINDOW.json",
+      "sha256": "242bf56d42cd2d47d45611238a2dcee614086a17a72a127a2475c84bda12e9b0",
+      "role": "calibration"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/tp_matrix_v1/sb8192_r03/WINDOW.json",
+      "sha256": "a24baa89fc52833bfd2a554c0592c87bb63732f15b137019d850d39971b58e2e",
+      "role": "holdout"
+    }
+  ],
+  "TP_only_selected_SB_mib": 2048,
+  "TP_only_selected_predicted_TPS": 7669.7,
+  "TP_only_selected_heldout_TPS": 7568.6,
+  "holdout": {
+    "maximum_absolute_relative_error": 0.039485926959758055,
+    "TPS_prediction_within_20pct": true,
+    "winner_SB_on_holdout": 8192,
+    "training_winner_also_holdout_winner": false
+  },
+  "physical_TP_attribution_qualified": false,
+  "probe_overhead_independently_qualified": false,
+  "joint_five_stage_model": false,
+  "automatic_recommendation_qualified": false,
+  "qualification": "Fresh current TP-only response curve, no AP, no fabricated S5. A TP-only winner is not a mixed-load SB recommendation."
+}

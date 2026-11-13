@@ -1,0 +1,26 @@
+{
+  "schema": "jmt.current-five-stage-recommendation-pointer/v1",
+  "created_at": "2026-11-12T17:48:12.581852+08:00",
+  "report": "TP_MISS_PLATEAU_CURRENT.md",
+  "result": "results/miss_plateau_20261112_1740/five_stage_bounded_v2/FIVE_STAGE_RECOMMENDATIONS.json",
+  "result_sha256": "256e68c22bc859c57dc51a5c0451d30f180438d941723945f9770f1d5d992143",
+  "kind": "experimental_joint_preview_with_user_requested_SB_miss_upper_bound",
+  "all_five_stages_have_numeric_recommendations": true,
+  "SB_is_optimized": true,
+  "B_high_by_topology_mib": {
+    "TP128": 4096,
+    "S5_128_plus_16": 4096
+  },
+  "shared_pool_mib": 16384,
+  "configuration_applied": false,
+  "new_TP_measurements": false,
+  "automatic_recommendation_qualified": false,
+  "not_current_step3_minimum_spill_result": true,
+  "AP_inputs_predate_current_innovation2_curves": true,
+  "current_innovation2_pointer": "CURRENT_AP_SPILL_CURVES.json",
+  "current_innovation3_pointer": "CURRENT_SB_SPILL_FRONTIER.json",
+  "new_end_to_end_TPS_recommendation_under_corrected_contract_generated": false,
+  "current_AP_and_budget_inputs_supersede_historical_joint_inputs": true,
+  "current_memory_budget_pointer": "CURRENT_MEMORY_BUDGET.json",
+  "new_end_to_end_TPS_recommendation_under_operator_and_machine_budget_contract_generated": false
+}

@@ -1,0 +1,85 @@
+{
+  "schema": "jmt.ap-resource-bridge/v3",
+  "basis": [
+    "startup",
+    "scan_filter_M",
+    "projection_argument_M",
+    "hash_join_M",
+    "aggregate_M",
+    "sort_comparisons_M",
+    "state_index_M",
+    "hash_aggregate_working_set_interaction",
+    "numeric_arithmetic_M",
+    "numeric_avg_M",
+    "logical_scan_GiB",
+    "logical_temp_read_GiB",
+    "logical_temp_write_GiB"
+  ],
+  "vector": [
+    1.0,
+    757.475146,
+    726.513693,
+    1383.541664,
+    0.002513,
+    4476.050461130449,
+    38.83355,
+    0.0002150440216647995,
+    0.009052,
+    0.0,
+    112.85213470458984,
+    3.1490249633789062,
+    3.1490249633789062
+  ],
+  "features": {
+    "scan_tuples": 723416137.0,
+    "index_probes": 0.0,
+    "index_tuples": 0.0,
+    "predicate_evaluations": 34059009.0,
+    "projection_evaluations": 726502378.0,
+    "hash_build_tuples": 1539181.0,
+    "hash_probe_tuples": 637595011.0,
+    "join_comparisons": 744407472.0,
+    "aggregate_transitions": 2263.0,
+    "aggregate_groups": 250.0,
+    "aggregate_argument_evaluations": 11315.0,
+    "sort_comparisons": 4476050461.130448,
+    "window_evaluations": 0.0,
+    "store_put_tuples": 19388500.0,
+    "store_get_tuples": 19445050.0,
+    "setop_tuples": 0.0,
+    "logical_scan_bytes": 121174056960.0,
+    "logical_temp_read_bytes": 3381239808.0,
+    "logical_temp_write_bytes": 3381239808.0
+  },
+  "CPU_feature_corrections": {
+    "predicate_evaluations": 34059009.0,
+    "numeric_arithmetic_M": 0.009052,
+    "numeric_avg_M": 0.0,
+    "corrections": [
+      {
+        "path": ".0.0.0.0.1.0.1.0.0.1.0",
+        "kind": "constant-cast/comparison normalization",
+        "old_units": 34002434.0,
+        "new_units": 34002434.0,
+        "AND_prefix_model": "single predicate"
+      }
+    ],
+    "qualification": "CPU work proxies only; short-circuit selectivity is an explicit approximation."
+  },
+  "operator_types": [
+    "Aggregate",
+    "Hash",
+    "Hash Join",
+    "Materialize",
+    "Merge Join",
+    "Nested Loop",
+    "Seq Scan",
+    "Sort"
+  ],
+  "wm_mib": 512.0,
+  "plan_structure_sha256": "d8770d2a0ee9f3a348731bf541e555f48ebd165bdecf8cee2bacdf481750de91",
+  "spill_input_status": "not_independently_qualified",
+  "input_screen_passed": false,
+  "automatic_recommendation_qualified": false,
+  "sha256": "b595ed51eb383ff8fb637b3eba851c5b34787645ef20cd5bf8a49c00b2091478"
+}

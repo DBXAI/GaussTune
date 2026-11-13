@@ -1,0 +1,20 @@
+{
+  "schema": "jmt.current-SB-spill-frontier-pointer/v1",
+  "result": "results/innovation3_connected_20261112_2301/current_instance_v2/SB_SPILL_FRONTIER.json",
+  "result_sha256": "6b8835af1f2d1c6030ead5ace00dd061f2e502b6f955ad5e1db61bf9f825c490",
+  "report": "INNOVATION3_CURRENT.md",
+  "budget_scenario": "current_instance",
+  "host_capacity_planning_scenario": "results/innovation3_connected_20261112_2301/host_capacity_v2/SB_SPILL_FRONTIER.json",
+  "host_capacity_planning_scenario_sha256": "ba7cc59291138835e063d43477c0c03dfa3e03370b3184958f190a0e78c5bfcd",
+  "host_capacity_scenario_is_not_currently_executable": true,
+  "memory_budget_pointer": "CURRENT_MEMORY_BUDGET.json",
+  "independent_unpruned_audit": "results/innovation3_connected_20261112_2301/FINAL_AUDIT_CURRENT_UNPRUNED.json",
+  "host_independent_unpruned_audit": "results/innovation3_connected_20261112_2301/FINAL_AUDIT_HOST_UNPRUNED.json",
+  "SB_upper_bound_mib": 4096,
+  "objective": "per-SB minimum total AP logical spill",
+  "snapshot_planning_passed": true,
+  "greedy_continuous_five_stage_admission_verified": false,
+  "greedy_pinned_counterexample_first_blocked_stage_at_SB4096": "S3",
+  "final_SB_or_TPS_optimum_selected": false,
+  "configuration_applied": false
+}

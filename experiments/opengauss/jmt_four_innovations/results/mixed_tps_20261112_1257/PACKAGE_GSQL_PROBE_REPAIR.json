@@ -1,0 +1,5 @@
+{
+  "problem": "gsql does not implement PostgreSQL psql -w",
+  "fix": "remove unsupported option and close stdin; preserve explicit reject verification",
+  "production_data_touched": false
+}

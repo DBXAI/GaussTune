@@ -1,0 +1,1640 @@
+{
+  "status": "measured",
+  "measurement_window": {
+    "clock": "monotonic_ns",
+    "start_ns": 2465613914939466,
+    "end_ns": 2465878949851157
+  },
+  "wall_seconds": 265.034911691,
+  "started_unix_ns": 1794446860777756983,
+  "cpu_seconds": 253.319500979,
+  "cpu_source": "per-backend schedstat sum_exec_runtime, own explicit endpoints",
+  "actual_plan": [
+    {
+      "Plan": {
+        "Node Type": "Sort",
+        "Startup Cost": 12006706.21,
+        "Total Cost": 12006706.71,
+        "Plan Rows": 200,
+        "Plan Width": 16,
+        "Actual Startup Time": 265033.548,
+        "Actual Total Time": 265033.55,
+        "Actual Rows": 46,
+        "Actual Loops": 1,
+        "Output": [
+          "c_orders.c_count",
+          "(count(*))"
+        ],
+        "Sort Key": [
+          "(count(*)) DESC",
+          "c_orders.c_count DESC"
+        ],
+        "Sort Method": "quicksort",
+        "Sort Space Used": 27,
+        "Sort Space Type": "Memory",
+        "Shared Hit Blocks": 1,
+        "Shared Read Blocks": 2653147,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 426139,
+        "Temp Written Blocks": 426105,
+        "IO Read Time": 0.0,
+        "IO Write Time": 0.0,
+        "Plans": [
+          {
+            "Node Type": "Aggregate",
+            "Strategy": "Hashed",
+            "Parent Relationship": "Outer",
+            "Startup Cost": 12006696.56,
+            "Total Cost": 12006698.56,
+            "Plan Rows": 200,
+            "Plan Width": 16,
+            "Actual Startup Time": 265033.514,
+            "Actual Total Time": 265033.521,
+            "Actual Rows": 46,
+            "Actual Loops": 1,
+            "Output": [
+              "c_orders.c_count",
+              "count(*)"
+            ],
+            "Group By Key": [
+              "c_orders.c_count"
+            ],
+            "Shared Hit Blocks": 1,
+            "Shared Read Blocks": 2653147,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 426139,
+            "Temp Written Blocks": 426105,
+            "IO Read Time": 0.0,
+            "IO Write Time": 0.0,
+            "Plans": [
+              {
+                "Node Type": "Subquery Scan",
+                "Parent Relationship": "Outer",
+                "Alias": "c_orders",
+                "Startup Cost": 10880965.64,
+                "Total Cost": 11942941.38,
+                "Plan Rows": 12751037,
+                "Plan Width": 8,
+                "Actual Startup Time": 233143.818,
+                "Actual Total Time": 263168.601,
+                "Actual Rows": 12750000,
+                "Actual Loops": 1,
+                "Output": [
+                  "c_orders.c_count"
+                ],
+                "Plans": [
+                  {
+                    "Node Type": "Aggregate",
+                    "Strategy": "Hashed",
+                    "Parent Relationship": "Subquery",
+                    "Startup Cost": 10880965.64,
+                    "Total Cost": 11815431.01,
+                    "Plan Rows": 12751037,
+                    "Plan Width": 16,
+                    "Actual Startup Time": 233143.816,
+                    "Actual Total Time": 261765.42,
+                    "Actual Rows": 12750000,
+                    "Actual Loops": 1,
+                    "Output": [
+                      "customer.c_custkey",
+                      "count(orders.o_orderkey)"
+                    ],
+                    "Group By Key": [
+                      "customer.c_custkey"
+                    ],
+                    "Temp File Num": 48,
+                    "Spill Time": 0,
+                    "Expand Times": 0,
+                    "Shared Hit Blocks": 1,
+                    "Shared Read Blocks": 2653147,
+                    "Shared Dirtied Blocks": 0,
+                    "Shared Written Blocks": 0,
+                    "Local Hit Blocks": 0,
+                    "Local Read Blocks": 0,
+                    "Local Dirtied Blocks": 0,
+                    "Local Written Blocks": 0,
+                    "Temp Read Blocks": 426139,
+                    "Temp Written Blocks": 426105,
+                    "IO Read Time": 0.0,
+                    "IO Write Time": 0.0,
+                    "Plans": [
+                      {
+                        "Node Type": "Hash Join",
+                        "Parent Relationship": "Outer",
+                        "Join Type": "Right",
+                        "Startup Cost": 729003.33,
+                        "Total Cost": 9255110.9,
+                        "Plan Rows": 126219883,
+                        "Plan Width": 8,
+                        "Actual Startup Time": 13837.639,
+                        "Actual Total Time": 156884.996,
+                        "Actual Rows": 130378793,
+                        "Actual Loops": 1,
+                        "Output": [
+                          "customer.c_custkey",
+                          "orders.o_orderkey"
+                        ],
+                        "Inner Unique": false,
+                        "Hash Cond": "(orders.o_custkey = customer.c_custkey)",
+                        "Shared Hit Blocks": 1,
+                        "Shared Read Blocks": 2653147,
+                        "Shared Dirtied Blocks": 0,
+                        "Shared Written Blocks": 0,
+                        "Local Hit Blocks": 0,
+                        "Local Read Blocks": 0,
+                        "Local Dirtied Blocks": 0,
+                        "Local Written Blocks": 0,
+                        "Temp Read Blocks": 234112,
+                        "Temp Written Blocks": 234110,
+                        "IO Read Time": 0.0,
+                        "IO Write Time": 0.0,
+                        "Plans": [
+                          {
+                            "Node Type": "Seq Scan",
+                            "Parent Relationship": "Outer",
+                            "Relation Name": "orders",
+                            "Schema": "public",
+                            "Alias": "orders",
+                            "Startup Cost": 0.0,
+                            "Total Cost": 3941853.17,
+                            "Plan Rows": 126219883,
+                            "Plan Width": 8,
+                            "Actual Startup Time": 1.122,
+                            "Actual Total Time": 54115.409,
+                            "Actual Rows": 126128610,
+                            "Actual Loops": 1,
+                            "Output": [
+                              "orders.o_orderkey",
+                              "orders.o_custkey"
+                            ],
+                            "Filter": "((orders.o_comment)::text !~~ '%unusual%requests%'::text)",
+                            "Rows Removed by Filter": 1371390,
+                            "Shared Hit Blocks": 0,
+                            "Shared Read Blocks": 2348016,
+                            "Shared Dirtied Blocks": 0,
+                            "Shared Written Blocks": 0,
+                            "Local Hit Blocks": 0,
+                            "Local Read Blocks": 0,
+                            "Local Dirtied Blocks": 0,
+                            "Local Written Blocks": 0,
+                            "Temp Read Blocks": 0,
+                            "Temp Written Blocks": 0,
+                            "IO Read Time": 0.0,
+                            "IO Write Time": 0.0
+                          },
+                          {
+                            "Node Type": "Hash",
+                            "Parent Relationship": "Inner",
+                            "Startup Cost": 432640.37,
+                            "Total Cost": 432640.37,
+                            "Plan Rows": 12751037,
+                            "Plan Width": 4,
+                            "Actual Startup Time": 13789.47,
+                            "Actual Total Time": 13789.47,
+                            "Actual Rows": 12750000,
+                            "Actual Loops": 1,
+                            "Output": [
+                              "customer.c_custkey"
+                            ],
+                            "Hash Buckets": 16777216,
+                            "Original Hash Buckets": 16777216,
+                            "Hash Batches": 2,
+                            "Original Hash Batches": 2,
+                            "Peak Memory Usage": 355238,
+                            "Shared Hit Blocks": 0,
+                            "Shared Read Blocks": 305130,
+                            "Shared Dirtied Blocks": 0,
+                            "Shared Written Blocks": 0,
+                            "Local Hit Blocks": 0,
+                            "Local Read Blocks": 0,
+                            "Local Dirtied Blocks": 0,
+                            "Local Written Blocks": 0,
+                            "Temp Read Blocks": 0,
+                            "Temp Written Blocks": 18673,
+                            "IO Read Time": 0.0,
+                            "IO Write Time": 0.0,
+                            "Plans": [
+                              {
+                                "Node Type": "Seq Scan",
+                                "Parent Relationship": "Outer",
+                                "Relation Name": "customer",
+                                "Schema": "public",
+                                "Alias": "customer",
+                                "Startup Cost": 0.0,
+                                "Total Cost": 432640.37,
+                                "Plan Rows": 12751037,
+                                "Plan Width": 4,
+                                "Actual Startup Time": 1.139,
+                                "Actual Total Time": 10956.956,
+                                "Actual Rows": 12750000,
+                                "Actual Loops": 1,
+                                "Output": [
+                                  "customer.c_custkey"
+                                ],
+                                "Shared Hit Blocks": 0,
+                                "Shared Read Blocks": 305130,
+                                "Shared Dirtied Blocks": 0,
+                                "Shared Written Blocks": 0,
+                                "Local Hit Blocks": 0,
+                                "Local Read Blocks": 0,
+                                "Local Dirtied Blocks": 0,
+                                "Local Written Blocks": 0,
+                                "Temp Read Blocks": 0,
+                                "Temp Written Blocks": 0,
+                                "IO Read Time": 0.0,
+                                "IO Write Time": 0.0
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "Triggers": [],
+      "Total Runtime": 265033.736
+    }
+  ],
+  "linux_tid": 2903139,
+  "statement_completed": true,
+  "block_issue": {
+    "coverage": "foreground_issued",
+    "device": "/dev/nvme0n1",
+    "snapshot_before": {
+      "monotonic_ns": 2465613914566908,
+      "device_totals": {
+        "read_requests": 29,
+        "write_requests": 0,
+        "read_bytes": 823296,
+        "write_bytes": 0
+      },
+      "foreground_totals": {
+        "read_requests": 0,
+        "write_requests": 0,
+        "read_bytes": 0,
+        "write_bytes": 0
+      }
+    },
+    "snapshot_after": {
+      "monotonic_ns": 2465878950615062,
+      "device_totals": {
+        "read_requests": 179683,
+        "write_requests": 15313,
+        "read_bytes": 23233925120,
+        "write_bytes": 3380121600
+      },
+      "foreground_totals": {
+        "read_requests": 172030,
+        "write_requests": 0,
+        "read_bytes": 22508634112,
+        "write_bytes": 0
+      }
+    },
+    "query_lifecycle_complete": false,
+    "qualification": "Exact issuer-thread block ISSUE count; unowned/background writeback excluded.",
+    "read_requests": 172030,
+    "write_requests": 0,
+    "read_bytes": 22508634112,
+    "write_bytes": 0
+  },
+  "application_name": "jmt_ap_current_5cb5ffc4f8",
+  "observer_scope": "foreground issued, whole-device separately visible; NOT lifecycle ownership",
+  "resource_samples": [
+    {
+      "monotonic_ns": 2465614916054392,
+      "free_disk_bytes": 40017248256,
+      "mem_available_bytes": 26539864064
+    },
+    {
+      "monotonic_ns": 2465615917297396,
+      "free_disk_bytes": 40005705728,
+      "mem_available_bytes": 26519244800
+    },
+    {
+      "monotonic_ns": 2465616918533403,
+      "free_disk_bytes": 39994138624,
+      "mem_available_bytes": 26497277952
+    },
+    {
+      "monotonic_ns": 2465617919758139,
+      "free_disk_bytes": 39982637056,
+      "mem_available_bytes": 26477006848
+    },
+    {
+      "monotonic_ns": 2465618921007924,
+      "free_disk_bytes": 39972782080,
+      "mem_available_bytes": 26457661440
+    },
+    {
+      "monotonic_ns": 2465619922248489,
+      "free_disk_bytes": 39963078656,
+      "mem_available_bytes": 26439827456
+    },
+    {
+      "monotonic_ns": 2465620923470374,
+      "free_disk_bytes": 39952977920,
+      "mem_available_bytes": 26422755328
+    },
+    {
+      "monotonic_ns": 2465621924697415,
+      "free_disk_bytes": 39941869568,
+      "mem_available_bytes": 26399723520
+    },
+    {
+      "monotonic_ns": 2465622925932552,
+      "free_disk_bytes": 39932145664,
+      "mem_available_bytes": 26381815808
+    },
+    {
+      "monotonic_ns": 2465623926372249,
+      "free_disk_bytes": 39921078272,
+      "mem_available_bytes": 26361208832
+    },
+    {
+      "monotonic_ns": 2465624927593522,
+      "free_disk_bytes": 39910043648,
+      "mem_available_bytes": 26340872192
+    },
+    {
+      "monotonic_ns": 2465625928842129,
+      "free_disk_bytes": 39898959872,
+      "mem_available_bytes": 26320576512
+    },
+    {
+      "monotonic_ns": 2465626929117185,
+      "free_disk_bytes": 39887826944,
+      "mem_available_bytes": 26299596800
+    },
+    {
+      "monotonic_ns": 2465627930381049,
+      "free_disk_bytes": 39876620288,
+      "mem_available_bytes": 26256699392
+    },
+    {
+      "monotonic_ns": 2465628931641190,
+      "free_disk_bytes": 39864152064,
+      "mem_available_bytes": 26209742848
+    },
+    {
+      "monotonic_ns": 2465629932249604,
+      "free_disk_bytes": 39851266048,
+      "mem_available_bytes": 26165616640
+    },
+    {
+      "monotonic_ns": 2465630933512522,
+      "free_disk_bytes": 39838339072,
+      "mem_available_bytes": 26125266944
+    },
+    {
+      "monotonic_ns": 2465631934247697,
+      "free_disk_bytes": 39825649664,
+      "mem_available_bytes": 26091761664
+    },
+    {
+      "monotonic_ns": 2465632935456195,
+      "free_disk_bytes": 39813419008,
+      "mem_available_bytes": 26062458880
+    },
+    {
+      "monotonic_ns": 2465633936701589,
+      "free_disk_bytes": 39801098240,
+      "mem_available_bytes": 26035822592
+    },
+    {
+      "monotonic_ns": 2465634937923923,
+      "free_disk_bytes": 39788883968,
+      "mem_available_bytes": 26012385280
+    },
+    {
+      "monotonic_ns": 2465635939152584,
+      "free_disk_bytes": 39776661504,
+      "mem_available_bytes": 25990258688
+    },
+    {
+      "monotonic_ns": 2465636940238263,
+      "free_disk_bytes": 39764406272,
+      "mem_available_bytes": 25971830784
+    },
+    {
+      "monotonic_ns": 2465637941525533,
+      "free_disk_bytes": 39752204288,
+      "mem_available_bytes": 25954656256
+    },
+    {
+      "monotonic_ns": 2465638942791875,
+      "free_disk_bytes": 39741075456,
+      "mem_available_bytes": 25941200896
+    },
+    {
+      "monotonic_ns": 2465639944028238,
+      "free_disk_bytes": 39729770496,
+      "mem_available_bytes": 25927704576
+    },
+    {
+      "monotonic_ns": 2465640945260186,
+      "free_disk_bytes": 39718064128,
+      "mem_available_bytes": 25916981248
+    },
+    {
+      "monotonic_ns": 2465641946500539,
+      "free_disk_bytes": 39706681344,
+      "mem_available_bytes": 25907507200
+    },
+    {
+      "monotonic_ns": 2465642947527319,
+      "free_disk_bytes": 39697453056,
+      "mem_available_bytes": 25900072960
+    },
+    {
+      "monotonic_ns": 2465643948788675,
+      "free_disk_bytes": 39685447680,
+      "mem_available_bytes": 25881141248
+    },
+    {
+      "monotonic_ns": 2465644949326547,
+      "free_disk_bytes": 39673438208,
+      "mem_available_bytes": 25870438400
+    },
+    {
+      "monotonic_ns": 2465645949859055,
+      "free_disk_bytes": 39661527040,
+      "mem_available_bytes": 25864331264
+    },
+    {
+      "monotonic_ns": 2465646950336810,
+      "free_disk_bytes": 39649558528,
+      "mem_available_bytes": 25856847872
+    },
+    {
+      "monotonic_ns": 2465647951149055,
+      "free_disk_bytes": 39637983232,
+      "mem_available_bytes": 25850634240
+    },
+    {
+      "monotonic_ns": 2465648952307610,
+      "free_disk_bytes": 39626203136,
+      "mem_available_bytes": 25848328192
+    },
+    {
+      "monotonic_ns": 2465649953542227,
+      "free_disk_bytes": 39614504960,
+      "mem_available_bytes": 25842028544
+    },
+    {
+      "monotonic_ns": 2465650953909288,
+      "free_disk_bytes": 39602913280,
+      "mem_available_bytes": 25838432256
+    },
+    {
+      "monotonic_ns": 2465651955144870,
+      "free_disk_bytes": 39591026688,
+      "mem_available_bytes": 25834217472
+    },
+    {
+      "monotonic_ns": 2465652956205114,
+      "free_disk_bytes": 39579516928,
+      "mem_available_bytes": 25830264832
+    },
+    {
+      "monotonic_ns": 2465653957437048,
+      "free_disk_bytes": 39568236544,
+      "mem_available_bytes": 25826762752
+    },
+    {
+      "monotonic_ns": 2465654958644810,
+      "free_disk_bytes": 39556980736,
+      "mem_available_bytes": 25821655040
+    },
+    {
+      "monotonic_ns": 2465655959899839,
+      "free_disk_bytes": 39545462784,
+      "mem_available_bytes": 25818263552
+    },
+    {
+      "monotonic_ns": 2465656960523174,
+      "free_disk_bytes": 39533674496,
+      "mem_available_bytes": 25814978560
+    },
+    {
+      "monotonic_ns": 2465657961201269,
+      "free_disk_bytes": 39521935360,
+      "mem_available_bytes": 25811734528
+    },
+    {
+      "monotonic_ns": 2465658962422621,
+      "free_disk_bytes": 39510130688,
+      "mem_available_bytes": 25806667776
+    },
+    {
+      "monotonic_ns": 2465659963647844,
+      "free_disk_bytes": 39498317824,
+      "mem_available_bytes": 25804161024
+    },
+    {
+      "monotonic_ns": 2465660964255133,
+      "free_disk_bytes": 39486464000,
+      "mem_available_bytes": 25802076160
+    },
+    {
+      "monotonic_ns": 2465661965485775,
+      "free_disk_bytes": 39474675712,
+      "mem_available_bytes": 25800007680
+    },
+    {
+      "monotonic_ns": 2465662966180439,
+      "free_disk_bytes": 39462842368,
+      "mem_available_bytes": 25798787072
+    },
+    {
+      "monotonic_ns": 2465663967409258,
+      "free_disk_bytes": 39451103232,
+      "mem_available_bytes": 25797328896
+    },
+    {
+      "monotonic_ns": 2465664967797458,
+      "free_disk_bytes": 39439421440,
+      "mem_available_bytes": 25795530752
+    },
+    {
+      "monotonic_ns": 2465665969056844,
+      "free_disk_bytes": 39428157440,
+      "mem_available_bytes": 25794289664
+    },
+    {
+      "monotonic_ns": 2465666969514689,
+      "free_disk_bytes": 39416344576,
+      "mem_available_bytes": 25792724992
+    },
+    {
+      "monotonic_ns": 2465667970523908,
+      "free_disk_bytes": 39404498944,
+      "mem_available_bytes": 25791483904
+    },
+    {
+      "monotonic_ns": 2465668971784775,
+      "free_disk_bytes": 39392632832,
+      "mem_available_bytes": 25792102400
+    },
+    {
+      "monotonic_ns": 2465669973013366,
+      "free_disk_bytes": 39380819968,
+      "mem_available_bytes": 25790603264
+    },
+    {
+      "monotonic_ns": 2465670974236149,
+      "free_disk_bytes": 39369908224,
+      "mem_available_bytes": 25792987136
+    },
+    {
+      "monotonic_ns": 2465671975458465,
+      "free_disk_bytes": 39363141632,
+      "mem_available_bytes": 25791307776
+    },
+    {
+      "monotonic_ns": 2465672976695649,
+      "free_disk_bytes": 39351984128,
+      "mem_available_bytes": 25791451136
+    },
+    {
+      "monotonic_ns": 2465673977573765,
+      "free_disk_bytes": 39340621824,
+      "mem_available_bytes": 25790164992
+    },
+    {
+      "monotonic_ns": 2465674977970160,
+      "free_disk_bytes": 39329054720,
+      "mem_available_bytes": 25790074880
+    },
+    {
+      "monotonic_ns": 2465675979223177,
+      "free_disk_bytes": 39317553152,
+      "mem_available_bytes": 25789317120
+    },
+    {
+      "monotonic_ns": 2465676980479617,
+      "free_disk_bytes": 39306395648,
+      "mem_available_bytes": 25786892288
+    },
+    {
+      "monotonic_ns": 2465677981711013,
+      "free_disk_bytes": 39294656512,
+      "mem_available_bytes": 25786793984
+    },
+    {
+      "monotonic_ns": 2465678982954422,
+      "free_disk_bytes": 39282929664,
+      "mem_available_bytes": 25781178368
+    },
+    {
+      "monotonic_ns": 2465679984202525,
+      "free_disk_bytes": 39271419904,
+      "mem_available_bytes": 25780637696
+    },
+    {
+      "monotonic_ns": 2465680985456996,
+      "free_disk_bytes": 39260655616,
+      "mem_available_bytes": 25780011008
+    },
+    {
+      "monotonic_ns": 2465681986687642,
+      "free_disk_bytes": 39250362368,
+      "mem_available_bytes": 25780330496
+    },
+    {
+      "monotonic_ns": 2465682987939887,
+      "free_disk_bytes": 39239032832,
+      "mem_available_bytes": 25784508416
+    },
+    {
+      "monotonic_ns": 2465683989171264,
+      "free_disk_bytes": 39227293696,
+      "mem_available_bytes": 25784406016
+    },
+    {
+      "monotonic_ns": 2465684990436512,
+      "free_disk_bytes": 39215521792,
+      "mem_available_bytes": 25783873536
+    },
+    {
+      "monotonic_ns": 2465685991661495,
+      "free_disk_bytes": 39204102144,
+      "mem_available_bytes": 25783373824
+    },
+    {
+      "monotonic_ns": 2465686992241743,
+      "free_disk_bytes": 39192334336,
+      "mem_available_bytes": 25783279616
+    },
+    {
+      "monotonic_ns": 2465687993505503,
+      "free_disk_bytes": 39180537856,
+      "mem_available_bytes": 25783017472
+    },
+    {
+      "monotonic_ns": 2465688994739765,
+      "free_disk_bytes": 39168815104,
+      "mem_available_bytes": 25781211136
+    },
+    {
+      "monotonic_ns": 2465689995988344,
+      "free_disk_bytes": 39156965376,
+      "mem_available_bytes": 25776922624
+    },
+    {
+      "monotonic_ns": 2465690996947687,
+      "free_disk_bytes": 39145086976,
+      "mem_available_bytes": 25775206400
+    },
+    {
+      "monotonic_ns": 2465691998177905,
+      "free_disk_bytes": 39134642176,
+      "mem_available_bytes": 25774071808
+    },
+    {
+      "monotonic_ns": 2465692999411152,
+      "free_disk_bytes": 39122903040,
+      "mem_available_bytes": 25775161344
+    },
+    {
+      "monotonic_ns": 2465694000670025,
+      "free_disk_bytes": 39111557120,
+      "mem_available_bytes": 25776463872
+    },
+    {
+      "monotonic_ns": 2465695001565234,
+      "free_disk_bytes": 39099965440,
+      "mem_available_bytes": 25775484928
+    },
+    {
+      "monotonic_ns": 2465696002788481,
+      "free_disk_bytes": 39088267264,
+      "mem_available_bytes": 25776533504
+    },
+    {
+      "monotonic_ns": 2465697004043602,
+      "free_disk_bytes": 39076724736,
+      "mem_available_bytes": 25776365568
+    },
+    {
+      "monotonic_ns": 2465698005295146,
+      "free_disk_bytes": 39065092096,
+      "mem_available_bytes": 25776594944
+    },
+    {
+      "monotonic_ns": 2465699006502410,
+      "free_disk_bytes": 39053557760,
+      "mem_available_bytes": 25775607808
+    },
+    {
+      "monotonic_ns": 2465700007728369,
+      "free_disk_bytes": 39041777664,
+      "mem_available_bytes": 25775575040
+    },
+    {
+      "monotonic_ns": 2465701008945236,
+      "free_disk_bytes": 39029981184,
+      "mem_available_bytes": 25775972352
+    },
+    {
+      "monotonic_ns": 2465702010206479,
+      "free_disk_bytes": 39018291200,
+      "mem_available_bytes": 25775529984
+    },
+    {
+      "monotonic_ns": 2465703011451910,
+      "free_disk_bytes": 39006502912,
+      "mem_available_bytes": 25776713728
+    },
+    {
+      "monotonic_ns": 2465704012688720,
+      "free_disk_bytes": 38994698240,
+      "mem_available_bytes": 25776730112
+    },
+    {
+      "monotonic_ns": 2465705013904881,
+      "free_disk_bytes": 38982934528,
+      "mem_available_bytes": 25776234496
+    },
+    {
+      "monotonic_ns": 2465706015176773,
+      "free_disk_bytes": 38971121664,
+      "mem_available_bytes": 25776873472
+    },
+    {
+      "monotonic_ns": 2465707016223390,
+      "free_disk_bytes": 38959374336,
+      "mem_available_bytes": 25776078848
+    },
+    {
+      "monotonic_ns": 2465708017445289,
+      "free_disk_bytes": 38947577856,
+      "mem_available_bytes": 25775554560
+    },
+    {
+      "monotonic_ns": 2465709018667377,
+      "free_disk_bytes": 38935756800,
+      "mem_available_bytes": 25775972352
+    },
+    {
+      "monotonic_ns": 2465710019927408,
+      "free_disk_bytes": 38924025856,
+      "mem_available_bytes": 25776320512
+    },
+    {
+      "monotonic_ns": 2465711021182145,
+      "free_disk_bytes": 38912188416,
+      "mem_available_bytes": 25775353856
+    },
+    {
+      "monotonic_ns": 2465712022408957,
+      "free_disk_bytes": 38900490240,
+      "mem_available_bytes": 25775751168
+    },
+    {
+      "monotonic_ns": 2465713023626983,
+      "free_disk_bytes": 38888816640,
+      "mem_available_bytes": 25775386624
+    },
+    {
+      "monotonic_ns": 2465714024213234,
+      "free_disk_bytes": 38877126656,
+      "mem_available_bytes": 25775656960
+    },
+    {
+      "monotonic_ns": 2465715025424557,
+      "free_disk_bytes": 38865420288,
+      "mem_available_bytes": 25776328704
+    },
+    {
+      "monotonic_ns": 2465716026653287,
+      "free_disk_bytes": 38853648384,
+      "mem_available_bytes": 25777135616
+    },
+    {
+      "monotonic_ns": 2465717027137777,
+      "free_disk_bytes": 38841843712,
+      "mem_available_bytes": 25777053696
+    },
+    {
+      "monotonic_ns": 2465718028369354,
+      "free_disk_bytes": 38836174848,
+      "mem_available_bytes": 25777680384
+    },
+    {
+      "monotonic_ns": 2465719029627702,
+      "free_disk_bytes": 38825607168,
+      "mem_available_bytes": 25776660480
+    },
+    {
+      "monotonic_ns": 2465720030044621,
+      "free_disk_bytes": 38813863936,
+      "mem_available_bytes": 25778302976
+    },
+    {
+      "monotonic_ns": 2465721031306380,
+      "free_disk_bytes": 38802034688,
+      "mem_available_bytes": 25777881088
+    },
+    {
+      "monotonic_ns": 2465722032220967,
+      "free_disk_bytes": 38790656000,
+      "mem_available_bytes": 25777922048
+    },
+    {
+      "monotonic_ns": 2465723033456443,
+      "free_disk_bytes": 38778830848,
+      "mem_available_bytes": 25776603136
+    },
+    {
+      "monotonic_ns": 2465724034682678,
+      "free_disk_bytes": 38767108096,
+      "mem_available_bytes": 25777414144
+    },
+    {
+      "monotonic_ns": 2465725035934323,
+      "free_disk_bytes": 38755409920,
+      "mem_available_bytes": 25778122752
+    },
+    {
+      "monotonic_ns": 2465726037170993,
+      "free_disk_bytes": 38743687168,
+      "mem_available_bytes": 25777651712
+    },
+    {
+      "monotonic_ns": 2465727038409659,
+      "free_disk_bytes": 38732382208,
+      "mem_available_bytes": 25777639424
+    },
+    {
+      "monotonic_ns": 2465728039667796,
+      "free_disk_bytes": 38720544768,
+      "mem_available_bytes": 25777840128
+    },
+    {
+      "monotonic_ns": 2465729040923965,
+      "free_disk_bytes": 38708699136,
+      "mem_available_bytes": 25777721344
+    },
+    {
+      "monotonic_ns": 2465730042148848,
+      "free_disk_bytes": 38696820736,
+      "mem_available_bytes": 25777709056
+    },
+    {
+      "monotonic_ns": 2465731043399675,
+      "free_disk_bytes": 38684991488,
+      "mem_available_bytes": 25776992256
+    },
+    {
+      "monotonic_ns": 2465732044655539,
+      "free_disk_bytes": 38673833984,
+      "mem_available_bytes": 25777225728
+    },
+    {
+      "monotonic_ns": 2465733045917658,
+      "free_disk_bytes": 38662021120,
+      "mem_available_bytes": 25779093504
+    },
+    {
+      "monotonic_ns": 2465734047106113,
+      "free_disk_bytes": 38650232832,
+      "mem_available_bytes": 25778880512
+    },
+    {
+      "monotonic_ns": 2465735048334448,
+      "free_disk_bytes": 38638534656,
+      "mem_available_bytes": 25779769344
+    },
+    {
+      "monotonic_ns": 2465736049035465,
+      "free_disk_bytes": 38626770944,
+      "mem_available_bytes": 25779998720
+    },
+    {
+      "monotonic_ns": 2465737050259764,
+      "free_disk_bytes": 38615015424,
+      "mem_available_bytes": 25780588544
+    },
+    {
+      "monotonic_ns": 2465738051473494,
+      "free_disk_bytes": 38603243520,
+      "mem_available_bytes": 25779359744
+    },
+    {
+      "monotonic_ns": 2465739052220134,
+      "free_disk_bytes": 38591422464,
+      "mem_available_bytes": 25779101696
+    },
+    {
+      "monotonic_ns": 2465740053446175,
+      "free_disk_bytes": 38579642368,
+      "mem_available_bytes": 25779933184
+    },
+    {
+      "monotonic_ns": 2465741054679366,
+      "free_disk_bytes": 38567763968,
+      "mem_available_bytes": 25780584448
+    },
+    {
+      "monotonic_ns": 2465742055659567,
+      "free_disk_bytes": 38555983872,
+      "mem_available_bytes": 25780289536
+    },
+    {
+      "monotonic_ns": 2465743056920168,
+      "free_disk_bytes": 38544171008,
+      "mem_available_bytes": 25780334592
+    },
+    {
+      "monotonic_ns": 2465744058143297,
+      "free_disk_bytes": 38532382720,
+      "mem_available_bytes": 25780490240
+    },
+    {
+      "monotonic_ns": 2465745059404573,
+      "free_disk_bytes": 38520528896,
+      "mem_available_bytes": 25780969472
+    },
+    {
+      "monotonic_ns": 2465746060631310,
+      "free_disk_bytes": 38508789760,
+      "mem_available_bytes": 25781112832
+    },
+    {
+      "monotonic_ns": 2465747061891650,
+      "free_disk_bytes": 38497116160,
+      "mem_available_bytes": 25780994048
+    },
+    {
+      "monotonic_ns": 2465748063123599,
+      "free_disk_bytes": 38485270528,
+      "mem_available_bytes": 25779748864
+    },
+    {
+      "monotonic_ns": 2465749064378863,
+      "free_disk_bytes": 38473457664,
+      "mem_available_bytes": 25779388416
+    },
+    {
+      "monotonic_ns": 2465750065630176,
+      "free_disk_bytes": 38461882368,
+      "mem_available_bytes": 25779474432
+    },
+    {
+      "monotonic_ns": 2465751066868724,
+      "free_disk_bytes": 38450044928,
+      "mem_available_bytes": 25779630080
+    },
+    {
+      "monotonic_ns": 2465752068111482,
+      "free_disk_bytes": 38438281216,
+      "mem_available_bytes": 25779732480
+    },
+    {
+      "monotonic_ns": 2465753069360595,
+      "free_disk_bytes": 38426484736,
+      "mem_available_bytes": 25779605504
+    },
+    {
+      "monotonic_ns": 2465754070581746,
+      "free_disk_bytes": 38414761984,
+      "mem_available_bytes": 25779765248
+    },
+    {
+      "monotonic_ns": 2465755071799605,
+      "free_disk_bytes": 38403178496,
+      "mem_available_bytes": 25780109312
+    },
+    {
+      "monotonic_ns": 2465756072681127,
+      "free_disk_bytes": 38391447552,
+      "mem_available_bytes": 25779798016
+    },
+    {
+      "monotonic_ns": 2465757073921268,
+      "free_disk_bytes": 38379610112,
+      "mem_available_bytes": 25780084736
+    },
+    {
+      "monotonic_ns": 2465758075148473,
+      "free_disk_bytes": 38367772672,
+      "mem_available_bytes": 25780342784
+    },
+    {
+      "monotonic_ns": 2465759076400496,
+      "free_disk_bytes": 38355902464,
+      "mem_available_bytes": 25779482624
+    },
+    {
+      "monotonic_ns": 2465760077618769,
+      "free_disk_bytes": 38344089600,
+      "mem_available_bytes": 25779339264
+    },
+    {
+      "monotonic_ns": 2465761078836531,
+      "free_disk_bytes": 38332252160,
+      "mem_available_bytes": 25780412416
+    },
+    {
+      "monotonic_ns": 2465762080118879,
+      "free_disk_bytes": 38320496640,
+      "mem_available_bytes": 25780523008
+    },
+    {
+      "monotonic_ns": 2465763081341513,
+      "free_disk_bytes": 38314975232,
+      "mem_available_bytes": 25781088256
+    },
+    {
+      "monotonic_ns": 2465764082577842,
+      "free_disk_bytes": 38306979840,
+      "mem_available_bytes": 25780736000
+    },
+    {
+      "monotonic_ns": 2465765083820627,
+      "free_disk_bytes": 38295224320,
+      "mem_available_bytes": 25780969472
+    },
+    {
+      "monotonic_ns": 2465766085065213,
+      "free_disk_bytes": 38283468800,
+      "mem_available_bytes": 25780858880
+    },
+    {
+      "monotonic_ns": 2465767086312189,
+      "free_disk_bytes": 38271664128,
+      "mem_available_bytes": 25780383744
+    },
+    {
+      "monotonic_ns": 2465768087546344,
+      "free_disk_bytes": 38260056064,
+      "mem_available_bytes": 25780264960
+    },
+    {
+      "monotonic_ns": 2465769088818832,
+      "free_disk_bytes": 38248292352,
+      "mem_available_bytes": 25780224000
+    },
+    {
+      "monotonic_ns": 2465770090075529,
+      "free_disk_bytes": 38236545024,
+      "mem_available_bytes": 25779294208
+    },
+    {
+      "monotonic_ns": 2465771091324873,
+      "free_disk_bytes": 38224797696,
+      "mem_available_bytes": 25780506624
+    },
+    {
+      "monotonic_ns": 2465772092589392,
+      "free_disk_bytes": 38213066752,
+      "mem_available_bytes": 25779929088
+    },
+    {
+      "monotonic_ns": 2465773093844888,
+      "free_disk_bytes": 38201409536,
+      "mem_available_bytes": 25780092928
+    },
+    {
+      "monotonic_ns": 2465774095107389,
+      "free_disk_bytes": 38189735936,
+      "mem_available_bytes": 25780731904
+    },
+    {
+      "monotonic_ns": 2465775096240317,
+      "free_disk_bytes": 38177947648,
+      "mem_available_bytes": 25772445696
+    },
+    {
+      "monotonic_ns": 2465776096512524,
+      "free_disk_bytes": 38166462464,
+      "mem_available_bytes": 25769865216
+    },
+    {
+      "monotonic_ns": 2465777097718902,
+      "free_disk_bytes": 38154706944,
+      "mem_available_bytes": 25770565632
+    },
+    {
+      "monotonic_ns": 2465778098984429,
+      "free_disk_bytes": 38144372736,
+      "mem_available_bytes": 25770414080
+    },
+    {
+      "monotonic_ns": 2465779100253273,
+      "free_disk_bytes": 38134099968,
+      "mem_available_bytes": 25770930176
+    },
+    {
+      "monotonic_ns": 2465780101489867,
+      "free_disk_bytes": 38122696704,
+      "mem_available_bytes": 25770094592
+    },
+    {
+      "monotonic_ns": 2465781102716404,
+      "free_disk_bytes": 38113218560,
+      "mem_available_bytes": 25739317248
+    },
+    {
+      "monotonic_ns": 2465782103948362,
+      "free_disk_bytes": 38105100288,
+      "mem_available_bytes": 25626947584
+    },
+    {
+      "monotonic_ns": 2465783104459170,
+      "free_disk_bytes": 38095945728,
+      "mem_available_bytes": 25761300480
+    },
+    {
+      "monotonic_ns": 2465784105695508,
+      "free_disk_bytes": 38238453760,
+      "mem_available_bytes": 25626636288
+    },
+    {
+      "monotonic_ns": 2465785106911495,
+      "free_disk_bytes": 38213967872,
+      "mem_available_bytes": 25627639808
+    },
+    {
+      "monotonic_ns": 2465786108159377,
+      "free_disk_bytes": 38189285376,
+      "mem_available_bytes": 25627463680
+    },
+    {
+      "monotonic_ns": 2465787109414721,
+      "free_disk_bytes": 38164750336,
+      "mem_available_bytes": 25628413952
+    },
+    {
+      "monotonic_ns": 2465788110662170,
+      "free_disk_bytes": 38140035072,
+      "mem_available_bytes": 25628483584
+    },
+    {
+      "monotonic_ns": 2465789111926664,
+      "free_disk_bytes": 38116491264,
+      "mem_available_bytes": 25628381184
+    },
+    {
+      "monotonic_ns": 2465790112820381,
+      "free_disk_bytes": 38091988992,
+      "mem_available_bytes": 25631649792
+    },
+    {
+      "monotonic_ns": 2465791114043449,
+      "free_disk_bytes": 38067380224,
+      "mem_available_bytes": 25630969856
+    },
+    {
+      "monotonic_ns": 2465792114269314,
+      "free_disk_bytes": 38042697728,
+      "mem_available_bytes": 25631555584
+    },
+    {
+      "monotonic_ns": 2465793115493730,
+      "free_disk_bytes": 38018121728,
+      "mem_available_bytes": 25631232000
+    },
+    {
+      "monotonic_ns": 2465794116727908,
+      "free_disk_bytes": 37994553344,
+      "mem_available_bytes": 25631367168
+    },
+    {
+      "monotonic_ns": 2465795117957294,
+      "free_disk_bytes": 37970001920,
+      "mem_available_bytes": 25630863360
+    },
+    {
+      "monotonic_ns": 2465796119204050,
+      "free_disk_bytes": 37945483264,
+      "mem_available_bytes": 25631174656
+    },
+    {
+      "monotonic_ns": 2465797120226358,
+      "free_disk_bytes": 37920874496,
+      "mem_available_bytes": 25630588928
+    },
+    {
+      "monotonic_ns": 2465798121252534,
+      "free_disk_bytes": 37896327168,
+      "mem_available_bytes": 25631641600
+    },
+    {
+      "monotonic_ns": 2465799122477778,
+      "free_disk_bytes": 37871792128,
+      "mem_available_bytes": 25633218560
+    },
+    {
+      "monotonic_ns": 2465800123744717,
+      "free_disk_bytes": 37847166976,
+      "mem_available_bytes": 25635069952
+    },
+    {
+      "monotonic_ns": 2465801124226393,
+      "free_disk_bytes": 37822550016,
+      "mem_available_bytes": 25634762752
+    },
+    {
+      "monotonic_ns": 2465802125462812,
+      "free_disk_bytes": 37797924864,
+      "mem_available_bytes": 25635016704
+    },
+    {
+      "monotonic_ns": 2465803126693276,
+      "free_disk_bytes": 37773381632,
+      "mem_available_bytes": 25635864576
+    },
+    {
+      "monotonic_ns": 2465804127727590,
+      "free_disk_bytes": 37757497344,
+      "mem_available_bytes": 25637089280
+    },
+    {
+      "monotonic_ns": 2465805128951885,
+      "free_disk_bytes": 37737189376,
+      "mem_available_bytes": 25638133760
+    },
+    {
+      "monotonic_ns": 2465806130200213,
+      "free_disk_bytes": 37712564224,
+      "mem_available_bytes": 25637834752
+    },
+    {
+      "monotonic_ns": 2465807131429469,
+      "free_disk_bytes": 37687562240,
+      "mem_available_bytes": 25637736448
+    },
+    {
+      "monotonic_ns": 2465808132653549,
+      "free_disk_bytes": 37662699520,
+      "mem_available_bytes": 25638010880
+    },
+    {
+      "monotonic_ns": 2465809133898782,
+      "free_disk_bytes": 37637918720,
+      "mem_available_bytes": 25637646336
+    },
+    {
+      "monotonic_ns": 2465810135152377,
+      "free_disk_bytes": 37612957696,
+      "mem_available_bytes": 25637572608
+    },
+    {
+      "monotonic_ns": 2465811136259189,
+      "free_disk_bytes": 37588094976,
+      "mem_available_bytes": 25637101568
+    },
+    {
+      "monotonic_ns": 2465812137479959,
+      "free_disk_bytes": 37563166720,
+      "mem_available_bytes": 25637511168
+    },
+    {
+      "monotonic_ns": 2465813138691367,
+      "free_disk_bytes": 37538140160,
+      "mem_available_bytes": 25637789696
+    },
+    {
+      "monotonic_ns": 2465814139942706,
+      "free_disk_bytes": 37513228288,
+      "mem_available_bytes": 25637281792
+    },
+    {
+      "monotonic_ns": 2465815140981461,
+      "free_disk_bytes": 37488357376,
+      "mem_available_bytes": 25637683200
+    },
+    {
+      "monotonic_ns": 2465816142199888,
+      "free_disk_bytes": 37463576576,
+      "mem_available_bytes": 25637851136
+    },
+    {
+      "monotonic_ns": 2465817142943695,
+      "free_disk_bytes": 37438664704,
+      "mem_available_bytes": 25638170624
+    },
+    {
+      "monotonic_ns": 2465818144174581,
+      "free_disk_bytes": 37413904384,
+      "mem_available_bytes": 25634381824
+    },
+    {
+      "monotonic_ns": 2465819145431033,
+      "free_disk_bytes": 37390016512,
+      "mem_available_bytes": 25634422784
+    },
+    {
+      "monotonic_ns": 2465820146018070,
+      "free_disk_bytes": 37365161984,
+      "mem_available_bytes": 25634951168
+    },
+    {
+      "monotonic_ns": 2465821147265658,
+      "free_disk_bytes": 37340692480,
+      "mem_available_bytes": 25633312768
+    },
+    {
+      "monotonic_ns": 2465822148424723,
+      "free_disk_bytes": 37315813376,
+      "mem_available_bytes": 25633959936
+    },
+    {
+      "monotonic_ns": 2465823149674382,
+      "free_disk_bytes": 37291204608,
+      "mem_available_bytes": 25634426880
+    },
+    {
+      "monotonic_ns": 2465824150896942,
+      "free_disk_bytes": 37266944000,
+      "mem_available_bytes": 25634586624
+    },
+    {
+      "monotonic_ns": 2465825151949603,
+      "free_disk_bytes": 37242482688,
+      "mem_available_bytes": 25635086336
+    },
+    {
+      "monotonic_ns": 2465826153181240,
+      "free_disk_bytes": 37217628160,
+      "mem_available_bytes": 25635180544
+    },
+    {
+      "monotonic_ns": 2465827153481488,
+      "free_disk_bytes": 37193453568,
+      "mem_available_bytes": 25635332096
+    },
+    {
+      "monotonic_ns": 2465828154715640,
+      "free_disk_bytes": 37168893952,
+      "mem_available_bytes": 25635864576
+    },
+    {
+      "monotonic_ns": 2465829155935865,
+      "free_disk_bytes": 37144023040,
+      "mem_available_bytes": 25635573760
+    },
+    {
+      "monotonic_ns": 2465830156253961,
+      "free_disk_bytes": 37119143936,
+      "mem_available_bytes": 25635373056
+    },
+    {
+      "monotonic_ns": 2465831157475226,
+      "free_disk_bytes": 37094158336,
+      "mem_available_bytes": 25635717120
+    },
+    {
+      "monotonic_ns": 2465832158721514,
+      "free_disk_bytes": 37069189120,
+      "mem_available_bytes": 25636622336
+    },
+    {
+      "monotonic_ns": 2465833159943864,
+      "free_disk_bytes": 37044244480,
+      "mem_available_bytes": 25636945920
+    },
+    {
+      "monotonic_ns": 2465834161168051,
+      "free_disk_bytes": 37019439104,
+      "mem_available_bytes": 25636622336
+    },
+    {
+      "monotonic_ns": 2465835162428930,
+      "free_disk_bytes": 36994551808,
+      "mem_available_bytes": 25637199872
+    },
+    {
+      "monotonic_ns": 2465836163647891,
+      "free_disk_bytes": 36969967616,
+      "mem_available_bytes": 25633181696
+    },
+    {
+      "monotonic_ns": 2465837164901232,
+      "free_disk_bytes": 36944965632,
+      "mem_available_bytes": 25631850496
+    },
+    {
+      "monotonic_ns": 2465838166149271,
+      "free_disk_bytes": 36920004608,
+      "mem_available_bytes": 25633112064
+    },
+    {
+      "monotonic_ns": 2465839167375514,
+      "free_disk_bytes": 36895014912,
+      "mem_available_bytes": 25632350208
+    },
+    {
+      "monotonic_ns": 2465840168628948,
+      "free_disk_bytes": 36870029312,
+      "mem_available_bytes": 25632624640
+    },
+    {
+      "monotonic_ns": 2465841169873554,
+      "free_disk_bytes": 36845117440,
+      "mem_available_bytes": 25636933632
+    },
+    {
+      "monotonic_ns": 2465842171100929,
+      "free_disk_bytes": 36820336640,
+      "mem_available_bytes": 25636696064
+    },
+    {
+      "monotonic_ns": 2465843172348923,
+      "free_disk_bytes": 36795396096,
+      "mem_available_bytes": 25636454400
+    },
+    {
+      "monotonic_ns": 2465844173590297,
+      "free_disk_bytes": 36770574336,
+      "mem_available_bytes": 25637613568
+    },
+    {
+      "monotonic_ns": 2465845174818859,
+      "free_disk_bytes": 36745703424,
+      "mem_available_bytes": 25636925440
+    },
+    {
+      "monotonic_ns": 2465846176099736,
+      "free_disk_bytes": 36717170688,
+      "mem_available_bytes": 25637363712
+    },
+    {
+      "monotonic_ns": 2465847177333966,
+      "free_disk_bytes": 38458290176,
+      "mem_available_bytes": 25635962880
+    },
+    {
+      "monotonic_ns": 2465848178195777,
+      "free_disk_bytes": 38458290176,
+      "mem_available_bytes": 25635762176
+    },
+    {
+      "monotonic_ns": 2465849179455171,
+      "free_disk_bytes": 38458290176,
+      "mem_available_bytes": 25635905536
+    },
+    {
+      "monotonic_ns": 2465850180252830,
+      "free_disk_bytes": 38458290176,
+      "mem_available_bytes": 25635934208
+    },
+    {
+      "monotonic_ns": 2465851181474613,
+      "free_disk_bytes": 38458281984,
+      "mem_available_bytes": 26244706304
+    },
+    {
+      "monotonic_ns": 2465852182695145,
+      "free_disk_bytes": 38507335680,
+      "mem_available_bytes": 26244411392
+    },
+    {
+      "monotonic_ns": 2465853183905081,
+      "free_disk_bytes": 38556377088,
+      "mem_available_bytes": 26238287872
+    },
+    {
+      "monotonic_ns": 2465854185127517,
+      "free_disk_bytes": 38654693376,
+      "mem_available_bytes": 26324234240
+    },
+    {
+      "monotonic_ns": 2465855186358826,
+      "free_disk_bytes": 38704001024,
+      "mem_available_bytes": 26248593408
+    },
+    {
+      "monotonic_ns": 2465856187589343,
+      "free_disk_bytes": 38753165312,
+      "mem_available_bytes": 26246287360
+    },
+    {
+      "monotonic_ns": 2465857188841605,
+      "free_disk_bytes": 38802501632,
+      "mem_available_bytes": 26246250496
+    },
+    {
+      "monotonic_ns": 2465858190098864,
+      "free_disk_bytes": 38851567616,
+      "mem_available_bytes": 26246766592
+    },
+    {
+      "monotonic_ns": 2465859191354269,
+      "free_disk_bytes": 38900338688,
+      "mem_available_bytes": 26246221824
+    },
+    {
+      "monotonic_ns": 2465860192229971,
+      "free_disk_bytes": 38949548032,
+      "mem_available_bytes": 26244849664
+    },
+    {
+      "monotonic_ns": 2465861193464694,
+      "free_disk_bytes": 38998654976,
+      "mem_available_bytes": 26237566976
+    },
+    {
+      "monotonic_ns": 2465862194688453,
+      "free_disk_bytes": 39097065472,
+      "mem_available_bytes": 26387402752
+    },
+    {
+      "monotonic_ns": 2465863195909720,
+      "free_disk_bytes": 39146123264,
+      "mem_available_bytes": 26247561216
+    },
+    {
+      "monotonic_ns": 2465864196259408,
+      "free_disk_bytes": 39195217920,
+      "mem_available_bytes": 26244984832
+    },
+    {
+      "monotonic_ns": 2465865197514814,
+      "free_disk_bytes": 39244382208,
+      "mem_available_bytes": 26244214784
+    },
+    {
+      "monotonic_ns": 2465866198747910,
+      "free_disk_bytes": 39293517824,
+      "mem_available_bytes": 26244112384
+    },
+    {
+      "monotonic_ns": 2465867199995535,
+      "free_disk_bytes": 39342796800,
+      "mem_available_bytes": 26244153344
+    },
+    {
+      "monotonic_ns": 2465868201227110,
+      "free_disk_bytes": 39391850496,
+      "mem_available_bytes": 26236915712
+    },
+    {
+      "monotonic_ns": 2465869202443633,
+      "free_disk_bytes": 39440871424,
+      "mem_available_bytes": 26236928000
+    },
+    {
+      "monotonic_ns": 2465870202926123,
+      "free_disk_bytes": 39539007488,
+      "mem_available_bytes": 26247790592
+    },
+    {
+      "monotonic_ns": 2465871204153354,
+      "free_disk_bytes": 39588003840,
+      "mem_available_bytes": 26244685824
+    },
+    {
+      "monotonic_ns": 2465872205383576,
+      "free_disk_bytes": 39637041152,
+      "mem_available_bytes": 26244726784
+    },
+    {
+      "monotonic_ns": 2465873206602302,
+      "free_disk_bytes": 39686090752,
+      "mem_available_bytes": 26243989504
+    },
+    {
+      "monotonic_ns": 2465874207016506,
+      "free_disk_bytes": 39735357440,
+      "mem_available_bytes": 26243977216
+    },
+    {
+      "monotonic_ns": 2465875208241407,
+      "free_disk_bytes": 39784706048,
+      "mem_available_bytes": 26243850240
+    },
+    {
+      "monotonic_ns": 2465876208473538,
+      "free_disk_bytes": 39834001408,
+      "mem_available_bytes": 26235850752
+    },
+    {
+      "monotonic_ns": 2465877209719162,
+      "free_disk_bytes": 39932715008,
+      "mem_available_bytes": 26389450752
+    },
+    {
+      "monotonic_ns": 2465878210939156,
+      "free_disk_bytes": 39981649920,
+      "mem_available_bytes": 26245861376
+    }
+  ],
+  "cancellation_reason": null
+}

@@ -1,0 +1,178 @@
+{
+  "schema": "jmt.actual-database-work-mem-SET-probe/v1",
+  "checked_at": "2026-11-13T11:34:06.566344+08:00",
+  "domain": {
+    "schema": "jmt.database-allowed-work-mem-domain/v1",
+    "raw_pg_settings": [
+      {
+        "name": "cstore_buffers",
+        "setting": "524288",
+        "min_val": "16384",
+        "max_val": "1073741823",
+        "unit": "kB",
+        "context": "postmaster",
+        "source": "configuration file"
+      },
+      {
+        "name": "disable_memory_protect",
+        "setting": "off",
+        "min_val": null,
+        "max_val": null,
+        "unit": null,
+        "context": "user",
+        "source": "default"
+      },
+      {
+        "name": "enable_memory_limit",
+        "setting": "on",
+        "min_val": null,
+        "max_val": null,
+        "unit": null,
+        "context": "postmaster",
+        "source": "default"
+      },
+      {
+        "name": "max_process_memory",
+        "setting": "20971520",
+        "min_val": "2097152",
+        "max_val": "2147483647",
+        "unit": "kB",
+        "context": "postmaster",
+        "source": "configuration file"
+      },
+      {
+        "name": "query_max_mem",
+        "setting": "0",
+        "min_val": "0",
+        "max_val": "2147483647",
+        "unit": "kB",
+        "context": "user",
+        "source": "default"
+      },
+      {
+        "name": "query_mem",
+        "setting": "0",
+        "min_val": "0",
+        "max_val": "2147483647",
+        "unit": "kB",
+        "context": "user",
+        "source": "default"
+      },
+      {
+        "name": "shared_buffers",
+        "setting": "1048576",
+        "min_val": "16",
+        "max_val": "1073741823",
+        "unit": "8kB",
+        "context": "postmaster",
+        "source": "configuration file"
+      },
+      {
+        "name": "shared_buffers_target",
+        "setting": "1048576",
+        "min_val": "0",
+        "max_val": "1073741823",
+        "unit": "8kB",
+        "context": "sighup",
+        "source": "configuration file"
+      },
+      {
+        "name": "work_mem",
+        "setting": "32768",
+        "min_val": "64",
+        "max_val": "2147483647",
+        "unit": "kB",
+        "context": "user",
+        "source": "session"
+      }
+    ],
+    "minimum_mib": 1,
+    "maximum_mib": 2097151,
+    "limit_source": "pg_settings.work_mem.min_val/max_val, intersect adapter integer domain",
+    "query_memory_settings": {
+      "query_mem": {
+        "name": "query_mem",
+        "setting": "0",
+        "min_val": "0",
+        "max_val": "2147483647",
+        "unit": "kB",
+        "context": "user",
+        "source": "default"
+      },
+      "query_max_mem": {
+        "name": "query_max_mem",
+        "setting": "0",
+        "min_val": "0",
+        "max_val": "2147483647",
+        "unit": "kB",
+        "context": "user",
+        "source": "default"
+      }
+    },
+    "database_global_settings": {
+      "max_process_memory": {
+        "name": "max_process_memory",
+        "setting": "20971520",
+        "min_val": "2097152",
+        "max_val": "2147483647",
+        "unit": "kB",
+        "context": "postmaster",
+        "source": "configuration file"
+      },
+      "enable_memory_limit": {
+        "name": "enable_memory_limit",
+        "setting": "on",
+        "min_val": null,
+        "max_val": null,
+        "unit": null,
+        "context": "postmaster",
+        "source": "default"
+      },
+      "disable_memory_protect": {
+        "name": "disable_memory_protect",
+        "setting": "off",
+        "min_val": null,
+        "max_val": null,
+        "unit": null,
+        "context": "user",
+        "source": "default"
+      }
+    },
+    "TP_reserve_or_native_dynamic_remainder_used_as_WM_GUC_limit": false,
+    "SET_acceptance_is_not_memory_allocation_or_operator_grant": true,
+    "large_SET_does_not_authorize_host_overcommit": true
+  },
+  "session_SET_trials": [
+    {
+      "requested_work_mem_mib": 4096,
+      "accepted": true,
+      "database_response": {
+        "work_mem_kib": "4GB",
+        "work_mem_pg_setting": "4194304"
+      },
+      "only_SET_and_metadata_SELECT_no_AP_or_large_allocation": true
+    },
+    {
+      "requested_work_mem_mib": 8192,
+      "accepted": true,
+      "database_response": {
+        "work_mem_kib": "8GB",
+        "work_mem_pg_setting": "8388608"
+      },
+      "only_SET_and_metadata_SELECT_no_AP_or_large_allocation": true
+    },
+    {
+      "requested_work_mem_mib": 16384,
+      "accepted": true,
+      "database_response": {
+        "work_mem_kib": "16GB",
+        "work_mem_pg_setting": "16777216"
+      },
+      "only_SET_and_metadata_SELECT_no_AP_or_large_allocation": true
+    }
+  ],
+  "global_configuration_changed": false,
+  "memory_protection_disabled": false,
+  "SET_acceptance_does_not_prove_concurrent_allocation_or_physical_memory_safety": true,
+  "collector_sha256": "ffe0d5523747cdf2772881b1b46b6c7643b7e7146cb6d4e6f7493d85ed9d5a06"
+}

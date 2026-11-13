@@ -1,0 +1,1579 @@
+{
+  "schema": "huawei7.ap-plan-service-demand/v3.8.0-experimental",
+  "work_mem_mib": 512,
+  "executor_profile": {
+    "allocation_header_bytes": 32,
+    "sort_algorithm": "5.1 quicksort batches + polyphase merge",
+    "qualification": "build-dependent; verify for a different executor binary"
+  },
+  "plan_structure_sha256": "1e7b84e5bc7234989dc00cfa10cfbefbe35f68c62954d790b457b16b776cacb1",
+  "features": {
+    "scan_tuples": 1658600743.0,
+    "index_probes": 0.0,
+    "index_tuples": 0.0,
+    "predicate_evaluations": 2312566108.0,
+    "projection_evaluations": 929693418.0,
+    "hash_build_tuples": 233314449.0,
+    "hash_probe_tuples": 696375971.0,
+    "join_comparisons": 712255291.0,
+    "aggregate_transitions": 2998.0,
+    "aggregate_groups": 2998.0,
+    "aggregate_argument_evaluations": 0.0,
+    "sort_comparisons": 39836.56171388925,
+    "window_evaluations": 0.0,
+    "store_put_tuples": 0.0,
+    "store_get_tuples": 0.0,
+    "setop_tuples": 0.0,
+    "logical_scan_bytes": 279666130944.0,
+    "logical_temp_read_bytes": 6736592896.0,
+    "logical_temp_write_bytes": 6736592896.0
+  },
+  "operators": [
+    {
+      "path": "",
+      "node_type": "Limit",
+      "strategy": "",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 2998.0,
+      "output_rows_per_call": 100.0,
+      "width": 34.0,
+      "mode": "limit",
+      "memory_mib": 0.0,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 0.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 0.0,
+        "projection_evaluations": 0.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 0.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "subtree_structural_peak_upper_mib": 1061.1000900268555
+      },
+      "uncertainties": [],
+      "recognized": true
+    },
+    {
+      "path": ".0",
+      "node_type": "Sort",
+      "strategy": "",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 2998.0,
+      "output_rows_per_call": 100.0,
+      "width": 34.0,
+      "mode": "top_n_heap",
+      "memory_mib": 0.0418701171875,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 0.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 0.0,
+        "projection_evaluations": 0.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 0.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 39836.56171388925,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "mode": "top_n_heap",
+        "memory_mib": 0.0418701171875,
+        "retained_heap_mib": 0.032623291015625,
+        "comparisons": 39836.56171388925,
+        "read_bytes": 0.0,
+        "write_bytes": 0.0,
+        "write_bytes_lower": 0.0,
+        "write_bytes_upper": 0.0,
+        "passes": 0,
+        "required_mib": 0.032623291015625,
+        "subtree_structural_peak_upper_mib": 1061.1000900268555
+      },
+      "uncertainties": [
+        "session_work_mem_not_verified_operator_grant",
+        "top_n_later_wider_tuples_can_exceed_initial_heap_estimate"
+      ],
+      "recognized": true
+    },
+    {
+      "path": ".0.0",
+      "node_type": "Aggregate",
+      "strategy": "Hashed",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 2998.0,
+      "output_rows_per_call": 2998.0,
+      "width": 34.0,
+      "mode": "hash_aggregate_memory",
+      "memory_mib": 0.660675048828125,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 0.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 0.0,
+        "projection_evaluations": 2998.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 2998.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 2998.0,
+        "aggregate_groups": 2998.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "aggregate_functions": {
+          "count": 1
+        },
+        "aggregate_state_expressions": [
+          "count(*)"
+        ],
+        "mode": "hash_aggregate_memory",
+        "memory_mib": 0.660675048828125,
+        "required_mib": 0.58367919921875,
+        "spill_trigger_required_mib": 0.58367919921875,
+        "child_dynahash_memory_mib_estimate": 0.168487548828125,
+        "memory_qualification": "physical_parent_plus_child_estimate_NOT_capped_by_spill_check_grant",
+        "entry_bytes_lower_without_byref_payload": 128,
+        "executor_spill_check_entry_bytes": 128,
+        "aggregate_transition_payload_bytes": 0,
+        "counted_entry_state_bytes": 32,
+        "parent_context_layout": {
+          "resident_groups": 2998,
+          "required_spill_check_bytes": 612032,
+          "parent_reserved_bytes_at_residency": 516096,
+          "spill_check_bytes_at_residency": 612032,
+          "persistent_parent_bytes_per_group": 96,
+          "manual_entry_state_bytes": 32,
+          "binary_search_steps": 0,
+          "allocator_events_per_evaluation": 6,
+          "accounting": "parent_AllocSet_totalSpace_plus_one_entrysize; child_dynahash_excluded",
+          "qualification": "8KiB..8MiB parent blocks; expected persistent chunk packing; mixed/variable widths and allocation ordering remain approximate"
+        },
+        "dynahash_child_excluded_from_spill_check": true,
+        "planner_partition_groups_proxy": 2998,
+        "aggregate_state_slots": 1,
+        "resident_groups": 2998.0,
+        "group_discovery_model": "equal_multiplicity_random_order",
+        "frequency_histogram_budget_exceeded": {
+          "group": false,
+          "setop": false
+        },
+        "frequency_solve_bins_max": 256,
+        "estimated_discovery_rows": 2998.0,
+        "setop_frequency_demand": null,
+        "spill_row_bytes_estimate": 42.0,
+        "write_bytes": 0,
+        "read_bytes": 0.0,
+        "write_bytes_lower": 0.0,
+        "write_bytes_upper": 125916.0,
+        "reachable_partition_files": 32,
+        "nonempty_partition_files_estimate": 0,
+        "eof_read_block_equivalent_bytes": 0.0,
+        "partitions": 48,
+        "repartition_levels": 0,
+        "aggregate_transition_layouts": [
+          {
+            "function": "count",
+            "argument_type": null,
+            "payload_bytes": 0,
+            "collect_initial_payload_bytes": 0,
+            "persistent_payload_bytes": 0,
+            "qualification": "by_value_transition"
+          }
+        ],
+        "stored_group_keys_width": 26.0,
+        "subtree_structural_peak_upper_mib": 1061.058219909668
+      },
+      "uncertainties": [
+        "session_work_mem_not_verified_operator_grant",
+        "hashagg_group_frequency_and_input_order_unknown",
+        "hashagg_spill_projection_width_not_measured",
+        "hashagg_stored_group_projection_width_not_measured",
+        "by_reference_aggregate_transition_payload_not_measured"
+      ],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0",
+      "node_type": "Hash Join",
+      "strategy": "",
+      "join_type": "Right Semi",
+      "calls": 1.0,
+      "input_rows_per_call": 510081248.0,
+      "output_rows_per_call": 2998.0,
+      "width": 26.0,
+      "mode": "hash_join_right semi",
+      "memory_mib": 0.0,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 0.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 1020162496.0,
+        "projection_evaluations": 2998.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 510081248.0,
+        "join_comparisons": 510084246.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "batches": 1,
+        "required_build_mib": 33.57231140136719,
+        "hash_directory": {
+          "planner_input_rows_proxy": 430678,
+          "planner_input_width_proxy": 38,
+          "initial_buckets": 524288,
+          "initial_batches": 1,
+          "runtime_buckets": 524288,
+          "batches": 1,
+          "dynamic_bucket_growth_events": 0,
+          "estimated_first_spill_inner_row": null,
+          "simulator_event_budget": 64,
+          "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+          "required_full_memory_mib": 33.57231140136719,
+          "structural_resident_memory_mib": 33.57231140136719,
+          "executor_reported_peak_mib_estimate": 32.750858306884766,
+          "executor_reported_tuple_bytes": 70.0,
+          "read_bytes": 0,
+          "write_bytes": 0
+        },
+        "physical_hash_input_width_evidence": {
+          "outer": {
+            "source": "blind_SeqScan_Output_catalog_physical_tuple",
+            "relation": "lineitem",
+            "output_columns": [
+              "l2.l_orderkey",
+              "l2.l_partkey",
+              "l2.l_suppkey",
+              "l2.l_linenumber",
+              "l2.l_quantity",
+              "l2.l_extendedprice",
+              "l2.l_discount",
+              "l2.l_tax",
+              "l2.l_returnflag",
+              "l2.l_linestatus",
+              "l2.l_shipdate",
+              "l2.l_commitdate",
+              "l2.l_receiptdate",
+              "l2.l_shipinstruct",
+              "l2.l_shipmode",
+              "l2.l_comment"
+            ],
+            "planner_width": 8.0,
+            "estimated_output_data_width": 136.0,
+            "data_width": 136.0,
+            "expanded_beyond_planner_width": true,
+            "uses_average_variable_width": true,
+            "field_budget": 64,
+            "wrapper_budget": 8,
+            "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+          },
+          "inner": null
+        },
+        "unvalidated_physical_slot_width": true,
+        "independent_ndv_join_rows_diagnostic": 1722892.2060854805,
+        "subtree_structural_peak_upper_mib": 1060.3975448608398
+      },
+      "uncertainties": [
+        "join_filter_candidate_selectivity_unknown",
+        "join_key_ndv_after_filters_and_correlations_unknown"
+      ],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.0",
+      "node_type": "Seq Scan",
+      "strategy": "",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 510081248.0,
+      "output_rows_per_call": 510081248.0,
+      "width": 8.0,
+      "mode": "sequential_scan",
+      "memory_mib": 0.0,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 510081248.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 0.0,
+        "projection_evaluations": 510081248.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 0.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 86758825984.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "subtree_structural_peak_upper_mib": 0.0
+      },
+      "uncertainties": [],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1",
+      "node_type": "Hash",
+      "strategy": "",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 430678.0,
+      "output_rows_per_call": 430678.0,
+      "width": 38.0,
+      "mode": "hash_build",
+      "memory_mib": 33.57231140136719,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 0.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 0.0,
+        "projection_evaluations": 0.0,
+        "hash_build_tuples": 430678.0,
+        "hash_probe_tuples": 0.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "planner_input_rows_proxy": 430678,
+        "planner_input_width_proxy": 38,
+        "initial_buckets": 524288,
+        "initial_batches": 1,
+        "runtime_buckets": 524288,
+        "batches": 1,
+        "dynamic_bucket_growth_events": 0,
+        "estimated_first_spill_inner_row": null,
+        "simulator_event_budget": 64,
+        "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+        "required_full_memory_mib": 33.57231140136719,
+        "structural_resident_memory_mib": 33.57231140136719,
+        "executor_reported_peak_mib_estimate": 32.750858306884766,
+        "executor_reported_tuple_bytes": 70.0,
+        "read_bytes": 0,
+        "write_bytes": 0,
+        "physical_hash_input_width_evidence": null,
+        "unvalidated_physical_slot_width": false,
+        "required_memory_mib": 33.57231140136719,
+        "subtree_structural_peak_upper_mib": 1060.3975448608398
+      },
+      "uncertainties": [
+        "session_work_mem_not_verified_operator_grant"
+      ],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1.0",
+      "node_type": "Hash Join",
+      "strategy": "",
+      "join_type": "Anti",
+      "calls": 1.0,
+      "input_rows_per_call": 8613559.0,
+      "output_rows_per_call": 430678.0,
+      "width": 38.0,
+      "mode": "hash_join_anti",
+      "memory_mib": 0.0,
+      "temp_read_bytes": 5095964672.0,
+      "temp_write_bytes": 5095964672.0,
+      "features": {
+        "scan_tuples": 0.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 17227118.0,
+        "projection_evaluations": 430678.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 8613559.0,
+        "join_comparisons": 9044237.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 5095964672.0,
+        "logical_temp_write_bytes": 5095964672.0
+      },
+      "details": {
+        "batches": 32,
+        "required_build_mib": 6998.018486022949,
+        "hash_directory": {
+          "planner_input_rows_proxy": 170027083,
+          "planner_input_width_proxy": 8,
+          "initial_buckets": 16777216,
+          "initial_batches": 32,
+          "runtime_buckets": 16777216,
+          "batches": 32,
+          "dynamic_bucket_growth_events": 0,
+          "estimated_first_spill_inner_row": null,
+          "simulator_event_budget": 64,
+          "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+          "required_full_memory_mib": 6998.018486022949,
+          "structural_resident_memory_mib": 512.0,
+          "executor_reported_peak_mib_estimate": 330.68807768821716,
+          "executor_reported_tuple_bytes": 40.0,
+          "read_bytes": 5095964672.0,
+          "write_bytes": 5095964672.0
+        },
+        "physical_hash_input_width_evidence": {
+          "outer": null,
+          "inner": {
+            "source": "blind_SeqScan_Output_catalog_physical_tuple",
+            "relation": "lineitem",
+            "output_columns": [
+              "l3.l_orderkey",
+              "l3.l_suppkey"
+            ],
+            "planner_width": 8.0,
+            "estimated_output_data_width": 8,
+            "data_width": 8.0,
+            "expanded_beyond_planner_width": false,
+            "uses_average_variable_width": false,
+            "field_budget": 64,
+            "wrapper_budget": 8,
+            "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+          }
+        },
+        "unvalidated_physical_slot_width": false,
+        "independent_ndv_join_rows_diagnostic": 4029102068.8833175,
+        "subtree_structural_peak_upper_mib": 1026.8252334594727
+      },
+      "uncertainties": [
+        "dynamic_batch_growth_skew_and_repartition_not_observed",
+        "join_filter_candidate_selectivity_unknown",
+        "join_key_ndv_after_filters_and_correlations_unknown"
+      ],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1.0.0",
+      "node_type": "Hash Join",
+      "strategy": "",
+      "join_type": "Inner",
+      "calls": 1.0,
+      "input_rows_per_call": 6801083.0,
+      "output_rows_per_call": 8613559.0,
+      "width": 38.0,
+      "mode": "hash_join_inner",
+      "memory_mib": 0.0,
+      "temp_read_bytes": 1640628224.0,
+      "temp_write_bytes": 1640628224.0,
+      "features": {
+        "scan_tuples": 0.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 0.0,
+        "projection_evaluations": 8613559.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 6801083.0,
+        "join_comparisons": 15414642.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 1640628224.0,
+        "logical_temp_write_bytes": 1640628224.0
+      },
+      "details": {
+        "batches": 8,
+        "required_build_mib": 2908.4953231811523,
+        "hash_directory": {
+          "planner_input_rows_proxy": 62822687,
+          "planner_input_width_proxy": 4,
+          "initial_buckets": 16777216,
+          "initial_batches": 8,
+          "runtime_buckets": 16777216,
+          "batches": 8,
+          "dynamic_bucket_growth_events": 0,
+          "estimated_first_spill_inner_row": null,
+          "simulator_event_budget": 64,
+          "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+          "required_full_memory_mib": 2908.4953231811523,
+          "structural_resident_memory_mib": 512.0,
+          "executor_reported_peak_mib_estimate": 397.60572385787964,
+          "executor_reported_tuple_bytes": 36.0,
+          "read_bytes": 1640628224.0,
+          "write_bytes": 1640628224.0
+        },
+        "physical_hash_input_width_evidence": {
+          "outer": null,
+          "inner": {
+            "source": "blind_SeqScan_Output_catalog_physical_tuple",
+            "relation": "orders",
+            "output_columns": [
+              "orders.o_orderkey"
+            ],
+            "planner_width": 4.0,
+            "estimated_output_data_width": 4,
+            "data_width": 4.0,
+            "expanded_beyond_planner_width": false,
+            "uses_average_variable_width": false,
+            "field_budget": 64,
+            "wrapper_budget": 8,
+            "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+          }
+        },
+        "unvalidated_physical_slot_width": false,
+        "independent_ndv_join_rows_diagnostic": 3350893.642649076,
+        "subtree_structural_peak_upper_mib": 514.8252334594727
+      },
+      "uncertainties": [
+        "dynamic_batch_growth_skew_and_repartition_not_observed",
+        "join_key_ndv_after_filters_and_correlations_unknown"
+      ],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1.0.0.0",
+      "node_type": "Hash Join",
+      "strategy": "",
+      "join_type": "Inner",
+      "calls": 1.0,
+      "input_rows_per_call": 170027083.0,
+      "output_rows_per_call": 6801083.0,
+      "width": 34.0,
+      "mode": "hash_join_inner",
+      "memory_mib": 0.0,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 0.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 0.0,
+        "projection_evaluations": 6801083.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 170027083.0,
+        "join_comparisons": 176828166.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "batches": 1,
+        "required_build_mib": 2.5751953125,
+        "hash_directory": {
+          "planner_input_rows_proxy": 34000,
+          "planner_input_width_proxy": 30,
+          "initial_buckets": 65536,
+          "initial_batches": 1,
+          "runtime_buckets": 65536,
+          "batches": 1,
+          "dynamic_bucket_growth_events": 0,
+          "estimated_first_spill_inner_row": null,
+          "simulator_event_budget": 64,
+          "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+          "required_full_memory_mib": 2.5751953125,
+          "structural_resident_memory_mib": 2.5751953125,
+          "executor_reported_peak_mib_estimate": 2.510345458984375,
+          "executor_reported_tuple_bytes": 62.0,
+          "read_bytes": 0,
+          "write_bytes": 0
+        },
+        "physical_hash_input_width_evidence": {
+          "outer": {
+            "source": "blind_SeqScan_Output_catalog_physical_tuple",
+            "relation": "lineitem",
+            "output_columns": [
+              "l1.l_orderkey",
+              "l1.l_partkey",
+              "l1.l_suppkey",
+              "l1.l_linenumber",
+              "l1.l_quantity",
+              "l1.l_extendedprice",
+              "l1.l_discount",
+              "l1.l_tax",
+              "l1.l_returnflag",
+              "l1.l_linestatus",
+              "l1.l_shipdate",
+              "l1.l_commitdate",
+              "l1.l_receiptdate",
+              "l1.l_shipinstruct",
+              "l1.l_shipmode",
+              "l1.l_comment"
+            ],
+            "planner_width": 8.0,
+            "estimated_output_data_width": 136.0,
+            "data_width": 136.0,
+            "expanded_beyond_planner_width": true,
+            "uses_average_variable_width": true,
+            "field_budget": 64,
+            "wrapper_budget": 8,
+            "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+          },
+          "inner": null
+        },
+        "unvalidated_physical_slot_width": true,
+        "independent_ndv_join_rows_diagnostic": 6801083.32,
+        "subtree_structural_peak_upper_mib": 2.8252334594726562
+      },
+      "uncertainties": [
+        "join_key_ndv_after_filters_and_correlations_unknown"
+      ],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1.0.0.0.0",
+      "node_type": "Seq Scan",
+      "strategy": "",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 170027083.0,
+      "output_rows_per_call": 170027083.0,
+      "width": 8.0,
+      "mode": "sequential_scan",
+      "memory_mib": 0.0,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 510081248.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 510081248.0,
+        "projection_evaluations": 170027083.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 0.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 86758825984.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "subtree_structural_peak_upper_mib": 0.0
+      },
+      "uncertainties": [],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1.0.0.0.1",
+      "node_type": "Hash",
+      "strategy": "",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 34000.0,
+      "output_rows_per_call": 34000.0,
+      "width": 30.0,
+      "mode": "hash_build",
+      "memory_mib": 2.5751953125,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 0.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 0.0,
+        "projection_evaluations": 0.0,
+        "hash_build_tuples": 34000.0,
+        "hash_probe_tuples": 0.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "planner_input_rows_proxy": 34000,
+        "planner_input_width_proxy": 30,
+        "initial_buckets": 65536,
+        "initial_batches": 1,
+        "runtime_buckets": 65536,
+        "batches": 1,
+        "dynamic_bucket_growth_events": 0,
+        "estimated_first_spill_inner_row": null,
+        "simulator_event_budget": 64,
+        "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+        "required_full_memory_mib": 2.5751953125,
+        "structural_resident_memory_mib": 2.5751953125,
+        "executor_reported_peak_mib_estimate": 2.510345458984375,
+        "executor_reported_tuple_bytes": 62.0,
+        "read_bytes": 0,
+        "write_bytes": 0,
+        "physical_hash_input_width_evidence": null,
+        "unvalidated_physical_slot_width": false,
+        "required_memory_mib": 2.5751953125,
+        "subtree_structural_peak_upper_mib": 2.8252334594726562
+      },
+      "uncertainties": [
+        "session_work_mem_not_verified_operator_grant"
+      ],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1.0.0.0.1.0",
+      "node_type": "Hash Join",
+      "strategy": "",
+      "join_type": "Inner",
+      "calls": 1.0,
+      "input_rows_per_call": 850000.0,
+      "output_rows_per_call": 34000.0,
+      "width": 30.0,
+      "mode": "hash_join_inner",
+      "memory_mib": 0.0,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 0.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 0.0,
+        "projection_evaluations": 34000.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 850000.0,
+        "join_comparisons": 884000.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "batches": 1,
+        "required_build_mib": 0.25003814697265625,
+        "hash_directory": {
+          "planner_input_rows_proxy": 1,
+          "planner_input_width_proxy": 4,
+          "initial_buckets": 32768,
+          "initial_batches": 1,
+          "runtime_buckets": 32768,
+          "batches": 1,
+          "dynamic_bucket_growth_events": 0,
+          "estimated_first_spill_inner_row": null,
+          "simulator_event_budget": 64,
+          "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+          "required_full_memory_mib": 0.25003814697265625,
+          "structural_resident_memory_mib": 0.25003814697265625,
+          "executor_reported_peak_mib_estimate": 0.2500343322753906,
+          "executor_reported_tuple_bytes": 36.0,
+          "read_bytes": 0,
+          "write_bytes": 0
+        },
+        "physical_hash_input_width_evidence": {
+          "outer": {
+            "source": "blind_SeqScan_Output_catalog_physical_tuple",
+            "relation": "supplier",
+            "output_columns": [
+              "supplier.s_suppkey",
+              "supplier.s_name",
+              "supplier.s_address",
+              "supplier.s_nationkey",
+              "supplier.s_phone",
+              "supplier.s_acctbal",
+              "supplier.s_comment"
+            ],
+            "planner_width": 34.0,
+            "estimated_output_data_width": 145.0,
+            "data_width": 145.0,
+            "expanded_beyond_planner_width": true,
+            "uses_average_variable_width": true,
+            "field_budget": 64,
+            "wrapper_budget": 8,
+            "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+          },
+          "inner": {
+            "source": "blind_SeqScan_Output_catalog_physical_tuple",
+            "relation": "nation",
+            "output_columns": [
+              "nation.n_nationkey"
+            ],
+            "planner_width": 4.0,
+            "estimated_output_data_width": 4,
+            "data_width": 4.0,
+            "expanded_beyond_planner_width": false,
+            "uses_average_variable_width": false,
+            "field_budget": 64,
+            "wrapper_budget": 8,
+            "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+          }
+        },
+        "unvalidated_physical_slot_width": true,
+        "independent_ndv_join_rows_diagnostic": 34000.0,
+        "subtree_structural_peak_upper_mib": 0.25003814697265625
+      },
+      "uncertainties": [
+        "join_key_ndv_after_filters_and_correlations_unknown"
+      ],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1.0.0.0.1.0.0",
+      "node_type": "Seq Scan",
+      "strategy": "",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 850000.0,
+      "output_rows_per_call": 850000.0,
+      "width": 34.0,
+      "mode": "sequential_scan",
+      "memory_mib": 0.0,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 850000.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 0.0,
+        "projection_evaluations": 850000.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 0.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 154697728.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "subtree_structural_peak_upper_mib": 0.0
+      },
+      "uncertainties": [],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1.0.0.0.1.0.1",
+      "node_type": "Hash",
+      "strategy": "",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 1.0,
+      "output_rows_per_call": 1.0,
+      "width": 4.0,
+      "mode": "hash_build",
+      "memory_mib": 0.25003814697265625,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 0.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 0.0,
+        "projection_evaluations": 0.0,
+        "hash_build_tuples": 1.0,
+        "hash_probe_tuples": 0.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "planner_input_rows_proxy": 1,
+        "planner_input_width_proxy": 4,
+        "initial_buckets": 32768,
+        "initial_batches": 1,
+        "runtime_buckets": 32768,
+        "batches": 1,
+        "dynamic_bucket_growth_events": 0,
+        "estimated_first_spill_inner_row": null,
+        "simulator_event_budget": 64,
+        "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+        "required_full_memory_mib": 0.25003814697265625,
+        "structural_resident_memory_mib": 0.25003814697265625,
+        "executor_reported_peak_mib_estimate": 0.2500343322753906,
+        "executor_reported_tuple_bytes": 36.0,
+        "read_bytes": 0,
+        "write_bytes": 0,
+        "physical_hash_input_width_evidence": {
+          "source": "blind_SeqScan_Output_catalog_physical_tuple",
+          "relation": "nation",
+          "output_columns": [
+            "nation.n_nationkey"
+          ],
+          "planner_width": 4.0,
+          "estimated_output_data_width": 4,
+          "data_width": 4.0,
+          "expanded_beyond_planner_width": false,
+          "uses_average_variable_width": false,
+          "field_budget": 64,
+          "wrapper_budget": 8,
+          "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+        },
+        "unvalidated_physical_slot_width": false,
+        "required_memory_mib": 0.25003814697265625,
+        "subtree_structural_peak_upper_mib": 0.25003814697265625
+      },
+      "uncertainties": [
+        "session_work_mem_not_verified_operator_grant"
+      ],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1.0.0.0.1.0.1.0",
+      "node_type": "Seq Scan",
+      "strategy": "",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 1.0,
+      "output_rows_per_call": 1.0,
+      "width": 4.0,
+      "mode": "sequential_scan",
+      "memory_mib": 0.0,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 25.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 50.0,
+        "projection_evaluations": 1.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 0.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 8192.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "subtree_structural_peak_upper_mib": 0.0
+      },
+      "uncertainties": [],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1.0.0.1",
+      "node_type": "Hash",
+      "strategy": "",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 62822687.0,
+      "output_rows_per_call": 62822687.0,
+      "width": 4.0,
+      "mode": "hash_build",
+      "memory_mib": 512.0,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 0.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 0.0,
+        "projection_evaluations": 0.0,
+        "hash_build_tuples": 62822687.0,
+        "hash_probe_tuples": 0.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "planner_input_rows_proxy": 62822687,
+        "planner_input_width_proxy": 4,
+        "initial_buckets": 16777216,
+        "initial_batches": 8,
+        "runtime_buckets": 16777216,
+        "batches": 8,
+        "dynamic_bucket_growth_events": 0,
+        "estimated_first_spill_inner_row": null,
+        "simulator_event_budget": 64,
+        "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+        "required_full_memory_mib": 2908.4953231811523,
+        "structural_resident_memory_mib": 512.0,
+        "executor_reported_peak_mib_estimate": 397.60572385787964,
+        "executor_reported_tuple_bytes": 36.0,
+        "read_bytes": 1319280640.0,
+        "write_bytes": 1319280640.0,
+        "physical_hash_input_width_evidence": {
+          "source": "blind_SeqScan_Output_catalog_physical_tuple",
+          "relation": "orders",
+          "output_columns": [
+            "orders.o_orderkey"
+          ],
+          "planner_width": 4.0,
+          "estimated_output_data_width": 4,
+          "data_width": 4.0,
+          "expanded_beyond_planner_width": false,
+          "uses_average_variable_width": false,
+          "field_budget": 64,
+          "wrapper_budget": 8,
+          "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+        },
+        "unvalidated_physical_slot_width": false,
+        "required_memory_mib": 2908.4953231811523,
+        "subtree_structural_peak_upper_mib": 512.0
+      },
+      "uncertainties": [
+        "session_work_mem_not_verified_operator_grant"
+      ],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1.0.0.1.0",
+      "node_type": "Seq Scan",
+      "strategy": "",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 62822687.0,
+      "output_rows_per_call": 62822687.0,
+      "width": 4.0,
+      "mode": "sequential_scan",
+      "memory_mib": 0.0,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 127506974.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 255013948.0,
+        "projection_evaluations": 62822687.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 0.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 19234947072.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "subtree_structural_peak_upper_mib": 0.0
+      },
+      "uncertainties": [],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1.0.1",
+      "node_type": "Hash",
+      "strategy": "",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 170027083.0,
+      "output_rows_per_call": 170027083.0,
+      "width": 8.0,
+      "mode": "hash_build",
+      "memory_mib": 512.0,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 0.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 0.0,
+        "projection_evaluations": 0.0,
+        "hash_build_tuples": 170027083.0,
+        "hash_probe_tuples": 0.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "planner_input_rows_proxy": 170027083,
+        "planner_input_width_proxy": 8,
+        "initial_buckets": 16777216,
+        "initial_batches": 32,
+        "runtime_buckets": 16777216,
+        "batches": 32,
+        "dynamic_bucket_growth_events": 0,
+        "estimated_first_spill_inner_row": null,
+        "simulator_event_budget": 64,
+        "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+        "required_full_memory_mib": 6998.018486022949,
+        "structural_resident_memory_mib": 512.0,
+        "executor_reported_peak_mib_estimate": 330.68807768821716,
+        "executor_reported_tuple_bytes": 40.0,
+        "read_bytes": 4611989504.0,
+        "write_bytes": 4611989504.0,
+        "physical_hash_input_width_evidence": {
+          "source": "blind_SeqScan_Output_catalog_physical_tuple",
+          "relation": "lineitem",
+          "output_columns": [
+            "l3.l_orderkey",
+            "l3.l_suppkey"
+          ],
+          "planner_width": 8.0,
+          "estimated_output_data_width": 8,
+          "data_width": 8.0,
+          "expanded_beyond_planner_width": false,
+          "uses_average_variable_width": false,
+          "field_budget": 64,
+          "wrapper_budget": 8,
+          "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+        },
+        "unvalidated_physical_slot_width": false,
+        "required_memory_mib": 6998.018486022949,
+        "subtree_structural_peak_upper_mib": 512.0
+      },
+      "uncertainties": [
+        "session_work_mem_not_verified_operator_grant"
+      ],
+      "recognized": true
+    },
+    {
+      "path": ".0.0.0.1.0.1.0",
+      "node_type": "Seq Scan",
+      "strategy": "",
+      "join_type": "",
+      "calls": 1.0,
+      "input_rows_per_call": 170027083.0,
+      "output_rows_per_call": 170027083.0,
+      "width": 8.0,
+      "mode": "sequential_scan",
+      "memory_mib": 0.0,
+      "temp_read_bytes": 0.0,
+      "temp_write_bytes": 0.0,
+      "features": {
+        "scan_tuples": 510081248.0,
+        "index_probes": 0.0,
+        "index_tuples": 0.0,
+        "predicate_evaluations": 510081248.0,
+        "projection_evaluations": 170027083.0,
+        "hash_build_tuples": 0.0,
+        "hash_probe_tuples": 0.0,
+        "join_comparisons": 0.0,
+        "aggregate_transitions": 0.0,
+        "aggregate_groups": 0.0,
+        "aggregate_argument_evaluations": 0.0,
+        "sort_comparisons": 0.0,
+        "window_evaluations": 0.0,
+        "store_put_tuples": 0.0,
+        "store_get_tuples": 0.0,
+        "setop_tuples": 0.0,
+        "logical_scan_bytes": 86758825984.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0
+      },
+      "details": {
+        "subtree_structural_peak_upper_mib": 0.0
+      },
+      "uncertainties": [],
+      "recognized": true
+    }
+  ],
+  "dataflow": {
+    "nodes": [
+      {
+        "path": "",
+        "semantics": "stream"
+      },
+      {
+        "path": ".0",
+        "semantics": "consume_input_then_produce"
+      },
+      {
+        "path": ".0.0",
+        "semantics": "consume_input_then_produce"
+      },
+      {
+        "path": ".0.0.0",
+        "semantics": "build_hash_then_stream_probe"
+      },
+      {
+        "path": ".0.0.0.0",
+        "semantics": "stream"
+      },
+      {
+        "path": ".0.0.0.1",
+        "semantics": "consume_input_then_produce"
+      },
+      {
+        "path": ".0.0.0.1.0",
+        "semantics": "build_hash_then_stream_probe"
+      },
+      {
+        "path": ".0.0.0.1.0.0",
+        "semantics": "build_hash_then_stream_probe"
+      },
+      {
+        "path": ".0.0.0.1.0.0.0",
+        "semantics": "build_hash_then_stream_probe"
+      },
+      {
+        "path": ".0.0.0.1.0.0.0.0",
+        "semantics": "stream"
+      },
+      {
+        "path": ".0.0.0.1.0.0.0.1",
+        "semantics": "consume_input_then_produce"
+      },
+      {
+        "path": ".0.0.0.1.0.0.0.1.0",
+        "semantics": "build_hash_then_stream_probe"
+      },
+      {
+        "path": ".0.0.0.1.0.0.0.1.0.0",
+        "semantics": "stream"
+      },
+      {
+        "path": ".0.0.0.1.0.0.0.1.0.1",
+        "semantics": "consume_input_then_produce"
+      },
+      {
+        "path": ".0.0.0.1.0.0.0.1.0.1.0",
+        "semantics": "stream"
+      },
+      {
+        "path": ".0.0.0.1.0.0.1",
+        "semantics": "consume_input_then_produce"
+      },
+      {
+        "path": ".0.0.0.1.0.0.1.0",
+        "semantics": "stream"
+      },
+      {
+        "path": ".0.0.0.1.0.1",
+        "semantics": "consume_input_then_produce"
+      },
+      {
+        "path": ".0.0.0.1.0.1.0",
+        "semantics": "stream"
+      }
+    ],
+    "edges": [
+      {
+        "producer": ".0",
+        "consumer": "",
+        "relationship": "Outer",
+        "producer_semantics": "consume_input_then_produce"
+      },
+      {
+        "producer": ".0.0",
+        "consumer": ".0",
+        "relationship": "Outer",
+        "producer_semantics": "consume_input_then_produce"
+      },
+      {
+        "producer": ".0.0.0",
+        "consumer": ".0.0",
+        "relationship": "Outer",
+        "producer_semantics": "build_hash_then_stream_probe"
+      },
+      {
+        "producer": ".0.0.0.0",
+        "consumer": ".0.0.0",
+        "relationship": "Outer",
+        "producer_semantics": "stream"
+      },
+      {
+        "producer": ".0.0.0.1",
+        "consumer": ".0.0.0",
+        "relationship": "Inner",
+        "producer_semantics": "consume_input_then_produce"
+      },
+      {
+        "producer": ".0.0.0.1.0",
+        "consumer": ".0.0.0.1",
+        "relationship": "Outer",
+        "producer_semantics": "build_hash_then_stream_probe"
+      },
+      {
+        "producer": ".0.0.0.1.0.0",
+        "consumer": ".0.0.0.1.0",
+        "relationship": "Outer",
+        "producer_semantics": "build_hash_then_stream_probe"
+      },
+      {
+        "producer": ".0.0.0.1.0.0.0",
+        "consumer": ".0.0.0.1.0.0",
+        "relationship": "Outer",
+        "producer_semantics": "build_hash_then_stream_probe"
+      },
+      {
+        "producer": ".0.0.0.1.0.0.0.0",
+        "consumer": ".0.0.0.1.0.0.0",
+        "relationship": "Outer",
+        "producer_semantics": "stream"
+      },
+      {
+        "producer": ".0.0.0.1.0.0.0.1",
+        "consumer": ".0.0.0.1.0.0.0",
+        "relationship": "Inner",
+        "producer_semantics": "consume_input_then_produce"
+      },
+      {
+        "producer": ".0.0.0.1.0.0.0.1.0",
+        "consumer": ".0.0.0.1.0.0.0.1",
+        "relationship": "Outer",
+        "producer_semantics": "build_hash_then_stream_probe"
+      },
+      {
+        "producer": ".0.0.0.1.0.0.0.1.0.0",
+        "consumer": ".0.0.0.1.0.0.0.1.0",
+        "relationship": "Outer",
+        "producer_semantics": "stream"
+      },
+      {
+        "producer": ".0.0.0.1.0.0.0.1.0.1",
+        "consumer": ".0.0.0.1.0.0.0.1.0",
+        "relationship": "Inner",
+        "producer_semantics": "consume_input_then_produce"
+      },
+      {
+        "producer": ".0.0.0.1.0.0.0.1.0.1.0",
+        "consumer": ".0.0.0.1.0.0.0.1.0.1",
+        "relationship": "Outer",
+        "producer_semantics": "stream"
+      },
+      {
+        "producer": ".0.0.0.1.0.0.1",
+        "consumer": ".0.0.0.1.0.0",
+        "relationship": "Inner",
+        "producer_semantics": "consume_input_then_produce"
+      },
+      {
+        "producer": ".0.0.0.1.0.0.1.0",
+        "consumer": ".0.0.0.1.0.0.1",
+        "relationship": "Outer",
+        "producer_semantics": "stream"
+      },
+      {
+        "producer": ".0.0.0.1.0.1",
+        "consumer": ".0.0.0.1.0",
+        "relationship": "Inner",
+        "producer_semantics": "consume_input_then_produce"
+      },
+      {
+        "producer": ".0.0.0.1.0.1.0",
+        "consumer": ".0.0.0.1.0.1",
+        "relationship": "Outer",
+        "producer_semantics": "stream"
+      }
+    ],
+    "qualification": "execution dependency skeleton; CTE reuse/parameter dependencies and an actual resource-constrained scheduler are not yet implemented"
+  },
+  "node_types": {
+    "Limit": 1,
+    "Sort": 1,
+    "Aggregate": 1,
+    "Hash Join": 5,
+    "Seq Scan": 6,
+    "Hash": 5
+  },
+  "modes": {
+    "limit": 1,
+    "top_n_heap": 1,
+    "hash_aggregate_memory": 1,
+    "hash_join_right semi": 1,
+    "sequential_scan": 6,
+    "hash_build": 5,
+    "hash_join_anti": 1,
+    "hash_join_inner": 3
+  },
+  "unsupported_operators": [],
+  "uncertainties": {
+    "session_work_mem_not_verified_operator_grant": 7,
+    "top_n_later_wider_tuples_can_exceed_initial_heap_estimate": 1,
+    "hashagg_group_frequency_and_input_order_unknown": 1,
+    "hashagg_spill_projection_width_not_measured": 1,
+    "hashagg_stored_group_projection_width_not_measured": 1,
+    "by_reference_aggregate_transition_payload_not_measured": 1,
+    "join_filter_candidate_selectivity_unknown": 2,
+    "join_key_ndv_after_filters_and_correlations_unknown": 5,
+    "dynamic_batch_growth_skew_and_repartition_not_observed": 2
+  },
+  "logical_temp_estimate_complete": true,
+  "logical_temp_read_bytes_estimate": 6736592896.0,
+  "logical_temp_write_bytes_estimate": 6736592896.0,
+  "feature_qualification": "logical_temp_* features include modeled components only; an incomplete temp estimate must never be interpreted as zero total spill",
+  "structural_peak_upper_mib": 1061.1000900268555,
+  "peak_qualification": "structural approximation, NOT a measured or certified safety bound",
+  "latency_seconds": null,
+  "physical_read_requests": null,
+  "physical_write_requests": null,
+  "status": "experimental_resource_estimate",
+  "qualification": "no per-query/family calibration; cardinality remains planner/statistics dependent; not production-qualified, not a physical IOPS or latency prediction",
+  "experimental_cardinality_input": null,
+  "spill_input_guard": null,
+  "experimental_cardinality_effects": [],
+  "release_schema": "jmt.ap-forecast/1.0.0rc4",
+  "reliability": {
+    "operator_coverage_complete": true,
+    "join_cardinality_independently_validated": false,
+    "join_nodes_requiring_input_validation": [
+      {
+        "path": ".0.0.0",
+        "node_type": "Hash Join"
+      },
+      {
+        "path": ".0.0.0.1.0",
+        "node_type": "Hash Join"
+      },
+      {
+        "path": ".0.0.0.1.0.0",
+        "node_type": "Hash Join"
+      },
+      {
+        "path": ".0.0.0.1.0.0.0",
+        "node_type": "Hash Join"
+      },
+      {
+        "path": ".0.0.0.1.0.0.0.1.0",
+        "node_type": "Hash Join"
+      }
+    ],
+    "classification": "unvalidated_join_cardinality",
+    "qualification": "An implementation-complete numeric result is NOT a confidence interval, a safety guarantee or qualification for automatic WM recommendation."
+  },
+  "forecasted_at": "2026-11-12T02:15:16.378060+00:00",
+  "forecast_pipeline_schema": "huawei7.ap-light-cardinality/v1.1-experimental",
+  "uses_preflight_statistics": false,
+  "cardinality_evidence_status": "planner_only",
+  "automatic_recommendation_qualified": false,
+  "preflight_estimates": [],
+  "cardinality_propagation": [],
+  "light_cardinality_effects": [],
+  "dimension_evidence": [],
+  "group_occupancy_evidence": {},
+  "offline_group_frequency_evidence": {},
+  "offline_group_frequency_effects": [],
+  "offline_group_frequency_assumptions": [],
+  "unique_union_group_evidence": {},
+  "unique_union_group_effects": [],
+  "joint_synopsis_evidence": null,
+  "joint_cardinality_effects": [],
+  "sql_metadata_available": true,
+  "expression_type_evidence": {
+    "schema": "huawei7.ap-expression-types/v1-experimental",
+    "available": true,
+    "scope_preparation_available": true,
+    "resolved_argument_expressions": {},
+    "unresolved_argument_expressions": [],
+    "qualification": "type-only bounded AST inference; no new row/NDV/width evidence"
+  },
+  "formula_compute_ms": 5.587365943938494,
+  "shared_preparation_ms": 3.0338652431964874,
+  "forecast_qualification": "experimental logical temp buffer-equivalent bytes; no target runtime labels; a numeric estimate is not a certified accuracy or zero-spill guarantee"
+}

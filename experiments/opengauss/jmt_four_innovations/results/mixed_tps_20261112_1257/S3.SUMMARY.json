@@ -1,0 +1,39 @@
+{
+  "stage": "S3",
+  "AP_queries": [
+    9,
+    13,
+    18,
+    21
+  ],
+  "shared_buffers_mib": 2048,
+  "work_mem": [
+    [
+      9,
+      2048
+    ],
+    [
+      13,
+      64
+    ],
+    [
+      18,
+      2048
+    ],
+    [
+      21,
+      512
+    ]
+  ],
+  "repeat_TPS": [
+    7081.8,
+    6589.55,
+    6881.5
+  ],
+  "observed_mean_TPS": 6850.95,
+  "observed_min_TPS": 6589.55,
+  "observed_max_TPS": 7081.8,
+  "observed_sample_std_TPS": 247.5429104216075,
+  "frozen_predicted_TPS": 7461.080914328246,
+  "prediction_minus_actual_relative": 0.08905785538184428
+}

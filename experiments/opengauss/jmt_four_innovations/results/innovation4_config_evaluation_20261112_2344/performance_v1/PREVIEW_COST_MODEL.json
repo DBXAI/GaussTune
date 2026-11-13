@@ -1,0 +1,170 @@
+{
+  "schema": "jmt.experimental-current-plan-cost/v1",
+  "basis": [
+    "startup",
+    "scan_filter_M",
+    "projection_argument_M",
+    "hash_join_M",
+    "aggregate_M",
+    "sort_comparisons_M",
+    "state_index_M",
+    "hash_aggregate_working_set_interaction",
+    "numeric_arithmetic_M",
+    "numeric_avg_M",
+    "logical_scan_GiB",
+    "logical_temp_read_GiB",
+    "logical_temp_write_GiB"
+  ],
+  "cpu_model": {
+    "coefficients": [
+      0.038337804343856835,
+      0.05398305243135984,
+      0.05402752041478561,
+      0.07487628666763826,
+      0.0,
+      0.028262637510220522,
+      0.0,
+      0.06741905205388629,
+      0.03577132996265013,
+      0.1398344738860218,
+      0.0,
+      2.855974926601588,
+      1.4298750875196642
+    ],
+    "training_samples": 36,
+    "maximum_features": [
+      1.0,
+      3843.659852,
+      929.693418,
+      1641.945711,
+      151.722157,
+      30.775872608302056,
+      0.0,
+      1199.9465297709523,
+      11.646,
+      1.500049,
+      260.4593811035156,
+      6.2739410400390625,
+      6.2739410400390625
+    ],
+    "rank": 12,
+    "active_columns": 12,
+    "iterations": 2000,
+    "ridge": 1e-05,
+    "coefficient_identifiability_qualified": false,
+    "qualification": "Ridge prediction baseline; correlated work is not separately identified CPU/IO service cost.",
+    "loss": "squared_relative_error_20ms_floor"
+  },
+  "wall_model": {
+    "coefficients": [
+      0.03855595479466959,
+      0.054391477460561194,
+      0.05248575067735236,
+      0.08012473420797435,
+      0.0,
+      0.028549104080629377,
+      0.0,
+      0.0675997836643496,
+      0.03837486649564867,
+      0.14240714106678304,
+      0.0,
+      2.8588369193028424,
+      1.0429256616924234
+    ],
+    "training_samples": 36,
+    "maximum_features": [
+      1.0,
+      3843.659852,
+      929.693418,
+      1641.945711,
+      151.722157,
+      30.775872608302056,
+      0.0,
+      1199.9465297709523,
+      11.646,
+      1.500049,
+      260.4593811035156,
+      6.2739410400390625,
+      6.2739410400390625
+    ],
+    "rank": 12,
+    "active_columns": 12,
+    "iterations": 2000,
+    "ridge": 1e-05,
+    "coefficient_identifiability_qualified": false,
+    "qualification": "Ridge prediction baseline; correlated work is not separately identified CPU/IO service cost.",
+    "loss": "squared_relative_error_20ms_floor"
+  },
+  "physical_proxy_models": {
+    "read_requests": {
+      "coefficients": [
+        7776.824629102082,
+        4834.560742449733
+      ],
+      "training_samples": 3,
+      "maximum_features": [
+        260.4593811035156,
+        6.2739410400390625
+      ],
+      "rank": 2,
+      "method": "experimental_two_feature_nonnegative_relative_least_squares",
+      "independent_validation_completed": false,
+      "automatic_recommendation_qualified": false
+    },
+    "read_bytes": {
+      "coefficients": [
+        1018259903.2831217,
+        627838029.4852461
+      ],
+      "training_samples": 3,
+      "maximum_features": [
+        260.4593811035156,
+        6.2739410400390625
+      ],
+      "rank": 2,
+      "method": "experimental_two_feature_nonnegative_relative_least_squares",
+      "independent_validation_completed": false,
+      "automatic_recommendation_qualified": false
+    },
+    "write_requests": {
+      "coefficients": [
+        6.277210403583789,
+        4797.073032497084
+      ],
+      "training_samples": 3,
+      "maximum_features": [
+        1640.404018491,
+        6.2739410400390625
+      ],
+      "rank": 2,
+      "method": "experimental_two_feature_nonnegative_relative_least_squares",
+      "independent_validation_completed": false,
+      "automatic_recommendation_qualified": false,
+      "background_rate_per_second": 6.277210403583789,
+      "query_proxy_rule": "use temp coefficient only; do not charge background per query"
+    },
+    "write_bytes": {
+      "coefficients": [
+        84653.64261176996,
+        1193905312.6653764
+      ],
+      "training_samples": 3,
+      "maximum_features": [
+        1640.404018491,
+        6.2739410400390625
+      ],
+      "rank": 2,
+      "method": "experimental_two_feature_nonnegative_relative_least_squares",
+      "independent_validation_completed": false,
+      "automatic_recommendation_qualified": false,
+      "background_rate_per_second": 84653.64261176996,
+      "query_proxy_rule": "use temp coefficient only; do not charge background per query"
+    }
+  },
+  "cpu_calibration_count": 36,
+  "IO_calibration_count": 3,
+  "independent_validation_completed": false,
+  "automatic_recommendation_qualified": false,
+  "physical_IO_scope": "foreground reads; temp-associated whole-device writes proxy, not query-owned full-lifecycle IO",
+  "training_features_are_not_live_target_statistics": true
+}

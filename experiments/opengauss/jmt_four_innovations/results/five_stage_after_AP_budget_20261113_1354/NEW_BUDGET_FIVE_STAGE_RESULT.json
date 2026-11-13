@@ -1,0 +1,210 @@
+{
+  "schema": "jmt.five-stage-new-AP-budget-conditional-evaluation/v1",
+  "created_at": "2026-11-13T13:54:51.955068+08:00",
+  "result_kind": "explicit_frozen_AP_budget_sensitivity_NOT_fresh_inputs_or_actual_mixed_TPS",
+  "frozen_AP_prepared_at": "2026-11-12T20:34:37.084125+08:00",
+  "budget_observed_at": "2026-11-13T11:39:47.922610+08:00",
+  "current_database_configured_max_process_memory_mib": 20480,
+  "SB_AP_planning_pool_mib": 15182,
+  "selected_planning_candidates_under_measured_TP_baseline_cross_check": [
+    {
+      "stage": "S1",
+      "AP_queries": [
+        18
+      ],
+      "SB_mib": 2048,
+      "WM_by_query_mib": {
+        "18": 9842
+      },
+      "AP_budget_mib": 13134,
+      "mixed_TPS_PREDICTION_using_measured_TP_only_baseline": 7451.187108136713,
+      "logical_spill_read_plus_write_GiB_prediction": 8.073974609375,
+      "old_diagnostic_logical_spill_RW_GiB_prediction": 16.492431640625,
+      "spill_prediction_decrease_fraction": 0.510443651651296,
+      "cache_path_fit_best_SB_mib": 4096,
+      "cache_path_fit_best_TPS_prediction": 7352.941961697712,
+      "native_admission_diagnostic": {
+        "modeled_AP_reservation_mib": 12096,
+        "tool_TP_common_reserve_mib": 1861,
+        "modeled_dynamic_total_mib": 13957,
+        "observed_native_tracked_dynamic_limit_mib": 8850,
+        "exceeds_current_native_threshold_under_modeled_accounting": true,
+        "native_quota_coordination_required_before_execution": true,
+        "actual_operator_grants_and_physical_peaks_verified": false,
+        "not_a_proof_of_actual_OOM_or_success": true,
+        "optimizer_budget_or_selected_WM_modified": false
+      },
+      "configuration_applied": false
+    },
+    {
+      "stage": "S2",
+      "AP_queries": [
+        18,
+        21
+      ],
+      "SB_mib": 2048,
+      "WM_by_query_mib": {
+        "18": 8748,
+        "21": 1484
+      },
+      "AP_budget_mib": 13134,
+      "mixed_TPS_PREDICTION_using_measured_TP_only_baseline": 7515.968198339641,
+      "logical_spill_read_plus_write_GiB_prediction": 11.4188232421875,
+      "old_diagnostic_logical_spill_RW_GiB_prediction": 20.88616943359375,
+      "spill_prediction_decrease_fraction": 0.45328303121867686,
+      "cache_path_fit_best_SB_mib": 4096,
+      "cache_path_fit_best_TPS_prediction": 7417.456271998672,
+      "native_admission_diagnostic": {
+        "modeled_AP_reservation_mib": 13104,
+        "tool_TP_common_reserve_mib": 1861,
+        "modeled_dynamic_total_mib": 14965,
+        "observed_native_tracked_dynamic_limit_mib": 8850,
+        "exceeds_current_native_threshold_under_modeled_accounting": true,
+        "native_quota_coordination_required_before_execution": true,
+        "actual_operator_grants_and_physical_peaks_verified": false,
+        "not_a_proof_of_actual_OOM_or_success": true,
+        "optimizer_budget_or_selected_WM_modified": false
+      },
+      "configuration_applied": false
+    },
+    {
+      "stage": "S3",
+      "AP_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "SB_mib": 2048,
+      "WM_by_query_mib": {
+        "9": 2151,
+        "13": 1174,
+        "18": 1426,
+        "21": 742
+      },
+      "AP_budget_mib": 13134,
+      "mixed_TPS_PREDICTION_using_measured_TP_only_baseline": 7433.440383642168,
+      "logical_spill_read_plus_write_GiB_prediction": 32.4210205078125,
+      "old_diagnostic_logical_spill_RW_GiB_prediction": 66.67022705078125,
+      "spill_prediction_decrease_fraction": 0.5137106630352688,
+      "cache_path_fit_best_SB_mib": 4096,
+      "cache_path_fit_best_TPS_prediction": 7354.850199047063,
+      "native_admission_diagnostic": {
+        "modeled_AP_reservation_mib": 12864,
+        "tool_TP_common_reserve_mib": 1861,
+        "modeled_dynamic_total_mib": 14725,
+        "observed_native_tracked_dynamic_limit_mib": 8850,
+        "exceeds_current_native_threshold_under_modeled_accounting": true,
+        "native_quota_coordination_required_before_execution": true,
+        "actual_operator_grants_and_physical_peaks_verified": false,
+        "not_a_proof_of_actual_OOM_or_success": true,
+        "optimizer_budget_or_selected_WM_modified": false
+      },
+      "configuration_applied": false
+    },
+    {
+      "stage": "S4",
+      "AP_queries": [
+        2,
+        9,
+        13,
+        18,
+        21
+      ],
+      "SB_mib": 2048,
+      "WM_by_query_mib": {
+        "2": 63,
+        "9": 2151,
+        "13": 1174,
+        "18": 1426,
+        "21": 742
+      },
+      "AP_budget_mib": 13134,
+      "mixed_TPS_PREDICTION_using_measured_TP_only_baseline": 7461.900012382121,
+      "logical_spill_read_plus_write_GiB_prediction": 32.4210205078125,
+      "old_diagnostic_logical_spill_RW_GiB_prediction": 66.97244262695312,
+      "spill_prediction_decrease_fraction": 0.515905061304056,
+      "cache_path_fit_best_SB_mib": 4096,
+      "cache_path_fit_best_TPS_prediction": 7379.465165032638,
+      "native_admission_diagnostic": {
+        "modeled_AP_reservation_mib": 13040,
+        "tool_TP_common_reserve_mib": 1861,
+        "modeled_dynamic_total_mib": 14901,
+        "observed_native_tracked_dynamic_limit_mib": 8850,
+        "exceeds_current_native_threshold_under_modeled_accounting": true,
+        "native_quota_coordination_required_before_execution": true,
+        "actual_operator_grants_and_physical_peaks_verified": false,
+        "not_a_proof_of_actual_OOM_or_success": true,
+        "optimizer_budget_or_selected_WM_modified": false
+      },
+      "configuration_applied": false
+    },
+    {
+      "stage": "S5",
+      "AP_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "SB_mib": 4096,
+      "WM_by_query_mib": {
+        "9": 2151,
+        "13": 367,
+        "18": 855,
+        "21": 742
+      },
+      "AP_budget_mib": 11086,
+      "mixed_TPS_PREDICTION_using_measured_TP_only_baseline": 7278.174799083174,
+      "logical_spill_read_plus_write_GiB_prediction": 40.84919738769531,
+      "old_diagnostic_logical_spill_RW_GiB_prediction": 66.67022705078125,
+      "spill_prediction_decrease_fraction": 0.38729476117455885,
+      "cache_path_fit_best_SB_mib": 4096,
+      "cache_path_fit_best_TPS_prediction": 7275.349634554331,
+      "native_admission_diagnostic": {
+        "modeled_AP_reservation_mib": 11056,
+        "tool_TP_common_reserve_mib": 1861,
+        "modeled_dynamic_total_mib": 12917,
+        "observed_native_tracked_dynamic_limit_mib": 8850,
+        "exceeds_current_native_threshold_under_modeled_accounting": true,
+        "native_quota_coordination_required_before_execution": true,
+        "actual_operator_grants_and_physical_peaks_verified": false,
+        "not_a_proof_of_actual_OOM_or_success": true,
+        "optimizer_budget_or_selected_WM_modified": false
+      },
+      "configuration_applied": false
+    }
+  ],
+  "measured_TP_baseline_SB_sequence_mib": [
+    2048,
+    2048,
+    2048,
+    2048,
+    4096
+  ],
+  "cache_path_fit_SB_sequence_mib": [
+    4096,
+    4096,
+    4096,
+    4096,
+    4096
+  ],
+  "unique_robust_SB_optimum_qualified": false,
+  "five_new_planning_candidates_are_not_currently_native_executable": true,
+  "statistics_refreshed_or_TTL_renewed": false,
+  "new_actual_mixed_TPS_measured": false,
+  "configuration_applied": false,
+  "all_stage_snapshot_WMs_can_be_changed_on_running_AP_queries": false,
+  "frozen_configurations_evaluated": 70,
+  "compute_seconds": 1.2750294739380479,
+  "explanation": "new AP budget varies with SB; TP physical-cache miss proxy remains small and constant vs SB; current whole-query-average CPU/media model dominates AP interference; baseline-fit-vs-measured-TP rankings disagree",
+  "performance_result": {
+    "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/five_stage_after_AP_budget_20261113_1354/budget_sensitivity_performance/CONFIGURATION_EVALUATION.json",
+    "sha256": "c67422c63f043cf033818bd5da14ca29ef7a66fe945336d5ae1f2ceb1afd004d"
+  },
+  "replay_inputs": {
+    "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/five_stage_after_AP_budget_20261113_1354/budget_sensitivity_performance/FROZEN_REPLAY_INPUTS.json",
+    "sha256": "02c0619d5203d1d85a562bd3ec7c134e35d87c34681bff3a6c0a3e786e5d052e"
+  },
+  "report": "FIVE_STAGE_AFTER_AP_BUDGET_CURRENT.md"
+}

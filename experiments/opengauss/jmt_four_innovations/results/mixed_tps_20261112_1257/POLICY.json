@@ -1,0 +1,28 @@
+{
+  "created_at": "2026-11-12T12:56:57.320518+08:00",
+  "recommendation_sha256": "51eb63901869ca995fcd91fef3b9b72f4f4a0574953b8ef1460b23662a031971",
+  "runner_sha256": "7f4dfb90f7871dc4419184c7b4778451991401b117ac46d21089ebd04781f35e",
+  "SQL_sha256": {
+    "2": "863cc5213eaa3339955d8f5c2d5d92c31c5d85d0a00a93a64318eef6f1b2e6cc",
+    "9": "64ff62be29956ff33193b61d5eead6f026ce17cda29cc215909d0cf6b0f597be",
+    "13": "cd9f8bca5b7b8e78f97db892898a78d25a992548ae0df804bc493db63c77b836",
+    "18": "73a6284a5ae42ee1982e78e3d2daf9efd533709eda596a3db781bff7edef9588",
+    "21": "05c59413778226307e1d7e1004383fe871c3062a8222b9d51927bc5b47b1a04d"
+  },
+  "TP_profile": "current_16x1M_sysbench_readonly_omm_local_socket",
+  "window_seconds": 20,
+  "repeats": 3,
+  "stage_settle_seconds": 30,
+  "AP_continues_across_stages": true,
+  "S5": "128 warmed, +16 first-event gated at first measurement window",
+  "scope": "single continuous five-stage AP overlap trajectory, repeated windows, NOT independent lifecycle repeats",
+  "full_AP_lifecycle_validation": false,
+  "AP_completion": "owned AP cancelled at bounded run end; Q2 cancelled at S5 departure",
+  "safety": {
+    "min_disk_free_GiB": 8,
+    "min_MemAvailable_GiB": 3,
+    "per_AP_temp_limit_MiB": 12288,
+    "physical_peak_safety_qualified": false
+  },
+  "probe_overhead_qualified": false
+}

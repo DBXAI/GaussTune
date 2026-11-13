@@ -1,0 +1,47 @@
+{
+  "config_restored_byte_exact": true,
+  "server_status_matches_original": true,
+  "restoration_commit": {
+    "path": "/opt/openGauss/data/pg_log/postgresql-2026-11-12_000000.log",
+    "line": "2026-11-12 13:06:46.634 [unknown] [unknown] localhost 140161406961408 0[0:0#0]  0 [BACKEND] LOG:  shared buffer resize committed: active buffers 1048576, released 0 bytes",
+    "active_buffers": 1048576,
+    "released_bytes": 0
+  },
+  "after": {
+    "target_buffers": 1048576,
+    "maximum_buffers": 1048576,
+    "postmaster_start_time": "2026-10-20 10:52:53.974417+08"
+  },
+  "reloads": [
+    {
+      "target_mib": 2048,
+      "commit": {
+        "path": "/opt/openGauss/data/pg_log/postgresql-2026-11-12_000000.log",
+        "line": "2026-11-12 12:57:20.601 [unknown] [unknown] localhost 140161406961408 0[0:0#0]  0 [BACKEND] LOG:  shared buffer resize committed: active buffers 262144, released 268431360 bytes",
+        "active_buffers": 262144,
+        "released_bytes": 268431360
+      },
+      "elapsed_seconds": 23.462974551,
+      "configured_status": {
+        "target_buffers": 262144,
+        "maximum_buffers": 1048576,
+        "postmaster_start_time": "2026-10-20 10:52:53.974417+08"
+      }
+    },
+    {
+      "target_mib": 4096,
+      "commit": {
+        "path": "/opt/openGauss/data/pg_log/postgresql-2026-11-12_000000.log",
+        "line": "2026-11-12 13:04:54.909 [unknown] [unknown] localhost 140161406961408 0[0:0#0]  0 [BACKEND] LOG:  shared buffer resize committed: active buffers 524288, released 0 bytes",
+        "active_buffers": 524288,
+        "released_bytes": 0
+      },
+      "elapsed_seconds": 0.285139287,
+      "configured_status": {
+        "target_buffers": 524288,
+        "maximum_buffers": 1048576,
+        "postmaster_start_time": "2026-10-20 10:52:53.974417+08"
+      }
+    }
+  ]
+}

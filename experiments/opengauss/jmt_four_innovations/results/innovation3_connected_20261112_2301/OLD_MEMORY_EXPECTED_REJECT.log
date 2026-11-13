@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "tools/search_sb_spill_budgets.py", line 220, in <module>
+    main()
+  File "tools/search_sb_spill_budgets.py", line 123, in main
+    raise ValueError("memory observation older than 15min/from future; recollect, never renew a timestamp")
+ValueError: memory observation older than 15min/from future; recollect, never renew a timestamp

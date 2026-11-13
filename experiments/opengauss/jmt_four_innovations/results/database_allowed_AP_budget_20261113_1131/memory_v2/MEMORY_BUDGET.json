@@ -1,0 +1,91 @@
+{
+  "schema": "jmt.database-configured-capacity-budget/v2",
+  "effective_capacity_mib": 31055.7890625,
+  "physical_capacity_mib": 31055.7890625,
+  "host_reserve_mib": 3106,
+  "observed_host_non_database_mib": 1678.7177734375,
+  "non_SB_shared_ceiling_mib": 2577.0,
+  "database_fixed_reserve_mib": 3437,
+  "TP_and_common_dynamic_reserve_mib": 1864,
+  "observed_TP_only_dynamic_max_mib": 1608,
+  "host_database_ceiling_after_reserve_mib": 27949,
+  "current_max_process_memory_mib": 20480,
+  "current_max_dynamic_memory_mib": 8850,
+  "policy": {
+    "host_safety_fraction": 0.1,
+    "host_min_reserve_mib": 2048,
+    "host_extra_headroom_mib": 512,
+    "dynamic_headroom_mib": 256,
+    "host_reserve_override_mib": null,
+    "reserve_values_are_initial_policy_not_measured_peak_guarantees": true
+  },
+  "scenarios": {
+    "host_after_reserve": {
+      "shared_pool_mib": 22648,
+      "AP_dynamic_hard_cap_mib": null,
+      "pool_formula": "effective_physical_capacity - explicit_host_reserve - DB_fixed - TP_common_dynamic_reserve",
+      "AP_budget_formula": "pool - candidate_SB",
+      "required_max_process_memory_mib_at_least": 27949,
+      "requires_database_restart_or_memory_protector_change": true,
+      "preconditions": [
+        "raise max_process_memory if below the derived host database ceiling",
+        "initialize/recompute the native dynamic-memory protector for the chosen SB; shrinking active SB alone is insufficient",
+        "verify TP common-memory reserve and concurrent AP physical peaks before apply"
+      ],
+      "scenario_not_currently_executable_configuration": true
+    },
+    "database_configured": {
+      "shared_pool_mib": 15179,
+      "pool_formula": "min(host_after_reserve, current_max_process_memory) - DB_fixed - TP_common_dynamic_reserve",
+      "AP_budget_formula": "min(host_after_reserve, max_process_memory) - DB_fixed - TP_common_reserve - candidate_SB",
+      "AP_dynamic_hard_cap_mib": null,
+      "AP_specific_native_memory_limit_mib": null,
+      "runtime_compatibility_requires_per_configuration_check": true,
+      "requires_database_restart_or_memory_protector_change": null,
+      "SET_domain_is_separate_from_total_AP_budget": true
+    },
+    "native_protector_diagnostic": {
+      "shared_pool_mib": 15179,
+      "AP_dynamic_hard_cap_mib": 6986,
+      "AP_budget_formula": "diagnostic min(database pool - SB, native tracked quota minus tool TP reserve)",
+      "not_a_database_AP_specific_cap": true,
+      "diagnostic_only_not_primary_joint_optimization": true,
+      "requires_database_restart_or_memory_protector_change": false
+    }
+  },
+  "fixed_16_GiB_experimental_pool_used": false,
+  "MemAvailable_used_as_total_pool": false,
+  "SB_already_subtracted_from_pool": false,
+  "reserve_policy_physically_validated": false,
+  "configuration_applied": false,
+  "default_planning_scenario": "database_configured",
+  "native_runtime_protection": {
+    "effective_enable_memory_limit": true,
+    "observed_max_dynamic_memory_mib": 8850,
+    "TP_common_reserve_mib": 1864,
+    "conservative_AP_remainder_mib": 6986,
+    "remainder_is_tool_policy_not_database_AP_limit": true,
+    "used_as_primary_optimizer_AP_cap": false,
+    "online_SB_release_updates_dynamic_quota_verified": false,
+    "threshold_is_tracked_allocation_guard_not_absolute_RSS_cap": true
+  },
+  "AP_budget_policy": "database_allowed_SET_domain + database-configured joint pool; native current protection checked separately before any apply",
+  "created_at": "2026-11-13T11:35:28.165033+08:00",
+  "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+  "postmaster_identity": {
+    "start": "2026-10-20 10:52:53.974417+08"
+  },
+  "postmaster_pid": 2296200,
+  "observation_path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/database_allowed_AP_budget_20261113_1131/memory_v2/MEMORY_OBSERVATION.json",
+  "observation_sha256": "52c1d32e5894458a5bc0928ed0c3d50017cdf8a110bda39c3821a59165f7b9a5",
+  "database_work_mem_domain_path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/database_allowed_AP_budget_20261113_1131/memory_v2/DATABASE_WORK_MEM_DOMAIN.json",
+  "database_work_mem_domain_sha256": "00d7be8cc439c4d681f097d2a630f5a17d5a8e3435b5f029b4f83cdf255abd58",
+  "model_code_sha256": {
+    "tools/collect_machine_memory_budget.py": "53fa2766983906368837599502760f64e8e15468f36ebe79eb81191ded2663d6",
+    "src/jmt/innovation_3_search/memory_budget.py": "ca2228bbb4fe3fb8e0c13f7b3b1eccfd0f4d597e6bb5e68e677729b9d7a386af",
+    "src/jmt/innovation_3_search/legacy_memory_budget.py": "d755403bdcbd8f50928b6ae81bbb8bc7c5fa4b4f07af8cc859bd046f6b0993dc",
+    "src/jmt/common/db.py": "1e825a3198d2f351637fcb772c7f34048b1c3fb6f8821e5eb2bf249850e99580",
+    "src/jmt/common/database_memory_domain.py": "7d3d107e2da906f4c09372bc4a101559007f1e3cf69d689dd7f600f757cf8512",
+    "src/jmt/common/memory_units.py": "f5b8372f51c881bfbc15ebfbe500e765f43dfaab46b0295290bc384001622e35"
+  }
+}

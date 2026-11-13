@@ -1,0 +1,403 @@
+{
+  "schema": "jmt.current-machine-device-caps/v1",
+  "machine": {
+    "schema": "huawei7.machine/v1",
+    "kernel_release": "5.4.0-216-generic",
+    "architecture": "x86_64",
+    "logical_cpus": 16,
+    "physical_cores": 8,
+    "memory_bytes": 32564355072,
+    "swap_bytes": 0,
+    "device": "/dev/nvme0n1",
+    "device_model": "Alibaba Cloud Elastic Block Storage",
+    "device_serial": "2zedyfmijk0yg6c29b72",
+    "device_bytes": 375809638400,
+    "gaussdb_sha256": "79f7d79af465d7bb4c62f5f3e9fa0992ab7f585a37201846424d2468cf707a7b",
+    "source_commit": "local-source-b314224-not-asserted-binary-commit",
+    "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7"
+  },
+  "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+  "points": [
+    {
+      "point": "r8_qd1",
+      "device_whole_run": {
+        "seconds": 6.008789939,
+        "read_iops": 1825.0297064029974,
+        "write_iops": 7.98829722577859,
+        "read_mb_s": 14.950643354853355,
+        "write_mb_s": 0.07635531489938786
+      },
+      "jobs": {
+        "tp": {
+          "read": {
+            "iops": 1825.271841,
+            "mb_s": 14.952626,
+            "lat_ms": 0.547404620583
+          }
+        }
+      },
+      "role": "calibration"
+    },
+    {
+      "point": "r8_qd16",
+      "device_whole_run": {
+        "seconds": 6.009124319,
+        "read_iops": 6002.372073740417,
+        "write_iops": 0.49928978225349485,
+        "read_mb_s": 49.1714320280815,
+        "write_mb_s": 0.03612994008328223
+      },
+      "jobs": {
+        "tp": {
+          "read": {
+            "iops": 5998.376421,
+            "mb_s": 49.154046,
+            "lat_ms": 2.668297996334
+          }
+        }
+      },
+      "role": "calibration"
+    },
+    {
+      "point": "r8_qd40",
+      "device_whole_run": {
+        "seconds": 6.008743678,
+        "read_iops": 5999.7566765902575,
+        "write_iops": 0.33284828030236374,
+        "read_mb_s": 49.150006694627386,
+        "write_mb_s": 0.012270119005066337
+      },
+      "jobs": {
+        "tp": {
+          "read": {
+            "iops": 5996.627529,
+            "mb_s": 49.164278,
+            "lat_ms": 6.67071469843
+          }
+        }
+      },
+      "role": "calibration"
+    },
+    {
+      "point": "r8_qd64",
+      "device_whole_run": {
+        "seconds": 6.008733102,
+        "read_iops": 5994.549368702594,
+        "write_iops": 7.322987954191266,
+        "read_mb_s": 49.10871168832027,
+        "write_mb_s": 0.13973414063384026
+      },
+      "jobs": {
+        "tp": {
+          "read": {
+            "iops": 5970.063615,
+            "mb_s": 48.972158,
+            "lat_ms": 10.719030662160998
+          }
+        }
+      },
+      "role": "calibration"
+    },
+    {
+      "point": "w8_qd40",
+      "device_whole_run": {
+        "seconds": 6.009046687,
+        "read_iops": 0.0,
+        "write_iops": 6003.478007604018,
+        "read_mb_s": 0.0,
+        "write_mb_s": 49.21729746165355
+      },
+      "jobs": {
+        "tp": {
+          "write": {
+            "iops": 5987.899202,
+            "mb_s": 49.092726,
+            "lat_ms": 6.684005419366
+          }
+        }
+      },
+      "role": "calibration"
+    },
+    {
+      "point": "rw8_33r_qd40",
+      "device_whole_run": {
+        "seconds": 6.00905408,
+        "read_iops": 1986.1782141012065,
+        "write_iops": 4017.292586892486,
+        "read_mb_s": 16.270771929917085,
+        "write_mb_s": 32.94101898765935
+      },
+      "jobs": {
+        "tp": {
+          "read": {
+            "iops": 1992.005996,
+            "mb_s": 16.332838,
+            "lat_ms": 6.746925504780999
+          },
+          "write": {
+            "iops": 4005.121159,
+            "mb_s": 32.835533,
+            "lat_ms": 6.637625456483
+          }
+        }
+      },
+      "role": "calibration"
+    },
+    {
+      "point": "s128_qd8",
+      "device_whole_run": {
+        "seconds": 6.009060254,
+        "read_iops": 1438.6860957740766,
+        "write_iops": 0.8320768620470551,
+        "read_mb_s": 188.57146394529977,
+        "write_mb_s": 0.04226151665411475
+      },
+      "jobs": {
+        "ap": {
+          "read": {
+            "iops": 1438.826467,
+            "mb_s": 188.704407,
+            "lat_ms": 5.562645135073
+          }
+        }
+      },
+      "role": "calibration"
+    },
+    {
+      "point": "r8_qd40+s128_qd2",
+      "device_whole_run": {
+        "seconds": 6.009649552,
+        "read_iops": 5993.8603221900485,
+        "write_iops": 0.9983269484590146,
+        "read_mb_s": 80.15186771398396,
+        "write_mb_s": 0.017719637783848535
+      },
+      "jobs": {
+        "tp": {
+          "read": {
+            "iops": 5739.418155,
+            "mb_s": 47.057204,
+            "lat_ms": 6.970540901955
+          }
+        },
+        "ap": {
+          "read": {
+            "iops": 251.904583,
+            "mb_s": 33.034007,
+            "lat_ms": 7.938013909614001
+          }
+        }
+      },
+      "role": "validation"
+    }
+  ],
+  "created_at": "2026-11-12T23:59:24.724293+08:00",
+  "source_artifacts": [
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd1_r1_FIO.json",
+      "sha256": "61b4ca60e05b0ae6688c15b04304fb008e67bcde0300d77be495a42d3fda2be1"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd1_r1_OBSERVATION.json",
+      "sha256": "29a82a92332381c5c96088d4f8f82ce9f1c78bdca71863a3793ca09cd56517c4"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd1_r2_FIO.json",
+      "sha256": "b181a185fd469956ae51739a773df0e1a6573daa461622f05575189450c0c8ce"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd1_r2_OBSERVATION.json",
+      "sha256": "5ae830ef0068a7758f2cd2d71753a7b0bf7a16b84ee2bf36c5e954fd4589f6b6"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd1_r3_FIO.json",
+      "sha256": "c84dfd98ed85a2f67e1edb2bb24351aca66f51334662ace2d31a458c9753f311"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd1_r3_OBSERVATION.json",
+      "sha256": "88feb707625404d14b4a73ae448f83c0271812c9f445870cf01251b9d0d11194"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd16_r1_FIO.json",
+      "sha256": "744f6100a2889d79bfb12e93d1ca41a23fb6bac8829148591046a0c368b1fdd5"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd16_r1_OBSERVATION.json",
+      "sha256": "13902da524902b92029d9a485de37883ee54c0c3c1b0a9700cf4d5287b2c0961"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd16_r2_FIO.json",
+      "sha256": "4390af23dcecd65f950c184d67d4a9778393caef2909cacbb1c15902c74b3548"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd16_r2_OBSERVATION.json",
+      "sha256": "c7debb9d57bee7411e4495edad5e6b4a60b218ac4f62ba6d56b40bf803c7a8a2"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd16_r3_FIO.json",
+      "sha256": "56b5fc032d54c5abc70cd1a55238f10440f6222ad4033c75e57800064fc55ed5"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd16_r3_OBSERVATION.json",
+      "sha256": "0354f8b15bf46536c520e5dba070b028c067910aee0dd28f288cb55f8433ea11"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd40_r1_FIO.json",
+      "sha256": "9bc24363032fc9053c90f8f84fa530804c595a264784186fb5b7288e32719b2b"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd40_r1_OBSERVATION.json",
+      "sha256": "0ab34f5456b765f32ed28a49981aafaccb37dc4aaf7623d931f851bf4d6fd675"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd40_r2_FIO.json",
+      "sha256": "0d1a3eeff97b6a83719546a7e57f374460fb1014a684b72f174aca597a387d3a"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd40_r2_OBSERVATION.json",
+      "sha256": "3834cac4c1c6248c8de0ebd98d13538a906e6fcce94d4977d2b6df5f85c08b5b"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd40_r3_FIO.json",
+      "sha256": "5ab797acd785ebeafc9e03d42dab4ca5adfbbd5b597b01beb155abede5be303a"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd40_r3_OBSERVATION.json",
+      "sha256": "c88191d7d2dcee5da06fab3a36725590ee902f5f65977a4a31d7d0118ea4daeb"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd64_r1_FIO.json",
+      "sha256": "2c652405316cbec27033717d70d1d968c994db8cdbc30fc54c482299a740feeb"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd64_r1_OBSERVATION.json",
+      "sha256": "f0891490109c272ac26bd8a7a0beab3462d6dbdaa8988b315747d8bc3cd12323"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd64_r2_FIO.json",
+      "sha256": "a942610745625fc680cf88b706c7bb67057d0e99a319892d22046d98089fe256"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd64_r2_OBSERVATION.json",
+      "sha256": "a2ea6e7ab14df142fbd873d9225d413b455e376ad036b2ee5f3552da95200fb0"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd64_r3_FIO.json",
+      "sha256": "1ef854ddf5893f4605ceccf03a2320b5e5d050f097a664124135a8be536a39db"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd64_r3_OBSERVATION.json",
+      "sha256": "0c611dcf03e77daac80aa6fa4028fb4c430172ec27742cf2da24ce994eb1b755"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/w8_qd40_r1_FIO.json",
+      "sha256": "6fb7f1d5a197ba88c049203b1226b7d18cdc3742a30cc27b2b319fe6f6a3ea66"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/w8_qd40_r1_OBSERVATION.json",
+      "sha256": "642680800995b96097ddd2f8b5910a5fb249b41900bd8815071f55d09df5b7ac"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/w8_qd40_r2_FIO.json",
+      "sha256": "61e40bddb7002d5fe7160dd84644389399c1c6a9876e69002f25ed14d02a9617"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/w8_qd40_r2_OBSERVATION.json",
+      "sha256": "c14b82f101c226ccbb5b8734fd218757881ce02dd65b6f1f632b6444f9b43329"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/w8_qd40_r3_FIO.json",
+      "sha256": "1b673da9f414b10ef32715837d625d9a852ea234d8be89fa702881414588f05e"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/w8_qd40_r3_OBSERVATION.json",
+      "sha256": "9cadb92b2197ccc9c1996a545825124e97e564fc3c7d7da0c4a2fbd8c374a8b3"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/rw8_33r_qd40_r1_FIO.json",
+      "sha256": "f53ce55ab1eddcf0064c0417b01cd8f7c84767c3b3e38ecb7d8844ece62a39ad"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/rw8_33r_qd40_r1_OBSERVATION.json",
+      "sha256": "93948980115f8c0f90518588a85cb51bd17791e6d65a19807be62b902d79c241"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/rw8_33r_qd40_r2_FIO.json",
+      "sha256": "ced79d1dcf133e010c584bba1c074b49b9536ed717e9309279a949b6ec8c9d48"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/rw8_33r_qd40_r2_OBSERVATION.json",
+      "sha256": "9cd83d556ff4acdc945cd9d095c60ba1a268ed98ce7730175cd9c5619b9c0063"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/rw8_33r_qd40_r3_FIO.json",
+      "sha256": "d94a1bf2a8614104e2aa48b2e8ee92c41dad69b797770a72c6aa87a49a452730"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/rw8_33r_qd40_r3_OBSERVATION.json",
+      "sha256": "cef70d2236a5ac1db0746dd09f66a654f0fdc7ba89df894fcd13d9a3fc52a03a"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/s128_qd8_r1_FIO.json",
+      "sha256": "726606a0db2c79d0f1b3622c0d302e00f50c67223c4777bbb9c690fb7716c850"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/s128_qd8_r1_OBSERVATION.json",
+      "sha256": "654f4f2775d6419f4c806de33e1d2595eaeadc2419e208f4ed5c4a621902f025"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/s128_qd8_r2_FIO.json",
+      "sha256": "a26cb4c2b96a301a0a7d605038845b4fcac7581159afa26777553a7043dbf657"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/s128_qd8_r2_OBSERVATION.json",
+      "sha256": "c546daa99bb99d6f6e2479bbbcf7702a00dc33e15ca3a5264fa30a11411d6f94"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/s128_qd8_r3_FIO.json",
+      "sha256": "a03e5b07c1415e020975693e37b4f8706bc021af2995d1721eed5314128f67da"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/s128_qd8_r3_OBSERVATION.json",
+      "sha256": "f6c0d808899d0a9bcf38a8592709a8a8cdcece62dc60c87a77c92ec900a23069"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd40+s128_qd2_r1_FIO.json",
+      "sha256": "10181f429a0abd9ff6d85ba72500fd405a27773e5620266415704db00464915a"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd40+s128_qd2_r1_OBSERVATION.json",
+      "sha256": "e5dc04490b5aeda021980aa1843e23588815dd738cf9d3414c69a7564c1197fe"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd40+s128_qd2_r2_FIO.json",
+      "sha256": "c723ac36b7214f0ca6512c74f41d0306b5ca4f0f7d67f3806d08edbcd0219643"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd40+s128_qd2_r2_OBSERVATION.json",
+      "sha256": "2a4c5c130d9259ed1697932e8a836e441b1cbceb9885df091af38d315943894b"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd40+s128_qd2_r3_FIO.json",
+      "sha256": "0fee8b6c254c04e3930163253b9e951d8972b376a788b97bce3fc90e1f8d76f9"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/r8_qd40+s128_qd2_r3_OBSERVATION.json",
+      "sha256": "2e9f00a0d1ac3c307ca838df5318131de3a2a073f37f7ab57d5cacf4271798f2"
+    }
+  ],
+  "target_marker": {
+    "schema": "huawei7.fio-target/v1",
+    "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/device_caps_v1/huawei7_innovation4_disposable.img",
+    "size_bytes": 536870912,
+    "device": "259:3",
+    "inode": 2377656,
+    "created_unix": 1794498905.9465942,
+    "preconditioned": true,
+    "precondition_command": "fio direct sequential write bs=1MiB iodepth=16 end_fsync=1"
+  },
+  "cap_model_is_fio_capacity_approximation_not_2D_latency_surface": true,
+  "AP_physical_IO_bridge_qualified": false,
+  "configuration_applied": false,
+  "collector_sha256": "6b6cd91438565069be9a740e777dc001ee9cab7aa3db613da787f1b048b96c99"
+}

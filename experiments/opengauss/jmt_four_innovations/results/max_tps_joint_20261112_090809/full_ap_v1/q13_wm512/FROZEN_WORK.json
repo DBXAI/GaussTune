@@ -1,0 +1,83 @@
+{
+  "schema": "jmt.ap-resource-bridge/v3",
+  "basis": [
+    "startup",
+    "scan_filter_M",
+    "projection_argument_M",
+    "hash_join_M",
+    "aggregate_M",
+    "sort_comparisons_M",
+    "state_index_M",
+    "hash_aggregate_working_set_interaction",
+    "numeric_arithmetic_M",
+    "numeric_avg_M",
+    "logical_scan_GiB",
+    "logical_temp_read_GiB",
+    "logical_temp_write_GiB"
+  ],
+  "vector": [
+    1.0,
+    522.778933,
+    416.91296,
+    530.381606,
+    151.722157,
+    0.0030575424759098895,
+    0.0,
+    1199.9465297709523,
+    0.0,
+    0.0,
+    20.241897583007812,
+    3.3917465209960938,
+    3.3915023803710938
+  ],
+  "features": {
+    "scan_tuples": 140258011.0,
+    "index_probes": 0.0,
+    "index_tuples": 0.0,
+    "predicate_evaluations": 255013948.0,
+    "projection_evaluations": 290693077.0,
+    "hash_build_tuples": 12751037.0,
+    "hash_probe_tuples": 265190803.0,
+    "join_comparisons": 252439766.0,
+    "aggregate_transitions": 138970920.0,
+    "aggregate_groups": 12751237.0,
+    "aggregate_argument_evaluations": 126219883.0,
+    "sort_comparisons": 3057.5424759098896,
+    "window_evaluations": 0.0,
+    "store_put_tuples": 0.0,
+    "store_get_tuples": 0.0,
+    "setop_tuples": 0.0,
+    "logical_scan_bytes": 21734572032.0,
+    "logical_temp_read_bytes": 3641860096.0,
+    "logical_temp_write_bytes": 3641597952.0
+  },
+  "CPU_feature_corrections": {
+    "predicate_evaluations": 382520922.0,
+    "numeric_arithmetic_M": 0.0,
+    "numeric_avg_M": 0.0,
+    "corrections": [
+      {
+        "path": ".0.0.0.0.0",
+        "kind": "constant-cast/comparison normalization",
+        "old_units": 255013948.0,
+        "new_units": 382520922.0,
+        "AND_prefix_model": "single predicate"
+      }
+    ],
+    "qualification": "CPU work proxies only; short-circuit selectivity is an explicit approximation."
+  },
+  "operator_types": [
+    "Aggregate",
+    "Hash",
+    "Hash Join",
+    "Seq Scan",
+    "Sort",
+    "Subquery Scan"
+  ],
+  "wm_mib": 512.0,
+  "plan_structure_sha256": "fccf1d23a7fe399667b706931845e6fe1594a23b9c87a3dc5f47253417bb2d2a",
+  "spill_input_status": "not_independently_qualified",
+  "input_screen_passed": false,
+  "automatic_recommendation_qualified": false,
+  "sha256": "bea5be23b6ceb81145c519279e45e0d332f33e55e01955f78aea0f2c3a03b77b"
+}

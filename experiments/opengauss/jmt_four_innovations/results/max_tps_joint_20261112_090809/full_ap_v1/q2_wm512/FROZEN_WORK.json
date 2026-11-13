@@ -1,0 +1,105 @@
+{
+  "schema": "jmt.ap-resource-bridge/v3",
+  "basis": [
+    "startup",
+    "scan_filter_M",
+    "projection_argument_M",
+    "hash_join_M",
+    "aggregate_M",
+    "sort_comparisons_M",
+    "state_index_M",
+    "hash_aggregate_working_set_interaction",
+    "numeric_arithmetic_M",
+    "numeric_avg_M",
+    "logical_scan_GiB",
+    "logical_temp_read_GiB",
+    "logical_temp_write_GiB"
+  ],
+  "vector": [
+    1.0,
+    241.80214375378554,
+    163.766863,
+    343.141672,
+    2.353676,
+    0.0004888457306866736,
+    0.0,
+    11.664836461027033,
+    0.0,
+    0.0,
+    28.275497436523438,
+    0.0,
+    0.0
+  ],
+  "features": {
+    "scan_tuples": 171655840.0,
+    "index_probes": 0.0,
+    "index_tuples": 0.0,
+    "predicate_evaluations": 136009756.0,
+    "projection_evaluations": 161894210.0,
+    "hash_build_tuples": 955899.0,
+    "hash_probe_tuples": 160457262.0,
+    "join_comparisons": 181728511.0,
+    "aggregate_transitions": 1872653.0,
+    "aggregate_groups": 481023.0,
+    "aggregate_argument_evaluations": 1872653.0,
+    "sort_comparisons": 488.84573068667356,
+    "window_evaluations": 0.0,
+    "store_put_tuples": 0.0,
+    "store_get_tuples": 0.0,
+    "setop_tuples": 0.0,
+    "logical_scan_bytes": 30360584192.0,
+    "logical_temp_read_bytes": 0.0,
+    "logical_temp_write_bytes": 0.0
+  },
+  "CPU_feature_corrections": {
+    "predicate_evaluations": 70146303.75378555,
+    "numeric_arithmetic_M": 0.0,
+    "numeric_avg_M": 0.0,
+    "corrections": [
+      {
+        "path": ".0.0.0.0.1.0",
+        "kind": "constant-cast/comparison normalization",
+        "old_units": 68004868.0,
+        "new_units": 35073146.876892775,
+        "AND_prefix_model": "equal per-atom selectivity approximation, NOT measured prefix truth"
+      },
+      {
+        "path": ".0.0.0.1.0.1.0.1.0",
+        "kind": "constant-cast/comparison normalization",
+        "old_units": 10.0,
+        "new_units": 5.0,
+        "AND_prefix_model": "single predicate"
+      },
+      {
+        "path": ".0.0.1.0.0.0.0.1.0",
+        "kind": "constant-cast/comparison normalization",
+        "old_units": 68004868.0,
+        "new_units": 35073146.876892775,
+        "AND_prefix_model": "equal per-atom selectivity approximation, NOT measured prefix truth"
+      },
+      {
+        "path": ".0.0.1.0.0.0.1.0.1.0.1.0",
+        "kind": "constant-cast/comparison normalization",
+        "old_units": 10.0,
+        "new_units": 5.0,
+        "AND_prefix_model": "single predicate"
+      }
+    ],
+    "qualification": "CPU work proxies only; short-circuit selectivity is an explicit approximation."
+  },
+  "operator_types": [
+    "Aggregate",
+    "Hash",
+    "Hash Join",
+    "Limit",
+    "Seq Scan",
+    "Sort",
+    "Subquery Scan"
+  ],
+  "wm_mib": 512.0,
+  "plan_structure_sha256": "e8d5288e9abb112fb682e0bdbab5be00120b472d65538d74de64a2a3421df3ef",
+  "spill_input_status": "not_independently_qualified",
+  "input_screen_passed": false,
+  "automatic_recommendation_qualified": false,
+  "sha256": "c73bb1b69ca929c77b57f32b7cc2d603a85520920fe8f1354545b6da4b38f07a"
+}

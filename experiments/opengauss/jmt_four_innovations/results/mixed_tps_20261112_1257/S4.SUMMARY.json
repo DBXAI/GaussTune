@@ -1,0 +1,44 @@
+{
+  "stage": "S4",
+  "AP_queries": [
+    2,
+    9,
+    13,
+    18,
+    21
+  ],
+  "shared_buffers_mib": 2048,
+  "work_mem": [
+    [
+      2,
+      64
+    ],
+    [
+      9,
+      2048
+    ],
+    [
+      13,
+      64
+    ],
+    [
+      18,
+      2048
+    ],
+    [
+      21,
+      512
+    ]
+  ],
+  "repeat_TPS": [
+    6994.9,
+    6628.15,
+    6547.1
+  ],
+  "observed_mean_TPS": 6723.383333333333,
+  "observed_min_TPS": 6547.1,
+  "observed_max_TPS": 6994.9,
+  "observed_sample_std_TPS": 238.60689603054897,
+  "frozen_predicted_TPS": 7476.317315290867,
+  "prediction_minus_actual_relative": 0.11198736478769868
+}

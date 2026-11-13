@@ -1,0 +1,104 @@
+{
+  "schema": "jmt.ap-resource-bridge/v3",
+  "basis": [
+    "startup",
+    "scan_filter_M",
+    "projection_argument_M",
+    "hash_join_M",
+    "aggregate_M",
+    "sort_comparisons_M",
+    "state_index_M",
+    "hash_aggregate_working_set_interaction",
+    "numeric_arithmetic_M",
+    "numeric_avg_M",
+    "logical_scan_GiB",
+    "logical_temp_read_GiB",
+    "logical_temp_write_GiB"
+  ],
+  "vector": [
+    1.0,
+    3843.659852,
+    929.693418,
+    1641.945711,
+    0.005996,
+    0.039836561713889246,
+    0.0,
+    0.0021938458687821697,
+    0.0,
+    0.0,
+    260.4593811035156,
+    6.2739410400390625,
+    6.2739410400390625
+  ],
+  "features": {
+    "scan_tuples": 1658600743.0,
+    "index_probes": 0.0,
+    "index_tuples": 0.0,
+    "predicate_evaluations": 2312566108.0,
+    "projection_evaluations": 929693418.0,
+    "hash_build_tuples": 233314449.0,
+    "hash_probe_tuples": 696375971.0,
+    "join_comparisons": 712255291.0,
+    "aggregate_transitions": 2998.0,
+    "aggregate_groups": 2998.0,
+    "aggregate_argument_evaluations": 0.0,
+    "sort_comparisons": 39836.56171388925,
+    "window_evaluations": 0.0,
+    "store_put_tuples": 0.0,
+    "store_get_tuples": 0.0,
+    "setop_tuples": 0.0,
+    "logical_scan_bytes": 279666130944.0,
+    "logical_temp_read_bytes": 6736592896.0,
+    "logical_temp_write_bytes": 6736592896.0
+  },
+  "CPU_feature_corrections": {
+    "predicate_evaluations": 2185059109.0,
+    "numeric_arithmetic_M": 0.0,
+    "numeric_avg_M": 0.0,
+    "corrections": [
+      {
+        "path": ".0.0.0.1.0.0.0.0",
+        "kind": "constant-cast/comparison normalization",
+        "old_units": 510081248.0,
+        "new_units": 510081248.0,
+        "AND_prefix_model": "single predicate"
+      },
+      {
+        "path": ".0.0.0.1.0.0.0.1.0.1.0",
+        "kind": "constant-cast/comparison normalization",
+        "old_units": 50.0,
+        "new_units": 25.0,
+        "AND_prefix_model": "single predicate"
+      },
+      {
+        "path": ".0.0.0.1.0.0.1.0",
+        "kind": "constant-cast/comparison normalization",
+        "old_units": 255013948.0,
+        "new_units": 127506974.0,
+        "AND_prefix_model": "single predicate"
+      },
+      {
+        "path": ".0.0.0.1.0.1.0",
+        "kind": "constant-cast/comparison normalization",
+        "old_units": 510081248.0,
+        "new_units": 510081248.0,
+        "AND_prefix_model": "single predicate"
+      }
+    ],
+    "qualification": "CPU work proxies only; short-circuit selectivity is an explicit approximation."
+  },
+  "operator_types": [
+    "Aggregate",
+    "Hash",
+    "Hash Join",
+    "Limit",
+    "Seq Scan",
+    "Sort"
+  ],
+  "wm_mib": 512.0,
+  "plan_structure_sha256": "1e7b84e5bc7234989dc00cfa10cfbefbe35f68c62954d790b457b16b776cacb1",
+  "spill_input_status": "not_independently_qualified",
+  "input_screen_passed": false,
+  "automatic_recommendation_qualified": false,
+  "sha256": "5de28aa52486228d1ec3a5cd3e0fcfae141575900890fd05345cbc53a7a7cd84"
+}

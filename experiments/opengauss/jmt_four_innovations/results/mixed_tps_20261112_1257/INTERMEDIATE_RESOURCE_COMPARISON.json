@@ -1,0 +1,336 @@
+{
+  "schema": "jmt.mixed-window-resource-diagnosis/v1",
+  "rows": [
+    {
+      "stage": "S1",
+      "AP_queries": [
+        18
+      ],
+      "shared_buffers_mib": 2048,
+      "work_mem": [
+        [
+          18,
+          2048
+        ]
+      ],
+      "repeat_TPS": [
+        7295.55,
+        7208.0,
+        7197.85
+      ],
+      "observed_mean_TPS": 7233.8,
+      "observed_min_TPS": 7197.85,
+      "observed_max_TPS": 7295.55,
+      "observed_sample_std_TPS": 53.71733891398566,
+      "frozen_predicted_TPS": 7478.208600925653,
+      "prediction_minus_actual_relative": 0.033787027693004026,
+      "CPU_diagnosis": {
+        "stage": "S1",
+        "frozen_predicted_AP_CPU_cores": 0.6839550026578208,
+        "observed_window_AP_CPU_cores": [
+          0.6438998544000001,
+          0.6557470364,
+          0.67652558595
+        ],
+        "observed_mean_AP_CPU_cores": 0.6587241589166667,
+        "observed_TP_backend_CPU_ms_per_tx": 1.9387924196111772,
+        "per_window_query_CPU_seconds": [
+          {
+            "18": 12.877997088
+          },
+          {
+            "18": 13.114940728
+          },
+          {
+            "18": 13.530511719
+          }
+        ],
+        "CPU_endpoint_scope": "schedstat bracket endpoints, not exact kernel clock event boundaries",
+        "predicted_lifetime_average_vs_actual_phase_scope_differs": true
+      }
+    },
+    {
+      "stage": "S2",
+      "AP_queries": [
+        18,
+        21
+      ],
+      "shared_buffers_mib": 2048,
+      "work_mem": [
+        [
+          18,
+          2048
+        ],
+        [
+          21,
+          512
+        ]
+      ],
+      "repeat_TPS": [
+        7205.4,
+        7236.95,
+        7187.65
+      ],
+      "observed_mean_TPS": 7210.0,
+      "observed_min_TPS": 7187.65,
+      "observed_max_TPS": 7236.95,
+      "observed_sample_std_TPS": 24.969831797591368,
+      "frozen_predicted_TPS": 7533.226458332687,
+      "prediction_minus_actual_relative": 0.04483029935266115,
+      "CPU_diagnosis": {
+        "stage": "S2",
+        "frozen_predicted_AP_CPU_cores": 0.4817726127743941,
+        "observed_window_AP_CPU_cores": [
+          0.6650144994,
+          0.5959451729499999,
+          0.6391569934
+        ],
+        "observed_mean_AP_CPU_cores": 0.6333722219166666,
+        "observed_TP_backend_CPU_ms_per_tx": 1.9447296672006475,
+        "per_window_query_CPU_seconds": [
+          {
+            "18": 7.378535261,
+            "21": 5.921754727
+          },
+          {
+            "18": 6.494284711,
+            "21": 5.424618748
+          },
+          {
+            "18": 7.063778239,
+            "21": 5.719361629
+          }
+        ],
+        "CPU_endpoint_scope": "schedstat bracket endpoints, not exact kernel clock event boundaries",
+        "predicted_lifetime_average_vs_actual_phase_scope_differs": true
+      }
+    },
+    {
+      "stage": "S3",
+      "AP_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "shared_buffers_mib": 2048,
+      "work_mem": [
+        [
+          9,
+          2048
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          2048
+        ],
+        [
+          21,
+          512
+        ]
+      ],
+      "repeat_TPS": [
+        7081.8,
+        6589.55,
+        6881.5
+      ],
+      "observed_mean_TPS": 6850.95,
+      "observed_min_TPS": 6589.55,
+      "observed_max_TPS": 7081.8,
+      "observed_sample_std_TPS": 247.5429104216075,
+      "frozen_predicted_TPS": 7461.080914328246,
+      "prediction_minus_actual_relative": 0.08905785538184428,
+      "CPU_diagnosis": {
+        "stage": "S3",
+        "frozen_predicted_AP_CPU_cores": 0.6830056831823778,
+        "observed_window_AP_CPU_cores": [
+          0.67141038215,
+          1.6235714636499998,
+          1.1589785568
+        ],
+        "observed_mean_AP_CPU_cores": 1.1513201342,
+        "observed_TP_backend_CPU_ms_per_tx": 1.9748586091174702,
+        "per_window_query_CPU_seconds": [
+          {
+            "18": 3.629886382,
+            "21": 3.218831614,
+            "9": 3.213461362,
+            "13": 3.366028285
+          },
+          {
+            "18": 5.584468028,
+            "21": 5.077344039,
+            "9": 8.203490477,
+            "13": 13.606126729
+          },
+          {
+            "18": 3.508041365,
+            "21": 3.089924801,
+            "9": 3.203651793,
+            "13": 13.377953177
+          }
+        ],
+        "CPU_endpoint_scope": "schedstat bracket endpoints, not exact kernel clock event boundaries",
+        "predicted_lifetime_average_vs_actual_phase_scope_differs": true
+      }
+    },
+    {
+      "stage": "S4",
+      "AP_queries": [
+        2,
+        9,
+        13,
+        18,
+        21
+      ],
+      "shared_buffers_mib": 2048,
+      "work_mem": [
+        [
+          2,
+          64
+        ],
+        [
+          9,
+          2048
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          2048
+        ],
+        [
+          21,
+          512
+        ]
+      ],
+      "repeat_TPS": [
+        6994.9,
+        6628.15,
+        6547.1
+      ],
+      "observed_mean_TPS": 6723.383333333333,
+      "observed_min_TPS": 6547.1,
+      "observed_max_TPS": 6994.9,
+      "observed_sample_std_TPS": 238.60689603054897,
+      "frozen_predicted_TPS": 7476.317315290867,
+      "prediction_minus_actual_relative": 0.11198736478769868,
+      "CPU_diagnosis": {
+        "stage": "S4",
+        "frozen_predicted_AP_CPU_cores": 0.6122149282409058,
+        "observed_window_AP_CPU_cores": [
+          0.83426539195,
+          1.35681739745,
+          1.5049746609499999
+        ],
+        "observed_mean_AP_CPU_cores": 1.2320191501166666,
+        "observed_TP_backend_CPU_ms_per_tx": 1.9992747493176797,
+        "per_window_query_CPU_seconds": [
+          {
+            "18": 3.125850593,
+            "21": 2.86477927,
+            "9": 2.983191214,
+            "13": 5.149226542,
+            "2": 2.56226022
+          },
+          {
+            "18": 4.212265007,
+            "21": 3.920626713,
+            "9": 4.106113947,
+            "13": 7.059537647,
+            "2": 7.837804635
+          },
+          {
+            "18": 4.055870382,
+            "21": 3.291965594,
+            "9": 10.360038388,
+            "13": 5.85215916,
+            "2": 6.539459695
+          }
+        ],
+        "CPU_endpoint_scope": "schedstat bracket endpoints, not exact kernel clock event boundaries",
+        "predicted_lifetime_average_vs_actual_phase_scope_differs": true
+      }
+    },
+    {
+      "stage": "S5",
+      "AP_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "shared_buffers_mib": 4096,
+      "work_mem": [
+        [
+          9,
+          2048
+        ],
+        [
+          13,
+          64
+        ],
+        [
+          18,
+          2048
+        ],
+        [
+          21,
+          512
+        ]
+      ],
+      "repeat_TPS": [
+        6944.35,
+        7073.25,
+        7065.25
+      ],
+      "observed_mean_TPS": 7027.616666666667,
+      "observed_min_TPS": 6944.35,
+      "observed_max_TPS": 7073.25,
+      "observed_sample_std_TPS": 72.22190341809957,
+      "frozen_predicted_TPS": 7290.760767541453,
+      "prediction_minus_actual_relative": 0.03744428778008468,
+      "CPU_diagnosis": {
+        "stage": "S5",
+        "frozen_predicted_AP_CPU_cores": 0.6909342627631199,
+        "observed_window_AP_CPU_cores": [
+          0.9860646907499999,
+          0.67719564205,
+          0.7290154920999999
+        ],
+        "observed_mean_AP_CPU_cores": 0.7974252749666666,
+        "observed_TP_backend_CPU_ms_per_tx": 1.9702959745077158,
+        "per_window_query_CPU_seconds": [
+          {
+            "18": 3.112027136,
+            "21": 2.956634356,
+            "9": 9.037443839,
+            "13": 4.615188484
+          },
+          {
+            "18": 3.027195478,
+            "21": 2.740857923,
+            "9": 3.130477067,
+            "13": 4.645382373
+          },
+          {
+            "18": 3.505056603,
+            "21": 2.967648306,
+            "9": 3.599447395,
+            "13": 4.508157538
+          }
+        ],
+        "CPU_endpoint_scope": "schedstat bracket endpoints, not exact kernel clock event boundaries",
+        "predicted_lifetime_average_vs_actual_phase_scope_differs": true
+      }
+    }
+  ],
+  "after_execution_diagnostic_not_refit": true,
+  "full_AP_lifecycle_validation": false,
+  "automatic_recommendation_qualified": false
+}

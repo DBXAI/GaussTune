@@ -1,0 +1,104 @@
+{
+  "SB_mib": 4096,
+  "first_infeasible_stage": "S3",
+  "greedy_uninterrupted_five_stage_admission_feasible": false,
+  "events": [
+    {
+      "stage": "S1",
+      "pinned_running_WM_mib": {},
+      "status": "modeled_minimum_spill_at_this_SB",
+      "AP_budget_mib": 6988,
+      "new_AP_queries": [
+        18
+      ],
+      "selection": {
+        "work_mem_mib": {
+          "18": 4374
+        },
+        "sum_session_work_mem_mib": 4374,
+        "structural_peak_mib": 6013.066703796387,
+        "reservation_mib": 6013.066703796387,
+        "rounded_reservation_mib": 6016,
+        "budget_mib": 6988,
+        "logical_temp_read_bytes": 8854437888.0,
+        "logical_temp_write_bytes": 8854175744.0,
+        "logical_temp_read_plus_write_bytes": 17708613632.0,
+        "candidate_counts_after_pareto": {
+          "18": 27
+        },
+        "grid_mib": 16,
+        "dp_transitions": 27,
+        "dp_maximum_states": 13,
+        "objective": "min logical temp R+W, then reservation, then WM",
+        "optimum_scope": "modeled candidates within individually rounded reservation budget",
+        "physical_memory_safety_qualified": false,
+        "automatic_recommendation_qualified": false,
+        "modeled_structural_peak_mib": 6013.066703796387,
+        "modeled_structural_peak_exceeds_AP_budget": false,
+        "budget_accounting_basis": "structural_reservation",
+        "charged_reservation_mib": 6013.066703796387
+      }
+    },
+    {
+      "stage": "S2",
+      "pinned_running_WM_mib": {
+        "18": 4374
+      },
+      "status": "modeled_minimum_spill_at_this_SB",
+      "AP_budget_mib": 6988,
+      "new_AP_queries": [
+        21
+      ],
+      "selection": {
+        "work_mem_mib": {
+          "18": 4374,
+          "21": 385
+        },
+        "sum_session_work_mem_mib": 4759,
+        "structural_peak_mib": 6820.166793823242,
+        "reservation_mib": 6820.166793823242,
+        "rounded_reservation_mib": 6832,
+        "budget_mib": 6988,
+        "logical_temp_read_bytes": 19880157184.0,
+        "logical_temp_write_bytes": 19879895040.0,
+        "logical_temp_read_plus_write_bytes": 39760052224.0,
+        "candidate_counts_after_pareto": {
+          "18": 1,
+          "21": 23
+        },
+        "grid_mib": 16,
+        "dp_transitions": 24,
+        "dp_maximum_states": 12,
+        "objective": "min logical temp R+W, then reservation, then WM",
+        "optimum_scope": "modeled candidates within individually rounded reservation budget",
+        "physical_memory_safety_qualified": false,
+        "automatic_recommendation_qualified": false,
+        "modeled_structural_peak_mib": 6820.166793823242,
+        "modeled_structural_peak_exceeds_AP_budget": false,
+        "budget_accounting_basis": "structural_reservation",
+        "charged_reservation_mib": 6820.166793823242
+      }
+    },
+    {
+      "stage": "S3",
+      "pinned_running_WM_mib": {
+        "18": 4374,
+        "21": 385
+      },
+      "status": "no_feasible_memory_assignment",
+      "AP_budget_mib": 6988,
+      "new_AP_queries": [
+        9,
+        13
+      ],
+      "selection": null
+    }
+  ],
+  "scope": "counterfactual greedy arrival with every overlapping query still running at original WM",
+  "not_a_proof_no_other_online_or_lookahead_policy_can_work": true,
+  "no_running_WM_modified_or_future_cohort_injected": true,
+  "real_query_execution_or_physical_lifecycle_validation": false,
+  "configuration_applied": false,
+  "frontier_sha256": "2c66e37d70c3bec4c01dffec7c2c149b6e6c7e273590d49c265db3dd79949461",
+  "code_sha256": "f423f82cbc2b88d070089358380848a4ce12cbe81e16b7c2c400713674750dca"
+}

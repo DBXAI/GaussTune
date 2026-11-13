@@ -1,0 +1,39 @@
+{
+  "stage": "S5",
+  "AP_queries": [
+    9,
+    13,
+    18,
+    21
+  ],
+  "shared_buffers_mib": 4096,
+  "work_mem": [
+    [
+      9,
+      2048
+    ],
+    [
+      13,
+      64
+    ],
+    [
+      18,
+      2048
+    ],
+    [
+      21,
+      512
+    ]
+  ],
+  "repeat_TPS": [
+    6944.35,
+    7073.25,
+    7065.25
+  ],
+  "observed_mean_TPS": 7027.616666666667,
+  "observed_min_TPS": 6944.35,
+  "observed_max_TPS": 7073.25,
+  "observed_sample_std_TPS": 72.22190341809957,
+  "frozen_predicted_TPS": 7290.760767541453,
+  "prediction_minus_actual_relative": 0.03744428778008468
+}

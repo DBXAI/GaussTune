@@ -1,0 +1,2288 @@
+{
+  "schema": "jmt.explained-SB-spill-frontier/v1",
+  "query_candidate_pruning": {
+    "2": {
+      "curve_points": 47,
+      "complete_admissible_points": 47,
+      "after_query_Pareto": 22,
+      "omitted_unknown_or_failed_trial_policy": 0
+    },
+    "9": {
+      "curve_points": 133,
+      "complete_admissible_points": 80,
+      "after_query_Pareto": 6,
+      "omitted_unknown_or_failed_trial_policy": 53
+    },
+    "13": {
+      "curve_points": 69,
+      "complete_admissible_points": 69,
+      "after_query_Pareto": 51,
+      "omitted_unknown_or_failed_trial_policy": 0
+    },
+    "18": {
+      "curve_points": 105,
+      "complete_admissible_points": 32,
+      "after_query_Pareto": 27,
+      "omitted_unknown_or_failed_trial_policy": 73
+    },
+    "21": {
+      "curve_points": 137,
+      "complete_admissible_points": 137,
+      "after_query_Pareto": 23,
+      "omitted_unknown_or_failed_trial_policy": 0
+    }
+  },
+  "stages": [
+    {
+      "stage": "S1",
+      "minimum_rounded_AP_reservation_mib": 1792,
+      "minimum_rounded_AP_reservation_for_modeled_zero_spill_mib": 20592,
+      "AP_feasibility_SB_ceiling_mib": 13390,
+      "modeled_zero_spill_SB_ceiling_mib": -5410,
+      "modeled_zero_spill_with_any_positive_SB_possible": false,
+      "these_AP_bounds_are_NOT_a_TP_cache_lower_bound": true,
+      "all_requested_SB_have_same_effective_AP_budget": false,
+      "feasible_SB_count": 11,
+      "evaluated_SB_count": 11,
+      "per_SB_accounting": [
+        {
+          "SB_mib": 32,
+          "pool_minus_SB_mib": 15150,
+          "AP_budget_mib": 15150,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 12029,
+              "structural_peak_mib": 14515.880058288574,
+              "rounded_charge_mib": 14528,
+              "logical_temp_read_plus_write_bytes": 5439750144.0
+            }
+          ],
+          "charged_mib": 14528,
+          "budget_slack_after_rounding_mib": 622,
+          "logical_temp_read_plus_write_bytes": 5439750144.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27
+          }
+        },
+        {
+          "SB_mib": 64,
+          "pool_minus_SB_mib": 15118,
+          "AP_budget_mib": 15118,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 12029,
+              "structural_peak_mib": 14515.880058288574,
+              "rounded_charge_mib": 14528,
+              "logical_temp_read_plus_write_bytes": 5439750144.0
+            }
+          ],
+          "charged_mib": 14528,
+          "budget_slack_after_rounding_mib": 590,
+          "logical_temp_read_plus_write_bytes": 5439750144.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27
+          }
+        },
+        {
+          "SB_mib": 128,
+          "pool_minus_SB_mib": 15054,
+          "AP_budget_mib": 15054,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 12029,
+              "structural_peak_mib": 14515.880058288574,
+              "rounded_charge_mib": 14528,
+              "logical_temp_read_plus_write_bytes": 5439750144.0
+            }
+          ],
+          "charged_mib": 14528,
+          "budget_slack_after_rounding_mib": 526,
+          "logical_temp_read_plus_write_bytes": 5439750144.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27
+          }
+        },
+        {
+          "SB_mib": 256,
+          "pool_minus_SB_mib": 14926,
+          "AP_budget_mib": 14926,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 12029,
+              "structural_peak_mib": 14515.880058288574,
+              "rounded_charge_mib": 14528,
+              "logical_temp_read_plus_write_bytes": 5439750144.0
+            }
+          ],
+          "charged_mib": 14528,
+          "budget_slack_after_rounding_mib": 398,
+          "logical_temp_read_plus_write_bytes": 5439750144.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27
+          }
+        },
+        {
+          "SB_mib": 512,
+          "pool_minus_SB_mib": 14670,
+          "AP_budget_mib": 14670,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 12029,
+              "structural_peak_mib": 14515.880058288574,
+              "rounded_charge_mib": 14528,
+              "logical_temp_read_plus_write_bytes": 5439750144.0
+            }
+          ],
+          "charged_mib": 14528,
+          "budget_slack_after_rounding_mib": 142,
+          "logical_temp_read_plus_write_bytes": 5439750144.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27
+          }
+        },
+        {
+          "SB_mib": 768,
+          "pool_minus_SB_mib": 14414,
+          "AP_budget_mib": 14414,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 10935,
+              "structural_peak_mib": 13304.457725524902,
+              "rounded_charge_mib": 13312,
+              "logical_temp_read_plus_write_bytes": 7010516992.0
+            }
+          ],
+          "charged_mib": 13312,
+          "budget_slack_after_rounding_mib": 1102,
+          "logical_temp_read_plus_write_bytes": 7010516992.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27
+          }
+        },
+        {
+          "SB_mib": 1024,
+          "pool_minus_SB_mib": 14158,
+          "AP_budget_mib": 14158,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 10935,
+              "structural_peak_mib": 13304.457725524902,
+              "rounded_charge_mib": 13312,
+              "logical_temp_read_plus_write_bytes": 7010516992.0
+            }
+          ],
+          "charged_mib": 13312,
+          "budget_slack_after_rounding_mib": 846,
+          "logical_temp_read_plus_write_bytes": 7010516992.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27
+          }
+        },
+        {
+          "SB_mib": 1536,
+          "pool_minus_SB_mib": 13646,
+          "AP_budget_mib": 13646,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 10935,
+              "structural_peak_mib": 13304.457725524902,
+              "rounded_charge_mib": 13312,
+              "logical_temp_read_plus_write_bytes": 7010516992.0
+            }
+          ],
+          "charged_mib": 13312,
+          "budget_slack_after_rounding_mib": 334,
+          "logical_temp_read_plus_write_bytes": 7010516992.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27
+          }
+        },
+        {
+          "SB_mib": 2048,
+          "pool_minus_SB_mib": 13134,
+          "AP_budget_mib": 13134,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 9842,
+              "structural_peak_mib": 12082.964378356934,
+              "rounded_charge_mib": 12096,
+              "logical_temp_read_plus_write_bytes": 8669364224.0
+            }
+          ],
+          "charged_mib": 12096,
+          "budget_slack_after_rounding_mib": 1038,
+          "logical_temp_read_plus_write_bytes": 8669364224.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27
+          }
+        },
+        {
+          "SB_mib": 3072,
+          "pool_minus_SB_mib": 12110,
+          "AP_budget_mib": 12110,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 9842,
+              "structural_peak_mib": 12082.964378356934,
+              "rounded_charge_mib": 12096,
+              "logical_temp_read_plus_write_bytes": 8669364224.0
+            }
+          ],
+          "charged_mib": 12096,
+          "budget_slack_after_rounding_mib": 14,
+          "logical_temp_read_plus_write_bytes": 8669364224.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27
+          }
+        },
+        {
+          "SB_mib": 4096,
+          "pool_minus_SB_mib": 11086,
+          "AP_budget_mib": 11086,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 8748,
+              "structural_peak_mib": 10870.184547424316,
+              "rounded_charge_mib": 10880,
+              "logical_temp_read_plus_write_bytes": 10389028864.0
+            }
+          ],
+          "charged_mib": 10880,
+          "budget_slack_after_rounding_mib": 206,
+          "logical_temp_read_plus_write_bytes": 10389028864.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27
+          }
+        }
+      ]
+    },
+    {
+      "stage": "S2",
+      "minimum_rounded_AP_reservation_mib": 1808,
+      "minimum_rounded_AP_reservation_for_modeled_zero_spill_mib": 24208,
+      "AP_feasibility_SB_ceiling_mib": 13374,
+      "modeled_zero_spill_SB_ceiling_mib": -9026,
+      "modeled_zero_spill_with_any_positive_SB_possible": false,
+      "these_AP_bounds_are_NOT_a_TP_cache_lower_bound": true,
+      "all_requested_SB_have_same_effective_AP_budget": false,
+      "feasible_SB_count": 11,
+      "evaluated_SB_count": 11,
+      "per_SB_accounting": [
+        {
+          "SB_mib": 32,
+          "pool_minus_SB_mib": 15150,
+          "AP_budget_mib": 15150,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 10935,
+              "structural_peak_mib": 13304.457725524902,
+              "rounded_charge_mib": 13312,
+              "logical_temp_read_plus_write_bytes": 7010516992.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14784,
+          "budget_slack_after_rounding_mib": 366,
+          "logical_temp_read_plus_write_bytes": 9818275840.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 64,
+          "pool_minus_SB_mib": 15118,
+          "AP_budget_mib": 15118,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 10935,
+              "structural_peak_mib": 13304.457725524902,
+              "rounded_charge_mib": 13312,
+              "logical_temp_read_plus_write_bytes": 7010516992.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14784,
+          "budget_slack_after_rounding_mib": 334,
+          "logical_temp_read_plus_write_bytes": 9818275840.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 128,
+          "pool_minus_SB_mib": 15054,
+          "AP_budget_mib": 15054,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 10935,
+              "structural_peak_mib": 13304.457725524902,
+              "rounded_charge_mib": 13312,
+              "logical_temp_read_plus_write_bytes": 7010516992.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14784,
+          "budget_slack_after_rounding_mib": 270,
+          "logical_temp_read_plus_write_bytes": 9818275840.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 256,
+          "pool_minus_SB_mib": 14926,
+          "AP_budget_mib": 14926,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 10935,
+              "structural_peak_mib": 13304.457725524902,
+              "rounded_charge_mib": 13312,
+              "logical_temp_read_plus_write_bytes": 7010516992.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14784,
+          "budget_slack_after_rounding_mib": 142,
+          "logical_temp_read_plus_write_bytes": 9818275840.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 512,
+          "pool_minus_SB_mib": 14670,
+          "AP_budget_mib": 14670,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 8748,
+              "structural_peak_mib": 10870.184547424316,
+              "rounded_charge_mib": 10880,
+              "logical_temp_read_plus_write_bytes": 10389028864.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 2968,
+              "structural_peak_mib": 3609.433544517018,
+              "rounded_charge_mib": 3616,
+              "logical_temp_read_plus_write_bytes": 0.0
+            }
+          ],
+          "charged_mib": 14496,
+          "budget_slack_after_rounding_mib": 174,
+          "logical_temp_read_plus_write_bytes": 10389028864.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 768,
+          "pool_minus_SB_mib": 14414,
+          "AP_budget_mib": 14414,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 9842,
+              "structural_peak_mib": 12082.964378356934,
+              "rounded_charge_mib": 12096,
+              "logical_temp_read_plus_write_bytes": 8669364224.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 1484,
+              "structural_peak_mib": 2211.5912704467773,
+              "rounded_charge_mib": 2224,
+              "logical_temp_read_plus_write_bytes": 1871839232.0
+            }
+          ],
+          "charged_mib": 14320,
+          "budget_slack_after_rounding_mib": 94,
+          "logical_temp_read_plus_write_bytes": 10541203456.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 1024,
+          "pool_minus_SB_mib": 14158,
+          "AP_budget_mib": 14158,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 9842,
+              "structural_peak_mib": 12082.964378356934,
+              "rounded_charge_mib": 12096,
+              "logical_temp_read_plus_write_bytes": 8669364224.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 13568,
+          "budget_slack_after_rounding_mib": 590,
+          "logical_temp_read_plus_write_bytes": 11477123072.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 1536,
+          "pool_minus_SB_mib": 13646,
+          "AP_budget_mib": 13646,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 9842,
+              "structural_peak_mib": 12082.964378356934,
+              "rounded_charge_mib": 12096,
+              "logical_temp_read_plus_write_bytes": 8669364224.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 13568,
+          "budget_slack_after_rounding_mib": 78,
+          "logical_temp_read_plus_write_bytes": 11477123072.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 2048,
+          "pool_minus_SB_mib": 13134,
+          "AP_budget_mib": 13134,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 8748,
+              "structural_peak_mib": 10870.184547424316,
+              "rounded_charge_mib": 10880,
+              "logical_temp_read_plus_write_bytes": 10389028864.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 1484,
+              "structural_peak_mib": 2211.5912704467773,
+              "rounded_charge_mib": 2224,
+              "logical_temp_read_plus_write_bytes": 1871839232.0
+            }
+          ],
+          "charged_mib": 13104,
+          "budget_slack_after_rounding_mib": 30,
+          "logical_temp_read_plus_write_bytes": 12260868096.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 3072,
+          "pool_minus_SB_mib": 12110,
+          "AP_budget_mib": 12110,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 6561,
+              "structural_peak_mib": 8437.464378356934,
+              "rounded_charge_mib": 8448,
+              "logical_temp_read_plus_write_bytes": 13973585920.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 2968,
+              "structural_peak_mib": 3609.433544517018,
+              "rounded_charge_mib": 3616,
+              "logical_temp_read_plus_write_bytes": 0.0
+            }
+          ],
+          "charged_mib": 12064,
+          "budget_slack_after_rounding_mib": 46,
+          "logical_temp_read_plus_write_bytes": 13973585920.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 4096,
+          "pool_minus_SB_mib": 11086,
+          "AP_budget_mib": 11086,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 18,
+              "work_mem_mib": 5468,
+              "structural_peak_mib": 7224.489036560059,
+              "rounded_charge_mib": 7232,
+              "logical_temp_read_plus_write_bytes": 15828516864.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 2968,
+              "structural_peak_mib": 3609.433544517018,
+              "rounded_charge_mib": 3616,
+              "logical_temp_read_plus_write_bytes": 0.0
+            }
+          ],
+          "charged_mib": 10848,
+          "budget_slack_after_rounding_mib": 238,
+          "logical_temp_read_plus_write_bytes": 15828516864.0,
+          "candidate_counts_after_Pareto": {
+            "18": 27,
+            "21": 23
+          }
+        }
+      ]
+    },
+    {
+      "stage": "S3",
+      "minimum_rounded_AP_reservation_mib": 4000,
+      "minimum_rounded_AP_reservation_for_modeled_zero_spill_mib": 37552,
+      "AP_feasibility_SB_ceiling_mib": 11182,
+      "modeled_zero_spill_SB_ceiling_mib": -22370,
+      "modeled_zero_spill_with_any_positive_SB_possible": false,
+      "these_AP_bounds_are_NOT_a_TP_cache_lower_bound": true,
+      "all_requested_SB_have_same_effective_AP_budget": false,
+      "feasible_SB_count": 11,
+      "evaluated_SB_count": 11,
+      "per_SB_accounting": [
+        {
+          "SB_mib": 32,
+          "pool_minus_SB_mib": 15150,
+          "AP_budget_mib": 15150,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14880,
+          "budget_slack_after_rounding_mib": 270,
+          "logical_temp_read_plus_write_bytes": 29283663872.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 64,
+          "pool_minus_SB_mib": 15118,
+          "AP_budget_mib": 15118,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14880,
+          "budget_slack_after_rounding_mib": 238,
+          "logical_temp_read_plus_write_bytes": 29283663872.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 128,
+          "pool_minus_SB_mib": 15054,
+          "AP_budget_mib": 15054,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14880,
+          "budget_slack_after_rounding_mib": 174,
+          "logical_temp_read_plus_write_bytes": 29283663872.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 256,
+          "pool_minus_SB_mib": 14926,
+          "AP_budget_mib": 14926,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14880,
+          "budget_slack_after_rounding_mib": 46,
+          "logical_temp_read_plus_write_bytes": 29283663872.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 512,
+          "pool_minus_SB_mib": 14670,
+          "AP_budget_mib": 14670,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1094,
+              "structural_peak_mib": 2367.371192932129,
+              "rounded_charge_mib": 2368,
+              "logical_temp_read_plus_write_bytes": 23527161856.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14512,
+          "budget_slack_after_rounding_mib": 158,
+          "logical_temp_read_plus_write_bytes": 29876633600.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 768,
+          "pool_minus_SB_mib": 14414,
+          "AP_budget_mib": 14414,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 903,
+              "structural_peak_mib": 2150.4643783569336,
+              "rounded_charge_mib": 2160,
+              "logical_temp_read_plus_write_bytes": 23878959104.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14304,
+          "budget_slack_after_rounding_mib": 110,
+          "logical_temp_read_plus_write_bytes": 30228430848.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 1024,
+          "pool_minus_SB_mib": 14158,
+          "AP_budget_mib": 14158,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1100,
+              "structural_peak_mib": 2024.4875869750977,
+              "rounded_charge_mib": 2032,
+              "logical_temp_read_plus_write_bytes": 391905280.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 831,
+              "structural_peak_mib": 2070.4643783569336,
+              "rounded_charge_mib": 2080,
+              "logical_temp_read_plus_write_bytes": 24008982528.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14144,
+          "budget_slack_after_rounding_mib": 14,
+          "logical_temp_read_plus_write_bytes": 30750359552.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 1536,
+          "pool_minus_SB_mib": 13646,
+          "AP_budget_mib": 13646,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 880,
+              "structural_peak_mib": 1772.4661178588867,
+              "rounded_charge_mib": 1776,
+              "logical_temp_read_plus_write_bytes": 1512833024.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 681,
+              "structural_peak_mib": 1782.2518463134766,
+              "rounded_charge_mib": 1792,
+              "logical_temp_read_plus_write_bytes": 24851087360.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 13600,
+          "budget_slack_after_rounding_mib": 46,
+          "logical_temp_read_plus_write_bytes": 32713392128.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 2048,
+          "pool_minus_SB_mib": 13134,
+          "AP_budget_mib": 13134,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 2151,
+              "structural_peak_mib": 6535.090257465603,
+              "rounded_charge_mib": 6544,
+              "logical_temp_read_plus_write_bytes": 9069854720.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 12864,
+          "budget_slack_after_rounding_mib": 270,
+          "logical_temp_read_plus_write_bytes": 34811805696.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 3072,
+          "pool_minus_SB_mib": 12110,
+          "AP_budget_mib": 12110,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 2151,
+              "structural_peak_mib": 6535.090257465603,
+              "rounded_charge_mib": 6544,
+              "logical_temp_read_plus_write_bytes": 9069854720.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1027,
+              "structural_peak_mib": 1940.4655685424805,
+              "rounded_charge_mib": 1952,
+              "logical_temp_read_plus_write_bytes": 765722624.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 855,
+              "structural_peak_mib": 2104.5154037475586,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 23954456576.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 12080,
+          "budget_slack_after_rounding_mib": 30,
+          "logical_temp_read_plus_write_bytes": 36597792768.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 4096,
+          "pool_minus_SB_mib": 11086,
+          "AP_budget_mib": 11086,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 2151,
+              "structural_peak_mib": 6535.090257465603,
+              "rounded_charge_mib": 6544,
+              "logical_temp_read_plus_write_bytes": 9069854720.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 367,
+              "structural_peak_mib": 923.0546264648438,
+              "rounded_charge_mib": 928,
+              "logical_temp_read_plus_write_bytes": 8029421568.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 855,
+              "structural_peak_mib": 2104.5154037475586,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 23954456576.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 11056,
+          "budget_slack_after_rounding_mib": 30,
+          "logical_temp_read_plus_write_bytes": 43861491712.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        }
+      ]
+    },
+    {
+      "stage": "S4",
+      "minimum_rounded_AP_reservation_mib": 4016,
+      "minimum_rounded_AP_reservation_for_modeled_zero_spill_mib": 37728,
+      "AP_feasibility_SB_ceiling_mib": 11166,
+      "modeled_zero_spill_SB_ceiling_mib": -22546,
+      "modeled_zero_spill_with_any_positive_SB_possible": false,
+      "these_AP_bounds_are_NOT_a_TP_cache_lower_bound": true,
+      "all_requested_SB_have_same_effective_AP_budget": false,
+      "feasible_SB_count": 11,
+      "evaluated_SB_count": 11,
+      "per_SB_accounting": [
+        {
+          "SB_mib": 32,
+          "pool_minus_SB_mib": 15150,
+          "AP_budget_mib": 15150,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 2,
+              "work_mem_mib": 63,
+              "structural_peak_mib": 164.967041015625,
+              "rounded_charge_mib": 176,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 15056,
+          "budget_slack_after_rounding_mib": 94,
+          "logical_temp_read_plus_write_bytes": 29283663872.0,
+          "candidate_counts_after_Pareto": {
+            "2": 22,
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 64,
+          "pool_minus_SB_mib": 15118,
+          "AP_budget_mib": 15118,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 2,
+              "work_mem_mib": 63,
+              "structural_peak_mib": 164.967041015625,
+              "rounded_charge_mib": 176,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 15056,
+          "budget_slack_after_rounding_mib": 62,
+          "logical_temp_read_plus_write_bytes": 29283663872.0,
+          "candidate_counts_after_Pareto": {
+            "2": 22,
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 128,
+          "pool_minus_SB_mib": 15054,
+          "AP_budget_mib": 15054,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 2,
+              "work_mem_mib": 51,
+              "structural_peak_mib": 151.4592742919922,
+              "rounded_charge_mib": 160,
+              "logical_temp_read_plus_write_bytes": 24903680.0
+            },
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 15040,
+          "budget_slack_after_rounding_mib": 14,
+          "logical_temp_read_plus_write_bytes": 29308567552.0,
+          "candidate_counts_after_Pareto": {
+            "2": 22,
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 256,
+          "pool_minus_SB_mib": 14926,
+          "AP_budget_mib": 14926,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 2,
+              "work_mem_mib": 21,
+              "structural_peak_mib": 84.82799530029297,
+              "rounded_charge_mib": 96,
+              "logical_temp_read_plus_write_bytes": 97583104.0
+            },
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1364,
+              "structural_peak_mib": 2664.512519836426,
+              "rounded_charge_mib": 2672,
+              "logical_temp_read_plus_write_bytes": 23044816896.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14912,
+          "budget_slack_after_rounding_mib": 14,
+          "logical_temp_read_plus_write_bytes": 29491871744.0,
+          "candidate_counts_after_Pareto": {
+            "2": 22,
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 512,
+          "pool_minus_SB_mib": 14670,
+          "AP_budget_mib": 14670,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 2,
+              "work_mem_mib": 40,
+              "structural_peak_mib": 138.9592742919922,
+              "rounded_charge_mib": 144,
+              "logical_temp_read_plus_write_bytes": 44826624.0
+            },
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1094,
+              "structural_peak_mib": 2367.371192932129,
+              "rounded_charge_mib": 2368,
+              "logical_temp_read_plus_write_bytes": 23527161856.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14656,
+          "budget_slack_after_rounding_mib": 14,
+          "logical_temp_read_plus_write_bytes": 29921460224.0,
+          "candidate_counts_after_Pareto": {
+            "2": 22,
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 768,
+          "pool_minus_SB_mib": 14414,
+          "AP_budget_mib": 14414,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 2,
+              "work_mem_mib": 21,
+              "structural_peak_mib": 84.82799530029297,
+              "rounded_charge_mib": 96,
+              "logical_temp_read_plus_write_bytes": 97583104.0
+            },
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 903,
+              "structural_peak_mib": 2150.4643783569336,
+              "rounded_charge_mib": 2160,
+              "logical_temp_read_plus_write_bytes": 23878959104.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14400,
+          "budget_slack_after_rounding_mib": 14,
+          "logical_temp_read_plus_write_bytes": 30326013952.0,
+          "candidate_counts_after_Pareto": {
+            "2": 22,
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 1024,
+          "pool_minus_SB_mib": 14158,
+          "AP_budget_mib": 14158,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 2,
+              "work_mem_mib": 40,
+              "structural_peak_mib": 138.9592742919922,
+              "rounded_charge_mib": 144,
+              "logical_temp_read_plus_write_bytes": 44826624.0
+            },
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 712,
+              "structural_peak_mib": 1847.5373840332031,
+              "rounded_charge_mib": 1856,
+              "logical_temp_read_plus_write_bytes": 24794988544.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14144,
+          "budget_slack_after_rounding_mib": 14,
+          "logical_temp_read_plus_write_bytes": 31189286912.0,
+          "candidate_counts_after_Pareto": {
+            "2": 22,
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 1536,
+          "pool_minus_SB_mib": 13646,
+          "AP_budget_mib": 13646,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 2,
+              "work_mem_mib": 36,
+              "structural_peak_mib": 111.24219512939453,
+              "rounded_charge_mib": 112,
+              "logical_temp_read_plus_write_bytes": 49020928.0
+            },
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 807,
+              "structural_peak_mib": 1688.4663925170898,
+              "rounded_charge_mib": 1696,
+              "logical_temp_read_plus_write_bytes": 1886650368.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 681,
+              "structural_peak_mib": 1782.2518463134766,
+              "rounded_charge_mib": 1792,
+              "logical_temp_read_plus_write_bytes": 24851087360.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 13632,
+          "budget_slack_after_rounding_mib": 14,
+          "logical_temp_read_plus_write_bytes": 33136230400.0,
+          "candidate_counts_after_Pareto": {
+            "2": 22,
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 2048,
+          "pool_minus_SB_mib": 13134,
+          "AP_budget_mib": 13134,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 2,
+              "work_mem_mib": 63,
+              "structural_peak_mib": 164.967041015625,
+              "rounded_charge_mib": 176,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 9,
+              "work_mem_mib": 2151,
+              "structural_peak_mib": 6535.090257465603,
+              "rounded_charge_mib": 6544,
+              "logical_temp_read_plus_write_bytes": 9069854720.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 13040,
+          "budget_slack_after_rounding_mib": 94,
+          "logical_temp_read_plus_write_bytes": 34811805696.0,
+          "candidate_counts_after_Pareto": {
+            "2": 22,
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 3072,
+          "pool_minus_SB_mib": 12110,
+          "AP_budget_mib": 12110,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 2,
+              "work_mem_mib": 36,
+              "structural_peak_mib": 111.24219512939453,
+              "rounded_charge_mib": 112,
+              "logical_temp_read_plus_write_bytes": 49020928.0
+            },
+            {
+              "query_id": 9,
+              "work_mem_mib": 2151,
+              "structural_peak_mib": 6535.090257465603,
+              "rounded_charge_mib": 6544,
+              "logical_temp_read_plus_write_bytes": 9069854720.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 712,
+              "structural_peak_mib": 1847.5373840332031,
+              "rounded_charge_mib": 1856,
+              "logical_temp_read_plus_write_bytes": 24794988544.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 12096,
+          "budget_slack_after_rounding_mib": 14,
+          "logical_temp_read_plus_write_bytes": 36721623040.0,
+          "candidate_counts_after_Pareto": {
+            "2": 22,
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 4096,
+          "pool_minus_SB_mib": 11086,
+          "AP_budget_mib": 11086,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 2,
+              "work_mem_mib": 20,
+              "structural_peak_mib": 74.45923614501953,
+              "rounded_charge_mib": 80,
+              "logical_temp_read_plus_write_bytes": 103874560.0
+            },
+            {
+              "query_id": 9,
+              "work_mem_mib": 2151,
+              "structural_peak_mib": 6535.090257465603,
+              "rounded_charge_mib": 6544,
+              "logical_temp_read_plus_write_bytes": 9069854720.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 314,
+              "structural_peak_mib": 814.0548095703125,
+              "rounded_charge_mib": 816,
+              "logical_temp_read_plus_write_bytes": 8278458368.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 903,
+              "structural_peak_mib": 2150.4643783569336,
+              "rounded_charge_mib": 2160,
+              "logical_temp_read_plus_write_bytes": 23878959104.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 11072,
+          "budget_slack_after_rounding_mib": 14,
+          "logical_temp_read_plus_write_bytes": 44138905600.0,
+          "candidate_counts_after_Pareto": {
+            "2": 22,
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        }
+      ]
+    },
+    {
+      "stage": "S5",
+      "minimum_rounded_AP_reservation_mib": 4000,
+      "minimum_rounded_AP_reservation_for_modeled_zero_spill_mib": 37552,
+      "AP_feasibility_SB_ceiling_mib": 11182,
+      "modeled_zero_spill_SB_ceiling_mib": -22370,
+      "modeled_zero_spill_with_any_positive_SB_possible": false,
+      "these_AP_bounds_are_NOT_a_TP_cache_lower_bound": true,
+      "all_requested_SB_have_same_effective_AP_budget": false,
+      "feasible_SB_count": 11,
+      "evaluated_SB_count": 11,
+      "per_SB_accounting": [
+        {
+          "SB_mib": 32,
+          "pool_minus_SB_mib": 15150,
+          "AP_budget_mib": 15150,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14880,
+          "budget_slack_after_rounding_mib": 270,
+          "logical_temp_read_plus_write_bytes": 29283663872.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 64,
+          "pool_minus_SB_mib": 15118,
+          "AP_budget_mib": 15118,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14880,
+          "budget_slack_after_rounding_mib": 238,
+          "logical_temp_read_plus_write_bytes": 29283663872.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 128,
+          "pool_minus_SB_mib": 15054,
+          "AP_budget_mib": 15054,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14880,
+          "budget_slack_after_rounding_mib": 174,
+          "logical_temp_read_plus_write_bytes": 29283663872.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 256,
+          "pool_minus_SB_mib": 14926,
+          "AP_budget_mib": 14926,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14880,
+          "budget_slack_after_rounding_mib": 46,
+          "logical_temp_read_plus_write_bytes": 29283663872.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 512,
+          "pool_minus_SB_mib": 14670,
+          "AP_budget_mib": 14670,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1094,
+              "structural_peak_mib": 2367.371192932129,
+              "rounded_charge_mib": 2368,
+              "logical_temp_read_plus_write_bytes": 23527161856.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14512,
+          "budget_slack_after_rounding_mib": 158,
+          "logical_temp_read_plus_write_bytes": 29876633600.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 768,
+          "pool_minus_SB_mib": 14414,
+          "AP_budget_mib": 14414,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 903,
+              "structural_peak_mib": 2150.4643783569336,
+              "rounded_charge_mib": 2160,
+              "logical_temp_read_plus_write_bytes": 23878959104.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14304,
+          "budget_slack_after_rounding_mib": 110,
+          "logical_temp_read_plus_write_bytes": 30228430848.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 1024,
+          "pool_minus_SB_mib": 14158,
+          "AP_budget_mib": 14158,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1100,
+              "structural_peak_mib": 2024.4875869750977,
+              "rounded_charge_mib": 2032,
+              "logical_temp_read_plus_write_bytes": 391905280.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 831,
+              "structural_peak_mib": 2070.4643783569336,
+              "rounded_charge_mib": 2080,
+              "logical_temp_read_plus_write_bytes": 24008982528.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 14144,
+          "budget_slack_after_rounding_mib": 14,
+          "logical_temp_read_plus_write_bytes": 30750359552.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 1536,
+          "pool_minus_SB_mib": 13646,
+          "AP_budget_mib": 13646,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 3158,
+              "structural_peak_mib": 8548.325059711697,
+              "rounded_charge_mib": 8560,
+              "logical_temp_read_plus_write_bytes": 3541712896.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 880,
+              "structural_peak_mib": 1772.4661178588867,
+              "rounded_charge_mib": 1776,
+              "logical_temp_read_plus_write_bytes": 1512833024.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 681,
+              "structural_peak_mib": 1782.2518463134766,
+              "rounded_charge_mib": 1792,
+              "logical_temp_read_plus_write_bytes": 24851087360.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 13600,
+          "budget_slack_after_rounding_mib": 46,
+          "logical_temp_read_plus_write_bytes": 32713392128.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 2048,
+          "pool_minus_SB_mib": 13134,
+          "AP_budget_mib": 13134,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 2151,
+              "structural_peak_mib": 6535.090257465603,
+              "rounded_charge_mib": 6544,
+              "logical_temp_read_plus_write_bytes": 9069854720.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1174,
+              "structural_peak_mib": 2110.172019958496,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 0.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 1426,
+              "structural_peak_mib": 2733.083595275879,
+              "rounded_charge_mib": 2736,
+              "logical_temp_read_plus_write_bytes": 22934192128.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 12864,
+          "budget_slack_after_rounding_mib": 270,
+          "logical_temp_read_plus_write_bytes": 34811805696.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 3072,
+          "pool_minus_SB_mib": 12110,
+          "AP_budget_mib": 12110,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 2151,
+              "structural_peak_mib": 6535.090257465603,
+              "rounded_charge_mib": 6544,
+              "logical_temp_read_plus_write_bytes": 9069854720.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 1027,
+              "structural_peak_mib": 1940.4655685424805,
+              "rounded_charge_mib": 1952,
+              "logical_temp_read_plus_write_bytes": 765722624.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 855,
+              "structural_peak_mib": 2104.5154037475586,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 23954456576.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 12080,
+          "budget_slack_after_rounding_mib": 30,
+          "logical_temp_read_plus_write_bytes": 36597792768.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        },
+        {
+          "SB_mib": 4096,
+          "pool_minus_SB_mib": 11086,
+          "AP_budget_mib": 11086,
+          "native_dynamic_cap_is_binding": false,
+          "status": "modeled_minimum_spill_at_this_SB",
+          "queries": [
+            {
+              "query_id": 9,
+              "work_mem_mib": 2151,
+              "structural_peak_mib": 6535.090257465603,
+              "rounded_charge_mib": 6544,
+              "logical_temp_read_plus_write_bytes": 9069854720.0
+            },
+            {
+              "query_id": 13,
+              "work_mem_mib": 367,
+              "structural_peak_mib": 923.0546264648438,
+              "rounded_charge_mib": 928,
+              "logical_temp_read_plus_write_bytes": 8029421568.0
+            },
+            {
+              "query_id": 18,
+              "work_mem_mib": 855,
+              "structural_peak_mib": 2104.5154037475586,
+              "rounded_charge_mib": 2112,
+              "logical_temp_read_plus_write_bytes": 23954456576.0
+            },
+            {
+              "query_id": 21,
+              "work_mem_mib": 742,
+              "structural_peak_mib": 1469.5912704467773,
+              "rounded_charge_mib": 1472,
+              "logical_temp_read_plus_write_bytes": 2807758848.0
+            }
+          ],
+          "charged_mib": 11056,
+          "budget_slack_after_rounding_mib": 30,
+          "logical_temp_read_plus_write_bytes": 43861491712.0,
+          "candidate_counts_after_Pareto": {
+            "9": 6,
+            "13": 51,
+            "18": 27,
+            "21": 23
+          }
+        }
+      ]
+    }
+  ],
+  "qualified_TP_cache_lower_bound_mib": null,
+  "no_arbitrary_TP_B_low_or_final_SB_winner_injected": true,
+  "physical_safety_or_TPS_accuracy_validated": false
+}

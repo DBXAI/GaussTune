@@ -1,0 +1,84 @@
+{
+  "schema": "jmt.mixed-SB-scope-correction/v1",
+  "created_at": "2026-11-13T14:43:42.929374+08:00",
+  "report": "MIXED_SB_COMPETITION_CURRENT.md",
+  "root_cause": "TP-only miss plateau was incorrectly applied as a mixed TP/AP hard upper bound; performance curves also omitted AP-induced TP page replacement",
+  "TP_only_plateau_hint_mib": {
+    "TP128": 4096,
+    "S5_128_plus_16": 4096
+  },
+  "mixed_exploration_ceiling_mib": 8192,
+  "exploration_ceiling_is_not_mixed_saturation": true,
+  "retained_previously_pruned_SB_mib": [
+    6144,
+    8192
+  ],
+  "five_stage_SB_points": [
+    13,
+    13,
+    13,
+    13,
+    13
+  ],
+  "frontier_point_count": 65,
+  "frontier_compute_seconds": 2.3262842670083046,
+  "frontier_inputs_frozen_not_live": true,
+  "AP_statistics_recollected": false,
+  "AP_statistics_TTL_renewed": false,
+  "new_actual_mixed_cache_trace_collected": false,
+  "new_actual_mixed_TPS_measured": false,
+  "real_mixed_profile_to_performance_evaluator_ingestion_complete": false,
+  "new_TP_only_performance_ranking_blocked_by_default": true,
+  "bounded_offline_profile_builder_implemented": true,
+  "AP_working_set_GiB_offset_fitted": false,
+  "tests": {
+    "run": 734,
+    "failures": 0,
+    "errors": 0
+  },
+  "artifacts": {
+    "expanded_frontier": {
+      "path": "results/mixed_SB_scope_20261113_1421/expanded_frontier_v2/SB_SPILL_FRONTIER.json",
+      "sha256": "0019683bf4e7ff402b6850e9072930664fee71496c625d4444ee1eb7a11ba4d9"
+    },
+    "independent_frontier_audit": {
+      "path": "results/mixed_SB_scope_20261113_1421/INDEPENDENT_FRONTIER_AUDIT.json",
+      "sha256": "dd1950efede83aed283c5de31c0da89454f5d563d61cc80394325f364ee081d3"
+    },
+    "frozen_frontier_replay": {
+      "path": "results/mixed_SB_scope_20261113_1421/FROZEN_FRONTIER_REPLAY.json",
+      "sha256": "0774d771d75ee8051ffdbca9d43c6ba17903d57b55f5445c86b78f61d3d2b0c0"
+    },
+    "historical_performance_replay": {
+      "path": "results/mixed_SB_scope_20261113_1421/HISTORICAL_PERFORMANCE_REPLAY.json",
+      "sha256": "20c0d93ed906ebca8a551a4ed2003b120ce392881494e3da3cb19d14cb666bb4"
+    },
+    "performance_scope_gate": {
+      "path": "results/mixed_SB_scope_20261113_1421/PERFORMANCE_SCOPE_GATE.json",
+      "sha256": "dded55582bb94cc77e00565cb1d791568d667dced4bb775e34402a7ff786e0c9"
+    },
+    "live_buffer_policy": {
+      "path": "results/mixed_SB_scope_20261113_1421/LIVE_BUFFER_POLICY.json",
+      "sha256": "43764dae789bdeeec94bec7988595871220da74d913eb2fa3fab7a849a9f89fc"
+    },
+    "clock_semantic_profile": {
+      "path": "results/mixed_SB_scope_20261113_1421/synthetic_semantics/clock_profile_final/MIXED_TP_CACHE_CURVE.json",
+      "sha256": "273542f0697b344ada128910dc34f027c76859756664b126ed80074eb87f0a66"
+    },
+    "native_policy_semantic_profile": {
+      "path": "results/mixed_SB_scope_20261113_1421/synthetic_semantics/candidate_fifo_profile_final/MIXED_TP_CACHE_CURVE.json",
+      "sha256": "fa6c0b1a5431c8b968f4787c613bc5b7b21bb157fc0f3105d063203e42e993b3"
+    },
+    "regression_log": {
+      "path": "results/mixed_SB_scope_20261113_1421/UNITTEST_FINAL.log",
+      "sha256": "e211360d315b25502550e166f581622c7b86b8f02881ca8e94f31d696ad8ef62"
+    }
+  },
+  "physical_memory_safety_qualified": false,
+  "mixed_cache_accuracy_qualified": false,
+  "mixed_hard_upper_bound_qualified": false,
+  "new_SB_optimum_selected": false,
+  "automatic_recommendation_qualified": false,
+  "configuration_applied": false,
+  "old_2_or_4_GiB_rank_is_not_a_fair_2_4_6_8_mixed_comparison": true
+}

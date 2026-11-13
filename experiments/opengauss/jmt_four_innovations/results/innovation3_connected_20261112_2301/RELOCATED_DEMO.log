@@ -1,0 +1,93 @@
+INNOVATION3_CURRENT.md: OK
+README.md: OK
+demo.sh: OK
+evidence/AUDIT_CURRENT_UNPRUNED.json: OK
+evidence/AUDIT_HOST_UNPRUNED.json: OK
+evidence/CONTINUITY_CURRENT_SB4096.json: OK
+evidence/CONTINUITY_HOST_SB4096.json: OK
+evidence/SPILL_CURVES.json: OK
+evidence/current_instance/FRONTIER_EXPLANATION.json: OK
+evidence/current_instance/SB_SPILL_FRONTIER.json: OK
+evidence/host_capacity/FRONTIER_EXPLANATION.json: OK
+evidence/host_capacity/SB_SPILL_FRONTIER.json: OK
+src/jmt/__init__.py: OK
+src/jmt/common/__init__.py: OK
+src/jmt/common/memory_units.py: OK
+src/jmt/innovation_2_spill/__init__.py: OK
+src/jmt/innovation_2_spill/curves.py: OK
+src/jmt/innovation_3_search/__init__.py: OK
+src/jmt/innovation_3_search/curve_input_gate.py: OK
+src/jmt/innovation_3_search/frontier_explanation.py: OK
+src/jmt/innovation_3_search/spill_allocator.py: OK
+src/jmt/innovation_3_search/spill_budget_search.py: OK
+tests/test_step3_connected.py: OK
+tools/audit_five_stage_continuity.py: OK
+tools/audit_sb_spill_frontier.py: OK
+tools/replay_sb_spill_budgets.py: OK
+{
+  "exact_match": true,
+  "frozen_as_of": "2026-11-12T23:10:44.059220+08:00",
+  "forecast_prepared_at": "2026-11-12T20:34:37.084125+08:00",
+  "compute_seconds": 0.06500292103737593,
+  "stages": 5,
+  "per_stage_SB_points": [
+    11,
+    11,
+    11,
+    11,
+    11
+  ],
+  "database_calls": 0,
+  "sample_TTL_renewed": false,
+  "current_live_input_validity_or_TPS_accuracy_proven": false,
+  "final_SB_for_TP_selected": false,
+  "configuration_applied": false
+}
+{"schema": "jmt.independent-unpruned-step3-audit/v1", "all_points_exact_match": true, "points_checked": 55, "distinct_reference_DP_cases": 4, "distinct_small_workload_Cartesian_enumerations": 2, "reference_feasible_transitions": 38730, "verification_seconds_not_online_model_cost": 0.016458182130008936, "production_solver_or_Pareto_called": false, "scope": "combinatorial optimum over these candidates and rounded modeled charges only", "spill_prediction_accuracy_or_physical_safety_or_TPS_validated": false, "new_AP_query_execution_or_TTL_renewal": false, "frontier_sha256": "6b8835af1f2d1c6030ead5ace00dd061f2e502b6f955ad5e1db61bf9f825c490", "verification_code_sha256": "9d2192c6dfbb8dd8092f45f0f93f963d0c10590e29e67cb28bfa54e816823abf"}
+{"SB_mib": 4096, "first_infeasible_stage": "S3", "greedy_uninterrupted_five_stage_admission_feasible": false, "scope": "counterfactual greedy arrival with every overlapping query still running at original WM", "not_a_proof_no_other_online_or_lookahead_policy_can_work": true, "no_running_WM_modified_or_future_cohort_injected": true, "real_query_execution_or_physical_lifecycle_validation": false, "configuration_applied": false, "frontier_sha256": "6b8835af1f2d1c6030ead5ace00dd061f2e502b6f955ad5e1db61bf9f825c490", "code_sha256": "f423f82cbc2b88d070089358380848a4ce12cbe81e16b7c2c400713674750dca"}
+{
+  "exact_match": true,
+  "frozen_as_of": "2026-11-12T23:10:47.647470+08:00",
+  "forecast_prepared_at": "2026-11-12T20:34:37.084125+08:00",
+  "compute_seconds": 3.597848867997527,
+  "stages": 5,
+  "per_stage_SB_points": [
+    11,
+    11,
+    11,
+    11,
+    11
+  ],
+  "database_calls": 0,
+  "sample_TTL_renewed": false,
+  "current_live_input_validity_or_TPS_accuracy_proven": false,
+  "final_SB_for_TP_selected": false,
+  "configuration_applied": false
+}
+{"schema": "jmt.independent-unpruned-step3-audit/v1", "all_points_exact_match": true, "points_checked": 55, "distinct_reference_DP_cases": 44, "distinct_small_workload_Cartesian_enumerations": 22, "reference_feasible_transitions": 3164994, "verification_seconds_not_online_model_cost": 0.9530163649469614, "production_solver_or_Pareto_called": false, "scope": "combinatorial optimum over these candidates and rounded modeled charges only", "spill_prediction_accuracy_or_physical_safety_or_TPS_validated": false, "new_AP_query_execution_or_TTL_renewal": false, "frontier_sha256": "ba7cc59291138835e063d43477c0c03dfa3e03370b3184958f190a0e78c5bfcd", "verification_code_sha256": "9d2192c6dfbb8dd8092f45f0f93f963d0c10590e29e67cb28bfa54e816823abf"}
+{"SB_mib": 4096, "first_infeasible_stage": "S3", "greedy_uninterrupted_five_stage_admission_feasible": false, "scope": "counterfactual greedy arrival with every overlapping query still running at original WM", "not_a_proof_no_other_online_or_lookahead_policy_can_work": true, "no_running_WM_modified_or_future_cohort_injected": true, "real_query_execution_or_physical_lifecycle_validation": false, "configuration_applied": false, "frontier_sha256": "ba7cc59291138835e063d43477c0c03dfa3e03370b3184958f190a0e78c5bfcd", "code_sha256": "f423f82cbc2b88d070089358380848a4ce12cbe81e16b7c2c400713674750dca"}
+test_feasible_running_pins_are_preserved (test_step3_connected.StepThreeContinuityTests) ... ok
+test_snapshot_feasibility_is_not_automatic_running_WM_reconfiguration (test_step3_connected.StepThreeContinuityTests) ... ok
+test_AP_demand_is_a_feasible_SB_upper_constraint_not_invented_TP_lower (test_step3_connected.StepThreeExplanationTests) ... ok
+test_boolean_pinned_WM_or_query_does_not_alias_integer_one (test_step3_connected.StepThreeExplanationTests) ... ok
+test_native_dynamic_cap_explains_a_flat_SB_spill_frontier (test_step3_connected.StepThreeExplanationTests) ... ok
+test_per_query_charges_add_to_selected_budget_and_spill (test_step3_connected.StepThreeExplanationTests) ... ok
+test_running_pin_is_respected_even_if_another_point_is_better (test_step3_connected.StepThreeExplanationTests) ... ok
+test_unknown_and_failure_policy_are_not_counted_as_zero_spill (test_step3_connected.StepThreeExplanationTests) ... ok
+test_zero_spill_not_possible_through_native_dynamic_cap (test_step3_connected.StepThreeExplanationTests) ... ok
+test_modified_cost_or_budget_cannot_pass (test_step3_connected.StepThreeIndependentVerifierTests) ... ok
+test_small_nonmonotone_workloads_match_independent_unpruned_reference (test_step3_connected.StepThreeIndependentVerifierTests) ... ok
+test_unpruned_verifier_and_cartesian_enumeration_agree (test_step3_connected.StepThreeIndependentVerifierTests) ... ok
+test_change_before_expiry_is_not_hidden_by_still_valid_clock (test_step3_connected.StepThreeLiveGateTests) ... ok
+test_expired_future_nonfinite_or_boolean_clocks_rejected (test_step3_connected.StepThreeLiveGateTests) ... ok
+test_frozen_input_cannot_claim_live_validation (test_step3_connected.StepThreeLiveGateTests) ... ok
+test_live_gate_rechecks_hash_catalog_machine_and_watermark_without_mutation (test_step3_connected.StepThreeLiveGateTests) ... ok
+test_live_machine_and_catalog_change_fail_closed (test_step3_connected.StepThreeLiveGateTests) ... ok
+test_missing_or_cross_database_catalog_refused (test_step3_connected.StepThreeLiveGateTests) ... ok
+test_outer_TTL_cannot_be_extended_beyond_raw_statistics (test_step3_connected.StepThreeLiveGateTests) ... ok
+test_sample_identity_watermark_and_TTL_must_match_frozen_predictions (test_step3_connected.StepThreeLiveGateTests) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.021s
+
+OK

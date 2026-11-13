@@ -1,0 +1,22 @@
+{
+  "schema": "jmt.superseded-innovation2-fixed-SB-pointer/v1",
+  "superseded": true,
+  "reason": "innovation2 only predicts query/WM spill curves; per-SB budget allocation belongs to innovation3",
+  "historical_pointer": {
+    "schema": "jmt.current-innovation2-five-stage-pointer/v1",
+    "created_at": "2026-11-12T19:10:18.313086+08:00",
+    "report": "INNOVATION2_FIVE_STAGE_CURRENT.md",
+    "result": "results/innovation2_five_stages_20261112_1845/allocation_v4/FIVE_STAGE_RESULTS.json",
+    "result_sha256": "52415f72f0ee0cd364f5fbf1fd963929f3cb2832d2d7aaf6bb898990fea8b3e3",
+    "replay_validation": "results/innovation2_five_stages_20261112_1845/audit_v4/REPLAY_VALIDATION.json",
+    "SB_upper_bound_mib": 4096,
+    "fixed_SB_scenario_mib": 4096,
+    "AP_budget_mib": 12288,
+    "is_joint_SB_WM_TPS_recommendation": false,
+    "new_selected_WM_AP_execution_validated": false,
+    "configuration_applied": false,
+    "automatic_recommendation_qualified": false
+  },
+  "replacement_innovation2": "CURRENT_AP_SPILL_CURVES.json",
+  "replacement_innovation3": "CURRENT_SB_SPILL_FRONTIER.json"
+}

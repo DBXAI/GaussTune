@@ -1,0 +1,23 @@
+test_AP_budget_increases_one_for_one_when_SB_shrinks (test_database_allowed_AP_budget.DatabaseConfiguredBudgetTests) ... ok
+test_configured_database_ceiling_not_silently_raised_to_host_capacity (test_database_allowed_AP_budget.DatabaseConfiguredBudgetTests) ... ok
+test_default_policy_is_database_pool_not_protector_remainder (test_database_allowed_AP_budget.DatabaseConfiguredBudgetTests) ... ok
+test_legacy_evidence_remains_v1_replay_compatible (test_database_allowed_AP_budget.DatabaseConfiguredBudgetTests) ... ok
+test_missing_effective_protection_setting_not_assumed (test_database_allowed_AP_budget.DatabaseConfiguredBudgetTests) ... ok
+test_native_remainder_preserved_only_as_explicit_diagnostic (test_database_allowed_AP_budget.DatabaseConfiguredBudgetTests) ... ok
+test_reserves_explicit_and_not_fixed_six_GiB (test_database_allowed_AP_budget.DatabaseConfiguredBudgetTests) ... ok
+test_zero_native_quota_when_protection_off_does_not_kill_planning (test_database_allowed_AP_budget.DatabaseConfiguredBudgetTests) ... ok
+test_SETTINGS_not_modified (test_database_allowed_AP_budget.DatabaseWorkMemDomainTests) ... ok
+test_domain_values_must_be_integer_MiB (test_database_allowed_AP_budget.DatabaseWorkMemDomainTests) ... ok
+test_duplicate_or_missing_or_bad_unit_rejected (test_database_allowed_AP_budget.DatabaseWorkMemDomainTests) ... ok
+test_native_GUC_range_not_six_GiB_or_TP_remainder (test_database_allowed_AP_budget.DatabaseWorkMemDomainTests) ... ok
+test_no_rounding_above_database_maximum (test_database_allowed_AP_budget.DatabaseWorkMemDomainTests) ... ok
+test_nonzero_query_max_mem_recorded_not_confused_with_work_mem_validator (test_database_allowed_AP_budget.DatabaseWorkMemDomainTests) ... ok
+test_smaller_database_GUC_maximum_is_honored (test_database_allowed_AP_budget.DatabaseWorkMemDomainTests) ... ok
+test_annotator_never_changes_budget_or_selected_WM (test_database_allowed_AP_budget.NativeAdmissionDiagnosticTests) ... ok
+test_over_native_threshold_flagged_not_silently_executable (test_database_allowed_AP_budget.NativeAdmissionDiagnosticTests) ... ok
+test_protection_off_not_reported_as_native_rejection (test_database_allowed_AP_budget.NativeAdmissionDiagnosticTests) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 0.001s
+
+OK

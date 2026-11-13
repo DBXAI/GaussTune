@@ -1,0 +1,2959 @@
+{
+  "schema": "jmt.per-SB-minimum-spill-frontier/v1",
+  "stages": [
+    {
+      "stage": "S1",
+      "AP_queries": [
+        18
+      ],
+      "TP_terminals": 128,
+      "TP_baseline_terminals": 128,
+      "TP_surge_terminals": 0,
+      "B_high_mib": 4096,
+      "SB_candidates_above_bound_excluded": [
+        6144,
+        8192
+      ],
+      "pinned_running_WM_mib": {},
+      "per_SB_minimum_spill": [
+        {
+          "SB_mib": 32,
+          "AP_budget_mib": 22599,
+          "selection": {
+            "work_mem_mib": {
+              "18": 17496
+            },
+            "sum_session_work_mem_mib": 17496,
+            "structural_peak_mib": 20587.343284606934,
+            "reservation_mib": 20587.343284606934,
+            "rounded_reservation_mib": 20592,
+            "budget_mib": 22599,
+            "logical_temp_read_bytes": 0.0,
+            "logical_temp_write_bytes": 0.0,
+            "logical_temp_read_plus_write_bytes": 0.0,
+            "candidate_counts_after_pareto": {
+              "18": 27
+            },
+            "grid_mib": 16,
+            "dp_transitions": 27,
+            "dp_maximum_states": 25,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20587.343284606934,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20587.343284606934
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 64,
+          "AP_budget_mib": 22567,
+          "selection": {
+            "work_mem_mib": {
+              "18": 17496
+            },
+            "sum_session_work_mem_mib": 17496,
+            "structural_peak_mib": 20587.343284606934,
+            "reservation_mib": 20587.343284606934,
+            "rounded_reservation_mib": 20592,
+            "budget_mib": 22567,
+            "logical_temp_read_bytes": 0.0,
+            "logical_temp_write_bytes": 0.0,
+            "logical_temp_read_plus_write_bytes": 0.0,
+            "candidate_counts_after_pareto": {
+              "18": 27
+            },
+            "grid_mib": 16,
+            "dp_transitions": 27,
+            "dp_maximum_states": 25,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20587.343284606934,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20587.343284606934
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 128,
+          "AP_budget_mib": 22503,
+          "selection": {
+            "work_mem_mib": {
+              "18": 17496
+            },
+            "sum_session_work_mem_mib": 17496,
+            "structural_peak_mib": 20587.343284606934,
+            "reservation_mib": 20587.343284606934,
+            "rounded_reservation_mib": 20592,
+            "budget_mib": 22503,
+            "logical_temp_read_bytes": 0.0,
+            "logical_temp_write_bytes": 0.0,
+            "logical_temp_read_plus_write_bytes": 0.0,
+            "candidate_counts_after_pareto": {
+              "18": 27
+            },
+            "grid_mib": 16,
+            "dp_transitions": 27,
+            "dp_maximum_states": 25,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20587.343284606934,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20587.343284606934
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 256,
+          "AP_budget_mib": 22375,
+          "selection": {
+            "work_mem_mib": {
+              "18": 17496
+            },
+            "sum_session_work_mem_mib": 17496,
+            "structural_peak_mib": 20587.343284606934,
+            "reservation_mib": 20587.343284606934,
+            "rounded_reservation_mib": 20592,
+            "budget_mib": 22375,
+            "logical_temp_read_bytes": 0.0,
+            "logical_temp_write_bytes": 0.0,
+            "logical_temp_read_plus_write_bytes": 0.0,
+            "candidate_counts_after_pareto": {
+              "18": 27
+            },
+            "grid_mib": 16,
+            "dp_transitions": 27,
+            "dp_maximum_states": 25,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20587.343284606934,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20587.343284606934
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 512,
+          "AP_budget_mib": 22119,
+          "selection": {
+            "work_mem_mib": {
+              "18": 17496
+            },
+            "sum_session_work_mem_mib": 17496,
+            "structural_peak_mib": 20587.343284606934,
+            "reservation_mib": 20587.343284606934,
+            "rounded_reservation_mib": 20592,
+            "budget_mib": 22119,
+            "logical_temp_read_bytes": 0.0,
+            "logical_temp_write_bytes": 0.0,
+            "logical_temp_read_plus_write_bytes": 0.0,
+            "candidate_counts_after_pareto": {
+              "18": 27
+            },
+            "grid_mib": 16,
+            "dp_transitions": 27,
+            "dp_maximum_states": 25,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20587.343284606934,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20587.343284606934
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 768,
+          "AP_budget_mib": 21863,
+          "selection": {
+            "work_mem_mib": {
+              "18": 17496
+            },
+            "sum_session_work_mem_mib": 17496,
+            "structural_peak_mib": 20587.343284606934,
+            "reservation_mib": 20587.343284606934,
+            "rounded_reservation_mib": 20592,
+            "budget_mib": 21863,
+            "logical_temp_read_bytes": 0.0,
+            "logical_temp_write_bytes": 0.0,
+            "logical_temp_read_plus_write_bytes": 0.0,
+            "candidate_counts_after_pareto": {
+              "18": 27
+            },
+            "grid_mib": 16,
+            "dp_transitions": 27,
+            "dp_maximum_states": 25,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20587.343284606934,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20587.343284606934
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 1024,
+          "AP_budget_mib": 21607,
+          "selection": {
+            "work_mem_mib": {
+              "18": 17496
+            },
+            "sum_session_work_mem_mib": 17496,
+            "structural_peak_mib": 20587.343284606934,
+            "reservation_mib": 20587.343284606934,
+            "rounded_reservation_mib": 20592,
+            "budget_mib": 21607,
+            "logical_temp_read_bytes": 0.0,
+            "logical_temp_write_bytes": 0.0,
+            "logical_temp_read_plus_write_bytes": 0.0,
+            "candidate_counts_after_pareto": {
+              "18": 27
+            },
+            "grid_mib": 16,
+            "dp_transitions": 27,
+            "dp_maximum_states": 25,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20587.343284606934,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20587.343284606934
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 1536,
+          "AP_budget_mib": 21095,
+          "selection": {
+            "work_mem_mib": {
+              "18": 17496
+            },
+            "sum_session_work_mem_mib": 17496,
+            "structural_peak_mib": 20587.343284606934,
+            "reservation_mib": 20587.343284606934,
+            "rounded_reservation_mib": 20592,
+            "budget_mib": 21095,
+            "logical_temp_read_bytes": 0.0,
+            "logical_temp_write_bytes": 0.0,
+            "logical_temp_read_plus_write_bytes": 0.0,
+            "candidate_counts_after_pareto": {
+              "18": 27
+            },
+            "grid_mib": 16,
+            "dp_transitions": 27,
+            "dp_maximum_states": 25,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20587.343284606934,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20587.343284606934
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 2048,
+          "AP_budget_mib": 20583,
+          "selection": {
+            "work_mem_mib": {
+              "18": 16403
+            },
+            "sum_session_work_mem_mib": 16403,
+            "structural_peak_mib": 19372.997901916504,
+            "reservation_mib": 19372.997901916504,
+            "rounded_reservation_mib": 19376,
+            "budget_mib": 20583,
+            "logical_temp_read_bytes": 288096256.0,
+            "logical_temp_write_bytes": 287834112.0,
+            "logical_temp_read_plus_write_bytes": 575930368.0,
+            "candidate_counts_after_pareto": {
+              "18": 27
+            },
+            "grid_mib": 16,
+            "dp_transitions": 27,
+            "dp_maximum_states": 24,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 19372.997901916504,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 19372.997901916504
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 3072,
+          "AP_budget_mib": 19559,
+          "selection": {
+            "work_mem_mib": {
+              "18": 16403
+            },
+            "sum_session_work_mem_mib": 16403,
+            "structural_peak_mib": 19372.997901916504,
+            "reservation_mib": 19372.997901916504,
+            "rounded_reservation_mib": 19376,
+            "budget_mib": 19559,
+            "logical_temp_read_bytes": 288096256.0,
+            "logical_temp_write_bytes": 287834112.0,
+            "logical_temp_read_plus_write_bytes": 575930368.0,
+            "candidate_counts_after_pareto": {
+              "18": 27
+            },
+            "grid_mib": 16,
+            "dp_transitions": 27,
+            "dp_maximum_states": 24,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 19372.997901916504,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 19372.997901916504
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 4096,
+          "AP_budget_mib": 18535,
+          "selection": {
+            "work_mem_mib": {
+              "18": 15309
+            },
+            "sum_session_work_mem_mib": 15309,
+            "structural_peak_mib": 18161.575569152832,
+            "reservation_mib": 18161.575569152832,
+            "rounded_reservation_mib": 18176,
+            "budget_mib": 18535,
+            "logical_temp_read_bytes": 735838208.0,
+            "logical_temp_write_bytes": 735576064.0,
+            "logical_temp_read_plus_write_bytes": 1471414272.0,
+            "candidate_counts_after_pareto": {
+              "18": 27
+            },
+            "grid_mib": 16,
+            "dp_transitions": 27,
+            "dp_maximum_states": 23,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 18161.575569152832,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 18161.575569152832
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        }
+      ],
+      "minimum_spill_over_supplied_SB_candidates_bytes": 0.0,
+      "SB_candidates_attaining_minimum_spill_mib": [
+        32,
+        64,
+        128,
+        256,
+        512,
+        768,
+        1024,
+        1536
+      ]
+    },
+    {
+      "stage": "S2",
+      "AP_queries": [
+        18,
+        21
+      ],
+      "TP_terminals": 128,
+      "TP_baseline_terminals": 128,
+      "TP_surge_terminals": 0,
+      "B_high_mib": 4096,
+      "SB_candidates_above_bound_excluded": [
+        6144,
+        8192
+      ],
+      "pinned_running_WM_mib": {},
+      "per_SB_minimum_spill": [
+        {
+          "SB_mib": 32,
+          "AP_budget_mib": 22599,
+          "selection": {
+            "work_mem_mib": {
+              "18": 15309,
+              "21": 2968
+            },
+            "sum_session_work_mem_mib": 18277,
+            "structural_peak_mib": 21771.00911366985,
+            "reservation_mib": 21771.00911366985,
+            "rounded_reservation_mib": 21792,
+            "budget_mib": 22599,
+            "logical_temp_read_bytes": 735838208.0,
+            "logical_temp_write_bytes": 735576064.0,
+            "logical_temp_read_plus_write_bytes": 1471414272.0,
+            "candidate_counts_after_pareto": {
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 602,
+            "dp_maximum_states": 324,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21771.00911366985,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21771.00911366985
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 64,
+          "AP_budget_mib": 22567,
+          "selection": {
+            "work_mem_mib": {
+              "18": 15309,
+              "21": 2968
+            },
+            "sum_session_work_mem_mib": 18277,
+            "structural_peak_mib": 21771.00911366985,
+            "reservation_mib": 21771.00911366985,
+            "rounded_reservation_mib": 21792,
+            "budget_mib": 22567,
+            "logical_temp_read_bytes": 735838208.0,
+            "logical_temp_write_bytes": 735576064.0,
+            "logical_temp_read_plus_write_bytes": 1471414272.0,
+            "candidate_counts_after_pareto": {
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 602,
+            "dp_maximum_states": 324,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21771.00911366985,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21771.00911366985
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 128,
+          "AP_budget_mib": 22503,
+          "selection": {
+            "work_mem_mib": {
+              "18": 15309,
+              "21": 2968
+            },
+            "sum_session_work_mem_mib": 18277,
+            "structural_peak_mib": 21771.00911366985,
+            "reservation_mib": 21771.00911366985,
+            "rounded_reservation_mib": 21792,
+            "budget_mib": 22503,
+            "logical_temp_read_bytes": 735838208.0,
+            "logical_temp_write_bytes": 735576064.0,
+            "logical_temp_read_plus_write_bytes": 1471414272.0,
+            "candidate_counts_after_pareto": {
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 602,
+            "dp_maximum_states": 324,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21771.00911366985,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21771.00911366985
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 256,
+          "AP_budget_mib": 22375,
+          "selection": {
+            "work_mem_mib": {
+              "18": 15309,
+              "21": 2968
+            },
+            "sum_session_work_mem_mib": 18277,
+            "structural_peak_mib": 21771.00911366985,
+            "reservation_mib": 21771.00911366985,
+            "rounded_reservation_mib": 21792,
+            "budget_mib": 22375,
+            "logical_temp_read_bytes": 735838208.0,
+            "logical_temp_write_bytes": 735576064.0,
+            "logical_temp_read_plus_write_bytes": 1471414272.0,
+            "candidate_counts_after_pareto": {
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 602,
+            "dp_maximum_states": 324,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21771.00911366985,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21771.00911366985
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 512,
+          "AP_budget_mib": 22119,
+          "selection": {
+            "work_mem_mib": {
+              "18": 15309,
+              "21": 2968
+            },
+            "sum_session_work_mem_mib": 18277,
+            "structural_peak_mib": 21771.00911366985,
+            "reservation_mib": 21771.00911366985,
+            "rounded_reservation_mib": 21792,
+            "budget_mib": 22119,
+            "logical_temp_read_bytes": 735838208.0,
+            "logical_temp_write_bytes": 735576064.0,
+            "logical_temp_read_plus_write_bytes": 1471414272.0,
+            "candidate_counts_after_pareto": {
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 602,
+            "dp_maximum_states": 324,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21771.00911366985,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21771.00911366985
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 768,
+          "AP_budget_mib": 21863,
+          "selection": {
+            "work_mem_mib": {
+              "18": 15309,
+              "21": 2968
+            },
+            "sum_session_work_mem_mib": 18277,
+            "structural_peak_mib": 21771.00911366985,
+            "reservation_mib": 21771.00911366985,
+            "rounded_reservation_mib": 21792,
+            "budget_mib": 21863,
+            "logical_temp_read_bytes": 735838208.0,
+            "logical_temp_write_bytes": 735576064.0,
+            "logical_temp_read_plus_write_bytes": 1471414272.0,
+            "candidate_counts_after_pareto": {
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 602,
+            "dp_maximum_states": 323,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21771.00911366985,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21771.00911366985
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 1024,
+          "AP_budget_mib": 21607,
+          "selection": {
+            "work_mem_mib": {
+              "18": 16403,
+              "21": 1484
+            },
+            "sum_session_work_mem_mib": 17887,
+            "structural_peak_mib": 21584.58917236328,
+            "reservation_mib": 21584.58917236328,
+            "rounded_reservation_mib": 21600,
+            "budget_mib": 21607,
+            "logical_temp_read_bytes": 1224015872.0,
+            "logical_temp_write_bytes": 1223753728.0,
+            "logical_temp_read_plus_write_bytes": 2447769600.0,
+            "candidate_counts_after_pareto": {
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 602,
+            "dp_maximum_states": 321,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21584.58917236328,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21584.58917236328
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 1536,
+          "AP_budget_mib": 21095,
+          "selection": {
+            "work_mem_mib": {
+              "18": 14216,
+              "21": 2968
+            },
+            "sum_session_work_mem_mib": 17184,
+            "structural_peak_mib": 20559.58678090618,
+            "reservation_mib": 20559.58678090618,
+            "rounded_reservation_mib": 20576,
+            "budget_mib": 21095,
+            "logical_temp_read_bytes": 1310982144.0,
+            "logical_temp_write_bytes": 1310720000.0,
+            "logical_temp_read_plus_write_bytes": 2621702144.0,
+            "candidate_counts_after_pareto": {
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 602,
+            "dp_maximum_states": 318,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20559.58678090618,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20559.58678090618
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 2048,
+          "AP_budget_mib": 20583,
+          "selection": {
+            "work_mem_mib": {
+              "18": 14216,
+              "21": 2968
+            },
+            "sum_session_work_mem_mib": 17184,
+            "structural_peak_mib": 20559.58678090618,
+            "reservation_mib": 20559.58678090618,
+            "rounded_reservation_mib": 20576,
+            "budget_mib": 20583,
+            "logical_temp_read_bytes": 1310982144.0,
+            "logical_temp_write_bytes": 1310720000.0,
+            "logical_temp_read_plus_write_bytes": 2621702144.0,
+            "candidate_counts_after_pareto": {
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 579,
+            "dp_maximum_states": 307,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20559.58678090618,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20559.58678090618
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 3072,
+          "AP_budget_mib": 19559,
+          "selection": {
+            "work_mem_mib": {
+              "18": 13122,
+              "21": 2968
+            },
+            "sum_session_work_mem_mib": 16090,
+            "structural_peak_mib": 19336.735935569264,
+            "reservation_mib": 19336.735935569264,
+            "rounded_reservation_mib": 19344,
+            "budget_mib": 19559,
+            "logical_temp_read_bytes": 1984954368.0,
+            "logical_temp_write_bytes": 1984692224.0,
+            "logical_temp_read_plus_write_bytes": 3969646592.0,
+            "candidate_counts_after_pareto": {
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 579,
+            "dp_maximum_states": 299,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 19336.735935569264,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 19336.735935569264
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 4096,
+          "AP_budget_mib": 18535,
+          "selection": {
+            "work_mem_mib": {
+              "18": 14216,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 14958,
+            "structural_peak_mib": 18419.744506835938,
+            "reservation_mib": 18419.744506835938,
+            "rounded_reservation_mib": 18432,
+            "budget_mib": 18535,
+            "logical_temp_read_bytes": 2714861568.0,
+            "logical_temp_write_bytes": 2714599424.0,
+            "logical_temp_read_plus_write_bytes": 5429460992.0,
+            "candidate_counts_after_pareto": {
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 556,
+            "dp_maximum_states": 287,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 18419.744506835938,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 18419.744506835938
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        }
+      ],
+      "minimum_spill_over_supplied_SB_candidates_bytes": 1471414272.0,
+      "SB_candidates_attaining_minimum_spill_mib": [
+        32,
+        64,
+        128,
+        256,
+        512,
+        768
+      ]
+    },
+    {
+      "stage": "S3",
+      "AP_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "TP_terminals": 128,
+      "TP_baseline_terminals": 128,
+      "TP_surge_terminals": 0,
+      "B_high_mib": 4096,
+      "SB_candidates_above_bound_excluded": [
+        6144,
+        8192
+      ],
+      "pinned_running_WM_mib": {},
+      "per_SB_minimum_spill": [
+        {
+          "SB_mib": 32,
+          "AP_budget_mib": 22599,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 7655,
+              "21": 1484
+            },
+            "sum_session_work_mem_mib": 13471,
+            "structural_peak_mib": 22528.850564777615,
+            "reservation_mib": 22528.850564777615,
+            "rounded_reservation_mib": 22560,
+            "budget_mib": 22599,
+            "logical_temp_read_bytes": 8784060416.0,
+            "logical_temp_write_bytes": 8783798272.0,
+            "logical_temp_read_plus_write_bytes": 17567858688.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 32898,
+            "dp_maximum_states": 1163,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 22528.850564777615,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 22528.850564777615
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 64,
+          "AP_budget_mib": 22567,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 7655,
+              "21": 1484
+            },
+            "sum_session_work_mem_mib": 13471,
+            "structural_peak_mib": 22528.850564777615,
+            "reservation_mib": 22528.850564777615,
+            "rounded_reservation_mib": 22560,
+            "budget_mib": 22567,
+            "logical_temp_read_bytes": 8784060416.0,
+            "logical_temp_write_bytes": 8783798272.0,
+            "logical_temp_read_plus_write_bytes": 17567858688.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 32852,
+            "dp_maximum_states": 1161,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 22528.850564777615,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 22528.850564777615
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 128,
+          "AP_budget_mib": 22503,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1100,
+              "18": 7655,
+              "21": 1484
+            },
+            "sum_session_work_mem_mib": 13397,
+            "structural_peak_mib": 22443.166131794216,
+            "reservation_mib": 22443.166131794216,
+            "rounded_reservation_mib": 22480,
+            "budget_mib": 22503,
+            "logical_temp_read_bytes": 8980144128.0,
+            "logical_temp_write_bytes": 8979619840.0,
+            "logical_temp_read_plus_write_bytes": 17959763968.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 32760,
+            "dp_maximum_states": 1157,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 22443.166131794216,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 22443.166131794216
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 256,
+          "AP_budget_mib": 22375,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 7655,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 12729,
+            "structural_peak_mib": 21786.850564777615,
+            "reservation_mib": 21786.850564777615,
+            "rounded_reservation_mib": 21808,
+            "budget_mib": 22375,
+            "logical_temp_read_bytes": 9252020224.0,
+            "logical_temp_write_bytes": 9251758080.0,
+            "logical_temp_read_plus_write_bytes": 18503778304.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 32599,
+            "dp_maximum_states": 1149,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21786.850564777615,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21786.850564777615
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 512,
+          "AP_budget_mib": 22119,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 7655,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 12729,
+            "structural_peak_mib": 21786.850564777615,
+            "reservation_mib": 21786.850564777615,
+            "rounded_reservation_mib": 21808,
+            "budget_mib": 22119,
+            "logical_temp_read_bytes": 9252020224.0,
+            "logical_temp_write_bytes": 9251758080.0,
+            "logical_temp_read_plus_write_bytes": 18503778304.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 32231,
+            "dp_maximum_states": 1133,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21786.850564777615,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21786.850564777615
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 768,
+          "AP_budget_mib": 21863,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 7655,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 12729,
+            "structural_peak_mib": 21786.850564777615,
+            "reservation_mib": 21786.850564777615,
+            "rounded_reservation_mib": 21808,
+            "budget_mib": 21863,
+            "logical_temp_read_bytes": 9252020224.0,
+            "logical_temp_write_bytes": 9251758080.0,
+            "logical_temp_read_plus_write_bytes": 18503778304.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 31863,
+            "dp_maximum_states": 1117,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21786.850564777615,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21786.850564777615
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 1024,
+          "AP_budget_mib": 21607,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 5468,
+              "21": 2968
+            },
+            "sum_session_work_mem_mib": 12768,
+            "structural_peak_mib": 21492.41966074727,
+            "reservation_mib": 21492.41966074727,
+            "rounded_reservation_mib": 21520,
+            "budget_mib": 21607,
+            "logical_temp_read_bytes": 9685245952.0,
+            "logical_temp_write_bytes": 9684983808.0,
+            "logical_temp_read_plus_write_bytes": 19370229760.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 31495,
+            "dp_maximum_states": 1101,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21492.41966074727,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21492.41966074727
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 1536,
+          "AP_budget_mib": 21095,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 6561,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 11635,
+            "structural_peak_mib": 20565.552728473904,
+            "reservation_mib": 20565.552728473904,
+            "rounded_reservation_mib": 20592,
+            "budget_mib": 21095,
+            "logical_temp_read_bytes": 10161659904.0,
+            "logical_temp_write_bytes": 10161397760.0,
+            "logical_temp_read_plus_write_bytes": 20323057664.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 30759,
+            "dp_maximum_states": 1069,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20565.552728473904,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20565.552728473904
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 2048,
+          "AP_budget_mib": 20583,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1100,
+              "18": 6561,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 11561,
+            "structural_peak_mib": 20479.868295490505,
+            "reservation_mib": 20479.868295490505,
+            "rounded_reservation_mib": 20512,
+            "budget_mib": 20583,
+            "logical_temp_read_bytes": 10357743616.0,
+            "logical_temp_write_bytes": 10357219328.0,
+            "logical_temp_read_plus_write_bytes": 20714962944.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 30046,
+            "dp_maximum_states": 1037,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20479.868295490505,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20479.868295490505
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 3072,
+          "AP_budget_mib": 19559,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 5468,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 10542,
+            "structural_peak_mib": 19352.57738667703,
+            "reservation_mib": 19352.57738667703,
+            "rounded_reservation_mib": 19376,
+            "budget_mib": 19559,
+            "logical_temp_read_bytes": 11089125376.0,
+            "logical_temp_write_bytes": 11088863232.0,
+            "logical_temp_read_plus_write_bytes": 22177988608.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 28597,
+            "dp_maximum_states": 973,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 19352.57738667703,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 19352.57738667703
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 4096,
+          "AP_budget_mib": 18535,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 4374,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 9448,
+            "structural_peak_mib": 18141.155053913357,
+            "reservation_mib": 18141.155053913357,
+            "rounded_reservation_mib": 18160,
+            "budget_mib": 18535,
+            "logical_temp_read_bytes": 12029173760.0,
+            "logical_temp_write_bytes": 12028911616.0,
+            "logical_temp_read_plus_write_bytes": 24058085376.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 27171,
+            "dp_maximum_states": 909,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 18141.155053913357,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 18141.155053913357
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        }
+      ],
+      "minimum_spill_over_supplied_SB_candidates_bytes": 17567858688.0,
+      "SB_candidates_attaining_minimum_spill_mib": [
+        32,
+        64
+      ]
+    },
+    {
+      "stage": "S4",
+      "AP_queries": [
+        2,
+        9,
+        13,
+        18,
+        21
+      ],
+      "TP_terminals": 128,
+      "TP_baseline_terminals": 128,
+      "TP_surge_terminals": 0,
+      "B_high_mib": 4096,
+      "SB_candidates_above_bound_excluded": [
+        6144,
+        8192
+      ],
+      "pinned_running_WM_mib": {},
+      "per_SB_minimum_spill": [
+        {
+          "SB_mib": 32,
+          "AP_budget_mib": 22599,
+          "selection": {
+            "work_mem_mib": {
+              "2": 36,
+              "9": 3158,
+              "13": 1100,
+              "18": 7655,
+              "21": 1484
+            },
+            "sum_session_work_mem_mib": 13433,
+            "structural_peak_mib": 22554.40832692361,
+            "reservation_mib": 22554.40832692361,
+            "rounded_reservation_mib": 22592,
+            "budget_mib": 22599,
+            "logical_temp_read_bytes": 9004785664.0,
+            "logical_temp_write_bytes": 9003999232.0,
+            "logical_temp_read_plus_write_bytes": 18008784896.0,
+            "candidate_counts_after_pareto": {
+              "2": 22,
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 47756,
+            "dp_maximum_states": 1163,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 22554.40832692361,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 22554.40832692361
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 64,
+          "AP_budget_mib": 22567,
+          "selection": {
+            "work_mem_mib": {
+              "2": 20,
+              "9": 3158,
+              "13": 1100,
+              "18": 7655,
+              "21": 1484
+            },
+            "sum_session_work_mem_mib": 13417,
+            "structural_peak_mib": 22517.625367939236,
+            "reservation_mib": 22517.625367939236,
+            "rounded_reservation_mib": 22560,
+            "budget_mib": 22567,
+            "logical_temp_read_bytes": 9032212480.0,
+            "logical_temp_write_bytes": 9031426048.0,
+            "logical_temp_read_plus_write_bytes": 18063638528.0,
+            "candidate_counts_after_pareto": {
+              "2": 22,
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 47710,
+            "dp_maximum_states": 1161,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 22517.625367939236,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 22517.625367939236
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 128,
+          "AP_budget_mib": 22503,
+          "selection": {
+            "work_mem_mib": {
+              "2": 21,
+              "9": 3158,
+              "13": 1027,
+              "18": 7655,
+              "21": 1484
+            },
+            "sum_session_work_mem_mib": 13345,
+            "structural_peak_mib": 22443.972108661892,
+            "reservation_mib": 22443.972108661892,
+            "rounded_reservation_mib": 22496,
+            "budget_mib": 22503,
+            "logical_temp_read_bytes": 9215975424.0,
+            "logical_temp_write_bytes": 9215188992.0,
+            "logical_temp_read_plus_write_bytes": 18431164416.0,
+            "candidate_counts_after_pareto": {
+              "2": 22,
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 47618,
+            "dp_maximum_states": 1157,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 22443.972108661892,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 22443.972108661892
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 256,
+          "AP_budget_mib": 22375,
+          "selection": {
+            "work_mem_mib": {
+              "2": 63,
+              "9": 3158,
+              "13": 1174,
+              "18": 7655,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 12792,
+            "structural_peak_mib": 21951.81760579324,
+            "reservation_mib": 21951.81760579324,
+            "rounded_reservation_mib": 21984,
+            "budget_mib": 22375,
+            "logical_temp_read_bytes": 9252020224.0,
+            "logical_temp_write_bytes": 9251758080.0,
+            "logical_temp_read_plus_write_bytes": 18503778304.0,
+            "candidate_counts_after_pareto": {
+              "2": 22,
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 47434,
+            "dp_maximum_states": 1149,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21951.81760579324,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21951.81760579324
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 512,
+          "AP_budget_mib": 22119,
+          "selection": {
+            "work_mem_mib": {
+              "2": 63,
+              "9": 3158,
+              "13": 1174,
+              "18": 7655,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 12792,
+            "structural_peak_mib": 21951.81760579324,
+            "reservation_mib": 21951.81760579324,
+            "rounded_reservation_mib": 21984,
+            "budget_mib": 22119,
+            "logical_temp_read_bytes": 9252020224.0,
+            "logical_temp_write_bytes": 9251758080.0,
+            "logical_temp_read_plus_write_bytes": 18503778304.0,
+            "candidate_counts_after_pareto": {
+              "2": 22,
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 47066,
+            "dp_maximum_states": 1133,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21951.81760579324,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21951.81760579324
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 768,
+          "AP_budget_mib": 21863,
+          "selection": {
+            "work_mem_mib": {
+              "2": 36,
+              "9": 3158,
+              "13": 1100,
+              "18": 7655,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 12691,
+            "structural_peak_mib": 21812.40832692361,
+            "reservation_mib": 21812.40832692361,
+            "rounded_reservation_mib": 21840,
+            "budget_mib": 21863,
+            "logical_temp_read_bytes": 9472745472.0,
+            "logical_temp_write_bytes": 9471959040.0,
+            "logical_temp_read_plus_write_bytes": 18944704512.0,
+            "candidate_counts_after_pareto": {
+              "2": 22,
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 46698,
+            "dp_maximum_states": 1117,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21812.40832692361,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21812.40832692361
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 1024,
+          "AP_budget_mib": 21607,
+          "selection": {
+            "work_mem_mib": {
+              "2": 63,
+              "9": 3158,
+              "13": 1174,
+              "18": 6561,
+              "21": 1484
+            },
+            "sum_session_work_mem_mib": 12440,
+            "structural_peak_mib": 21472.51976948953,
+            "reservation_mib": 21472.51976948953,
+            "rounded_reservation_mib": 21520,
+            "budget_mib": 21607,
+            "logical_temp_read_bytes": 9693700096.0,
+            "logical_temp_write_bytes": 9693437952.0,
+            "logical_temp_read_plus_write_bytes": 19387138048.0,
+            "candidate_counts_after_pareto": {
+              "2": 22,
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 46330,
+            "dp_maximum_states": 1101,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21472.51976948953,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21472.51976948953
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 1536,
+          "AP_budget_mib": 21095,
+          "selection": {
+            "work_mem_mib": {
+              "2": 63,
+              "9": 3158,
+              "13": 1174,
+              "18": 6561,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 11698,
+            "structural_peak_mib": 20730.51976948953,
+            "reservation_mib": 20730.51976948953,
+            "rounded_reservation_mib": 20768,
+            "budget_mib": 21095,
+            "logical_temp_read_bytes": 10161659904.0,
+            "logical_temp_write_bytes": 10161397760.0,
+            "logical_temp_read_plus_write_bytes": 20323057664.0,
+            "candidate_counts_after_pareto": {
+              "2": 22,
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 45594,
+            "dp_maximum_states": 1069,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20730.51976948953,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20730.51976948953
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 2048,
+          "AP_budget_mib": 20583,
+          "selection": {
+            "work_mem_mib": {
+              "2": 11,
+              "9": 3158,
+              "13": 1100,
+              "18": 6561,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 11572,
+            "structural_peak_mib": 20543.00401478982,
+            "reservation_mib": 20543.00401478982,
+            "rounded_reservation_mib": 20576,
+            "budget_mib": 20583,
+            "logical_temp_read_bytes": 10422870016.0,
+            "logical_temp_write_bytes": 10422083584.0,
+            "logical_temp_read_plus_write_bytes": 20844953600.0,
+            "candidate_counts_after_pareto": {
+              "2": 22,
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 44858,
+            "dp_maximum_states": 1037,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20543.00401478982,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20543.00401478982
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 3072,
+          "AP_budget_mib": 19559,
+          "selection": {
+            "work_mem_mib": {
+              "2": 63,
+              "9": 3158,
+              "13": 1174,
+              "18": 5468,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 10605,
+            "structural_peak_mib": 19517.544427692654,
+            "reservation_mib": 19517.544427692654,
+            "rounded_reservation_mib": 19552,
+            "budget_mib": 19559,
+            "logical_temp_read_bytes": 11089125376.0,
+            "logical_temp_write_bytes": 11088863232.0,
+            "logical_temp_read_plus_write_bytes": 22177988608.0,
+            "candidate_counts_after_pareto": {
+              "2": 22,
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 43386,
+            "dp_maximum_states": 973,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 19517.544427692654,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 19517.544427692654
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 4096,
+          "AP_budget_mib": 18535,
+          "selection": {
+            "work_mem_mib": {
+              "2": 63,
+              "9": 3158,
+              "13": 1174,
+              "18": 4374,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 9511,
+            "structural_peak_mib": 18306.122094928982,
+            "reservation_mib": 18306.122094928982,
+            "rounded_reservation_mib": 18336,
+            "budget_mib": 18535,
+            "logical_temp_read_bytes": 12029173760.0,
+            "logical_temp_write_bytes": 12028911616.0,
+            "logical_temp_read_plus_write_bytes": 24058085376.0,
+            "candidate_counts_after_pareto": {
+              "2": 22,
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 41914,
+            "dp_maximum_states": 909,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 18306.122094928982,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 18306.122094928982
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        }
+      ],
+      "minimum_spill_over_supplied_SB_candidates_bytes": 18008784896.0,
+      "SB_candidates_attaining_minimum_spill_mib": [
+        32
+      ]
+    },
+    {
+      "stage": "S5",
+      "AP_queries": [
+        9,
+        13,
+        18,
+        21
+      ],
+      "TP_terminals": 144,
+      "TP_baseline_terminals": 128,
+      "TP_surge_terminals": 16,
+      "B_high_mib": 4096,
+      "SB_candidates_above_bound_excluded": [
+        6144,
+        8192
+      ],
+      "pinned_running_WM_mib": {},
+      "per_SB_minimum_spill": [
+        {
+          "SB_mib": 32,
+          "AP_budget_mib": 22599,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 7655,
+              "21": 1484
+            },
+            "sum_session_work_mem_mib": 13471,
+            "structural_peak_mib": 22528.850564777615,
+            "reservation_mib": 22528.850564777615,
+            "rounded_reservation_mib": 22560,
+            "budget_mib": 22599,
+            "logical_temp_read_bytes": 8784060416.0,
+            "logical_temp_write_bytes": 8783798272.0,
+            "logical_temp_read_plus_write_bytes": 17567858688.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 32898,
+            "dp_maximum_states": 1163,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 22528.850564777615,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 22528.850564777615
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 64,
+          "AP_budget_mib": 22567,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 7655,
+              "21": 1484
+            },
+            "sum_session_work_mem_mib": 13471,
+            "structural_peak_mib": 22528.850564777615,
+            "reservation_mib": 22528.850564777615,
+            "rounded_reservation_mib": 22560,
+            "budget_mib": 22567,
+            "logical_temp_read_bytes": 8784060416.0,
+            "logical_temp_write_bytes": 8783798272.0,
+            "logical_temp_read_plus_write_bytes": 17567858688.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 32852,
+            "dp_maximum_states": 1161,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 22528.850564777615,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 22528.850564777615
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 128,
+          "AP_budget_mib": 22503,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1100,
+              "18": 7655,
+              "21": 1484
+            },
+            "sum_session_work_mem_mib": 13397,
+            "structural_peak_mib": 22443.166131794216,
+            "reservation_mib": 22443.166131794216,
+            "rounded_reservation_mib": 22480,
+            "budget_mib": 22503,
+            "logical_temp_read_bytes": 8980144128.0,
+            "logical_temp_write_bytes": 8979619840.0,
+            "logical_temp_read_plus_write_bytes": 17959763968.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 32760,
+            "dp_maximum_states": 1157,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 22443.166131794216,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 22443.166131794216
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 256,
+          "AP_budget_mib": 22375,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 7655,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 12729,
+            "structural_peak_mib": 21786.850564777615,
+            "reservation_mib": 21786.850564777615,
+            "rounded_reservation_mib": 21808,
+            "budget_mib": 22375,
+            "logical_temp_read_bytes": 9252020224.0,
+            "logical_temp_write_bytes": 9251758080.0,
+            "logical_temp_read_plus_write_bytes": 18503778304.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 32599,
+            "dp_maximum_states": 1149,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21786.850564777615,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21786.850564777615
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 512,
+          "AP_budget_mib": 22119,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 7655,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 12729,
+            "structural_peak_mib": 21786.850564777615,
+            "reservation_mib": 21786.850564777615,
+            "rounded_reservation_mib": 21808,
+            "budget_mib": 22119,
+            "logical_temp_read_bytes": 9252020224.0,
+            "logical_temp_write_bytes": 9251758080.0,
+            "logical_temp_read_plus_write_bytes": 18503778304.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 32231,
+            "dp_maximum_states": 1133,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21786.850564777615,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21786.850564777615
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 768,
+          "AP_budget_mib": 21863,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 7655,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 12729,
+            "structural_peak_mib": 21786.850564777615,
+            "reservation_mib": 21786.850564777615,
+            "rounded_reservation_mib": 21808,
+            "budget_mib": 21863,
+            "logical_temp_read_bytes": 9252020224.0,
+            "logical_temp_write_bytes": 9251758080.0,
+            "logical_temp_read_plus_write_bytes": 18503778304.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 31863,
+            "dp_maximum_states": 1117,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21786.850564777615,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21786.850564777615
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 1024,
+          "AP_budget_mib": 21607,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 5468,
+              "21": 2968
+            },
+            "sum_session_work_mem_mib": 12768,
+            "structural_peak_mib": 21492.41966074727,
+            "reservation_mib": 21492.41966074727,
+            "rounded_reservation_mib": 21520,
+            "budget_mib": 21607,
+            "logical_temp_read_bytes": 9685245952.0,
+            "logical_temp_write_bytes": 9684983808.0,
+            "logical_temp_read_plus_write_bytes": 19370229760.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 31495,
+            "dp_maximum_states": 1101,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 21492.41966074727,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 21492.41966074727
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 1536,
+          "AP_budget_mib": 21095,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 6561,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 11635,
+            "structural_peak_mib": 20565.552728473904,
+            "reservation_mib": 20565.552728473904,
+            "rounded_reservation_mib": 20592,
+            "budget_mib": 21095,
+            "logical_temp_read_bytes": 10161659904.0,
+            "logical_temp_write_bytes": 10161397760.0,
+            "logical_temp_read_plus_write_bytes": 20323057664.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 30759,
+            "dp_maximum_states": 1069,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20565.552728473904,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20565.552728473904
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 2048,
+          "AP_budget_mib": 20583,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1100,
+              "18": 6561,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 11561,
+            "structural_peak_mib": 20479.868295490505,
+            "reservation_mib": 20479.868295490505,
+            "rounded_reservation_mib": 20512,
+            "budget_mib": 20583,
+            "logical_temp_read_bytes": 10357743616.0,
+            "logical_temp_write_bytes": 10357219328.0,
+            "logical_temp_read_plus_write_bytes": 20714962944.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 30046,
+            "dp_maximum_states": 1037,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 20479.868295490505,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 20479.868295490505
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 3072,
+          "AP_budget_mib": 19559,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 5468,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 10542,
+            "structural_peak_mib": 19352.57738667703,
+            "reservation_mib": 19352.57738667703,
+            "rounded_reservation_mib": 19376,
+            "budget_mib": 19559,
+            "logical_temp_read_bytes": 11089125376.0,
+            "logical_temp_write_bytes": 11088863232.0,
+            "logical_temp_read_plus_write_bytes": 22177988608.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 28597,
+            "dp_maximum_states": 973,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 19352.57738667703,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 19352.57738667703
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        },
+        {
+          "SB_mib": 4096,
+          "AP_budget_mib": 18535,
+          "selection": {
+            "work_mem_mib": {
+              "9": 3158,
+              "13": 1174,
+              "18": 4374,
+              "21": 742
+            },
+            "sum_session_work_mem_mib": 9448,
+            "structural_peak_mib": 18141.155053913357,
+            "reservation_mib": 18141.155053913357,
+            "rounded_reservation_mib": 18160,
+            "budget_mib": 18535,
+            "logical_temp_read_bytes": 12029173760.0,
+            "logical_temp_write_bytes": 12028911616.0,
+            "logical_temp_read_plus_write_bytes": 24058085376.0,
+            "candidate_counts_after_pareto": {
+              "9": 6,
+              "13": 51,
+              "18": 27,
+              "21": 23
+            },
+            "grid_mib": 16,
+            "dp_transitions": 27171,
+            "dp_maximum_states": 909,
+            "objective": "min logical temp R+W, then reservation, then WM",
+            "optimum_scope": "modeled candidates within individually rounded reservation budget",
+            "physical_memory_safety_qualified": false,
+            "automatic_recommendation_qualified": false,
+            "modeled_structural_peak_mib": 18141.155053913357,
+            "modeled_structural_peak_exceeds_AP_budget": false,
+            "budget_accounting_basis": "structural_reservation",
+            "charged_reservation_mib": 18141.155053913357
+          },
+          "status": "modeled_minimum_spill_at_this_SB"
+        }
+      ],
+      "minimum_spill_over_supplied_SB_candidates_bytes": 17567858688.0,
+      "SB_candidates_attaining_minimum_spill_mib": [
+        32,
+        64
+      ]
+    }
+  ],
+  "shared_pool_mib": 22631,
+  "fixed_overhead_mib": 0,
+  "memory_accounting_basis": "structural_reservation",
+  "grid_mib": 16,
+  "SB_upper_bounds_mib": {
+    "TP128": 4096,
+    "S5_128_plus_16": 4096
+  },
+  "objective": "for each SB, minimize sum query logical temp reads plus writes under residual AP budget",
+  "curve_points_omitted_at_decision_layer": [
+    {
+      "query_id": 9,
+      "work_mem_mib": 1,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 2,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 3,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 4,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 5,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 6,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 8,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 9,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 10,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 11,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 15,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 16,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 17,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 18,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 19,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 20,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 21,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 22,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 30,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 32,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 33,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 34,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 35,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 36,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 38,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 39,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 40,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 41,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 42,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 43,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 60,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 67,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 68,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 71,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 81,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 85,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 119,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 127,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 131,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 133,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 134,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 135,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 158,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 237,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 253,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 261,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 265,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 267,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 268,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 269,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 316,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 474,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 9,
+      "work_mem_mib": 506,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 1,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 2,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 3,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 4,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 5,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 6,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 7,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 8,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 9,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 11,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 12,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 13,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 14,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 15,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 16,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 17,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 18,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 22,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 23,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 24,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 25,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 26,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 27,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 30,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 31,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 32,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 33,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 34,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 36,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 43,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 45,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 46,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 49,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 51,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 52,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 53,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 62,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 64,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 77,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 86,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 90,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 92,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 99,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 103,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 104,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 105,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 107,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 123,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 138,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 153,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 169,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 171,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 179,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 184,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 199,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 206,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 207,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 208,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 210,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 214,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 230,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 244,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 245,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 341,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 357,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 390,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 406,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 410,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 412,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 413,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 414,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 423,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    },
+    {
+      "query_id": 18,
+      "work_mem_mib": 489,
+      "reason": "explicit_conservative_next_trial_failure_domain"
+    }
+  ],
+  "failure_domain_policy_not_monotonicity_or_repair_proof": true,
+  "stage_semantics": "separate configuration planning snapshots, explicit pins if provided",
+  "future_cohort_or_greedy_previous_stage_pins_injected": false,
+  "uses_TP_TPS_or_AP_latency_for_step3_selection": false,
+  "final_SB_for_TP_performance_selected": false,
+  "all_five_stage_configs_automatically_change_running_queries": false,
+  "DP_calls_after_duplicate_stage_cache": 44,
+  "physical_memory_safety_qualified": false,
+  "configuration_applied": false,
+  "automatic_recommendation_qualified": false,
+  "created_at": "2026-11-12T23:48:05.866520+08:00",
+  "curve_forecast_prepared_at": "2026-11-12T20:34:37.084125+08:00",
+  "spill_curves_sha256": "c4aa100bed44a0a3c755a0681f3e199d1c23c17171969eb160dbe3452113d4b1",
+  "cache_boundary_sha256": "83d24c7a84a1481a4d4e8e11e48b3d8f6b79893333213fea0a751e725558e21b",
+  "curve_TTL_renewed": false,
+  "statistics_expires_unix": 1794502434.3936837,
+  "frozen_replay_only": false,
+  "requested_SB_grid_mib": [
+    32,
+    64,
+    128,
+    256,
+    512,
+    768,
+    1024,
+    1536,
+    2048,
+    3072,
+    4096,
+    6144,
+    8192
+  ],
+  "compute_seconds": 3.583899288903922,
+  "observed_failure_domain_sources": [
+    {
+      "SQL_sha256": "73a6284a5ae42ee1982e78e3d2daf9efd533709eda596a3db781bff7edef9588",
+      "failed_WM_mib": 512,
+      "reason": "QueryCanceled: canceling statement due to statement timeout\n",
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q18_wm512/MEASUREMENT.json",
+      "sha256": "85850eeb1639e018f61958810af1745e2fe0d9c6d4038e7537df9ba5a78ee3f2"
+    },
+    {
+      "SQL_sha256": "64ff62be29956ff33193b61d5eead6f026ce17cda29cc215909d0cf6b0f597be",
+      "failed_WM_mib": 512,
+      "reason": "ConfigurationLimitExceeded: temporary file size exceeds temp_file_limit (16777216kB)\n",
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q9_wm512/MEASUREMENT.json",
+      "sha256": "7e52b6449c7dc6bcbac84d8026e71fac1ca41b6a350c566f34aecd94c6052095"
+    }
+  ],
+  "pool_is_experimental_policy_not_physical_safety_proof": false,
+  "pool_derived_from_machine_minus_reserves": true,
+  "memory_budget_scenario": "host_after_reserve",
+  "memory_budget": {
+    "schema": "jmt.capacity-minus-reserves-budget/v1",
+    "effective_capacity_mib": 31055.7890625,
+    "physical_capacity_mib": 31055.7890625,
+    "host_reserve_mib": 3106,
+    "observed_host_non_database_mib": 1675.7373046875,
+    "non_SB_shared_ceiling_mib": 2577.0,
+    "database_fixed_reserve_mib": 3437,
+    "TP_and_common_dynamic_reserve_mib": 1881,
+    "observed_TP_only_dynamic_max_mib": 1625,
+    "host_database_ceiling_after_reserve_mib": 27949,
+    "current_max_process_memory_mib": 20480,
+    "current_max_dynamic_memory_mib": 8850,
+    "policy": {
+      "host_safety_fraction": 0.1,
+      "host_min_reserve_mib": 2048,
+      "host_extra_headroom_mib": 512,
+      "dynamic_headroom_mib": 256,
+      "host_reserve_override_mib": null,
+      "reserve_values_are_initial_policy_not_measured_peak_guarantees": true
+    },
+    "scenarios": {
+      "current_instance": {
+        "shared_pool_mib": 15162,
+        "AP_dynamic_hard_cap_mib": 6969,
+        "pool_formula": "min(host_after_reserve, current_max_process_memory) - DB_fixed - TP_common_dynamic_reserve",
+        "AP_budget_formula": "min(pool - candidate_SB, startup_max_dynamic_memory - TP_common_dynamic_reserve)",
+        "requires_database_restart_or_memory_protector_change": false
+      },
+      "host_after_reserve": {
+        "shared_pool_mib": 22631,
+        "AP_dynamic_hard_cap_mib": null,
+        "pool_formula": "effective_physical_capacity - explicit_host_reserve - DB_fixed - TP_common_dynamic_reserve",
+        "AP_budget_formula": "pool - candidate_SB",
+        "required_max_process_memory_mib_at_least": 27949,
+        "requires_database_restart_or_memory_protector_change": true,
+        "preconditions": [
+          "raise max_process_memory if below the derived host database ceiling",
+          "initialize/recompute the native dynamic-memory protector for the chosen SB; shrinking active SB alone is insufficient",
+          "verify TP common-memory reserve and concurrent AP physical peaks before apply"
+        ],
+        "scenario_not_currently_executable_configuration": true
+      }
+    },
+    "fixed_16_GiB_experimental_pool_used": false,
+    "MemAvailable_used_as_total_pool": false,
+    "SB_already_subtracted_from_pool": false,
+    "reserve_policy_physically_validated": false,
+    "configuration_applied": false,
+    "created_at": "2026-11-12T23:47:04.621188+08:00",
+    "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+    "postmaster_identity": {
+      "start": "2026-10-20 10:52:53.974417+08"
+    },
+    "postmaster_pid": 2296200,
+    "observation_path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/memory_v1/MEMORY_OBSERVATION.json",
+    "observation_sha256": "fe073b63ba83623a4ea82cac362481520643fb2820cfb495a2f1fc4dfebc713c",
+    "model_code_sha256": {
+      "tools/collect_machine_memory_budget.py": "05e748971892d62e27ec54bb2d3ead35abd16f41330e29a07026eee0c60feb1a",
+      "src/jmt/innovation_3_search/memory_budget.py": "027dea305028d49ec22a0d02d9a65466c14b94088e1bc8818b0cd362c314588d",
+      "src/jmt/innovation_3_search/legacy_memory_budget.py": "d755403bdcbd8f50928b6ae81bbb8bc7c5fa4b4f07af8cc859bd046f6b0993dc",
+      "src/jmt/common/db.py": "1e825a3198d2f351637fcb772c7f34048b1c3fb6f8821e5eb2bf249850e99580",
+      "src/jmt/common/memory_units.py": "f5b8372f51c881bfbc15ebfbe500e765f43dfaab46b0295290bc384001622e35"
+    }
+  },
+  "reserve_policy_and_structural_model_not_physical_safety_proof": true,
+  "DP_grid_is_accounting_quantization_not_candidate_generation": true,
+  "new_target_query_or_TPS_measurements": false,
+  "live_curve_input_validation": {
+    "checked_at": "2026-11-12T23:48:01.621895+08:00",
+    "source_artifact_hashes_verified": 509,
+    "current_machine_verified": true,
+    "current_catalog_verified": true,
+    "current_statistics_watermarks_verified": true,
+    "statistics_valid_from_unix": 1794481301.5772507,
+    "statistics_expires_unix": 1794502434.3936837,
+    "statistic_or_curve_TTL_renewed": false,
+    "spill_predictions_refit": false,
+    "new_target_AP_queries_executed": false
+  },
+  "source_artifacts": [
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/operator_candidates_machine_budget_20261112_2025/operator_curves_v2/SPILL_CURVES.json",
+      "sha256": "c4aa100bed44a0a3c755a0681f3e199d1c23c17171969eb160dbe3452113d4b1"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/miss_plateau_20261112_1740/boundary_v2/TP_CACHE_BOUNDARY.json",
+      "sha256": "83d24c7a84a1481a4d4e8e11e48b3d8f6b79893333213fea0a751e725558e21b"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/memory_v1/MEMORY_BUDGET.json",
+      "sha256": "6da55940a83f197b407f2e744cdb9279b60667789e4fb2b9ac47cc941ad6d6ae"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/innovation4_config_evaluation_20261112_2344/memory_v1/MEMORY_OBSERVATION.json",
+      "sha256": "fe073b63ba83623a4ea82cac362481520643fb2820cfb495a2f1fc4dfebc713c"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q18_wm512/MEASUREMENT.json",
+      "sha256": "85850eeb1639e018f61958810af1745e2fe0d9c6d4038e7537df9ba5a78ee3f2"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q18_wm512/FREEZE.json",
+      "sha256": "6d9f7713bbea6136740d408fad5ee604ee642fe304e93b6aecf7817e4cfb7a16"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q9_wm512/MEASUREMENT.json",
+      "sha256": "7e52b6449c7dc6bcbac84d8026e71fac1ca41b6a350c566f34aecd94c6052095"
+    },
+    {
+      "path": "/root/JMT_AP_STAGE_CANDIDATE_20261111/results/max_tps_joint_20261112_090809/full_ap_v1/q9_wm512/FREEZE.json",
+      "sha256": "f522b56f95653db300c3ac7f6e07f0586f8e3aa3b1e2e52ede625eab3c20e3eb"
+    }
+  ],
+  "model_code_sha256": {
+    "src/jmt/innovation_2_spill/curves.py": "d7f0f385a3053d7891c17f6862ce7839c0117b4791c072b9317c2a38281b9563",
+    "src/jmt/innovation_3_search/spill_allocator.py": "ae2e0728f58d683636c3127a7eb762c3716161a1da3fc022058e58fc2ce01e36",
+    "src/jmt/innovation_3_search/spill_budget_search.py": "03fc4f18d5bbd9d4f905c683c090a5a9547f835b3c2014de2e5598106b1eac65",
+    "src/jmt/innovation_3_search/curve_input_gate.py": "84f2a8afdc191501b21bb6a85178e89e925bc92aab5b22ca53cb0936465c4cb7",
+    "src/jmt/innovation_3_search/frontier_explanation.py": "1fd1f74bd5566a12f5727284427d36d471bea2aac7606ed3623f4d019912fe71",
+    "src/jmt/innovation_3_search/memory_budget.py": "027dea305028d49ec22a0d02d9a65466c14b94088e1bc8818b0cd362c314588d",
+    "src/jmt/innovation_3_search/legacy_memory_budget.py": "d755403bdcbd8f50928b6ae81bbb8bc7c5fa4b4f07af8cc859bd046f6b0993dc",
+    "src/jmt/common/memory_units.py": "f5b8372f51c881bfbc15ebfbe500e765f43dfaab46b0295290bc384001622e35",
+    "src/jmt/common/db.py": "1e825a3198d2f351637fcb772c7f34048b1c3fb6f8821e5eb2bf249850e99580",
+    "src/jmt/common/machine.py": "ef0f3f7c28f28d42179ecc2ec323fbc8d6fdf3a03de05e12b9e45578e9fa510b",
+    "src/jmt/innovation_2_spill/catalog.py": "db9b3859aa2aa384c4fdb21770f70583e9b10cf39783f6c8850774161715f616",
+    "tools/export_ap_spill_curves.py": "1e671b1bcd6d8115ffeb260efe0866a32d20d73636a2c32034f3c92a9cd24d7e",
+    "tools/search_sb_spill_budgets.py": "bfa816489d29c80601001aa108f2b67ebbdd27f09381a141b357038486339e4a"
+  }
+}
