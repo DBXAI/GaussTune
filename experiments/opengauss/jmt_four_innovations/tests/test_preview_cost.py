@@ -73,6 +73,22 @@ class PreviewCostTests(unittest.TestCase):
         result = solve_preview_joint_resources(**self.params())
         self.assertAlmostEqual(result["predicted_tps"], 7500)
 
+    def test_driver_CPU_explicit_and_legacy_unknown_not_declared_zero(self):
+        old = solve_preview_joint_resources(**self.params())
+        self.assertIsNone(old["TP_driver_CPU_seconds_per_transaction"])
+        params = self.params()
+        params["tp_driver_cpu_seconds_per_tx"] = .0001
+        result = solve_preview_joint_resources(**params)
+        self.assertTrue(result["TP_colocated_driver_CPU_accounted"])
+        self.assertAlmostEqual(result["TP_total_CPU_seconds_per_transaction"], .002)
+        self.assertAlmostEqual(result["predicted_tps"], 7500)
+
+    def test_unaccounted_driver_can_exceed_physical_CPU_budget(self):
+        params = self.params()
+        params["tp_driver_cpu_seconds_per_tx"] = .001
+        with self.assertRaisesRegex(ValueError, "capacity"):
+            solve_preview_joint_resources(**params)
+
     def test_media_cap_slows_AP_instead_of_extrapolating_low_QD_grid(self):
         params = self.params()
         params["demands"] = [

@@ -1,0 +1,27 @@
+{
+  "created_at": "2026-11-14T21:45:01.486588+08:00",
+  "prediction_sha256": "b1707eb5d9c18d07807c2fe019135f10618d7b4e3de715fec7006f402a16f6ca",
+  "new_statistical_fit_or_target_label_used": false,
+  "fixed_WMs_not_step3_optima": true,
+  "full_AP_SQL_not_simplified": true,
+  "window_seconds": 15,
+  "repeats": 3,
+  "AP_continues_across_stages": true,
+  "stage_semantics": "one continuous trajectory, repeat windows not independent lifecycle repeats",
+  "S5": "128 warmed +16 first-event gated, not flat 144",
+  "safety": "8GiB disk, 3GiB MemAvailable, native dynamic used<=93% threshold; restore SB exactly",
+  "cache_and_native_counters": "diagnostic explicit brackets, not exact TP-owned IO truth",
+  "source_code": {
+    "tools/validate_capacity_TPS_live.py": "6dab3ad264b596c0de2c1f0d47cda9a154ae53f222ea5a083f5c816c422cef52",
+    "tools/measure_current_mixed_five_stages.py": "aea7a292439f2f9ae3289b1f9f6a2d27e582fc803bb9ade6bdacffe178fac608",
+    "tools/collect_current_tp_matrix.py": "caf8aa5f57f81a74b150cc30aac318516e6affedf88ffa4108822ba0a033269b",
+    "tools/current_ap_worker.py": "c9f0b24afc67ce2989277c4f750d2507125cfce70905dbd47788ebc1a9e717cd",
+    "src/jmt/innovation_4_performance/tp_window_observer.py": "3f8310295a2f3d471e83b79a8f1b83ff7469bd605734ec9f282ae672d99ba33c",
+    "src/jmt/innovation_4_performance/phase_bridge.py": "76e2b14857453a4fe7d4f5a950250951b623fc8efca84ccada2c1d0e1b61a41d",
+    "src/jmt/innovation_4_performance/colocated_tp.py": "ee9bb16d2308e322683a748cf59ae893cbc3655158c1f96a94467cad29b02ba8",
+    "src/jmt/innovation_4_performance/preview_cost.py": "7f8ca55997ca26b162d7f7354093bc0b59e2c380b045d0883e49c2526a50832a",
+    "src/jmt/common/process_cpu.py": "8e2cde46fac26e7ab6f0c4f4c4bede5850f1b991f47b39f4a975f40a477a7365"
+  },
+  "probe_overhead_qualified": false,
+  "optimality_validated": false
+}

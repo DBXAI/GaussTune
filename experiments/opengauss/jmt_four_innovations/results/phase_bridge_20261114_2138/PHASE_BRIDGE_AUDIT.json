@@ -1,0 +1,1559 @@
+{
+  "schema": "jmt.frozen-static-vs-prewindow-phase-audit/v1",
+  "created_at": "2026-11-14T22:04:14.582871+08:00",
+  "stages": [
+    {
+      "stage": "S1",
+      "SB_mib": 5120,
+      "actual": {
+        "committed_TPS": 7567.488888888889,
+        "window_TPS": [
+          7571.533333333334,
+          7519.4,
+          7611.533333333334
+        ],
+        "window_TPS_min": 7519.4,
+        "window_TPS_max": 7611.533333333334,
+        "window_TPS_sample_stdev": 46.19963123149322,
+        "scored_seconds": 45.0,
+        "committed_transactions": 340537.0,
+        "CPU_bracket_seconds": 44.99887419,
+        "AP_CPU_cores_by_query_bracketed": {
+          "18": 0.5531721752614807
+        },
+        "AP_CPU_cores_bracketed": 0.5531721752614807,
+        "TP_CPU_seconds_per_commit_proxy": 0.0018691590665625177,
+        "TP_CPU_per_commit_exact_same_window": false,
+        "complete_driver_process_tree_CPU_available": true,
+        "driver_CPU_seconds_per_commit_proxy": 0.0001448916502700147,
+        "missing_driver_CPU_is_not_zero": true,
+        "whole_device_read_bytes_per_second": 113235285.33333333,
+        "whole_device_write_bytes_per_second": 1262387.2,
+        "whole_device_completion_events_per_second": 884.7111111111111,
+        "physical_AP_or_TP_ownership_qualified": false,
+        "independent_trajectory_repeats": false
+      },
+      "historical_TP_static": {
+        "predicted_TPS": 7430.480438570228,
+        "actual_TPS": 7567.488888888889,
+        "signed_relative_error": -0.018104876311060836,
+        "absolute_relative_error": 0.018104876311060836
+      },
+      "fresh_colocated_TP_static": {
+        "predicted_TPS": 7648.415009812886,
+        "actual_TPS": 7567.488888888889,
+        "signed_relative_error": 0.01069392001920444,
+        "absolute_relative_error": 0.01069392001920444
+      },
+      "prewindow_CPU_conditional": {
+        "predicted_TPS": 7622.755906407058,
+        "actual_TPS": 7567.488888888889,
+        "signed_relative_error": 0.007303217530892692,
+        "absolute_relative_error": 0.007303217530892692
+      },
+      "windows": [
+        {
+          "stage": "S1",
+          "repeat": 1,
+          "historical_TP_static": {
+            "predicted_TPS": 7430.480438570228,
+            "actual_TPS": 7571.533333333334,
+            "signed_relative_error": -0.01862936984535568,
+            "absolute_relative_error": 0.01862936984535568
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7648.415009812886,
+            "actual_TPS": 7571.533333333334,
+            "signed_relative_error": 0.010154043189783524,
+            "absolute_relative_error": 0.010154043189783524
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7695.158276274675,
+            "actual_TPS": 7571.533333333334,
+            "signed_relative_error": 0.016327596736197103,
+            "absolute_relative_error": 0.016327596736197103
+          },
+          "probe_AP_CPU_cores": 0.40598424061303257,
+          "target_AP_CPU_cores_bracketed": 0.5758560141239318,
+          "prediction_compute_milliseconds": 2.452728,
+          "forecast_lead_seconds": 2.272219499,
+          "whole_device_MiB_s": 109.54348958333334,
+          "probe_task_IO_submission_MiB_s": 106.24109097385299,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7571.533333333334,
+            "window_TPS": [
+              7571.533333333334
+            ],
+            "window_TPS_min": 7571.533333333334,
+            "window_TPS_max": 7571.533333333334,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 113573.0,
+            "CPU_bracket_seconds": 14.9997116035,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.5758560141239318
+            },
+            "AP_CPU_cores_bracketed": 0.5758560141239318,
+            "TP_CPU_seconds_per_commit_proxy": 0.0018639321668442324,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.0001444418664207162,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 114778112.0,
+            "whole_device_write_bytes_per_second": 86562.13333333333,
+            "whole_device_completion_events_per_second": 889.9333333333333,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.0020028521499907107,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.002008374033264949,
+            "mixed_TP_service_ratio_vs_calibration": 1.00275700993419,
+            "unexplained_capacity_cores_proxy": 0.21767304720939895,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7679.916056672738,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7611.819803927157,
+            "actual_TPS": 7571.533333333334,
+            "signed_relative_error": 0.005320780985862417,
+            "absolute_relative_error": 0.005320780985862417,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        },
+        {
+          "stage": "S1",
+          "repeat": 2,
+          "historical_TP_static": {
+            "predicted_TPS": 7430.480438570228,
+            "actual_TPS": 7519.4,
+            "signed_relative_error": -0.011825353276826767,
+            "absolute_relative_error": 0.011825353276826767
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7648.415009812886,
+            "actual_TPS": 7519.4,
+            "signed_relative_error": 0.01715762026396872,
+            "absolute_relative_error": 0.01715762026396872
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7587.655039907806,
+            "actual_TPS": 7519.4,
+            "signed_relative_error": 0.009077192316914395,
+            "absolute_relative_error": 0.009077192316914395
+          },
+          "probe_AP_CPU_cores": 0.6251058282294544,
+          "target_AP_CPU_cores_bracketed": 0.6344517848889173,
+          "prediction_compute_milliseconds": 0.399588,
+          "forecast_lead_seconds": 2.297300605,
+          "whole_device_MiB_s": 116.77994791666667,
+          "probe_task_IO_submission_MiB_s": 114.83563552146403,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7519.4,
+            "window_TPS": [
+              7519.4
+            ],
+            "window_TPS_min": 7519.4,
+            "window_TPS_max": 7519.4,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 112791.0,
+            "CPU_bracket_seconds": 14.9997620665,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.6344517848889173
+            },
+            "AP_CPU_cores_bracketed": 0.6344517848889173,
+            "TP_CPU_seconds_per_commit_proxy": 0.0018693276357067497,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.0001450265763314449,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 122436539.73333333,
+            "whole_device_write_bytes_per_second": 16110.933333333332,
+            "whole_device_completion_events_per_second": 948.2666666666667,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.0020028521499907107,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.0020143542120381946,
+            "mixed_TP_service_ratio_vs_calibration": 1.0057428413013598,
+            "unexplained_capacity_cores_proxy": 0.2188131531110833,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7628.0269494230015,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7583.069228239792,
+            "actual_TPS": 7519.4,
+            "signed_relative_error": 0.008467328276164698,
+            "absolute_relative_error": 0.008467328276164698,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        },
+        {
+          "stage": "S1",
+          "repeat": 3,
+          "historical_TP_static": {
+            "predicted_TPS": 7430.480438570228,
+            "actual_TPS": 7611.533333333334,
+            "signed_relative_error": -0.023786652023215504,
+            "absolute_relative_error": 0.023786652023215504
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7648.415009812886,
+            "actual_TPS": 7611.533333333334,
+            "signed_relative_error": 0.0048454989112423075,
+            "absolute_relative_error": 0.0048454989112423075
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7585.454403038695,
+            "actual_TPS": 7611.533333333334,
+            "signed_relative_error": -0.0034262387291179586,
+            "absolute_relative_error": 0.0034262387291179586
+          },
+          "probe_AP_CPU_cores": 0.6295907719841318,
+          "target_AP_CPU_cores_bracketed": 0.4492062971460675,
+          "prediction_compute_milliseconds": 0.403759,
+          "forecast_lead_seconds": 2.263948433,
+          "whole_device_MiB_s": 101.25703125,
+          "probe_task_IO_submission_MiB_s": 113.14042037597952,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7611.533333333334,
+            "window_TPS": [
+              7611.533333333334
+            ],
+            "window_TPS_min": 7611.533333333334,
+            "window_TPS_max": 7611.533333333334,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 114173.0,
+            "CPU_bracket_seconds": 14.99940052,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.4492062971460675
+            },
+            "AP_CPU_cores_bracketed": 0.4492062971460675,
+            "TP_CPU_seconds_per_commit_proxy": 0.0018741919692571798,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.0001452057775656241,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 102491204.26666667,
+            "whole_device_write_bytes_per_second": 3684488.533333333,
+            "whole_device_completion_events_per_second": 815.9333333333333,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.0020028521499907107,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.0020193977468228037,
+            "mixed_TP_service_ratio_vs_calibration": 1.0082610175854319,
+            "unexplained_capacity_cores_proxy": 0.1800804396539335,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7700.708653023207,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7673.955217366602,
+            "actual_TPS": 7611.533333333334,
+            "signed_relative_error": 0.008200960476636432,
+            "absolute_relative_error": 0.008200960476636432,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "S2",
+      "SB_mib": 5120,
+      "actual": {
+        "committed_TPS": 7472.777777777777,
+        "window_TPS": [
+          7467.533333333334,
+          7458.933333333333,
+          7491.866666666667
+        ],
+        "window_TPS_min": 7458.933333333333,
+        "window_TPS_max": 7491.866666666667,
+        "window_TPS_sample_stdev": 17.081547332114223,
+        "scored_seconds": 45.0,
+        "committed_transactions": 336275.0,
+        "CPU_bracket_seconds": 44.9997649455,
+        "AP_CPU_cores_by_query_bracketed": {
+          "18": 0.3336430722290116,
+          "21": 0.2837178802258773
+        },
+        "AP_CPU_cores_bracketed": 0.6173609524548889,
+        "TP_CPU_seconds_per_commit_proxy": 0.001882324279146532,
+        "TP_CPU_per_commit_exact_same_window": false,
+        "complete_driver_process_tree_CPU_available": true,
+        "driver_CPU_seconds_per_commit_proxy": 0.00014604534109285554,
+        "missing_driver_CPU_is_not_zero": true,
+        "whole_device_read_bytes_per_second": 168116952.17777777,
+        "whole_device_write_bytes_per_second": 20685437.155555554,
+        "whole_device_completion_events_per_second": 1402.4888888888888,
+        "physical_AP_or_TP_ownership_qualified": false,
+        "independent_trajectory_repeats": false
+      },
+      "historical_TP_static": {
+        "predicted_TPS": 7459.990205123778,
+        "actual_TPS": 7472.777777777777,
+        "signed_relative_error": -0.0017112207848635208,
+        "absolute_relative_error": 0.0017112207848635208
+      },
+      "fresh_colocated_TP_static": {
+        "predicted_TPS": 7703.634902931904,
+        "actual_TPS": 7472.777777777777,
+        "signed_relative_error": 0.030893080460741018,
+        "absolute_relative_error": 0.030893080460741018
+      },
+      "prewindow_CPU_conditional": {
+        "predicted_TPS": 7578.925886695056,
+        "actual_TPS": 7472.777777777777,
+        "signed_relative_error": 0.014204638766716293,
+        "absolute_relative_error": 0.014204638766716293
+      },
+      "windows": [
+        {
+          "stage": "S2",
+          "repeat": 1,
+          "historical_TP_static": {
+            "predicted_TPS": 7459.990205123778,
+            "actual_TPS": 7467.533333333334,
+            "signed_relative_error": -0.0010101231387726894,
+            "absolute_relative_error": 0.0010101231387726894
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7703.634902931904,
+            "actual_TPS": 7467.533333333334,
+            "signed_relative_error": 0.031617076089191176,
+            "absolute_relative_error": 0.031617076089191176
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7631.182824844307,
+            "actual_TPS": 7467.533333333334,
+            "signed_relative_error": 0.021914798931057966,
+            "absolute_relative_error": 0.021914798931057966
+          },
+          "probe_AP_CPU_cores": 0.5363905898121812,
+          "target_AP_CPU_cores_bracketed": 0.6188848421072971,
+          "prediction_compute_milliseconds": 0.428459,
+          "forecast_lead_seconds": 2.296790348,
+          "whole_device_MiB_s": 183.66536458333331,
+          "probe_task_IO_submission_MiB_s": 152.55868122868978,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7467.533333333334,
+            "window_TPS": [
+              7467.533333333334
+            ],
+            "window_TPS_min": 7467.533333333334,
+            "window_TPS_max": 7467.533333333334,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 112013.0,
+            "CPU_bracket_seconds": 15.0003025755,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.3365178064637634,
+              "21": 0.28236703564353377
+            },
+            "AP_CPU_cores_bracketed": 0.6188848421072971,
+            "TP_CPU_seconds_per_commit_proxy": 0.0018837081663021257,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.00014589407724996205,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 168080179.2,
+            "whole_device_write_bytes_per_second": 24506914.133333333,
+            "whole_device_completion_events_per_second": 1417.9333333333334,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.0020028521499907107,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.002029602243552088,
+            "mixed_TP_service_ratio_vs_calibration": 1.0133560001228754,
+            "unexplained_capacity_cores_proxy": 0.2249927507593662,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7578.388921650776,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7590.70748290733,
+            "actual_TPS": 7467.533333333334,
+            "signed_relative_error": 0.016494623334880165,
+            "absolute_relative_error": 0.016494623334880165,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        },
+        {
+          "stage": "S2",
+          "repeat": 2,
+          "historical_TP_static": {
+            "predicted_TPS": 7459.990205123778,
+            "actual_TPS": 7458.933333333333,
+            "signed_relative_error": 0.00014169208159042768,
+            "absolute_relative_error": 0.00014169208159042768
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7703.634902931904,
+            "actual_TPS": 7458.933333333333,
+            "signed_relative_error": 0.03280650981354416,
+            "absolute_relative_error": 0.03280650981354416
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7598.060541924089,
+            "actual_TPS": 7458.933333333333,
+            "signed_relative_error": 0.018652426878386086,
+            "absolute_relative_error": 0.018652426878386086
+          },
+          "probe_AP_CPU_cores": 0.6038988782325962,
+          "target_AP_CPU_cores_bracketed": 0.644698061642528,
+          "prediction_compute_milliseconds": 0.375615,
+          "forecast_lead_seconds": 2.270947682,
+          "whole_device_MiB_s": 179.23802083333334,
+          "probe_task_IO_submission_MiB_s": 172.18066619210285,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7458.933333333333,
+            "window_TPS": [
+              7458.933333333333
+            ],
+            "window_TPS_min": 7458.933333333333,
+            "window_TPS_max": 7458.933333333333,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 111884.0,
+            "CPU_bracket_seconds": 14.999807785,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.34230070588867884,
+              "21": 0.3023973557538491
+            },
+            "AP_CPU_cores_bracketed": 0.644698061642528,
+            "TP_CPU_seconds_per_commit_proxy": 0.0018840069676718746,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.0001459667522970219,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 175239714.13333333,
+            "whole_device_write_bytes_per_second": 12704972.8,
+            "whole_device_completion_events_per_second": 1421.9333333333334,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.0020028521499907107,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.0020299737199688966,
+            "mixed_TP_service_ratio_vs_calibration": 1.013541473831861,
+            "unexplained_capacity_cores_proxy": 0.2138632926908044,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7564.286072921549,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7578.041602624207,
+            "actual_TPS": 7458.933333333333,
+            "signed_relative_error": 0.015968539195623244,
+            "absolute_relative_error": 0.015968539195623244,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        },
+        {
+          "stage": "S2",
+          "repeat": 3,
+          "historical_TP_static": {
+            "predicted_TPS": 7459.990205123778,
+            "actual_TPS": 7491.866666666667,
+            "signed_relative_error": -0.004254808976341784,
+            "absolute_relative_error": 0.004254808976341784
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7703.634902931904,
+            "actual_TPS": 7491.866666666667,
+            "signed_relative_error": 0.028266418195541432,
+            "absolute_relative_error": 0.028266418195541432
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7507.53429331677,
+            "actual_TPS": 7491.866666666667,
+            "signed_relative_error": 0.002091284768829693,
+            "absolute_relative_error": 0.002091284768829693
+          },
+          "probe_AP_CPU_cores": 0.7883792755137475,
+          "target_AP_CPU_cores_bracketed": 0.5884996085728197,
+          "prediction_compute_milliseconds": 0.366577,
+          "forecast_lead_seconds": 2.256741882,
+          "whole_device_MiB_s": 177.26458333333332,
+          "probe_task_IO_submission_MiB_s": 225.7615830151135,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7491.866666666667,
+            "window_TPS": [
+              7491.866666666667
+            ],
+            "window_TPS_min": 7491.866666666667,
+            "window_TPS_max": 7491.866666666667,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 112378.0,
+            "CPU_bracket_seconds": 14.999654585,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.3221104917196998,
+              "21": 0.26638911685311983
+            },
+            "AP_CPU_cores_bracketed": 0.5884996085728197,
+            "TP_CPU_seconds_per_commit_proxy": 0.0018792695951787718,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.00014627435696488636,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 161030963.2,
+            "whole_device_write_bytes_per_second": 24844424.533333335,
+            "whole_device_completion_events_per_second": 1367.6,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.0020028521499907107,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.002025543952143658,
+            "mixed_TP_service_ratio_vs_calibration": 1.0113297440118347,
+            "unexplained_capacity_cores_proxy": 0.2363951744938465,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7608.573674798318,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7605.616263656753,
+            "actual_TPS": 7491.866666666667,
+            "signed_relative_error": 0.015183078136746575,
+            "absolute_relative_error": 0.015183078136746575,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "S3",
+      "SB_mib": 5376,
+      "actual": {
+        "committed_TPS": 7111.044444444445,
+        "window_TPS": [
+          7320.333333333333,
+          7034.266666666666,
+          6978.533333333334
+        ],
+        "window_TPS_min": 6978.533333333334,
+        "window_TPS_max": 7320.333333333333,
+        "window_TPS_sample_stdev": 183.3791983033252,
+        "scored_seconds": 45.0,
+        "committed_transactions": 319997.0,
+        "CPU_bracket_seconds": 44.9992888475,
+        "AP_CPU_cores_by_query_bracketed": {
+          "18": 0.23215653506000664,
+          "21": 0.20428328794602071,
+          "9": 0.3172461192082398,
+          "13": 0.47688726567936024
+        },
+        "AP_CPU_cores_bracketed": 1.2305732078936273,
+        "TP_CPU_seconds_per_commit_proxy": 0.0018963599657059282,
+        "TP_CPU_per_commit_exact_same_window": false,
+        "complete_driver_process_tree_CPU_available": true,
+        "driver_CPU_seconds_per_commit_proxy": 0.00014751141457888667,
+        "missing_driver_CPU_is_not_zero": true,
+        "whole_device_read_bytes_per_second": 172012157.15555555,
+        "whole_device_write_bytes_per_second": 16622205.155555556,
+        "whole_device_completion_events_per_second": 1425.8222222222223,
+        "physical_AP_or_TP_ownership_qualified": false,
+        "independent_trajectory_repeats": false
+      },
+      "historical_TP_static": {
+        "predicted_TPS": 7396.636492088681,
+        "actual_TPS": 7111.044444444445,
+        "signed_relative_error": 0.04016175821645396,
+        "absolute_relative_error": 0.04016175821645396
+      },
+      "fresh_colocated_TP_static": {
+        "predicted_TPS": 7608.240455258683,
+        "actual_TPS": 7111.044444444445,
+        "signed_relative_error": 0.06991884450991948,
+        "absolute_relative_error": 0.06991884450991948
+      },
+      "prewindow_CPU_conditional": {
+        "predicted_TPS": 7517.400273842127,
+        "actual_TPS": 7111.044444444445,
+        "signed_relative_error": 0.05714432423708882,
+        "absolute_relative_error": 0.05714432423708882
+      },
+      "windows": [
+        {
+          "stage": "S3",
+          "repeat": 1,
+          "historical_TP_static": {
+            "predicted_TPS": 7396.636492088681,
+            "actual_TPS": 7320.333333333333,
+            "signed_relative_error": 0.010423454135332744,
+            "absolute_relative_error": 0.010423454135332744
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7608.240455258683,
+            "actual_TPS": 7320.333333333333,
+            "signed_relative_error": 0.03932978305979007,
+            "absolute_relative_error": 0.03932978305979007
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7593.145271121322,
+            "actual_TPS": 7320.333333333333,
+            "signed_relative_error": 0.03726769333654967,
+            "absolute_relative_error": 0.03726769333654967
+          },
+          "probe_AP_CPU_cores": 0.6284902989933865,
+          "target_AP_CPU_cores_bracketed": 0.8339781608492007,
+          "prediction_compute_milliseconds": 0.483875,
+          "forecast_lead_seconds": 2.290648491,
+          "whole_device_MiB_s": 179.87161458333335,
+          "probe_task_IO_submission_MiB_s": 193.2713572900522,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7320.333333333333,
+            "window_TPS": [
+              7320.333333333333
+            ],
+            "window_TPS_min": 7320.333333333333,
+            "window_TPS_max": 7320.333333333333,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 109805.0,
+            "CPU_bracket_seconds": 14.9994437975,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.1983521199963348,
+              "21": 0.17004325936573117,
+              "9": 0.2969712204756838,
+              "13": 0.1686115610114509
+            },
+            "AP_CPU_cores_bracketed": 0.8339781608492007,
+            "TP_CPU_seconds_per_commit_proxy": 0.0018930526741223076,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.0001472653717499203,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 188566732.8,
+            "whole_device_write_bytes_per_second": 42325.333333333336,
+            "whole_device_completion_events_per_second": 1475.4,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.00200347612136295,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.002040318045872228,
+            "mixed_TP_service_ratio_vs_calibration": 1.0183890010549337,
+            "unexplained_capacity_cores_proxy": 0.23021363735080058,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7433.16556447325,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7491.985499746756,
+            "actual_TPS": 7320.333333333333,
+            "signed_relative_error": 0.023448681719423936,
+            "absolute_relative_error": 0.023448681719423936,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        },
+        {
+          "stage": "S3",
+          "repeat": 2,
+          "historical_TP_static": {
+            "predicted_TPS": 7396.636492088681,
+            "actual_TPS": 7034.266666666666,
+            "signed_relative_error": 0.05151494002056811,
+            "absolute_relative_error": 0.05151494002056811
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7608.240455258683,
+            "actual_TPS": 7034.266666666666,
+            "signed_relative_error": 0.08159681965312893,
+            "absolute_relative_error": 0.08159681965312893
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7582.213027727061,
+            "actual_TPS": 7034.266666666666,
+            "signed_relative_error": 0.07789672854697871,
+            "absolute_relative_error": 0.07789672854697871
+          },
+          "probe_AP_CPU_cores": 0.6506984032114446,
+          "target_AP_CPU_cores_bracketed": 1.381748003633889,
+          "prediction_compute_milliseconds": 0.459539,
+          "forecast_lead_seconds": 2.47343811,
+          "whole_device_MiB_s": 179.85338541666667,
+          "probe_task_IO_submission_MiB_s": 193.85362680142407,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7034.266666666666,
+            "window_TPS": [
+              7034.266666666666
+            ],
+            "window_TPS_min": 7034.266666666666,
+            "window_TPS_max": 7034.266666666666,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 105514.0,
+            "CPU_bracket_seconds": 15.0000748635,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.25844557445731575,
+              "21": 0.21655712838502794,
+              "9": 0.3201586828533631,
+              "13": 0.5865866179381819
+            },
+            "AP_CPU_cores_bracketed": 1.381748003633889,
+            "TP_CPU_seconds_per_commit_proxy": 0.0018973523873703963,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.00014769234692078775,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 165093922.13333333,
+            "whole_device_write_bytes_per_second": 23496021.333333332,
+            "whole_device_completion_events_per_second": 1412.9333333333334,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.00200347612136295,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.002045044734291184,
+            "mixed_TP_service_ratio_vs_calibration": 1.0207482447556975,
+            "unexplained_capacity_cores_proxy": 0.23286199009944464,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7148.133119656583,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7222.263450923827,
+            "actual_TPS": 7034.266666666666,
+            "signed_relative_error": 0.02672585404645278,
+            "absolute_relative_error": 0.02672585404645278,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        },
+        {
+          "stage": "S3",
+          "repeat": 3,
+          "historical_TP_static": {
+            "predicted_TPS": 7396.636492088681,
+            "actual_TPS": 6978.533333333334,
+            "signed_relative_error": 0.05991275512839578,
+            "absolute_relative_error": 0.05991275512839578
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7608.240455258683,
+            "actual_TPS": 6978.533333333334,
+            "signed_relative_error": 0.09023488057548135,
+            "absolute_relative_error": 0.09023488057548135
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7376.842522677996,
+            "actual_TPS": 6978.533333333334,
+            "signed_relative_error": 0.0570763468939981,
+            "absolute_relative_error": 0.0570763468939981
+          },
+          "probe_AP_CPU_cores": 1.0678398230519976,
+          "target_AP_CPU_cores_bracketed": 1.475981758768928,
+          "prediction_compute_milliseconds": 0.45468,
+          "forecast_lead_seconds": 2.278972763,
+          "whole_device_MiB_s": 179.96223958333334,
+          "probe_task_IO_submission_MiB_s": 131.4295134986807,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 6978.533333333334,
+            "window_TPS": [
+              6978.533333333334
+            ],
+            "window_TPS_min": 6978.533333333334,
+            "window_TPS_max": 6978.533333333334,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 104678.0,
+            "CPU_bracket_seconds": 14.9997701865,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.2396706411699263,
+              "21": 0.22624848173036374,
+              "9": 0.33460795396166854,
+              "13": 0.6754546819069693
+            },
+            "AP_CPU_cores_bracketed": 1.475981758768928,
+            "TP_CPU_seconds_per_commit_proxy": 0.0018988288968360115,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.00014758713094442002,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 162375816.53333333,
+            "whole_device_write_bytes_per_second": 26328268.8,
+            "whole_device_completion_events_per_second": 1389.1333333333334,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.00200347612136295,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.0020464160277804313,
+            "mixed_TP_service_ratio_vs_calibration": 1.0214327018723184,
+            "unexplained_capacity_cores_proxy": 0.24303577749773964,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7097.294999680004,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7175.854074558026,
+            "actual_TPS": 6978.533333333334,
+            "signed_relative_error": 0.028275388509241495,
+            "absolute_relative_error": 0.028275388509241495,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "S4",
+      "SB_mib": 5376,
+      "actual": {
+        "committed_TPS": 7164.511111111111,
+        "window_TPS": [
+          7154.0,
+          7166.066666666667,
+          7173.466666666666
+        ],
+        "window_TPS_min": 7154.0,
+        "window_TPS_max": 7173.466666666666,
+        "window_TPS_sample_stdev": 9.826117880047475,
+        "scored_seconds": 45.0,
+        "committed_transactions": 322403.0,
+        "CPU_bracket_seconds": 44.9997631145,
+        "AP_CPU_cores_by_query_bracketed": {
+          "18": 0.14418684481717398,
+          "21": 0.15414544126266502,
+          "9": 0.24737180506208287,
+          "13": 0.3356880629696587,
+          "2": 0.11325615810536979
+        },
+        "AP_CPU_cores_bracketed": 0.9946483122169504,
+        "TP_CPU_seconds_per_commit_proxy": 0.0019053887344410566,
+        "TP_CPU_per_commit_exact_same_window": false,
+        "complete_driver_process_tree_CPU_available": true,
+        "driver_CPU_seconds_per_commit_proxy": 0.00014886785672589897,
+        "missing_driver_CPU_is_not_zero": true,
+        "whole_device_read_bytes_per_second": 167449759.2888889,
+        "whole_device_write_bytes_per_second": 21260424.533333335,
+        "whole_device_completion_events_per_second": 3354.8888888888887,
+        "physical_AP_or_TP_ownership_qualified": false,
+        "independent_trajectory_repeats": false
+      },
+      "historical_TP_static": {
+        "predicted_TPS": 7411.538236618671,
+        "actual_TPS": 7164.511111111111,
+        "signed_relative_error": 0.0344792717432536,
+        "absolute_relative_error": 0.0344792717432536
+      },
+      "fresh_colocated_TP_static": {
+        "predicted_TPS": 7636.956252503674,
+        "actual_TPS": 7164.511111111111,
+        "signed_relative_error": 0.0659424117103915,
+        "absolute_relative_error": 0.0659424117103915
+      },
+      "prewindow_CPU_conditional": {
+        "predicted_TPS": 7522.025699158908,
+        "actual_TPS": 7164.511111111111,
+        "signed_relative_error": 0.04990076538416477,
+        "absolute_relative_error": 0.04990076538416477
+      },
+      "windows": [
+        {
+          "stage": "S4",
+          "repeat": 1,
+          "historical_TP_static": {
+            "predicted_TPS": 7411.538236618671,
+            "actual_TPS": 7154.0,
+            "signed_relative_error": 0.035999194383375954,
+            "absolute_relative_error": 0.035999194383375954
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7636.956252503674,
+            "actual_TPS": 7154.0,
+            "signed_relative_error": 0.06750856199380406,
+            "absolute_relative_error": 0.06750856199380406
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7526.307377131052,
+            "actual_TPS": 7154.0,
+            "signed_relative_error": 0.05204184751622187,
+            "absolute_relative_error": 0.05204184751622187
+          },
+          "probe_AP_CPU_cores": 0.7642622815345136,
+          "target_AP_CPU_cores_bracketed": 0.9140757759817223,
+          "prediction_compute_milliseconds": 0.461199,
+          "forecast_lead_seconds": 2.294572203,
+          "whole_device_MiB_s": 179.93046875,
+          "probe_task_IO_submission_MiB_s": 155.43946300529427,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7154.0,
+            "window_TPS": [
+              7154.0
+            ],
+            "window_TPS_min": 7154.0,
+            "window_TPS_max": 7154.0,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 107310.0,
+            "CPU_bracket_seconds": 15.000000055,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.13930793728920424,
+              "21": 0.122800361149732,
+              "9": 0.3083282915361296,
+              "13": 0.23819491092661865,
+              "2": 0.10544427508003766
+            },
+            "AP_CPU_cores_bracketed": 0.9140757759817223,
+            "TP_CPU_seconds_per_commit_proxy": 0.0019124656481781753,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.00014741426460721275,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 188613427.2,
+            "whole_device_write_bytes_per_second": 57344.0,
+            "whole_device_completion_events_per_second": 5325.4,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.00200347612136295,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.002059879912785388,
+            "mixed_TP_service_ratio_vs_calibration": 1.0281529641511609,
+            "unexplained_capacity_cores_proxy": 0.349543327951611,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7323.69111926479,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7452.550825492248,
+            "actual_TPS": 7154.0,
+            "signed_relative_error": 0.04173201362765555,
+            "absolute_relative_error": 0.04173201362765555,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        },
+        {
+          "stage": "S4",
+          "repeat": 2,
+          "historical_TP_static": {
+            "predicted_TPS": 7411.538236618671,
+            "actual_TPS": 7166.066666666667,
+            "signed_relative_error": 0.03425471480663567,
+            "absolute_relative_error": 0.03425471480663567
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7636.956252503674,
+            "actual_TPS": 7166.066666666667,
+            "signed_relative_error": 0.06571102499330284,
+            "absolute_relative_error": 0.06571102499330284
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7602.740695844279,
+            "actual_TPS": 7166.066666666667,
+            "signed_relative_error": 0.06093636153412074,
+            "absolute_relative_error": 0.06093636153412074
+          },
+          "probe_AP_CPU_cores": 0.6089976010015186,
+          "target_AP_CPU_cores_bracketed": 0.9927939561364649,
+          "prediction_compute_milliseconds": 0.414686,
+          "forecast_lead_seconds": 2.275253788,
+          "whole_device_MiB_s": 179.9921875,
+          "probe_task_IO_submission_MiB_s": 119.46718064364771,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7166.066666666667,
+            "window_TPS": [
+              7166.066666666667
+            ],
+            "window_TPS_min": 7166.066666666667,
+            "window_TPS_max": 7166.066666666667,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 107491.0,
+            "CPU_bracket_seconds": 14.9998442345,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.16077430087262418,
+              "21": 0.1346929728345507,
+              "9": 0.2939529493818758,
+              "13": 0.27664310743013004,
+              "2": 0.1267306256172843
+            },
+            "AP_CPU_cores_bracketed": 0.9927939561364649,
+            "TP_CPU_seconds_per_commit_proxy": 0.0019085679098901304,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.00015003394638620906,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 171082820.26666668,
+            "whole_device_write_bytes_per_second": 17652667.733333334,
+            "whole_device_completion_events_per_second": 2766.4666666666667,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.00200347612136295,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.0020586018562763395,
+            "mixed_TP_service_ratio_vs_calibration": 1.0275150446394579,
+            "unexplained_capacity_cores_proxy": 0.25512790166353483,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7289.999276989392,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7413.79346862547,
+            "actual_TPS": 7166.066666666667,
+            "signed_relative_error": 0.034569424690272355,
+            "absolute_relative_error": 0.034569424690272355,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        },
+        {
+          "stage": "S4",
+          "repeat": 3,
+          "historical_TP_static": {
+            "predicted_TPS": 7411.538236618671,
+            "actual_TPS": 7173.466666666666,
+            "signed_relative_error": 0.03318779901191493,
+            "absolute_relative_error": 0.03318779901191493
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7636.956252503674,
+            "actual_TPS": 7173.466666666666,
+            "signed_relative_error": 0.06461165951892256,
+            "absolute_relative_error": 0.06461165951892256
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7437.029024501393,
+            "actual_TPS": 7173.466666666666,
+            "signed_relative_error": 0.036741281458717356,
+            "absolute_relative_error": 0.036741281458717356
+          },
+          "probe_AP_CPU_cores": 0.9456017869365736,
+          "target_AP_CPU_cores_bracketed": 1.07707563164096,
+          "prediction_compute_milliseconds": 0.44089,
+          "forecast_lead_seconds": 2.272066363,
+          "whole_device_MiB_s": 179.98151041666668,
+          "probe_task_IO_submission_MiB_s": 166.2110339399615,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7173.466666666666,
+            "window_TPS": [
+              7173.466666666666
+            ],
+            "window_TPS_min": 7173.466666666666,
+            "window_TPS_max": 7173.466666666666,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 107602.0,
+            "CPU_bracket_seconds": 14.999918825,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.1324784051956361,
+              "21": 0.20494306281687497,
+              "9": 0.13983407580207358,
+              "13": 0.4922264048985612,
+              "2": 0.10759368292781411
+            },
+            "AP_CPU_cores_bracketed": 1.07707563164096,
+            "TP_CPU_seconds_per_commit_proxy": 0.0018951551294771472,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.00014915261747922901,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 142653030.4,
+            "whole_device_write_bytes_per_second": 46071261.86666667,
+            "whole_device_completion_events_per_second": 1972.8,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.00200347612136295,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.002044307746956376,
+            "mixed_TP_service_ratio_vs_calibration": 1.0203803904414137,
+            "unexplained_capacity_cores_proxy": 0.2581508891590427,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7299.744566627366,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7372.294899071908,
+            "actual_TPS": 7173.466666666666,
+            "signed_relative_error": 0.027717175201935174,
+            "absolute_relative_error": 0.027717175201935174,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        }
+      ]
+    },
+    {
+      "stage": "S5",
+      "SB_mib": 5376,
+      "actual": {
+        "committed_TPS": 7242.533333333334,
+        "window_TPS": [
+          7186.933333333333,
+          7257.333333333333,
+          7283.333333333333
+        ],
+        "window_TPS_min": 7186.933333333333,
+        "window_TPS_max": 7283.333333333333,
+        "window_TPS_sample_stdev": 49.875043859629635,
+        "scored_seconds": 45.0,
+        "committed_transactions": 325914.0,
+        "CPU_bracket_seconds": 45.000951203,
+        "AP_CPU_cores_by_query_bracketed": {
+          "18": 0.1627783672384166,
+          "21": 0.15268401910006624,
+          "9": 0.2616516151155277,
+          "13": 0.22607253918050033
+        },
+        "AP_CPU_cores_bracketed": 0.8031865406345108,
+        "TP_CPU_seconds_per_commit_proxy": 0.0019118387823689686,
+        "TP_CPU_per_commit_exact_same_window": false,
+        "complete_driver_process_tree_CPU_available": true,
+        "driver_CPU_seconds_per_commit_proxy": 0.0001544433393717361,
+        "missing_driver_CPU_is_not_zero": true,
+        "whole_device_read_bytes_per_second": 148018062.2222222,
+        "whole_device_write_bytes_per_second": 20983990.044444446,
+        "whole_device_completion_events_per_second": 1357.7555555555555,
+        "physical_AP_or_TP_ownership_qualified": false,
+        "independent_trajectory_repeats": false
+      },
+      "historical_TP_static": {
+        "predicted_TPS": 7314.13990992286,
+        "actual_TPS": 7242.533333333334,
+        "signed_relative_error": 0.009886951608487848,
+        "absolute_relative_error": 0.009886951608487848
+      },
+      "fresh_colocated_TP_static": {
+        "predicted_TPS": 7510.513047373232,
+        "actual_TPS": 7242.533333333334,
+        "signed_relative_error": 0.03700082577549724,
+        "absolute_relative_error": 0.03700082577549724
+      },
+      "prewindow_CPU_conditional": {
+        "predicted_TPS": 7323.692671677368,
+        "actual_TPS": 7242.533333333334,
+        "signed_relative_error": 0.011205932317978062,
+        "absolute_relative_error": 0.011205932317978062
+      },
+      "windows": [
+        {
+          "stage": "S5",
+          "repeat": 1,
+          "historical_TP_static": {
+            "predicted_TPS": 7314.13990992286,
+            "actual_TPS": 7186.933333333333,
+            "signed_relative_error": 0.017699701762855735,
+            "absolute_relative_error": 0.017699701762855735
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7510.513047373232,
+            "actual_TPS": 7186.933333333333,
+            "signed_relative_error": 0.0450233359671115,
+            "absolute_relative_error": 0.0450233359671115
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7167.4051738801745,
+            "actual_TPS": 7186.933333333333,
+            "signed_relative_error": -0.002717175538916816,
+            "absolute_relative_error": 0.002717175538916816
+          },
+          "probe_AP_CPU_cores": 1.307647120469875,
+          "target_AP_CPU_cores_bracketed": 0.7747439917512249,
+          "prediction_compute_milliseconds": 0.445825,
+          "forecast_lead_seconds": 10.279397455,
+          "whole_device_MiB_s": 159.41223958333333,
+          "probe_task_IO_submission_MiB_s": 198.62494307402727,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7186.933333333333,
+            "window_TPS": [
+              7186.933333333333
+            ],
+            "window_TPS_min": 7186.933333333333,
+            "window_TPS_max": 7186.933333333333,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 107804.0,
+            "CPU_bracket_seconds": 15.000924749,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.1784990210139211,
+              "21": 0.16491777323027487,
+              "9": 0.18550822183049137,
+              "13": 0.24581897567653746
+            },
+            "AP_CPU_cores_bracketed": 0.7747439917512249,
+            "TP_CPU_seconds_per_commit_proxy": 0.0019299256564784238,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.00015512561522763535,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 167060275.2,
+            "whole_device_write_bytes_per_second": 95573.33333333333,
+            "whole_device_completion_events_per_second": 1460.4,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.0020276345059866167,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.0020850512717060592,
+            "mixed_TP_service_ratio_vs_calibration": 1.0283171180752344,
+            "unexplained_capacity_cores_proxy": 0.24013152191544163,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7302.101494986719,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7425.64867003962,
+            "actual_TPS": 7186.933333333333,
+            "signed_relative_error": 0.03321518728984363,
+            "absolute_relative_error": 0.03321518728984363,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        },
+        {
+          "stage": "S5",
+          "repeat": 2,
+          "historical_TP_static": {
+            "predicted_TPS": 7314.13990992286,
+            "actual_TPS": 7257.333333333333,
+            "signed_relative_error": 0.007827472431038984,
+            "absolute_relative_error": 0.007827472431038984
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7510.513047373232,
+            "actual_TPS": 7257.333333333333,
+            "signed_relative_error": 0.03488605282563384,
+            "absolute_relative_error": 0.03488605282563384
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7405.551508611131,
+            "actual_TPS": 7257.333333333333,
+            "signed_relative_error": 0.020423228267196114,
+            "absolute_relative_error": 0.020423228267196114
+          },
+          "probe_AP_CPU_cores": 0.8162301071317917,
+          "target_AP_CPU_cores_bracketed": 0.8489332284594738,
+          "prediction_compute_milliseconds": 0.429802,
+          "forecast_lead_seconds": 2.272684055,
+          "whole_device_MiB_s": 154.10208333333333,
+          "probe_task_IO_submission_MiB_s": 176.46215031040134,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7257.333333333333,
+            "window_TPS": [
+              7257.333333333333
+            ],
+            "window_TPS_min": 7257.333333333333,
+            "window_TPS_max": 7257.333333333333,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 108860.0,
+            "CPU_bracket_seconds": 15.0000779615,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.18208731094667382,
+              "21": 0.14752965609111443,
+              "9": 0.3040716762744006,
+              "13": 0.215244585147285
+            },
+            "AP_CPU_cores_bracketed": 0.8489332284594738,
+            "TP_CPU_seconds_per_commit_proxy": 0.001903237656476208,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.00015398493503582583,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 151918455.46666667,
+            "whole_device_write_bytes_per_second": 9669290.666666666,
+            "whole_device_completion_events_per_second": 1328.4666666666667,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.0020276345059866167,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.002057222591512034,
+            "mixed_TP_service_ratio_vs_calibration": 1.0145924156636996,
+            "unexplained_capacity_cores_proxy": 0.22111668407385954,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7364.816444293796,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7389.708263851237,
+            "actual_TPS": 7257.333333333333,
+            "signed_relative_error": 0.01824016128760375,
+            "absolute_relative_error": 0.01824016128760375,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        },
+        {
+          "stage": "S5",
+          "repeat": 3,
+          "historical_TP_static": {
+            "predicted_TPS": 7314.13990992286,
+            "actual_TPS": 7283.333333333333,
+            "signed_relative_error": 0.004229735916182253,
+            "absolute_relative_error": 0.004229735916182253
+          },
+          "fresh_colocated_TP_static": {
+            "predicted_TPS": 7510.513047373232,
+            "actual_TPS": 7283.333333333333,
+            "signed_relative_error": 0.031191722751473527,
+            "absolute_relative_error": 0.031191722751473527
+          },
+          "prewindow_CPU_conditional": {
+            "predicted_TPS": 7398.121332540798,
+            "actual_TPS": 7283.333333333333,
+            "signed_relative_error": 0.01576036602390829,
+            "absolute_relative_error": 0.01576036602390829
+          },
+          "probe_AP_CPU_cores": 0.8315674288010879,
+          "target_AP_CPU_cores_bracketed": 0.7858838579941877,
+          "prediction_compute_milliseconds": 0.414638,
+          "forecast_lead_seconds": 2.279449478,
+          "whole_device_MiB_s": 170.00442708333333,
+          "probe_task_IO_submission_MiB_s": 180.4661703169202,
+          "CPU_boundary_screen_passed": true,
+          "probe_observer_attached": false,
+          "observed": {
+            "committed_TPS": 7283.333333333333,
+            "window_TPS": [
+              7283.333333333333
+            ],
+            "window_TPS_min": 7283.333333333333,
+            "window_TPS_max": 7283.333333333333,
+            "window_TPS_sample_stdev": null,
+            "scored_seconds": 15.0,
+            "committed_transactions": 109250.0,
+            "CPU_bracket_seconds": 14.9999484925,
+            "AP_CPU_cores_by_query_bracketed": {
+              "18": 0.1277475799305649,
+              "21": 0.14560387624611038,
+              "9": 0.29537953681743284,
+              "13": 0.2171528650000796
+            },
+            "AP_CPU_cores_bracketed": 0.7858838579941877,
+            "TP_CPU_seconds_per_commit_proxy": 0.0019025617223066363,
+            "TP_CPU_per_commit_exact_same_window": false,
+            "complete_driver_process_tree_CPU_available": true,
+            "driver_CPU_seconds_per_commit_proxy": 0.00015422686183981692,
+            "missing_driver_CPU_is_not_zero": true,
+            "whole_device_read_bytes_per_second": 125075456.0,
+            "whole_device_write_bytes_per_second": 53187106.13333333,
+            "whole_device_completion_events_per_second": 1284.4,
+            "physical_AP_or_TP_ownership_qualified": false,
+            "independent_trajectory_repeats": false
+          },
+          "CPU_service_conservation_diagnostic": {
+            "calibration_TP_total_CPU_seconds_per_commit": 0.0020276345059866167,
+            "observed_mixed_TP_total_CPU_seconds_per_commit_proxy": 0.0020567885841464534,
+            "mixed_TP_service_ratio_vs_calibration": 1.0143783695107569,
+            "unexplained_capacity_cores_proxy": 0.23383928747247762,
+            "conditional_CPU_only_conservation_TPS_upper_proxy": 7397.024788680222,
+            "postexecution_diagnostic_not_prediction_or_training": true,
+            "CPU_and_commit_endpoints_not_exactly_identical": true
+          },
+          "postexecution_actual_AP_CPU_replacement_diagnostic": {
+            "predicted_TPS": 7420.2522886801235,
+            "actual_TPS": 7283.333333333333,
+            "signed_relative_error": 0.018798941237545552,
+            "absolute_relative_error": 0.018798941237545552,
+            "not_a_heldout_prediction_or_training_row": true,
+            "target_AP_CPU_used_only_for_diagnosis": true,
+            "unresolved_TP_IO_is_not_observed_zero": true
+          }
+        }
+      ]
+    }
+  ],
+  "window_MAPE": {
+    "historical_TP_static": 0.020979851129226866,
+    "fresh_colocated_TP_static": 0.04299606718679467,
+    "prewindow_CPU_conditional": 0.028823371165140724
+  },
+  "stage_mean_MAPE": {
+    "historical_TP_static": 0.020868815732823953,
+    "fresh_colocated_TP_static": 0.04288981649515074,
+    "prewindow_CPU_conditional": 0.027951775647368126
+  },
+  "TP_only_repeat2_holdout_MAPE": 0.004865863674626196,
+  "max_prediction_compute_milliseconds": 2.452728,
+  "all_target_windows_follow_frozen_prediction_verified": true,
+  "cold_start_and_adaptive_modes_not_conflated": true,
+  "probe_target_observer_context_matched": false,
+  "AP_task_IO_is_submission_diagnostic_not_device_completion_truth": true,
+  "AP_cold_start_operator_phases_or_TP_IO_interference_fully_solved": false,
+  "full_AP_lifecycle_or_optimum_SB_verified": false,
+  "restoration_verified": true,
+  "automatic_recommendation_qualified": false,
+  "inputs_sha256": {
+    "frozen_prediction/FROZEN_TPS_PREDICTION.json": "b1707eb5d9c18d07807c2fe019135f10618d7b4e3de715fec7006f402a16f6ca",
+    "live/CAPACITY_TPS_VALIDATION.json": "a20891d3bd1891407ee8f4437ef175bfe6872958ff713d6fbddb37b626e00750",
+    "live/POLICY.json": "0baae92850cf7e65f6ce00640fad9e1c8ba95f26ef6bb861b7b988c218c05346",
+    "PREEXECUTION_POLICY.json": "eea1abac59dad3398aa9c99077a80e9120cae3811d6698c9b49d37ded4b6257e",
+    "COLOCATED_TP_CALIBRATION.json": "f7b76c3216509f7832c2de905f4d003c35787bba3134b7bc042aba0096a9489e",
+    "preexecution_source_snapshot/tools/prepare_colocated_TP.py": "a73f4bdce93018f951ebb3538e9c58728c153c939f5fd36951e027da4297a4c9",
+    "preexecution_source_snapshot/tools/prepare_capacity_TPS_validation.py": "7a89154c41a2c3363dfd29ee813c7778da130e7fb961048cdb68ceba04a4aa1e",
+    "preexecution_source_snapshot/tools/validate_capacity_TPS_live.py": "6dab3ad264b596c0de2c1f0d47cda9a154ae53f222ea5a083f5c816c422cef52",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/error_diagnosis.py": "c1b1f73f15a069cfb98850ce7e2efb3b45654bce3a8303e5d5ecb05694787b03",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/device.py": "d04df86e80afb2e62ad7bf6230fcd29625e29cc2f0307026d412f629aaaf4484",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/service_calibration.py": "60a48f1d7a1c747d2a4801b169c0709328e5d3b9b3e6255afdd054d398b03532",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/tps.py": "a3f37a5522ab972268617f7321e8a7b2b1733abe50a9a5698de30e15c36bc7c4",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/tp_empirical.py": "3bd0e9e72c41d591b5a8bc7ac50e18dc5396a34f3556a4307df65eb64c93d7c9",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/phase_bridge.py": "76e2b14857453a4fe7d4f5a950250951b623fc8efca84ccada2c1d0e1b61a41d",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/colocated_tp.py": "ee9bb16d2308e322683a748cf59ae893cbc3655158c1f96a94467cad29b02ba8",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/cpu_io_surface.py": "2c26a2f9624829d1ccb6a38bc87080b9d1d6da11938ff7afe79202c09389de27",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/config_evaluation.py": "594b3b27c282c85b05e43a1545d4a5f1de764992cab9cb0d7b4d8ed976da2606",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/native_stats_session.py": "131bbb1e4c7600ee26d531b429e0203b163565bc2212d60e2d02c6fb8940551d",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/tps_diagnostics.py": "9de9917209b96f17e0ecd9ea6fb4f54f281746543c0b22d487af08ffedfd8ad2",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/cpu_contention.py": "8b618ad2d78e271354131b6c9d79f81cf289b7e869995f61a1e254039146561a",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/capped_device.py": "5e54540922adba2fafe886b544ae3d4123cc640bc111fc11448229cabccb6a9d",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/tpcc_v3.py": "f37f109a1296f772836207045c24aec10c43f712385a757c44126840785955e1",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/cpu_fixed_point.py": "321348e2165b8cef2920919ea064881dba6e00122df19525e6fcc6f63c1aad38",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/ap_block_observer.py": "99afe2fef983584ec02bfe5ec700560a28d0c3c0e2bbc10065a4dd73c77d0a55",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/buffered_path.py": "6266ccaf9e2dee9638ddc470399eb5649e81c3ff99e7b66f5361ef0e5ba6053a",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/bio.py": "89b01fb51763efdbe18fd35b5c2551c5235fd0f80512845543b6f673e9d52789",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/preview_cost.py": "7f8ca55997ca26b162d7f7354093bc0b59e2c380b045d0883e49c2526a50832a",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/tpcc_capacity_model.py": "3627d755885a470135f203a58fd495af3ab9cc458d73b36d62fc29e359b027e8",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/tpcc_ap_contention.py": "b7539a4c9e15e21ceb7db0080c3203eb0e2e06d56468999390e31cef25d83ebb",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/fio_surface.py": "e8b13f157cdaa277ef1a102abed504d6a813eec8b286356bba7ce8d254204f6c",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/ap_measurement.py": "b73d05d9450ef7b446a3db96e5aaec6a056b19151d70f7d496beb674e55bdeef",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/capacity_tps_validation.py": "27dc8b5b20f196216c207fb6cf70dd97fc797069046b5b69dd787b5fb9d4f079",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/mixed_resource.py": "924f9a5c2be846ae61cded2dd3a2ce2230011df56b6cac529fbd20e9b5dccd7f",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/native_stats.py": "585fa9605521938760bbd49d934b942655a2daa260de1da56add432bb573faae",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/__init__.py": "dbe76400b7e6c1d5e6bfb667cc4908a61d007799cbfe7d76eabda27344e5d44c",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/cpu_surface.py": "99a5cf640e7a47b5e0922828a013a20dd3d8232bcf4cb77c778b861c3f6eae3e",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/tp_window_observer.py": "3f8310295a2f3d471e83b79a8f1b83ff7469bd605734ec9f282ae672d99ba33c",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/workload_features.py": "5477f6caeaa1e937ebd2e6e02e4b8f11fc617ec3ef31b0638a635343ff66f654",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/tp_sweep.py": "586969d3cb4ec084aab2f478c5907d3b77b9bf25ce10ae0f1b9ce46a5d8a8a02",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/ap_closed_loop.py": "570d38a9e8d08a79d5d427232178c17ba4803abb5990e3d23ce8be7a176f213e",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/ap_resource_bridge.py": "2a9d7d9409a89062792544624f4c5bec711813e18714af5100078eadf3327afb",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/tp_calibration.py": "a9c7213db46d82e4acfb3fbbaac279a4cdd17750b2e1a2022bfd6d762f8a72a2",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/tpcc_dw_model.py": "97a5866bf2542cd6a58ffe3096a0a632ed830e6ca1786f55db3e22827e783383",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/joint_contention.py": "850c37268e9855e03f8a17701f12e8ea9d5ad91cb4a607c0f17a5a3cbd7f0eaf",
+    "preexecution_source_snapshot/src/jmt/innovation_4_performance/ap_cpu_features.py": "ce650dae6991c52f0aacf7ee8bb220c90d28c5a21bea4e994cd700b1c569145e",
+    "preexecution_source_snapshot/src/jmt/common/machine.py": "ef0f3f7c28f28d42179ecc2ec323fbc8d6fdf3a03de05e12b9e45578e9fa510b",
+    "preexecution_source_snapshot/src/jmt/common/reproduction_audit.py": "43e38bd69e1782fd53b84ad2244a518a35cdadf7520186401e0e2eecf055f639",
+    "preexecution_source_snapshot/src/jmt/common/holdout.py": "8de4f9989b5af3348ca3b51833d685528808214b879363556d0a77afaacde156",
+    "preexecution_source_snapshot/src/jmt/common/transaction_evidence.py": "d929e07636a2749ecb7d91b47d2e78dfc2f577c6dc43ff9c982c988814d98883",
+    "preexecution_source_snapshot/src/jmt/common/dataset.py": "998b775606d5b55778a0d0227d534a2144d780119298ebe5e904bd827afaaa22",
+    "preexecution_source_snapshot/src/jmt/common/provenance.py": "9ab40e2523e541916bad1179885bd40ae8900f3302a19ec33017735ea50b968b",
+    "preexecution_source_snapshot/src/jmt/common/quiet_window.py": "209ff1d278ef94b6d54fbf147ec3c15126def3ff863a3f88839ac941eb78e4b5",
+    "preexecution_source_snapshot/src/jmt/common/memory_units.py": "f5b8372f51c881bfbc15ebfbe500e765f43dfaab46b0295290bc384001622e35",
+    "preexecution_source_snapshot/src/jmt/common/db.py": "1e825a3198d2f351637fcb772c7f34048b1c3fb6f8821e5eb2bf249850e99580",
+    "preexecution_source_snapshot/src/jmt/common/stability.py": "1b1250c1242379ccf4b3f018eee7ed5516f70f547cd15782eff9150f332630d8",
+    "preexecution_source_snapshot/src/jmt/common/process_cpu.py": "8e2cde46fac26e7ab6f0c4f4c4bede5850f1b991f47b39f4a975f40a477a7365",
+    "preexecution_source_snapshot/src/jmt/common/__init__.py": "3adaafb69424afda0629a42b2efc200feefd23b4d6dad4a2c1a2a85bfb69384d",
+    "preexecution_source_snapshot/src/jmt/common/isolated_io.py": "b722789a6a07d1200ec9379cf8e125b8818a1ff856cb718b1220cb1cb96e34b2",
+    "preexecution_source_snapshot/src/jmt/common/database_memory_domain.py": "7d3d107e2da906f4c09372bc4a101559007f1e3cf69d689dd7f600f757cf8512",
+    "preexecution_source_snapshot/src/jmt/common/resources.py": "37f7797bf85296def01039fb370f94a7754e7cd53db932be5cd059753751ea85",
+    "preexecution_source_snapshot/src/jmt/common/measurement_window.py": "5da7700c19b7f1756a7175c799228f60dc3f5771fb336556fa709e4fbbf5e18e",
+    "TP128_calibration/sb5120_r01/WINDOW.json": "207b137e1dcecaa59dfd2067ff4f047326230656cf791fc1f44aba0ae5f13256",
+    "TP128_calibration/sb5120_r02/WINDOW.json": "9d0bfb25293c9d0ff456d504b5c4019fc4fd8918874713c7361664684282e4a5",
+    "TP128_calibration/sb5376_r01/WINDOW.json": "2643b9b7eec14d78a6cda4a597d67ea0c883e076afb95fbc778d97bd512919f0",
+    "TP128_calibration/sb5376_r02/WINDOW.json": "eb12fe8824830b82146bc367eeed1df699def3de65bbe2b4de42d77461acb7e0",
+    "TP128_plus16_calibration/sb5376_r01/WINDOW.json": "e6066b3a9ec98b77d78735882eb1aeb40808d522b7cc48f104609d516ef0496e",
+    "TP128_plus16_calibration/sb5376_r02/WINDOW.json": "9b23a473de1250f2cc70c5ca8785808f45f5b4b6dd077e0336fa40d943d08354",
+    "live/q2.START.json": "b61b81c54ed4c0085191a4114069b55c4aa2f6175105935d578f16acd7edc402",
+    "live/q9.START.json": "4fda4dd7192fe42ccccb038a436af301c89778d3f58f010e3da37c0be6efc8e4",
+    "live/q13.START.json": "7687b6cee1eebb8ea181bb2925360c9df8d78cee0187cb72dcbb1e5701b7d2af",
+    "live/q18.START.json": "f1dbbdbb2c725a9b6760907343a2fc8d8836332a8c6c5b3799675e3626fafc05",
+    "live/q21.START.json": "3d70bf843be747ba7c614c1c209386378440aab258c44ebb03a15a75aefd7433",
+    "live/S1_r01.WINDOW.json": "4c267412a4c4a1441f52975a399c41b9a5309ebf5d1f7b0b889d81c1d76b75f4",
+    "live/S1_r01.PREWINDOW_PREDICTION.json": "fcffd3bab412cd9f7ccded72d2896b987e9429990265d889987e8a03e02d9fe9",
+    "live/S1_r01.INTERMEDIATES.json": "c7c2f46bbef2e854a65ecbe875033d2d8f023047faf94f768f397eba2bbd6aa9",
+    "live/S1_r02.WINDOW.json": "91658f0b50dfa551bc11d78c7308d5a5518d9334af3e8d89197271ae2db6e084",
+    "live/S1_r02.PREWINDOW_PREDICTION.json": "653f8f547a40a1b57899e526767e5ad91fa53dfa7f855962e42cdb7d6a4d7f9b",
+    "live/S1_r02.INTERMEDIATES.json": "e822ef36e3109f82e21e8103664ef81ccb2dcfd9b79781fd7f04935cef852819",
+    "live/S1_r03.WINDOW.json": "ee2b279bea9791ed76f291220793210a873261cbc77ba97f0c41a880f5d1988b",
+    "live/S1_r03.PREWINDOW_PREDICTION.json": "e16f31dc45a868921c5e0457529c72667649d7019ca8f8352a3ad1a1dc8d3722",
+    "live/S1_r03.INTERMEDIATES.json": "d653d9b79d112d086d90edb7074d363b929ac3d935bbf6289ca5c6a81c4a682c",
+    "live/S2_r01.WINDOW.json": "582dd58329a7ed1ea9fcfadfcf11a5bf22936da17217ffc100bb98d164f5c3c8",
+    "live/S2_r01.PREWINDOW_PREDICTION.json": "3b4125fe2d19485148f88aa64299d3590a08aa01bc017b415dedf51e73cd0777",
+    "live/S2_r01.INTERMEDIATES.json": "8cb1cfa999ac46923d7036ae5069462c0946378984320a1830932eb1b084ef34",
+    "live/S2_r02.WINDOW.json": "39c6dc258fe094726001f709e86f6cf1684b920c20314d274c9f7843040a5a0f",
+    "live/S2_r02.PREWINDOW_PREDICTION.json": "75ec3d6bfcc46fd6c865cb1dc8fc5e06566902e2ea80266c5f183f720beb1c2c",
+    "live/S2_r02.INTERMEDIATES.json": "62ccb70fd21ee1041bd34d4297641afb79e518bb99f77a5d9148e851a7ed70ae",
+    "live/S2_r03.WINDOW.json": "c8c781405a5309c7b75a197b07ea21aa4d468aba1b3eb9d2e72547308816b9ba",
+    "live/S2_r03.PREWINDOW_PREDICTION.json": "babd53494817d52bff590f1d817945384c406065b1314623499b4818d69c672f",
+    "live/S2_r03.INTERMEDIATES.json": "225b3d652be249a4e2afb7af2c3983874da278b91d6ed52687e3016f307727aa",
+    "live/S3_r01.WINDOW.json": "977772e6146ca41703cb63e14c9c41e460ecd2e2eeefe52e7ce3db368e5a22f2",
+    "live/S3_r01.PREWINDOW_PREDICTION.json": "bcc437e36a06ba7b994c13353a6b02604663e4e796ab9a2059fe9b476ab6ad75",
+    "live/S3_r01.INTERMEDIATES.json": "80489fb3f41f7223a681d862589753160d6d671b62e7ebaf6030801e2d988264",
+    "live/S3_r02.WINDOW.json": "a1a5c6271cbbb8f43c7b5d6caf6e373ee8997f9231819d35d10d7a452a1ad152",
+    "live/S3_r02.PREWINDOW_PREDICTION.json": "0866eb3e2e274ad2548d3cad099bb78c81e3d48eb964b41134e4e21f43df7fed",
+    "live/S3_r02.INTERMEDIATES.json": "821a777e6378c66b7c9b38858f31cd6be0d738698c525fc58c391189cef06edc",
+    "live/S3_r03.WINDOW.json": "955365d2bb2326365d453c7054b239a679fdf93abeb3e34b2abd3b068237d94e",
+    "live/S3_r03.PREWINDOW_PREDICTION.json": "8734fb53c396cfe545c37d307f678cd7e3ddab6d12d114709fd43818e6e97a32",
+    "live/S3_r03.INTERMEDIATES.json": "a1d3daf53288e3b83ae53ec4a1ad6bf94412eff2f0e4c822dbc0acda63eaa8c4",
+    "live/S4_r01.WINDOW.json": "48cd645efc4587be33fcee380366b1fd76297cc10eebdc156e8c80000ef57bd1",
+    "live/S4_r01.PREWINDOW_PREDICTION.json": "339bb4e7c34620bf462592e01500cdd4c7942d017405d4a747c3e221982eb726",
+    "live/S4_r01.INTERMEDIATES.json": "ffbb5a33d39523d61f0260482b8dc259e773f4ba80ebd34fe5524afcd8e6e36a",
+    "live/S4_r02.WINDOW.json": "d5d71922cd2040cc6311f34afd53e6e4a2375deff87e8d55cf91ea3f13722f78",
+    "live/S4_r02.PREWINDOW_PREDICTION.json": "f8a2aef71eb6303aa55d3002228a29836c99be0b6a954fc99fb8210b5f7fd1de",
+    "live/S4_r02.INTERMEDIATES.json": "f3e6934477f898ec69df6eefb2a81a3a42c3b66ccc1b395bcef2986be9e08c29",
+    "live/S4_r03.WINDOW.json": "45eda2d73e48c2625b161cce9f7263111723f6c5ffdd4a7cb68decd88c185a05",
+    "live/S4_r03.PREWINDOW_PREDICTION.json": "ca36ce403eae29c6ad45793f8ec5735df04f835ea296e26091bdf6830de2179a",
+    "live/S4_r03.INTERMEDIATES.json": "1ca53c16e19b595fd3f5aee35685cd825b004746c070f3ea83031b64e70bf214",
+    "live/S5_r01.WINDOW.json": "d205a1cbf2fe824b49e88a933028d93ab5ba2d1d9ca4f22780050346e52d488a",
+    "live/S5_r01.PREWINDOW_PREDICTION.json": "c5797ebea25c52cefd1aabef988f71eb999c96377f8c9ab7b2fbbb10bc2e856a",
+    "live/S5_r01.INTERMEDIATES.json": "42941d7f60b63148afafa79b364bf3eff5bb5fc767fbd002872717a81e6669b4",
+    "live/S5_r02.WINDOW.json": "9fbe64183f31fe3af972a786c03e86688f5a50172124b117ebe1c60ce0905dd8",
+    "live/S5_r02.PREWINDOW_PREDICTION.json": "edf17ccb397d1588ce15b1eeb6cbc871f00b9482e640bccb044876b73c888d51",
+    "live/S5_r02.INTERMEDIATES.json": "3e3e6f8a41881494e1317e77248a4abcab0ea8f4bec348f429e701cf01a23a7a",
+    "live/S5_r03.WINDOW.json": "55b25f3dc2b2c909d73c901609a8cb37f55297c16b345e9929f2ee03c9bac28f",
+    "live/S5_r03.PREWINDOW_PREDICTION.json": "48255ed5ac14c4121ba3e9042c6be15b8b8a6d2c51837edd4b4cff8d7d4ab7a3",
+    "live/S5_r03.INTERMEDIATES.json": "ec34fb39db0b659028b3247cc05e5932c376430e67c80e61d200dda0d4c29ee1"
+  }
+}

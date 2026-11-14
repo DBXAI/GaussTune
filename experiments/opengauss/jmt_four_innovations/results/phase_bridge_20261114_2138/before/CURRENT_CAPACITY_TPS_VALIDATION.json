@@ -1,0 +1,38 @@
+{
+  "created_at": "2026-11-14T20:18:45.775963+08:00",
+  "report": "CAPACITY_TPS_VALIDATION_CURRENT.md",
+  "run_directory": "results/capacity_TPS_validation_20261114_1957",
+  "frozen_prediction": "results/capacity_TPS_validation_20261114_1957/frozen_prediction/FROZEN_TPS_PREDICTION.json",
+  "frozen_prediction_sha256": "57e7feee66d66294c4355e7a2fac6c2740fe377632f5b69596cabb13119471bd",
+  "result": "results/capacity_TPS_validation_20261114_1957/live/CAPACITY_TPS_VALIDATION.json",
+  "result_sha256": "4555b2e351e28c5dcaad381f8286761d95b6ec6f3cb33cccf2d1020f13b511f9",
+  "diagnostic_audit": "results/capacity_TPS_validation_20261114_1957/diagnostic_audit_current/TPS_DIAGNOSTIC_AUDIT.json",
+  "diagnostic_audit_sha256": "592e55a2e70e7c72714cbece41aaa6ae540c159f8dfdf0a3425cef0ee89f7f57",
+  "driver_CPU_retest": "results/capacity_TPS_validation_20261114_1957/driver_CPU_retest/MATRIX.json",
+  "fixed_diagnostic_SB_mib": [
+    5120,
+    5120,
+    5376,
+    5376,
+    5376
+  ],
+  "fixed_AP_WM_mib": {
+    "2": 32,
+    "9": 512,
+    "13": 128,
+    "18": 1024,
+    "21": 512
+  },
+  "phase_mean_MAPE": 0.01868181431996323,
+  "all_five_stages_measured": true,
+  "S5_128_plus_16_first_event_gate_verified": true,
+  "fixed_controls_not_current_step3_optimal_WMs": true,
+  "full_AP_lifecycle_or_SB_optimality_verified": false,
+  "process_tree_driver_CPU_collector_fixed": true,
+  "driver_CPU_correction_real_TP128_tested": true,
+  "new_TPS_model_retrained_after_CPU_fix": false,
+  "restoration_verified": true,
+  "regression_tests": 799,
+  "automatic_recommendation_qualified": false,
+  "offline_replay": "results/capacity_TPS_validation_20261114_1957/REPRODUCE_OFFLINE.sh"
+}

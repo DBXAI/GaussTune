@@ -141,7 +141,8 @@ def predict_preview_cost(model, work):
 
 def solve_preview_joint_resources(*, baseline_tps, terminals, tp_cpu_seconds_per_tx,
                                   tp_read_requests_per_tx, tp_bytes_per_request,
-                                  cpu_capacity, demands, device_cap):
+                                  cpu_capacity, demands, device_cap,
+                                  tp_driver_cpu_seconds_per_tx=None):
     """Finite AP slots + measured device caps + TP CPU/IO fixed point.
 
     AP request rates decrease when they queue at the shared media center. A
@@ -156,6 +157,11 @@ def solve_preview_joint_resources(*, baseline_tps, terminals, tp_cpu_seconds_per
     tp_bytes = _number(tp_bytes_per_request, True)
     iops_cap = _number(device_cap.iops, True)
     bytes_cap = _number(device_cap.mb_s, True) * 1e6
+    backend_cpu_service = cpu_service
+    driver_cpu_known = tp_driver_cpu_seconds_per_tx is not None
+    driver_cpu_service = (_number(tp_driver_cpu_seconds_per_tx)
+                          if driver_cpu_known else 0.)
+    cpu_service += driver_cpu_service
     baseline_rho = baseline_tps * cpu_service / capacity
     if baseline_rho >= 1:
         raise ValueError("TP CPU demand exceeds declared capacity")
@@ -218,6 +224,11 @@ def solve_preview_joint_resources(*, baseline_tps, terminals, tp_cpu_seconds_per
             "media_additional_seconds_per_request": delta,
             "media_utilization": utilization, "cpu_utilization": rho,
             "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+            "TP_backend_CPU_seconds_per_transaction": backend_cpu_service,
+            "TP_driver_CPU_seconds_per_transaction": (
+                driver_cpu_service if driver_cpu_known else None),
+            "TP_colocated_driver_CPU_accounted": driver_cpu_known,
+            "TP_total_CPU_seconds_per_transaction": cpu_service,
             "automatic_recommendation_qualified": False,
         }
     low, high = 0., baseline_tps

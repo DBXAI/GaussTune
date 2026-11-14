@@ -1,0 +1,130 @@
+{
+  "schema": "jmt.exact-SB-colocated-TP-points/v1",
+  "created_at": "2026-11-14T21:44:17.079949+08:00",
+  "training_repeat": 1,
+  "holdout_repeat": 2,
+  "points": {
+    "TP128:5120": {
+      "topology": "TP128",
+      "terminals": 128,
+      "shared_buffers_mib": 5120,
+      "baseline_tps": 7894.266666666666,
+      "backend_cpu_seconds_per_tx": 0.001859473164684919,
+      "driver_cpu_seconds_per_tx": 0.00014337898530579154,
+      "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+      "scored_seconds": 15.0,
+      "CPU_endpoints_within_100ms": true,
+      "native_cache_counters_not_used_to_rescale_commits": true,
+      "calibration_window_end_ns": 2682292140030893,
+      "automatic_recommendation_qualified": false,
+      "role": "calibration"
+    },
+    "TP128:5376": {
+      "topology": "TP128",
+      "terminals": 128,
+      "shared_buffers_mib": 5376,
+      "baseline_tps": 7902.466666666666,
+      "backend_cpu_seconds_per_tx": 0.0018590808338915276,
+      "driver_cpu_seconds_per_tx": 0.00014439528747142241,
+      "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+      "scored_seconds": 15.0,
+      "CPU_endpoints_within_100ms": true,
+      "native_cache_counters_not_used_to_rescale_commits": true,
+      "calibration_window_end_ns": 2682345604044878,
+      "automatic_recommendation_qualified": false,
+      "role": "calibration"
+    },
+    "S5_128_plus_16:5376": {
+      "topology": "S5_128_plus_16",
+      "terminals": 144,
+      "shared_buffers_mib": 5376,
+      "baseline_tps": 7800.733333333334,
+      "backend_cpu_seconds_per_tx": 0.0018757253106032766,
+      "driver_cpu_seconds_per_tx": 0.00015190919538334003,
+      "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+      "scored_seconds": 15.0,
+      "CPU_endpoints_within_100ms": true,
+      "native_cache_counters_not_used_to_rescale_commits": true,
+      "calibration_window_end_ns": 2682516648401648,
+      "automatic_recommendation_qualified": false,
+      "role": "calibration"
+    }
+  },
+  "holdout": [
+    {
+      "topology": "TP128",
+      "SB_mib": 5120,
+      "observed": {
+        "topology": "TP128",
+        "terminals": 128,
+        "shared_buffers_mib": 5120,
+        "baseline_tps": 7922.533333333334,
+        "backend_cpu_seconds_per_tx": 0.0018529416446843602,
+        "driver_cpu_seconds_per_tx": 0.00014353904822531514,
+        "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+        "scored_seconds": 15.0,
+        "CPU_endpoints_within_100ms": true,
+        "native_cache_counters_not_used_to_rescale_commits": true,
+        "calibration_window_end_ns": 2682452576047128,
+        "automatic_recommendation_qualified": false,
+        "role": "heldout_TP_only"
+      },
+      "predicted_TPS_from_repeat1": 7894.266666666666,
+      "absolute_relative_error": 0.0035678823272018434
+    },
+    {
+      "topology": "TP128",
+      "SB_mib": 5376,
+      "observed": {
+        "topology": "TP128",
+        "terminals": 128,
+        "shared_buffers_mib": 5376,
+        "baseline_tps": 7837.133333333333,
+        "backend_cpu_seconds_per_tx": 0.0018727992293270498,
+        "driver_cpu_seconds_per_tx": 0.0001442958603060643,
+        "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+        "scored_seconds": 15.0,
+        "CPU_endpoints_within_100ms": true,
+        "native_cache_counters_not_used_to_rescale_commits": true,
+        "calibration_window_end_ns": 2682399072045382,
+        "automatic_recommendation_qualified": false,
+        "role": "heldout_TP_only"
+      },
+      "predicted_TPS_from_repeat1": 7902.466666666666,
+      "absolute_relative_error": 0.008336381500038348
+    },
+    {
+      "topology": "S5_128_plus_16",
+      "SB_mib": 5376,
+      "observed": {
+        "topology": "S5_128_plus_16",
+        "terminals": 144,
+        "shared_buffers_mib": 5376,
+        "baseline_tps": 7821.8,
+        "backend_cpu_seconds_per_tx": 0.0018690377414235428,
+        "driver_cpu_seconds_per_tx": 0.0001525847183001355,
+        "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+        "scored_seconds": 15.0,
+        "CPU_endpoints_within_100ms": true,
+        "native_cache_counters_not_used_to_rescale_commits": true,
+        "calibration_window_end_ns": 2682570068378207,
+        "automatic_recommendation_qualified": false,
+        "role": "heldout_TP_only"
+      },
+      "predicted_TPS_from_repeat1": 7800.733333333334,
+      "absolute_relative_error": 0.0026933271966383954
+    }
+  ],
+  "mixed_TPS_labels_used": false,
+  "no_stage_or_query_ID_coefficients": true,
+  "source_windows": {
+    "TP128_calibration/sb5120_r01/WINDOW.json": "207b137e1dcecaa59dfd2067ff4f047326230656cf791fc1f44aba0ae5f13256",
+    "TP128_calibration/sb5120_r02/WINDOW.json": "9d0bfb25293c9d0ff456d504b5c4019fc4fd8918874713c7361664684282e4a5",
+    "TP128_calibration/sb5376_r01/WINDOW.json": "2643b9b7eec14d78a6cda4a597d67ea0c883e076afb95fbc778d97bd512919f0",
+    "TP128_calibration/sb5376_r02/WINDOW.json": "eb12fe8824830b82146bc367eeed1df699def3de65bbe2b4de42d77461acb7e0",
+    "TP128_plus16_calibration/sb5376_r01/WINDOW.json": "e6066b3a9ec98b77d78735882eb1aeb40808d522b7cc48f104609d516ef0496e",
+    "TP128_plus16_calibration/sb5376_r02/WINDOW.json": "9b23a473de1250f2cc70c5ca8785808f45f5b4b6dd077e0336fa40d943d08354"
+  },
+  "automatic_recommendation_qualified": false,
+  "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7"
+}

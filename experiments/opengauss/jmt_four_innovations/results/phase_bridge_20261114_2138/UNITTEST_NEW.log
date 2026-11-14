@@ -1,0 +1,36 @@
+test_CPU_regression_rejected (tests.test_phase_bridge.PhaseBridgeTests) ... ok
+test_DOP1_excess_not_silently_clipped (tests.test_phase_bridge.PhaseBridgeTests) ... ok
+test_IO_diagnostics_not_used_as_exact_media_demands (tests.test_phase_bridge.PhaseBridgeTests) ... ok
+test_IO_regression_not_silently_zero (tests.test_phase_bridge.PhaseBridgeTests) ... ok
+test_explicit_conditional_not_cold_start_or_qualified (tests.test_phase_bridge.PhaseBridgeTests) ... ok
+test_future_probe_rejected (tests.test_phase_bridge.PhaseBridgeTests) ... ok
+test_identity_change_rejected (tests.test_phase_bridge.PhaseBridgeTests) ... ok
+test_more_AP_CPU_reduces_forecast_without_query_specific_factor (tests.test_phase_bridge.PhaseBridgeTests) ... ok
+test_own_probe_elapsed_CPU_not_target_TPS (tests.test_phase_bridge.PhaseBridgeTests) ... ok
+test_stale_probe_rejected (tests.test_phase_bridge.PhaseBridgeTests) ... ok
+test_unknown_driver_CPU_cannot_be_zero_default (tests.test_phase_bridge.PhaseBridgeTests) ... ok
+test_zero_AP_cpu_recovers_same_baseline (tests.test_phase_bridge.PhaseBridgeTests) ... ok
+test_S5_gate_and_two_topologies_are_distinct (tests.test_colocated_tp.ColocatedTPTests) ... ok
+test_S5_requires_actual_surge_gate (tests.test_colocated_tp.ColocatedTPTests) ... ok
+test_backend_membership_count_checked (tests.test_colocated_tp.ColocatedTPTests) ... ok
+test_no_interpolation_or_flat_tail_expansion (tests.test_colocated_tp.ColocatedTPTests) ... ok
+test_process_tree_replaced_thread_rejected (tests.test_colocated_tp.ColocatedTPTests) ... ok
+test_scaled_commits_rejected (tests.test_colocated_tp.ColocatedTPTests) ... ok
+test_separates_backend_and_actual_process_tree_CPU (tests.test_colocated_tp.ColocatedTPTests) ... ok
+test_unknown_topology_rejected (tests.test_colocated_tp.ColocatedTPTests) ... ok
+test_wide_CPU_endpoint_is_not_rescaled (tests.test_colocated_tp.ColocatedTPTests) ... ok
+test_AP_CPU_competition_not_zero_even_without_spill (tests.test_preview_cost.PreviewCostTests) ... ok
+test_driver_CPU_explicit_and_legacy_unknown_not_declared_zero (tests.test_preview_cost.PreviewCostTests) ... ok
+test_extrapolation_is_reported_not_relabelled_valid (tests.test_preview_cost.PreviewCostTests) ... ok
+test_failed_or_validation_runs_rejected (tests.test_preview_cost.PreviewCostTests) ... ok
+test_media_cap_slows_AP_instead_of_extrapolating_low_QD_grid (tests.test_preview_cost.PreviewCostTests) ... ok
+test_no_AP_recovers_TP_baseline (tests.test_preview_cost.PreviewCostTests) ... ok
+test_no_spill_does_not_charge_background_per_query (tests.test_preview_cost.PreviewCostTests) ... ok
+test_preview_is_never_strictly_qualified (tests.test_preview_cost.PreviewCostTests) ... ok
+test_unaccounted_driver_can_exceed_physical_CPU_budget (tests.test_preview_cost.PreviewCostTests) ... ok
+test_unknown_physical_writes_cannot_become_zero (tests.test_preview_cost.PreviewCostTests) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 1.122s
+
+OK

@@ -1,5 +1,6 @@
-> **本页保留2026-11-12的历史测量。** 最新2026-11-14的真实五阶段TPS与逐层误差诊断，
-> 请见 `CAPACITY_TPS_VALIDATION_CURRENT.md` / `CURRENT_CAPACITY_TPS_VALIDATION.json`。
+> **本页保留2026-11-12的历史测量。** 最新2026-11-14两轮优化复测见
+> `PHASE_BRIDGE_CURRENT.md` / `CURRENT_PHASE_BRIDGE.json`；此前20点准确率诊断见
+> `CAPACITY_TPS_VALIDATION_CURRENT.md` / `CURRENT_CAPACITY_TPS_VALIDATION.json`。
 > 最新是5/5.25GiB与固定较保守WM的诊断控制，不与本页旧配置作无条件优劣比较。
 
 # 此前魔改 openGauss：真实五阶段混合 TPS（2026-11-12）

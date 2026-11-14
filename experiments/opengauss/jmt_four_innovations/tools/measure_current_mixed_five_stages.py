@@ -207,6 +207,9 @@ SELECT coalesce(json_agg(x),'[]'::json) FROM
     def window(self, stage, repeat, expected_ap, gate_surge=False):
         observer = TPWindowObserver("/opt/openGauss/bin/gaussdb", self.sb.pid, "/dev/nvme0n1")
         try:
+            hook = getattr(self, "before_scored_window", None)
+            if hook is not None:
+                hook(stage, repeat, expected_ap, gate_surge, observer)
             start = time.monotonic_ns() + (10 if gate_surge else 2) * 10**9
             end = start + self.args.window_seconds * 10**9
             if gate_surge:

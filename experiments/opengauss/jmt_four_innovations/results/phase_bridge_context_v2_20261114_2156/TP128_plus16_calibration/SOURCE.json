@@ -1,0 +1,7 @@
+{
+  "script_sha256": "112a47416156dbd4bbf3a0e2ee76a6489cd9f91bfa238348138a69a8dfb34233",
+  "wrapper": "\npackage.path = \"/usr/share/sysbench/?.lua;\" .. package.path\ndofile(\"/usr/share/sysbench/oltp_read_only.lua\")\nlocal ffi = require(\"ffi\")\nffi.cdef[[\n  struct jmt_timespec { long tv_sec; long tv_nsec; };\n  int clock_gettime(int clockid, struct jmt_timespec *tp);\n  int usleep(unsigned int usec);\n]]\nlocal original_event = event\nlocal gate_ns = tonumber(os.getenv(\"JMT_SURGE_MONOTONIC_NS\"))\nassert(gate_ns and gate_ns > 0)\nlocal ts = ffi.new(\"struct jmt_timespec[1]\")\nlocal opened = false\nfunction event()\n  if not opened then\n    while true do\n      assert(ffi.C.clock_gettime(1, ts) == 0)\n      local now_ns = tonumber(ts[0].tv_sec) * 1000000000 + tonumber(ts[0].tv_nsec)\n      if now_ns >= gate_ns then break end\n      ffi.C.usleep(math.min(10000, math.max(1, (gate_ns-now_ns)/1000)))\n    end\n    opened = true\n  end\n  original_event()\nend\n",
+  "points": [
+    5376
+  ]
+}

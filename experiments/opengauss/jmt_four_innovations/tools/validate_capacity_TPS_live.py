@@ -19,9 +19,14 @@ sys.path[:0] = [str(ROOT / "src"), str(ROOT / "vendor"), str(ROOT / "tools")]
 from jmt.common.db import Gsql, readonly_query
 from jmt.innovation_4_performance.tp_window_observer import TPWindowObserver
 from collect_current_tp_matrix import OnlineSB, dump, digest, native_snapshot, validate_cpu_window
-from collect_current_tp_surge import GATED_LUA
+from collect_current_tp_surge import GATED_LUA, tids_for
 from measure_current_mixed_five_stages import Run, AP, summary, validate_recommendation
 from regenerate_resource_pilot import SQL_SHA256
+from jmt.innovation_4_performance.colocated_tp import exact_tp_point
+from jmt.innovation_4_performance.capped_device import DeviceCap
+from jmt.innovation_4_performance.phase_bridge import (
+    task_phase_snapshot, cpu_rate_from_probe, predict_phase_tps,
+)
 
 
 class DiagnosticRun(Run):
@@ -61,6 +66,45 @@ class DiagnosticRun(Run):
                 "resident_pages_by_database": cache, "AP_members": members,
                 "not_exact_commit_window_or_owned_IO": True}
 
+    def before_scored_window(self, stage, repeat, expected_ap, gate_surge, observer):
+        if expected_ap and getattr(self.args, "phase_model", None) is not None:
+            # AP probe and target must both have the same uretprobe attached.
+            # Counts remain disarmed here; this does not create target labels.
+            observer.enroll(tids_for(self.client, self.tag + "_base"))
+            begun = time.monotonic_ns()
+            snapshots = {str(q): {"before": task_phase_snapshot(
+                self.sb.pid, self.ap[q].identity["linux_tid"])} for q in expected_ap}
+            self.wait(time.monotonic_ns() + 4 * 10**9)
+            for q in expected_ap:
+                snapshots[str(q)]["after"] = task_phase_snapshot(
+                    self.sb.pid, self.ap[q].identity["linux_tid"])
+            probe = {"started_ns": begun, "finished_ns": time.monotonic_ns(),
+                     "queries": snapshots}
+            prediction_ns = time.monotonic_ns()
+            phase = cpu_rate_from_probe(probe, prediction_ns=prediction_ns)
+            stage_input = next(s for s in self.args.frozen["stages"] if s["stage"] == stage)
+            tp_point = exact_tp_point(
+                self.args.phase_model,
+                topology="S5_128_plus_16" if stage == "S5" else "TP128",
+                shared_buffers_mib=self.sb.current_mib)
+            started = time.perf_counter_ns()
+            predicted = predict_phase_tps(
+                tp_point=tp_point, phase=phase,
+                cpu_capacity=self.args.frozen["cpu_capacity"],
+                device_cap=DeviceCap(**self.args.frozen["device_cap"]),
+                tp_read_requests_per_tx_proxy=stage_input["cache_to_TP"][
+                    "TP_physical_read_requests_per_transaction_proxy"])
+            dump(self.out / ("%s_r%02d.PREWINDOW_PREDICTION.json" % (stage, repeat)), {
+                "stage": stage, "repeat": repeat, "AP_probe": probe, "phase": phase,
+                "prediction": predicted, "prediction_monotonic_ns": prediction_ns,
+                "forecast_saved_monotonic_ns": time.monotonic_ns(),
+                "prediction_compute_milliseconds": (time.perf_counter_ns() - started) / 1e6,
+                "target_window_TPS_or_CPU_used": False,
+                "S5_probe_precedes_TP_surge": gate_surge,
+                "observer_attached_during_AP_probe": observer.bpf is not None,
+                "commit_count_window_disarmed_during_probe": observer.interval is None,
+                "automatic_recommendation_qualified": False})
+
     def window(self, stage, repeat, expected_ap, gate_surge=False):
         before = self.diagnostic_snapshot()
         tps = super().window(stage, repeat, expected_ap, gate_surge)
@@ -90,11 +134,17 @@ def main():
     p.add_argument("--window-seconds", type=int, default=15)
     p.add_argument("--repeats", type=int, default=3)
     p.add_argument("--settle-seconds", type=int, default=15)
+    p.add_argument("--phase-calibration", type=Path)
     args = p.parse_args()
     if (not 10 <= args.window_seconds <= 30 or not 1 <= args.repeats <= 3
             or not 15 <= args.settle_seconds <= 60):
         raise ValueError("bounded overlap-window policy required")
     prediction = json.loads(args.prediction.read_text())
+    args.frozen = prediction
+    args.phase_model = json.loads(args.phase_calibration.read_text()) if args.phase_calibration else None
+    if args.phase_model is not None and (
+            digest(args.phase_calibration) != prediction["colocated_TP_calibration_sha256"]):
+        raise ValueError("phase and frozen static TP calibration differ")
     if prediction["schema"] != "jmt.experimental-fixed-control-capacity-TPS-validation/v1":
         raise ValueError("explicit experimental fixed-control prediction required")
     stages = validate_recommendation(prediction)
@@ -115,6 +165,9 @@ def main():
     sources = [Path(__file__).resolve(), ROOT / "tools/measure_current_mixed_five_stages.py",
                ROOT / "tools/collect_current_tp_matrix.py", ROOT / "tools/current_ap_worker.py",
                ROOT / "src/jmt/innovation_4_performance/tp_window_observer.py"]
+    sources += [ROOT / "src/jmt/innovation_4_performance" / name for name in (
+        "phase_bridge.py", "colocated_tp.py", "preview_cost.py")]
+    sources += [ROOT / "src/jmt/common/process_cpu.py"]
     for source in sources:
         target = args.out / "model_source_snapshot" / source.relative_to(ROOT)
         target.parent.mkdir(parents=True, exist_ok=True)

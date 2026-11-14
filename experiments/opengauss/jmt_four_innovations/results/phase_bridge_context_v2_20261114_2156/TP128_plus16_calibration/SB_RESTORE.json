@@ -1,0 +1,102 @@
+{
+  "config_restored_byte_exact": true,
+  "server_status_matches_original": true,
+  "restoration_commit": {
+    "path": "/opt/openGauss/data/pg_log/postgresql-2026-11-14_000000.log",
+    "line": "2026-11-14 21:43:45.211 [unknown] [unknown] localhost 140161406961408 0[0:0#0]  0 [BACKEND] LOG:  shared buffer resize committed: active buffers 1048576, released 0 bytes",
+    "active_buffers": 1048576,
+    "released_bytes": 0
+  },
+  "after": {
+    "target_buffers": 1048576,
+    "maximum_buffers": 1048576,
+    "postmaster_start_time": "2026-10-20 10:52:53.974417+08"
+  },
+  "reloads": [
+    {
+      "target_mib": 7936,
+      "commit": {
+        "path": "/opt/openGauss/data/pg_log/postgresql-2026-11-14_000000.log",
+        "line": "2026-11-14 21:41:48.193 [unknown] [unknown] localhost 140161406961408 0[0:0#0]  0 [BACKEND] LOG:  shared buffer resize committed: active buffers 1015808, released 268431360 bytes",
+        "active_buffers": 1015808,
+        "released_bytes": 268431360
+      },
+      "elapsed_seconds": 0.028461738,
+      "configured_status": {
+        "target_buffers": 1015808,
+        "maximum_buffers": 1048576,
+        "postmaster_start_time": "2026-10-20 10:52:53.974417+08"
+      },
+      "GUC_propagation_observations": [
+        {
+          "monotonic_ns": 2682461346415552,
+          "status": {
+            "target_buffers": 1015808,
+            "maximum_buffers": 1048576,
+            "postmaster_start_time": "2026-10-20 10:52:53.974417+08"
+          }
+        }
+      ]
+    },
+    {
+      "target_mib": 8192,
+      "commit": {
+        "path": "/opt/openGauss/data/pg_log/postgresql-2026-11-14_000000.log",
+        "line": "2026-11-14 21:41:48.222 [unknown] [unknown] localhost 140161406961408 0[0:0#0]  0 [BACKEND] LOG:  shared buffer resize committed: active buffers 1048576, released 0 bytes",
+        "active_buffers": 1048576,
+        "released_bytes": 0
+      },
+      "elapsed_seconds": 0.027209437,
+      "configured_status": {
+        "target_buffers": 1048576,
+        "maximum_buffers": 1048576,
+        "postmaster_start_time": "2026-10-20 10:52:53.974417+08"
+      },
+      "GUC_propagation_observations": [
+        {
+          "monotonic_ns": 2682461374090197,
+          "status": {
+            "target_buffers": 1048576,
+            "maximum_buffers": 1048576,
+            "postmaster_start_time": "2026-10-20 10:52:53.974417+08"
+          }
+        }
+      ]
+    },
+    {
+      "target_mib": 5376,
+      "commit": {
+        "path": "/opt/openGauss/data/pg_log/postgresql-2026-11-14_000000.log",
+        "line": "2026-11-14 21:41:58.264 [unknown] [unknown] localhost 140161406961408 0[0:0#0]  0 [BACKEND] LOG:  shared buffer resize committed: active buffers 688128, released 268431360 bytes",
+        "active_buffers": 688128,
+        "released_bytes": 268431360
+      },
+      "elapsed_seconds": 10.090351417,
+      "configured_status": {
+        "target_buffers": 688128,
+        "maximum_buffers": 1048576,
+        "postmaster_start_time": "2026-10-20 10:52:53.974417+08"
+      },
+      "GUC_propagation_observations": [
+        {
+          "monotonic_ns": 2682471464903468,
+          "status": {
+            "target_buffers": 688128,
+            "maximum_buffers": 1048576,
+            "postmaster_start_time": "2026-10-20 10:52:53.974417+08"
+          }
+        }
+      ]
+    }
+  ],
+  "restoration_GUC_propagation": [
+    {
+      "monotonic_ns": 2682578565101861,
+      "status": {
+        "target_buffers": 1048576,
+        "maximum_buffers": 1048576,
+        "postmaster_start_time": "2026-10-20 10:52:53.974417+08"
+      }
+    }
+  ]
+}

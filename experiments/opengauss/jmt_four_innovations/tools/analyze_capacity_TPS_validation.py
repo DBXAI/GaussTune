@@ -62,13 +62,21 @@ def oracle_scenarios(prediction, stage, observed, control):
         for cores in observed["AP_CPU_cores_by_query_bracketed"].values() if cores > 0]
 
     def solve(demands, baseline=None, service=None):
-        return solve_preview_joint_resources(
+        result = solve_preview_joint_resources(
             baseline_tps=tp["baseline_tps"] if baseline is None else baseline,
             terminals=stage["TP_terminals"],
             tp_cpu_seconds_per_tx=tp["TP_CPU_seconds_per_transaction"] if service is None else service,
             tp_read_requests_per_tx=tp["TP_physical_read_requests_per_transaction_proxy"],
             tp_bytes_per_request=8192, cpu_capacity=prediction["cpu_capacity"],
             demands=demands, device_cap=DeviceCap(**prediction["device_cap"]))
+        # v1 audit serialization predates explicit CPU-scope metadata. Keep
+        # its immutable replay stable, without changing any numeric result.
+        for key in ("TP_backend_CPU_seconds_per_transaction",
+                    "TP_driver_CPU_seconds_per_transaction",
+                    "TP_colocated_driver_CPU_accounted",
+                    "TP_total_CPU_seconds_per_transaction"):
+            result.pop(key, None)
+        return result
 
     scenarios = {
         "zero_AP_media_IO_bound_only": solve(no_io),
@@ -103,6 +111,8 @@ def main():
     frozen_path = args.run / "frozen_prediction/FROZEN_TPS_PREDICTION.json"
     frozen, result, policy = (read(path) for path in (
         frozen_path, live / "CAPACITY_TPS_VALIDATION.json", live / "POLICY.json"))
+    if frozen.get("colocated_TP_calibration") is not None:
+        raise ValueError("colocated/phase run requires audit_phase_bridge.py, not legacy CPU-only oracle")
     if not result["complete"] or not result["restoration_verified"]:
         raise ValueError("complete restored run required, partial evidence must remain partial")
     frozen_hash = sha(frozen_path)

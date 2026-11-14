@@ -1,4 +1,12 @@
-> **真实TPS准确率核对（2026-11-14 20点）：** 见 `CAPACITY_TPS_VALIDATION_CURRENT.md` /
+> **同机CPU/阶段桥接优化复测（2026-11-14 22点）：** 见 `PHASE_BRIDGE_CURRENT.md` /
+> `CURRENT_PHASE_BRIDGE.json`。先推送8a82027并标记`jmt-before-phase-bridge-20261114`，
+> 再新增独立TP校准、显式驱动CPU服务成本、窗口前AP观测和两轮真实五阶段。
+> TP-only留出MAPE约0.49%，但第二轮端到端窗口MAPE：旧方法2.92%、新校准静态5.52%、
+> CPU条件短期预测3.71%，未达到替换要求，**新候选不作为默认推荐**。
+> 已定位TP竞争下单位CPU成本上升及AP短期状态突变；计算最高约3.40ms，
+> 828项回归和离线重放通过，配置/SB均恢复。失败证据保留，不以目标TPS调查询专属系数。
+>
+> **此前真实TPS准确率核对（2026-11-14 20点）：** 见 `CAPACITY_TPS_VALIDATION_CURRENT.md` /
 > `CURRENT_CAPACITY_TPS_VALIDATION.json`。已真实执行SB=5/5/5.25/5.25/5.25GiB、
 > 原始SF85 AP、连续TP128→128+16的五阶段，每阶段3×15秒同步窗口。
 > 冻结预测对阶段均值的MAPE为1.87%，但S5低估5.28%，S4波动和中间层误差仍显著。

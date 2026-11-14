@@ -1,5 +1,18 @@
 # Git 保存范围
 
+## 同机CPU/阶段桥接候选（2026-11-14 22点，未通过替换验收）
+
+修改前版本已推送并标记`jmt-before-phase-bridge-20261114`（8a82027）。
+最新入口 `CURRENT_PHASE_BRIDGE.json` / `PHASE_BRIDGE_CURRENT.md`。
+独立TP-only留出MAPE为0.49%，但两轮真实五阶段均未优于同轮旧模型；
+保留显式CPU记账/探针条件修复与实验入口，不把新候选设为默认或已验收自动推荐。
+828项回归、两轮新证据离线重放及此前TPS审计重放均通过。
+
+```bash
+bash results/phase_bridge_20261114_2138/REPRODUCE_OFFLINE.sh
+bash results/phase_bridge_context_v2_20261114_2156/REPRODUCE_OFFLINE.sh
+```
+
 2026-11-13 在开始 AP→SB 压力新预测前保存的设计/实现基线。
 
 - `AP_SB_PRESSURE_DESIGN.md` 保存新方案的讨论设计，尚非效果结论。

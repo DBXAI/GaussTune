@@ -1,0 +1,125 @@
+{
+  "schema": "jmt.actual-capacity-TPS-overlap-validation/v1",
+  "created_at": "2026-11-14T21:54:24.850569+08:00",
+  "prediction_sha256": "b1707eb5d9c18d07807c2fe019135f10618d7b4e3de715fec7006f402a16f6ca",
+  "TP_only_controls": [
+    {
+      "SB_mib": 5120,
+      "TPS": 7897.333333333333
+    },
+    {
+      "SB_mib": 5376,
+      "TPS": 7937.066666666667
+    }
+  ],
+  "stages": [
+    {
+      "stage": "S1",
+      "SB_mib": 5120,
+      "AP_work_mem_mib": {
+        "18": 1024
+      },
+      "repeat_TPS": [
+        7571.533333333334,
+        7519.4,
+        7611.533333333334
+      ],
+      "observed_mean_TPS": 7567.488888888889,
+      "observed_min_TPS": 7519.4,
+      "observed_max_TPS": 7611.533333333334,
+      "observed_sample_std_TPS": 46.19963123149322,
+      "frozen_predicted_TPS": 7648.415009812886,
+      "prediction_minus_actual_relative": 0.010693920019204523
+    },
+    {
+      "stage": "S2",
+      "SB_mib": 5120,
+      "AP_work_mem_mib": {
+        "18": 1024,
+        "21": 512
+      },
+      "repeat_TPS": [
+        7467.533333333334,
+        7458.933333333333,
+        7491.866666666667
+      ],
+      "observed_mean_TPS": 7472.777777777778,
+      "observed_min_TPS": 7458.933333333333,
+      "observed_max_TPS": 7491.866666666667,
+      "observed_sample_std_TPS": 17.081547332114223,
+      "frozen_predicted_TPS": 7703.634902931904,
+      "prediction_minus_actual_relative": 0.03089308046074099
+    },
+    {
+      "stage": "S3",
+      "SB_mib": 5376,
+      "AP_work_mem_mib": {
+        "9": 512,
+        "13": 128,
+        "18": 1024,
+        "21": 512
+      },
+      "repeat_TPS": [
+        7320.333333333333,
+        7034.266666666666,
+        6978.533333333334
+      ],
+      "observed_mean_TPS": 7111.044444444445,
+      "observed_min_TPS": 6978.533333333334,
+      "observed_max_TPS": 7320.333333333333,
+      "observed_sample_std_TPS": 183.3791983033252,
+      "frozen_predicted_TPS": 7608.240455258683,
+      "prediction_minus_actual_relative": 0.06991884450991956
+    },
+    {
+      "stage": "S4",
+      "SB_mib": 5376,
+      "AP_work_mem_mib": {
+        "2": 32,
+        "9": 512,
+        "13": 128,
+        "18": 1024,
+        "21": 512
+      },
+      "repeat_TPS": [
+        7154.0,
+        7166.066666666667,
+        7173.466666666666
+      ],
+      "observed_mean_TPS": 7164.511111111111,
+      "observed_min_TPS": 7154.0,
+      "observed_max_TPS": 7173.466666666666,
+      "observed_sample_std_TPS": 9.826117880047475,
+      "frozen_predicted_TPS": 7636.956252503674,
+      "prediction_minus_actual_relative": 0.0659424117103914
+    },
+    {
+      "stage": "S5",
+      "SB_mib": 5376,
+      "AP_work_mem_mib": {
+        "9": 512,
+        "13": 128,
+        "18": 1024,
+        "21": 512
+      },
+      "repeat_TPS": [
+        7186.933333333333,
+        7257.333333333333,
+        7283.333333333333
+      ],
+      "observed_mean_TPS": 7242.533333333333,
+      "observed_min_TPS": 7186.933333333333,
+      "observed_max_TPS": 7283.333333333333,
+      "observed_sample_std_TPS": 49.875043859629635,
+      "frozen_predicted_TPS": 7510.513047373232,
+      "prediction_minus_actual_relative": 0.03700082577549747
+    }
+  ],
+  "error": null,
+  "cleanup_errors": [],
+  "complete": true,
+  "restoration_verified": true,
+  "full_AP_lifecycle_or_optimal_SB_verified": false,
+  "fixed_controls_not_recommended_WMs_validated": true,
+  "automatic_recommendation_qualified": false
+}

@@ -1,0 +1,59 @@
+{
+  "created_at": "2026-11-14T22:10:59.820898+08:00",
+  "report": "PHASE_BRIDGE_CURRENT.md",
+  "design": "PHASE_BRIDGE_DESIGN.md",
+  "baseline_commit": "8a8202727ba59cd41bf59fc615cb1a036ff51390",
+  "baseline_tag": "jmt-before-phase-bridge-20261114",
+  "trials": [
+    {
+      "run": "results/phase_bridge_20261114_2138",
+      "audit": "results/phase_bridge_20261114_2138/PHASE_BRIDGE_AUDIT.json",
+      "audit_sha256": "87cc530d3c9fec7a6d9f7e37a1d1195b4dc1c379045555a7a27a6ed7ca5a055d",
+      "result": "results/phase_bridge_20261114_2138/live/CAPACITY_TPS_VALIDATION.json",
+      "result_sha256": "a20891d3bd1891407ee8f4437ef175bfe6872958ff713d6fbddb37b626e00750",
+      "window_MAPE": {
+        "historical_TP_static": 0.020979851129226866,
+        "fresh_colocated_TP_static": 0.04299606718679467,
+        "prewindow_CPU_conditional": 0.028823371165140724
+      },
+      "stage_mean_MAPE": {
+        "historical_TP_static": 0.020868815732823953,
+        "fresh_colocated_TP_static": 0.04288981649515074,
+        "prewindow_CPU_conditional": 0.027951775647368126
+      },
+      "restoration_verified": true,
+      "TP_calibration_same_frozen_points_across_trials": true
+    },
+    {
+      "run": "results/phase_bridge_context_v2_20261114_2156",
+      "audit": "results/phase_bridge_context_v2_20261114_2156/PHASE_BRIDGE_AUDIT.json",
+      "audit_sha256": "36ca4a6b2e94fe972f7319623935af7d15cc89d6890bc2f3be15988eeea0ae7a",
+      "result": "results/phase_bridge_context_v2_20261114_2156/live/CAPACITY_TPS_VALIDATION.json",
+      "result_sha256": "1c59af44a46e7f549b194d708fd7fdf574880e88372b6f1f65195c00228ce1f7",
+      "window_MAPE": {
+        "historical_TP_static": 0.029183308829340962,
+        "fresh_colocated_TP_static": 0.055196847204206326,
+        "prewindow_CPU_conditional": 0.03706019465803961
+      },
+      "stage_mean_MAPE": {
+        "historical_TP_static": 0.02772017719595299,
+        "fresh_colocated_TP_static": 0.05454684949068187,
+        "prewindow_CPU_conditional": 0.035693855220639434
+      },
+      "restoration_verified": true,
+      "TP_calibration_same_frozen_points_across_trials": true
+    }
+  ],
+  "TP_only_repeat2_holdout_MAPE": 0.004865863674626196,
+  "candidate_promoted_to_default": false,
+  "end_to_end_TPS_accuracy_improved_over_matched_legacy": false,
+  "all_30_precomputed_target_window_forecasts_bound_and_verified": true,
+  "new_CPU_scope_and_probe_context_fixes_implemented": true,
+  "new_AP_pressure_dependent_TP_service_model_implemented": false,
+  "cold_start_operator_phase_or_TP_extra_IO_fully_solved": false,
+  "full_AP_lifecycle_WM_or_SB_optimality_verified": false,
+  "automatic_recommendation_qualified": false,
+  "source_regression_tests": 828,
+  "latest_test_log": "results/phase_bridge_context_v2_20261114_2156/UNITTEST_FINAL.log",
+  "latest_DB_state": "results/phase_bridge_context_v2_20261114_2156/FINAL_DB_STATE.json"
+}

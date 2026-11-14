@@ -1,0 +1,155 @@
+{
+  "stage": "S2",
+  "repeat": 2,
+  "AP_probe": {
+    "started_ns": 2683595495380678,
+    "finished_ns": 2683599496745310,
+    "queries": {
+      "18": {
+        "before": {
+          "identity": [
+            2296200,
+            3561335,
+            268346994
+          ],
+          "cpu_ns": 55503707852,
+          "io": {
+            "rchar": 11971478998,
+            "wchar": 614326519,
+            "syscr": 1461379,
+            "syscw": 74992,
+            "read_bytes": 11971850240,
+            "write_bytes": 614326272,
+            "cancelled_write_bytes": 0
+          },
+          "sample_ns": 2683595495529743,
+          "read_span_ns": 241758
+        },
+        "after": {
+          "identity": [
+            2296200,
+            3561335,
+            268346994
+          ],
+          "cpu_ns": 57041831169,
+          "io": {
+            "rchar": 12318557654,
+            "wchar": 665321719,
+            "syscr": 1503747,
+            "syscw": 81217,
+            "read_bytes": 12318928896,
+            "write_bytes": 665321472,
+            "cancelled_write_bytes": 0
+          },
+          "sample_ns": 2683599496585093,
+          "read_span_ns": 128010
+        }
+      },
+      "21": {
+        "before": {
+          "identity": [
+            2296200,
+            3562003,
+            268355595
+          ],
+          "cpu_ns": 10406184039,
+          "io": {
+            "rchar": 3393988054,
+            "wchar": 222503159,
+            "syscr": 414322,
+            "syscw": 27162,
+            "read_bytes": 3394629632,
+            "write_bytes": 222502912,
+            "cancelled_write_bytes": 0
+          },
+          "sample_ns": 2683595495709819,
+          "read_span_ns": 82071
+        },
+        "after": {
+          "identity": [
+            2296200,
+            3562003,
+            268355595
+          ],
+          "cpu_ns": 11692218162,
+          "io": {
+            "rchar": 3818628566,
+            "wchar": 251322615,
+            "syscr": 466158,
+            "syscw": 30680,
+            "read_bytes": 3819302912,
+            "write_bytes": 251322368,
+            "cancelled_write_bytes": 0
+          },
+          "sample_ns": 2683599496705808,
+          "read_span_ns": 74444
+        }
+      }
+    }
+  },
+  "phase": {
+    "queries": {
+      "18": {
+        "cpu_cores": 0.3844294023575555,
+        "io_submission_diagnostics": {
+          "read_bytes_per_second": 86746776.9472372,
+          "write_bytes_per_second": 12745437.275692776,
+          "cancelled_write_bytes_per_second": 0.0,
+          "rchar_per_second": 86746776.9472372,
+          "wchar_per_second": 12745437.275692776
+        }
+      },
+      "21": {
+        "cpu_cores": 0.32142849593843975,
+        "io_submission_diagnostics": {
+          "read_bytes_per_second": 106141890.96104091,
+          "write_bytes_per_second": 7203070.455265083,
+          "cancelled_write_bytes_per_second": 0.0,
+          "rchar_per_second": 106133701.0003186,
+          "wchar_per_second": 7203070.455265083
+        }
+      }
+    },
+    "AP_CPU_cores": 0.7058578982959953,
+    "probe_duration_seconds": 4.001364632,
+    "physical_IO_completion_or_TP_ownership_qualified": false,
+    "one_window_ahead_phase_persistence_assumption": true
+  },
+  "prediction": {
+    "predicted_tps": 7548.030592439758,
+    "transaction_latency_ms": 16.958065735533573,
+    "cpu_queue_extra_ms": 0.7437667506162473,
+    "io_queue_extra_ms": 0.0,
+    "ap_cpu_seconds_per_second_after_media_closure": 0.7058578982959953,
+    "ap_response_seconds_after_media_closure": [
+      1.0,
+      1.0
+    ],
+    "media_additional_seconds_per_request": 0.0,
+    "media_utilization": 0.018721251591976244,
+    "cpu_utilization": 0.9889654499099764,
+    "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+    "TP_backend_CPU_seconds_per_transaction": 0.001859473164684919,
+    "TP_driver_CPU_seconds_per_transaction": 0.00014337898530579154,
+    "TP_colocated_driver_CPU_accounted": true,
+    "TP_total_CPU_seconds_per_transaction": 0.0020028521499907107,
+    "automatic_recommendation_qualified": false,
+    "fixed_point_relative_residual": 8.121782579806336e-09,
+    "iterations": 31,
+    "prediction_kind": "prewindow_AP_probe_to_next_window_CPU_conditional",
+    "CPU_capacity_TPS_upper_bound": 7636.181283663369,
+    "AP_phase_cpu_not_divided_by_logical_IO_again": true,
+    "AP_media_completion_demand": null,
+    "zero_extra_AP_IO_is_conditional_scenario_not_measurement": true,
+    "TP_IO_interference_unresolved": true,
+    "cold_start_plan_only_prediction": false
+  },
+  "prediction_monotonic_ns": 2683599496746950,
+  "forecast_saved_monotonic_ns": 2683599497262969,
+  "prediction_compute_milliseconds": 0.448606,
+  "target_window_TPS_or_CPU_used": false,
+  "S5_probe_precedes_TP_surge": false,
+  "observer_attached_during_AP_probe": true,
+  "commit_count_window_disarmed_during_probe": true,
+  "automatic_recommendation_qualified": false
+}

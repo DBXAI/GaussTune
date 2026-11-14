@@ -24,6 +24,7 @@ from jmt.innovation_3_search.cardinality_cache_capacity import (
 from jmt.innovation_3_search.stage_spec import EXPECTED
 from jmt.innovation_4_performance.ap_resource_bridge import extract_work
 from jmt.innovation_4_performance.capacity_tps_validation import conditional_cache_response
+from jmt.innovation_4_performance.colocated_tp import exact_tp_point
 from jmt.innovation_4_performance.capped_device import DeviceCap
 from jmt.innovation_4_performance.preview_cost import predict_preview_cost, solve_preview_joint_resources
 from test_ap_cache_pressure_live import live_policy
@@ -51,6 +52,7 @@ def main():
     p.add_argument("--calibration-inputs", type=Path, required=True)
     p.add_argument("--sql-dir", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
+    p.add_argument("--colocated-TP-calibration", type=Path)
     args = p.parse_args()
     args.out.mkdir(parents=True, exist_ok=False)
     (args.out / "queries").mkdir()
@@ -78,6 +80,7 @@ def main():
                                              "other_pages": other,
                                              "not_clean_PPT_initial_state": True})
     calibration = read(args.calibration_inputs)
+    colocated = read(args.colocated_TP_calibration) if args.colocated_TP_calibration else None
     frozen, exposures, demands = {}, {}, {}
     for qid, wm in WM.items():
         sql_path = args.sql_dir / ("q%d.sql" % qid)
@@ -124,11 +127,29 @@ def main():
                 tp_bytes_per_request=8192, cpu_capacity=calibration["cpu_capacity"],
                 demands=[demands[q] for q in qs], device_cap=DeviceCap(**calibration["device_cap"]))
         solved, old = solve(tp), solve(tp_old)
+        legacy = {"cache_to_TP": tp, "resource_fixed_point": solved}
+        point = None
+        if colocated is not None:
+            if colocated["machine_fingerprint"] != machine["machine_fingerprint"]:
+                raise ValueError("fresh TP calibration machine mismatch")
+            point = exact_tp_point(colocated, topology=topology, shared_buffers_mib=SB[i])
+            tp = dict(tp, baseline_tps=point["baseline_tps"],
+                      TP_CPU_seconds_per_transaction=point["backend_cpu_seconds_per_tx"],
+                      TP_driver_CPU_seconds_per_transaction=point["driver_cpu_seconds_per_tx"])
+            solved = solve_preview_joint_resources(
+                baseline_tps=point["baseline_tps"], terminals=terminals,
+                tp_cpu_seconds_per_tx=point["backend_cpu_seconds_per_tx"],
+                tp_driver_cpu_seconds_per_tx=point["driver_cpu_seconds_per_tx"],
+                tp_read_requests_per_tx=tp["TP_physical_read_requests_per_transaction_proxy"],
+                tp_bytes_per_request=8192, cpu_capacity=calibration["cpu_capacity"],
+                demands=[demands[q] for q in qs], device_cap=DeviceCap(**calibration["device_cap"]))
         stages.append({
             "stage": name, "AP_queries": list(qs), "TP_terminals": terminals,
             "TP_baseline_terminals": base, "TP_surge_terminals": surge,
             "cache_capacity": cap, "cache_to_TP": tp,
             "without_AP_cache_loss": old, "resource_fixed_point": solved,
+            "historical_TP_model_same_fresh_AP": legacy,
+            "colocated_TP_point": point,
             "result": {"selected": {
                 "shared_buffers_mb": SB[i], "work_mem": [[q, WM[q]] for q in qs],
                 "predicted_tps": solved["predicted_tps"]}},
@@ -139,6 +160,9 @@ def main():
         "frozen_before_target_execution_monotonic_ns": time.monotonic_ns(),
         "machine_fingerprint": machine["machine_fingerprint"], "stages": stages,
         "AP_controls": frozen, "AP_demands": demands,
+        "colocated_TP_calibration": colocated,
+        "colocated_TP_calibration_sha256": (
+            sha(args.colocated_TP_calibration) if args.colocated_TP_calibration else None),
         "TP_cache_models": calibration["cache_models"],
         "TP_cache_topologies": calibration["cache_topologies"],
         "device_cap": calibration["device_cap"], "cpu_capacity": calibration["cpu_capacity"],
@@ -162,6 +186,9 @@ def main():
                          ROOT / "src/jmt/innovation_2_spill/forecast.py",
                          ROOT / "src/jmt/innovation_2_spill/cache_pressure.py")},
         "TP_CPU_scope_warning": (
+            "Fresh exact-SB calibration includes both TP backends and same-host driver CPU; "
+            "AP-induced changes in TP CPU service and mixed cache paths remain unqualified."
+            if colocated is not None else
             "Historical calibration is backend-only; colocated Sysbench driver CPU "
             "was not included. Corrected process-tree collection is available, "
             "but no target TPS label may be used to silently refit this prediction."),

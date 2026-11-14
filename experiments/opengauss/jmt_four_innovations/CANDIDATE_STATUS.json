@@ -12,15 +12,15 @@
   "real_SB_shrink_and_restore_smoke_verified": true,
   "SB_smoke_is_recommended_configuration": false,
   "selection_policy_user_updated_20261112": "max_tps",
-  "latest_run_report": "CAPACITY_TPS_VALIDATION_CURRENT.md",
-  "latest_run_directory": "results/capacity_TPS_validation_20261114_1957",
+  "latest_run_report": "PHASE_BRIDGE_CURRENT.md",
+  "latest_run_directory": "results/phase_bridge_context_v2_20261114_2156",
   "current_mult_SB_TP_baseline_matrix_completed": true,
   "TP_only_training_selected_SB_mib": 2048,
   "TP_only_winner_stable_on_holdout": false,
   "complete_AP_query_collection_in_progress": false,
   "cpu_aware_DP_and_native_predictor_implemented": true,
   "automatic_recommendation_qualified": false,
-  "last_updated_at": "2026-11-14T20:18:45.775963+08:00",
+  "last_updated_at": "2026-11-14T22:10:59.820898+08:00",
   "current_AP_successful_query_ids": [
     2,
     13,
@@ -36,10 +36,10 @@
   "new_statistics_real_sampling_and_retests_queued_not_yet_verified": true,
   "CPU_aware_current_joint_search_has_explicit_work_limits": true,
   "latest_offline_regression": {
-    "tests_run": 799,
+    "tests_run": 828,
     "failures": 0,
     "errors": 0,
-    "log": "results/capacity_TPS_validation_20261114_1957/UNITTEST_CURRENT.log"
+    "log": "results/phase_bridge_context_v2_20261114_2156/UNITTEST_FINAL.log"
   },
   "latest_recommendation_kind": "frozen_new-budget_sensitivity_two-TP-baseline-lanes_not_live_or_executable",
   "latest_recommendation_pointer": "CURRENT_POST_AP_BUDGET_EVALUATION.json",
@@ -161,6 +161,21 @@
   "latest_TPS_mean_accuracy_hides_baseline_and_AP_resource_errors": true,
   "runuser_driver_CPU_tree_omission_fixed": true,
   "corrected_driver_CPU_TP128_real_retest_completed": true,
-  "TPS_model_retrained_after_driver_CPU_fix": false,
-  "latest_real_TPS_WMs_are_fixed_diagnostic_controls_not_latest_optima": true
+  "TPS_model_retrained_after_driver_CPU_fix": true,
+  "latest_real_TPS_WMs_are_fixed_diagnostic_controls_not_latest_optima": true,
+  "latest_phase_bridge_pointer": "CURRENT_PHASE_BRIDGE.json",
+  "TP_CPU_colocated_driver_explicit_in_preview_fixed_point": true,
+  "real_128_plus_16_new_colocated_TP_calibration_completed": true,
+  "colocated_TP_holdout_MAPE": 0.004865863674626196,
+  "prewindow_AP_CPU_phase_bridge_real_trials": 2,
+  "new_phase_candidate_promoted": false,
+  "new_phase_candidate_fails_to_beat_matched_legacy": true,
+  "latest_mixed_TPS_window_MAPE_all_lanes": {
+    "historical_TP_static": 0.029183308829340962,
+    "fresh_colocated_TP_static": 0.055196847204206326,
+    "prewindow_CPU_conditional": 0.03706019465803961
+  },
+  "AP_competition_changes_TP_CPU_service_observed_not_calibrated": true,
+  "AP_phase_persistence_independently_unreliable": true,
+  "driver_fixed_TPS_model_passed_end_to_end_validation": false
 }
