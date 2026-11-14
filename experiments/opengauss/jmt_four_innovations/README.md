@@ -1,4 +1,12 @@
-> **基数→共享SB容量更新（2026-11-14）：** 见 `CARDINALITY_SB_CAPACITY_CURRENT.md` /
+> **真实TPS准确率核对（2026-11-14 20点）：** 见 `CAPACITY_TPS_VALIDATION_CURRENT.md` /
+> `CURRENT_CAPACITY_TPS_VALIDATION.json`。已真实执行SB=5/5/5.25/5.25/5.25GiB、
+> 原始SF85 AP、连续TP128→128+16的五阶段，每阶段3×15秒同步窗口。
+> 冻结预测对阶段均值的MAPE为1.87%，但S5低估5.28%，S4波动和中间层误差仍显著。
+> 已修复漏记`runuser`子进程中Sysbench CPU的采集错误，短测证实漏约1.14核；
+> 未宣称新TPS模型已经验收。799项回归通过，SB及配置已精确恢复。
+> 本轮WM是较保守固定诊断控制，不是最新最优WM；未证明最佳SB或完整AP生命周期安全。
+>
+> **基数→共享SB容量更新（2026-11-14，此前容量情景预测）：** 见 `CARDINALITY_SB_CAPACITY_CURRENT.md` /
 > `CURRENT_CARDINALITY_SB_CAPACITY.json`。新采元数据与25个盲query×WM计划，已接通行/页密度换算、
 > ring饱和、历史驻留情景；相对TP-only 4GiB参考，冷AP约4.06–4.43GiB，
 > 保留本机约879MiB AP历史页的条件高侧约4.92–5.14GiB。

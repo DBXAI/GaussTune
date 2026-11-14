@@ -1,0 +1,23 @@
+{
+  "created_at": "2026-11-14T19:57:51.757640+08:00",
+  "prediction_sha256": "57e7feee66d66294c4355e7a2fac6c2740fe377632f5b69596cabb13119471bd",
+  "new_statistical_fit_or_target_label_used": false,
+  "fixed_WMs_not_step3_optima": true,
+  "full_AP_SQL_not_simplified": true,
+  "window_seconds": 15,
+  "repeats": 3,
+  "AP_continues_across_stages": true,
+  "stage_semantics": "one continuous trajectory, repeat windows not independent lifecycle repeats",
+  "S5": "128 warmed +16 first-event gated, not flat 144",
+  "safety": "8GiB disk, 3GiB MemAvailable, native dynamic used<=93% threshold; restore SB exactly",
+  "cache_and_native_counters": "diagnostic explicit brackets, not exact TP-owned IO truth",
+  "source_code": {
+    "tools/validate_capacity_TPS_live.py": "4f7bea9bf365144ed14620158e826ece5e8542fd92765251c6aed59e416f2807",
+    "tools/measure_current_mixed_five_stages.py": "7f4dfb90f7871dc4419184c7b4778451991401b117ac46d21089ebd04781f35e",
+    "tools/collect_current_tp_matrix.py": "90c8049de907f429cba2eaab076986ddf36e5ef6e9c7339fdc2e4a798725674f",
+    "tools/current_ap_worker.py": "c9f0b24afc67ce2989277c4f750d2507125cfce70905dbd47788ebc1a9e717cd",
+    "src/jmt/innovation_4_performance/tp_window_observer.py": "3f8310295a2f3d471e83b79a8f1b83ff7469bd605734ec9f282ae672d99ba33c"
+  },
+  "probe_overhead_qualified": false,
+  "optimality_validated": false
+}

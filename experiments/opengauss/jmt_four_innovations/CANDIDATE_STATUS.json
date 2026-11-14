@@ -12,15 +12,15 @@
   "real_SB_shrink_and_restore_smoke_verified": true,
   "SB_smoke_is_recommended_configuration": false,
   "selection_policy_user_updated_20261112": "max_tps",
-  "latest_run_report": "CARDINALITY_SB_CAPACITY_CURRENT.md",
-  "latest_run_directory": "results/cardinality_SB_capacity_20261114_1838",
+  "latest_run_report": "CAPACITY_TPS_VALIDATION_CURRENT.md",
+  "latest_run_directory": "results/capacity_TPS_validation_20261114_1957",
   "current_mult_SB_TP_baseline_matrix_completed": true,
   "TP_only_training_selected_SB_mib": 2048,
   "TP_only_winner_stable_on_holdout": false,
   "complete_AP_query_collection_in_progress": false,
   "cpu_aware_DP_and_native_predictor_implemented": true,
   "automatic_recommendation_qualified": false,
-  "last_updated_at": "2026-11-13T14:01:03.238874+08:00",
+  "last_updated_at": "2026-11-14T20:18:45.775963+08:00",
   "current_AP_successful_query_ids": [
     2,
     13,
@@ -36,10 +36,10 @@
   "new_statistics_real_sampling_and_retests_queued_not_yet_verified": true,
   "CPU_aware_current_joint_search_has_explicit_work_limits": true,
   "latest_offline_regression": {
-    "tests_run": 773,
+    "tests_run": 799,
     "failures": 0,
     "errors": 0,
-    "log": "results/cardinality_SB_capacity_20261114_1838/UNITTEST_FINAL.log"
+    "log": "results/capacity_TPS_validation_20261114_1957/UNITTEST_CURRENT.log"
   },
   "latest_recommendation_kind": "frozen_new-budget_sensitivity_two-TP-baseline-lanes_not_live_or_executable",
   "latest_recommendation_pointer": "CURRENT_POST_AP_BUDGET_EVALUATION.json",
@@ -155,5 +155,12 @@
   "latest_cardinality_SB_capacity_pointer": "CURRENT_CARDINALITY_SB_CAPACITY.json",
   "AP_cardinality_to_pages_to_conditional_SB_sizing_implemented": true,
   "AP_TP_equivalent_SB_capacity_loss_calibrated": false,
-  "latest_conditional_SB_sizing_is_not_TPS_optimum": true
+  "latest_conditional_SB_sizing_is_not_TPS_optimum": true,
+  "latest_capacity_TPS_accuracy_pointer": "CURRENT_CAPACITY_TPS_VALIDATION.json",
+  "latest_five_stage_TPS_stage_mean_MAPE": 0.01868181431996323,
+  "latest_TPS_mean_accuracy_hides_baseline_and_AP_resource_errors": true,
+  "runuser_driver_CPU_tree_omission_fixed": true,
+  "corrected_driver_CPU_TP128_real_retest_completed": true,
+  "TPS_model_retrained_after_driver_CPU_fix": false,
+  "latest_real_TPS_WMs_are_fixed_diagnostic_controls_not_latest_optima": true
 }

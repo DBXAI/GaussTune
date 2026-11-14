@@ -132,9 +132,9 @@ def collect_arm(client, sb, args, out, repeat):
             sleep_until(start_ns - 1_000_000_000)
             native_before = native_snapshot(client, "h5_tpcc")
             sleep_until(start_ns)
-            cpu_before = cpu_snapshot(sb.pid, tids, baseline.pid)
+            cpu_before = cpu_snapshot(sb.pid, tids, [baseline.pid, surge.pid])
             sleep_until(end_ns)
-            cpu_after = cpu_snapshot(sb.pid, tids, baseline.pid)
+            cpu_after = cpu_snapshot(sb.pid, tids, [baseline.pid, surge.pid])
             native_after = native_snapshot(client, "h5_tpcc")
             result = observer.result()
             tx = result["committed_transactions"]

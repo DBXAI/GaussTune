@@ -27,6 +27,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / "src"), str(ROOT / "vendor")]
 from jmt.common.db import Gsql
 from jmt.common.machine import collect_machine
+from jmt.common.process_cpu import snapshot_process_trees, process_tree_cpu_delta
 from jmt.innovation_4_performance.tp_window_observer import TPWindowObserver
 
 
@@ -199,15 +200,19 @@ def cpu_snapshot(pid, tids, driver_pid):
     rows = {}
     for tid in tids:
         rows[str(tid)] = int(Path("/proc/%d/task/%d/schedstat" % (pid, tid)).read_text().split()[0])
+    roots = [driver_pid] if isinstance(driver_pid, int) else list(driver_pid)
     driver = 0
-    if Path("/proc/%d" % driver_pid).is_dir():
-        for path in Path("/proc/%d/task" % driver_pid).glob("*/schedstat"):
+    for root in roots:
+        for path in Path("/proc/%d/task" % root).glob("*/schedstat"):
             try:
                 driver += int(path.read_text().split()[0])
             except FileNotFoundError:
-                pass
+                raise ValueError("driver wrapper disappeared during CPU snapshot")
+    tree = snapshot_process_trees(roots)
     return {"started_ns": started, "finished_ns": time.monotonic_ns(),
-            "backend_cpu_ns": rows, "driver_thread_cpu_ns": driver}
+            "backend_cpu_ns": rows, "driver_thread_cpu_ns": driver,
+            "driver_process_tree": tree,
+            "legacy_driver_thread_cpu_ns_is_wrapper_only": True}
 
 
 def summarize_cpu(before, after, tx):
@@ -216,10 +221,15 @@ def summarize_cpu(before, after, tx):
     cpu = sum(after["backend_cpu_ns"][tid] - ns for tid, ns in before["backend_cpu_ns"].items())
     if cpu < 0:
         raise ValueError("CPU counter moved backwards")
+    driver_seconds = process_tree_cpu_delta(
+        before["driver_process_tree"], after["driver_process_tree"])
     return {
         "backend_cpu_seconds": cpu / 1e9,
         "backend_cpu_ms_per_kernel_window_transaction": cpu / tx / 1e6,
-        "driver_cpu_seconds": (after["driver_thread_cpu_ns"] - before["driver_thread_cpu_ns"]) / 1e9,
+        "driver_cpu_seconds": driver_seconds,
+        "driver_wrapper_only_cpu_seconds": (
+            after["driver_thread_cpu_ns"] - before["driver_thread_cpu_ns"]) / 1e9,
+        "driver_process_tree_membership_checked": True,
         "qualification": "CPU snapshots bracket their own read intervals; slight boundary error is explicit",
     }
 

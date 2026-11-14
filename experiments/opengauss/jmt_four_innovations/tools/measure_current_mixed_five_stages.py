@@ -222,9 +222,9 @@ SELECT coalesce(json_agg(x),'[]'::json) FROM
             observer.arm(start, end)
             self.wait(start)
             cpu_tids = sorted(tids + [ap.identity["linux_tid"] for ap in self.ap.values()])
-            before = cpu_snapshot(self.sb.pid, cpu_tids, self.base.pid)
+            before = cpu_snapshot(self.sb.pid, cpu_tids, [p.pid for p in self.drivers])
             self.wait(end)
-            after = cpu_snapshot(self.sb.pid, cpu_tids, self.base.pid)
+            after = cpu_snapshot(self.sb.pid, cpu_tids, [p.pid for p in self.drivers])
             members_after, after_tids = self.members(expected_ap)
             if after_tids != tids:
                 raise RuntimeError("TP backend set changed during scored window")

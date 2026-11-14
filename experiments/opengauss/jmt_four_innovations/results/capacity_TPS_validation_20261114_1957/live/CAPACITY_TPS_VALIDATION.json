@@ -1,0 +1,125 @@
+{
+  "schema": "jmt.actual-capacity-TPS-overlap-validation/v1",
+  "created_at": "2026-11-14T20:06:48.077080+08:00",
+  "prediction_sha256": "57e7feee66d66294c4355e7a2fac6c2740fe377632f5b69596cabb13119471bd",
+  "TP_only_controls": [
+    {
+      "SB_mib": 5120,
+      "TPS": 7847.4
+    },
+    {
+      "SB_mib": 5376,
+      "TPS": 7994.0
+    }
+  ],
+  "stages": [
+    {
+      "stage": "S1",
+      "SB_mib": 5120,
+      "AP_work_mem_mib": {
+        "18": 1024
+      },
+      "repeat_TPS": [
+        7578.6,
+        7507.333333333333,
+        7586.4
+      ],
+      "observed_mean_TPS": 7557.444444444444,
+      "observed_min_TPS": 7507.333333333333,
+      "observed_max_TPS": 7586.4,
+      "observed_sample_std_TPS": 43.5723833705778,
+      "frozen_predicted_TPS": 7430.552402951784,
+      "prediction_minus_actual_relative": -0.016790337319110598
+    },
+    {
+      "stage": "S2",
+      "SB_mib": 5120,
+      "AP_work_mem_mib": {
+        "18": 1024,
+        "21": 512
+      },
+      "repeat_TPS": [
+        7535.866666666667,
+        7499.666666666667,
+        7448.666666666667
+      ],
+      "observed_mean_TPS": 7494.733333333334,
+      "observed_min_TPS": 7448.666666666667,
+      "observed_max_TPS": 7535.866666666667,
+      "observed_sample_std_TPS": 43.80882711661345,
+      "frozen_predicted_TPS": 7460.067664835342,
+      "prediction_minus_actual_relative": -0.0046253371475958645
+    },
+    {
+      "stage": "S3",
+      "SB_mib": 5376,
+      "AP_work_mem_mib": {
+        "9": 512,
+        "13": 128,
+        "18": 1024,
+        "21": 512
+      },
+      "repeat_TPS": [
+        7457.4,
+        7289.866666666667,
+        7148.6
+      ],
+      "observed_mean_TPS": 7298.622222222222,
+      "observed_min_TPS": 7148.6,
+      "observed_max_TPS": 7457.4,
+      "observed_sample_std_TPS": 154.58607574686246,
+      "frozen_predicted_TPS": 7396.696035602859,
+      "prediction_minus_actual_relative": 0.013437305068623824
+    },
+    {
+      "stage": "S4",
+      "SB_mib": 5376,
+      "AP_work_mem_mib": {
+        "2": 32,
+        "9": 512,
+        "13": 128,
+        "18": 1024,
+        "21": 512
+      },
+      "repeat_TPS": [
+        7063.466666666666,
+        7294.666666666667,
+        7749.866666666667
+      ],
+      "observed_mean_TPS": 7369.333333333333,
+      "observed_min_TPS": 7063.466666666666,
+      "observed_max_TPS": 7749.866666666667,
+      "observed_sample_std_TPS": 349.2385622083184,
+      "frozen_predicted_TPS": 7411.605921648607,
+      "prediction_minus_actual_relative": 0.005736283921920707
+    },
+    {
+      "stage": "S5",
+      "SB_mib": 5376,
+      "AP_work_mem_mib": {
+        "9": 512,
+        "13": 128,
+        "18": 1024,
+        "21": 512
+      },
+      "repeat_TPS": [
+        7688.8,
+        7775.266666666666,
+        7702.2
+      ],
+      "observed_mean_TPS": 7722.0888888888885,
+      "observed_min_TPS": 7688.8,
+      "observed_max_TPS": 7775.266666666666,
+      "observed_sample_std_TPS": 46.53812455435889,
+      "frozen_predicted_TPS": 7314.209635317942,
+      "prediction_minus_actual_relative": -0.05281980814256529
+    }
+  ],
+  "error": null,
+  "cleanup_errors": [],
+  "complete": true,
+  "restoration_verified": true,
+  "full_AP_lifecycle_or_optimal_SB_verified": false,
+  "fixed_controls_not_recommended_WMs_validated": true,
+  "automatic_recommendation_qualified": false
+}

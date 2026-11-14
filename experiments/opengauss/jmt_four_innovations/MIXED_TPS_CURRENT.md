@@ -1,4 +1,8 @@
-# 当前魔改 openGauss：真实五阶段混合 TPS
+> **本页保留2026-11-12的历史测量。** 最新2026-11-14的真实五阶段TPS与逐层误差诊断，
+> 请见 `CAPACITY_TPS_VALIDATION_CURRENT.md` / `CURRENT_CAPACITY_TPS_VALIDATION.json`。
+> 最新是5/5.25GiB与固定较保守WM的诊断控制，不与本页旧配置作无条件优劣比较。
+
+# 此前魔改 openGauss：真实五阶段混合 TPS（2026-11-12）
 
 本报告是实际 sysbench + 原始完整 AP SQL 的同步内核窗口，不是 TP-only、预测值回放或旧窗口比例修正。
 
