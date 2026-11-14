@@ -19,6 +19,9 @@ from jmt.common.db import Gsql, extract_json
 from jmt.innovation_2_spill.catalog import collect_catalog
 from jmt.innovation_2_spill.cache_pressure import retained_page_scenario
 from jmt.innovation_2_spill.forecast import ForecastSession
+from jmt.innovation_3_search.cardinality_cache_capacity import (
+    cardinality_page_demand, capacity_increment_scenarios,
+)
 
 
 CASES = [
@@ -82,7 +85,7 @@ def main():
     parser.add_argument("--gsql", default="/opt/openGauss/bin/gsql")
     parser.add_argument("--run-as-user", default="omm")
     parser.add_argument("--database", default="h5_tpch")
-    parser.add_argument("--suite", choices=("paths", "retention"), default="paths")
+    parser.add_argument("--suite", choices=("paths", "retention", "cardinality"), default="paths")
     parser.add_argument("--session-bulk-ring-kb", type=int, choices=(16384, 32768, 65536),
                         help="session-only policy holdout, never ALTER SYSTEM/reload")
     parser.add_argument("--out", type=Path, required=True)
@@ -92,7 +95,8 @@ def main():
     for path in (
             Path(__file__).resolve(), ROOT / "src/jmt/innovation_2_spill/cache_pressure.py",
             ROOT / "src/jmt/innovation_2_spill/forecast.py",
-            ROOT / "src/jmt/innovation_2_spill/ap_plan_model.py"):
+            ROOT / "src/jmt/innovation_2_spill/ap_plan_model.py",
+            ROOT / "src/jmt/innovation_3_search/cardinality_cache_capacity.py"):
         relative = path.relative_to(ROOT)
         destination = args.out / "model_source_snapshot" / relative
         destination.parent.mkdir(parents=True, exist_ok=True)
@@ -157,6 +161,21 @@ def main():
         ("lineitem_same_1m_second", CASES[3][1]),
         ("lineitem_same_1m_third", CASES[3][1]),
         ("supplier_full_again", CASES[0][1])]
+    if args.suite == "cardinality":
+        cases = [
+            ("lineitem_prefix_1000", "SELECT sum(l_quantity) FROM "
+             "(SELECT l_quantity FROM public.lineitem LIMIT 1000) s"),
+            ("lineitem_prefix_50000", "SELECT sum(l_quantity) FROM "
+             "(SELECT l_quantity FROM public.lineitem LIMIT 50000) s"),
+            ("lineitem_prefix_750000", "SELECT sum(l_quantity) FROM "
+             "(SELECT l_quantity FROM public.lineitem LIMIT 750000) s"),
+            ("orders_prefix_50000", "SELECT sum(o_totalprice) FROM "
+             "(SELECT o_totalprice FROM public.orders LIMIT 50000) s"),
+            ("customer_prefix_50000", "SELECT sum(c_acctbal) FROM "
+             "(SELECT c_acctbal FROM public.customer LIMIT 50000) s"),
+            ("supplier_filtered_output_small", "SELECT sum(s_acctbal) FROM public.supplier "
+             "WHERE s_suppkey=1"),
+        ]
     for name, sql in cases:
         before = snapshot()
         blind_raw = client.explain(args.database, sql, 32, analyze=False)
@@ -168,14 +187,28 @@ def main():
         state_scenario = retained_page_scenario(
             forecast["AP_cache_pressure"],
             {physical[r["relfilenode"]]: r["resident_pages"] for r in before["value"]})
+        cardinality = None
+        if args.suite == "cardinality":
+            demand = cardinality_page_demand(forecast["AP_cache_pressure"], forecast, catalog)
+            cardinality = {
+                "page_demand": demand,
+                "capacity": capacity_increment_scenarios(
+                    [demand], 4096, incoming_AP_pages={
+                        physical[r["relfilenode"]]: r["resident_pages"]
+                        for r in before["value"]}),
+                "incoming_state_scope": "fixed five pilot relations only, not whole AP database",
+            }
         compute = time.perf_counter() - started
         prediction_time = time.monotonic_ns()
         dump(args.out / (name + ".BEFORE.json"), before)
         dump(args.out / (name + ".BLIND.json"), blind)
-        dump(args.out / (name + ".FORECAST.json"), {
+        saved_prediction = {
             "prepared_at_ns": prediction_time, "sql": sql,
             "forecast_compute_seconds": compute, "forecast": forecast,
-            "incoming_state_retention_scenario": state_scenario})
+            "incoming_state_retention_scenario": state_scenario}
+        if cardinality is not None:
+            saved_prediction["cardinality_SB_capacity"] = cardinality
+        dump(args.out / (name + ".FORECAST.json"), saved_prediction)
         execution_start = time.monotonic_ns()
         actual_raw = client.explain(args.database, sql, 32, analyze=True)
         execution_end = time.monotonic_ns()
@@ -205,6 +238,20 @@ def main():
             dump(args.out / (name + ".ACTUAL.json"), actual)
             result["actual_runtime_ms"] = actual[0].get(
                 "Total Runtime", actual[0].get("Execution Time"))
+            if cardinality is not None:
+                def scans(node):
+                    if node["Node Type"] == "Seq Scan":
+                        yield node
+                    for child in node.get("Plans", []):
+                        yield from scans(child)
+                leaves = list(scans(actual[0]["Plan"]))
+                result["observed_seq_scan_page_accesses"] = sum(
+                    r["Shared Hit Blocks"] + r["Shared Read Blocks"] for r in leaves)
+                result["cardinality_predicted_seq_page_visits"] = sum(
+                    r["estimated_page_visits"] for r in cardinality["page_demand"]["accesses"])
+                result["cardinality_predicted_nominal_mib"] = (
+                    cardinality["capacity"]["cold_nominal"]["additional_SB_mib"]
+                    if cardinality["capacity"]["available"] else None)
         results.append(result)
         print(json.dumps(result, ensure_ascii=False), flush=True)
     final_policy, final_settings = live_policy(client, args.database)

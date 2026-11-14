@@ -1,0 +1,131 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Sort",
+      "Startup Cost": 12480667.29,
+      "Total Cost": 12480667.79,
+      "Plan Rows": 200,
+      "Plan Width": 16,
+      "Output": [
+        "c_orders.c_count",
+        "(count(*))"
+      ],
+      "Sort Key": [
+        "(count(*)) DESC",
+        "c_orders.c_count DESC"
+      ],
+      "Plans": [
+        {
+          "Node Type": "Aggregate",
+          "Strategy": "Hashed",
+          "Parent Relationship": "Outer",
+          "Startup Cost": 12480657.65,
+          "Total Cost": 12480659.65,
+          "Plan Rows": 200,
+          "Plan Width": 16,
+          "Output": [
+            "c_orders.c_count",
+            "count(*)"
+          ],
+          "Group By Key": [
+            "c_orders.c_count"
+          ],
+          "Plans": [
+            {
+              "Node Type": "Subquery Scan",
+              "Parent Relationship": "Outer",
+              "Alias": "c_orders",
+              "Startup Cost": 11142647.72,
+              "Total Cost": 12416902.46,
+              "Plan Rows": 12751037,
+              "Plan Width": 8,
+              "Output": [
+                "c_orders.c_count"
+              ],
+              "Plans": [
+                {
+                  "Node Type": "Aggregate",
+                  "Strategy": "Hashed",
+                  "Parent Relationship": "Subquery",
+                  "Startup Cost": 11142647.72,
+                  "Total Cost": 12289392.09,
+                  "Plan Rows": 12751037,
+                  "Plan Width": 16,
+                  "Output": [
+                    "customer.c_custkey",
+                    "count(orders.o_orderkey)"
+                  ],
+                  "Group By Key": [
+                    "customer.c_custkey"
+                  ],
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Join Type": "Right",
+                      "Startup Cost": 729003.33,
+                      "Total Cost": 9255110.9,
+                      "Plan Rows": 126219883,
+                      "Plan Width": 8,
+                      "Output": [
+                        "customer.c_custkey",
+                        "orders.o_orderkey"
+                      ],
+                      "Inner Unique": false,
+                      "Hash Cond": "(orders.o_custkey = customer.c_custkey)",
+                      "Plans": [
+                        {
+                          "Node Type": "Seq Scan",
+                          "Parent Relationship": "Outer",
+                          "Relation Name": "orders",
+                          "Schema": "public",
+                          "Alias": "orders",
+                          "Startup Cost": 0.0,
+                          "Total Cost": 3941853.17,
+                          "Plan Rows": 126219883,
+                          "Plan Width": 8,
+                          "Output": [
+                            "orders.o_orderkey",
+                            "orders.o_custkey"
+                          ],
+                          "Filter": "((orders.o_comment)::text !~~ '%unusual%requests%'::text)"
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Startup Cost": 432640.37,
+                          "Total Cost": 432640.37,
+                          "Plan Rows": 12751037,
+                          "Plan Width": 4,
+                          "Output": [
+                            "customer.c_custkey"
+                          ],
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Relation Name": "customer",
+                              "Schema": "public",
+                              "Alias": "customer",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 432640.37,
+                              "Plan Rows": 12751037,
+                              "Plan Width": 4,
+                              "Output": [
+                                "customer.c_custkey"
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

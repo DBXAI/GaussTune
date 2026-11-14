@@ -1,0 +1,275 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Limit",
+      "Startup Cost": 40512439.09,
+      "Total Cost": 40512439.34,
+      "Plan Rows": 100,
+      "Plan Width": 80,
+      "Output": [
+        "customer.c_name",
+        "customer.c_custkey",
+        "orders.o_orderkey",
+        "orders.o_orderdate",
+        "orders.o_totalprice",
+        "(sum(public.lineitem.l_quantity))"
+      ],
+      "Plans": [
+        {
+          "Node Type": "Sort",
+          "Parent Relationship": "Outer",
+          "Startup Cost": 40512439.09,
+          "Total Cost": 40516074.37,
+          "Plan Rows": 1454112,
+          "Plan Width": 80,
+          "Output": [
+            "customer.c_name",
+            "customer.c_custkey",
+            "orders.o_orderkey",
+            "orders.o_orderdate",
+            "orders.o_totalprice",
+            "(sum(public.lineitem.l_quantity))"
+          ],
+          "Sort Key": [
+            "orders.o_totalprice DESC",
+            "orders.o_orderdate"
+          ],
+          "Plans": [
+            {
+              "Node Type": "Aggregate",
+              "Strategy": "Hashed",
+              "Parent Relationship": "Outer",
+              "Startup Cost": 40442322.85,
+              "Total Cost": 40456863.97,
+              "Plan Rows": 1454112,
+              "Plan Width": 80,
+              "Output": [
+                "customer.c_name",
+                "customer.c_custkey",
+                "orders.o_orderkey",
+                "orders.o_orderdate",
+                "orders.o_totalprice",
+                "sum(public.lineitem.l_quantity)"
+              ],
+              "Group By Key": [
+                "orders.o_totalprice",
+                "orders.o_orderdate",
+                "customer.c_name",
+                "customer.c_custkey",
+                "orders.o_orderkey"
+              ],
+              "Plans": [
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Join Type": "Inner",
+                  "Startup Cost": 22801675.89,
+                  "Total Cost": 40420511.17,
+                  "Plan Rows": 1454112,
+                  "Plan Width": 48,
+                  "Output": [
+                    "customer.c_name",
+                    "customer.c_custkey",
+                    "orders.o_orderkey",
+                    "orders.o_orderdate",
+                    "orders.o_totalprice",
+                    "public.lineitem.l_quantity"
+                  ],
+                  "Inner Unique": false,
+                  "Hash Cond": "(public.lineitem.l_orderkey = orders.o_orderkey)",
+                  "Plans": [
+                    {
+                      "Node Type": "Seq Scan",
+                      "Parent Relationship": "Outer",
+                      "Relation Name": "lineitem",
+                      "Schema": "public",
+                      "Alias": "lineitem",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 15691489.48,
+                      "Plan Rows": 510081248,
+                      "Plan Width": 9,
+                      "Output": [
+                        "public.lineitem.l_orderkey",
+                        "public.lineitem.l_partkey",
+                        "public.lineitem.l_suppkey",
+                        "public.lineitem.l_linenumber",
+                        "public.lineitem.l_quantity",
+                        "public.lineitem.l_extendedprice",
+                        "public.lineitem.l_discount",
+                        "public.lineitem.l_tax",
+                        "public.lineitem.l_returnflag",
+                        "public.lineitem.l_linestatus",
+                        "public.lineitem.l_shipdate",
+                        "public.lineitem.l_commitdate",
+                        "public.lineitem.l_receiptdate",
+                        "public.lineitem.l_shipinstruct",
+                        "public.lineitem.l_shipmode",
+                        "public.lineitem.l_comment"
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Startup Cost": 22797132.27,
+                      "Total Cost": 22797132.27,
+                      "Plan Rows": 363490,
+                      "Plan Width": 47,
+                      "Output": [
+                        "customer.c_name",
+                        "customer.c_custkey",
+                        "orders.o_orderkey",
+                        "orders.o_orderdate",
+                        "orders.o_totalprice",
+                        "public.lineitem.l_orderkey"
+                      ],
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Join Type": "Inner",
+                          "Startup Cost": 18846646.2,
+                          "Total Cost": 22797132.27,
+                          "Plan Rows": 363490,
+                          "Plan Width": 47,
+                          "Output": [
+                            "customer.c_name",
+                            "customer.c_custkey",
+                            "orders.o_orderkey",
+                            "orders.o_orderdate",
+                            "orders.o_totalprice",
+                            "public.lineitem.l_orderkey"
+                          ],
+                          "Inner Unique": false,
+                          "Hash Cond": "(orders.o_custkey = customer.c_custkey)",
+                          "Plans": [
+                            {
+                              "Node Type": "Hash Join",
+                              "Parent Relationship": "Outer",
+                              "Join Type": "Inner",
+                              "Startup Cost": 18254617.87,
+                              "Total Cost": 22200105.95,
+                              "Plan Rows": 363490,
+                              "Plan Width": 28,
+                              "Output": [
+                                "orders.o_orderkey",
+                                "orders.o_orderdate",
+                                "orders.o_totalprice",
+                                "orders.o_custkey",
+                                "public.lineitem.l_orderkey"
+                              ],
+                              "Inner Unique": false,
+                              "Hash Cond": "(orders.o_orderkey = public.lineitem.l_orderkey)",
+                              "Plans": [
+                                {
+                                  "Node Type": "Seq Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Relation Name": "orders",
+                                  "Schema": "public",
+                                  "Alias": "orders",
+                                  "Startup Cost": 0.0,
+                                  "Total Cost": 3623085.74,
+                                  "Plan Rows": 127506974,
+                                  "Plan Width": 24,
+                                  "Output": [
+                                    "orders.o_orderkey",
+                                    "orders.o_custkey",
+                                    "orders.o_orderstatus",
+                                    "orders.o_totalprice",
+                                    "orders.o_orderdate",
+                                    "orders.o_orderpriority",
+                                    "orders.o_clerk",
+                                    "orders.o_shippriority",
+                                    "orders.o_comment"
+                                  ]
+                                },
+                                {
+                                  "Node Type": "Hash",
+                                  "Parent Relationship": "Inner",
+                                  "Startup Cost": 18250074.25,
+                                  "Total Cost": 18250074.25,
+                                  "Plan Rows": 363490,
+                                  "Plan Width": 4,
+                                  "Output": [
+                                    "public.lineitem.l_orderkey"
+                                  ],
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Aggregate",
+                                      "Strategy": "Hashed",
+                                      "Parent Relationship": "Outer",
+                                      "Startup Cost": 18241895.72,
+                                      "Total Cost": 18246439.35,
+                                      "Plan Rows": 363490,
+                                      "Plan Width": 41,
+                                      "Output": [
+                                        "public.lineitem.l_orderkey"
+                                      ],
+                                      "Group By Key": [
+                                        "public.lineitem.l_orderkey"
+                                      ],
+                                      "Filter": "(sum(public.lineitem.l_quantity) > 314::numeric)",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Seq Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Relation Name": "lineitem",
+                                          "Schema": "public",
+                                          "Alias": "lineitem",
+                                          "Startup Cost": 0.0,
+                                          "Total Cost": 15691489.48,
+                                          "Plan Rows": 510081248,
+                                          "Plan Width": 9,
+                                          "Output": [
+                                            "public.lineitem.l_orderkey",
+                                            "public.lineitem.l_quantity"
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Startup Cost": 432640.37,
+                              "Total Cost": 432640.37,
+                              "Plan Rows": 12751037,
+                              "Plan Width": 23,
+                              "Output": [
+                                "customer.c_name",
+                                "customer.c_custkey"
+                              ],
+                              "Plans": [
+                                {
+                                  "Node Type": "Seq Scan",
+                                  "Parent Relationship": "Outer",
+                                  "Relation Name": "customer",
+                                  "Schema": "public",
+                                  "Alias": "customer",
+                                  "Startup Cost": 0.0,
+                                  "Total Cost": 432640.37,
+                                  "Plan Rows": 12751037,
+                                  "Plan Width": 23,
+                                  "Output": [
+                                    "customer.c_name",
+                                    "customer.c_custkey"
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

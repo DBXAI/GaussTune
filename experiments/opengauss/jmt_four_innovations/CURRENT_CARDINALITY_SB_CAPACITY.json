@@ -1,0 +1,35 @@
+{
+  "schema": "jmt.current-cardinality-SB-capacity-pointer/v1",
+  "created_at": "2026-11-14T18:52:21.227290+08:00",
+  "result": "results/cardinality_SB_capacity_20261114_1838/CARDINALITY_SB_RESULT.json",
+  "result_sha256": "228604b36205d50ea0027bbd6ed27eb480229f085b5421d6e99a2a532fbe6244",
+  "report": "CARDINALITY_SB_CAPACITY_CURRENT.md",
+  "kind": "conditional_shared_capacity_sizing_not_mixed_TPS_or_SB_optimum",
+  "TP_only_anchor_mib": 4096,
+  "cold_SB_GiB": [
+    4.0625,
+    4.269081115722656,
+    4.362831115722656,
+    4.4253387451171875,
+    4.362831115722656
+  ],
+  "conditional_retained_high_SB_GiB": [
+    4.920845031738281,
+    4.983345031738281,
+    5.077095031738281,
+    5.1396026611328125,
+    5.077095031738281
+  ],
+  "next_validation_SB_GiB": [
+    5.0,
+    5.0,
+    5.25,
+    5.25,
+    5.25
+  ],
+  "fresh_catalog_and_blind_plans": true,
+  "new_full_AP_or_TP_mixed_executions": false,
+  "actual_TP_equivalent_loss_calibrated": false,
+  "new_SB_optimum_qualified": false,
+  "configuration_applied": false
+}

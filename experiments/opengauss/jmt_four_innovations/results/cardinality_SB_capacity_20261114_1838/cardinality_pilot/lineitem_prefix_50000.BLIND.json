@@ -1,0 +1,44 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Aggregate",
+      "Strategy": "Plain",
+      "Startup Cost": 2163.14,
+      "Total Cost": 2163.15,
+      "Plan Rows": 1,
+      "Plan Width": 37,
+      "Output": [
+        "sum(lineitem.l_quantity)"
+      ],
+      "Plans": [
+        {
+          "Node Type": "Limit",
+          "Parent Relationship": "Outer",
+          "Startup Cost": 0.0,
+          "Total Cost": 1538.14,
+          "Plan Rows": 50000,
+          "Plan Width": 5,
+          "Output": [
+            "lineitem.l_quantity"
+          ],
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Relation Name": "lineitem",
+              "Schema": "public",
+              "Alias": "lineitem",
+              "Startup Cost": 0.0,
+              "Total Cost": 15691489.48,
+              "Plan Rows": 510081248,
+              "Plan Width": 5,
+              "Output": [
+                "lineitem.l_quantity"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

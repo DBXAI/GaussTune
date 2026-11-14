@@ -1,0 +1,38 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Aggregate",
+      "Strategy": "Plain",
+      "Startup Cost": 29509.0,
+      "Total Cost": 29509.01,
+      "Plan Rows": 1,
+      "Plan Width": 38,
+      "Output": [
+        "sum(s_acctbal)"
+      ],
+      "Plans": [
+        {
+          "Node Type": "Seq Scan",
+          "Parent Relationship": "Outer",
+          "Relation Name": "supplier",
+          "Schema": "public",
+          "Alias": "supplier",
+          "Startup Cost": 0.0,
+          "Total Cost": 29509.0,
+          "Plan Rows": 1,
+          "Plan Width": 6,
+          "Output": [
+            "s_suppkey",
+            "s_name",
+            "s_address",
+            "s_nationkey",
+            "s_phone",
+            "s_acctbal",
+            "s_comment"
+          ],
+          "Filter": "(supplier.s_suppkey = 1)"
+        }
+      ]
+    }
+  }
+]

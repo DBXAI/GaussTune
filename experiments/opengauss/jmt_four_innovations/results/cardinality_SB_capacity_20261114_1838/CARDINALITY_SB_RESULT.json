@@ -1,0 +1,136 @@
+{
+  "schema": "jmt.cardinality-shared-SB-capacity-result/v1",
+  "created_at": "2026-11-14T18:52:21.224603+08:00",
+  "fresh_preparation_at": "2026-11-14T18:44:33.552644+08:00",
+  "report": "CARDINALITY_SB_CAPACITY_CURRENT.md",
+  "interpretation": "capacity sensitivity at frozen TP-only 4GiB reference, NOT best mixed TPS configuration",
+  "stages": [
+    {
+      "stage": "S1",
+      "TP_topology": "TP128",
+      "TP_only_anchor_mib": 4096,
+      "cold_extra_mib": 64.0,
+      "cold_shared_SB_GiB": 4.0625,
+      "retained_initial_state_shared_SB_low_GiB": 4.858345031738281,
+      "retained_initial_state_shared_SB_high_GiB": 4.920845031738281,
+      "retained_state_next_validation_point_mib": 5120
+    },
+    {
+      "stage": "S2",
+      "TP_topology": "TP128",
+      "TP_only_anchor_mib": 4096,
+      "cold_extra_mib": 275.5390625,
+      "cold_shared_SB_GiB": 4.269081115722656,
+      "retained_initial_state_shared_SB_low_GiB": 4.858345031738281,
+      "retained_initial_state_shared_SB_high_GiB": 4.983345031738281,
+      "retained_state_next_validation_point_mib": 5120
+    },
+    {
+      "stage": "S3",
+      "TP_topology": "TP128",
+      "TP_only_anchor_mib": 4096,
+      "cold_extra_mib": 371.5390625,
+      "cold_shared_SB_GiB": 4.362831115722656,
+      "retained_initial_state_shared_SB_low_GiB": 4.858345031738281,
+      "retained_initial_state_shared_SB_high_GiB": 5.077095031738281,
+      "retained_state_next_validation_point_mib": 5376
+    },
+    {
+      "stage": "S4",
+      "TP_topology": "TP128",
+      "TP_only_anchor_mib": 4096,
+      "cold_extra_mib": 435.546875,
+      "cold_shared_SB_GiB": 4.4253387451171875,
+      "retained_initial_state_shared_SB_low_GiB": 4.8583526611328125,
+      "retained_initial_state_shared_SB_high_GiB": 5.1396026611328125,
+      "retained_state_next_validation_point_mib": 5376
+    },
+    {
+      "stage": "S5",
+      "TP_topology": "S5_128_plus_16",
+      "TP_only_anchor_mib": 4096,
+      "cold_extra_mib": 371.5390625,
+      "cold_shared_SB_GiB": 4.362831115722656,
+      "retained_initial_state_shared_SB_low_GiB": 4.858345031738281,
+      "retained_initial_state_shared_SB_high_GiB": 5.077095031738281,
+      "retained_state_next_validation_point_mib": 5376
+    }
+  ],
+  "incoming_AP_resident_mib": 878.9453125,
+  "incoming_AP_state_includes_previous_experiments_and_is_not_PPT_cold_start": true,
+  "fresh_blind_query_WM_plans": 25,
+  "stage_control_points": 20,
+  "cardinality_source": "fresh planner/catalog with built-in semantic corrections; no learned query-ID factors",
+  "old_WM_allocations_and_TP_target_frozen_controls_only": true,
+  "AP_join_key_samples_renewed": false,
+  "full_spill_curve_refreshed": false,
+  "new_real_bounded_AP_queries": 6,
+  "new_real_full_AP_or_mixed_TPS": false,
+  "page_visit_validation_WAPE_pct": 0.016202212693406975,
+  "page_visit_accuracy_not_TP_effective_capacity_accuracy": true,
+  "formula_and_forecast_seconds": 0.226461635902524,
+  "capacity_only_seconds": 0.0005098879337310791,
+  "regression_tests": 773,
+  "new_capacity_tests": 17,
+  "cold_SB_GiB": [
+    4.0625,
+    4.269081115722656,
+    4.362831115722656,
+    4.4253387451171875,
+    4.362831115722656
+  ],
+  "conditional_retained_high_SB_GiB": [
+    4.920845031738281,
+    4.983345031738281,
+    5.077095031738281,
+    5.1396026611328125,
+    5.077095031738281
+  ],
+  "next_validation_SB_GiB": [
+    5.0,
+    5.0,
+    5.25,
+    5.25,
+    5.25
+  ],
+  "new_validation_points_are_not_recommended_optima": true,
+  "actual_TP_equivalent_capacity_loss_calibrated": false,
+  "actual_mixed_TPS_accuracy_qualified": false,
+  "new_SB_optimum_qualified": false,
+  "configuration_applied": false,
+  "native_SB_or_default_ring_changed": false,
+  "no_query_specific_coefficient_or_forced_6_8GiB": true,
+  "code_entry": "src/jmt/innovation_3_search/cardinality_cache_capacity.py",
+  "artifacts": {
+    "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/CARDINALITY_SB_CAPACITY.json": {
+      "sha256": "b26587467910521eec92007a9865b9e5959c6d9a2977bdbf82603d4baa09a01c"
+    },
+    "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/AP_CACHE_STATE.json": {
+      "sha256": "82f0deba11655ad7203673c277faa4988edbc351a123ede58a8959280840f656"
+    },
+    "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/CATALOG.json": {
+      "sha256": "c12f3d3e4dd9f21bf40d555605f08004180e440a6acbe84a4e1f3dfb2d935025"
+    },
+    "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/AP_CACHE_PILOT.json": {
+      "sha256": "0519ed3fb9ffb9573a2e731fac61bf1430dca2d1d753b8b195a734856b2f8d82"
+    },
+    "results/cardinality_SB_capacity_20261114_1838/REPLAY_CARDINALITY_CAPACITY.json": {
+      "sha256": "4f3d989405d9a61108d1faf23b9b56db0e9c6f3ca496fe56da429d30a4b44a22"
+    },
+    "results/cardinality_SB_capacity_20261114_1838/OLD_PRESSURE_REPLAY.json": {
+      "sha256": "dc818330bbba47a1fc5f169d2b9d17b3d3fc806ee5c3d55b97cab9a39e479c8d"
+    },
+    "results/cardinality_SB_capacity_20261114_1838/OLD_PERFORMANCE_REPLAY.json": {
+      "sha256": "87ceebd5549ee1ed7fbb3a1df755b7e3015a18d5855f8ab7a60ef055c272036b"
+    },
+    "results/cardinality_SB_capacity_20261114_1838/UNITTEST_FINAL.log": {
+      "sha256": "558566f3a3b3b440db9bb64072b56820125b15bc337b1a210b5f1e81811aa5d3"
+    },
+    "results/cardinality_SB_capacity_20261114_1838/FINAL_NATIVE_SETTINGS.json": {
+      "sha256": "6bc5b2a92d9ae1beeb0c62c2fd14ad4922c995893e1be4bd0ec5844e2f114355"
+    },
+    "results/cardinality_SB_capacity_20261114_1838/REPRODUCE_OFFLINE.sh": {
+      "sha256": "e9510a1212ebcdaf8e0b223520d4af059a1ea672714d9ba5b4de70a2d05aed6e"
+    }
+  }
+}

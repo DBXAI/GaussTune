@@ -1,10 +1,12 @@
 {
   "schema": "jmt.git-current-source-and-evidence/v1",
-  "created_at": "2026-11-13T16:14:10.403907+08:00",
+  "created_at": "2026-11-14T18:54:18.172912+08:00",
   "baseline_tag": "jmt-before-ap-sb-pressure-20261113",
-  "current_pressure_tests": 756,
-  "actual_bounded_AP_cases": 25,
-  "no_actual_mixed_optimum_claim": true,
+  "regression_tests": 773,
+  "new_actual_bounded_AP_cases": 6,
+  "fresh_blind_query_WM_plans": 25,
+  "exported_regression_and_stdlib_replay_passed": true,
+  "cardinality_capacity_scenarios_not_mixed_optima": true,
   "files": [
     {
       "path": "AP_MEMORY_POLICY_CURRENT.md",
@@ -28,13 +30,18 @@
     },
     {
       "path": "CANDIDATE_STATUS.json",
-      "bytes": 8949,
-      "sha256": "cbae7526cd133bacc37b004ce54a7cbb776bcb9cf4f09076b46c5894e4b664a4"
+      "bytes": 9246,
+      "sha256": "05ba6273ca95eb34d7f586c7fc55d73e2d4c799f1c9b63ff830b139a59e935f3"
+    },
+    {
+      "path": "CARDINALITY_SB_CAPACITY_CURRENT.md",
+      "bytes": 6959,
+      "sha256": "eb69f6b7c003a1401d4613b30088296746c141a7d81dee45319bdc35de018f75"
     },
     {
       "path": "CODE_SHA256SUMS",
-      "bytes": 42177,
-      "sha256": "4e6b91060978bbe95f5220c0ac0fc623d3d963a662019db7a5baa5ace2477ced"
+      "bytes": 42958,
+      "sha256": "9597f3f548653e4854a3d9b1358fa428f6796022738a6db6b82328c1994a036e"
     },
     {
       "path": "CURRENT_AP_MEMORY_POLICY.json",
@@ -43,13 +50,18 @@
     },
     {
       "path": "CURRENT_AP_SB_PRESSURE.json",
-      "bytes": 980,
-      "sha256": "a77a26efe323fc02900d55cc4ab1ea2cb219f3f139e65834a78251b629acb563"
+      "bytes": 1064,
+      "sha256": "0df15e233981d713428f82d35d38df7ea2f918f16886f38fc2780000b742aff5"
     },
     {
       "path": "CURRENT_AP_SPILL_CURVES.json",
       "bytes": 697,
       "sha256": "e591f8d619e32c8064852d88fb20a82a75d63a11522aba7d5c635b2550903981"
+    },
+    {
+      "path": "CURRENT_CARDINALITY_SB_CAPACITY.json",
+      "bytes": 1026,
+      "sha256": "a4bce785e18512c079e2691522045c9b7f38172a013686181c60903fdae0c225"
     },
     {
       "path": "CURRENT_FIVE_STAGE_RECOMMENDATIONS.json",
@@ -203,8 +215,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 11457,
-      "sha256": "9c55f1a1cafad4782ee677150e3355feff2bb66be12be8b25b9a269b6d8ae62c"
+      "bytes": 11957,
+      "sha256": "aebd07d8f2b8cac012fc54d32b2c22df138a82d4458e4c306eb4c3789a7e3999"
     },
     {
       "path": "SPILL_CURVES_AND_SB_FRONTIER_CURRENT.md",
@@ -1245,6 +1257,736 @@
       "path": "results/AP_SB_pressure_20261113_1556/live_retention_v2/supplier_full_again.FORECAST.json",
       "bytes": 11220,
       "sha256": "5533f57b62a1f9b30a14be3f99e4ff776014b75725664779628005e963e86e09"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/AP_CACHE_STATE.json",
+      "bytes": 8477,
+      "sha256": "01c979791be9b30e3a1f6b42dd48d10847540777da899cdfd6ba4740e2abf65c"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/CARDINALITY_PILOT.log",
+      "bytes": 12921,
+      "sha256": "e82b7d9dea2b68980e355f045d4fa6ab04cf082e26910b42ff2653963aa070bc"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/CARDINALITY_SB_RESULT.json",
+      "bytes": 5615,
+      "sha256": "228604b36205d50ea0027bbd6ed27eb480229f085b5421d6e99a2a532fbe6244"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/CATALOG.json",
+      "bytes": 105608,
+      "sha256": "eccc552dc28bff0194df984f8e65061acbd8e46473461df2df7950981ee7949f"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/EXPORT_REPLAY.log",
+      "bytes": 758,
+      "sha256": "f06d6edfaf80576d949187386234d66db6e744497a3ce6598707f91e63113fc6"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/EXPORT_UNITTEST.log",
+      "bytes": 99,
+      "sha256": "616c9ecf96758476f9deafbb0b9f12bf928bdd155a15977a30228d02f488a39f"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/FINAL_AUDIT.json",
+      "bytes": 526,
+      "sha256": "47e4a0c1377ba761424aaeebc4cb2f3f9d4cde834fafc0e908f5ee96e1e426d9"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/FINAL_NATIVE_SETTINGS.json",
+      "bytes": 585,
+      "sha256": "6bc5b2a92d9ae1beeb0c62c2fd14ad4922c995893e1be4bd0ec5844e2f114355"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/OFFLINE_REPRODUCE.log",
+      "bytes": 758,
+      "sha256": "ce23aaf43bff8e4d09c866ca8766b900629aa6243ce108ae70960a5ad5fb2630"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/OLD_PERFORMANCE_REPLAY.json",
+      "bytes": 330,
+      "sha256": "87ceebd5549ee1ed7fbb3a1df755b7e3015a18d5855f8ab7a60ef055c272036b"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/OLD_PRESSURE_REPLAY.json",
+      "bytes": 344,
+      "sha256": "dc818330bbba47a1fc5f169d2b9d17b3d3fc806ee5c3d55b97cab9a39e479c8d"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/RELATION_PHYSICAL_MAP.json",
+      "bytes": 74260,
+      "sha256": "4b8bfacb70a6b38c7fc8311e003e585c924603b57f331d41227fa93e183e82de"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/REPLAY_CARDINALITY_CAPACITY.json",
+      "bytes": 347,
+      "sha256": "4f3d989405d9a61108d1faf23b9b56db0e9c6f3ca496fe56da429d30a4b44a22"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/REPRODUCE_OFFLINE.sh",
+      "bytes": 686,
+      "sha256": "e9510a1212ebcdaf8e0b223520d4af059a1ea672714d9ba5b4de70a2d05aed6e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/TARGETED_TESTS.log",
+      "bytes": 685,
+      "sha256": "d5e582b2a9593dcff652789045cd248b69cac3f975497857950ea1604532a418"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/UNITTEST_FINAL.log",
+      "bytes": 99,
+      "sha256": "558566f3a3b3b440db9bb64072b56820125b15bc337b1a210b5f1e81811aa5d3"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/before/CANDIDATE_STATUS.json",
+      "bytes": 8949,
+      "sha256": "cbae7526cd133bacc37b004ce54a7cbb776bcb9cf4f09076b46c5894e4b664a4"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/before/CODE_SHA256SUMS",
+      "bytes": 42177,
+      "sha256": "4e6b91060978bbe95f5220c0ac0fc623d3d963a662019db7a5baa5ace2477ced"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/before/CURRENT_AP_SB_PRESSURE.json",
+      "bytes": 980,
+      "sha256": "a77a26efe323fc02900d55cc4ab1ea2cb219f3f139e65834a78251b629acb563"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/before/README.md",
+      "bytes": 11457,
+      "sha256": "9c55f1a1cafad4782ee677150e3355feff2bb66be12be8b25b9a269b6d8ae62c"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/AP_CACHE_PILOT.json",
+      "bytes": 18985,
+      "sha256": "0519ed3fb9ffb9573a2e731fac61bf1430dca2d1d753b8b195a734856b2f8d82"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/BASELINE_CACHE.json",
+      "bytes": 1072,
+      "sha256": "57b5999383c34498c717a052f6b3026395460bd583e484735a011454cfef02ea"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/CATALOG.json",
+      "bytes": 105608,
+      "sha256": "64184c09e38f6603aa5461d322fc766821a04ed1e8fde88e326029345d48f2e1"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/MODEL_SOURCE_SHA256.json",
+      "bytes": 591,
+      "sha256": "409901a9d6d305ba499c2cac51fe918412d2f17a6b39159929d614aeb8750c87"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/POLICY.json",
+      "bytes": 251,
+      "sha256": "aa782ad9025727769d499a52425489cd8b94261290adcf9790b615eda31bfa31"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/customer_prefix_50000.ACTUAL.json",
+      "bytes": 2354,
+      "sha256": "8d7f85a2410068105c6223b9566f68cac6b41faaff7f76ac98a13725e7a76bad"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/customer_prefix_50000.ACTUAL_RAW.json",
+      "bytes": 2699,
+      "sha256": "0c9c4f0518395a2baffba23c0c28c5bba16f15dc5185f19ca456a5e90d023e92"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/customer_prefix_50000.AFTER.json",
+      "bytes": 1072,
+      "sha256": "bdeb0363589893e83c6b576a5b851f2087c79830ef35971bc916d3c2e1476960"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/customer_prefix_50000.BEFORE.json",
+      "bytes": 1072,
+      "sha256": "75a27078133c3b0264d535488e1059dddad878fb923c8b4d9ac0d115be8e8156"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/customer_prefix_50000.BLIND.json",
+      "bytes": 1044,
+      "sha256": "8107a010b9e98148030511d15bf02d96ea540896114c30e3a25d993dd398e8c7"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/customer_prefix_50000.FORECAST.json",
+      "bytes": 16949,
+      "sha256": "a99a77ee79d08acba0ca2750e9a6638f7a42dc75b1ea1fca3ff327efd125549b"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_1000.ACTUAL.json",
+      "bytes": 2340,
+      "sha256": "515da104753a6b10c8125346ad27d241e9d3e685fc1dacd878859efa75fb792c"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_1000.ACTUAL_RAW.json",
+      "bytes": 2686,
+      "sha256": "e2d5db93eb15fc5be3435cc382a359dd0812eb9857a2ed230b367b1003b81568"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_1000.AFTER.json",
+      "bytes": 1072,
+      "sha256": "66d996d80d3e7a2f95b86937bc00c6d03e27eb816542afc2bb32492f6fc30bf9"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_1000.BEFORE.json",
+      "bytes": 1072,
+      "sha256": "98c8d65ce397ae35f767eb87c0c5139f4e16dcd8fb7dfbb10b5e4036c87f8b6a"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_1000.BLIND.json",
+      "bytes": 1044,
+      "sha256": "3a9cddb4ef0b3541bf843753d1ef7a89deb53c1ca782337710ceb3aada45cd0e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_1000.FORECAST.json",
+      "bytes": 16946,
+      "sha256": "4aa4757d395ec9970eb38b1f377edbee49b0f0d263d5d9fd412a163286f3c9e1"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_50000.ACTUAL.json",
+      "bytes": 2355,
+      "sha256": "0665433978e3e8138a6d8d62de349728b3b8eaf17bcc9d526c9f2853ee8bc78f"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_50000.ACTUAL_RAW.json",
+      "bytes": 2704,
+      "sha256": "168703e79a5a4f58a3d720fc02bf6e47a69e3ae87cda401150ca04102b144fa7"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_50000.AFTER.json",
+      "bytes": 1072,
+      "sha256": "7803bf904c2fcdfd80a745bdc3f4a9b3699df3d414bc330f5f09fc7542ce37cb"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_50000.BEFORE.json",
+      "bytes": 1072,
+      "sha256": "e9e9c3122927bc39a0e39e3d2aca64018f0deb25069bbabade4f770d805fe985"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_50000.BLIND.json",
+      "bytes": 1051,
+      "sha256": "1892fc3b26a05dff31b545402a8b65af0f98f835f8e3ffa2129ad821d7e811bb"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_50000.FORECAST.json",
+      "bytes": 16925,
+      "sha256": "a05bc9390f24c0ef18e68026e1babdb44de62d36d118bd25acfb4123217bd6d7"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_750000.ACTUAL.json",
+      "bytes": 2372,
+      "sha256": "23f9897a8187356cc64fff6acda0d2bf5fd429509f8a03ab7bb07742e87527e4"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_750000.ACTUAL_RAW.json",
+      "bytes": 2717,
+      "sha256": "9e2094837b35d05b576b9e8f03e8be99957f585d9840b3456a576580c3527650"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_750000.AFTER.json",
+      "bytes": 1072,
+      "sha256": "24fa14a67fea2540cbac1677c55e3973b440db03bd885cbaab6dd5a97b4647ac"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_750000.BEFORE.json",
+      "bytes": 1072,
+      "sha256": "50308ea689acd260878528aefbc8894169bef5cd19ff88355ee83eb90e82941a"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_750000.BLIND.json",
+      "bytes": 1055,
+      "sha256": "ceba1f9090b2047e493099a3144a9e9d3f81be337a89061fa49e2df71ce76f58"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/lineitem_prefix_750000.FORECAST.json",
+      "bytes": 16911,
+      "sha256": "976606b4116a0abaec29910d337b14446a1a0fe8830764dbaacd8fc61a6a4a2b"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/model_source_snapshot/src/jmt/innovation_2_spill/ap_plan_model.py",
+      "bytes": 85807,
+      "sha256": "33e6d4f016e524afccad77d84b37974de594f6add324ae2a76a30ae2827ceee2"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/model_source_snapshot/src/jmt/innovation_2_spill/cache_pressure.py",
+      "bytes": 13666,
+      "sha256": "00b099dd1cce57bc57c74f2c19de74122d4e6fcac59e672c7b9a4a22a99f9f3e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/model_source_snapshot/src/jmt/innovation_2_spill/forecast.py",
+      "bytes": 20112,
+      "sha256": "558daa3c3aecdd033f3b5aa2844f0000084a8a3a0b89226215c1751aa0e84959"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/model_source_snapshot/src/jmt/innovation_3_search/cardinality_cache_capacity.py",
+      "bytes": 10732,
+      "sha256": "9685936184164e0169102027b087c5c8677c365b6ecf101b92c64af39e182b40"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/model_source_snapshot/tools/test_ap_cache_pressure_live.py",
+      "bytes": 15109,
+      "sha256": "544de94be46d5a764c036baf04f890b8e792635b3a3eb18c83b54d1b7a33e6b4"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/orders_prefix_50000.ACTUAL.json",
+      "bytes": 2354,
+      "sha256": "9e7b70d3351d8669b4a4d81b64713cdacde1b6bd9dc30e9a2b957a86d09c6085"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/orders_prefix_50000.ACTUAL_RAW.json",
+      "bytes": 2699,
+      "sha256": "04f58171ab4ded1639f34d414de7b7288ecaf49d5e2032c87b951882aaafb582"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/orders_prefix_50000.AFTER.json",
+      "bytes": 1072,
+      "sha256": "af6ee29a7727c8aac86bdcd7ba1238eb77639304877b1935946655b75592d087"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/orders_prefix_50000.BEFORE.json",
+      "bytes": 1072,
+      "sha256": "4129ca96d5faa5f66150f25c348e93dd0b7b17776a9271e70144c38419433d1c"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/orders_prefix_50000.BLIND.json",
+      "bytes": 1046,
+      "sha256": "cdd2d63a0353cbd6eba6eb4add9b9f7416b1ab04c2c34489a5a0120c3414bbf6"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/orders_prefix_50000.FORECAST.json",
+      "bytes": 16899,
+      "sha256": "2d2d71c6fba06b069ff9c1e1164c58dfa4af41ea9a1734d3c38644e08d2feea4"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/supplier_filtered_output_small.ACTUAL.json",
+      "bytes": 1988,
+      "sha256": "8ada2c3ec6a0317108d2638ee5d1e4c955d0a8f01cc2f9424f5a54eca15dc7cd"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/supplier_filtered_output_small.ACTUAL_RAW.json",
+      "bytes": 2268,
+      "sha256": "45b15a77277e90092fd0e3cfa3122e751c702dc81db46e4c552bf60dab7c28e9"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/supplier_filtered_output_small.AFTER.json",
+      "bytes": 1072,
+      "sha256": "6ba633aec5a961cdd1a5346c7f6907f240a57f6b16dafd3828eb2de2ccf18e4a"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/supplier_filtered_output_small.BEFORE.json",
+      "bytes": 1072,
+      "sha256": "f3464192cc807b481b98bba40f5c92d8e226db5ff12075b95b198c817233c439"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/supplier_filtered_output_small.BLIND.json",
+      "bytes": 842,
+      "sha256": "0ed9c107fa8fc13fcfb9f8dfc91fe77f8ba82fc55d1f2169e858138d4f4af6f8"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/cardinality_pilot/supplier_filtered_output_small.FORECAST.json",
+      "bytes": 15324,
+      "sha256": "bf5fd1161e90287068ec93b3fea78f808454d6261c6b7d5cd7e0ec4f58495265"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/AP_CACHE_STATE.json",
+      "bytes": 72362,
+      "sha256": "82f0deba11655ad7203673c277faa4988edbc351a123ede58a8959280840f656"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/CARDINALITY_SB_CAPACITY.json",
+      "bytes": 1869446,
+      "sha256": "b26587467910521eec92007a9865b9e5959c6d9a2977bdbf82603d4baa09a01c"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/CATALOG.json",
+      "bytes": 105608,
+      "sha256": "c12f3d3e4dd9f21bf40d555605f08004180e440a6acbe84a4e1f3dfb2d935025"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/POLICY.json",
+      "bytes": 251,
+      "sha256": "aa782ad9025727769d499a52425489cd8b94261290adcf9790b615eda31bfa31"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/SETTINGS.json",
+      "bytes": 603,
+      "sha256": "d156e83d0b32bfa841f316440f0f9bf66f6bd5fb087291cf404c251f9de14cf4"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/model_source_snapshot/src/jmt/innovation_2_spill/ap_plan_model.py",
+      "bytes": 85807,
+      "sha256": "33e6d4f016e524afccad77d84b37974de594f6add324ae2a76a30ae2827ceee2"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/model_source_snapshot/src/jmt/innovation_2_spill/cache_pressure.py",
+      "bytes": 13666,
+      "sha256": "00b099dd1cce57bc57c74f2c19de74122d4e6fcac59e672c7b9a4a22a99f9f3e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/model_source_snapshot/src/jmt/innovation_2_spill/forecast.py",
+      "bytes": 20112,
+      "sha256": "558daa3c3aecdd033f3b5aa2844f0000084a8a3a0b89226215c1751aa0e84959"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/model_source_snapshot/src/jmt/innovation_3_search/cardinality_cache_capacity.py",
+      "bytes": 10732,
+      "sha256": "9685936184164e0169102027b087c5c8677c365b6ecf101b92c64af39e182b40"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/model_source_snapshot/tools/predict_cardinality_SB_capacity.py",
+      "bytes": 11786,
+      "sha256": "1258fccc4d3528bf55598d42745c0266ecef35ba6c82de086d553d154a0d24e5"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q13_wm1174.BLIND.json",
+      "bytes": 4879,
+      "sha256": "82032503b83b0877d5f661d13a76abb364316ad77393387f72d328ef26fac31f"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q13_wm314.BLIND.json",
+      "bytes": 4535,
+      "sha256": "cda18205690a1bcc043ce041e64fccda429fc0404b87aaa11f4982964cda1f5f"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q13_wm367.BLIND.json",
+      "bytes": 4534,
+      "sha256": "504bffb282c8b430cc9864d7b331bbf6d7804453deabfd8b73085328fad99f17"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q13_wm440.BLIND.json",
+      "bytes": 4533,
+      "sha256": "fa835130037e2223c82f9c491a2aec19314a4c8c10e3bdb4ad2c1c13c1240c7f"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q13_wm487.BLIND.json",
+      "bytes": 4533,
+      "sha256": "ae04ea5674da2f8262f381970a145d62dd79a850d52fd1a6d924491c7331d624"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q18_wm1426.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q18_wm3281.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q18_wm4374.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q18_wm5468.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q18_wm6561.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q18_wm831.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q18_wm855.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q18_wm8748.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q18_wm903.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q18_wm9842.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q21_wm1484.BLIND.json",
+      "bytes": 17442,
+      "sha256": "836653a96a5f2e3aa488aad85b0997d23401331ea38209f602f48ecf76b35482"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q21_wm2968.BLIND.json",
+      "bytes": 17442,
+      "sha256": "0ac08f34afb65655cbd15a3793855a95cbf6fb4d3e2a652803122bbb1fdb915d"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q21_wm742.BLIND.json",
+      "bytes": 17442,
+      "sha256": "836653a96a5f2e3aa488aad85b0997d23401331ea38209f602f48ecf76b35482"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q2_wm11.BLIND.json",
+      "bytes": 27302,
+      "sha256": "2e6bcc89e6935a901bb8f4650b59945b6be6ab5a234737f42ee6ddcdec537bdd"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q2_wm20.BLIND.json",
+      "bytes": 27305,
+      "sha256": "08c52d8d8da1dc663257c4f53a24fc23cdb21c1ed05d2556ee975016ad3aad2f"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q2_wm36.BLIND.json",
+      "bytes": 26959,
+      "sha256": "39e8c210a64cba5f4d703d19c0eae57ee2637206df81c72fb0cc02eda69fc605"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q2_wm63.BLIND.json",
+      "bytes": 27601,
+      "sha256": "701f423ecc08095e6f7d8880c1284bd7371bdd8781f47c14db92150ba3f89bb7"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q9_wm1076.BLIND.json",
+      "bytes": 18375,
+      "sha256": "f3605a424d6f5ce02a8e99d9e2acb72f58cd383bbebda8befac64f154c556527"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q9_wm2151.BLIND.json",
+      "bytes": 16965,
+      "sha256": "42f70c8c68318c2b56ebb26d8c3f0f0a670d8f4dfa0622e38b9bc20ce0f8285e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/plans/q9_wm538.BLIND.json",
+      "bytes": 18375,
+      "sha256": "f3605a424d6f5ce02a8e99d9e2acb72f58cd383bbebda8befac64f154c556527"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/queries/q13.sql",
+      "bytes": 328,
+      "sha256": "cd9f8bca5b7b8e78f97db892898a78d25a992548ae0df804bc493db63c77b836"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/queries/q18.sql",
+      "bytes": 428,
+      "sha256": "73a6284a5ae42ee1982e78e3d2daf9efd533709eda596a3db781bff7edef9588"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/queries/q2.sql",
+      "bytes": 658,
+      "sha256": "863cc5213eaa3339955d8f5c2d5d92c31c5d85d0a00a93a64318eef6f1b2e6cc"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/queries/q21.sql",
+      "bytes": 632,
+      "sha256": "05c59413778226307e1d7e1004383fe871c3062a8222b9d51927bc5b47b1a04d"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_final/queries/q9.sql",
+      "bytes": 575,
+      "sha256": "64ff62be29956ff33193b61d5eead6f026ce17cda29cc215909d0cf6b0f597be"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/AP_CACHE_STATE.json",
+      "bytes": 72362,
+      "sha256": "1e8d123b24b06b965db59606d673f309be8716057ac163ee9786c76c5e55aa72"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/CARDINALITY_SB_CAPACITY.json",
+      "bytes": 1869456,
+      "sha256": "9b1376d7332a0be282fdeb50b6cda7b2ccfafec92c92fca2085da04563d6bbd7"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/CATALOG.json",
+      "bytes": 105608,
+      "sha256": "2e0059d9670f4b0b08f07bd398daa84f839ea9650e1794418d5a1af82c5f80d4"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/POLICY.json",
+      "bytes": 251,
+      "sha256": "aa782ad9025727769d499a52425489cd8b94261290adcf9790b615eda31bfa31"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/SETTINGS.json",
+      "bytes": 603,
+      "sha256": "d156e83d0b32bfa841f316440f0f9bf66f6bd5fb087291cf404c251f9de14cf4"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/model_source_snapshot/src/jmt/innovation_2_spill/ap_plan_model.py",
+      "bytes": 85807,
+      "sha256": "33e6d4f016e524afccad77d84b37974de594f6add324ae2a76a30ae2827ceee2"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/model_source_snapshot/src/jmt/innovation_2_spill/cache_pressure.py",
+      "bytes": 13666,
+      "sha256": "00b099dd1cce57bc57c74f2c19de74122d4e6fcac59e672c7b9a4a22a99f9f3e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/model_source_snapshot/src/jmt/innovation_2_spill/forecast.py",
+      "bytes": 20112,
+      "sha256": "558daa3c3aecdd033f3b5aa2844f0000084a8a3a0b89226215c1751aa0e84959"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/model_source_snapshot/src/jmt/innovation_3_search/cardinality_cache_capacity.py",
+      "bytes": 10296,
+      "sha256": "1bf3258fcac2eeb49e5c95d68f94a47f067a187f0064551d1dba60020c46a3b9"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/model_source_snapshot/tools/predict_cardinality_SB_capacity.py",
+      "bytes": 11786,
+      "sha256": "1258fccc4d3528bf55598d42745c0266ecef35ba6c82de086d553d154a0d24e5"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q13_wm1174.BLIND.json",
+      "bytes": 4879,
+      "sha256": "82032503b83b0877d5f661d13a76abb364316ad77393387f72d328ef26fac31f"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q13_wm314.BLIND.json",
+      "bytes": 4535,
+      "sha256": "cda18205690a1bcc043ce041e64fccda429fc0404b87aaa11f4982964cda1f5f"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q13_wm367.BLIND.json",
+      "bytes": 4534,
+      "sha256": "504bffb282c8b430cc9864d7b331bbf6d7804453deabfd8b73085328fad99f17"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q13_wm440.BLIND.json",
+      "bytes": 4533,
+      "sha256": "fa835130037e2223c82f9c491a2aec19314a4c8c10e3bdb4ad2c1c13c1240c7f"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q13_wm487.BLIND.json",
+      "bytes": 4533,
+      "sha256": "ae04ea5674da2f8262f381970a145d62dd79a850d52fd1a6d924491c7331d624"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q18_wm1426.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q18_wm3281.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q18_wm4374.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q18_wm5468.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q18_wm6561.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q18_wm831.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q18_wm855.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q18_wm8748.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q18_wm903.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q18_wm9842.BLIND.json",
+      "bytes": 12035,
+      "sha256": "a7eb3a13aa8893f4d0760ef6c3338d6afbdb8b96c3fdbc4c878b35d0d59d694e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q21_wm1484.BLIND.json",
+      "bytes": 17442,
+      "sha256": "836653a96a5f2e3aa488aad85b0997d23401331ea38209f602f48ecf76b35482"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q21_wm2968.BLIND.json",
+      "bytes": 17442,
+      "sha256": "0ac08f34afb65655cbd15a3793855a95cbf6fb4d3e2a652803122bbb1fdb915d"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q21_wm742.BLIND.json",
+      "bytes": 17442,
+      "sha256": "836653a96a5f2e3aa488aad85b0997d23401331ea38209f602f48ecf76b35482"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q2_wm11.BLIND.json",
+      "bytes": 27302,
+      "sha256": "2e6bcc89e6935a901bb8f4650b59945b6be6ab5a234737f42ee6ddcdec537bdd"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q2_wm20.BLIND.json",
+      "bytes": 27305,
+      "sha256": "08c52d8d8da1dc663257c4f53a24fc23cdb21c1ed05d2556ee975016ad3aad2f"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q2_wm36.BLIND.json",
+      "bytes": 26959,
+      "sha256": "39e8c210a64cba5f4d703d19c0eae57ee2637206df81c72fb0cc02eda69fc605"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q2_wm63.BLIND.json",
+      "bytes": 27601,
+      "sha256": "701f423ecc08095e6f7d8880c1284bd7371bdd8781f47c14db92150ba3f89bb7"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q9_wm1076.BLIND.json",
+      "bytes": 18375,
+      "sha256": "f3605a424d6f5ce02a8e99d9e2acb72f58cd383bbebda8befac64f154c556527"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q9_wm2151.BLIND.json",
+      "bytes": 16965,
+      "sha256": "42f70c8c68318c2b56ebb26d8c3f0f0a670d8f4dfa0622e38b9bc20ce0f8285e"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/plans/q9_wm538.BLIND.json",
+      "bytes": 18375,
+      "sha256": "f3605a424d6f5ce02a8e99d9e2acb72f58cd383bbebda8befac64f154c556527"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/queries/q13.sql",
+      "bytes": 328,
+      "sha256": "cd9f8bca5b7b8e78f97db892898a78d25a992548ae0df804bc493db63c77b836"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/queries/q18.sql",
+      "bytes": 428,
+      "sha256": "73a6284a5ae42ee1982e78e3d2daf9efd533709eda596a3db781bff7edef9588"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/queries/q2.sql",
+      "bytes": 658,
+      "sha256": "863cc5213eaa3339955d8f5c2d5d92c31c5d85d0a00a93a64318eef6f1b2e6cc"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/queries/q21.sql",
+      "bytes": 632,
+      "sha256": "05c59413778226307e1d7e1004383fe871c3062a8222b9d51927bc5b47b1a04d"
+    },
+    {
+      "path": "results/cardinality_SB_capacity_20261114_1838/fresh_capacity_v1/queries/q9.sql",
+      "bytes": 575,
+      "sha256": "64ff62be29956ff33193b61d5eead6f026ce17cda29cc215909d0cf6b0f597be"
     },
     {
       "path": "results/database_allowed_AP_budget_20261113_1131/ALL_TESTS_FINAL.log",
@@ -9397,6 +10139,11 @@
       "sha256": "723c8742e399dd3f3c885012674c679ff59c640bbd98157642e34da4b266dc20"
     },
     {
+      "path": "src/jmt/innovation_3_search/cardinality_cache_capacity.py",
+      "bytes": 10732,
+      "sha256": "9685936184164e0169102027b087c5c8677c365b6ecf101b92c64af39e182b40"
+    },
+    {
       "path": "src/jmt/innovation_3_search/current_joint.py",
       "bytes": 6484,
       "sha256": "2b577ab166b7024b1da05400423c968f97220b90016db20053b64f6bf0208373"
@@ -9840,6 +10587,11 @@
       "path": "tests/test_capture_source_identity.py",
       "bytes": 4242,
       "sha256": "66f3f9934411b2be5a90980fd347030e5fa2ee031efcf9ac7b18e60e7b243d07"
+    },
+    {
+      "path": "tests/test_cardinality_cache_capacity.py",
+      "bytes": 7029,
+      "sha256": "bcbde79932df74efed794a7df99ae5234c094479b8fe7b0cf6e61328a5a365e4"
     },
     {
       "path": "tests/test_config_evaluation.py",
@@ -10292,6 +11044,11 @@
       "sha256": "8069b042492630c98d772d2d1ee1724ff5c88d800e93aed7ec56b751940dafd6"
     },
     {
+      "path": "tools/predict_cardinality_SB_capacity.py",
+      "bytes": 11996,
+      "sha256": "dbb599fdd7d9b007210b6ab2e55f51952c230c2737d688f16957f3c0138be568"
+    },
+    {
       "path": "tools/predict_operator_spill_curves.py",
       "bytes": 11043,
       "sha256": "90f29309cf0afa9792a4b00b75ae7c141d92221c37be36048d65c0c9f4b1d1b7"
@@ -10325,6 +11082,11 @@
       "path": "tools/replay_ap_cache_pressure.py",
       "bytes": 4726,
       "sha256": "41a5099d0272dc5c6ad89dadc8c166402e80d8bc309474318c1a90dcb151d4ca"
+    },
+    {
+      "path": "tools/replay_cardinality_SB_capacity.py",
+      "bytes": 4027,
+      "sha256": "b2c68be631d8b78a08996d504f90ce35246be9b0e0db57aaa6c6035e19016c09"
     },
     {
       "path": "tools/replay_innovation2_allocation.py",
@@ -10388,8 +11150,8 @@
     },
     {
       "path": "tools/test_ap_cache_pressure_live.py",
-      "bytes": 12406,
-      "sha256": "b1c97d4899a95e4e966fe1a0b3b54511c7c5ca25503a167eb2e33850c1b724d1"
+      "bytes": 15109,
+      "sha256": "544de94be46d5a764c036baf04f890b8e792635b3a3eb18c83b54d1b7a33e6b4"
     },
     {
       "path": "tools/tp_commit_test_worker.py",

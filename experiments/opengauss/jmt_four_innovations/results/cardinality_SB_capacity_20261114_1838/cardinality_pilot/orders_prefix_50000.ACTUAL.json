@@ -1,0 +1,82 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Aggregate",
+      "Strategy": "Plain",
+      "Startup Cost": 2045.74,
+      "Total Cost": 2045.75,
+      "Plan Rows": 1,
+      "Plan Width": 40,
+      "Actual Startup Time": 33.282,
+      "Actual Total Time": 33.282,
+      "Actual Rows": 1,
+      "Actual Loops": 1,
+      "Output": [
+        "sum(orders.o_totalprice)"
+      ],
+      "Shared Hit Blocks": 15,
+      "Shared Read Blocks": 906,
+      "Shared Dirtied Blocks": 0,
+      "Shared Written Blocks": 0,
+      "Local Hit Blocks": 0,
+      "Local Read Blocks": 0,
+      "Local Dirtied Blocks": 0,
+      "Local Written Blocks": 0,
+      "Temp Read Blocks": 0,
+      "Temp Written Blocks": 0,
+      "IO Read Time": 0.0,
+      "IO Write Time": 0.0,
+      "Plans": [
+        {
+          "Node Type": "Limit",
+          "Parent Relationship": "Outer",
+          "Startup Cost": 0.0,
+          "Total Cost": 1420.74,
+          "Plan Rows": 50000,
+          "Plan Width": 8,
+          "Actual Startup Time": 0.008,
+          "Actual Total Time": 24.566,
+          "Actual Rows": 50000,
+          "Actual Loops": 1,
+          "Output": [
+            "orders.o_totalprice"
+          ],
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Relation Name": "orders",
+              "Schema": "public",
+              "Alias": "orders",
+              "Startup Cost": 0.0,
+              "Total Cost": 3623085.74,
+              "Plan Rows": 127506974,
+              "Plan Width": 8,
+              "Actual Startup Time": 0.008,
+              "Actual Total Time": 19.932,
+              "Actual Rows": 50000,
+              "Actual Loops": 1,
+              "Output": [
+                "orders.o_totalprice"
+              ],
+              "Shared Hit Blocks": 15,
+              "Shared Read Blocks": 906,
+              "Shared Dirtied Blocks": 0,
+              "Shared Written Blocks": 0,
+              "Local Hit Blocks": 0,
+              "Local Read Blocks": 0,
+              "Local Dirtied Blocks": 0,
+              "Local Written Blocks": 0,
+              "Temp Read Blocks": 0,
+              "Temp Written Blocks": 0,
+              "IO Read Time": 0.0,
+              "IO Write Time": 0.0
+            }
+          ]
+        }
+      ]
+    },
+    "Triggers": [],
+    "Total Runtime": 33.342
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Aggregate",
+      "Strategy": "Plain",
+      "Startup Cost": 2045.74,
+      "Total Cost": 2045.75,
+      "Plan Rows": 1,
+      "Plan Width": 40,
+      "Output": [
+        "sum(orders.o_totalprice)"
+      ],
+      "Plans": [
+        {
+          "Node Type": "Limit",
+          "Parent Relationship": "Outer",
+          "Startup Cost": 0.0,
+          "Total Cost": 1420.74,
+          "Plan Rows": 50000,
+          "Plan Width": 8,
+          "Output": [
+            "orders.o_totalprice"
+          ],
+          "Plans": [
+            {
+              "Node Type": "Seq Scan",
+              "Parent Relationship": "Outer",
+              "Relation Name": "orders",
+              "Schema": "public",
+              "Alias": "orders",
+              "Startup Cost": 0.0,
+              "Total Cost": 3623085.74,
+              "Plan Rows": 127506974,
+              "Plan Width": 8,
+              "Output": [
+                "orders.o_totalprice"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

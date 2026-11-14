@@ -1,0 +1,12 @@
+======================================================================
+FAIL: test_cardinality_density_converts_prefix_rows_not_tuple_width (test_cardinality_cache_capacity.CardinalityCapacityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/tests/test_cardinality_cache_capacity.py", line 26, in test_cardinality_density_converts_prefix_rows_not_tuple_width
+    self.assertEqual(a["estimated_total_scan_rows"], 1000)
+AssertionError: 1000.0000000000001 != 1000
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.004s
+
+FAILED (failures=1)

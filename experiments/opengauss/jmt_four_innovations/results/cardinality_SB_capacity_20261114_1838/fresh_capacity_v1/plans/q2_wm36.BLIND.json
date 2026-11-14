@@ -1,0 +1,537 @@
+[
+  {
+    "Plan": {
+      "Node Type": "Limit",
+      "Startup Cost": 6475091.57,
+      "Total Cost": 6475091.64,
+      "Plan Rows": 26,
+      "Plan Width": 193,
+      "Output": [
+        "public.supplier.s_acctbal",
+        "public.supplier.s_name",
+        "public.nation.n_name",
+        "public.part.p_partkey",
+        "public.part.p_mfgr",
+        "public.supplier.s_address",
+        "public.supplier.s_phone",
+        "public.supplier.s_comment"
+      ],
+      "Plans": [
+        {
+          "Node Type": "Sort",
+          "Parent Relationship": "Outer",
+          "Startup Cost": 6475091.57,
+          "Total Cost": 6475091.64,
+          "Plan Rows": 26,
+          "Plan Width": 193,
+          "Output": [
+            "public.supplier.s_acctbal",
+            "public.supplier.s_name",
+            "public.nation.n_name",
+            "public.part.p_partkey",
+            "public.part.p_mfgr",
+            "public.supplier.s_address",
+            "public.supplier.s_phone",
+            "public.supplier.s_comment"
+          ],
+          "Sort Key": [
+            "public.supplier.s_acctbal DESC",
+            "public.nation.n_name",
+            "public.supplier.s_name",
+            "public.part.p_partkey"
+          ],
+          "Plans": [
+            {
+              "Node Type": "Hash Join",
+              "Parent Relationship": "Outer",
+              "Join Type": "Inner",
+              "Startup Cost": 3821348.03,
+              "Total Cost": 6475090.96,
+              "Plan Rows": 26,
+              "Plan Width": 193,
+              "Output": [
+                "public.supplier.s_acctbal",
+                "public.supplier.s_name",
+                "public.nation.n_name",
+                "public.part.p_partkey",
+                "public.part.p_mfgr",
+                "public.supplier.s_address",
+                "public.supplier.s_phone",
+                "public.supplier.s_comment"
+              ],
+              "Inner Unique": false,
+              "Hash Cond": "((public.partsupp.ps_partkey = public.part.p_partkey) AND (public.partsupp.ps_supplycost = (min(public.partsupp.ps_supplycost))))",
+              "Plans": [
+                {
+                  "Node Type": "Hash Join",
+                  "Parent Relationship": "Outer",
+                  "Join Type": "Inner",
+                  "Startup Cost": 33469.31,
+                  "Total Cost": 2587023.38,
+                  "Plan Rows": 13358481,
+                  "Plan Width": 173,
+                  "Output": [
+                    "public.supplier.s_acctbal",
+                    "public.supplier.s_name",
+                    "public.supplier.s_address",
+                    "public.supplier.s_phone",
+                    "public.supplier.s_comment",
+                    "public.partsupp.ps_partkey",
+                    "public.partsupp.ps_supplycost",
+                    "public.nation.n_name"
+                  ],
+                  "Inner Unique": false,
+                  "Hash Cond": "(public.partsupp.ps_suppkey = public.supplier.s_suppkey)",
+                  "Plans": [
+                    {
+                      "Node Type": "Seq Scan",
+                      "Parent Relationship": "Outer",
+                      "Relation Name": "partsupp",
+                      "Schema": "public",
+                      "Alias": "partsupp",
+                      "Startup Cost": 0.0,
+                      "Total Cost": 2165056.73,
+                      "Plan Rows": 67976673,
+                      "Plan Width": 14,
+                      "Output": [
+                        "public.partsupp.ps_partkey",
+                        "public.partsupp.ps_suppkey",
+                        "public.partsupp.ps_availqty",
+                        "public.partsupp.ps_supplycost",
+                        "public.partsupp.ps_comment"
+                      ]
+                    },
+                    {
+                      "Node Type": "Hash",
+                      "Parent Relationship": "Inner",
+                      "Startup Cost": 31344.31,
+                      "Total Cost": 31344.31,
+                      "Plan Rows": 170000,
+                      "Plan Width": 167,
+                      "Output": [
+                        "public.supplier.s_acctbal",
+                        "public.supplier.s_name",
+                        "public.supplier.s_address",
+                        "public.supplier.s_phone",
+                        "public.supplier.s_comment",
+                        "public.supplier.s_suppkey",
+                        "public.nation.n_name"
+                      ],
+                      "Plans": [
+                        {
+                          "Node Type": "Hash Join",
+                          "Parent Relationship": "Outer",
+                          "Join Type": "Inner",
+                          "Startup Cost": 2.5,
+                          "Total Cost": 31344.31,
+                          "Plan Rows": 170000,
+                          "Plan Width": 167,
+                          "Output": [
+                            "public.supplier.s_acctbal",
+                            "public.supplier.s_name",
+                            "public.supplier.s_address",
+                            "public.supplier.s_phone",
+                            "public.supplier.s_comment",
+                            "public.supplier.s_suppkey",
+                            "public.nation.n_name"
+                          ],
+                          "Inner Unique": false,
+                          "Hash Cond": "(public.supplier.s_nationkey = public.nation.n_nationkey)",
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Relation Name": "supplier",
+                              "Schema": "public",
+                              "Alias": "supplier",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 27384.0,
+                              "Plan Rows": 850000,
+                              "Plan Width": 145,
+                              "Output": [
+                                "public.supplier.s_suppkey",
+                                "public.supplier.s_name",
+                                "public.supplier.s_address",
+                                "public.supplier.s_nationkey",
+                                "public.supplier.s_phone",
+                                "public.supplier.s_acctbal",
+                                "public.supplier.s_comment"
+                              ]
+                            },
+                            {
+                              "Node Type": "Hash",
+                              "Parent Relationship": "Inner",
+                              "Startup Cost": 2.44,
+                              "Total Cost": 2.44,
+                              "Plan Rows": 5,
+                              "Plan Width": 30,
+                              "Output": [
+                                "public.nation.n_name",
+                                "public.nation.n_nationkey"
+                              ],
+                              "Plans": [
+                                {
+                                  "Node Type": "Hash Join",
+                                  "Parent Relationship": "Outer",
+                                  "Join Type": "Inner",
+                                  "Startup Cost": 1.07,
+                                  "Total Cost": 2.44,
+                                  "Plan Rows": 5,
+                                  "Plan Width": 30,
+                                  "Output": [
+                                    "public.nation.n_name",
+                                    "public.nation.n_nationkey"
+                                  ],
+                                  "Inner Unique": false,
+                                  "Hash Cond": "(public.nation.n_regionkey = public.region.r_regionkey)",
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Relation Name": "nation",
+                                      "Schema": "public",
+                                      "Alias": "nation",
+                                      "Startup Cost": 0.0,
+                                      "Total Cost": 1.25,
+                                      "Plan Rows": 25,
+                                      "Plan Width": 34,
+                                      "Output": [
+                                        "public.nation.n_nationkey",
+                                        "public.nation.n_name",
+                                        "public.nation.n_regionkey",
+                                        "public.nation.n_comment"
+                                      ]
+                                    },
+                                    {
+                                      "Node Type": "Hash",
+                                      "Parent Relationship": "Inner",
+                                      "Startup Cost": 1.06,
+                                      "Total Cost": 1.06,
+                                      "Plan Rows": 1,
+                                      "Plan Width": 4,
+                                      "Output": [
+                                        "public.region.r_regionkey"
+                                      ],
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Seq Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Relation Name": "region",
+                                          "Schema": "public",
+                                          "Alias": "region",
+                                          "Startup Cost": 0.0,
+                                          "Total Cost": 1.06,
+                                          "Plan Rows": 1,
+                                          "Plan Width": 4,
+                                          "Output": [
+                                            "public.region.r_regionkey"
+                                          ],
+                                          "Filter": "(public.region.r_name = 'EUROPE'::bpchar)"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "Node Type": "Hash",
+                  "Parent Relationship": "Inner",
+                  "Startup Cost": 3786479.61,
+                  "Total Cost": 3786479.61,
+                  "Plan Rows": 93274,
+                  "Plan Width": 66,
+                  "Output": [
+                    "public.part.p_partkey",
+                    "public.part.p_mfgr",
+                    "public.partsupp.ps_partkey",
+                    "(min(public.partsupp.ps_supplycost))"
+                  ],
+                  "Plans": [
+                    {
+                      "Node Type": "Hash Join",
+                      "Parent Relationship": "Outer",
+                      "Join Type": "Inner",
+                      "Startup Cost": 3765911.57,
+                      "Total Cost": 3786479.61,
+                      "Plan Rows": 93274,
+                      "Plan Width": 66,
+                      "Output": [
+                        "public.part.p_partkey",
+                        "public.part.p_mfgr",
+                        "public.partsupp.ps_partkey",
+                        "(min(public.partsupp.ps_supplycost))"
+                      ],
+                      "Inner Unique": false,
+                      "Hash Cond": "(public.partsupp.ps_partkey = public.part.p_partkey)",
+                      "Plans": [
+                        {
+                          "Node Type": "Aggregate",
+                          "Strategy": "Hashed",
+                          "Parent Relationship": "Outer",
+                          "Startup Cost": 3161163.42,
+                          "Total Cost": 3174184.65,
+                          "Plan Rows": 481023,
+                          "Plan Width": 42,
+                          "Output": [
+                            "min(public.partsupp.ps_supplycost)",
+                            "public.partsupp.ps_partkey"
+                          ],
+                          "Group By Key": [
+                            "public.partsupp.ps_partkey"
+                          ],
+                          "Plans": [
+                            {
+                              "Node Type": "Hash Join",
+                              "Parent Relationship": "Outer",
+                              "Join Type": "Inner",
+                              "Startup Cost": 638217.47,
+                              "Total Cost": 3142187.84,
+                              "Plan Rows": 1872653,
+                              "Plan Width": 10,
+                              "Output": [
+                                "public.partsupp.ps_partkey",
+                                "public.partsupp.ps_supplycost"
+                              ],
+                              "Inner Unique": false,
+                              "Hash Cond": "(public.partsupp.ps_suppkey = public.supplier.s_suppkey)",
+                              "Plans": [
+                                {
+                                  "Node Type": "Hash Join",
+                                  "Parent Relationship": "Outer",
+                                  "Join Type": "Semi",
+                                  "Startup Cost": 604748.16,
+                                  "Total Cost": 3054256.89,
+                                  "Plan Rows": 9529280,
+                                  "Plan Width": 14,
+                                  "Output": [
+                                    "public.partsupp.ps_partkey",
+                                    "public.partsupp.ps_supplycost",
+                                    "public.partsupp.ps_suppkey"
+                                  ],
+                                  "Inner Unique": false,
+                                  "Hash Cond": "(public.partsupp.ps_partkey = public.part.p_partkey)",
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Seq Scan",
+                                      "Parent Relationship": "Outer",
+                                      "Relation Name": "partsupp",
+                                      "Schema": "public",
+                                      "Alias": "partsupp",
+                                      "Startup Cost": 0.0,
+                                      "Total Cost": 2165056.73,
+                                      "Plan Rows": 67976673,
+                                      "Plan Width": 14,
+                                      "Output": [
+                                        "public.partsupp.ps_partkey",
+                                        "public.partsupp.ps_suppkey",
+                                        "public.partsupp.ps_availqty",
+                                        "public.partsupp.ps_supplycost",
+                                        "public.partsupp.ps_comment"
+                                      ]
+                                    },
+                                    {
+                                      "Node Type": "Hash",
+                                      "Parent Relationship": "Inner",
+                                      "Startup Cost": 603905.26,
+                                      "Total Cost": 603905.26,
+                                      "Plan Rows": 67432,
+                                      "Plan Width": 4,
+                                      "Output": [
+                                        "public.part.p_partkey"
+                                      ],
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Seq Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Relation Name": "part",
+                                          "Schema": "public",
+                                          "Alias": "part",
+                                          "Startup Cost": 0.0,
+                                          "Total Cost": 603905.26,
+                                          "Plan Rows": 67432,
+                                          "Plan Width": 4,
+                                          "Output": [
+                                            "public.part.p_partkey"
+                                          ],
+                                          "Filter": "(((public.part.p_type)::text ~~ '%TIN'::text) AND (public.part.p_size = 44))"
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "Node Type": "Hash",
+                                  "Parent Relationship": "Inner",
+                                  "Startup Cost": 31344.31,
+                                  "Total Cost": 31344.31,
+                                  "Plan Rows": 170000,
+                                  "Plan Width": 4,
+                                  "Output": [
+                                    "public.supplier.s_suppkey"
+                                  ],
+                                  "Plans": [
+                                    {
+                                      "Node Type": "Hash Join",
+                                      "Parent Relationship": "Outer",
+                                      "Join Type": "Inner",
+                                      "Startup Cost": 2.5,
+                                      "Total Cost": 31344.31,
+                                      "Plan Rows": 170000,
+                                      "Plan Width": 4,
+                                      "Output": [
+                                        "public.supplier.s_suppkey"
+                                      ],
+                                      "Inner Unique": false,
+                                      "Hash Cond": "(public.supplier.s_nationkey = public.nation.n_nationkey)",
+                                      "Plans": [
+                                        {
+                                          "Node Type": "Seq Scan",
+                                          "Parent Relationship": "Outer",
+                                          "Relation Name": "supplier",
+                                          "Schema": "public",
+                                          "Alias": "supplier",
+                                          "Startup Cost": 0.0,
+                                          "Total Cost": 27384.0,
+                                          "Plan Rows": 850000,
+                                          "Plan Width": 8,
+                                          "Output": [
+                                            "public.supplier.s_suppkey",
+                                            "public.supplier.s_name",
+                                            "public.supplier.s_address",
+                                            "public.supplier.s_nationkey",
+                                            "public.supplier.s_phone",
+                                            "public.supplier.s_acctbal",
+                                            "public.supplier.s_comment"
+                                          ]
+                                        },
+                                        {
+                                          "Node Type": "Hash",
+                                          "Parent Relationship": "Inner",
+                                          "Startup Cost": 2.44,
+                                          "Total Cost": 2.44,
+                                          "Plan Rows": 5,
+                                          "Plan Width": 4,
+                                          "Output": [
+                                            "public.nation.n_nationkey"
+                                          ],
+                                          "Plans": [
+                                            {
+                                              "Node Type": "Hash Join",
+                                              "Parent Relationship": "Outer",
+                                              "Join Type": "Inner",
+                                              "Startup Cost": 1.07,
+                                              "Total Cost": 2.44,
+                                              "Plan Rows": 5,
+                                              "Plan Width": 4,
+                                              "Output": [
+                                                "public.nation.n_nationkey"
+                                              ],
+                                              "Inner Unique": false,
+                                              "Hash Cond": "(public.nation.n_regionkey = public.region.r_regionkey)",
+                                              "Plans": [
+                                                {
+                                                  "Node Type": "Seq Scan",
+                                                  "Parent Relationship": "Outer",
+                                                  "Relation Name": "nation",
+                                                  "Schema": "public",
+                                                  "Alias": "nation",
+                                                  "Startup Cost": 0.0,
+                                                  "Total Cost": 1.25,
+                                                  "Plan Rows": 25,
+                                                  "Plan Width": 8,
+                                                  "Output": [
+                                                    "public.nation.n_nationkey",
+                                                    "public.nation.n_name",
+                                                    "public.nation.n_regionkey",
+                                                    "public.nation.n_comment"
+                                                  ]
+                                                },
+                                                {
+                                                  "Node Type": "Hash",
+                                                  "Parent Relationship": "Inner",
+                                                  "Startup Cost": 1.06,
+                                                  "Total Cost": 1.06,
+                                                  "Plan Rows": 1,
+                                                  "Plan Width": 4,
+                                                  "Output": [
+                                                    "public.region.r_regionkey"
+                                                  ],
+                                                  "Plans": [
+                                                    {
+                                                      "Node Type": "Seq Scan",
+                                                      "Parent Relationship": "Outer",
+                                                      "Relation Name": "region",
+                                                      "Schema": "public",
+                                                      "Alias": "region",
+                                                      "Startup Cost": 0.0,
+                                                      "Total Cost": 1.06,
+                                                      "Plan Rows": 1,
+                                                      "Plan Width": 4,
+                                                      "Output": [
+                                                        "public.region.r_regionkey"
+                                                      ],
+                                                      "Filter": "(public.region.r_name = 'EUROPE'::bpchar)"
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "Node Type": "Hash",
+                          "Parent Relationship": "Inner",
+                          "Startup Cost": 603905.26,
+                          "Total Cost": 603905.26,
+                          "Plan Rows": 67432,
+                          "Plan Width": 30,
+                          "Output": [
+                            "public.part.p_partkey",
+                            "public.part.p_mfgr"
+                          ],
+                          "Plans": [
+                            {
+                              "Node Type": "Seq Scan",
+                              "Parent Relationship": "Outer",
+                              "Relation Name": "part",
+                              "Schema": "public",
+                              "Alias": "part",
+                              "Startup Cost": 0.0,
+                              "Total Cost": 603905.26,
+                              "Plan Rows": 67432,
+                              "Plan Width": 30,
+                              "Output": [
+                                "public.part.p_partkey",
+                                "public.part.p_mfgr"
+                              ],
+                              "Filter": "(((public.part.p_type)::text ~~ '%TIN'::text) AND (public.part.p_size = 44))"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+]

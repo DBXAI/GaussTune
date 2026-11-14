@@ -1,3 +1,9 @@
+> **基数→共享SB容量更新（2026-11-14）：** 见 `CARDINALITY_SB_CAPACITY_CURRENT.md` /
+> `CURRENT_CARDINALITY_SB_CAPACITY.json`。新采元数据与25个盲query×WM计划，已接通行/页密度换算、
+> ring饱和、历史驻留情景；相对TP-only 4GiB参考，冷AP约4.06–4.43GiB，
+> 保留本机约879MiB AP历史页的条件高侧约4.92–5.14GiB。
+> 新增6条受限只读验证，773项回归通过；未宣称这是混合TPS最优，未应用5/5.25或6/8GiB配置。
+>
 > **AP→SB 压力首轮测试（2026-11-13 16点）：** 见 `AP_SB_PRESSURE_CURRENT.md` /
 > `CURRENT_AP_SB_PRESSURE.json`。旧设计已推送并标记 `jmt-before-ap-sb-pressure-20261113`；
 > 新增算子名义压力与执行前残留页情景，已实际完成25次受限只读查询，默认SB/ring未改。
