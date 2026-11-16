@@ -1,0 +1,3 @@
+SELECT count(*),sum(l_extendedprice*l_discount),sum(l_quantity)
+            FROM lineitem WHERE l_shipdate>=DATE '1994-01-01'
+            AND l_shipdate<DATE '1995-01-01'

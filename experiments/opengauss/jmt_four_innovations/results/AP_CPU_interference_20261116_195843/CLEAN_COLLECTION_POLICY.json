@@ -1,0 +1,17 @@
+{
+  "created_at": "2026-11-16T20:07:26.470086+08:00",
+  "monotonic_ns": 14695568980302,
+  "invalid_prior_attempts": [
+    "calibration (preflight API error; no DB resize)",
+    "calibration_retry1 (CPU parser error; restored)",
+    "calibration_retry2 (development test overlap; interrupted and restored; no fit)"
+  ],
+  "fit_or_holdout_selection_based_on_TPS_results": false,
+  "clean_collection_directory": "calibration_clean",
+  "no_partial_prior_window_reused": true,
+  "calibration_SQL_design": "one CPU-heavy full lineitem scalar digest/aggregate scan; two lighter orders/partsupp scalar scans; three pairs",
+  "CPU_heavy_probe_for_domain_coverage_not_target_TPS_tuning": true,
+  "no_unit_tests_numpy_fits_exports_or_other_benchmarks_during_scored_windows": true,
+  "unit_tests_completed_before_clean_collection": "UNITTEST_BEFORE_CLEAN_COLLECTION.log",
+  "model_code_sha256": "d7cfdc393269a9687c4f5f6973bf5299ce827950f8ce5436242718d405ab22dc"
+}

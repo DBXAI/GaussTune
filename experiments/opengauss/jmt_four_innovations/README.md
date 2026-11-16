@@ -1,4 +1,14 @@
 > **独立TP重采后的效果（2026-11-16 18点）：** 见 `FRESH_TP_BASELINE_CURRENT.md` /
+
+> **最新AP CPU竞争层独立验证（2026-11-16 20点）：** 见 `AP_CPU_INTERFERENCE_CURRENT.md` /
+> `CURRENT_AP_CPU_INTERFERENCE.json`。新增三类独立微基准＋组合的6训练/6留出，
+> 一个全局参数使给定AP占核时的CPU服务留出误差1.34%→0.76%；但新16个原始AP目标窗口上，
+> 加膨胀的静态TPS均值MAPE由旧1.75%恶化为2.86%，**参数不升级默认**。
+> 前4秒观测、不加膨胀的CPU条件情景MAPE0.89%，但不是冷启动配置推荐；
+> 12个配置变化只匹配6个，降幅误差仍有抵消，不称排序成功。
+> 分步代入当前参考和全部CPU真值误差0.157%仅为oracle定位；发现TP参考漂移及AP的CPU排队反馈缺项。
+> 889项回归、源目录新重放及导出目录六项TPS重放通过，配置/SB8GiB恢复，未声称完整五阶段或全生命周期合格。
+
 > `CURRENT_FRESH_TP_BASELINE_EFFECT.json`、`CURRENT_TP_BASELINE.json`。
 > 新采2/4/6/8GiB TP128精确点，第1轮训练、第2轮留出，TP-only留出MAPE为0.43%。
 > 冻结后新跑16个AP混合窗口和8个TP-only对照；在同一批新目标上，

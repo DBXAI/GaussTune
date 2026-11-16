@@ -1,0 +1,42 @@
+{
+  "created_at": "2026-11-16T19:58:43.988945+08:00",
+  "created_monotonic_ns": 14173087841864,
+  "objective": "separate AP occupancy error from TP CPU service inflation; independent calibration, fresh target validation",
+  "training": "first repeat only; three disjoint scalar full-scan SQLs and three pairs, SB4096 TP128",
+  "heldout": "second repeat never fit, reversed AP order",
+  "fit": "one nonnegative shared slope; backend CPU/commit inflation vs observed AP cores; no intercept, query/stage/WM IDs or target TPS",
+  "target_SQLs": [
+    9,
+    13,
+    18,
+    21
+  ],
+  "target_SB_mib": [
+    2048,
+    4096,
+    6144,
+    8192
+  ],
+  "target_WM_profiles": [
+    "LOW",
+    "HIGH"
+  ],
+  "target_AP_episodes_per_configuration": 2,
+  "target_score_seconds": 20,
+  "target_AP_settle_seconds": 15,
+  "candidate_lanes": [
+    "static_CPU_budget_no_inflation",
+    "static_CPU_budget_independent_inflation",
+    "prior_4s_AP_CPU_budget_no_inflation",
+    "prior_4s_AP_CPU_budget_independent_inflation"
+  ],
+  "all_lanes_retained_without_posthoc_winner_selection": true,
+  "prior_probe_forecasts_next_window_not_cold_start": true,
+  "IO_unknown_not_zero": "CPU scenarios conditional on zero extra TP IO; do not promote as qualified TPS or recommendation",
+  "baseline_model": "results/fresh_TP_baseline_20261116_172613/FRESH_TP_POINTS.json",
+  "baseline_model_sha256": "462739f3fa3b66aed83f474c0932ca2aad10d0ab1e46c9781d08d4b528fa1585",
+  "same_boot_postmaster_required": true,
+  "full_AP_lifecycle_optimum_or_S5_verified": false,
+  "no_target_label_refit_or_online_TP_CPU_per_commit_used_for_prediction": true,
+  "automatic_recommendation_qualified": false
+}

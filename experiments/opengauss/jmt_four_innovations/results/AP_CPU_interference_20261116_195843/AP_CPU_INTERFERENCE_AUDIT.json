@@ -1,0 +1,3239 @@
+{
+  "schema": "jmt.independent-CPU-interference-validation/v1",
+  "created_at": "2026-11-16T20:43:18.203431+08:00",
+  "calibration_directory": "calibration_clean",
+  "model_sha256": "02f57e3f63ee886468f9e6e27b98ae4f288662382a73dc2456968182594c4ecd",
+  "coefficient_per_AP_core": 0.019799975356338578,
+  "independent_training_episodes": 6,
+  "independent_heldout_calibration_episodes": 6,
+  "heldout_CPU_service_MAPE": 0.007617834691297694,
+  "heldout_no_inflation_CPU_service_MAPE": 0.013350995774740934,
+  "configurations": [
+    {
+      "configuration": {
+        "key": "SB2048_LOW",
+        "shared_buffers_mib": 2048,
+        "WM_profile": "LOW",
+        "AP_work_mem_mib": {
+          "9": 256,
+          "13": 64,
+          "18": 512,
+          "21": 256
+        }
+      },
+      "actual_mean_TPS": 8908.3,
+      "actual_repeat_TPS": [
+        8885.8,
+        8930.8
+      ],
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8849.338582089164,
+          "absolute_relative_error": 0.0066187059159251715
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8749.806964222924,
+          "absolute_relative_error": 0.01779161408765706
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8656.940864474556,
+          "absolute_relative_error": 0.02821628543329735
+        },
+        "static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8842.33306906814,
+          "absolute_relative_error": 0.007405108823441031
+        },
+        "static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8748.558390509399,
+          "absolute_relative_error": 0.017931772559366066
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8928.646957604316,
+          "absolute_relative_error": 0.0022840449473320312
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8857.85457706633,
+          "absolute_relative_error": 0.005662744062690961
+        }
+      },
+      "episodes": [
+        {
+          "configuration": "SB2048_LOW",
+          "repeat": 1,
+          "directory": "live/SB2048_LOW_r01",
+          "actual_TPS": 8885.8,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8852.778429127971,
+              "absolute_relative_error": 0.0037162181088959967,
+              "signed_relative_error": -0.0037162181088959967,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": -143.87842912797169
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8845.809196995164,
+              "absolute_relative_error": 0.004500529271965981,
+              "signed_relative_error": -0.004500529271965981,
+              "backend_CPU_service_absolute_relative_error": 0.00860117062636967,
+              "AP_degradation_error_TPS_diagnostic": -136.90919699516417
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8752.000409967128,
+              "absolute_relative_error": 0.015057686424730599,
+              "signed_relative_error": -0.015057686424730599,
+              "backend_CPU_service_absolute_relative_error": 0.0028521347751637727,
+              "AP_degradation_error_TPS_diagnostic": -43.100409967128144
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8937.668274818474,
+              "absolute_relative_error": 0.005837209347326677,
+              "signed_relative_error": 0.005837209347326677,
+              "backend_CPU_service_absolute_relative_error": 0.00860117062636967,
+              "AP_degradation_error_TPS_diagnostic": -228.7682748184743
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8868.33740561659,
+              "absolute_relative_error": 0.0019652247837458336,
+              "signed_relative_error": -0.0019652247837458336,
+              "backend_CPU_service_absolute_relative_error": 0.00024746653942253616,
+              "AP_degradation_error_TPS_diagnostic": -159.4374056165907
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8749.806964222924,
+              "absolute_relative_error": 0.015304534850781648,
+              "signed_relative_error": -0.015304534850781648,
+              "backend_CPU_service_absolute_relative_error": 0.0019365928333578974,
+              "AP_degradation_error_TPS_diagnostic": -40.906964222924216
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8656.940864474556,
+              "absolute_relative_error": 0.025755602818591794,
+              "signed_relative_error": -0.025755602818591794,
+              "backend_CPU_service_absolute_relative_error": 0.013512347837202121,
+              "AP_degradation_error_TPS_diagnostic": 51.959135525443344
+            }
+          },
+          "AP_CPU_static_forecast": 0.5834690041707485,
+          "AP_CPU_prior_4s_forecast": 0.42556513022830905,
+          "AP_CPU_future_window_actual": 0.4059977752,
+          "actual_backend_CPU_seconds_per_commit": 0.0016087036735184226,
+          "frozen_TP_only_baseline_TPS": 9245.2,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9422.1,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -176.89999999999964,
+          "AP_probe_to_window_start_gap_seconds": 2.000778237,
+          "online_prediction_compute_milliseconds": 0.134143,
+          "static_prediction_compute_milliseconds": 14.407021,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8882.800470240205,
+            "actual_AP_CPU_and_actual_TP_backend_service": 8877.592205069757,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 8979.486385732895,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9113.1159831699,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 8942.587753086375,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        },
+        {
+          "configuration": "SB2048_LOW",
+          "repeat": 2,
+          "directory": "live/SB2048_LOW_r02",
+          "actual_TPS": 8930.8,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8845.898735050356,
+              "absolute_relative_error": 0.009506568834778961,
+              "signed_relative_error": -0.009506568834778961,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": -54.34873505035648
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8838.856941141117,
+              "absolute_relative_error": 0.010295052946979188,
+              "signed_relative_error": -0.010295052946979188,
+              "backend_CPU_service_absolute_relative_error": 0.005248300810259177,
+              "AP_degradation_error_TPS_diagnostic": -47.30694114111793
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8745.116371051668,
+              "absolute_relative_error": 0.020791376914535142,
+              "signed_relative_error": -0.020791376914535142,
+              "backend_CPU_service_absolute_relative_error": 0.00624379027720634,
+              "AP_degradation_error_TPS_diagnostic": 46.43362894833081
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8919.62564039016,
+              "absolute_relative_error": 0.0012512159727950944,
+              "signed_relative_error": -0.0012512159727950944,
+              "backend_CPU_service_absolute_relative_error": 0.005248300810259177,
+              "AP_degradation_error_TPS_diagnostic": -128.07564039016142
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8847.37174851607,
+              "absolute_relative_error": 0.009341632494729302,
+              "signed_relative_error": -0.009341632494729302,
+              "backend_CPU_service_absolute_relative_error": 0.003507261260691008,
+              "AP_degradation_error_TPS_diagnostic": -55.82174851607124
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8749.806964222924,
+              "absolute_relative_error": 0.02026616157310379,
+              "signed_relative_error": -0.02026616157310379,
+              "backend_CPU_service_absolute_relative_error": 0.004559637812928896,
+              "AP_degradation_error_TPS_diagnostic": 41.74303577707542
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8656.940864474556,
+              "absolute_relative_error": 0.03066456930235173,
+              "signed_relative_error": -0.03066456930235173,
+              "backend_CPU_service_absolute_relative_error": 0.016165697854302108,
+              "AP_degradation_error_TPS_diagnostic": 134.60913552544298
+            }
+          },
+          "AP_CPU_static_forecast": 0.5834715976342462,
+          "AP_CPU_prior_4s_forecast": 0.4445337015554175,
+          "AP_CPU_future_window_actual": 0.43411144209999997,
+          "actual_backend_CPU_seconds_per_commit": 0.0016045031244065482,
+          "frozen_TP_only_baseline_TPS": 9245.2,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9384.45,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -139.25,
+          "AP_probe_to_window_start_gap_seconds": 2.0008216,
+          "online_prediction_compute_milliseconds": 0.128726,
+          "static_prediction_compute_milliseconds": 11.149279,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8855.063194035054,
+            "actual_AP_CPU_and_actual_TP_backend_service": 8882.203123673142,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 8943.396371710187,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9055.40459140959,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 8948.269253264472,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "key": "SB2048_HIGH",
+        "shared_buffers_mib": 2048,
+        "WM_profile": "HIGH",
+        "AP_work_mem_mib": {
+          "9": 512,
+          "13": 128,
+          "18": 1024,
+          "21": 512
+        }
+      },
+      "actual_mean_TPS": 9038.025000000001,
+      "actual_repeat_TPS": [
+        9004.95,
+        9071.1
+      ],
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8825.390732059112,
+          "absolute_relative_error": 0.02352662976047204
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8742.044889144956,
+          "absolute_relative_error": 0.032748317343119226
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8647.141848266745,
+          "absolute_relative_error": 0.04324873539664431
+        },
+        "static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8818.035810547695,
+          "absolute_relative_error": 0.02434040506109536
+        },
+        "static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8722.369402901844,
+          "absolute_relative_error": 0.03492528479376378
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8903.460736693989,
+          "absolute_relative_error": 0.014888680138195332
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8830.481907846717,
+          "absolute_relative_error": 0.0229633235306701
+        }
+      },
+      "episodes": [
+        {
+          "configuration": "SB2048_HIGH",
+          "repeat": 1,
+          "directory": "live/SB2048_HIGH_r01",
+          "actual_TPS": 9004.95,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8805.667073987166,
+              "absolute_relative_error": 0.02213037562816389,
+              "signed_relative_error": -0.02213037562816389,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": 22.382926012835014
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8798.09703766936,
+              "absolute_relative_error": 0.02297102841555365,
+              "signed_relative_error": -0.02297102841555365,
+              "backend_CPU_service_absolute_relative_error": 0.009838603494843001,
+              "AP_degradation_error_TPS_diagnostic": 29.95296233064073
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8702.630807753529,
+              "absolute_relative_error": 0.033572556454669056,
+              "signed_relative_error": -0.033572556454669056,
+              "backend_CPU_service_absolute_relative_error": 0.02177464580380728,
+              "AP_degradation_error_TPS_diagnostic": 125.41919224647245
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8886.285052593092,
+              "absolute_relative_error": 0.01317774639580549,
+              "signed_relative_error": -0.01317774639580549,
+              "backend_CPU_service_absolute_relative_error": 0.009838603494843001,
+              "AP_degradation_error_TPS_diagnostic": -58.235052593090586
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8814.248342501396,
+              "absolute_relative_error": 0.02117742547139123,
+              "signed_relative_error": -0.02117742547139123,
+              "backend_CPU_service_absolute_relative_error": 0.018731223303737776,
+              "AP_degradation_error_TPS_diagnostic": 13.801657498604982
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8742.044889144956,
+              "absolute_relative_error": 0.029195621392128168,
+              "signed_relative_error": -0.029195621392128168,
+              "backend_CPU_service_absolute_relative_error": 0.016111501711446374,
+              "AP_degradation_error_TPS_diagnostic": 86.00511085504513
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8647.141848266745,
+              "absolute_relative_error": 0.0397346072696968,
+              "signed_relative_error": -0.0397346072696968,
+              "backend_CPU_service_absolute_relative_error": 0.028122116697749,
+              "AP_degradation_error_TPS_diagnostic": 180.9081517332561
+            }
+          },
+          "AP_CPU_static_forecast": 0.5969579374959195,
+          "AP_CPU_prior_4s_forecast": 0.4447470813727141,
+          "AP_CPU_future_window_actual": 0.44471428685,
+          "actual_backend_CPU_seconds_per_commit": 0.0015862620143643218,
+          "frozen_TP_only_baseline_TPS": 9245.2,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9422.1,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -176.89999999999964,
+          "AP_probe_to_window_start_gap_seconds": 2.000770682,
+          "online_prediction_compute_milliseconds": 0.128484,
+          "static_prediction_compute_milliseconds": 10.174389,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8814.272457742143,
+            "actual_AP_CPU_and_actual_TP_backend_service": 8967.388640915575,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 8969.364992542422,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9083.88998686637,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 9044.819518592078,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        },
+        {
+          "configuration": "SB2048_HIGH",
+          "repeat": 2,
+          "directory": "live/SB2048_HIGH_r02",
+          "actual_TPS": 9071.1,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8845.114390131057,
+              "absolute_relative_error": 0.024912701862943143,
+              "signed_relative_error": -0.024912701862943143,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": 86.73560986894336
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8837.974583426032,
+              "absolute_relative_error": 0.02569979567791869,
+              "signed_relative_error": -0.02569979567791869,
+              "backend_CPU_service_absolute_relative_error": 0.011194733068869533,
+              "AP_degradation_error_TPS_diagnostic": 93.87541657396832
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8742.107998050162,
+              "absolute_relative_error": 0.03626814851008575,
+              "signed_relative_error": -0.03626814851008575,
+              "backend_CPU_service_absolute_relative_error": 0.023146500980943285,
+              "AP_degradation_error_TPS_diagnostic": 189.7420019498386
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8920.636420794885,
+              "absolute_relative_error": 0.0165871370842694,
+              "signed_relative_error": -0.0165871370842694,
+              "backend_CPU_service_absolute_relative_error": 0.011194733068869533,
+              "AP_degradation_error_TPS_diagnostic": 11.21357920511582
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8846.715473192038,
+              "absolute_relative_error": 0.02473619812458927,
+              "signed_relative_error": -0.02473619812458927,
+              "backend_CPU_service_absolute_relative_error": 0.02030154830563724,
+              "AP_degradation_error_TPS_diagnostic": 85.13452680796217
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8742.044889144956,
+              "absolute_relative_error": 0.036275105649264616,
+              "signed_relative_error": -0.036275105649264616,
+              "backend_CPU_service_absolute_relative_error": 0.02194331717213016,
+              "AP_degradation_error_TPS_diagnostic": 189.8051108550444
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8647.141848266745,
+              "absolute_relative_error": 0.04673723713036515,
+              "signed_relative_error": -0.04673723713036515,
+              "backend_CPU_service_absolute_relative_error": 0.03402286523324949,
+              "AP_degradation_error_TPS_diagnostic": 284.70815173325536
+            }
+          },
+          "AP_CPU_static_forecast": 0.596942778253864,
+          "AP_CPU_prior_4s_forecast": 0.4548488247491041,
+          "AP_CPU_future_window_actual": 0.44129786114999997,
+          "actual_backend_CPU_seconds_per_commit": 0.0015772098612902513,
+          "frozen_TP_only_baseline_TPS": 9245.2,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9384.45,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -139.25,
+          "AP_probe_to_window_start_gap_seconds": 2.001190559,
+          "online_prediction_compute_milliseconds": 0.127281,
+          "static_prediction_compute_milliseconds": 10.812374,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8856.719787585425,
+            "actual_AP_CPU_and_actual_TP_backend_service": 9021.180368734458,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 8933.32400937452,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9050.00135949287,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 9091.977668616182,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "key": "SB4096_LOW",
+        "shared_buffers_mib": 4096,
+        "WM_profile": "LOW",
+        "AP_work_mem_mib": {
+          "9": 256,
+          "13": 64,
+          "18": 512,
+          "21": 256
+        }
+      },
+      "actual_mean_TPS": 8997.25,
+      "actual_repeat_TPS": [
+        8991.35,
+        9003.15
+      ],
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8914.34667679408,
+          "absolute_relative_error": 0.009214295835496267
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8919.977884889555,
+          "absolute_relative_error": 0.008588414805684508
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8825.392427460847,
+          "absolute_relative_error": 0.019101122291717232
+        },
+        "static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8910.189367533427,
+          "absolute_relative_error": 0.009676360273035978
+        },
+        "static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8815.699947157536,
+          "absolute_relative_error": 0.020178393713908505
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8993.03631546543,
+          "absolute_relative_error": 0.0004683302714241222
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8920.667098975942,
+          "absolute_relative_error": 0.008511812056356982
+        }
+      },
+      "episodes": [
+        {
+          "configuration": "SB4096_LOW",
+          "repeat": 1,
+          "directory": "live/SB4096_LOW_r01",
+          "actual_TPS": 8991.35,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8924.088304056244,
+              "absolute_relative_error": 0.007480711566534071,
+              "signed_relative_error": -0.007480711566534071,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": -179.1883040562425
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8920.012813748754,
+              "absolute_relative_error": 0.007933979463734198,
+              "signed_relative_error": -0.007933979463734198,
+              "backend_CPU_service_absolute_relative_error": 0.005270595126386501,
+              "AP_degradation_error_TPS_diagnostic": -175.11281374875216
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8825.427013681478,
+              "absolute_relative_error": 0.018453623351167847,
+              "signed_relative_error": -0.018453623351167847,
+              "backend_CPU_service_absolute_relative_error": 0.006220657864509205,
+              "AP_degradation_error_TPS_diagnostic": -80.52701368147609
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 9002.295033067196,
+              "absolute_relative_error": 0.0012172847311244794,
+              "signed_relative_error": 0.0012172847311244794,
+              "backend_CPU_service_absolute_relative_error": 0.005270595126386501,
+              "AP_degradation_error_TPS_diagnostic": -257.39503306719416
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8929.677418158475,
+              "absolute_relative_error": 0.006859101452120653,
+              "signed_relative_error": -0.006859101452120653,
+              "backend_CPU_service_absolute_relative_error": 0.0034487402463589945,
+              "AP_degradation_error_TPS_diagnostic": -184.77741815847367
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8919.977884889555,
+              "absolute_relative_error": 0.007937864181735255,
+              "signed_relative_error": -0.007937864181735255,
+              "backend_CPU_service_absolute_relative_error": 0.005266822611247779,
+              "AP_degradation_error_TPS_diagnostic": -175.0778848895534
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8825.392427460847,
+              "absolute_relative_error": 0.018457469961591255,
+              "signed_relative_error": -0.018457469961591255,
+              "backend_CPU_service_absolute_relative_error": 0.006224474217454867,
+              "AP_degradation_error_TPS_diagnostic": -80.49242746084565
+            }
+          },
+          "AP_CPU_static_forecast": 0.5834421222192501,
+          "AP_CPU_prior_4s_forecast": 0.44270433678960264,
+          "AP_CPU_future_window_actual": 0.4385155986,
+          "actual_backend_CPU_seconds_per_commit": 0.0015952455574524405,
+          "frozen_TP_only_baseline_TPS": 9261.2,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9507.65,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -246.4499999999989,
+          "AP_probe_to_window_start_gap_seconds": 2.000879631,
+          "online_prediction_compute_milliseconds": 0.159675,
+          "static_prediction_compute_milliseconds": 10.845595,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8932.788387127346,
+            "actual_AP_CPU_and_actual_TP_backend_service": 8960.696173650393,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 9061.427738373475,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9171.38178659211,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 9011.370550199605,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        },
+        {
+          "configuration": "SB4096_LOW",
+          "repeat": 2,
+          "directory": "live/SB4096_LOW_r02",
+          "actual_TPS": 9003.15,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8904.60504953192,
+              "absolute_relative_error": 0.010945607978105398,
+              "signed_relative_error": -0.010945607978105398,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": 81.44495046808152
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8900.3659213181,
+              "absolute_relative_error": 0.011416457426778326,
+              "signed_relative_error": -0.011416457426778326,
+              "backend_CPU_service_absolute_relative_error": 0.001991787317375371,
+              "AP_degradation_error_TPS_diagnostic": 85.68407868190116
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8805.972880633595,
+              "absolute_relative_error": 0.02190090350226359,
+              "signed_relative_error": -0.02190090350226359,
+              "backend_CPU_service_absolute_relative_error": 0.009537488053965593,
+              "AP_degradation_error_TPS_diagnostic": 180.0771193664059
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8983.777597863662,
+              "absolute_relative_error": 0.002151736018653261,
+              "signed_relative_error": -0.002151736018653261,
+              "backend_CPU_service_absolute_relative_error": 0.001991787317375371,
+              "AP_degradation_error_TPS_diagnostic": 2.272402136339224
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8911.65677979341,
+              "absolute_relative_error": 0.01016235653150177,
+              "signed_relative_error": -0.01016235653150177,
+              "backend_CPU_service_absolute_relative_error": 0.006712667434249253,
+              "AP_degradation_error_TPS_diagnostic": 74.39322020659165
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8919.977884889555,
+              "absolute_relative_error": 0.009238112783908403,
+              "signed_relative_error": -0.009238112783908403,
+              "backend_CPU_service_absolute_relative_error": 0.00411711827284067,
+              "AP_degradation_error_TPS_diagnostic": 66.07211511044625
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8825.392427460847,
+              "absolute_relative_error": 0.019743931017383032,
+              "signed_relative_error": -0.019743931017383032,
+              "backend_CPU_service_absolute_relative_error": 0.007387460101223375,
+              "AP_degradation_error_TPS_diagnostic": 160.657572539154
+            }
+          },
+          "AP_CPU_static_forecast": 0.5834494668966502,
+          "AP_CPU_prior_4s_forecast": 0.4404968500523161,
+          "AP_CPU_future_window_actual": 0.4374139737,
+          "actual_backend_CPU_seconds_per_commit": 0.0015934039144521641,
+          "frozen_TP_only_baseline_TPS": 9261.2,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9278.3,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -17.099999999998545,
+          "AP_probe_to_window_start_gap_seconds": 2.00087968,
+          "online_prediction_compute_milliseconds": 0.124902,
+          "static_prediction_compute_milliseconds": 10.709185,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8913.941995520547,
+            "actual_AP_CPU_and_actual_TP_backend_service": 8968.967333719625,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 8842.27555921193,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 8950.539151395344,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 9010.898112813451,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "key": "SB4096_HIGH",
+        "shared_buffers_mib": 4096,
+        "WM_profile": "HIGH",
+        "AP_work_mem_mib": {
+          "9": 512,
+          "13": 128,
+          "18": 1024,
+          "21": 512
+        }
+      },
+      "actual_mean_TPS": 8986.7,
+      "actual_repeat_TPS": [
+        8932.15,
+        9041.25
+      ],
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8883.502908009592,
+          "absolute_relative_error": 0.011483313339758605
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8912.100762542728,
+          "absolute_relative_error": 0.008301071300618967
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8815.440190282621,
+          "absolute_relative_error": 0.01905702980152668
+        },
+        "static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8879.041378239235,
+          "absolute_relative_error": 0.011979772526151455
+        },
+        "static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8782.712637931909,
+          "absolute_relative_error": 0.02269880624345888
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8971.498740479048,
+          "absolute_relative_error": 0.0016915285389467183
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8899.832834033234,
+          "absolute_relative_error": 0.009666191813097913
+        }
+      },
+      "episodes": [
+        {
+          "configuration": "SB4096_HIGH",
+          "repeat": 1,
+          "directory": "live/SB4096_HIGH_r01",
+          "actual_TPS": 8932.15,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8869.70264453183,
+              "absolute_relative_error": 0.006991301698714203,
+              "signed_relative_error": -0.006991301698714203,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": -184.002644531829
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8865.119991827074,
+              "absolute_relative_error": 0.007504353170616929,
+              "signed_relative_error": -0.007504353170616929,
+              "backend_CPU_service_absolute_relative_error": 0.007371252202548639,
+              "AP_degradation_error_TPS_diagnostic": -179.41999182707332
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8768.931017966148,
+              "absolute_relative_error": 0.018273202088394336,
+              "signed_relative_error": -0.018273202088394336,
+              "backend_CPU_service_absolute_relative_error": 0.004360890220470814,
+              "AP_degradation_error_TPS_diagnostic": -83.23101796614719
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8954.033028637692,
+              "absolute_relative_error": 0.00244991728057542,
+              "signed_relative_error": 0.00244991728057542,
+              "backend_CPU_service_absolute_relative_error": 0.007371252202548639,
+              "AP_degradation_error_TPS_diagnostic": -268.3330286376913
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8881.547559559833,
+              "absolute_relative_error": 0.005665202716050088,
+              "signed_relative_error": -0.005665202716050088,
+              "backend_CPU_service_absolute_relative_error": 0.0013576775085355486,
+              "AP_degradation_error_TPS_diagnostic": -195.847559559832
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8912.100762542728,
+              "absolute_relative_error": 0.002244614953541002,
+              "signed_relative_error": -0.002244614953541002,
+              "backend_CPU_service_absolute_relative_error": 0.012439560748035539,
+              "AP_degradation_error_TPS_diagnostic": -226.40076254272753
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8815.440190282621,
+              "absolute_relative_error": 0.013066261730644735,
+              "signed_relative_error": -0.013066261730644735,
+              "backend_CPU_service_absolute_relative_error": 0.0007676719879438076,
+              "AP_degradation_error_TPS_diagnostic": -129.74019028262046
+            }
+          },
+          "AP_CPU_static_forecast": 0.5969333292089475,
+          "AP_CPU_prior_4s_forecast": 0.44412937424325644,
+          "AP_CPU_future_window_actual": 0.4487823808,
+          "actual_backend_CPU_seconds_per_commit": 0.0016068319659320544,
+          "frozen_TP_only_baseline_TPS": 9261.2,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9507.65,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -246.4499999999989,
+          "AP_probe_to_window_start_gap_seconds": 2.000855219,
+          "online_prediction_compute_milliseconds": 0.123991,
+          "static_prediction_compute_milliseconds": 10.934431,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8878.109033324767,
+            "actual_AP_CPU_and_actual_TP_backend_service": 8890.055668636049,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 9051.221629724241,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9163.573358095451,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 8942.896052308564,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        },
+        {
+          "configuration": "SB4096_HIGH",
+          "repeat": 2,
+          "directory": "live/SB4096_HIGH_r02",
+          "actual_TPS": 9041.25,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8897.303171487354,
+              "absolute_relative_error": 0.01592112025578829,
+              "signed_relative_error": -0.01592112025578829,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": 126.84682851264733
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8892.962764651398,
+              "absolute_relative_error": 0.01640118737437879,
+              "signed_relative_error": -0.01640118737437879,
+              "backend_CPU_service_absolute_relative_error": 0.0014177067707219493,
+              "AP_degradation_error_TPS_diagnostic": 131.18723534860328
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8796.494257897672,
+              "absolute_relative_error": 0.027071007007032022,
+              "signed_relative_error": -0.027071007007032022,
+              "backend_CPU_service_absolute_relative_error": 0.013253517921848479,
+              "AP_degradation_error_TPS_diagnostic": 227.6557421023299
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8988.964452320406,
+              "absolute_relative_error": 0.005782999881608575,
+              "signed_relative_error": -0.005782999881608575,
+              "backend_CPU_service_absolute_relative_error": 0.0014177067707219493,
+              "AP_degradation_error_TPS_diagnostic": 35.1855476795954
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8918.118108506633,
+              "absolute_relative_error": 0.013618901312690945,
+              "signed_relative_error": -0.013618901312690945,
+              "backend_CPU_service_absolute_relative_error": 0.009991367959943931,
+              "AP_degradation_error_TPS_diagnostic": 106.03189149336868
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8912.100762542728,
+              "absolute_relative_error": 0.014284444900569238,
+              "signed_relative_error": -0.014284444900569238,
+              "backend_CPU_service_absolute_relative_error": 0.0006649874952738832,
+              "AP_degradation_error_TPS_diagnostic": 112.0492374572732
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8815.440190282621,
+              "absolute_relative_error": 0.024975507780160777,
+              "signed_relative_error": -0.024975507780160777,
+              "backend_CPU_service_absolute_relative_error": 0.011146063896026348,
+              "AP_degradation_error_TPS_diagnostic": 208.70980971738027
+            }
+          },
+          "AP_CPU_static_forecast": 0.5969227225713305,
+          "AP_CPU_prior_4s_forecast": 0.4324007128981111,
+          "AP_CPU_future_window_actual": 0.44298628745,
+          "actual_backend_CPU_seconds_per_commit": 0.0015878996154679937,
+          "frozen_TP_only_baseline_TPS": 9261.2,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9278.3,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -17.099999999998545,
+          "AP_probe_to_window_start_gap_seconds": 2.000830286,
+          "online_prediction_compute_milliseconds": 0.125427,
+          "static_prediction_compute_milliseconds": 10.74834,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8910.270708363108,
+            "actual_AP_CPU_and_actual_TP_backend_service": 8994.602912898403,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 8832.316159755066,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 8946.397512693044,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 9035.153373442961,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "key": "SB6144_LOW",
+        "shared_buffers_mib": 6144,
+        "WM_profile": "LOW",
+        "AP_work_mem_mib": {
+          "9": 256,
+          "13": 64,
+          "18": 512,
+          "21": 256
+        }
+      },
+      "actual_mean_TPS": 9098.375,
+      "actual_repeat_TPS": [
+        9129.95,
+        9066.8
+      ],
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8862.30833839411,
+          "absolute_relative_error": 0.02594602460394191
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8858.140626782491,
+          "absolute_relative_error": 0.026404096689519707
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8764.199756825625,
+          "absolute_relative_error": 0.03672911296515868
+        },
+        "static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8858.140626782491,
+          "absolute_relative_error": 0.026404096689519707
+        },
+        "static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8764.199756825625,
+          "absolute_relative_error": 0.03672911296515868
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8934.237157026622,
+          "absolute_relative_error": 0.01804034709202218
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8860.594411045859,
+          "absolute_relative_error": 0.026134401907389138
+        }
+      },
+      "episodes": [
+        {
+          "configuration": "SB6144_LOW",
+          "repeat": 1,
+          "directory": "live/SB6144_LOW_r01",
+          "actual_TPS": 9129.95,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8862.30833839411,
+              "absolute_relative_error": 0.029314690836849122,
+              "signed_relative_error": -0.029314690836849122,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": 41.89166160589048
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8858.140626782491,
+              "absolute_relative_error": 0.029771178726883396,
+              "signed_relative_error": -0.029771178726883396,
+              "backend_CPU_service_absolute_relative_error": 0.0168260435395704,
+              "AP_degradation_error_TPS_diagnostic": 46.059373217509346
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8764.199756825625,
+              "absolute_relative_error": 0.04006048698781217,
+              "signed_relative_error": -0.04006048698781217,
+              "backend_CPU_service_absolute_relative_error": 0.028573028875017892,
+              "AP_degradation_error_TPS_diagnostic": 140.000243174376
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8936.373361664027,
+              "absolute_relative_error": 0.02120237661060287,
+              "signed_relative_error": -0.02120237661060287,
+              "backend_CPU_service_absolute_relative_error": 0.0168260435395704,
+              "AP_degradation_error_TPS_diagnostic": -32.17336166402674
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8863.306886434733,
+              "absolute_relative_error": 0.029205320244389932,
+              "signed_relative_error": -0.029205320244389932,
+              "backend_CPU_service_absolute_relative_error": 0.025860592732304122,
+              "AP_degradation_error_TPS_diagnostic": 40.89311356526741
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8858.140626782491,
+              "absolute_relative_error": 0.029771178726883396,
+              "signed_relative_error": -0.029771178726883396,
+              "backend_CPU_service_absolute_relative_error": 0.0168260435395704,
+              "AP_degradation_error_TPS_diagnostic": 46.059373217509346
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8764.199756825625,
+              "absolute_relative_error": 0.04006048698781217,
+              "signed_relative_error": -0.04006048698781217,
+              "backend_CPU_service_absolute_relative_error": 0.028573028875017892,
+              "AP_degradation_error_TPS_diagnostic": 140.000243174376
+            }
+          },
+          "AP_CPU_static_forecast": 0.583465411645898,
+          "AP_CPU_prior_4s_forecast": 0.4487404055802132,
+          "AP_CPU_future_window_actual": 0.43724396535,
+          "actual_backend_CPU_seconds_per_commit": 0.0015713595982453355,
+          "frozen_TP_only_baseline_TPS": 9196.95,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9422.7,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -225.75,
+          "AP_probe_to_window_start_gap_seconds": 2.000862771,
+          "online_prediction_compute_milliseconds": 0.147815,
+          "static_prediction_compute_milliseconds": 10.610226,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8871.786495653332,
+            "actual_AP_CPU_and_actual_TP_backend_service": 9082.494191120852,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 8980.218763043973,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9090.223048003048,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 9139.9687747978,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        },
+        {
+          "configuration": "SB6144_LOW",
+          "repeat": 2,
+          "directory": "live/SB6144_LOW_r02",
+          "actual_TPS": 9066.8,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8862.30833839411,
+              "absolute_relative_error": 0.02255389570806554,
+              "signed_relative_error": -0.02255389570806554,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": -103.10833839410952
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8858.140626782491,
+              "absolute_relative_error": 0.02301356302306301,
+              "signed_relative_error": -0.02301356302306301,
+              "backend_CPU_service_absolute_relative_error": 0.008461355739174392,
+              "AP_degradation_error_TPS_diagnostic": -98.94062678249065
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8764.199756825625,
+              "absolute_relative_error": 0.03337453601870277,
+              "signed_relative_error": -0.03337453601870277,
+              "backend_CPU_service_absolute_relative_error": 0.02011170717588251,
+              "AP_degradation_error_TPS_diagnostic": -4.99975682562399
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8932.100952389217,
+              "absolute_relative_error": 0.01485629412921674,
+              "signed_relative_error": -0.01485629412921674,
+              "backend_CPU_service_absolute_relative_error": 0.008461355739174392,
+              "AP_degradation_error_TPS_diagnostic": -172.9009523892164
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8857.881935656982,
+              "absolute_relative_error": 0.02304209471291052,
+              "signed_relative_error": -0.02304209471291052,
+              "backend_CPU_service_absolute_relative_error": 0.017568495996366007,
+              "AP_degradation_error_TPS_diagnostic": -98.6819356569813
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8858.140626782491,
+              "absolute_relative_error": 0.02301356302306301,
+              "signed_relative_error": -0.02301356302306301,
+              "backend_CPU_service_absolute_relative_error": 0.008461355739174392,
+              "AP_degradation_error_TPS_diagnostic": -98.94062678249065
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8764.199756825625,
+              "absolute_relative_error": 0.03337453601870277,
+              "signed_relative_error": -0.03337453601870277,
+              "backend_CPU_service_absolute_relative_error": 0.02011170717588251,
+              "AP_degradation_error_TPS_diagnostic": -4.99975682562399
+            }
+          },
+          "AP_CPU_static_forecast": 0.583465411645898,
+          "AP_CPU_prior_4s_forecast": 0.45609794416473903,
+          "AP_CPU_future_window_actual": 0.4413913239,
+          "actual_backend_CPU_seconds_per_commit": 0.0015843932483566418,
+          "frozen_TP_only_baseline_TPS": 9196.95,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9504.55,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -307.59999999999854,
+          "AP_probe_to_window_start_gap_seconds": 2.000802382,
+          "online_prediction_compute_milliseconds": 0.115471,
+          "static_prediction_compute_milliseconds": 10.497356,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8868.727053872579,
+            "actual_AP_CPU_and_actual_TP_backend_service": 9010.787355744507,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 9058.462440703766,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9166.209869929975,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 9071.856009113446,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "key": "SB6144_HIGH",
+        "shared_buffers_mib": 6144,
+        "WM_profile": "HIGH",
+        "AP_work_mem_mib": {
+          "9": 512,
+          "13": 128,
+          "18": 1024,
+          "21": 512
+        }
+      },
+      "actual_mean_TPS": 9103.075,
+      "actual_repeat_TPS": [
+        9122.2,
+        9083.95
+      ],
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8854.587790186575,
+          "absolute_relative_error": 0.027297062785204496
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8850.316641689054,
+          "absolute_relative_error": 0.027766261215132926
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8754.314834282495,
+          "absolute_relative_error": 0.038312346730912994
+        },
+        "static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8850.316641689054,
+          "absolute_relative_error": 0.027766261215132926
+        },
+        "static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8754.314834282495,
+          "absolute_relative_error": 0.038312346730912994
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8948.157765635497,
+          "absolute_relative_error": 0.017018121279293474
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8878.278838227743,
+          "absolute_relative_error": 0.024694530339721243
+        }
+      },
+      "episodes": [
+        {
+          "configuration": "SB6144_HIGH",
+          "repeat": 1,
+          "directory": "live/SB6144_HIGH_r01",
+          "actual_TPS": 9122.2,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8854.587790186575,
+              "absolute_relative_error": 0.02933636730321909,
+              "signed_relative_error": -0.02933636730321909,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": 41.86220981342558
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8850.316641689054,
+              "absolute_relative_error": 0.029804582042812777,
+              "signed_relative_error": -0.029804582042812777,
+              "backend_CPU_service_absolute_relative_error": 0.015862538139176152,
+              "AP_degradation_error_TPS_diagnostic": 46.13335831094628
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8754.314834282495,
+              "absolute_relative_error": 0.04032855733457996,
+              "signed_relative_error": -0.04032855733457996,
+              "backend_CPU_service_absolute_relative_error": 0.02786940372455793,
+              "AP_degradation_error_TPS_diagnostic": 142.13516571750552
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8943.150773758467,
+              "absolute_relative_error": 0.019627855806881422,
+              "signed_relative_error": -0.019627855806881422,
+              "backend_CPU_service_absolute_relative_error": 0.015862538139176152,
+              "AP_degradation_error_TPS_diagnostic": -46.70077375846631
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8871.915583586746,
+              "absolute_relative_error": 0.027436848174043016,
+              "signed_relative_error": -0.027436848174043016,
+              "backend_CPU_service_absolute_relative_error": 0.024653767033027796,
+              "AP_degradation_error_TPS_diagnostic": 24.534416413254803
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8850.316641689054,
+              "absolute_relative_error": 0.029804582042812777,
+              "signed_relative_error": -0.029804582042812777,
+              "backend_CPU_service_absolute_relative_error": 0.015862538139176152,
+              "AP_degradation_error_TPS_diagnostic": 46.13335831094628
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8754.314834282495,
+              "absolute_relative_error": 0.04032855733457996,
+              "signed_relative_error": -0.04032855733457996,
+              "backend_CPU_service_absolute_relative_error": 0.02786940372455793,
+              "AP_degradation_error_TPS_diagnostic": 142.13516571750552
+            }
+          },
+          "AP_CPU_static_forecast": 0.5969391377116867,
+          "AP_CPU_prior_4s_forecast": 0.4370689884053496,
+          "AP_CPU_future_window_actual": 0.4482700685,
+          "actual_backend_CPU_seconds_per_commit": 0.0015728499706156409,
+          "frozen_TP_only_baseline_TPS": 9196.95,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9422.7,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -225.75,
+          "AP_probe_to_window_start_gap_seconds": 2.000825711,
+          "online_prediction_compute_milliseconds": 0.13118,
+          "static_prediction_compute_milliseconds": 11.023915,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8863.653730614596,
+            "actual_AP_CPU_and_actual_TP_backend_service": 9068.02150674264,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 8970.111775826994,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9081.90749516358,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 9127.411096097354,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        },
+        {
+          "configuration": "SB6144_HIGH",
+          "repeat": 2,
+          "directory": "live/SB6144_HIGH_r02",
+          "actual_TPS": 9083.95,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8854.587790186575,
+              "absolute_relative_error": 0.025249171320122388,
+              "signed_relative_error": -0.025249171320122388,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": -78.23779018657297
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8850.316641689054,
+              "absolute_relative_error": 0.02571935758243349,
+              "signed_relative_error": -0.02571935758243349,
+              "backend_CPU_service_absolute_relative_error": 0.01056930399867917,
+              "AP_degradation_error_TPS_diagnostic": -73.96664168905227
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8754.314834282495,
+              "absolute_relative_error": 0.0362876464222619,
+              "signed_relative_error": -0.0362876464222619,
+              "backend_CPU_service_absolute_relative_error": 0.02251360683718273,
+              "AP_degradation_error_TPS_diagnostic": 22.03516571750697
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8953.164757512524,
+              "absolute_relative_error": 0.014397397881700802,
+              "signed_relative_error": -0.014397397881700802,
+              "backend_CPU_service_absolute_relative_error": 0.01056930399867917,
+              "AP_degradation_error_TPS_diagnostic": -176.8147575125222
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8884.642092868738,
+              "absolute_relative_error": 0.021940665363774814,
+              "signed_relative_error": -0.021940665363774814,
+              "backend_CPU_service_absolute_relative_error": 0.01896966332363581,
+              "AP_degradation_error_TPS_diagnostic": -108.29209286873629
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8850.316641689054,
+              "absolute_relative_error": 0.02571935758243349,
+              "signed_relative_error": -0.02571935758243349,
+              "backend_CPU_service_absolute_relative_error": 0.01056930399867917,
+              "AP_degradation_error_TPS_diagnostic": -73.96664168905227
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8754.314834282495,
+              "absolute_relative_error": 0.0362876464222619,
+              "signed_relative_error": -0.0362876464222619,
+              "backend_CPU_service_absolute_relative_error": 0.02251360683718273,
+              "AP_degradation_error_TPS_diagnostic": 22.03516571750697
+            }
+          },
+          "AP_CPU_static_forecast": 0.5969391377116867,
+          "AP_CPU_prior_4s_forecast": 0.41982385407571093,
+          "AP_CPU_future_window_actual": 0.44233314980000005,
+          "actual_backend_CPU_seconds_per_commit": 0.0015810883597388802,
+          "frozen_TP_only_baseline_TPS": 9196.95,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9504.55,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -307.59999999999854,
+          "AP_probe_to_window_start_gap_seconds": 2.000868889,
+          "online_prediction_compute_milliseconds": 0.129925,
+          "static_prediction_compute_milliseconds": 10.970868,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8868.032348013128,
+            "actual_AP_CPU_and_actual_TP_backend_service": 9027.697124360016,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 9048.273042910412,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9165.49375961664,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 9088.369849889476,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "key": "SB8192_LOW",
+        "shared_buffers_mib": 8192,
+        "WM_profile": "LOW",
+        "AP_work_mem_mib": {
+          "9": 256,
+          "13": 64,
+          "18": 512,
+          "21": 256
+        }
+      },
+      "actual_mean_TPS": 9020.150000000001,
+      "actual_repeat_TPS": [
+        9146.6,
+        8893.7
+      ],
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8901.852956085699,
+          "absolute_relative_error": 0.013114753514553823
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8897.869995646162,
+          "absolute_relative_error": 0.013556316065014284
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8803.484800528286,
+          "absolute_relative_error": 0.024020132644325898
+        },
+        "static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8897.869995646162,
+          "absolute_relative_error": 0.013556316065014284
+        },
+        "static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8803.484800528286,
+          "absolute_relative_error": 0.024020132644325898
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8978.129869754841,
+          "absolute_relative_error": 0.004658473555889886
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8905.182041315957,
+          "absolute_relative_error": 0.012745681466942882
+        }
+      },
+      "episodes": [
+        {
+          "configuration": "SB8192_LOW",
+          "repeat": 1,
+          "directory": "live/SB8192_LOW_r01",
+          "actual_TPS": 9146.6,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8901.852956085699,
+              "absolute_relative_error": 0.02675825376799046,
+              "signed_relative_error": -0.02675825376799046,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": 80.84704391430205
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8897.869995646162,
+              "absolute_relative_error": 0.02719371180043273,
+              "signed_relative_error": -0.02719371180043273,
+              "backend_CPU_service_absolute_relative_error": 0.013859491666073476,
+              "AP_degradation_error_TPS_diagnostic": 84.83000435383838
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8803.484800528286,
+              "absolute_relative_error": 0.03751286811183552,
+              "signed_relative_error": -0.03751286811183552,
+              "backend_CPU_service_absolute_relative_error": 0.02557190635741935,
+              "AP_degradation_error_TPS_diagnostic": 179.2151994717151
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8966.810122159597,
+              "absolute_relative_error": 0.0196564710209699,
+              "signed_relative_error": -0.0196564710209699,
+              "backend_CPU_service_absolute_relative_error": 0.013859491666073476,
+              "AP_degradation_error_TPS_diagnostic": 15.889877840403642
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8890.803531586012,
+              "absolute_relative_error": 0.027966290032797714,
+              "signed_relative_error": -0.027966290032797714,
+              "backend_CPU_service_absolute_relative_error": 0.023198643152333442,
+              "AP_degradation_error_TPS_diagnostic": 91.89646841398826
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8897.869995646162,
+              "absolute_relative_error": 0.02719371180043273,
+              "signed_relative_error": -0.02719371180043273,
+              "backend_CPU_service_absolute_relative_error": 0.013859491666073476,
+              "AP_degradation_error_TPS_diagnostic": 84.83000435383838
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8803.484800528286,
+              "absolute_relative_error": 0.03751286811183552,
+              "signed_relative_error": -0.03751286811183552,
+              "backend_CPU_service_absolute_relative_error": 0.02557190635741935,
+              "AP_degradation_error_TPS_diagnostic": 179.2151994717151
+            }
+          },
+          "AP_CPU_static_forecast": 0.5834505043638392,
+          "AP_CPU_prior_4s_forecast": 0.46522709352280667,
+          "AP_CPU_future_window_actual": 0.42995146975,
+          "actual_backend_CPU_seconds_per_commit": 0.0015697635026293922,
+          "frozen_TP_only_baseline_TPS": 9238.1,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9402.0,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -163.89999999999964,
+          "AP_probe_to_window_start_gap_seconds": 2.000842393,
+          "online_prediction_compute_milliseconds": 0.112825,
+          "static_prediction_compute_milliseconds": 10.894978,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8916.930699140477,
+            "actual_AP_CPU_and_actual_TP_backend_service": 9102.866267532216,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 8960.433303581056,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9075.692139963421,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 9150.410807584727,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        },
+        {
+          "configuration": "SB8192_LOW",
+          "repeat": 2,
+          "directory": "live/SB8192_LOW_r02",
+          "actual_TPS": 8893.7,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8901.852956085699,
+              "absolute_relative_error": 0.0009167113896013657,
+              "signed_relative_error": 0.0009167113896013657,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": -188.8029560856976
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8897.869995646162,
+              "absolute_relative_error": 0.00046887073390844414,
+              "signed_relative_error": 0.00046887073390844414,
+              "backend_CPU_service_absolute_relative_error": 0.015041422974924057,
+              "AP_degradation_error_TPS_diagnostic": -184.81999564616126
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8803.484800528286,
+              "absolute_relative_error": 0.010143719652306094,
+              "signed_relative_error": -0.010143719652306094,
+              "backend_CPU_service_absolute_relative_error": 0.003662880481863029,
+              "AP_degradation_error_TPS_diagnostic": -90.43480052828454
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8989.449617350083,
+              "absolute_relative_error": 0.01076600485175816,
+              "signed_relative_error": 0.01076600485175816,
+              "backend_CPU_service_absolute_relative_error": 0.015041422974924057,
+              "AP_degradation_error_TPS_diagnostic": -276.3996173500818
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8919.5605510459,
+              "absolute_relative_error": 0.0029077381793742862,
+              "signed_relative_error": 0.0029077381793742862,
+              "backend_CPU_service_absolute_relative_error": 0.006725639802680594,
+              "AP_degradation_error_TPS_diagnostic": -206.51055104589977
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8897.869995646162,
+              "absolute_relative_error": 0.00046887073390844414,
+              "signed_relative_error": 0.00046887073390844414,
+              "backend_CPU_service_absolute_relative_error": 0.015041422974924057,
+              "AP_degradation_error_TPS_diagnostic": -184.81999564616126
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8803.484800528286,
+              "absolute_relative_error": 0.010143719652306094,
+              "signed_relative_error": -0.010143719652306094,
+              "backend_CPU_service_absolute_relative_error": 0.003662880481863029,
+              "AP_degradation_error_TPS_diagnostic": -90.43480052828454
+            }
+          },
+          "AP_CPU_static_forecast": 0.5834505043638392,
+          "AP_CPU_prior_4s_forecast": 0.4264032839869056,
+          "AP_CPU_future_window_actual": 0.43841083155000005,
+          "actual_backend_CPU_seconds_per_commit": 0.0016158239178126089,
+          "frozen_TP_only_baseline_TPS": 9238.1,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9418.75,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -180.64999999999964,
+          "AP_probe_to_window_start_gap_seconds": 2.000838111,
+          "online_prediction_compute_milliseconds": 0.113571,
+          "static_prediction_compute_milliseconds": 10.544225,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8910.662143675627,
+            "actual_AP_CPU_and_actual_TP_backend_service": 8856.921416827945,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 8976.327294834591,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9085.428578586296,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 8892.800133504265,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        }
+      ]
+    },
+    {
+      "configuration": {
+        "key": "SB8192_HIGH",
+        "shared_buffers_mib": 8192,
+        "WM_profile": "HIGH",
+        "AP_work_mem_mib": {
+          "9": 512,
+          "13": 128,
+          "18": 1024,
+          "21": 512
+        }
+      },
+      "actual_mean_TPS": 9099.4,
+      "actual_repeat_TPS": [
+        9010.25,
+        9188.55
+      ],
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8894.095127795566,
+          "absolute_relative_error": 0.02256246260241701
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8890.013164143913,
+          "absolute_relative_error": 0.02301105961448957
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8793.55725401199,
+          "absolute_relative_error": 0.03361130909598542
+        },
+        "static_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8890.013164143913,
+          "absolute_relative_error": 0.02301105961448957
+        },
+        "static_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8793.55725401199,
+          "absolute_relative_error": 0.03361130909598542
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8987.388321863311,
+          "absolute_relative_error": 0.012309787253740767
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "complete_predictions": true,
+          "predicted_mean_TPS": 8916.947542253361,
+          "absolute_relative_error": 0.020051042678268738
+        }
+      },
+      "episodes": [
+        {
+          "configuration": "SB8192_HIGH",
+          "repeat": 1,
+          "directory": "live/SB8192_HIGH_r01",
+          "actual_TPS": 9010.25,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8894.095127795566,
+              "absolute_relative_error": 0.012891415022272756,
+              "signed_relative_error": -0.012891415022272756,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": -47.74512779556608
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8890.013164143913,
+              "absolute_relative_error": 0.01334445058195799,
+              "signed_relative_error": -0.01334445058195799,
+              "backend_CPU_service_absolute_relative_error": 0.0016768529593496062,
+              "AP_degradation_error_TPS_diagnostic": -43.66316414391258
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8793.55725401199,
+              "absolute_relative_error": 0.024049581974752043,
+              "signed_relative_error": -0.024049581974752043,
+              "backend_CPU_service_absolute_relative_error": 0.010122407788447196,
+              "AP_degradation_error_TPS_diagnostic": 52.79274598801021
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 9000.62631944857,
+              "absolute_relative_error": 0.001068081412994193,
+              "signed_relative_error": -0.001068081412994193,
+              "backend_CPU_service_absolute_relative_error": 0.0016768529593496062,
+              "AP_degradation_error_TPS_diagnostic": -154.27631944856876
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8933.772378287971,
+              "absolute_relative_error": 0.008487846809137278,
+              "signed_relative_error": -0.008487846809137278,
+              "backend_CPU_service_absolute_relative_error": 0.006372902414690795,
+              "AP_degradation_error_TPS_diagnostic": -87.42237828797079
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8890.013164143913,
+              "absolute_relative_error": 0.01334445058195799,
+              "signed_relative_error": -0.01334445058195799,
+              "backend_CPU_service_absolute_relative_error": 0.0016768529593496062,
+              "AP_degradation_error_TPS_diagnostic": -43.66316414391258
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8793.55725401199,
+              "absolute_relative_error": 0.024049581974752043,
+              "signed_relative_error": -0.024049581974752043,
+              "backend_CPU_service_absolute_relative_error": 0.010122407788447196,
+              "AP_degradation_error_TPS_diagnostic": 52.79274598801021
+            }
+          },
+          "AP_CPU_static_forecast": 0.596923955394107,
+          "AP_CPU_prior_4s_forecast": 0.40723668376635586,
+          "AP_CPU_future_window_actual": 0.45153979525,
+          "actual_backend_CPU_seconds_per_commit": 0.0015941928538164866,
+          "frozen_TP_only_baseline_TPS": 9238.1,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9402.0,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -163.89999999999964,
+          "AP_probe_to_window_start_gap_seconds": 2.000807666,
+          "online_prediction_compute_milliseconds": 0.116953,
+          "static_prediction_compute_milliseconds": 11.303713,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8900.937147943614,
+            "actual_AP_CPU_and_actual_TP_backend_service": 8960.823072949288,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 8950.347161795647,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9059.442933858169,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 9003.264162070262,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        },
+        {
+          "configuration": "SB8192_HIGH",
+          "repeat": 2,
+          "directory": "live/SB8192_HIGH_r02",
+          "actual_TPS": 9188.55,
+          "lanes": {
+            "fresh_TP_colocated_driver_rebase": {
+              "predicted_TPS": 8894.095127795566,
+              "absolute_relative_error": 0.03204584751722883,
+              "signed_relative_error": -0.03204584751722883,
+              "backend_CPU_service_absolute_relative_error": null,
+              "AP_degradation_error_TPS_diagnostic": 113.8048722044332
+            },
+            "static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8890.013164143913,
+              "absolute_relative_error": 0.03249009210986353,
+              "signed_relative_error": -0.03249009210986353,
+              "backend_CPU_service_absolute_relative_error": 0.01826386556823345,
+              "AP_degradation_error_TPS_diagnostic": 117.88683585608669
+            },
+            "static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8793.55725401199,
+              "absolute_relative_error": 0.04298749487002951,
+              "signed_relative_error": -0.04298749487002951,
+              "backend_CPU_service_absolute_relative_error": 0.030298807255716653,
+              "AP_degradation_error_TPS_diagnostic": 214.34274598800948
+            },
+            "prior_4s_CPU_budget_no_inflation": {
+              "predicted_TPS": 8974.150324278053,
+              "absolute_relative_error": 0.023333352457346024,
+              "signed_relative_error": -0.023333352457346024,
+              "backend_CPU_service_absolute_relative_error": 0.01826386556823345,
+              "AP_degradation_error_TPS_diagnostic": 33.749675721946915
+            },
+            "prior_4s_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8900.12270621875,
+              "absolute_relative_error": 0.031389859529659114,
+              "signed_relative_error": -0.031389859529659114,
+              "backend_CPU_service_absolute_relative_error": 0.02738980377825273,
+              "AP_degradation_error_TPS_diagnostic": 107.77729378124968
+            },
+            "common_initial_static_CPU_budget_no_inflation": {
+              "predicted_TPS": 8890.013164143913,
+              "absolute_relative_error": 0.03249009210986353,
+              "signed_relative_error": -0.03249009210986353,
+              "backend_CPU_service_absolute_relative_error": 0.01826386556823345,
+              "AP_degradation_error_TPS_diagnostic": 117.88683585608669
+            },
+            "common_initial_static_CPU_budget_independent_inflation": {
+              "predicted_TPS": 8793.55725401199,
+              "absolute_relative_error": 0.04298749487002951,
+              "signed_relative_error": -0.04298749487002951,
+              "backend_CPU_service_absolute_relative_error": 0.030298807255716653,
+              "AP_degradation_error_TPS_diagnostic": 214.34274598800948
+            }
+          },
+          "AP_CPU_static_forecast": 0.596923955394107,
+          "AP_CPU_prior_4s_forecast": 0.45263959514423446,
+          "AP_CPU_future_window_actual": 0.44523291485,
+          "actual_backend_CPU_seconds_per_commit": 0.0015629736855325377,
+          "frozen_TP_only_baseline_TPS": 9238.1,
+          "adjacent_TP_only_control_TPS_NOT_fit": 9418.75,
+          "frozen_TP_only_baseline_bias_TPS_diagnostic": -180.64999999999964,
+          "AP_probe_to_window_start_gap_seconds": 2.000846484,
+          "online_prediction_compute_milliseconds": 0.129316,
+          "static_prediction_compute_milliseconds": 11.325414,
+          "CPU_oracle_diagnostics_NOT_forecasts": {
+            "actual_AP_CPU_with_independent_backend_model": 8905.608252216094,
+            "actual_AP_CPU_and_actual_TP_backend_service": 9130.45605920192,
+            "adjacent_TP_control_baseline_static_AP_and_independent_service": 8966.221585710777,
+            "adjacent_TP_control_baseline_actual_AP_and_independent_service": 9080.283943942712,
+            "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": 9178.404639615033,
+            "adjacent_control_not_fit_and_historical_cache_loss_not_reapplied": true,
+            "only_offline_stepwise_error_localization": true
+          }
+        }
+      ]
+    }
+  ],
+  "paired_changes": [
+    {
+      "from": "SB2048_LOW",
+      "to": "SB2048_HIGH",
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "predicted_delta_TPS": -23.947850030051995,
+          "actual_mean_delta_TPS": 129.72500000000218,
+          "delta_error_TPS": -153.67285003005418,
+          "repeat_deltas_TPS": [
+            119.15000000000146,
+            140.3000000000011
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -7.762075077967893,
+          "actual_mean_delta_TPS": 129.72500000000218,
+          "delta_error_TPS": -137.48707507797008,
+          "repeat_deltas_TPS": [
+            119.15000000000146,
+            140.3000000000011
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -9.799016207811292,
+          "actual_mean_delta_TPS": 129.72500000000218,
+          "delta_error_TPS": -139.52401620781347,
+          "repeat_deltas_TPS": [
+            119.15000000000146,
+            140.3000000000011
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -24.297258520444302,
+          "actual_mean_delta_TPS": 129.72500000000218,
+          "delta_error_TPS": -154.02225852044648,
+          "repeat_deltas_TPS": [
+            119.15000000000146,
+            140.3000000000011
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -26.188987607554736,
+          "actual_mean_delta_TPS": 129.72500000000218,
+          "delta_error_TPS": -155.91398760755692,
+          "repeat_deltas_TPS": [
+            119.15000000000146,
+            140.3000000000011
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -25.186220910327393,
+          "actual_mean_delta_TPS": 129.72500000000218,
+          "delta_error_TPS": -154.91122091032958,
+          "repeat_deltas_TPS": [
+            119.15000000000146,
+            140.3000000000011
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -27.372669219612362,
+          "actual_mean_delta_TPS": 129.72500000000218,
+          "delta_error_TPS": -157.09766921961454,
+          "repeat_deltas_TPS": [
+            119.15000000000146,
+            140.3000000000011
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        }
+      }
+    },
+    {
+      "from": "SB4096_LOW",
+      "to": "SB4096_HIGH",
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "predicted_delta_TPS": -30.84376878448893,
+          "actual_mean_delta_TPS": -10.549999999999272,
+          "delta_error_TPS": -20.293768784489657,
+          "repeat_deltas_TPS": [
+            -59.20000000000073,
+            38.100000000000364
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -7.877122346826582,
+          "actual_mean_delta_TPS": -10.549999999999272,
+          "delta_error_TPS": 2.6728776531726908,
+          "repeat_deltas_TPS": [
+            -59.20000000000073,
+            38.100000000000364
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -9.952237178225914,
+          "actual_mean_delta_TPS": -10.549999999999272,
+          "delta_error_TPS": 0.5977628217733582,
+          "repeat_deltas_TPS": [
+            -59.20000000000073,
+            38.100000000000364
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -31.147989294191575,
+          "actual_mean_delta_TPS": -10.549999999999272,
+          "delta_error_TPS": -20.597989294192303,
+          "repeat_deltas_TPS": [
+            -59.20000000000073,
+            38.100000000000364
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -32.98730922562754,
+          "actual_mean_delta_TPS": -10.549999999999272,
+          "delta_error_TPS": -22.43730922562827,
+          "repeat_deltas_TPS": [
+            -59.20000000000073,
+            38.100000000000364
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -21.537574986381514,
+          "actual_mean_delta_TPS": -10.549999999999272,
+          "delta_error_TPS": -10.987574986382242,
+          "repeat_deltas_TPS": [
+            -59.20000000000073,
+            38.100000000000364
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -20.834264942708614,
+          "actual_mean_delta_TPS": -10.549999999999272,
+          "delta_error_TPS": -10.284264942709342,
+          "repeat_deltas_TPS": [
+            -59.20000000000073,
+            38.100000000000364
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        }
+      }
+    },
+    {
+      "from": "SB6144_LOW",
+      "to": "SB6144_HIGH",
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "predicted_delta_TPS": -7.720548207535103,
+          "actual_mean_delta_TPS": 4.700000000000728,
+          "delta_error_TPS": -12.42054820753583,
+          "repeat_deltas_TPS": [
+            -7.75,
+            17.150000000001455
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -7.8239850934369315,
+          "actual_mean_delta_TPS": 4.700000000000728,
+          "delta_error_TPS": -12.523985093437659,
+          "repeat_deltas_TPS": [
+            -7.75,
+            17.150000000001455
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -9.884922543129505,
+          "actual_mean_delta_TPS": 4.700000000000728,
+          "delta_error_TPS": -14.584922543130233,
+          "repeat_deltas_TPS": [
+            -7.75,
+            17.150000000001455
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -7.8239850934369315,
+          "actual_mean_delta_TPS": 4.700000000000728,
+          "delta_error_TPS": -12.523985093437659,
+          "repeat_deltas_TPS": [
+            -7.75,
+            17.150000000001455
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -9.884922543129505,
+          "actual_mean_delta_TPS": 4.700000000000728,
+          "delta_error_TPS": -14.584922543130233,
+          "repeat_deltas_TPS": [
+            -7.75,
+            17.150000000001455
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 13.920608608874318,
+          "actual_mean_delta_TPS": 4.700000000000728,
+          "delta_error_TPS": 9.22060860887359,
+          "repeat_deltas_TPS": [
+            -7.75,
+            17.150000000001455
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 17.68442718188453,
+          "actual_mean_delta_TPS": 4.700000000000728,
+          "delta_error_TPS": 12.984427181883802,
+          "repeat_deltas_TPS": [
+            -7.75,
+            17.150000000001455
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        }
+      }
+    },
+    {
+      "from": "SB8192_LOW",
+      "to": "SB8192_HIGH",
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "predicted_delta_TPS": -7.757828290132238,
+          "actual_mean_delta_TPS": 79.24999999999818,
+          "delta_error_TPS": -87.00782829013042,
+          "repeat_deltas_TPS": [
+            -136.35000000000036,
+            294.84999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -7.856831502249406,
+          "actual_mean_delta_TPS": 79.24999999999818,
+          "delta_error_TPS": -87.10683150224759,
+          "repeat_deltas_TPS": [
+            -136.35000000000036,
+            294.84999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -9.927546516295479,
+          "actual_mean_delta_TPS": 79.24999999999818,
+          "delta_error_TPS": -89.17754651629366,
+          "repeat_deltas_TPS": [
+            -136.35000000000036,
+            294.84999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -7.856831502249406,
+          "actual_mean_delta_TPS": 79.24999999999818,
+          "delta_error_TPS": -87.10683150224759,
+          "repeat_deltas_TPS": [
+            -136.35000000000036,
+            294.84999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -9.927546516295479,
+          "actual_mean_delta_TPS": 79.24999999999818,
+          "delta_error_TPS": -89.17754651629366,
+          "repeat_deltas_TPS": [
+            -136.35000000000036,
+            294.84999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 9.25845210847001,
+          "actual_mean_delta_TPS": 79.24999999999818,
+          "delta_error_TPS": -69.99154789152817,
+          "repeat_deltas_TPS": [
+            -136.35000000000036,
+            294.84999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 11.765500937404795,
+          "actual_mean_delta_TPS": 79.24999999999818,
+          "delta_error_TPS": -67.48449906259339,
+          "repeat_deltas_TPS": [
+            -136.35000000000036,
+            294.84999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        }
+      }
+    },
+    {
+      "from": "SB2048_LOW",
+      "to": "SB4096_LOW",
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "predicted_delta_TPS": 65.00809470491731,
+          "actual_mean_delta_TPS": 88.95000000000073,
+          "delta_error_TPS": -23.941905295083416,
+          "repeat_deltas_TPS": [
+            105.55000000000109,
+            72.35000000000036
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 170.170920666631,
+          "actual_mean_delta_TPS": 88.95000000000073,
+          "delta_error_TPS": 81.22092066663026,
+          "repeat_deltas_TPS": [
+            105.55000000000109,
+            72.35000000000036
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 168.4515629862908,
+          "actual_mean_delta_TPS": 88.95000000000073,
+          "delta_error_TPS": 79.50156298629008,
+          "repeat_deltas_TPS": [
+            105.55000000000109,
+            72.35000000000036
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 67.85629846528718,
+          "actual_mean_delta_TPS": 88.95000000000073,
+          "delta_error_TPS": -21.093701534713546,
+          "repeat_deltas_TPS": [
+            105.55000000000109,
+            72.35000000000036
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 67.14155664813734,
+          "actual_mean_delta_TPS": 88.95000000000073,
+          "delta_error_TPS": -21.80844335186339,
+          "repeat_deltas_TPS": [
+            105.55000000000109,
+            72.35000000000036
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 64.38935786111324,
+          "actual_mean_delta_TPS": 88.95000000000073,
+          "delta_error_TPS": -24.560642138887488,
+          "repeat_deltas_TPS": [
+            105.55000000000109,
+            72.35000000000036
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 62.81252190961277,
+          "actual_mean_delta_TPS": 88.95000000000073,
+          "delta_error_TPS": -26.137478090387958,
+          "repeat_deltas_TPS": [
+            105.55000000000109,
+            72.35000000000036
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        }
+      }
+    },
+    {
+      "from": "SB4096_LOW",
+      "to": "SB6144_LOW",
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "predicted_delta_TPS": -52.0383383999706,
+          "actual_mean_delta_TPS": 101.125,
+          "delta_error_TPS": -153.1633383999706,
+          "repeat_deltas_TPS": [
+            138.60000000000036,
+            63.649999999999636
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -61.83725810706346,
+          "actual_mean_delta_TPS": 101.125,
+          "delta_error_TPS": -162.96225810706346,
+          "repeat_deltas_TPS": [
+            138.60000000000036,
+            63.649999999999636
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -61.192670635222385,
+          "actual_mean_delta_TPS": 101.125,
+          "delta_error_TPS": -162.31767063522238,
+          "repeat_deltas_TPS": [
+            138.60000000000036,
+            63.649999999999636
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -52.048740750935394,
+          "actual_mean_delta_TPS": 101.125,
+          "delta_error_TPS": -153.1737407509354,
+          "repeat_deltas_TPS": [
+            138.60000000000036,
+            63.649999999999636
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -51.500190331911654,
+          "actual_mean_delta_TPS": 101.125,
+          "delta_error_TPS": -152.62519033191165,
+          "repeat_deltas_TPS": [
+            138.60000000000036,
+            63.649999999999636
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -58.79915843880735,
+          "actual_mean_delta_TPS": 101.125,
+          "delta_error_TPS": -159.92415843880735,
+          "repeat_deltas_TPS": [
+            138.60000000000036,
+            63.649999999999636
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -60.0726879300837,
+          "actual_mean_delta_TPS": 101.125,
+          "delta_error_TPS": -161.1976879300837,
+          "repeat_deltas_TPS": [
+            138.60000000000036,
+            63.649999999999636
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        }
+      }
+    },
+    {
+      "from": "SB6144_LOW",
+      "to": "SB8192_LOW",
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "predicted_delta_TPS": 39.54461769158843,
+          "actual_mean_delta_TPS": -78.22499999999854,
+          "delta_error_TPS": 117.76961769158697,
+          "repeat_deltas_TPS": [
+            16.649999999999636,
+            -173.09999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 39.72936886367097,
+          "actual_mean_delta_TPS": -78.22499999999854,
+          "delta_error_TPS": 117.95436886366952,
+          "repeat_deltas_TPS": [
+            16.649999999999636,
+            -173.09999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 39.285043702660914,
+          "actual_mean_delta_TPS": -78.22499999999854,
+          "delta_error_TPS": 117.51004370265946,
+          "repeat_deltas_TPS": [
+            16.649999999999636,
+            -173.09999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 39.72936886367097,
+          "actual_mean_delta_TPS": -78.22499999999854,
+          "delta_error_TPS": 117.95436886366952,
+          "repeat_deltas_TPS": [
+            16.649999999999636,
+            -173.09999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 39.285043702660914,
+          "actual_mean_delta_TPS": -78.22499999999854,
+          "delta_error_TPS": 117.51004370265946,
+          "repeat_deltas_TPS": [
+            16.649999999999636,
+            -173.09999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 43.89271272821861,
+          "actual_mean_delta_TPS": -78.22499999999854,
+          "delta_error_TPS": 122.11771272821716,
+          "repeat_deltas_TPS": [
+            16.649999999999636,
+            -173.09999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 44.58763027009809,
+          "actual_mean_delta_TPS": -78.22499999999854,
+          "delta_error_TPS": 122.81263027009663,
+          "repeat_deltas_TPS": [
+            16.649999999999636,
+            -173.09999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        }
+      }
+    },
+    {
+      "from": "SB2048_LOW",
+      "to": "SB8192_LOW",
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "predicted_delta_TPS": 52.51437399653514,
+          "actual_mean_delta_TPS": 111.85000000000218,
+          "delta_error_TPS": -59.33562600346704,
+          "repeat_deltas_TPS": [
+            260.8000000000011,
+            -37.099999999998545
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 148.0630314232385,
+          "actual_mean_delta_TPS": 111.85000000000218,
+          "delta_error_TPS": 36.213031423236316,
+          "repeat_deltas_TPS": [
+            260.8000000000011,
+            -37.099999999998545
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 146.54393605372934,
+          "actual_mean_delta_TPS": 111.85000000000218,
+          "delta_error_TPS": 34.69393605372716,
+          "repeat_deltas_TPS": [
+            260.8000000000011,
+            -37.099999999998545
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 55.53692657802276,
+          "actual_mean_delta_TPS": 111.85000000000218,
+          "delta_error_TPS": -56.313073421979425,
+          "repeat_deltas_TPS": [
+            260.8000000000011,
+            -37.099999999998545
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 54.9264100188866,
+          "actual_mean_delta_TPS": 111.85000000000218,
+          "delta_error_TPS": -56.92358998111558,
+          "repeat_deltas_TPS": [
+            260.8000000000011,
+            -37.099999999998545
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 49.4829121505245,
+          "actual_mean_delta_TPS": 111.85000000000218,
+          "delta_error_TPS": -62.367087849477684,
+          "repeat_deltas_TPS": [
+            260.8000000000011,
+            -37.099999999998545
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 47.327464249627155,
+          "actual_mean_delta_TPS": 111.85000000000218,
+          "delta_error_TPS": -64.52253575037503,
+          "repeat_deltas_TPS": [
+            260.8000000000011,
+            -37.099999999998545
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        }
+      }
+    },
+    {
+      "from": "SB2048_HIGH",
+      "to": "SB4096_HIGH",
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "predicted_delta_TPS": 58.11217595048038,
+          "actual_mean_delta_TPS": -51.32500000000073,
+          "delta_error_TPS": 109.4371759504811,
+          "repeat_deltas_TPS": [
+            -72.80000000000109,
+            -29.850000000000364
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 170.0558733977723,
+          "actual_mean_delta_TPS": -51.32500000000073,
+          "delta_error_TPS": 221.38087339777303,
+          "repeat_deltas_TPS": [
+            -72.80000000000109,
+            -29.850000000000364
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 168.2983420158762,
+          "actual_mean_delta_TPS": -51.32500000000073,
+          "delta_error_TPS": 219.62334201587691,
+          "repeat_deltas_TPS": [
+            -72.80000000000109,
+            -29.850000000000364
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 61.00556769153991,
+          "actual_mean_delta_TPS": -51.32500000000073,
+          "delta_error_TPS": 112.33056769154064,
+          "repeat_deltas_TPS": [
+            -72.80000000000109,
+            -29.850000000000364
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 60.343235030064534,
+          "actual_mean_delta_TPS": -51.32500000000073,
+          "delta_error_TPS": 111.66823503006526,
+          "repeat_deltas_TPS": [
+            -72.80000000000109,
+            -29.850000000000364
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 68.03800378505912,
+          "actual_mean_delta_TPS": -51.32500000000073,
+          "delta_error_TPS": 119.36300378505985,
+          "repeat_deltas_TPS": [
+            -72.80000000000109,
+            -29.850000000000364
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 69.35092618651652,
+          "actual_mean_delta_TPS": -51.32500000000073,
+          "delta_error_TPS": 120.67592618651724,
+          "repeat_deltas_TPS": [
+            -72.80000000000109,
+            -29.850000000000364
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        }
+      }
+    },
+    {
+      "from": "SB4096_HIGH",
+      "to": "SB6144_HIGH",
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "predicted_delta_TPS": -28.91511782301677,
+          "actual_mean_delta_TPS": 116.375,
+          "delta_error_TPS": -145.29011782301677,
+          "repeat_deltas_TPS": [
+            190.0500000000011,
+            42.70000000000073
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -61.78412085367381,
+          "actual_mean_delta_TPS": 116.375,
+          "delta_error_TPS": -178.1591208536738,
+          "repeat_deltas_TPS": [
+            190.0500000000011,
+            42.70000000000073
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -61.125356000125976,
+          "actual_mean_delta_TPS": 116.375,
+          "delta_error_TPS": -177.50035600012598,
+          "repeat_deltas_TPS": [
+            190.0500000000011,
+            42.70000000000073
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -28.72473655018075,
+          "actual_mean_delta_TPS": 116.375,
+          "delta_error_TPS": -145.09973655018075,
+          "repeat_deltas_TPS": [
+            190.0500000000011,
+            42.70000000000073
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -28.397803649413618,
+          "actual_mean_delta_TPS": 116.375,
+          "delta_error_TPS": -144.77280364941362,
+          "repeat_deltas_TPS": [
+            190.0500000000011,
+            42.70000000000073
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": -23.34097484355152,
+          "actual_mean_delta_TPS": 116.375,
+          "delta_error_TPS": -139.71597484355152,
+          "repeat_deltas_TPS": [
+            190.0500000000011,
+            42.70000000000073
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": -21.55399580549056,
+          "actual_mean_delta_TPS": 116.375,
+          "delta_error_TPS": -137.92899580549056,
+          "repeat_deltas_TPS": [
+            190.0500000000011,
+            42.70000000000073
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        }
+      }
+    },
+    {
+      "from": "SB6144_HIGH",
+      "to": "SB8192_HIGH",
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "predicted_delta_TPS": 39.50733760899129,
+          "actual_mean_delta_TPS": -3.6750000000010914,
+          "delta_error_TPS": 43.182337608992384,
+          "repeat_deltas_TPS": [
+            -111.95000000000073,
+            104.59999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 39.696522454858496,
+          "actual_mean_delta_TPS": -3.6750000000010914,
+          "delta_error_TPS": 43.37152245485959,
+          "repeat_deltas_TPS": [
+            -111.95000000000073,
+            104.59999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 39.24241972949494,
+          "actual_mean_delta_TPS": -3.6750000000010914,
+          "delta_error_TPS": 42.91741972949603,
+          "repeat_deltas_TPS": [
+            -111.95000000000073,
+            104.59999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 39.696522454858496,
+          "actual_mean_delta_TPS": -3.6750000000010914,
+          "delta_error_TPS": 43.37152245485959,
+          "repeat_deltas_TPS": [
+            -111.95000000000073,
+            104.59999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 39.24241972949494,
+          "actual_mean_delta_TPS": -3.6750000000010914,
+          "delta_error_TPS": 42.91741972949603,
+          "repeat_deltas_TPS": [
+            -111.95000000000073,
+            104.59999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 39.230556227814304,
+          "actual_mean_delta_TPS": -3.6750000000010914,
+          "delta_error_TPS": 42.905556227815396,
+          "repeat_deltas_TPS": [
+            -111.95000000000073,
+            104.59999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 38.668704025618354,
+          "actual_mean_delta_TPS": -3.6750000000010914,
+          "delta_error_TPS": 42.343704025619445,
+          "repeat_deltas_TPS": [
+            -111.95000000000073,
+            104.59999999999854
+          ],
+          "direction_same_in_both_episodes": false,
+          "predicted_direction_matches_mean": false,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        }
+      }
+    },
+    {
+      "from": "SB2048_HIGH",
+      "to": "SB8192_HIGH",
+      "lanes": {
+        "fresh_TP_colocated_driver_rebase": {
+          "predicted_delta_TPS": 68.7043957364549,
+          "actual_mean_delta_TPS": 61.37499999999818,
+          "delta_error_TPS": 7.329395736456718,
+          "repeat_deltas_TPS": [
+            5.299999999999272,
+            117.44999999999891
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 147.96827499895699,
+          "actual_mean_delta_TPS": 61.37499999999818,
+          "delta_error_TPS": 86.5932749989588,
+          "repeat_deltas_TPS": [
+            5.299999999999272,
+            117.44999999999891
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "common_initial_static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 146.41540574524515,
+          "actual_mean_delta_TPS": 61.37499999999818,
+          "delta_error_TPS": 85.04040574524697,
+          "repeat_deltas_TPS": [
+            5.299999999999272,
+            117.44999999999891
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 71.97735359621765,
+          "actual_mean_delta_TPS": 61.37499999999818,
+          "delta_error_TPS": 10.602353596219473,
+          "repeat_deltas_TPS": [
+            5.299999999999272,
+            117.44999999999891
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "static_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 71.18785111014586,
+          "actual_mean_delta_TPS": 61.37499999999818,
+          "delta_error_TPS": 9.812851110147676,
+          "repeat_deltas_TPS": [
+            5.299999999999272,
+            117.44999999999891
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_no_inflation": {
+          "predicted_delta_TPS": 83.9275851693219,
+          "actual_mean_delta_TPS": 61.37499999999818,
+          "delta_error_TPS": 22.55258516932372,
+          "repeat_deltas_TPS": [
+            5.299999999999272,
+            117.44999999999891
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        },
+        "prior_4s_CPU_budget_independent_inflation": {
+          "predicted_delta_TPS": 86.46563440664431,
+          "actual_mean_delta_TPS": 61.37499999999818,
+          "delta_error_TPS": 25.09063440664613,
+          "repeat_deltas_TPS": [
+            5.299999999999272,
+            117.44999999999891
+          ],
+          "direction_same_in_both_episodes": true,
+          "predicted_direction_matches_mean": true,
+          "repeat_agreement_not_statistical_significance": true,
+          "causal_effect_or_global_optimum_verified": false
+        }
+      }
+    }
+  ],
+  "summary": {
+    "fresh_TP_colocated_driver_rebase": {
+      "numeric_episode_coverage": 16,
+      "episode_MAPE": 0.017541934924954594,
+      "configuration_mean_MAPE": 0.017470406044721165,
+      "backend_CPU_service_MAPE": null,
+      "AP_degradation_MAE_TPS_diagnostic": 98.44552672680652,
+      "paired_contrasts_with_numeric_predictions": 12,
+      "paired_delta_MAE_TPS": 77.73704248510542,
+      "paired_mean_direction_match_count": 4,
+      "ranking": {
+        "configurations_with_complete_predictions": 8,
+        "concordant_pairs": 13,
+        "discordant_pairs": 15,
+        "tied_prediction_pairs": 0,
+        "Kendall_tau_b": -0.07142857142857142,
+        "both_episode_direction_consistent_pairs": 16,
+        "matched_direction_pairs_with_ties_counted_as_not_matched": 8,
+        "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+      },
+      "is_online_conditional_not_config_search": false
+    },
+    "common_initial_static_CPU_budget_no_inflation": {
+      "numeric_episode_coverage": 16,
+      "episode_MAPE": 0.019784516680399218,
+      "configuration_mean_MAPE": 0.01977089389015453,
+      "backend_CPU_service_MAPE": 0.010475025827652619,
+      "AP_degradation_MAE_TPS_diagnostic": 102.14751385688044,
+      "paired_contrasts_with_numeric_predictions": 12,
+      "paired_delta_MAE_TPS": 97.3038450077244,
+      "paired_mean_direction_match_count": 4,
+      "ranking": {
+        "configurations_with_complete_predictions": 8,
+        "concordant_pairs": 11,
+        "discordant_pairs": 17,
+        "tied_prediction_pairs": 0,
+        "Kendall_tau_b": -0.21428571428571427,
+        "both_episode_direction_consistent_pairs": 16,
+        "matched_direction_pairs_with_ties_counted_as_not_matched": 7,
+        "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+      },
+      "is_online_conditional_not_config_search": false
+    },
+    "common_initial_static_CPU_budget_independent_inflation": {
+      "numeric_episode_coverage": 16,
+      "episode_MAPE": 0.030242504898941577,
+      "configuration_mean_MAPE": 0.03028700929494607,
+      "backend_CPU_service_MAPE": 0.0178795278950774,
+      "AP_degradation_MAE_TPS_diagnostic": 129.85877487052687,
+      "paired_contrasts_with_numeric_predictions": 12,
+      "paired_delta_MAE_TPS": 96.91574874647131,
+      "paired_mean_direction_match_count": 4,
+      "ranking": {
+        "configurations_with_complete_predictions": 8,
+        "concordant_pairs": 11,
+        "discordant_pairs": 17,
+        "tied_prediction_pairs": 0,
+        "Kendall_tau_b": -0.21428571428571427,
+        "both_episode_direction_consistent_pairs": 16,
+        "matched_direction_pairs_with_ties_counted_as_not_matched": 7,
+        "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+      },
+      "is_online_conditional_not_config_search": false
+    },
+    "static_CPU_budget_no_inflation": {
+      "numeric_episode_coverage": 16,
+      "episode_MAPE": 0.01803301189683007,
+      "configuration_mean_MAPE": 0.01801742253348504,
+      "backend_CPU_service_MAPE": 0.009468439000159659,
+      "AP_degradation_MAE_TPS_diagnostic": 98.48428979045116,
+      "paired_contrasts_with_numeric_predictions": 12,
+      "paired_delta_MAE_TPS": 77.8491774395352,
+      "paired_mean_direction_match_count": 4,
+      "ranking": {
+        "configurations_with_complete_predictions": 8,
+        "concordant_pairs": 13,
+        "discordant_pairs": 15,
+        "tied_prediction_pairs": 0,
+        "Kendall_tau_b": -0.07142857142857142,
+        "both_episode_direction_consistent_pairs": 16,
+        "matched_direction_pairs_with_ties_counted_as_not_matched": 8,
+        "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+      },
+      "is_online_conditional_not_config_search": false
+    },
+    "static_CPU_budget_independent_inflation": {
+      "numeric_episode_coverage": 16,
+      "episode_MAPE": 0.028508337226572394,
+      "configuration_mean_MAPE": 0.028550894843360028,
+      "backend_CPU_service_MAPE": 0.01600708589962513,
+      "AP_degradation_MAE_TPS_diagnostic": 113.88387185244756,
+      "paired_contrasts_with_numeric_predictions": 12,
+      "paired_delta_MAE_TPS": 78.34602856494014,
+      "paired_mean_direction_match_count": 4,
+      "ranking": {
+        "configurations_with_complete_predictions": 8,
+        "concordant_pairs": 13,
+        "discordant_pairs": 15,
+        "tied_prediction_pairs": 0,
+        "Kendall_tau_b": -0.07142857142857142,
+        "both_episode_direction_consistent_pairs": 16,
+        "matched_direction_pairs_with_ties_counted_as_not_matched": 8,
+        "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+      },
+      "is_online_conditional_not_config_search": false
+    },
+    "prior_4s_CPU_budget_no_inflation": {
+      "numeric_episode_coverage": 16,
+      "episode_MAPE": 0.010835192555226782,
+      "configuration_mean_MAPE": 0.008919914134605564,
+      "backend_CPU_service_MAPE": 0.009468439000159659,
+      "AP_degradation_MAE_TPS_diagnostic": 118.64899338830594,
+      "paired_contrasts_with_numeric_predictions": 12,
+      "paired_delta_MAE_TPS": 78.21813946485447,
+      "paired_mean_direction_match_count": 6,
+      "ranking": {
+        "configurations_with_complete_predictions": 8,
+        "concordant_pairs": 15,
+        "discordant_pairs": 13,
+        "tied_prediction_pairs": 0,
+        "Kendall_tau_b": 0.07142857142857142,
+        "both_episode_direction_consistent_pairs": 16,
+        "matched_direction_pairs_with_ties_counted_as_not_matched": 8,
+        "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+      },
+      "is_online_conditional_not_config_search": true
+    },
+    "prior_4s_CPU_budget_independent_inflation": {
+      "numeric_episode_coverage": 16,
+      "episode_MAPE": 0.01661891912080661,
+      "configuration_mean_MAPE": 0.016303715981892244,
+      "backend_CPU_service_MAPE": 0.013439841299491724,
+      "AP_degradation_MAE_TPS_diagnostic": 102.57835486817771,
+      "paired_contrasts_with_numeric_predictions": 12,
+      "paired_delta_MAE_TPS": 79.04670440600148,
+      "paired_mean_direction_match_count": 6,
+      "ranking": {
+        "configurations_with_complete_predictions": 8,
+        "concordant_pairs": 15,
+        "discordant_pairs": 13,
+        "tied_prediction_pairs": 0,
+        "Kendall_tau_b": 0.07142857142857142,
+        "both_episode_direction_consistent_pairs": 16,
+        "matched_direction_pairs_with_ties_counted_as_not_matched": 8,
+        "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+      },
+      "is_online_conditional_not_config_search": true
+    }
+  },
+  "stepwise_oracle_error_localization_NOT_forecasts": {
+    "actual_AP_CPU_with_independent_backend_model": {
+      "numeric_coverage": 16,
+      "episode_MAPE": 0.016422550323067227,
+      "NOT_a_prediction_or_validation_accuracy": true
+    },
+    "actual_AP_CPU_and_actual_TP_backend_service": {
+      "numeric_coverage": 16,
+      "episode_MAPE": 0.004834359031126424,
+      "NOT_a_prediction_or_validation_accuracy": true
+    },
+    "adjacent_TP_control_baseline_static_AP_and_independent_service": {
+      "numeric_coverage": 16,
+      "episode_MAPE": 0.011975270217935097,
+      "NOT_a_prediction_or_validation_accuracy": true
+    },
+    "adjacent_TP_control_baseline_actual_AP_and_independent_service": {
+      "numeric_coverage": 16,
+      "episode_MAPE": 0.011759657262629189,
+      "NOT_a_prediction_or_validation_accuracy": true
+    },
+    "adjacent_TP_control_baseline_actual_AP_and_all_actual_TP_CPU": {
+      "numeric_coverage": 16,
+      "episode_MAPE": 0.0015719179062346142,
+      "NOT_a_prediction_or_validation_accuracy": true
+    }
+  },
+  "AP_CPU_forecast_MAE_cores": {
+    "static_full_query_average": 0.15093461574262615,
+    "prior_4s_phase_persistence": 0.014061872980235472
+  },
+  "TP_only_baseline_drift_diagnostic": {
+    "baseline_level_MAE_TPS": 182.19999999999936,
+    "baseline_level_MAPE": 0.01928893283014664,
+    "controls_not_used_to_rebase_any_forecast": true
+  },
+  "actual_AP_age_at_scored_start_range_seconds": [
+    24.33033496,
+    26.294458443
+  ],
+  "max_static_prediction_compute_milliseconds": 14.407021,
+  "max_online_prediction_compute_milliseconds": 0.159675,
+  "AP_episodes": 16,
+  "TP_only_target_controls_diagnostic_never_fit": 8,
+  "highest_observed_mean_in_tested_set": "SB6144_HIGH",
+  "complete": true,
+  "restoration_verified": true,
+  "same_new_targets_for_all_lane_comparisons": true,
+  "all_four_preregistered_CPU_scenarios_reported": true,
+  "probe_IO_submissions_not_used_as_physical_completion_or_TP_owned_IO": true,
+  "online_conditional_accuracy_not_cold_start_config_recommendation": true,
+  "cross_configuration_ranking_qualified": false,
+  "full_AP_lifecycles_or_PPT_five_stages_or_S5_verified": false,
+  "automatic_recommendation_qualified": false,
+  "base_validation_inputs_sha256": {
+    "frozen/FROZEN_MATRIX.json": "2025895833e59d8244f0941c08ad0238653debc824723ffbd68cdb19ce16c28f",
+    "live/MATRIX_RESULT.json": "1109ac3064b68214a5927dcd434deaa39573c1da1c8d0cae39020c78d088b4ae",
+    "live/POLICY.json": "5145cec960b63a96fe3596a4133d66bac32f829770bf542be88e1f36ddf96587",
+    "live/SB_RESTORE.json": "efbce4e8b3099c7048fb12e367a7d67cf23802d5a8066a10da2841ed50a92326",
+    "live/DRIVER_VALIDATION.json": "c369eb3bb99b506298f82d868580d0f3e647def6ae403cc221908ccc4b73d030",
+    "frozen/FRESH_TP_POINTS.json": "462739f3fa3b66aed83f474c0932ca2aad10d0ab1e46c9781d08d4b528fa1585",
+    "live/source_snapshot/tools/validate_configuration_TPS_matrix.py": "e8c4514bc1ae5bcb286762633b7b5b5782c6ffa0e4f05fa82fe38d65742e031f",
+    "live/source_snapshot/tools/prepare_configuration_TPS_matrix.py": "001e774d43bf88964bf204d6960cfe6c51dc332751e6ebbbd7911f27388de694",
+    "live/source_snapshot/tools/validate_capacity_TPS_live.py": "2d38f524a93f88bcab12db73592f39d89bbb74d1b5fd2a0c86bfa852d3106c4a",
+    "live/source_snapshot/tools/measure_current_mixed_five_stages.py": "077355195ae66f11b6042ea0a4a8840b3693d35d40b23ea22255fb6b5872b13d",
+    "live/source_snapshot/tools/collect_current_tp_matrix.py": "487d5260209306e5ba8e03573a79d981c41ef067e0d5bf1234f2b35b415cf38c",
+    "live/source_snapshot/tools/current_ap_worker.py": "c9f0b24afc67ce2989277c4f750d2507125cfce70905dbd47788ebc1a9e717cd",
+    "live/source_snapshot/src/jmt/innovation_4_performance/configuration_matrix.py": "cb53561aa29c5c6b7ec2663b07cb92643eb7030e74b5e2aa014b2abc2a2f3d18",
+    "live/source_snapshot/src/jmt/innovation_4_performance/capacity_tps_validation.py": "27dc8b5b20f196216c207fb6cf70dd97fc797069046b5b69dd787b5fb9d4f079",
+    "live/source_snapshot/src/jmt/innovation_4_performance/preview_cost.py": "7f8ca55997ca26b162d7f7354093bc0b59e2c380b045d0883e49c2526a50832a",
+    "live/source_snapshot/src/jmt/innovation_4_performance/config_evaluation.py": "594b3b27c282c85b05e43a1545d4a5f1de764992cab9cb0d7b4d8ed976da2606",
+    "live/source_snapshot/src/jmt/innovation_4_performance/tp_window_observer.py": "3f8310295a2f3d471e83b79a8f1b83ff7469bd605734ec9f282ae672d99ba33c",
+    "live/source_snapshot/src/jmt/innovation_3_search/cardinality_cache_capacity.py": "9685936184164e0169102027b087c5c8677c365b6ecf101b92c64af39e182b40",
+    "live/source_snapshot/src/jmt/common/process_cpu.py": "8e2cde46fac26e7ab6f0c4f4c4bede5850f1b991f47b39f4a975f40a477a7365",
+    "live/source_snapshot/src/jmt/innovation_4_performance/tp_baseline_rebase.py": "af24a0788eec203f22f25ce324cd1bac1f1f62bb609078f5f993911dd77c8bb1",
+    "live/source_snapshot/src/jmt/innovation_4_performance/colocated_tp.py": "d860489a9785c0f090d2bfa972d1c6e08837ac2dc926ca773f91c5d88eba17d2",
+    "live/source_snapshot/src/jmt/innovation_4_performance/cpu_interference.py": "d7cfdc393269a9687c4f5f6973bf5299ce827950f8ce5436242718d405ab22dc",
+    "live/source_snapshot/src/jmt/innovation_4_performance/phase_bridge.py": "dd03fcb542cab0365e1076be2ba58b3d3d9ecf7c196af850225d1e6c116db08c",
+    "live/source_snapshot/tools/CPU_interference_run.py": "8e555b4cfc1a57c6144115679a0ca0bd8cd431ed2d1ed995ffa6bda09271be06",
+    "live/base.sysbench.log": "ef3458f67b1f8b420944d5671341c36ca867e8ce216891d0cdb6a9080a21555d",
+    "frozen/INITIAL_AP_CACHE.json": "457c3dc8ed3dcf01f49c054ef7a9cab09905a2e85996a378f54d514f1bd701fe",
+    "live/SB2048_LOW_r01/PRE_AP_PREDICTION.json": "1b76ca45609f3b7806062e84bc26246a370b1c1e8140d3bddcff04b088ee01d7",
+    "live/SB2048_LOW_r01/SB2048_LOW_r01.WINDOW.json": "38ad290a30e3141282e0f17a56bc01b9f5e96025eac4e1c36c424e3db9dfea6e",
+    "live/SB2048_LOW_r01/SB2048_LOW_r01.INTERMEDIATES.json": "fddab89979450bc93781775b512970eef0f0a6eaa7101b61587b6bf4d004ce2a",
+    "live/SB2048_LOW_r01/BLIND_PLAN_RECHECKS.json": "2efd6a1914813245f25ae3813ce7fb297652595d88a21c674526e2db37bb21dc",
+    "live/SB2048_LOW_r01/q9.START.json": "9e2772da2a014a21b6205230df8afcb79d29a5f426718a3c6ef3049c7d1da077",
+    "live/SB2048_LOW_r01/q13.START.json": "50544f569dea7389802964e8e8a2f5b7bb1077f057c56965b31a1d61e596b29d",
+    "live/SB2048_LOW_r01/q18.START.json": "146ab7e1ae0d3ab487840a21ebbd7841c831cd1365a783c6c6b651e57002924c",
+    "live/SB2048_LOW_r01/q21.START.json": "521ede4265490acea2dd27c10e710d62c196779629197924cb21dc2999180082",
+    "live/SB2048_LOW_r02/PRE_AP_PREDICTION.json": "ea9e9ff53f9f4d996470d6e11db2d0b9b6f654bbb64c06af233b2206ca3d0521",
+    "live/SB2048_LOW_r02/SB2048_LOW_r02.WINDOW.json": "3f49553f922a48760130a742f5eae31e2c1a6dac75a8d89ee9c192e37ac2033f",
+    "live/SB2048_LOW_r02/SB2048_LOW_r02.INTERMEDIATES.json": "3b7977d85c34798d5c7ff7790d5c2f4f22b98ebbaf6ccfe0f54aa43e04a78a41",
+    "live/SB2048_LOW_r02/BLIND_PLAN_RECHECKS.json": "2efd6a1914813245f25ae3813ce7fb297652595d88a21c674526e2db37bb21dc",
+    "live/SB2048_LOW_r02/q9.START.json": "8e9b9a88f556ff06f4f55a610715670d7d58be6e8c132198a3c67a1d35fb9787",
+    "live/SB2048_LOW_r02/q13.START.json": "30a5bb2421cd577744acb5225a71d21a14672c39bcee235f5f9c0d293a7c3e65",
+    "live/SB2048_LOW_r02/q18.START.json": "9f5baab39d7506280b084d1160264a028b7dd907bb28e6bf118f57fd05ab34dc",
+    "live/SB2048_LOW_r02/q21.START.json": "343ff96057a400cc985dcffddf321648b6e058f2b7e7448dcd872c8243fa2348",
+    "live/SB2048_HIGH_r01/PRE_AP_PREDICTION.json": "74bab58f31678694a14d0af018fe7822eae37d12daa43b5b4da47cbb21a0f693",
+    "live/SB2048_HIGH_r01/SB2048_HIGH_r01.WINDOW.json": "8c0fce13a6b5b570d263db92919695d5aca0e7e5760e799900b413a5e2b5de1a",
+    "live/SB2048_HIGH_r01/SB2048_HIGH_r01.INTERMEDIATES.json": "5be4c20b5a453a3241cd72051260821b533b94569f27542a9fcdbe7611e5d3f5",
+    "live/SB2048_HIGH_r01/BLIND_PLAN_RECHECKS.json": "fcae6caaa559231989f750cd3a1b30c9eabc8f7dfc4876379df7ad7e08dc11b6",
+    "live/SB2048_HIGH_r01/q9.START.json": "f8f5fe550f51b54a78d633c5222fd9e0f889ee7c0075825146982f6a336fa028",
+    "live/SB2048_HIGH_r01/q13.START.json": "a95cf7e2bf83c6324c1f7cf622f6134a320614be99ffdb1ee8027ee9f9e7dc8b",
+    "live/SB2048_HIGH_r01/q18.START.json": "a81049585baebf903531ea1a9792360dc131c7a3cb1941843142d48bb1f474cb",
+    "live/SB2048_HIGH_r01/q21.START.json": "34c292cc43e3cb9d226919c8a20c6e0f942c3cfcf0e18df1b73164767840f920",
+    "live/SB2048_HIGH_r02/PRE_AP_PREDICTION.json": "d39018f361af9c6a8f49cbb546cf549ca1c96d8324f7614e61efa45810bf86df",
+    "live/SB2048_HIGH_r02/SB2048_HIGH_r02.WINDOW.json": "5fac9631126c6f6c165a31b9ea97b1497d2375448ba51fa96b2c0e6e8c2c1a5f",
+    "live/SB2048_HIGH_r02/SB2048_HIGH_r02.INTERMEDIATES.json": "bca9e4be95cb77ec168a59c23f0fc2206a570b92fd927efd8cfc21b862b74168",
+    "live/SB2048_HIGH_r02/BLIND_PLAN_RECHECKS.json": "fcae6caaa559231989f750cd3a1b30c9eabc8f7dfc4876379df7ad7e08dc11b6",
+    "live/SB2048_HIGH_r02/q9.START.json": "92fabd946f65392ce96e2a9ef4d236a2b9be6cd9cb8e01b5c067ddfd3d9dae53",
+    "live/SB2048_HIGH_r02/q13.START.json": "4e5ba867eb708a3fc39886498cdeca4a44246cb922a6158739cce7682e24407e",
+    "live/SB2048_HIGH_r02/q18.START.json": "8c2a663157eeb178bce9ebc65e629ad00bf7527f56e6bb802a5bd60e777dcb3c",
+    "live/SB2048_HIGH_r02/q21.START.json": "a1c68c0a93c4f61156fbb578df8600a315959c4316961f3598056782e725e537",
+    "live/SB4096_LOW_r01/PRE_AP_PREDICTION.json": "24346201abbb97e035e8f7d7142135c8157f9f29b3b597a78db184f5aa36c5f4",
+    "live/SB4096_LOW_r01/SB4096_LOW_r01.WINDOW.json": "af7c193b618632be76c8e158cc6b0ff5275bf8c4fcf19f88a4095542a7005e02",
+    "live/SB4096_LOW_r01/SB4096_LOW_r01.INTERMEDIATES.json": "9e6a17dbba886a0a4bc4a73d622edc647f57f15d82f93e2b8e804e13e6c2b49a",
+    "live/SB4096_LOW_r01/BLIND_PLAN_RECHECKS.json": "2efd6a1914813245f25ae3813ce7fb297652595d88a21c674526e2db37bb21dc",
+    "live/SB4096_LOW_r01/q9.START.json": "e8e7f4ba83940d433e3a2fd736c1c8bd1a5b497affd6bd61cf8c7534b4debd33",
+    "live/SB4096_LOW_r01/q13.START.json": "806fd3c1008e09cc00a1e12a34c8860d623b49859d03ad613503b30747196f19",
+    "live/SB4096_LOW_r01/q18.START.json": "054b8b20c016d2b392c9a6b9a12ae8e00ab14684b9d4d04cd3fe89c67f5e82fa",
+    "live/SB4096_LOW_r01/q21.START.json": "ad84ecbae26c0fcf76bb2b33cac1187e2976a92d637be4e5d7b6ba3f67387002",
+    "live/SB4096_LOW_r02/PRE_AP_PREDICTION.json": "390879a8e3fbc561fec15c038a1e3b1b9fe719f5adf6c42fb0a52f2603c9a71b",
+    "live/SB4096_LOW_r02/SB4096_LOW_r02.WINDOW.json": "1974d7992ea9d38d7d74e773052297652e9e573829622afccb9c73e07fda6ce5",
+    "live/SB4096_LOW_r02/SB4096_LOW_r02.INTERMEDIATES.json": "0e20f7b79e9e3ab2351423ba54b9bf36d99e78121b02e9beb63bfe18ce9c8fde",
+    "live/SB4096_LOW_r02/BLIND_PLAN_RECHECKS.json": "2efd6a1914813245f25ae3813ce7fb297652595d88a21c674526e2db37bb21dc",
+    "live/SB4096_LOW_r02/q9.START.json": "1d6708390a7300ab8b1e69d3e9407c7cd3dbf409a7488d6ed4ac0f5a9ccd8047",
+    "live/SB4096_LOW_r02/q13.START.json": "844e3de3978af5d9ad01f63b8c133bf8de9c461641ff92e643a74fefe5b1c0a3",
+    "live/SB4096_LOW_r02/q18.START.json": "643b89cce3e992ba22898f224c1e29ffa709a23538f47a034bce624336df907e",
+    "live/SB4096_LOW_r02/q21.START.json": "39f09c25c2dcad36b43e9a5e62d48d01c9472b6dcc41885785017d88030f77cc",
+    "live/SB4096_HIGH_r01/PRE_AP_PREDICTION.json": "ac25c5c274ab68f015d3eea13dd1464c11c19eca7b08cbf8f1e65765d3f49adf",
+    "live/SB4096_HIGH_r01/SB4096_HIGH_r01.WINDOW.json": "e9e4b828335d5abe6f114e2806bcd94ec75e4be81564ed6d3a241f1286b3494f",
+    "live/SB4096_HIGH_r01/SB4096_HIGH_r01.INTERMEDIATES.json": "7a6b12ca7cdac3e053d6a225d9c3d809b28c15ede7b1f200095c5df00b012f51",
+    "live/SB4096_HIGH_r01/BLIND_PLAN_RECHECKS.json": "fcae6caaa559231989f750cd3a1b30c9eabc8f7dfc4876379df7ad7e08dc11b6",
+    "live/SB4096_HIGH_r01/q9.START.json": "3239b9a00ee1312642ca620ce52d98f148ba487ee202eccce233b9143e2dc10c",
+    "live/SB4096_HIGH_r01/q13.START.json": "93807ac488769cee24ef0525d5e939aabc4fe1172b38e057c5e60dc6c86c3047",
+    "live/SB4096_HIGH_r01/q18.START.json": "ecefba58c55539fd29c79a8703b1d7fc5188f1e624c9b4644bffc4b26f629da9",
+    "live/SB4096_HIGH_r01/q21.START.json": "719207391b4a6720a6d683d2978e15c9d7dffbb884b437e25749810bdb056bcd",
+    "live/SB4096_HIGH_r02/PRE_AP_PREDICTION.json": "8c310781db16de7ea4a0a99b202e4e359ecbe828d7384678a4c52a5fe69d0c59",
+    "live/SB4096_HIGH_r02/SB4096_HIGH_r02.WINDOW.json": "91966290d51f79a2643b7215c2295037876facada30a6c0e85e97c64337e401a",
+    "live/SB4096_HIGH_r02/SB4096_HIGH_r02.INTERMEDIATES.json": "58e04d611c78e23d30b2a3fed677830d89889d3eff98bb8aed27c3ded93a0815",
+    "live/SB4096_HIGH_r02/BLIND_PLAN_RECHECKS.json": "fcae6caaa559231989f750cd3a1b30c9eabc8f7dfc4876379df7ad7e08dc11b6",
+    "live/SB4096_HIGH_r02/q9.START.json": "827c638d2140f3293a9b62ea1e50fc0ad1acf2b4d4e28fd9fb7ca2c44c4379c7",
+    "live/SB4096_HIGH_r02/q13.START.json": "d1db68cc1283747c1a22a3ddaa2c8a1a106038617f1a39b5ec55b5e720dc930f",
+    "live/SB4096_HIGH_r02/q18.START.json": "d5ae8653be7e29af7549facf40b41fc4b8c03ffdcd038ca569f423c040c70e60",
+    "live/SB4096_HIGH_r02/q21.START.json": "7cd943404e98ed1b848f970bafff65b107e6ab2a60922dd5aee7303004f06a47",
+    "live/SB6144_LOW_r01/PRE_AP_PREDICTION.json": "bac2c59189dc1da34c33cdd7a6bd9f460cbb038e66cf091e38c587947df18f3f",
+    "live/SB6144_LOW_r01/SB6144_LOW_r01.WINDOW.json": "e88c6aaa297533818e7073a8ef7a6c089d2b44f10878fb951f8ea7f461ba6327",
+    "live/SB6144_LOW_r01/SB6144_LOW_r01.INTERMEDIATES.json": "e819f2df53b0b3cd4ff5b2a945e36a18209ff88e2a5c5ade74f6bbccd1d647d6",
+    "live/SB6144_LOW_r01/BLIND_PLAN_RECHECKS.json": "2efd6a1914813245f25ae3813ce7fb297652595d88a21c674526e2db37bb21dc",
+    "live/SB6144_LOW_r01/q9.START.json": "22baebbe9a5758fb4385042a067b22dfc7adf68ba4766c98170c04c47f0c21d2",
+    "live/SB6144_LOW_r01/q13.START.json": "c4f1a950a476bd07f0572f1541f47a465f0f33540a42899b8ba0631f42bfde46",
+    "live/SB6144_LOW_r01/q18.START.json": "0cd2e4a3056bd1243cd116ed63fee4ec131e3c144a9b82d039837b3bc4ced407",
+    "live/SB6144_LOW_r01/q21.START.json": "e6431e588f5de9f145bf67720ce82c4cee8fb3ceeca70bfbaed42f36ca6edd4b",
+    "live/SB6144_LOW_r02/PRE_AP_PREDICTION.json": "9ea22449a8ac821f3333e2a86e6d966ecba6423ad03ae49c86b30655d81ef795",
+    "live/SB6144_LOW_r02/SB6144_LOW_r02.WINDOW.json": "020af7a656a5d2eeeab300c2efbb2875c9057d2bd12e6540c9d3b5a2a2e2ba9a",
+    "live/SB6144_LOW_r02/SB6144_LOW_r02.INTERMEDIATES.json": "ecdd62cc3256128cdfa028981723ded40416699cbb9b10d7a21af9fc08305aed",
+    "live/SB6144_LOW_r02/BLIND_PLAN_RECHECKS.json": "2efd6a1914813245f25ae3813ce7fb297652595d88a21c674526e2db37bb21dc",
+    "live/SB6144_LOW_r02/q9.START.json": "690094cb26e440f1fc980a94fd2394886d3fbb37e9950ca279e6cbbcec870dc4",
+    "live/SB6144_LOW_r02/q13.START.json": "dcab6287e4a7a91cbe5a905c422c9bada8a0c38e20cab5b1f5ca726f5cea3cfa",
+    "live/SB6144_LOW_r02/q18.START.json": "2b13d5aa0c4af6612fdd5959dfa5583941036845f14267b1d29d11ba259c943b",
+    "live/SB6144_LOW_r02/q21.START.json": "8d481007de32469d44787cfeb41b8d0330ec0d5e023b754a42f02648959abf28",
+    "live/SB6144_HIGH_r01/PRE_AP_PREDICTION.json": "64e29ba8ad92e8dc1def53f9cf240cfd84331f21970221aaa66a4b222e0b8881",
+    "live/SB6144_HIGH_r01/SB6144_HIGH_r01.WINDOW.json": "376aa6c23bef6a3e702a892897f29f147ff1cd47bfbbbf497210fa916ad72c2a",
+    "live/SB6144_HIGH_r01/SB6144_HIGH_r01.INTERMEDIATES.json": "c827107ec2164c4faf3dcbaf4793b8617b5ab6c3bdc39691c28d62c89cb3d595",
+    "live/SB6144_HIGH_r01/BLIND_PLAN_RECHECKS.json": "fcae6caaa559231989f750cd3a1b30c9eabc8f7dfc4876379df7ad7e08dc11b6",
+    "live/SB6144_HIGH_r01/q9.START.json": "a1e9377cff57c5fc3e4a256647cd12835b13578bdc23bf4d82e070cd2db20862",
+    "live/SB6144_HIGH_r01/q13.START.json": "26c7a461421a9e53d6b8421c12ab8b51f5e32cb15959b0ff86ce98368b0d1857",
+    "live/SB6144_HIGH_r01/q18.START.json": "4a8143ef42a43b0274db6ab43ef2ecd99cef96830c9048a6b52b12fd3303cdce",
+    "live/SB6144_HIGH_r01/q21.START.json": "fa9467100c84793f2b361a08194d9bd1161100900717e0523b07297d75792d2b",
+    "live/SB6144_HIGH_r02/PRE_AP_PREDICTION.json": "bd983213363023017684ca241b8263c5eabb7943ec39e69ea21eef4b159ea11a",
+    "live/SB6144_HIGH_r02/SB6144_HIGH_r02.WINDOW.json": "054111e3b2a2d9c3bf55a50c52c42d392c65dbe6ddd0b495b19fd1b37e7d1283",
+    "live/SB6144_HIGH_r02/SB6144_HIGH_r02.INTERMEDIATES.json": "17cebac1e11d708a06cbdbc07c4a7326c0dc14b61ec9107aba3df1aeaccd0216",
+    "live/SB6144_HIGH_r02/BLIND_PLAN_RECHECKS.json": "fcae6caaa559231989f750cd3a1b30c9eabc8f7dfc4876379df7ad7e08dc11b6",
+    "live/SB6144_HIGH_r02/q9.START.json": "cf653e56b2175c8674e37fbf229420ec60edac2754cdbab583b1d9bd724d04cb",
+    "live/SB6144_HIGH_r02/q13.START.json": "007574f6ead520d9216ffaa0ebae59d0e95d999b763dbbb07fc6baef8608fed1",
+    "live/SB6144_HIGH_r02/q18.START.json": "f37409c259d77afc34ca736bfcb32483c5b7e59d0d4509bef37b58ceb224242c",
+    "live/SB6144_HIGH_r02/q21.START.json": "be17a000648a9bc8a06bc6ddea638e956025bce719043f78312778bfb0cc1043",
+    "live/SB8192_LOW_r01/PRE_AP_PREDICTION.json": "731f49b11a31bd98612d346e492ca2a0f2296fe87ad2d32add7190051a9724fd",
+    "live/SB8192_LOW_r01/SB8192_LOW_r01.WINDOW.json": "a0189ebc821182acc8ef8f5ca0eeb28f6ae52549df2d26db5ee2b10606a25233",
+    "live/SB8192_LOW_r01/SB8192_LOW_r01.INTERMEDIATES.json": "c5fad51f70762496302faf1bc1a15ab784c38243f61bfa0ef78dfae6e19cf263",
+    "live/SB8192_LOW_r01/BLIND_PLAN_RECHECKS.json": "2efd6a1914813245f25ae3813ce7fb297652595d88a21c674526e2db37bb21dc",
+    "live/SB8192_LOW_r01/q9.START.json": "b17ad9cdbba988c36a2fc7856b3407e5b6e6fb2260bd37149063fc620440147d",
+    "live/SB8192_LOW_r01/q13.START.json": "a370e969b6038ff5d1593462b3e528f9f40b385ef3ba39b5890d9da56d8a68df",
+    "live/SB8192_LOW_r01/q18.START.json": "0c0f35805ebd881841cad0c2a48912e2b9d2e317f7c2049b8819ccce71200d9b",
+    "live/SB8192_LOW_r01/q21.START.json": "794f0ff44f887958b60607dfa8d6ce2886445343c12ed8bff0aff5d7f754bcfd",
+    "live/SB8192_LOW_r02/PRE_AP_PREDICTION.json": "3060c56882c775ffd93d254961dac7f48b5fe72093ebffa19b9faaa79daaacec",
+    "live/SB8192_LOW_r02/SB8192_LOW_r02.WINDOW.json": "76a6b912d302c8ee37cc56412f51dc87c140658c90506483546b1ad7ee52e6d6",
+    "live/SB8192_LOW_r02/SB8192_LOW_r02.INTERMEDIATES.json": "70bcb8d424dd34bdb7557c0ef018efb35ea8c5ab23fca6614a8c4e72abe294e2",
+    "live/SB8192_LOW_r02/BLIND_PLAN_RECHECKS.json": "2efd6a1914813245f25ae3813ce7fb297652595d88a21c674526e2db37bb21dc",
+    "live/SB8192_LOW_r02/q9.START.json": "b0f0d31335c28e31fc9785240bf971878e1a6d901860fcfa9d2b9567e8869118",
+    "live/SB8192_LOW_r02/q13.START.json": "edc7d95321b07e3ca857c023cb4aeee487cdcf7907e7f62cffce8dc881c8c76b",
+    "live/SB8192_LOW_r02/q18.START.json": "161aa5fff11257e24e97f2f3e06518538bf318c21aaa1f24301642c6770d6328",
+    "live/SB8192_LOW_r02/q21.START.json": "640d7ab1d60b9c0c7c3e6d6b7c8543b05aac81b8900ede3c81f5d545a42862a0",
+    "live/SB8192_HIGH_r01/PRE_AP_PREDICTION.json": "f936e5d4a1111f0bd7922349608f0607349f01c6d47f4e749a760f29b065d983",
+    "live/SB8192_HIGH_r01/SB8192_HIGH_r01.WINDOW.json": "a86ca034681d72b35e9220cc8b1e014373baf36ad604ef8051cde8040f191edb",
+    "live/SB8192_HIGH_r01/SB8192_HIGH_r01.INTERMEDIATES.json": "27e3c25c2422b88baeda0b70d397728fbe39fb6bca160af6648f0d614e5daab7",
+    "live/SB8192_HIGH_r01/BLIND_PLAN_RECHECKS.json": "fcae6caaa559231989f750cd3a1b30c9eabc8f7dfc4876379df7ad7e08dc11b6",
+    "live/SB8192_HIGH_r01/q9.START.json": "647ce0b4c5647f73bc0f0c9801590e1c7ac727693a632db76531ef0072f0b9b1",
+    "live/SB8192_HIGH_r01/q13.START.json": "271e6b96b4f52aaaeca89296322873c349bfa314d9eac5a7613d13887db30c42",
+    "live/SB8192_HIGH_r01/q18.START.json": "f193a87ca7cec47af323f63010024348075068ba39df04622bf27d02fd37819f",
+    "live/SB8192_HIGH_r01/q21.START.json": "9b4206dda4fb586c6137ab7f8681f666f75bf6bd3ec8e86362cebc3da460be3c",
+    "live/SB8192_HIGH_r02/PRE_AP_PREDICTION.json": "039c9b2f570f3eb5d37d60c750b3f979b841c2d8964663cbb2722604dd781e85",
+    "live/SB8192_HIGH_r02/SB8192_HIGH_r02.WINDOW.json": "9b4cbfa1279fe15ecd195f78eef3aeb4bd108e650ee96ce8a39c15b2fb91967a",
+    "live/SB8192_HIGH_r02/SB8192_HIGH_r02.INTERMEDIATES.json": "e37880f86e8493d19cd8a8353e764aa163f154d9671d43141ae3c350f4a9f920",
+    "live/SB8192_HIGH_r02/BLIND_PLAN_RECHECKS.json": "fcae6caaa559231989f750cd3a1b30c9eabc8f7dfc4876379df7ad7e08dc11b6",
+    "live/SB8192_HIGH_r02/q9.START.json": "e53827daaf13fa6272319ba84a3040d6496346e50bf697d9405926cb8407a2f9",
+    "live/SB8192_HIGH_r02/q13.START.json": "f58fecdda8a896ba7214c37d70ac345b64e74b06c22d26791e891455cb255f64",
+    "live/SB8192_HIGH_r02/q18.START.json": "e60dcbada57676dc508ed201042dc29275d47dde60e061d1403c3d396d9b4812",
+    "live/SB8192_HIGH_r02/q21.START.json": "bbfdf2f9e073223f11aed1ac5a8b512b0b3c5125fb253c52b7f748a02299c08a",
+    "live/TP_ONLY_SB2048_r01/TP_ONLY_SB2048_r01.WINDOW.json": "e2457757f9033ff23df3b1638f6a963754d9a679afc2fe2fa1f1b4e0afcc990a",
+    "live/TP_ONLY_SB6144_r01/TP_ONLY_SB6144_r01.WINDOW.json": "abfa062f58c28a1bfe88407aa2c0a0d9be0883a0e92bd34c8d48696abcf01d8d",
+    "live/TP_ONLY_SB4096_r01/TP_ONLY_SB4096_r01.WINDOW.json": "75cfca5fd94e8724f189ff7c78e1f53387ba51200331080e13fdba92b09366f5",
+    "live/TP_ONLY_SB8192_r01/TP_ONLY_SB8192_r01.WINDOW.json": "d8dc6157d20b613184960974bb75e82c873f41ca1b9e0d181ef99ad83353a64c",
+    "live/TP_ONLY_SB8192_r02/TP_ONLY_SB8192_r02.WINDOW.json": "bb3f54c401f5f916cc526cf4159f2749fe0b2ed50fa50f19e397ac1596ebeeb5",
+    "live/TP_ONLY_SB4096_r02/TP_ONLY_SB4096_r02.WINDOW.json": "4e9d7c685cb8714cbac6e8b064e7996c12018a7605c9bbf7f61b938d08b5692e",
+    "live/TP_ONLY_SB6144_r02/TP_ONLY_SB6144_r02.WINDOW.json": "8e53b5cd4dd8cb55d10025f79ba5db366d5f0b316dac1c3409288180640e7fac",
+    "live/TP_ONLY_SB2048_r02/TP_ONLY_SB2048_r02.WINDOW.json": "b8b53e296049a9cdda15dc42d7c79376ab45e3e00302a4503747f0c7840dfed1"
+  },
+  "additional_inputs_sha256": {
+    "CPU_INTERFERENCE_MODEL.json": "02f57e3f63ee886468f9e6e27b98ae4f288662382a73dc2456968182594c4ecd",
+    "PRE_REGISTERED_POLICY.json": "243b2124e2914acc6f22c7f2eb0b0704c15710eaa3f736e30c87d152007610db",
+    "CLEAN_COLLECTION_POLICY.json": "b29618371bb34da032e64c0896fc3cd56a94006df53ed7ebad0d688141c4f40f",
+    "mixed/live/SB2048_LOW_r01/SB2048_LOW_r01.CPU_PREWINDOW.json": "fa1bca498da91f733469bc9f4792947e37c306bdd91ad0af5dd78464884c7fc9",
+    "mixed/live/SB2048_LOW_r02/SB2048_LOW_r02.CPU_PREWINDOW.json": "5fb6512f1235f758784eb74b846bbbc738e230a7010c5fb6f8d821d9108429c1",
+    "mixed/live/SB2048_HIGH_r01/SB2048_HIGH_r01.CPU_PREWINDOW.json": "1a3a7a65a7d4d674f24b234158765b8d95ddb0f4eefc17e55bf1036759453fd5",
+    "mixed/live/SB2048_HIGH_r02/SB2048_HIGH_r02.CPU_PREWINDOW.json": "b5892b04ae0d940436dbaa7e80cfff24e2d13905e013a6e934567cd7d60b2733",
+    "mixed/live/SB4096_LOW_r01/SB4096_LOW_r01.CPU_PREWINDOW.json": "d9a2e3f68e70af734905edb62d5d6a0f7331811aa3d641120b4d1880c01aa653",
+    "mixed/live/SB4096_LOW_r02/SB4096_LOW_r02.CPU_PREWINDOW.json": "81e9efe5b80a6eaa32d0831c61097f87b8088500b8cf0acfda8f4ab34ccef37e",
+    "mixed/live/SB4096_HIGH_r01/SB4096_HIGH_r01.CPU_PREWINDOW.json": "39213273337b9d7cc5e20c2e4acf6fe27b92d73e0e71392f52359c7370afdd20",
+    "mixed/live/SB4096_HIGH_r02/SB4096_HIGH_r02.CPU_PREWINDOW.json": "d8499a87338f01f16b298f6f9ec54f661bd3ac393029c616a2609685d08b173d",
+    "mixed/live/SB6144_LOW_r01/SB6144_LOW_r01.CPU_PREWINDOW.json": "a625a5141943c3a106f9c60a04c912c37965881be5523dda2201618d26a18156",
+    "mixed/live/SB6144_LOW_r02/SB6144_LOW_r02.CPU_PREWINDOW.json": "c3f6bab9f9228987bbb4cf4bf37a21df8c9e71071a42767baacd3993449efbd2",
+    "mixed/live/SB6144_HIGH_r01/SB6144_HIGH_r01.CPU_PREWINDOW.json": "3383ff8bd15646984e97ef6f8513dd12aeedce119be6c3f4d6c007c2410e929e",
+    "mixed/live/SB6144_HIGH_r02/SB6144_HIGH_r02.CPU_PREWINDOW.json": "8faf0238b8a2d8b218bb70147a33ae22202631f17447b8b236074b83a179f31d",
+    "mixed/live/SB8192_LOW_r01/SB8192_LOW_r01.CPU_PREWINDOW.json": "3d00cde58b779f8819750ccd9bae6b4ff4bb6e724327c21a350b2ea45b591058",
+    "mixed/live/SB8192_LOW_r02/SB8192_LOW_r02.CPU_PREWINDOW.json": "5c7f6689d62363d835a5ccca8ec84d6c3976f859ab1bb08d718c0d04c0ec3991",
+    "mixed/live/SB8192_HIGH_r01/SB8192_HIGH_r01.CPU_PREWINDOW.json": "691177c426aecdeb97c859a2d381ea2f6b112dfbcb2f91b9ffee5ec2c873e504",
+    "mixed/live/SB8192_HIGH_r02/SB8192_HIGH_r02.CPU_PREWINDOW.json": "358bb89c8f2ba33d569edb9e92fa270e317fa9c1e69bbc9a860facafd82873ab"
+  }
+}

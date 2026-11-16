@@ -1,0 +1,280 @@
+{
+  "stage": "SB6144_HIGH",
+  "repeat": 1,
+  "AP_probe": {
+    "started_ns": 15647406600425,
+    "finished_ns": 15651408809992,
+    "queries": {
+      "9": {
+        "before": {
+          "identity": [
+            1075,
+            102413,
+            1562852
+          ],
+          "cpu_ns": 2070785676,
+          "io": {
+            "rchar": 620135894,
+            "wchar": 246,
+            "syscr": 75717,
+            "syscw": 1,
+            "read_bytes": 620101632,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "sample_ns": 15647406729369,
+          "read_span_ns": 210120
+        },
+        "after": {
+          "identity": [
+            1075,
+            102413,
+            1562852
+          ],
+          "cpu_ns": 2512271044,
+          "io": {
+            "rchar": 763659734,
+            "wchar": 246,
+            "syscr": 93237,
+            "syscw": 1,
+            "read_bytes": 763625472,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "sample_ns": 15651408548712,
+          "read_span_ns": 113313
+        }
+      },
+      "13": {
+        "before": {
+          "identity": [
+            1075,
+            102416,
+            1562864
+          ],
+          "cpu_ns": 2089957166,
+          "io": {
+            "rchar": 902809046,
+            "wchar": 101662967,
+            "syscr": 110223,
+            "syscw": 12411,
+            "read_bytes": 28672,
+            "write_bytes": 101662720,
+            "cancelled_write_bytes": 0
+          },
+          "sample_ns": 15647406888938,
+          "read_span_ns": 75284
+        },
+        "after": {
+          "identity": [
+            1075,
+            102416,
+            1562864
+          ],
+          "cpu_ns": 2521464918,
+          "io": {
+            "rchar": 1097590230,
+            "wchar": 122527991,
+            "syscr": 134000,
+            "syscw": 14958,
+            "read_bytes": 28672,
+            "write_bytes": 122527744,
+            "cancelled_write_bytes": 0
+          },
+          "sample_ns": 15651408651153,
+          "read_span_ns": 59072
+        }
+      },
+      "18": {
+        "before": {
+          "identity": [
+            1075,
+            102419,
+            1562874
+          ],
+          "cpu_ns": 2008253891,
+          "io": {
+            "rchar": 607471062,
+            "wchar": 247,
+            "syscr": 74171,
+            "syscw": 1,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "sample_ns": 15647406964186,
+          "read_span_ns": 56152
+        },
+        "after": {
+          "identity": [
+            1075,
+            102419,
+            1562874
+          ],
+          "cpu_ns": 2438887782,
+          "io": {
+            "rchar": 747251158,
+            "wchar": 247,
+            "syscr": 91234,
+            "syscw": 1,
+            "read_bytes": 0,
+            "write_bytes": 0,
+            "cancelled_write_bytes": 0
+          },
+          "sample_ns": 15651408716634,
+          "read_span_ns": 55806
+        }
+      },
+      "21": {
+        "before": {
+          "identity": [
+            1075,
+            102422,
+            1562883
+          ],
+          "cpu_ns": 2069213084,
+          "io": {
+            "rchar": 665224662,
+            "wchar": 45105399,
+            "syscr": 81221,
+            "syscw": 5507,
+            "read_bytes": 665214976,
+            "write_bytes": 45105152,
+            "cancelled_write_bytes": 0
+          },
+          "sample_ns": 15647407028939,
+          "read_span_ns": 56748
+        },
+        "after": {
+          "identity": [
+            1075,
+            102422,
+            1562883
+          ],
+          "cpu_ns": 2514636173,
+          "io": {
+            "rchar": 828671446,
+            "wchar": 56156407,
+            "syscr": 101173,
+            "syscw": 6856,
+            "read_bytes": 828665856,
+            "write_bytes": 56156160,
+            "cancelled_write_bytes": 0
+          },
+          "sample_ns": 15651408779344,
+          "read_span_ns": 55585
+        }
+      }
+    }
+  },
+  "phase": {
+    "queries": {
+      "9": {
+        "cpu_cores": 0.11032116399063543,
+        "io_submission_diagnostics": {
+          "read_bytes_per_second": 35864647.47616669,
+          "write_bytes_per_second": 0.0,
+          "cancelled_write_bytes_per_second": 0.0,
+          "rchar_per_second": 35864647.47616669,
+          "wchar_per_second": 0.0
+        }
+      },
+      "13": {
+        "cpu_cores": 0.10782943333878223,
+        "io_submission_diagnostics": {
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 5213958.970823057,
+          "cancelled_write_bytes_per_second": 0.0,
+          "rchar_per_second": 48673852.551731385,
+          "wchar_per_second": 5213958.970823057
+        }
+      },
+      "18": {
+        "cpu_cores": 0.10761132693633325,
+        "io_submission_diagnostics": {
+          "read_bytes_per_second": 0.0,
+          "write_bytes_per_second": 0.0,
+          "cancelled_write_bytes_per_second": 0.0,
+          "rchar_per_second": 34929720.870130144,
+          "wchar_per_second": 0.0
+        }
+      },
+      "21": {
+        "cpu_cores": 0.11130706413959868,
+        "io_submission_diagnostics": {
+          "read_bytes_per_second": 40844846.24422747,
+          "write_bytes_per_second": 2761543.545092738,
+          "cancelled_write_bytes_per_second": 0.0,
+          "rchar_per_second": 40843822.69213514,
+          "wchar_per_second": 2761543.545092738
+        }
+      }
+    },
+    "AP_CPU_cores": 0.4370689884053496,
+    "probe_duration_seconds": 4.002209567,
+    "physical_IO_completion_or_TP_ownership_qualified": false,
+    "one_window_ahead_phase_persistence_assumption": true
+  },
+  "lanes": {
+    "prior_4s_CPU_budget_no_inflation": {
+      "predicted_tps": 8943.150773758467,
+      "prediction_kind": "CPU_conservation_conditional_scenario",
+      "baseline_TPS": 9196.95,
+      "baseline_TP_busy_cores": 15.83811618515,
+      "declared_host_CPU_cores": 16.0,
+      "other_or_idle_cores_preserved_from_baseline": 0.16188381485000036,
+      "AP_CPU_cores_forecast": 0.4370689884053496,
+      "TP_backend_CPU_multiplier_from_AP": 1.0,
+      "TP_reference_backend_CPU_seconds_per_tx": 0.0015977993632617334,
+      "TP_loaded_backend_CPU_seconds_per_tx": 0.0015977993632617334,
+      "TP_driver_CPU_seconds_per_tx": 0.0001243059200278353,
+      "TP_loaded_total_CPU_seconds_per_tx": 0.0017221052832895687,
+      "training_coefficient_used": false,
+      "TP_reference_not_redefined_as_loaded_service": true,
+      "AP_IO_effect_on_observed_AP_CPU_not_applied_twice": true,
+      "extra_TP_IO_latency_seconds": null,
+      "zero_extra_TP_IO_is_conditional_scenario_not_measurement": true,
+      "physical_IO_or_full_TPS_prediction_qualified": false,
+      "automatic_recommendation_qualified": false,
+      "AP_CPU_source": "prior_4s_measured_phase_persistence_to_next_window",
+      "cold_start_configuration_forecast": false,
+      "phase_persistence_and_historical_cache_transfer_unqualified": true
+    },
+    "prior_4s_CPU_budget_independent_inflation": {
+      "predicted_tps": 8871.915583586746,
+      "prediction_kind": "CPU_conservation_conditional_scenario",
+      "baseline_TPS": 9196.95,
+      "baseline_TP_busy_cores": 15.83811618515,
+      "declared_host_CPU_cores": 16.0,
+      "other_or_idle_cores_preserved_from_baseline": 0.16188381485000036,
+      "AP_CPU_cores_forecast": 0.4370689884053496,
+      "TP_backend_CPU_multiplier_from_AP": 1.0086539551994458,
+      "TP_reference_backend_CPU_seconds_per_tx": 0.0015977993632617334,
+      "TP_loaded_backend_CPU_seconds_per_tx": 0.0016116266473691035,
+      "TP_driver_CPU_seconds_per_tx": 0.0001243059200278353,
+      "TP_loaded_total_CPU_seconds_per_tx": 0.0017359325673969388,
+      "training_coefficient_used": true,
+      "TP_reference_not_redefined_as_loaded_service": true,
+      "AP_IO_effect_on_observed_AP_CPU_not_applied_twice": true,
+      "extra_TP_IO_latency_seconds": null,
+      "zero_extra_TP_IO_is_conditional_scenario_not_measurement": true,
+      "physical_IO_or_full_TPS_prediction_qualified": false,
+      "automatic_recommendation_qualified": false,
+      "AP_CPU_source": "prior_4s_measured_phase_persistence_to_next_window",
+      "cold_start_configuration_forecast": false,
+      "phase_persistence_and_historical_cache_transfer_unqualified": true
+    },
+    "prior_4s_CPU_budget_unavailable_reasons": {
+      "prior_4s_CPU_budget_no_inflation": null,
+      "prior_4s_CPU_budget_independent_inflation": null
+    }
+  },
+  "prediction_monotonic_ns": 15651408811652,
+  "forecast_saved_monotonic_ns": 15651408989283,
+  "prediction_compute_milliseconds": 0.13118,
+  "observer_attached_during_probe": true,
+  "commit_count_window_disarmed_during_probe": true,
+  "target_window_TPS_or_CPU_used": false,
+  "cold_start_configuration_forecast": false,
+  "automatic_recommendation_qualified": false
+}

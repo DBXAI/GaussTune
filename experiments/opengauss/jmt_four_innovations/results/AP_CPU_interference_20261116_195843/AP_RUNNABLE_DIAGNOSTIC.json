@@ -1,0 +1,227 @@
+{
+  "schema": "jmt.own-interval-AP-runnable-diagnostic/v1",
+  "case": "SB4096_LOW_r02",
+  "boot_id": "1b4df6d9-0179-466e-8de4-0654aa002917",
+  "source_sha256": "1fd52c888308383b3d015a8d1b8de46914219137eeccddfe9838045d0a24b244",
+  "before": {
+    "q18": {
+      "identity": [
+        1075,
+        105243,
+        1639736
+      ],
+      "nice": 0,
+      "CPU_ns": 4963569621,
+      "runqueue_wait_ns": 37369857210,
+      "timeslices": 1645,
+      "io_submissions_not_completions": {
+        "rchar": 681625046,
+        "wchar": 226754807,
+        "syscr": 83223,
+        "syscw": 27681,
+        "read_bytes": 0,
+        "write_bytes": 226754560,
+        "cancelled_write_bytes": 0
+      },
+      "sample_ns": 16439721935763,
+      "read_span_ns": 97510
+    },
+    "q9": {
+      "identity": [
+        1075,
+        105231,
+        1639716
+      ],
+      "nice": 0,
+      "CPU_ns": 4659961377,
+      "runqueue_wait_ns": 35981366236,
+      "timeslices": 5590,
+      "io_submissions_not_completions": {
+        "rchar": 1027278294,
+        "wchar": 79454454,
+        "syscr": 125417,
+        "syscw": 9700,
+        "read_bytes": 1027215360,
+        "write_bytes": 79454208,
+        "cancelled_write_bytes": 0
+      },
+      "sample_ns": 16439722019776,
+      "read_span_ns": 65295
+    },
+    "q13": {
+      "identity": [
+        1075,
+        105236,
+        1639726
+      ],
+      "nice": 0,
+      "CPU_ns": 4683478067,
+      "runqueue_wait_ns": 37530039224,
+      "timeslices": 2191,
+      "io_submissions_not_completions": {
+        "rchar": 1191871958,
+        "wchar": 269435127,
+        "syscr": 145509,
+        "syscw": 32891,
+        "read_bytes": 11608064,
+        "write_bytes": 269434880,
+        "cancelled_write_bytes": 0
+      },
+      "sample_ns": 16439722085821,
+      "read_span_ns": 63411
+    },
+    "q21": {
+      "identity": [
+        1075,
+        105246,
+        1639743
+      ],
+      "nice": 0,
+      "CPU_ns": 4442204025,
+      "runqueue_wait_ns": 33442011686,
+      "timeslices": 8695,
+      "io_submissions_not_completions": {
+        "rchar": 1668883926,
+        "wchar": 111673591,
+        "syscr": 203738,
+        "syscw": 13633,
+        "read_bytes": 1644552192,
+        "write_bytes": 111673344,
+        "cancelled_write_bytes": 0
+      },
+      "sample_ns": 16439722148601,
+      "read_span_ns": 59530
+    }
+  },
+  "after": {
+    "q18": {
+      "identity": [
+        1075,
+        105243,
+        1639736
+      ],
+      "nice": 0,
+      "CPU_ns": 5406213841,
+      "runqueue_wait_ns": 40541824804,
+      "timeslices": 1868,
+      "io_submissions_not_completions": {
+        "rchar": 848872918,
+        "wchar": 245514487,
+        "syscr": 103639,
+        "syscw": 29971,
+        "read_bytes": 0,
+        "write_bytes": 245514240,
+        "cancelled_write_bytes": 0
+      },
+      "sample_ns": 16443724212865,
+      "read_span_ns": 327646
+    },
+    "q9": {
+      "identity": [
+        1075,
+        105231,
+        1639716
+      ],
+      "nice": 0,
+      "CPU_ns": 5259233978,
+      "runqueue_wait_ns": 39367707913,
+      "timeslices": 5730,
+      "io_submissions_not_completions": {
+        "rchar": 1027278294,
+        "wchar": 79454454,
+        "syscr": 125417,
+        "syscw": 9700,
+        "read_bytes": 1027215360,
+        "write_bytes": 79454208,
+        "cancelled_write_bytes": 0
+      },
+      "sample_ns": 16443724431150,
+      "read_span_ns": 94946
+    },
+    "q13": {
+      "identity": [
+        1075,
+        105236,
+        1639726
+      ],
+      "nice": 0,
+      "CPU_ns": 5150810849,
+      "runqueue_wait_ns": 40716921464,
+      "timeslices": 2529,
+      "io_submissions_not_completions": {
+        "rchar": 1344505302,
+        "wchar": 292708599,
+        "syscr": 164141,
+        "syscw": 35732,
+        "read_bytes": 11669504,
+        "write_bytes": 292708352,
+        "cancelled_write_bytes": 0
+      },
+      "sample_ns": 16443724519395,
+      "read_span_ns": 77019
+    },
+    "q21": {
+      "identity": [
+        1075,
+        105246,
+        1639743
+      ],
+      "nice": 0,
+      "CPU_ns": 4840417231,
+      "runqueue_wait_ns": 36522601548,
+      "timeslices": 9449,
+      "io_submissions_not_completions": {
+        "rchar": 1818961366,
+        "wchar": 122536183,
+        "syscr": 222058,
+        "syscw": 14959,
+        "read_bytes": 1794629632,
+        "write_bytes": 122535936,
+        "cancelled_write_bytes": 0
+      },
+      "sample_ns": 16443724591653,
+      "read_span_ns": 62897
+    }
+  },
+  "queries": {
+    "q18": {
+      "CPU_cores": 0.11059809421461693,
+      "runqueue_wait_fraction": 0.7925407244827997,
+      "CPU_plus_runqueue_fraction": 0.9031388186974166,
+      "other_or_blocked_fraction_approx": 0.09686118130258337,
+      "nice": 0,
+      "duration_seconds": 4.002277102,
+      "not_exact_disjoint_kernel_state_accounting": true
+    },
+    "q9": {
+      "CPU_cores": 0.14972788776609147,
+      "runqueue_wait_fraction": 0.8460753682137622,
+      "CPU_plus_runqueue_fraction": 0.9958032559798536,
+      "other_or_blocked_fraction_approx": 0.004196744020146359,
+      "nice": 0,
+      "duration_seconds": 4.002411374,
+      "not_exact_disjoint_kernel_state_accounting": true
+    },
+    "q13": {
+      "CPU_cores": 0.1167621581619283,
+      "runqueue_wait_fraction": 0.7962361351109334,
+      "CPU_plus_runqueue_fraction": 0.9129982932728616,
+      "other_or_blocked_fraction_approx": 0.08700170672713836,
+      "nice": 0,
+      "duration_seconds": 4.002433574,
+      "not_exact_disjoint_kernel_state_accounting": true
+    },
+    "q21": {
+      "CPU_cores": 0.09949253514075981,
+      "runqueue_wait_fraction": 0.76967737503739,
+      "CPU_plus_runqueue_fraction": 0.8691699101781498,
+      "other_or_blocked_fraction_approx": 0.13083008982185018,
+      "nice": 0,
+      "duration_seconds": 4.002443052,
+      "not_exact_disjoint_kernel_state_accounting": true
+    }
+  },
+  "AP_stop_started_during_diagnostic": false,
+  "used_for_fitting_or_forecasting_any_target_TPS": false,
+  "exact_commit_window_IO_ownership_or_physical_blocking_cause_qualified": false
+}

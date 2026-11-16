@@ -1,0 +1,53 @@
+{
+  "created_at": "2026-11-16T20:07:26.774666+08:00",
+  "boot_id": "1b4df6d9-0179-466e-8de4-0654aa002917",
+  "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+  "groups": [
+    [
+      101
+    ],
+    [
+      102
+    ],
+    [
+      103
+    ],
+    [
+      101,
+      102
+    ],
+    [
+      101,
+      103
+    ],
+    [
+      102,
+      103
+    ]
+  ],
+  "SQL_sha256s": {
+    "101": "b778e4e9ec1aa33069615da95c495a93d6932feda9f9a9b43389a4268592c87d",
+    "102": "437344ec2ca059784cf90cc02e4f15a9162ae4e045de3d97da9b175b8064a0be",
+    "103": "d6d7d1e670f3e88eec172cb5398dd82dfbe24de3e27118c3f27eb912e237c640"
+  },
+  "shared_buffers_mib": 4096,
+  "training_repeat": 1,
+  "heldout_repeat": 2,
+  "TP128_one_continuous_driver": true,
+  "independent_fresh_AP_episodes_not_independent_TP_processes": true,
+  "AP_settle_seconds": 10,
+  "window_seconds": 20,
+  "counterbalanced_AP_order": true,
+  "work_mem_mib": 64,
+  "original_target_queries_or_variants_used_for_training": false,
+  "bounded_EA_JSON_instrumented_microbenchmarks_not_full_lifecycle_truth": true,
+  "source_sha256": {
+    "tools/collect_AP_CPU_interference.py": "aad4cdd9a0af7e977afdb7b827dc79989e25357317fd04a9171992acba7da56c",
+    "tools/measure_current_mixed_five_stages.py": "077355195ae66f11b6042ea0a4a8840b3693d35d40b23ea22255fb6b5872b13d",
+    "tools/collect_current_tp_matrix.py": "487d5260209306e5ba8e03573a79d981c41ef067e0d5bf1234f2b35b415cf38c",
+    "tools/current_ap_worker.py": "c9f0b24afc67ce2989277c4f750d2507125cfce70905dbd47788ebc1a9e717cd",
+    "tools/validate_capacity_TPS_live.py": "2d38f524a93f88bcab12db73592f39d89bbb74d1b5fd2a0c86bfa852d3106c4a",
+    "src/jmt/common/process_cpu.py": "8e2cde46fac26e7ab6f0c4f4c4bede5850f1b991f47b39f4a975f40a477a7365",
+    "src/jmt/innovation_4_performance/tp_window_observer.py": "3f8310295a2f3d471e83b79a8f1b83ff7469bd605734ec9f282ae672d99ba33c"
+  }
+}

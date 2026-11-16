@@ -1,0 +1,29 @@
+{
+  "key": "101_r02",
+  "role": "heldout",
+  "AP_queries": [
+    101
+  ],
+  "AP_sql_sha256s": [
+    "b778e4e9ec1aa33069615da95c495a93d6932feda9f9a9b43389a4268592c87d"
+  ],
+  "control": {
+    "repeat": 2,
+    "directory": "control_r02",
+    "point": {
+      "topology": "TP128",
+      "terminals": 128,
+      "shared_buffers_mib": 4096,
+      "baseline_tps": 9233.4,
+      "backend_cpu_seconds_per_tx": 0.001597201392926766,
+      "driver_cpu_seconds_per_tx": 0.00012443034552277603,
+      "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+      "scored_seconds": 20.0,
+      "CPU_endpoints_within_100ms": true,
+      "native_cache_counters_not_used_to_rescale_commits": true,
+      "calibration_window_end_ns": 15022588077059,
+      "automatic_recommendation_qualified": false
+    }
+  },
+  "saved_monotonic_ns": 15212020700259
+}

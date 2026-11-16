@@ -71,6 +71,9 @@ def predict_configuration(frozen, config, incoming_AP_pages, incoming_AP_other_p
         from .tp_baseline_rebase import predict_rebased_lanes
         result.update(predict_rebased_lanes(
             frozen, config, primary, result["TP_only_cache_hint_diagnostic"]))
+    if frozen.get("CPU_interference_model") is not None:
+        from .cpu_interference import configuration_cpu_lanes
+        result.update(configuration_cpu_lanes(frozen, result))
     return result
 
 

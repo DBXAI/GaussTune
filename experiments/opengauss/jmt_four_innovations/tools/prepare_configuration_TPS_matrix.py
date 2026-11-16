@@ -65,6 +65,7 @@ def main():
     p.add_argument("--sql-dir", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
     p.add_argument("--fresh-tp-points", type=Path)
+    p.add_argument("--cpu-interference-model", type=Path)
     args = p.parse_args()
     args.out.mkdir(parents=True, exist_ok=False)
     (args.out / "queries").mkdir()
@@ -134,6 +135,23 @@ def main():
         frozen["fresh_TP_points_sha256"] = sha(args.fresh_tp_points)
         frozen["fresh_TP_rebase_only_no_AP_refit"] = True
         (args.out / "FRESH_TP_POINTS.json").write_bytes(args.fresh_tp_points.read_bytes())
+    if args.cpu_interference_model is not None:
+        if "fresh_TP_points" not in frozen:
+            raise ValueError("independent CPU interference needs exact fresh TP points")
+        from jmt.innovation_4_performance.cpu_interference import SCHEMA as CPU_SCHEMA
+        model = json.loads(args.cpu_interference_model.read_text())
+        target_hashes = sorted({r["sql_sha256"] for r in profiles["LOW"].values()})
+        if (model["schema"] != CPU_SCHEMA
+                or model["boot_id"] != frozen["boot_id"]
+                or model["postmaster_start_time"] != frozen["postmaster_start_time"]
+                or model["machine_fingerprint"] != frozen["machine_fingerprint"]
+                or model["excluded_target_SQL_sha256s"] != target_hashes
+                or model["frozen_monotonic_ns"] >= frozen["frozen_before_experiment_monotonic_ns"]
+                or model.get("heldout_or_target_TPS_used_for_fit") is not False):
+            raise ValueError("CPU calibration identity, target split or chronology mismatch")
+        frozen["CPU_interference_model"] = model
+        frozen["CPU_interference_model_sha256"] = sha(args.cpu_interference_model)
+        (args.out / "CPU_INTERFERENCE_MODEL.json").write_bytes(args.cpu_interference_model.read_bytes())
     initial = incoming_cache(client)
     frozen["initial_state_predictions"] = [
         predict_configuration(frozen, config, initial["incoming_AP_pages"],

@@ -1,0 +1,47 @@
+{
+  "schema": "jmt.independent-AP-CPU-interference/v1",
+  "coefficient_per_AP_core": 0.019799975356338578,
+  "fit_method": "one_nonnegative_shared_slope_no_intercept",
+  "training_episodes": 6,
+  "training_SQL_count": 3,
+  "training_keys": [
+    "101_102_r01",
+    "101_103_r01",
+    "101_r01",
+    "102_103_r01",
+    "102_r01",
+    "103_r01"
+  ],
+  "training_SQL_sha256s": [
+    "437344ec2ca059784cf90cc02e4f15a9162ae4e045de3d97da9b175b8064a0be",
+    "b778e4e9ec1aa33069615da95c495a93d6932feda9f9a9b43389a4268592c87d",
+    "d6d7d1e670f3e88eec172cb5398dd82dfbe24de3e27118c3f27eb912e237c640"
+  ],
+  "excluded_target_SQL_sha256s": [
+    "05c59413778226307e1d7e1004383fe871c3062a8222b9d51927bc5b47b1a04d",
+    "64ff62be29956ff33193b61d5eead6f026ce17cda29cc215909d0cf6b0f597be",
+    "73a6284a5ae42ee1982e78e3d2daf9efd533709eda596a3db781bff7edef9588",
+    "cd9f8bca5b7b8e78f97db892898a78d25a992548ae0df804bc493db63c77b836"
+  ],
+  "maximum_training_AP_cores": 1.2439005049,
+  "minimum_training_AP_cores": 0.40415624694999996,
+  "training_backend_ratio_residual_RMSE": 0.00742227070419495,
+  "boot_id": "1b4df6d9-0179-466e-8de4-0654aa002917",
+  "postmaster_start_time": "2026-11-16 16:02:41.722327+08",
+  "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+  "calibration_shared_buffers_mib": 4096,
+  "AP_phase_CPU_forecast_trained": false,
+  "physical_IO_interference_trained": false,
+  "cross_SB_transfer_independently_qualified": false,
+  "automatic_recommendation_qualified": false,
+  "created_at": "2026-11-16T20:16:50.392989+08:00",
+  "frozen_monotonic_ns": 15259491885826,
+  "training_repeat": 1,
+  "heldout_repeat": 2,
+  "heldout_CPU_service_MAPE": 0.007617834691297694,
+  "heldout_no_inflation_CPU_service_MAPE": 0.013350995774740934,
+  "heldout_or_target_TPS_used_for_fit": false,
+  "heldout_evaluates_service_given_AP_CPU_not_forecast_AP_CPU": true,
+  "training_model_source_sha256": "d7cfdc393269a9687c4f5f6973bf5299ce827950f8ce5436242718d405ab22dc",
+  "excluded_target_source_sha256": "a0d7e0e3d000ec6c82ecce1e388d1a6f027624eebea446938cb8578070b3cc76"
+}

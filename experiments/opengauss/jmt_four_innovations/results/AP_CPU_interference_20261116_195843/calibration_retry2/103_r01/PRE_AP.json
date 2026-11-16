@@ -1,0 +1,29 @@
+{
+  "key": "103_r01",
+  "role": "calibration",
+  "AP_queries": [
+    103
+  ],
+  "AP_sql_sha256s": [
+    "d6d7d1e670f3e88eec172cb5398dd82dfbe24de3e27118c3f27eb912e237c640"
+  ],
+  "control": {
+    "repeat": 1,
+    "directory": "control_r01",
+    "point": {
+      "topology": "TP128",
+      "terminals": 128,
+      "shared_buffers_mib": 4096,
+      "baseline_tps": 9227.25,
+      "backend_cpu_seconds_per_tx": 0.001591392710585494,
+      "driver_cpu_seconds_per_tx": 0.00012442635773388604,
+      "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+      "scored_seconds": 20.0,
+      "CPU_endpoints_within_100ms": true,
+      "native_cache_counters_not_used_to_rescale_commits": true,
+      "calibration_window_end_ns": 14500916084785,
+      "automatic_recommendation_qualified": false
+    }
+  },
+  "saved_monotonic_ns": 14576573281546
+}

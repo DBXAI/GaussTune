@@ -1,0 +1,86 @@
+{
+  "created_at": "2026-11-16T20:06:04.236000+08:00",
+  "rows": [
+    {
+      "key": "101_r01",
+      "role": "calibration",
+      "boot_id": "1b4df6d9-0179-466e-8de4-0654aa002917",
+      "postmaster_start_time": "2026-11-16 16:02:41.722327+08",
+      "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+      "shared_buffers_mib": 4096,
+      "TP_terminals": 128,
+      "AP_sql_sha256s": [
+        "c714372411986757cbbab616dbb43bd3404e15b0a31a93878140cea78084e5f2"
+      ],
+      "AP_CPU_cores": 0.27487234374999997,
+      "control_backend_cpu_seconds_per_tx": 0.001591392710585494,
+      "mixed_backend_cpu_seconds_per_tx": 0.0015997787006383581,
+      "CPU_endpoints_within_100ms": true,
+      "transaction_count_rescaled": false,
+      "control_finished_before_episode": true,
+      "window_sha256": "231a70f9cd7145348ac902c0b7feaff25e740b829449e0a1268073d15ac979a9"
+    },
+    {
+      "key": "102_r01",
+      "role": "calibration",
+      "boot_id": "1b4df6d9-0179-466e-8de4-0654aa002917",
+      "postmaster_start_time": "2026-11-16 16:02:41.722327+08",
+      "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+      "shared_buffers_mib": 4096,
+      "TP_terminals": 128,
+      "AP_sql_sha256s": [
+        "437344ec2ca059784cf90cc02e4f15a9162ae4e045de3d97da9b175b8064a0be"
+      ],
+      "AP_CPU_cores": 0.4000885321,
+      "control_backend_cpu_seconds_per_tx": 0.001591392710585494,
+      "mixed_backend_cpu_seconds_per_tx": 0.0016185754113865456,
+      "CPU_endpoints_within_100ms": true,
+      "transaction_count_rescaled": false,
+      "control_finished_before_episode": true,
+      "window_sha256": "7a6b590991196bb05aad6faef56d8d75d7b9754c4ccc7788697c387a77b9519e"
+    },
+    {
+      "key": "103_r01",
+      "role": "calibration",
+      "boot_id": "1b4df6d9-0179-466e-8de4-0654aa002917",
+      "postmaster_start_time": "2026-11-16 16:02:41.722327+08",
+      "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+      "shared_buffers_mib": 4096,
+      "TP_terminals": 128,
+      "AP_sql_sha256s": [
+        "d6d7d1e670f3e88eec172cb5398dd82dfbe24de3e27118c3f27eb912e237c640"
+      ],
+      "AP_CPU_cores": 0.46874766044999994,
+      "control_backend_cpu_seconds_per_tx": 0.001591392710585494,
+      "mixed_backend_cpu_seconds_per_tx": 0.001608944706623058,
+      "CPU_endpoints_within_100ms": true,
+      "transaction_count_rescaled": false,
+      "control_finished_before_episode": true,
+      "window_sha256": "928e89d97bd567a4ace10f8e0b5730e8ff3192975dc84570720d5582e420556c"
+    }
+  ],
+  "controls": [
+    {
+      "repeat": 1,
+      "directory": "control_r01",
+      "point": {
+        "topology": "TP128",
+        "terminals": 128,
+        "shared_buffers_mib": 4096,
+        "baseline_tps": 9227.25,
+        "backend_cpu_seconds_per_tx": 0.001591392710585494,
+        "driver_cpu_seconds_per_tx": 0.00012442635773388604,
+        "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+        "scored_seconds": 20.0,
+        "CPU_endpoints_within_100ms": true,
+        "native_cache_counters_not_used_to_rescale_commits": true,
+        "calibration_window_end_ns": 14500916084785,
+        "automatic_recommendation_qualified": false
+      }
+    }
+  ],
+  "error": "KeyboardInterrupt: matrix interrupted by signal 15",
+  "cleanup_errors": [],
+  "complete": false,
+  "restoration_verified": true
+}

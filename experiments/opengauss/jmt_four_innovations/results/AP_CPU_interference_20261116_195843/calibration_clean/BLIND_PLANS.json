@@ -1,0 +1,130 @@
+{
+  "101": [
+    {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Startup Cost": 39920348.76,
+        "Total Cost": 39920348.77,
+        "Plan Rows": 1,
+        "Plan Width": 152,
+        "Output": [
+          "count(*)",
+          "sum((l_extendedprice * l_discount))",
+          "sum(l_quantity)",
+          "sum(length(md5(((l_comment)::text || (l_partkey)::text))))",
+          "sum(length(md5(((l_comment)::text || (l_orderkey)::text))))",
+          "sum(length(md5(((l_comment)::text || (l_suppkey)::text))))"
+        ],
+        "Plans": [
+          {
+            "Node Type": "Seq Scan",
+            "Parent Relationship": "Outer",
+            "Relation Name": "lineitem",
+            "Schema": "public",
+            "Alias": "lineitem",
+            "Startup Cost": 0.0,
+            "Total Cost": 15691489.48,
+            "Plan Rows": 510081248,
+            "Plan Width": 56,
+            "Output": [
+              "l_orderkey",
+              "l_partkey",
+              "l_suppkey",
+              "l_linenumber",
+              "l_quantity",
+              "l_extendedprice",
+              "l_discount",
+              "l_tax",
+              "l_returnflag",
+              "l_linestatus",
+              "l_shipdate",
+              "l_commitdate",
+              "l_receiptdate",
+              "l_shipinstruct",
+              "l_shipmode",
+              "l_comment"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "102": [
+    {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Startup Cost": 4482831.49,
+        "Total Cost": 4482831.5,
+        "Plan Rows": 1,
+        "Plan Width": 48,
+        "Output": [
+          "count(*)",
+          "sum(o_totalprice)"
+        ],
+        "Plans": [
+          {
+            "Node Type": "Seq Scan",
+            "Parent Relationship": "Outer",
+            "Relation Name": "orders",
+            "Schema": "public",
+            "Alias": "orders",
+            "Startup Cost": 0.0,
+            "Total Cost": 3941853.17,
+            "Plan Rows": 108195663,
+            "Plan Width": 8,
+            "Output": [
+              "o_orderkey",
+              "o_custkey",
+              "o_orderstatus",
+              "o_totalprice",
+              "o_orderdate",
+              "o_orderpriority",
+              "o_clerk",
+              "o_shippriority",
+              "o_comment"
+            ],
+            "Filter": "(orders.o_orderdate >= '1993-01-01 00:00:00'::timestamp(0) without time zone)"
+          }
+        ]
+      }
+    }
+  ],
+  "103": [
+    {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Startup Cost": 2844823.46,
+        "Total Cost": 2844823.47,
+        "Plan Rows": 1,
+        "Plan Width": 50,
+        "Output": [
+          "count(*)",
+          "sum((ps_supplycost * (ps_availqty)::numeric))"
+        ],
+        "Plans": [
+          {
+            "Node Type": "Seq Scan",
+            "Parent Relationship": "Outer",
+            "Relation Name": "partsupp",
+            "Schema": "public",
+            "Alias": "partsupp",
+            "Startup Cost": 0.0,
+            "Total Cost": 2165056.73,
+            "Plan Rows": 67976673,
+            "Plan Width": 10,
+            "Output": [
+              "ps_partkey",
+              "ps_suppkey",
+              "ps_availqty",
+              "ps_supplycost",
+              "ps_comment"
+            ]
+          }
+        ]
+      }
+    }
+  ]
+}

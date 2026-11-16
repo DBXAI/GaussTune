@@ -95,7 +95,8 @@ class AP:
         self.started_ns = time.monotonic_ns()
         dump(run.out / ("q%d.START.json" % q), {
             "identity": identity, "application_name": self.application,
-            "work_mem_mib": wm, "sql_sha256": SQL_SHA256[q],
+            "work_mem_mib": wm,
+            "sql_sha256": getattr(run, "sql_digests", SQL_SHA256)[q],
             "request_sent_monotonic_ns": self.started_ns})
         self.send({"command": "execute", "sql": run.sql[q], "wm_mib": wm})
 

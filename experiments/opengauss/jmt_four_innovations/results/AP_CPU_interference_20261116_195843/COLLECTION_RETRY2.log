@@ -1,0 +1,14 @@
+{"stage": "TP_ONLY", "repeat": 1, "actual_TPS": 9227.25, "AP_CPU_seconds": {}}
+{"stage": "CAL", "repeat": 1, "actual_TPS": 8999.65, "AP_CPU_seconds": {"101": 5.497446875}}
+{"stage": "CAL", "repeat": 1, "actual_TPS": 8695.35, "AP_CPU_seconds": {"102": 8.001770642}}
+{"stage": "CAL", "repeat": 1, "actual_TPS": 8866.75, "AP_CPU_seconds": {"103": 9.374953209}}
+Traceback (most recent call last):
+  File "tools/collect_AP_CPU_interference.py", line 187, in <module>
+    main()
+  File "tools/collect_AP_CPU_interference.py", line 166, in main
+    run.wait(time.monotonic_ns()+5*10**9)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/tools/measure_current_mixed_five_stages.py", line 184, in wait
+    time.sleep(min(1, max(0, (until - time.monotonic_ns()) / 1e9)))
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/tools/validate_configuration_TPS_matrix.py", line 27, in interrupt_for_cleanup
+    raise KeyboardInterrupt("matrix interrupted by signal %d" % signum)
+KeyboardInterrupt: matrix interrupted by signal 15

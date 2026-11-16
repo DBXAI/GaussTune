@@ -69,6 +69,10 @@ def main():
     if frozen.get("fresh_TP_points") is not None:
         sources += [ROOT / "src/jmt/innovation_4_performance/tp_baseline_rebase.py",
                     ROOT / "src/jmt/innovation_4_performance/colocated_tp.py"]
+    if frozen.get("CPU_interference_model") is not None:
+        sources += [ROOT / "src/jmt/innovation_4_performance/cpu_interference.py",
+                    ROOT / "src/jmt/innovation_4_performance/phase_bridge.py",
+                    ROOT / "tools/CPU_interference_run.py"]
     for source in sources:
         target = args.out / "source_snapshot" / source.relative_to(ROOT)
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -100,7 +104,12 @@ def main():
         scratch.chmod(0o755)
         (scratch / "worker.py").write_bytes((ROOT / "tools/current_ap_worker.py").read_bytes())
         (scratch / "worker.py").chmod(0o644)
-        run = DiagnosticRun(args, client, sb, scratch, sql)
+        if frozen.get("CPU_interference_model") is not None:
+            from CPU_interference_run import CPUInterferenceRun
+            run = CPUInterferenceRun(args, client, sb, scratch, sql)
+            run.frozen = frozen
+        else:
+            run = DiagnosticRun(args, client, sb, scratch, sql)
         previous_signal = signal.signal(signal.SIGTERM, interrupt_for_cleanup)
         try:
             run.base = run.driver("/usr/share/sysbench/oltp_read_only.lua", 128, "base")
@@ -147,6 +156,7 @@ def main():
                         "prediction_compute_milliseconds": (time.perf_counter_ns() - started) / 1e6,
                         "frozen_before_AP_monotonic_ns": time.monotonic_ns()})
                     dump(case / "PRE_AP_PREDICTION.json", prediction)
+                    run.cpu_context = prediction
                     try:
                         for q in QUERIES:
                             run.ap[q] = AP(run, q, config["AP_work_mem_mib"][str(q)])

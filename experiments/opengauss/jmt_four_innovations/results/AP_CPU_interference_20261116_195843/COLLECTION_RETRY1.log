@@ -1,0 +1,12 @@
+{"stage": "TP_ONLY", "repeat": 1, "actual_TPS": 9179.25, "AP_CPU_seconds": {}}
+{"stage": "CAL", "repeat": 1, "actual_TPS": 9000.7, "AP_CPU_seconds": {"101": 5.891919589}}
+Traceback (most recent call last):
+  File "tools/collect_AP_CPU_interference.py", line 185, in <module>
+    main()
+  File "tools/collect_AP_CPU_interference.py", line 142, in main
+    measured = point_from_window(dict(raw, CPU_bracket={
+  File "tools/collect_AP_CPU_interference.py", line 143, in <dictcomp>
+    name: dict(snap, backend_cpu_ns={
+  File "tools/collect_AP_CPU_interference.py", line 144, in <dictcomp>
+    str(t): snap["backend_cpu_ns"][str(t)] for t in raw["backend_linux_tids"]})
+TypeError: string indices must be integers
