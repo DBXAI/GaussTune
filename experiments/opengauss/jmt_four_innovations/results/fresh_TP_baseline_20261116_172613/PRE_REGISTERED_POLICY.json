@@ -1,0 +1,30 @@
+{
+  "created_at": "2026-11-16T17:26:13.639777+08:00",
+  "boot_id": "1b4df6d9-0179-466e-8de4-0654aa002917",
+  "baseline_mode": "fresh_exact_SB_TP_only_points; first_repeat_train_second_repeat_holdout",
+  "points_mib": [
+    2048,
+    4096,
+    6144,
+    8192
+  ],
+  "training_repeat": 1,
+  "heldout_repeat": 2,
+  "AP_queries_during_TP_calibration": [],
+  "reuse_previous_mixed_TPS_for_fit": false,
+  "validation_plan": "freeze_new_TP_points_and_predict_then_new_4x2_mixed_matrix_2_repeats",
+  "comparison_lanes": [
+    "legacy_unchanged",
+    "fresh_backend_only_rebase",
+    "fresh_colocated_driver_rebase"
+  ],
+  "AP_costs_IO_proxies_and_old_relative_capacity_penalty_not_refit": true,
+  "no_query_ID_coefficients_or_new_tuned_global_scaling": true,
+  "source_sha256": {
+    "tools/collect_current_tp_matrix.py": "487d5260209306e5ba8e03573a79d981c41ef067e0d5bf1234f2b35b415cf38c",
+    "src/jmt/common/process_cpu.py": "8e2cde46fac26e7ab6f0c4f4c4bede5850f1b991f47b39f4a975f40a477a7365",
+    "src/jmt/innovation_4_performance/tp_window_observer.py": "3f8310295a2f3d471e83b79a8f1b83ff7469bd605734ec9f282ae672d99ba33c",
+    "src/jmt/innovation_4_performance/colocated_tp.py": "d860489a9785c0f090d2bfa972d1c6e08837ac2dc926ca773f91c5d88eba17d2"
+  },
+  "automatic_recommendation_qualified": false
+}

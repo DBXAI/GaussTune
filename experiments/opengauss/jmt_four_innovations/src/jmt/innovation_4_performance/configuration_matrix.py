@@ -58,7 +58,7 @@ def predict_configuration(frozen, config, incoming_AP_pages, incoming_AP_other_p
         primary, rejection = solve(loss), None
     except ValueError as error:
         primary, rejection = None, str(error)
-    return {
+    result = {
         "configuration": config, "capacity_scenario": cap,
         "historical_TP_static_with_AP_capacity_proxy": primary,
         "primary_unavailable_reason": rejection,
@@ -67,6 +67,11 @@ def predict_configuration(frozen, config, incoming_AP_pages, incoming_AP_other_p
         "target_mixed_TPS_or_current_TP_only_control_used_for_fit": False,
         "automatic_recommendation_qualified": False,
     }
+    if frozen.get("fresh_TP_points") is not None:
+        from .tp_baseline_rebase import predict_rebased_lanes
+        result.update(predict_rebased_lanes(
+            frozen, config, primary, result["TP_only_cache_hint_diagnostic"]))
+    return result
 
 
 def paired_effect(predicted_a, predicted_b, actual_a, actual_b, *, repeat_differences):

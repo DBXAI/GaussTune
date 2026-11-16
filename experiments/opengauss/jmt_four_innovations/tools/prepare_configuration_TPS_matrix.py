@@ -64,6 +64,7 @@ def main():
     p.add_argument("--calibration-inputs", type=Path, required=True)
     p.add_argument("--sql-dir", type=Path, required=True)
     p.add_argument("--out", type=Path, required=True)
+    p.add_argument("--fresh-tp-points", type=Path)
     args = p.parse_args()
     args.out.mkdir(parents=True, exist_ok=False)
     (args.out / "queries").mkdir()
@@ -120,6 +121,19 @@ def main():
         "actual_grants_or_full_lifecycle_memory_safety_qualified": False,
         "same_AP_age_fresh_episodes_not_PPT_continuous_five_stages": True,
         "automatic_recommendation_qualified": False}
+    if args.fresh_tp_points is not None:
+        points = json.loads(args.fresh_tp_points.read_text())
+        if (points["schema"] != "jmt.exact-SB-colocated-TP-points/v1"
+                or points["machine_fingerprint"] != frozen["machine_fingerprint"]
+                or points["boot_id"] != frozen["boot_id"]
+                or points["postmaster_start_time"] != frozen["postmaster_start_time"]
+                or points["frozen_after_TP_collection_monotonic_ns"]
+                >= frozen["frozen_before_experiment_monotonic_ns"]):
+            raise ValueError("fresh TP calibration identity/chronology mismatch")
+        frozen["fresh_TP_points"] = points
+        frozen["fresh_TP_points_sha256"] = sha(args.fresh_tp_points)
+        frozen["fresh_TP_rebase_only_no_AP_refit"] = True
+        (args.out / "FRESH_TP_POINTS.json").write_bytes(args.fresh_tp_points.read_bytes())
     initial = incoming_cache(client)
     frozen["initial_state_predictions"] = [
         predict_configuration(frozen, config, initial["incoming_AP_pages"],

@@ -66,6 +66,9 @@ def main():
         "config_evaluation.py", "tp_window_observer.py")]
     sources += [ROOT / "src/jmt/innovation_3_search/cardinality_cache_capacity.py",
                 ROOT / "src/jmt/common/process_cpu.py"]
+    if frozen.get("fresh_TP_points") is not None:
+        sources += [ROOT / "src/jmt/innovation_4_performance/tp_baseline_rebase.py",
+                    ROOT / "src/jmt/innovation_4_performance/colocated_tp.py"]
     for source in sources:
         target = args.out / "source_snapshot" / source.relative_to(ROOT)
         target.parent.mkdir(parents=True, exist_ok=True)

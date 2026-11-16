@@ -1,4 +1,13 @@
-> **SB×WM 真实配置对照（2026-11-16）：** 见 `CONFIGURATION_TPS_MATRIX_CURRENT.md` /
+> **独立TP重采后的效果（2026-11-16 18点）：** 见 `FRESH_TP_BASELINE_CURRENT.md` /
+> `CURRENT_FRESH_TP_BASELINE_EFFECT.json`、`CURRENT_TP_BASELINE.json`。
+> 新采2/4/6/8GiB TP128精确点，第1轮训练、第2轮留出，TP-only留出MAPE为0.43%。
+> 冻结后新跑16个AP混合窗口和8个TP-only对照；在同一批新目标上，
+> 旧预测均值MAPE 10.91%，仅重采TP为8.78%，另计同机驱动CPU为7.20%。
+> 基线偏差大幅缩小，但AP干扰仍低估、配置排序未改善，**不升级自动推荐**。
+> 计算最高14.21ms，860项回归通过，配置/SB精确恢复；
+> 不用上一轮混合TPS训练，也不冒称支持未测SB或S5真实128+16。
+>
+> **SB×WM 真实配置对照（2026-11-16，此前历史TP基线验证）：** 见 `CONFIGURATION_TPS_MATRIX_CURRENT.md` /
 > `CURRENT_CONFIGURATION_TPS_MATRIX.json`。TP128 + 原始 SF85 Q9/Q13/Q18/Q21，
 > 2/4/6/8GiB × 两档WM，16次独立AP重启窗口、8个TP-only对照已实测并离线复核。
 > 共同初始状态事前预测对8组均值的MAPE为16.76%，逐组预AP状态条件预测为16.17%；

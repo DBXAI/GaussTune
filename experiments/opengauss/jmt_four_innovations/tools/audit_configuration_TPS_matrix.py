@@ -22,6 +22,11 @@ PRIMARY = "historical_TP_static_with_AP_capacity_proxy"
 HINT = "TP_only_cache_hint_diagnostic"
 INITIAL = "historical_TP_static_common_initial_cache"
 LANES = (INITIAL, PRIMARY, HINT)
+FRESH_BACKEND = "fresh_TP_backend_only_rebase"
+FRESH_DRIVER = "fresh_TP_colocated_driver_rebase"
+INITIAL_BACKEND = "fresh_TP_common_initial_cache_backend_only"
+INITIAL_DRIVER = "fresh_TP_common_initial_cache_with_driver"
+FRESH_LANES = (INITIAL_BACKEND, INITIAL_DRIVER, FRESH_BACKEND, FRESH_DRIVER)
 
 
 def read(path):
@@ -99,6 +104,7 @@ def rank_summary(rows, lane):
 def audit(run):
     frozen_path = run / "frozen/FROZEN_MATRIX.json"
     frozen = read(frozen_path)
+    lanes_to_check = LANES + FRESH_LANES if frozen.get("fresh_TP_points") is not None else LANES
     live = run / "live"
     result, policy = read(live / "MATRIX_RESULT.json"), read(live / "POLICY.json")
     if not result["complete"] or not result["restoration_verified"]:
@@ -119,6 +125,14 @@ def audit(run):
         raise ValueError("frozen and measured boot identity mismatch")
     inputs = [frozen_path, live / "MATRIX_RESULT.json", live / "POLICY.json",
               live / "SB_RESTORE.json", live / "DRIVER_VALIDATION.json"]
+    if frozen.get("fresh_TP_points") is not None:
+        path = run / "frozen/FRESH_TP_POINTS.json"
+        if sha(path) != frozen["fresh_TP_points_sha256"] or read(path) != frozen["fresh_TP_points"]:
+            raise ValueError("fresh TP calibration file binding mismatch")
+        if frozen["fresh_TP_points"]["frozen_after_TP_collection_monotonic_ns"] >= frozen[
+                "frozen_before_experiment_monotonic_ns"]:
+            raise ValueError("TP calibration was not frozen before mixed experiment")
+        inputs.append(path)
     for relative, expected in policy["source_sha256"].items():
         path = live / "source_snapshot" / relative
         if sha(path) != expected:
@@ -207,12 +221,19 @@ def audit(run):
             if summary["configuration"] != config or summary["TPS"] != actual:
                 raise ValueError("episode summary differs from actual configuration/raw commits")
             lanes = {}
-            baseline = pred[HINT]["cache_to_TP"]["baseline_tps"]
             control = control_TPS[(config["shared_buffers_mib"], repeat)]
             forecasts = {INITIAL: initial_by_key[config["key"]][PRIMARY],
                          PRIMARY: pred[PRIMARY], HINT: pred[HINT]}
-            for lane in LANES:
+            if frozen.get("fresh_TP_points") is not None:
+                forecasts.update({
+                    INITIAL_BACKEND: initial_by_key[config["key"]][FRESH_BACKEND],
+                    INITIAL_DRIVER: initial_by_key[config["key"]][FRESH_DRIVER],
+                    FRESH_BACKEND: pred[FRESH_BACKEND], FRESH_DRIVER: pred[FRESH_DRIVER]})
+            for lane in lanes_to_check:
                 point = forecasts[lane]
+                baseline = (frozen["fresh_TP_points"]["points"][
+                    "TP128:" + str(config["shared_buffers_mib"])]["baseline_tps"]
+                    if lane in FRESH_LANES else pred[HINT]["cache_to_TP"]["baseline_tps"])
                 predicted = numeric(point)
                 ap_cores = (point["resource_fixed_point"][
                     "ap_cpu_seconds_per_second_after_media_closure"] if predicted else None)
@@ -250,7 +271,7 @@ def audit(run):
             all_episodes.append(episode)
         actual = statistics.mean(e["actual_TPS"] for e in episodes)
         lanes = {}
-        for lane in LANES:
+        for lane in lanes_to_check:
             complete = all(e["lanes"][lane]["predicted_TPS"] is not None for e in episodes)
             predicted = statistics.mean(e["lanes"][lane]["predicted_TPS"] for e in episodes) if complete else None
             lanes[lane] = {
@@ -270,7 +291,7 @@ def audit(run):
         actual_changes = [b["episodes"][i]["actual_TPS"] - a["episodes"][i]["actual_TPS"]
                           for i in (0, 1)]
         values = {}
-        for lane in LANES:
+        for lane in lanes_to_check:
             if a["lanes"][lane]["complete_predictions"] and b["lanes"][lane]["complete_predictions"]:
                 values[lane] = paired_effect(
                     a["lanes"][lane]["predicted_mean_TPS"], b["lanes"][lane]["predicted_mean_TPS"],
@@ -327,11 +348,11 @@ def audit(run):
             lane: mean_or_none(e["lanes"][lane]["absolute_relative_error"]
                                   for e in all_episodes
                                   if e["lanes"][lane]["absolute_relative_error"] is not None)
-            for lane in LANES},
+            for lane in lanes_to_check},
         "configuration_mean_MAPE": {
             lane: mean_or_none(r["lanes"][lane]["absolute_relative_error"] for r in rows
                                   if r["lanes"][lane]["complete_predictions"])
-            for lane in LANES},
+            for lane in lanes_to_check},
         "paired_change_summary": {
             lane: {
                 "contrasts_with_numeric_predictions": sum(c["lanes"][lane] is not None
@@ -350,11 +371,11 @@ def audit(run):
                     and c["lanes"][lane]["predicted_direction_matches_mean"] is True
                     for c in comparisons if c["lanes"][lane] is not None),
                 "not_a_statistical_accuracy_confidence_estimate": True}
-            for lane in LANES},
+            for lane in lanes_to_check},
         "numeric_episode_coverage": {
             lane: sum(e["lanes"][lane]["predicted_TPS"] is not None for e in all_episodes)
-            for lane in LANES},
-        "ranking": {lane: rank_summary(rows, lane) for lane in LANES},
+            for lane in lanes_to_check},
+        "ranking": {lane: rank_summary(rows, lane) for lane in lanes_to_check},
         "highest_observed_mean_in_tested_set": max(rows, key=lambda r: r["actual_mean_TPS"])[
             "configuration"]["key"],
         "all_initial_state_predictions": frozen["initial_state_predictions"],
