@@ -1,0 +1,190 @@
+{
+  "before": {
+    "started_ns": 29579786508528,
+    "finished_ns": 29583866858388,
+    "published_TP_counters": {
+      "started_ns": 29579786513722,
+      "finished_ns": 29579874435667,
+      "value": {
+        "datid": 28214,
+        "datname": "h5_tpcc",
+        "xact_commit": 244508110,
+        "xact_rollback": 4884,
+        "blks_read": 513574743,
+        "blks_hit": 95407778556,
+        "stats_reset": "2026-10-14 20:34:44.685435+08"
+      },
+      "qualification": "Asynchronously published native counters, not exact per-event kernel timestamps"
+    },
+    "native_memory": [
+      {
+        "memorytype": "max_process_memory",
+        "memorymbytes": 20480
+      },
+      {
+        "memorytype": "process_used_memory",
+        "memorymbytes": 6573
+      },
+      {
+        "memorytype": "max_dynamic_memory",
+        "memorymbytes": 8850
+      },
+      {
+        "memorytype": "dynamic_used_memory",
+        "memorymbytes": 2085
+      }
+    ],
+    "resident_pages_by_database": [
+      {
+        "reldatabase": 17648,
+        "resident_pages": 209233
+      },
+      {
+        "reldatabase": 27639,
+        "resident_pages": 76
+      },
+      {
+        "reldatabase": 0,
+        "resident_pages": 9
+      },
+      {
+        "reldatabase": 28214,
+        "resident_pages": 313854
+      },
+      {
+        "reldatabase": 14817,
+        "resident_pages": 1004
+      },
+      {
+        "reldatabase": 77810,
+        "resident_pages": 76
+      },
+      {
+        "reldatabase": 28478,
+        "resident_pages": 35
+      }
+    ],
+    "AP_members": [
+      {
+        "application_name": "jmt_mix_0de92129af_q9",
+        "pid": 140578419898112,
+        "state": "active",
+        "query_start": "2026-11-17 00:15:15.255835+08"
+      },
+      {
+        "application_name": "jmt_mix_0de92129af_q13",
+        "pid": 140577287173888,
+        "state": "active",
+        "query_start": "2026-11-17 00:15:15.428842+08"
+      },
+      {
+        "application_name": "jmt_mix_0de92129af_q18",
+        "pid": 140578403116800,
+        "state": "active",
+        "query_start": "2026-11-17 00:15:15.595465+08"
+      },
+      {
+        "application_name": "jmt_mix_0de92129af_q21",
+        "pid": 140578241509120,
+        "state": "active",
+        "query_start": "2026-11-17 00:15:15.693438+08"
+      }
+    ],
+    "not_exact_commit_window_or_owned_IO": true
+  },
+  "after": {
+    "started_ns": 29606560181702,
+    "finished_ns": 29610659216757,
+    "published_TP_counters": {
+      "started_ns": 29606560184144,
+      "finished_ns": 29606654881695,
+      "value": {
+        "datid": 28214,
+        "datname": "h5_tpcc",
+        "xact_commit": 244750217,
+        "xact_rollback": 4884,
+        "blks_read": 513582667,
+        "blks_hit": 95507595651,
+        "stats_reset": "2026-10-14 20:34:44.685435+08"
+      },
+      "qualification": "Asynchronously published native counters, not exact per-event kernel timestamps"
+    },
+    "native_memory": [
+      {
+        "memorytype": "max_process_memory",
+        "memorymbytes": 20480
+      },
+      {
+        "memorytype": "process_used_memory",
+        "memorymbytes": 6807
+      },
+      {
+        "memorytype": "max_dynamic_memory",
+        "memorymbytes": 8850
+      },
+      {
+        "memorytype": "dynamic_used_memory",
+        "memorymbytes": 2291
+      }
+    ],
+    "resident_pages_by_database": [
+      {
+        "reldatabase": 17648,
+        "resident_pages": 204881
+      },
+      {
+        "reldatabase": 27639,
+        "resident_pages": 76
+      },
+      {
+        "reldatabase": 0,
+        "resident_pages": 9
+      },
+      {
+        "reldatabase": 28214,
+        "resident_pages": 318207
+      },
+      {
+        "reldatabase": 14817,
+        "resident_pages": 1004
+      },
+      {
+        "reldatabase": 77810,
+        "resident_pages": 76
+      },
+      {
+        "reldatabase": 28478,
+        "resident_pages": 35
+      }
+    ],
+    "AP_members": [
+      {
+        "application_name": "jmt_mix_0de92129af_q9",
+        "pid": 140578419898112,
+        "state": "active",
+        "query_start": "2026-11-17 00:15:15.255835+08"
+      },
+      {
+        "application_name": "jmt_mix_0de92129af_q13",
+        "pid": 140577287173888,
+        "state": "active",
+        "query_start": "2026-11-17 00:15:15.428842+08"
+      },
+      {
+        "application_name": "jmt_mix_0de92129af_q18",
+        "pid": 140578403116800,
+        "state": "active",
+        "query_start": "2026-11-17 00:15:15.595465+08"
+      },
+      {
+        "application_name": "jmt_mix_0de92129af_q21",
+        "pid": 140578241509120,
+        "state": "active",
+        "query_start": "2026-11-17 00:15:15.693438+08"
+      }
+    ],
+    "not_exact_commit_window_or_owned_IO": true
+  },
+  "CPU_100ms_boundary_screen_passed": true,
+  "counter_publication_lag_not_corrected_by_empirical_multiplier": true
+}

@@ -1,0 +1,90 @@
+{
+  "fresh_TP_colocated_driver_rebase": {
+    "numeric_episode_coverage": 16,
+    "configuration_mean_MAPE": 0.026176693576158233,
+    "window_MAPE": 0.046749769560099234,
+    "AP_CPU_MAE_cores": 0.2669751728834964,
+    "TP_backend_CPU_MAPE": 0.025142883295865948,
+    "AP_degradation_MAE_TPS": 249.50871686335677,
+    "AP_queue_wait_fraction_MAE": null,
+    "paired_directions_matched": 4,
+    "paired_contrasts": 12,
+    "ranking": {
+      "configurations_with_complete_predictions": 8,
+      "concordant_pairs": 11,
+      "discordant_pairs": 17,
+      "tied_prediction_pairs": 0,
+      "Kendall_tau_b": -0.21428571428571427,
+      "both_episode_direction_consistent_pairs": 18,
+      "matched_direction_pairs_with_ties_counted_as_not_matched": 9,
+      "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+    }
+  },
+  "current_TP_CPU_queue_feedback": {
+    "numeric_episode_coverage": 16,
+    "configuration_mean_MAPE": 0.02943822352689257,
+    "window_MAPE": 0.04545090415873315,
+    "AP_CPU_MAE_cores": 0.2425007666807226,
+    "TP_backend_CPU_MAPE": 0.025142883295865948,
+    "AP_degradation_MAE_TPS": 273.486513339441,
+    "AP_queue_wait_fraction_MAE": 0.22325929985039233,
+    "paired_directions_matched": 5,
+    "paired_contrasts": 12,
+    "ranking": {
+      "configurations_with_complete_predictions": 8,
+      "concordant_pairs": 12,
+      "discordant_pairs": 16,
+      "tied_prediction_pairs": 0,
+      "Kendall_tau_b": -0.14285714285714285,
+      "both_episode_direction_consistent_pairs": 18,
+      "matched_direction_pairs_with_ties_counted_as_not_matched": 10,
+      "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+    }
+  },
+  "prior_TP_control_one_way": {
+    "numeric_episode_coverage": 16,
+    "configuration_mean_MAPE": 0.025389185660049954,
+    "window_MAPE": 0.030174924791627387,
+    "AP_CPU_MAE_cores": 0.2669067496259204,
+    "TP_backend_CPU_MAPE": 0.015207673891742053,
+    "AP_degradation_MAE_TPS": 249.36112551312738,
+    "AP_queue_wait_fraction_MAE": null,
+    "paired_directions_matched": 8,
+    "paired_contrasts": 12,
+    "ranking": {
+      "configurations_with_complete_predictions": 8,
+      "concordant_pairs": 23,
+      "discordant_pairs": 5,
+      "tied_prediction_pairs": 0,
+      "Kendall_tau_b": 0.6428571428571429,
+      "both_episode_direction_consistent_pairs": 18,
+      "matched_direction_pairs_with_ties_counted_as_not_matched": 15,
+      "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+    }
+  },
+  "prior_TP_control_CPU_queue_feedback": {
+    "numeric_episode_coverage": 16,
+    "configuration_mean_MAPE": 0.03028635413955394,
+    "window_MAPE": 0.032501311772307084,
+    "AP_CPU_MAE_cores": 0.2438019520419854,
+    "TP_backend_CPU_MAPE": 0.015207673891742053,
+    "AP_degradation_MAE_TPS": 268.39454443646446,
+    "AP_queue_wait_fraction_MAE": 0.23590527035738082,
+    "paired_directions_matched": 8,
+    "paired_contrasts": 12,
+    "ranking": {
+      "configurations_with_complete_predictions": 8,
+      "concordant_pairs": 23,
+      "discordant_pairs": 5,
+      "tied_prediction_pairs": 0,
+      "Kendall_tau_b": 0.6428571428571429,
+      "both_episode_direction_consistent_pairs": 18,
+      "matched_direction_pairs_with_ties_counted_as_not_matched": 15,
+      "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+    }
+  }
+}
+PASS: 8 independent TP windows, 8 prior TP controls, 16 AP windows, frozen forecasts.
+PASS: control -> prediction -> AP -> scored window chronology; CPU/runqueue inputs replay.
+No database access; no target fitting. Short-window ranking is NOT a validated five-stage optimum.
+Temporary replay outputs: /tmp/jmt-CPU-queue-feedback-replay.hBu8VM

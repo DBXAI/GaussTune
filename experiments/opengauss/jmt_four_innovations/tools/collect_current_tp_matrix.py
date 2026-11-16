@@ -197,11 +197,18 @@ SELECT json_build_object('datid',datid,'datname',datname,
             "qualification": "Asynchronously published native counters, not exact per-event kernel timestamps"}
 
 
-def cpu_snapshot(pid, tids, driver_pid):
+def cpu_snapshot(pid, tids, driver_pid, *, collect_runnable=False, ap_tids=()):
     started = time.monotonic_ns()
     rows = {}
+    queues, slices, tasks = {}, {}, {}
     for tid in tids:
-        rows[str(tid)] = int(Path("/proc/%d/task/%d/schedstat" % (pid, tid)).read_text().split()[0])
+        values = Path("/proc/%d/task/%d/schedstat" % (pid, tid)).read_text().split()
+        rows[str(tid)] = int(values[0])
+        if collect_runnable:
+            queues[str(tid)], slices[str(tid)] = int(values[1]), int(values[2])
+    if collect_runnable:
+        from diagnose_AP_runnable import sample
+        tasks = {str(tid): sample(pid, tid) for tid in ap_tids}
     roots = [driver_pid] if isinstance(driver_pid, int) else list(driver_pid)
     driver = 0
     for root in roots:
@@ -211,10 +218,15 @@ def cpu_snapshot(pid, tids, driver_pid):
             except FileNotFoundError:
                 raise ValueError("driver wrapper disappeared during CPU snapshot")
     tree = snapshot_process_trees(roots)
-    return {"started_ns": started, "finished_ns": time.monotonic_ns(),
+    result = {"started_ns": started, "finished_ns": time.monotonic_ns(),
             "backend_cpu_ns": rows, "driver_thread_cpu_ns": driver,
             "driver_process_tree": tree,
             "legacy_driver_thread_cpu_ns_is_wrapper_only": True}
+    if collect_runnable:
+        result.update({"backend_runqueue_wait_ns": queues, "backend_timeslices": slices,
+                       "AP_task_diagnostics": tasks,
+                       "runnable_diagnostics_are_own_read_intervals_not_exact_kernel_events": True})
+    return result
 
 
 def summarize_cpu(before, after, tx):

@@ -1,0 +1,140 @@
+{
+  "before": {
+    "started_ns": 30858701692071,
+    "finished_ns": 30859436786284,
+    "published_TP_counters": {
+      "started_ns": 30858701697739,
+      "finished_ns": 30858746123403,
+      "value": {
+        "datid": 28214,
+        "datname": "h5_tpcc",
+        "xact_commit": 253424654,
+        "xact_rollback": 4984,
+        "blks_read": 516024240,
+        "blks_hit": 99043088876,
+        "stats_reset": "2026-10-14 20:34:44.685435+08"
+      },
+      "qualification": "Asynchronously published native counters, not exact per-event kernel timestamps"
+    },
+    "native_memory": [
+      {
+        "memorytype": "max_process_memory",
+        "memorymbytes": 20480
+      },
+      {
+        "memorytype": "process_used_memory",
+        "memorymbytes": 3921
+      },
+      {
+        "memorytype": "max_dynamic_memory",
+        "memorymbytes": 8850
+      },
+      {
+        "memorytype": "dynamic_used_memory",
+        "memorymbytes": 1480
+      }
+    ],
+    "resident_pages_by_database": [
+      {
+        "reldatabase": 17648,
+        "resident_pages": 36
+      },
+      {
+        "reldatabase": 27639,
+        "resident_pages": 1
+      },
+      {
+        "reldatabase": 0,
+        "resident_pages": 9
+      },
+      {
+        "reldatabase": 28214,
+        "resident_pages": 262062
+      },
+      {
+        "reldatabase": 14817,
+        "resident_pages": 32
+      },
+      {
+        "reldatabase": 77810,
+        "resident_pages": 3
+      },
+      {
+        "reldatabase": 28478,
+        "resident_pages": 1
+      }
+    ],
+    "AP_members": [],
+    "not_exact_commit_window_or_owned_IO": true
+  },
+  "after": {
+    "started_ns": 30881888104538,
+    "finished_ns": 30882540963653,
+    "published_TP_counters": {
+      "started_ns": 30881888106729,
+      "finished_ns": 30881933371042,
+      "value": {
+        "datid": 28214,
+        "datname": "h5_tpcc",
+        "xact_commit": 253636412,
+        "xact_rollback": 4984,
+        "blks_read": 516119001,
+        "blks_hit": 99130351196,
+        "stats_reset": "2026-10-14 20:34:44.685435+08"
+      },
+      "qualification": "Asynchronously published native counters, not exact per-event kernel timestamps"
+    },
+    "native_memory": [
+      {
+        "memorytype": "max_process_memory",
+        "memorymbytes": 20480
+      },
+      {
+        "memorytype": "process_used_memory",
+        "memorymbytes": 3921
+      },
+      {
+        "memorytype": "max_dynamic_memory",
+        "memorymbytes": 8850
+      },
+      {
+        "memorytype": "dynamic_used_memory",
+        "memorymbytes": 1480
+      }
+    ],
+    "resident_pages_by_database": [
+      {
+        "reldatabase": 17648,
+        "resident_pages": 18
+      },
+      {
+        "reldatabase": 27639,
+        "resident_pages": 23
+      },
+      {
+        "reldatabase": 0,
+        "resident_pages": 9
+      },
+      {
+        "reldatabase": 28214,
+        "resident_pages": 262008
+      },
+      {
+        "reldatabase": 14817,
+        "resident_pages": 41
+      },
+      {
+        "reldatabase": 77810,
+        "resident_pages": 21
+      },
+      {
+        "reldatabase": 28478,
+        "resident_pages": 24
+      }
+    ],
+    "AP_members": [],
+    "not_exact_commit_window_or_owned_IO": true
+  },
+  "CPU_100ms_boundary_screen_passed": true,
+  "counter_publication_lag_not_corrected_by_empirical_multiplier": true
+}

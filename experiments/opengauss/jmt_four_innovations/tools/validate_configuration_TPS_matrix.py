@@ -73,6 +73,15 @@ def main():
         sources += [ROOT / "src/jmt/innovation_4_performance/cpu_interference.py",
                     ROOT / "src/jmt/innovation_4_performance/phase_bridge.py",
                     ROOT / "tools/CPU_interference_run.py"]
+    if frozen.get("CPU_queue_feedback_policy") is not None:
+        sources += [ROOT / "src/jmt/innovation_4_performance/cpu_queue_feedback.py",
+                    ROOT / "src/jmt/innovation_4_performance/live_tp_reference.py",
+                    ROOT / "src/jmt/innovation_4_performance/cpu_surface.py",
+                    ROOT / "src/jmt/innovation_4_performance/capped_device.py",
+                    ROOT / "tools/CPU_queue_feedback_run.py", ROOT / "tools/diagnose_AP_runnable.py"]
+    if frozen.get("prior_CPU_service_policy") is not None:
+        sources += [ROOT / "src/jmt/innovation_4_performance/prior_cpu_service.py",
+                    ROOT / "tools/prior_CPU_service_run.py"]
     for source in sources:
         target = args.out / "source_snapshot" / source.relative_to(ROOT)
         target.parent.mkdir(parents=True, exist_ok=True)
@@ -90,7 +99,10 @@ def main():
         "metadata_queries_outside_scored_commit_CPU_device_window": True,
         "TP128_same_process_and_seed_throughout": True,
         "case_predictions_use_only_frozen_costs_and_pre_AP_cache_state": True,
-        "TP_only_controls_diagnostic_not_fit": True,
+        "TP_only_controls_diagnostic_not_fit": frozen.get("CPU_queue_feedback_policy") is None,
+        "prior_TP_controls_used_as_independent_inputs_not_future_mixed_labels":
+            frozen.get("CPU_queue_feedback_policy") is not None,
+        "prior_CPU_service_policy": frozen.get("prior_CPU_service_policy"),
         "cache_drop_or_clean_state_or_randomized_causal_effect_verified": False,
         "block_orders": frozen["execution_blocks"],
         "source_sha256": {str(s.relative_to(ROOT)): digest(s) for s in sources},
@@ -104,7 +116,19 @@ def main():
         scratch.chmod(0o755)
         (scratch / "worker.py").write_bytes((ROOT / "tools/current_ap_worker.py").read_bytes())
         (scratch / "worker.py").chmod(0o644)
-        if frozen.get("CPU_interference_model") is not None:
+        if frozen.get("prior_CPU_service_policy") is not None:
+            from prior_CPU_service_run import PriorCPUServiceRun
+            args.collect_runnable = True
+            run = PriorCPUServiceRun(args, client, sb, scratch, sql)
+            run.frozen = frozen
+        elif frozen.get("CPU_queue_feedback_policy") is not None:
+            if frozen.get("CPU_interference_model") is not None:
+                raise ValueError("separate CPU feedback and interference experiments")
+            from CPU_queue_feedback_run import CPUQueueFeedbackRun
+            args.collect_runnable = True
+            run = CPUQueueFeedbackRun(args, client, sb, scratch, sql)
+            run.frozen = frozen
+        elif frozen.get("CPU_interference_model") is not None:
             from CPU_interference_run import CPUInterferenceRun
             run = CPUInterferenceRun(args, client, sb, scratch, sql)
             run.frozen = frozen
@@ -126,6 +150,8 @@ def main():
                 control_path.mkdir()
                 run.out = control_path
                 value = run.window("TP_ONLY_SB%d" % target, repeat, [])
+                if hasattr(run, "freeze_TP_control"):
+                    run.freeze_TP_control("TP_ONLY_SB%d" % target, repeat)
                 controls.append({"repeat": repeat, "shared_buffers_mib": target, "TPS": value,
                                  "directory": str(control_path.relative_to(args.out))})
                 for profile in block["WM_profiles"]:
@@ -151,6 +177,8 @@ def main():
                     started = time.perf_counter_ns()
                     prediction = predict_configuration(
                         frozen, config, before["incoming_AP_pages"], before["incoming_AP_other_pages"])
+                    if hasattr(run, "augment_prediction"):
+                        run.augment_prediction(prediction)
                     prediction.update({
                         "repeat": repeat, "pre_AP_cache": before,
                         "prediction_compute_milliseconds": (time.perf_counter_ns() - started) / 1e6,

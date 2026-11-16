@@ -1,0 +1,86 @@
+{
+  "fresh_TP_colocated_driver_rebase": {
+    "numeric_episode_coverage": 16,
+    "configuration_mean_MAPE": 0.06512008277593892,
+    "window_MAPE": 0.06518355803673606,
+    "AP_CPU_MAE_cores": 0.39254464610971357,
+    "TP_backend_CPU_MAPE": 0.032601553913990354,
+    "AP_degradation_MAE_TPS": 529.9056583249046,
+    "AP_queue_wait_fraction_MAE": null,
+    "paired_directions_matched": 8,
+    "paired_contrasts": 12,
+    "ranking": {
+      "configurations_with_complete_predictions": 8,
+      "concordant_pairs": 20,
+      "discordant_pairs": 8,
+      "tied_prediction_pairs": 0,
+      "Kendall_tau_b": 0.42857142857142855,
+      "both_episode_direction_consistent_pairs": 15,
+      "matched_direction_pairs_with_ties_counted_as_not_matched": 12,
+      "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+    }
+  },
+  "current_TP_CPU_queue_feedback": {
+    "numeric_episode_coverage": 16,
+    "configuration_mean_MAPE": 0.07154424116016392,
+    "window_MAPE": 0.07160803023112228,
+    "AP_CPU_MAE_cores": 0.48541407326283925,
+    "TP_backend_CPU_MAPE": 0.032601553913990354,
+    "AP_degradation_MAE_TPS": 583.3723826586593,
+    "AP_queue_wait_fraction_MAE": 0.33624871488604957,
+    "paired_directions_matched": 9,
+    "paired_contrasts": 12,
+    "ranking": {
+      "configurations_with_complete_predictions": 8,
+      "concordant_pairs": 21,
+      "discordant_pairs": 7,
+      "tied_prediction_pairs": 0,
+      "Kendall_tau_b": 0.5,
+      "both_episode_direction_consistent_pairs": 15,
+      "matched_direction_pairs_with_ties_counted_as_not_matched": 13,
+      "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+    }
+  },
+  "prior_TP_control_one_way": {
+    "numeric_episode_coverage": 16,
+    "configuration_mean_MAPE": 0.06376590006454211,
+    "window_MAPE": 0.06383209411840379,
+    "AP_CPU_MAE_cores": 0.39254022092261165,
+    "TP_backend_CPU_MAPE": 0.030337123230687962,
+    "AP_degradation_MAE_TPS": 529.9360167274151,
+    "AP_queue_wait_fraction_MAE": null,
+    "paired_directions_matched": 6,
+    "paired_contrasts": 12,
+    "ranking": {
+      "configurations_with_complete_predictions": 8,
+      "concordant_pairs": 12,
+      "discordant_pairs": 16,
+      "tied_prediction_pairs": 0,
+      "Kendall_tau_b": -0.14285714285714285,
+      "both_episode_direction_consistent_pairs": 15,
+      "matched_direction_pairs_with_ties_counted_as_not_matched": 8,
+      "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+    }
+  },
+  "prior_TP_control_CPU_queue_feedback": {
+    "numeric_episode_coverage": 16,
+    "configuration_mean_MAPE": 0.07247430557682949,
+    "window_MAPE": 0.07252866527201007,
+    "AP_CPU_MAE_cores": 0.5183217111020177,
+    "TP_backend_CPU_MAPE": 0.030337123230687962,
+    "AP_degradation_MAE_TPS": 602.358056243532,
+    "AP_queue_wait_fraction_MAE": 0.3486054623763834,
+    "paired_directions_matched": 7,
+    "paired_contrasts": 12,
+    "ranking": {
+      "configurations_with_complete_predictions": 8,
+      "concordant_pairs": 13,
+      "discordant_pairs": 15,
+      "tied_prediction_pairs": 0,
+      "Kendall_tau_b": -0.07142857142857142,
+      "both_episode_direction_consistent_pairs": 15,
+      "matched_direction_pairs_with_ties_counted_as_not_matched": 9,
+      "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+    }
+  }
+}

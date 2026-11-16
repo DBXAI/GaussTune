@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "tools/audit_CPU_queue_feedback.py", line 333, in <module>
+    main()
+  File "tools/audit_CPU_queue_feedback.py", line 317, in main
+    result = audit(args.run)
+  File "tools/audit_CPU_queue_feedback.py", line 89, in audit
+    inputs = {**base["inputs_sha256"],
+TypeError: tuple indices must be integers or slices, not str

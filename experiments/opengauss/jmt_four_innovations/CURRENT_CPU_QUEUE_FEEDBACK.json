@@ -1,0 +1,27 @@
+{
+  "schema": "jmt.current-CPU-queue-feedback/v1",
+  "report": "CPU_QUEUE_FEEDBACK_CURRENT.md",
+  "design": "CPU_QUEUE_FEEDBACK_DESIGN.md",
+  "run": "results/CPU_queue_feedback_20261116_234956",
+  "audit": "results/CPU_queue_feedback_20261116_234956/CPU_QUEUE_FEEDBACK_AUDIT.json",
+  "comparison": "results/CPU_queue_feedback_20261116_234956/CPU_QUEUE_FEEDBACK_COMPARISON.csv",
+  "independent_TP_windows": 8,
+  "prior_TP_controls": 8,
+  "independently_started_AP_target_windows": 16,
+  "TP_only_heldout_MAPE": 0.003686509538856686,
+  "same_batch_window_MAPE": {
+    "independent_TP_one_way": 0.046749769560099234,
+    "independent_TP_CPU_feedback": 0.04545090415873315,
+    "prior_TP_control_one_way": 0.030174924791627387,
+    "prior_TP_control_CPU_feedback": 0.032501311772307084
+  },
+  "same_batch_configuration_mean_MAPE": {
+    "independent_TP_one_way": 0.026176693576158233,
+    "independent_TP_CPU_feedback": 0.02943822352689257,
+    "prior_TP_control_one_way": 0.025389185660049954,
+    "prior_TP_control_CPU_feedback": 0.03028635413955394
+  },
+  "CPU_feedback_promoted_to_default": false,
+  "full_AP_lifecycle_or_five_stage_optimum_verified": false,
+  "automatic_recommendation_qualified": false
+}

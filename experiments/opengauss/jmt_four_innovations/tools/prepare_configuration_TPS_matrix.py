@@ -66,6 +66,8 @@ def main():
     p.add_argument("--out", type=Path, required=True)
     p.add_argument("--fresh-tp-points", type=Path)
     p.add_argument("--cpu-interference-model", type=Path)
+    p.add_argument("--cpu-queue-feedback", action="store_true")
+    p.add_argument("--prior-cpu-service", action="store_true")
     args = p.parse_args()
     args.out.mkdir(parents=True, exist_ok=False)
     (args.out / "queries").mkdir()
@@ -152,11 +154,40 @@ def main():
         frozen["CPU_interference_model"] = model
         frozen["CPU_interference_model_sha256"] = sha(args.cpu_interference_model)
         (args.out / "CPU_INTERFERENCE_MODEL.json").write_bytes(args.cpu_interference_model.read_bytes())
+    if args.cpu_queue_feedback:
+        if "fresh_TP_points" not in frozen or args.cpu_interference_model is not None:
+            raise ValueError("CPU feedback requires independent current TP points, no alpha model")
+        from jmt.innovation_4_performance.cpu_queue_feedback import SCHEMA
+        frozen["CPU_queue_feedback_policy"] = {
+            "schema": SCHEMA, "frozen_TP_max_age_seconds": 3600,
+            "control_TP_max_age_seconds": 300,
+            "source_sha256": sha(ROOT/"src/jmt/innovation_4_performance/cpu_queue_feedback.py"),
+            "CPU_burst_ratio_shared_across_classes_is_unvalidated_hypothesis": True,
+            "no_mixed_target_TPS_CPU_or_runqueue_labels_used_to_fit": True,
+            "automatic_recommendation_qualified": False}
+    if args.prior_cpu_service:
+        if not args.cpu_queue_feedback:
+            raise ValueError("prior CPU service experiment retains CPU-feedback/control ablations")
+        from jmt.innovation_4_performance.prior_cpu_service import SCHEMA as PRIOR_SCHEMA
+        frozen["prior_CPU_service_policy"] = {
+            "schema": PRIOR_SCHEMA, "probe_seconds": 4,
+            "probe_max_age_at_prediction_seconds": 10,
+            "max_probe_end_to_target_start_seconds": 15,
+            "control_max_age_seconds": 300,
+            "naive_prior_TPS_persistence_comparator_required": True,
+            "cold_start_configuration_forecast": False,
+            "automatic_recommendation_qualified": False}
     initial = incoming_cache(client)
     frozen["initial_state_predictions"] = [
         predict_configuration(frozen, config, initial["incoming_AP_pages"],
                               initial["incoming_AP_other_pages"])
         for config in frozen["configurations"]]
+    if args.cpu_queue_feedback:
+        from jmt.innovation_4_performance.cpu_queue_feedback import configuration_lanes
+        frozen["initial_CPU_queue_feedback_predictions"] = {
+            pred["configuration"]["key"]: configuration_lanes(
+                frozen, pred, prediction_ns=frozen["frozen_before_experiment_monotonic_ns"])
+            for pred in frozen["initial_state_predictions"]}
     dump(args.out / "CATALOG.json", cat)
     dump(args.out / "NATIVE_POLICY.json", {"policy": policy, "settings": settings})
     dump(args.out / "NATIVE_MEMORY.json", memory)

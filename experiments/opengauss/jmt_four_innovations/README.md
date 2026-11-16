@@ -1,21 +1,16 @@
-> **独立TP重采后的效果（2026-11-16 18点）：** 见 `FRESH_TP_BASELINE_CURRENT.md` /
-
-> **最新AP CPU竞争层独立验证（2026-11-16 20点）：** 见 `AP_CPU_INTERFERENCE_CURRENT.md` /
-> `CURRENT_AP_CPU_INTERFERENCE.json`。新增三类独立微基准＋组合的6训练/6留出，
-> 一个全局参数使给定AP占核时的CPU服务留出误差1.34%→0.76%；但新16个原始AP目标窗口上，
-> 加膨胀的静态TPS均值MAPE由旧1.75%恶化为2.86%，**参数不升级默认**。
-> 前4秒观测、不加膨胀的CPU条件情景MAPE0.89%，但不是冷启动配置推荐；
-> 12个配置变化只匹配6个，降幅误差仍有抵消，不称排序成功。
-> 分步代入当前参考和全部CPU真值误差0.157%仅为oracle定位；发现TP参考漂移及AP的CPU排队反馈缺项。
-> 889项回归、源目录新重放及导出目录六项TPS重放通过，配置/SB8GiB恢复，未声称完整五阶段或全生命周期合格。
-
-> `CURRENT_FRESH_TP_BASELINE_EFFECT.json`、`CURRENT_TP_BASELINE.json`。
-> 新采2/4/6/8GiB TP128精确点，第1轮训练、第2轮留出，TP-only留出MAPE为0.43%。
-> 冻结后新跑16个AP混合窗口和8个TP-only对照；在同一批新目标上，
-> 旧预测均值MAPE 10.91%，仅重采TP为8.78%，另计同机驱动CPU为7.20%。
-> 基线偏差大幅缩小，但AP干扰仍低估、配置排序未改善，**不升级自动推荐**。
-> 计算最高14.21ms，860项回归通过，配置/SB精确恢复；
-> 不用上一轮混合TPS训练，也不冒称支持未测SB或S5真实128+16。
+> **最新完整验证（2026-11-17 凌晨）：** 见 `PRIOR_CPU_SERVICE_CURRENT.md` /
+> `CURRENT_PRIOR_CPU_SERVICE.json`，以及 `CPU_QUEUE_FEEDBACK_CURRENT.md`。
+> 两批共新增80个原始窗口。接通近邻纯TP参考、CPU→AP反馈、先行加载TP单位CPU，
+> 但CPU排队公式和4秒阶段持久性都未达到推荐验收要求，**不升级默认、不宣称已找准最优配置**。
+> 最新同场窗口MAPE：原近邻TP静态6.38%，先行AP＋纯TP成本2.70%，
+> 完整先行CPU成本3.77%，朴素沿用先行TPS3.40%；完整方案只在5/16窗口胜过朴素对照。
+> 计算最高0.375ms墙钟/0.372ms CPU，4秒观测等待另计；932项回归通过。
+> 全查询平均量/单短窗不足以预测未来算子阶段；真实完整五阶段、实际grant与全生命周期IO仍未验收。
+> 配置/SB8GiB恢复，离线复现脚本随两批证据提供。
+>
+> **此前验证保留：** 独立AP CPU alpha迁移失败见 `AP_CPU_INTERFERENCE_CURRENT.md`；
+> TP重采独立对照见 `FRESH_TP_BASELINE_CURRENT.md`；完整五阶段观测仍单列
+> `CURRENT_PHASE_BRIDGE.json`，不与本轮配置/先行探针混为一谈。
 >
 > **SB×WM 真实配置对照（2026-11-16，此前历史TP基线验证）：** 见 `CONFIGURATION_TPS_MATRIX_CURRENT.md` /
 > `CURRENT_CONFIGURATION_TPS_MATRIX.json`。TP128 + 原始 SF85 Q9/Q13/Q18/Q21，

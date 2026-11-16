@@ -1,0 +1,819 @@
+{
+  "configuration": {
+    "key": "SB2048_HIGH",
+    "shared_buffers_mib": 2048,
+    "WM_profile": "HIGH",
+    "AP_work_mem_mib": {
+      "9": 512,
+      "13": 128,
+      "18": 1024,
+      "21": 512
+    }
+  },
+  "capacity_scenario": {
+    "schema": "jmt.cardinality-AP-shared-capacity-scenarios/v1",
+    "available": true,
+    "database": "h5_tpch",
+    "TP_only_target_mib": 4096,
+    "sizing_resolution_mib": 256,
+    "cold_nominal": {
+      "additional_SB_mib": 371.5390625,
+      "shared_SB_capacity_mib": 4467.5390625,
+      "shared_SB_capacity_GiB": 4.362831115722656,
+      "next_validation_capacity_mib": 4608,
+      "exceeds_current_startup_capacity": false,
+      "rounded_point_is_validation_candidate_not_selected_optimum": true
+    },
+    "snapshot_retained_overlap_low": {
+      "additional_SB_mib": 439.296875,
+      "shared_SB_capacity_mib": 4535.296875,
+      "shared_SB_capacity_GiB": 4.4290008544921875,
+      "next_validation_capacity_mib": 4608,
+      "exceeds_current_startup_capacity": false,
+      "rounded_point_is_validation_candidate_not_selected_optimum": true
+    },
+    "snapshot_retained_overlap_high": {
+      "additional_SB_mib": 663.296875,
+      "shared_SB_capacity_mib": 4759.296875,
+      "shared_SB_capacity_GiB": 4.6477508544921875,
+      "next_validation_capacity_mib": 4864,
+      "exceeds_current_startup_capacity": false,
+      "rounded_point_is_validation_candidate_not_selected_optimum": true
+    },
+    "incoming_AP_resident_mib": 291.7578125,
+    "new_AP_increment_over_snapshot_high_mib": 371.5390625,
+    "cold_pages_by_relation": {
+      "h5_tpch:17667": 8192,
+      "h5_tpch:17664": 2048,
+      "h5_tpch:17670": 12288,
+      "h5_tpch:17661": 2048,
+      "h5_tpch:17655": 18884.0,
+      "h5_tpch:17652": 1.0,
+      "h5_tpch:17658": 4096
+    },
+    "conditional_retained_high_pages_by_relation": {
+      "h5_tpch:17670": 12292,
+      "h5_tpch:17664": 3818,
+      "h5_tpch:17667": 43722,
+      "h5_tpch:17661": 2048,
+      "h5_tpch:17655": 18884.0,
+      "h5_tpch:17652": 1.0,
+      "h5_tpch:17658": 4096
+    },
+    "assumptions": [
+      "TP-equivalent capacity loss approximated by AP retained resident pages",
+      "single AP execution epoch; independent stage snapshots, not summed restarts",
+      "ideal ring reuse; old AP pages retained without global TP/AP eviction",
+      "normal relation overlap unknown, bounded scenarios not statistical intervals",
+      "no access-rate/reuse-time/physical-IO or CPU slowdown closure"
+    ],
+    "is_mixed_saturation_hard_upper_bound": false,
+    "TP_equivalent_loss_calibrated": false,
+    "input_rows_density_is_not_join_output_width": true,
+    "TPS": null,
+    "predicted_mixed_hit_rate": null,
+    "new_SB_optimum_qualified": false,
+    "configuration_applied": false
+  },
+  "historical_TP_static_with_AP_capacity_proxy": {
+    "cache_to_TP": {
+      "baseline_tps": 7427.365925083718,
+      "TP_only_transaction_latency_ms": 17.233565882046836,
+      "TP_CPU_seconds_per_transaction": 0.001968625938058444,
+      "TP_physical_read_requests_per_transaction_proxy": 0.014888819499928959,
+      "cache_paths": {
+        "P_SB": 0.9921351923836618,
+        "P_OS": 0.00782869871188242,
+        "P_disk": 3.610890445583881e-05
+      },
+      "identified_latency_intercept_ms": 16.926404551351414,
+      "identified_OS_path_increment_ms": 0.30716133069542323,
+      "physical_IO_qualified": false,
+      "capacity_transfer_hypothesis": {
+        "physical_shared_SB_mib": 2048,
+        "AP_loss_proxy_mib": 663.296875,
+        "effective_TP_SB_mib": 1384.703125,
+        "TP_model_anchor_mib": 1384.703125,
+        "flat_tail_above_calibration_domain_assumed": false,
+        "interpolation_bracket_mib": [
+          1024,
+          1536
+        ],
+        "AP_residency_equals_TP_loss_independently_validated": false
+      },
+      "automatic_recommendation_qualified": false
+    },
+    "resource_fixed_point": {
+      "predicted_tps": 7266.015981659493,
+      "transaction_latency_ms": 17.61625633876321,
+      "cpu_queue_extra_ms": 0.3506569562333537,
+      "io_queue_extra_ms": 0.032033500483021816,
+      "ap_cpu_seconds_per_second_after_media_closure": 0.5975496052094229,
+      "ap_response_seconds_after_media_closure": [
+        2598.65945999744,
+        634.9690215621005,
+        4024.2899271308875,
+        5955.540484219398
+      ],
+      "media_additional_seconds_per_request": 0.0021515137908129428,
+      "media_utilization": 0.9999999999999032,
+      "cpu_utilization": 0.9313510708157181,
+      "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+      "TP_backend_CPU_seconds_per_transaction": 0.001968625938058444,
+      "TP_driver_CPU_seconds_per_transaction": null,
+      "TP_colocated_driver_CPU_accounted": false,
+      "TP_total_CPU_seconds_per_transaction": 0.001968625938058444,
+      "automatic_recommendation_qualified": false,
+      "fixed_point_relative_residual": 7.379987732036852e-10,
+      "iterations": 27
+    }
+  },
+  "primary_unavailable_reason": null,
+  "TP_only_cache_hint_diagnostic": {
+    "cache_to_TP": {
+      "baseline_tps": 7539.090748599618,
+      "TP_only_transaction_latency_ms": 16.97817472535079,
+      "TP_CPU_seconds_per_transaction": 0.0019402447403845911,
+      "TP_physical_read_requests_per_transaction_proxy": 0.014888819499928959,
+      "cache_paths": {
+        "P_SB": 0.9986444115452204,
+        "P_OS": 0.0013194795503237765,
+        "P_disk": 3.610890445583881e-05
+      },
+      "identified_latency_intercept_ms": 16.926404551351414,
+      "identified_OS_path_increment_ms": 0.05177017399937679,
+      "physical_IO_qualified": false,
+      "capacity_transfer_hypothesis": {
+        "physical_shared_SB_mib": 2048,
+        "AP_loss_proxy_mib": 0,
+        "effective_TP_SB_mib": 2048,
+        "TP_model_anchor_mib": 2048,
+        "flat_tail_above_calibration_domain_assumed": false,
+        "interpolation_bracket_mib": [
+          2048,
+          2048
+        ],
+        "AP_residency_equals_TP_loss_independently_validated": false
+      },
+      "automatic_recommendation_qualified": false
+    },
+    "resource_fixed_point": {
+      "predicted_tps": 7374.59654124718,
+      "transaction_latency_ms": 17.356881738173126,
+      "cpu_queue_extra_ms": 0.3466704784303003,
+      "io_queue_extra_ms": 0.03203653439203572,
+      "ap_cpu_seconds_per_second_after_media_closure": 0.5975078795144105,
+      "ap_response_seconds_after_media_closure": [
+        2598.8448316936,
+        635.0122090445356,
+        4024.578091786702,
+        5955.965597649569
+      ],
+      "media_additional_seconds_per_request": 0.002151717561771004,
+      "media_utilization": 0.9999999999996821,
+      "cpu_utilization": 0.931626876945478,
+      "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+      "TP_backend_CPU_seconds_per_transaction": 0.0019402447403845911,
+      "TP_driver_CPU_seconds_per_transaction": null,
+      "TP_colocated_driver_CPU_accounted": false,
+      "TP_total_CPU_seconds_per_transaction": 0.0019402447403845911,
+      "automatic_recommendation_qualified": false,
+      "fixed_point_relative_residual": 2.591240555460672e-10,
+      "iterations": 27
+    }
+  },
+  "unknown_not_zero_or_replaced_with_diagnostic": true,
+  "target_mixed_TPS_or_current_TP_only_control_used_for_fit": false,
+  "automatic_recommendation_qualified": false,
+  "fresh_TP_backend_only_rebase": {
+    "cache_to_TP": {
+      "baseline_tps": 9017.062450818898,
+      "TP_only_transaction_latency_ms": 14.195310357241176,
+      "TP_CPU_seconds_per_transaction": 0.0016266536986823512,
+      "TP_physical_read_requests_per_transaction_proxy": 0.014888819499928959,
+      "cache_paths": {
+        "P_SB": 0.9921351923836618,
+        "P_OS": 0.00782869871188242,
+        "P_disk": 3.610890445583881e-05
+      },
+      "capacity_transfer_hypothesis": {
+        "physical_shared_SB_mib": 2048,
+        "AP_loss_proxy_mib": 663.296875,
+        "effective_TP_SB_mib": 1384.703125,
+        "TP_model_anchor_mib": 1384.703125,
+        "flat_tail_above_calibration_domain_assumed": false,
+        "interpolation_bracket_mib": [
+          1024,
+          1536
+        ],
+        "AP_residency_equals_TP_loss_independently_validated": false
+      },
+      "fresh_exact_physical_SB_training_point": {
+        "topology": "TP128",
+        "terminals": 128,
+        "shared_buffers_mib": 2048,
+        "baseline_tps": 9152.7,
+        "backend_cpu_seconds_per_tx": 0.0016032026309722816,
+        "driver_cpu_seconds_per_tx": 0.000125539600866411,
+        "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+        "scored_seconds": 20.0,
+        "CPU_endpoints_within_100ms": true,
+        "native_cache_counters_not_used_to_rescale_commits": true,
+        "calibration_window_end_ns": 28178480026377,
+        "automatic_recommendation_qualified": false,
+        "role": "calibration"
+      },
+      "historical_relative_capacity_penalty": {
+        "TPS_multiplier": 0.9851805970717818,
+        "backend_CPU_multiplier": 1.0146276379897452,
+        "refit_or_independently_validated_with_new_TP_points": false
+      },
+      "TP_physical_IO_proxy_recalibrated": false,
+      "physical_IO_qualified": false,
+      "automatic_recommendation_qualified": false
+    },
+    "resource_fixed_point": {
+      "predicted_tps": 8813.998556096503,
+      "transaction_latency_ms": 14.522353066038965,
+      "cpu_queue_extra_ms": 0.29496591477475076,
+      "io_queue_extra_ms": 0.03207679402303805,
+      "ap_cpu_seconds_per_second_after_media_closure": 0.596954735784453,
+      "ap_response_seconds_after_media_closure": [
+        2601.30469322916,
+        635.5853020736248,
+        4028.402004322593,
+        5961.606805000982
+      ],
+      "media_additional_seconds_per_request": 0.002154421579440271,
+      "media_utilization": 0.9999999999997461,
+      "cpu_utilization": 0.9333923804524833,
+      "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+      "TP_backend_CPU_seconds_per_transaction": 0.0016266536986823512,
+      "TP_driver_CPU_seconds_per_transaction": null,
+      "TP_colocated_driver_CPU_accounted": false,
+      "TP_total_CPU_seconds_per_transaction": 0.0016266536986823512,
+      "automatic_recommendation_qualified": false,
+      "fixed_point_relative_residual": 8.16256973124041e-09,
+      "iterations": 26
+    }
+  },
+  "fresh_TP_colocated_driver_rebase": {
+    "cache_to_TP": {
+      "baseline_tps": 9017.062450818898,
+      "TP_only_transaction_latency_ms": 14.195310357241176,
+      "TP_CPU_seconds_per_transaction": 0.0016266536986823512,
+      "TP_physical_read_requests_per_transaction_proxy": 0.014888819499928959,
+      "cache_paths": {
+        "P_SB": 0.9921351923836618,
+        "P_OS": 0.00782869871188242,
+        "P_disk": 3.610890445583881e-05
+      },
+      "capacity_transfer_hypothesis": {
+        "physical_shared_SB_mib": 2048,
+        "AP_loss_proxy_mib": 663.296875,
+        "effective_TP_SB_mib": 1384.703125,
+        "TP_model_anchor_mib": 1384.703125,
+        "flat_tail_above_calibration_domain_assumed": false,
+        "interpolation_bracket_mib": [
+          1024,
+          1536
+        ],
+        "AP_residency_equals_TP_loss_independently_validated": false
+      },
+      "fresh_exact_physical_SB_training_point": {
+        "topology": "TP128",
+        "terminals": 128,
+        "shared_buffers_mib": 2048,
+        "baseline_tps": 9152.7,
+        "backend_cpu_seconds_per_tx": 0.0016032026309722816,
+        "driver_cpu_seconds_per_tx": 0.000125539600866411,
+        "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+        "scored_seconds": 20.0,
+        "CPU_endpoints_within_100ms": true,
+        "native_cache_counters_not_used_to_rescale_commits": true,
+        "calibration_window_end_ns": 28178480026377,
+        "automatic_recommendation_qualified": false,
+        "role": "calibration"
+      },
+      "historical_relative_capacity_penalty": {
+        "TPS_multiplier": 0.9851805970717818,
+        "backend_CPU_multiplier": 1.0146276379897452,
+        "refit_or_independently_validated_with_new_TP_points": false
+      },
+      "TP_physical_IO_proxy_recalibrated": false,
+      "physical_IO_qualified": false,
+      "automatic_recommendation_qualified": false
+    },
+    "resource_fixed_point": {
+      "predicted_tps": 8682.703689546208,
+      "transaction_latency_ms": 14.741951752507495,
+      "cpu_queue_extra_ms": 0.5145682766456048,
+      "io_queue_extra_ms": 0.03207311862071443,
+      "ap_cpu_seconds_per_second_after_media_closure": 0.5970051911479614,
+      "ap_response_seconds_after_media_closure": [
+        2601.080126322348,
+        635.5329829788312,
+        4028.0529097911767,
+        5961.09180508441
+      ],
+      "media_additional_seconds_per_request": 0.002154174722909863,
+      "media_utilization": 0.9999999999997271,
+      "cpu_utilization": 0.9881737761211338,
+      "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+      "TP_backend_CPU_seconds_per_transaction": 0.0016266536986823512,
+      "TP_driver_CPU_seconds_per_transaction": 0.000125539600866411,
+      "TP_colocated_driver_CPU_accounted": true,
+      "TP_total_CPU_seconds_per_transaction": 0.001752193299548762,
+      "automatic_recommendation_qualified": false,
+      "fixed_point_relative_residual": 8.807742091221371e-09,
+      "iterations": 31
+    }
+  },
+  "fresh_TP_rebase_unavailable_reasons": {
+    "fresh_TP_backend_only_rebase": null,
+    "fresh_TP_colocated_driver_rebase": null
+  },
+  "CPU_queue_feedback": {
+    "lanes": {
+      "current_TP_CPU_queue_feedback": {
+        "cache_to_TP": {
+          "baseline_tps": 9017.062450818898,
+          "TP_only_transaction_latency_ms": 14.195310357241176,
+          "TP_CPU_seconds_per_transaction": 0.0016266536986823512,
+          "TP_physical_read_requests_per_transaction_proxy": 0.014888819499928959,
+          "cache_paths": {
+            "P_SB": 0.9921351923836618,
+            "P_OS": 0.00782869871188242,
+            "P_disk": 3.610890445583881e-05
+          },
+          "capacity_transfer_hypothesis": {
+            "physical_shared_SB_mib": 2048,
+            "AP_loss_proxy_mib": 663.296875,
+            "effective_TP_SB_mib": 1384.703125,
+            "TP_model_anchor_mib": 1384.703125,
+            "flat_tail_above_calibration_domain_assumed": false,
+            "interpolation_bracket_mib": [
+              1024,
+              1536
+            ],
+            "AP_residency_equals_TP_loss_independently_validated": false
+          },
+          "fresh_exact_physical_SB_training_point": {
+            "topology": "TP128",
+            "terminals": 128,
+            "shared_buffers_mib": 2048,
+            "baseline_tps": 9152.7,
+            "backend_cpu_seconds_per_tx": 0.0016032026309722816,
+            "driver_cpu_seconds_per_tx": 0.000125539600866411,
+            "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+            "scored_seconds": 20.0,
+            "CPU_endpoints_within_100ms": true,
+            "native_cache_counters_not_used_to_rescale_commits": true,
+            "calibration_window_end_ns": 28178480026377,
+            "automatic_recommendation_qualified": false,
+            "role": "calibration"
+          },
+          "historical_relative_capacity_penalty": {
+            "TPS_multiplier": 0.9851805970717818,
+            "backend_CPU_multiplier": 1.0146276379897452,
+            "refit_or_independently_validated_with_new_TP_points": false
+          },
+          "TP_physical_IO_proxy_recalibrated": false,
+          "physical_IO_qualified": false,
+          "automatic_recommendation_qualified": false
+        },
+        "resource_fixed_point": {
+          "ap_cpu_seconds_per_second_after_CPU_and_media_closure": 0.5070274072406453,
+          "ap_response_seconds_after_CPU_and_media_closure": [
+            2561.7232885638414,
+            1137.4934359808105,
+            3917.3316305082735,
+            4200.6705158056175
+          ],
+          "ap_CPU_queue_seconds": [
+            1610.4296352438548,
+            886.3240090376895,
+            2453.910544280745,
+            2023.0386515449704
+          ],
+          "ap_queue_wait_fraction_hypothesis": [
+            0.6286508938858487,
+            0.7791904383812565,
+            0.6264239987162767,
+            0.4815989837653301
+          ],
+          "media_additional_seconds_per_request": 0.0003406369651836662,
+          "media_utilization": 0.999999999998965,
+          "cpu_utilization": 0.988098498877682,
+          "CPU_wait_to_service_ratio": 4.961988797490453,
+          "predicted_tps": 8733.367818982286,
+          "transaction_latency_ms": 14.656430635221898,
+          "cpu_queue_extra_ms": 0.45604859569109946,
+          "io_queue_extra_ms": 0.005071682289623191,
+          "CPU_equation_absolute_residual": 7.080114272639548e-12,
+          "baseline_CPU_utilization": 0.9874772754961008,
+          "baseline_CPU_queue_wait_ms": 8.238314927707693,
+          "schema": "jmt.finite-AP-CPU-queue-feedback/v1",
+          "fixed_point_relative_residual": 2.7281794601208276e-09,
+          "outer_iterations": 30,
+          "CPU_equation_evaluations": 1010,
+          "TP_backend_CPU_seconds_per_transaction": 0.0016266536986823512,
+          "TP_driver_CPU_seconds_per_transaction": 0.000125539600866411,
+          "CPU_burst_distribution_or_scheduler_model_qualified": false,
+          "physical_IO_lifecycle_or_full_query_runtime_qualified": false,
+          "automatic_recommendation_qualified": false
+        },
+        "TP_reference_age_seconds": 541.342991399,
+        "TP_reference_max_age_seconds": 3600,
+        "future_target_TPS_or_AP_CPU_used": false,
+        "cold_start_without_current_TP_calibration": false,
+        "automatic_recommendation_qualified": false
+      },
+      "prior_TP_control_CPU_queue_feedback": {
+        "cache_to_TP": {
+          "baseline_tps": 8930.809889545262,
+          "TP_only_transaction_latency_ms": 14.332406756283275,
+          "TP_CPU_seconds_per_transaction": 0.0016386527252090465,
+          "TP_physical_read_requests_per_transaction_proxy": 0.014888819499928959,
+          "cache_paths": {
+            "P_SB": 0.9921351923836618,
+            "P_OS": 0.00782869871188242,
+            "P_disk": 3.610890445583881e-05
+          },
+          "capacity_transfer_hypothesis": {
+            "physical_shared_SB_mib": 2048,
+            "AP_loss_proxy_mib": 663.296875,
+            "effective_TP_SB_mib": 1384.703125,
+            "TP_model_anchor_mib": 1384.703125,
+            "flat_tail_above_calibration_domain_assumed": false,
+            "interpolation_bracket_mib": [
+              1024,
+              1536
+            ],
+            "AP_residency_equals_TP_loss_independently_validated": false
+          },
+          "fresh_exact_physical_SB_training_point": {
+            "topology": "TP128",
+            "terminals": 128,
+            "shared_buffers_mib": 2048,
+            "baseline_tps": 9065.15,
+            "backend_cpu_seconds_per_tx": 0.001615028670474289,
+            "driver_cpu_seconds_per_tx": 0.00012627527317805,
+            "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+            "scored_seconds": 20.0,
+            "CPU_endpoints_within_100ms": true,
+            "native_cache_counters_not_used_to_rescale_commits": true,
+            "calibration_window_end_ns": 28667500096873,
+            "automatic_recommendation_qualified": false,
+            "role": "calibration",
+            "repeat": 1
+          },
+          "historical_relative_capacity_penalty": {
+            "TPS_multiplier": 0.9851805970717818,
+            "backend_CPU_multiplier": 1.0146276379897452,
+            "refit_or_independently_validated_with_new_TP_points": false
+          },
+          "TP_physical_IO_proxy_recalibrated": false,
+          "physical_IO_qualified": false,
+          "automatic_recommendation_qualified": false
+        },
+        "resource_fixed_point": {
+          "ap_cpu_seconds_per_second_after_CPU_and_media_closure": 0.5176725542155219,
+          "ap_response_seconds_after_CPU_and_media_closure": [
+            2536.5965498296996,
+            1051.1497496993993,
+            3886.072817726531,
+            4406.0549633089495
+          ],
+          "ap_CPU_queue_seconds": [
+            1356.828607842902,
+            746.7508948928707,
+            2067.4830832104603,
+            1704.4623727211172
+          ],
+          "ap_queue_wait_fraction_hypothesis": [
+            0.5349012273686157,
+            0.7104134259713438,
+            0.5320237628537284,
+            0.3868454630990497
+          ],
+          "media_additional_seconds_per_request": 0.0005917887087258758,
+          "media_utilization": 0.9999999999982496,
+          "cpu_utilization": 0.9860155599112379,
+          "CPU_wait_to_service_ratio": 4.180603861783497,
+          "predicted_tps": 8645.438464525727,
+          "transaction_latency_ms": 14.805495510237364,
+          "cpu_queue_extra_ms": 0.464277718687775,
+          "io_queue_extra_ms": 0.008811035266315598,
+          "CPU_equation_absolute_residual": 6.199485369506874e-13,
+          "baseline_CPU_utilization": 0.9851397763956753,
+          "baseline_CPU_queue_wait_ms": 6.914187087139138,
+          "schema": "jmt.finite-AP-CPU-queue-feedback/v1",
+          "fixed_point_relative_residual": 2.89507084971774e-09,
+          "outer_iterations": 31,
+          "CPU_equation_evaluations": 1059,
+          "TP_backend_CPU_seconds_per_transaction": 0.0016386527252090465,
+          "TP_driver_CPU_seconds_per_transaction": 0.00012627527317805,
+          "CPU_burst_distribution_or_scheduler_model_qualified": false,
+          "physical_IO_lifecycle_or_full_query_runtime_qualified": false,
+          "automatic_recommendation_qualified": false
+        },
+        "TP_reference_age_seconds": 52.322920903,
+        "TP_reference_max_age_seconds": 300,
+        "future_target_TPS_or_AP_CPU_used": false,
+        "cold_start_without_current_TP_calibration": false,
+        "automatic_recommendation_qualified": false
+      },
+      "prior_TP_control_one_way": {
+        "cache_to_TP": {
+          "baseline_tps": 8930.809889545262,
+          "TP_only_transaction_latency_ms": 14.332406756283275,
+          "TP_CPU_seconds_per_transaction": 0.0016386527252090465,
+          "TP_physical_read_requests_per_transaction_proxy": 0.014888819499928959,
+          "cache_paths": {
+            "P_SB": 0.9921351923836618,
+            "P_OS": 0.00782869871188242,
+            "P_disk": 3.610890445583881e-05
+          },
+          "capacity_transfer_hypothesis": {
+            "physical_shared_SB_mib": 2048,
+            "AP_loss_proxy_mib": 663.296875,
+            "effective_TP_SB_mib": 1384.703125,
+            "TP_model_anchor_mib": 1384.703125,
+            "flat_tail_above_calibration_domain_assumed": false,
+            "interpolation_bracket_mib": [
+              1024,
+              1536
+            ],
+            "AP_residency_equals_TP_loss_independently_validated": false
+          },
+          "fresh_exact_physical_SB_training_point": {
+            "topology": "TP128",
+            "terminals": 128,
+            "shared_buffers_mib": 2048,
+            "baseline_tps": 9065.15,
+            "backend_cpu_seconds_per_tx": 0.001615028670474289,
+            "driver_cpu_seconds_per_tx": 0.00012627527317805,
+            "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+            "scored_seconds": 20.0,
+            "CPU_endpoints_within_100ms": true,
+            "native_cache_counters_not_used_to_rescale_commits": true,
+            "calibration_window_end_ns": 28667500096873,
+            "automatic_recommendation_qualified": false,
+            "role": "calibration",
+            "repeat": 1
+          },
+          "historical_relative_capacity_penalty": {
+            "TPS_multiplier": 0.9851805970717818,
+            "backend_CPU_multiplier": 1.0146276379897452,
+            "refit_or_independently_validated_with_new_TP_points": false
+          },
+          "TP_physical_IO_proxy_recalibrated": false,
+          "physical_IO_qualified": false,
+          "automatic_recommendation_qualified": false
+        },
+        "resource_fixed_point": {
+          "predicted_tps": 8601.31351080949,
+          "transaction_latency_ms": 14.881448153738077,
+          "cpu_queue_extra_ms": 0.5169705569144645,
+          "io_queue_extra_ms": 0.0320708405403384,
+          "ap_cpu_seconds_per_second_after_media_closure": 0.5970364685729034,
+          "ap_response_seconds_after_media_closure": [
+            2600.940935719941,
+            635.5005546641472,
+            4027.836534730334,
+            5960.772598885933
+          ],
+          "media_additional_seconds_per_request": 0.0021540217167983957,
+          "media_utilization": 0.9999999999994198,
+          "cpu_utilization": 0.9861084691691117,
+          "device_model": "finite_AP_slots_measured_IOPS_and_bandwidth_caps",
+          "TP_backend_CPU_seconds_per_transaction": 0.0016386527252090465,
+          "TP_driver_CPU_seconds_per_transaction": 0.00012627527317805,
+          "TP_colocated_driver_CPU_accounted": true,
+          "TP_total_CPU_seconds_per_transaction": 0.0017649279983870964,
+          "automatic_recommendation_qualified": false,
+          "fixed_point_relative_residual": 8.321549005430029e-09,
+          "iterations": 30
+        },
+        "TP_reference_age_seconds": 52.322920903,
+        "TP_reference_max_age_seconds": 300,
+        "future_target_TPS_or_AP_CPU_used": false,
+        "cold_start_without_current_TP_calibration": false,
+        "automatic_recommendation_qualified": false
+      }
+    },
+    "unavailable_reasons": {
+      "current_TP_CPU_queue_feedback": null,
+      "prior_TP_control_CPU_queue_feedback": null,
+      "prior_TP_control_one_way": null
+    },
+    "prediction_monotonic_ns": 28719823017776,
+    "control_reference": {
+      "schema": "jmt.prior-AP-free-live-TP-reference/v1",
+      "point": {
+        "topology": "TP128",
+        "terminals": 128,
+        "shared_buffers_mib": 2048,
+        "baseline_tps": 9065.15,
+        "backend_cpu_seconds_per_tx": 0.001615028670474289,
+        "driver_cpu_seconds_per_tx": 0.00012627527317805,
+        "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+        "scored_seconds": 20.0,
+        "CPU_endpoints_within_100ms": true,
+        "native_cache_counters_not_used_to_rescale_commits": true,
+        "calibration_window_end_ns": 28667500096873,
+        "automatic_recommendation_qualified": false,
+        "role": "calibration",
+        "repeat": 1
+      },
+      "boot_id": "1b4df6d9-0179-466e-8de4-0654aa002917",
+      "postmaster_start_time": "2026-11-16 16:02:41.722327+08",
+      "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+      "source_relative_path": "TP_ONLY_SB2048_r01/TP_ONLY_SB2048_r01.WINDOW.json",
+      "source_sha256": "56abefe4b4c1b125e14f9ecff1ea23888a0bdc54259971b9c68f9f92cc29f006",
+      "frozen_monotonic_ns": 28668314643099,
+      "future_AP_targets_used": false,
+      "control_is_calibration_not_independent_TP_accuracy_label": true
+    },
+    "compute_milliseconds": 157.845198
+  },
+  "repeat": 1,
+  "pre_AP_cache": {
+    "rows": [
+      {
+        "relfilenode": 14428,
+        "relforknumber": 0,
+        "pages": 3,
+        "oid": 2661,
+        "relkind": "i",
+        "nspname": "pg_catalog"
+      },
+      {
+        "relfilenode": 14613,
+        "relforknumber": 0,
+        "pages": 1,
+        "oid": 3547,
+        "relkind": "i",
+        "nspname": "pg_catalog"
+      },
+      {
+        "relfilenode": 14366,
+        "relforknumber": 0,
+        "pages": 5,
+        "oid": 2689,
+        "relkind": "i",
+        "nspname": "pg_catalog"
+      },
+      {
+        "relfilenode": 14718,
+        "relforknumber": 0,
+        "pages": 1,
+        "oid": 9054,
+        "relkind": "i",
+        "nspname": "pg_catalog"
+      },
+      {
+        "relfilenode": 14361,
+        "relforknumber": 0,
+        "pages": 2,
+        "oid": 2678,
+        "relkind": "i",
+        "nspname": "pg_catalog"
+      },
+      {
+        "relfilenode": 14230,
+        "relforknumber": 0,
+        "pages": 3,
+        "oid": 2696,
+        "relkind": "i",
+        "nspname": "pg_catalog"
+      },
+      {
+        "relfilenode": 14505,
+        "relforknumber": 0,
+        "pages": 2,
+        "oid": 3081,
+        "relkind": "i",
+        "nspname": "pg_catalog"
+      },
+      {
+        "relfilenode": 14373,
+        "relforknumber": 0,
+        "pages": 3,
+        "oid": 2686,
+        "relkind": "i",
+        "nspname": "pg_catalog"
+      },
+      {
+        "relfilenode": 17670,
+        "relforknumber": 0,
+        "pages": 4,
+        "oid": 17670,
+        "relkind": "r",
+        "nspname": "public"
+      },
+      {
+        "relfilenode": 14441,
+        "relforknumber": 0,
+        "pages": 2,
+        "oid": 2684,
+        "relkind": "i",
+        "nspname": "pg_catalog"
+      },
+      {
+        "relfilenode": 14371,
+        "relforknumber": 0,
+        "pages": 4,
+        "oid": 2616,
+        "relkind": "r",
+        "nspname": "pg_catalog"
+      },
+      {
+        "relfilenode": 14327,
+        "relforknumber": 0,
+        "pages": 5,
+        "oid": null,
+        "relkind": null,
+        "nspname": null
+      },
+      {
+        "relfilenode": 14217,
+        "relforknumber": 0,
+        "pages": 4,
+        "oid": null,
+        "relkind": null,
+        "nspname": null
+      },
+      {
+        "relfilenode": 14683,
+        "relforknumber": 0,
+        "pages": 1,
+        "oid": 8653,
+        "relkind": "i",
+        "nspname": "pg_catalog"
+      },
+      {
+        "relfilenode": 17664,
+        "relforknumber": 0,
+        "pages": 1770,
+        "oid": 17664,
+        "relkind": "r",
+        "nspname": "public"
+      },
+      {
+        "relfilenode": 14322,
+        "relforknumber": 0,
+        "pages": 1,
+        "oid": null,
+        "relkind": null,
+        "nspname": null
+      },
+      {
+        "relfilenode": 14236,
+        "relforknumber": 0,
+        "pages": 1,
+        "oid": 3222,
+        "relkind": "i",
+        "nspname": "pg_catalog"
+      },
+      {
+        "relfilenode": 14323,
+        "relforknumber": 0,
+        "pages": 1,
+        "oid": null,
+        "relkind": null,
+        "nspname": null
+      },
+      {
+        "relfilenode": 17667,
+        "relforknumber": 0,
+        "pages": 35530,
+        "oid": 17667,
+        "relkind": "r",
+        "nspname": "public"
+      },
+      {
+        "relfilenode": 14359,
+        "relforknumber": 0,
+        "pages": 2,
+        "oid": 2610,
+        "relkind": "r",
+        "nspname": "pg_catalog"
+      }
+    ],
+    "incoming_AP_pages": {
+      "h5_tpch:17670": 4,
+      "h5_tpch:17664": 1770,
+      "h5_tpch:17667": 35530
+    },
+    "incoming_AP_other_pages": 41,
+    "started_ns": 28719254178206,
+    "finished_ns": 28719812038827,
+    "read_interval_not_an_atomic_cache_snapshot": true,
+    "exact_pages_preaggregated_before_catalog_join_not_sampled": true,
+    "not_cache_dropped_or_clean_initial_state": true
+  },
+  "prediction_compute_milliseconds": 168.810637,
+  "frozen_before_AP_monotonic_ns": 28719980866019
+}

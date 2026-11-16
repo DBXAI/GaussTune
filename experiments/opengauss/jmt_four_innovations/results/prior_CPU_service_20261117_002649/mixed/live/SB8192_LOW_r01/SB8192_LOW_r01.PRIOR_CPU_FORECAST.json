@@ -1,0 +1,97 @@
+{
+  "schema": "jmt.prior-window-CPU-service-persistence/v1",
+  "prediction_monotonic_ns": 31394084731916,
+  "lanes": {
+    "prior_probe_TPS_persistence": {
+      "predicted_tps": 7853.25,
+      "kind": "naive_prior_probe_TPS_persistence_comparator"
+    },
+    "prior_AP_CPU_reference_TP_service": {
+      "predicted_tps": 8350.260451040367,
+      "loaded_TP_CPU_seconds_per_tx": 0.0017380783341711442,
+      "kind": "CPU_conservation_conditional_forecast"
+    },
+    "prior_AP_CPU_loaded_TP_backend_service": {
+      "predicted_tps": 7794.540100052231,
+      "loaded_TP_CPU_seconds_per_tx": 0.001861996549936561,
+      "kind": "CPU_conservation_conditional_forecast"
+    },
+    "prior_AP_CPU_loaded_TP_backend_driver_service": {
+      "predicted_tps": 7759.870543612761,
+      "loaded_TP_CPU_seconds_per_tx": 0.001870315579759972,
+      "kind": "CPU_conservation_conditional_forecast"
+    }
+  },
+  "prior_AP_CPU_cores": 1.2877240730605681,
+  "prior_loaded_backend_CPU_seconds_per_tx": 0.001736160017413173,
+  "prior_loaded_driver_CPU_seconds_per_tx": 0.0001341555623467991,
+  "TP_reference_CPU_budget_cores": 15.801130847699998,
+  "TP_reference_baseline_TPS": 9091.15,
+  "TP_reference_age_seconds": 23.500666258,
+  "probe_age_seconds": 0.276647668,
+  "probe_end_ns": 31393808084248,
+  "AP_task_identities": {
+    "9": {
+      "status": "connected",
+      "backend_pid": 140578403116800,
+      "linux_tid": 181680
+    },
+    "13": {
+      "status": "connected",
+      "backend_pid": 140578419898112,
+      "linux_tid": 181683
+    },
+    "18": {
+      "status": "connected",
+      "backend_pid": 140578241509120,
+      "linux_tid": 181686
+    },
+    "21": {
+      "status": "connected",
+      "backend_pid": 140577287173888,
+      "linux_tid": 181689
+    }
+  },
+  "TP_reference_not_redefined_as_loaded_service": true,
+  "historical_cache_penalty_not_reapplied_to_measured_loaded_service": true,
+  "AP_phase_and_TP_service_persistence_unqualified": true,
+  "requires_current_configuration_AP_execution_before_forecast": true,
+  "cold_start_configuration_forecast": false,
+  "extra_TP_IO_latency_measured_or_known_zero": false,
+  "future_target_TPS_CPU_or_IO_used": false,
+  "physical_IO_or_full_five_stage_optimum_qualified": false,
+  "automatic_recommendation_qualified": false,
+  "probe_relative_path": "PRIOR_CPU_PROBE_SB8192_LOW_r01.WINDOW.json",
+  "probe_sha256": "9a93df0d17a2c21505f5a47cccbe34ba77adb0bfa3fbc25ce719238e075e9f80",
+  "control_reference": {
+    "schema": "jmt.prior-AP-free-live-TP-reference/v1",
+    "point": {
+      "topology": "TP128",
+      "terminals": 128,
+      "shared_buffers_mib": 8192,
+      "baseline_tps": 9091.15,
+      "backend_cpu_seconds_per_tx": 0.0016122418016477561,
+      "driver_cpu_seconds_per_tx": 0.00012583653252338814,
+      "CPU_scope": "database_TP_backends_plus_same_host_all_driver_threads",
+      "scored_seconds": 20.0,
+      "CPU_endpoints_within_100ms": true,
+      "native_cache_counters_not_used_to_rescale_commits": true,
+      "calibration_window_end_ns": 31370584065658,
+      "automatic_recommendation_qualified": false,
+      "role": "calibration",
+      "repeat": 1
+    },
+    "boot_id": "1b4df6d9-0179-466e-8de4-0654aa002917",
+    "postmaster_start_time": "2026-11-16 16:02:41.722327+08",
+    "machine_fingerprint": "fe27b9f3cb450966a650b15a2d7a625ebd271bb138e4bffe434ce1f21124c3e7",
+    "source_relative_path": "TP_ONLY_SB8192_r01/TP_ONLY_SB8192_r01.WINDOW.json",
+    "source_sha256": "9bbf08558679bd28df2b77123bf23241669ebcb9adbf4b354f3ba8a09ff04600",
+    "frozen_monotonic_ns": 31371509089243,
+    "future_AP_targets_used": false,
+    "control_is_calibration_not_independent_TP_accuracy_label": true
+  },
+  "forecast_saved_monotonic_ns": 31394085051435,
+  "prediction_compute_milliseconds": 0.325722,
+  "prediction_process_CPU_milliseconds": 0.324297,
+  "prior_observer_closed_before_target_observer_attached": true
+}

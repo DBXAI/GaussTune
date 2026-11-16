@@ -1,0 +1,129 @@
+{
+  "created_at": "2026-11-17T00:35:23.851600+08:00",
+  "boot_id": "1b4df6d9-0179-466e-8de4-0654aa002917",
+  "postmaster_start_time": "2026-11-16 16:02:41.722327+08",
+  "frozen_sha256": "f86e561343dd66e45849b776f063a1ae94c58018794c1886a4bf0b0b058f4b07",
+  "AP_cohort": [
+    9,
+    13,
+    18,
+    21
+  ],
+  "window_seconds": 20,
+  "independent_AP_episodes_per_configuration": 2,
+  "AP_settle_seconds": 15,
+  "TP_settle_after_SB_seconds": 20,
+  "TP_recovery_after_AP_seconds": 10,
+  "AP_starts_fresh_each_episode_WM_not_changed_in_running_query": true,
+  "metadata_statement_timeout_seconds": 60,
+  "TP_driver_max_seconds": 3600,
+  "metadata_queries_outside_scored_commit_CPU_device_window": true,
+  "TP128_same_process_and_seed_throughout": true,
+  "case_predictions_use_only_frozen_costs_and_pre_AP_cache_state": true,
+  "TP_only_controls_diagnostic_not_fit": false,
+  "prior_TP_controls_used_as_independent_inputs_not_future_mixed_labels": true,
+  "prior_CPU_service_policy": {
+    "schema": "jmt.prior-window-CPU-service-persistence/v1",
+    "probe_seconds": 4,
+    "probe_max_age_at_prediction_seconds": 10,
+    "max_probe_end_to_target_start_seconds": 15,
+    "control_max_age_seconds": 300,
+    "naive_prior_TPS_persistence_comparator_required": true,
+    "cold_start_configuration_forecast": false,
+    "automatic_recommendation_qualified": false
+  },
+  "cache_drop_or_clean_state_or_randomized_causal_effect_verified": false,
+  "block_orders": [
+    {
+      "repeat": 1,
+      "shared_buffers_mib": 2048,
+      "WM_profiles": [
+        "LOW",
+        "HIGH"
+      ]
+    },
+    {
+      "repeat": 1,
+      "shared_buffers_mib": 6144,
+      "WM_profiles": [
+        "LOW",
+        "HIGH"
+      ]
+    },
+    {
+      "repeat": 1,
+      "shared_buffers_mib": 4096,
+      "WM_profiles": [
+        "LOW",
+        "HIGH"
+      ]
+    },
+    {
+      "repeat": 1,
+      "shared_buffers_mib": 8192,
+      "WM_profiles": [
+        "LOW",
+        "HIGH"
+      ]
+    },
+    {
+      "repeat": 2,
+      "shared_buffers_mib": 8192,
+      "WM_profiles": [
+        "HIGH",
+        "LOW"
+      ]
+    },
+    {
+      "repeat": 2,
+      "shared_buffers_mib": 4096,
+      "WM_profiles": [
+        "HIGH",
+        "LOW"
+      ]
+    },
+    {
+      "repeat": 2,
+      "shared_buffers_mib": 6144,
+      "WM_profiles": [
+        "HIGH",
+        "LOW"
+      ]
+    },
+    {
+      "repeat": 2,
+      "shared_buffers_mib": 2048,
+      "WM_profiles": [
+        "HIGH",
+        "LOW"
+      ]
+    }
+  ],
+  "source_sha256": {
+    "tools/validate_configuration_TPS_matrix.py": "82f0a3682db73d79b3fb0c27b2cfb6dcde1a3ab83022e4507877fcafb70df3c0",
+    "tools/prepare_configuration_TPS_matrix.py": "93ffa8eae5b8223f49d90e8fa325f5df3b0cfeaf711eeb06bdb818530e4dda66",
+    "tools/validate_capacity_TPS_live.py": "2d38f524a93f88bcab12db73592f39d89bbb74d1b5fd2a0c86bfa852d3106c4a",
+    "tools/measure_current_mixed_five_stages.py": "c8dd1f8de6bb9fbb36b294c3869d0114f92f7eef9fa5e170b5f06648675bb56d",
+    "tools/collect_current_tp_matrix.py": "17a91e140342f3725711a9d416d603f8ed53e37b41592ca5f0ccc80011521fff",
+    "tools/current_ap_worker.py": "c9f0b24afc67ce2989277c4f750d2507125cfce70905dbd47788ebc1a9e717cd",
+    "src/jmt/innovation_4_performance/configuration_matrix.py": "cb53561aa29c5c6b7ec2663b07cb92643eb7030e74b5e2aa014b2abc2a2f3d18",
+    "src/jmt/innovation_4_performance/capacity_tps_validation.py": "27dc8b5b20f196216c207fb6cf70dd97fc797069046b5b69dd787b5fb9d4f079",
+    "src/jmt/innovation_4_performance/preview_cost.py": "7f8ca55997ca26b162d7f7354093bc0b59e2c380b045d0883e49c2526a50832a",
+    "src/jmt/innovation_4_performance/config_evaluation.py": "594b3b27c282c85b05e43a1545d4a5f1de764992cab9cb0d7b4d8ed976da2606",
+    "src/jmt/innovation_4_performance/tp_window_observer.py": "3f8310295a2f3d471e83b79a8f1b83ff7469bd605734ec9f282ae672d99ba33c",
+    "src/jmt/innovation_3_search/cardinality_cache_capacity.py": "9685936184164e0169102027b087c5c8677c365b6ecf101b92c64af39e182b40",
+    "src/jmt/common/process_cpu.py": "8e2cde46fac26e7ab6f0c4f4c4bede5850f1b991f47b39f4a975f40a477a7365",
+    "src/jmt/innovation_4_performance/tp_baseline_rebase.py": "af24a0788eec203f22f25ce324cd1bac1f1f62bb609078f5f993911dd77c8bb1",
+    "src/jmt/innovation_4_performance/colocated_tp.py": "d860489a9785c0f090d2bfa972d1c6e08837ac2dc926ca773f91c5d88eba17d2",
+    "src/jmt/innovation_4_performance/cpu_queue_feedback.py": "f27cbdc936c45c6df05b0d6db1ac44e81f6753157cc558c1df99304049ee80ea",
+    "src/jmt/innovation_4_performance/live_tp_reference.py": "e33cb90944340ec5931cc48bf890b63193e8dd567278cdef7dfdccd40b4f5665",
+    "src/jmt/innovation_4_performance/cpu_surface.py": "99a5cf640e7a47b5e0922828a013a20dd3d8232bcf4cb77c778b861c3f6eae3e",
+    "src/jmt/innovation_4_performance/capped_device.py": "5e54540922adba2fafe886b544ae3d4123cc640bc111fc11448229cabccb6a9d",
+    "tools/CPU_queue_feedback_run.py": "a2125e4dc30f4acfc267ec2ba2f4d375197bd15fe1d581a97dc852cfa8c010b7",
+    "tools/diagnose_AP_runnable.py": "1fd52c888308383b3d015a8d1b8de46914219137eeccddfe9838045d0a24b244",
+    "src/jmt/innovation_4_performance/prior_cpu_service.py": "946df7e39ee9670b3aa73d5a7aa911fc43b1a83a4f35f94b8e6149867a094335",
+    "tools/prior_CPU_service_run.py": "df4194dad0c0a952c96360757bef76536325f94d063a6bf7ae8c2e8b993319ea"
+  },
+  "full_AP_lifecycle_or_global_optimum_verified": false,
+  "automatic_recommendation_qualified": false
+}
