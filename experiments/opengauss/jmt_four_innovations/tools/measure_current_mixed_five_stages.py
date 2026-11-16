@@ -152,7 +152,8 @@ class Run:
         if gate:
             env["JMT_SURGE_MONOTONIC_NS"] = str(gate)
         proc = subprocess.Popen(
-            ["runuser", "-u", "omm", "--"] + driver_argv(script, terminals, 1800, 441112),
+            ["runuser", "-u", "omm", "--"] + driver_argv(
+                script, terminals, getattr(self.args, "driver_seconds", 1800), 441112),
             stdout=stream, stderr=subprocess.STDOUT, env=env, start_new_session=True)
         self.drivers.append(proc)
         self.logs.append((stream, path))

@@ -1,0 +1,103 @@
+{
+  "created_at": "2026-11-14T23:46:08.583484+08:00",
+  "frozen_sha256": "ae9241581de095de0cf760639f6354dcfc3ea823acc31091bd95fe99571647c0",
+  "AP_cohort": [
+    9,
+    13,
+    18,
+    21
+  ],
+  "window_seconds": 20,
+  "independent_AP_episodes_per_configuration": 2,
+  "AP_settle_seconds": 15,
+  "TP_settle_after_SB_seconds": 20,
+  "TP_recovery_after_AP_seconds": 10,
+  "AP_starts_fresh_each_episode_WM_not_changed_in_running_query": true,
+  "TP128_same_process_and_seed_throughout": true,
+  "case_predictions_use_only_frozen_costs_and_pre_AP_cache_state": true,
+  "TP_only_controls_diagnostic_not_fit": true,
+  "cache_drop_or_clean_state_or_randomized_causal_effect_verified": false,
+  "block_orders": [
+    {
+      "repeat": 1,
+      "shared_buffers_mib": 2048,
+      "WM_profiles": [
+        "LOW",
+        "HIGH"
+      ]
+    },
+    {
+      "repeat": 1,
+      "shared_buffers_mib": 6144,
+      "WM_profiles": [
+        "LOW",
+        "HIGH"
+      ]
+    },
+    {
+      "repeat": 1,
+      "shared_buffers_mib": 4096,
+      "WM_profiles": [
+        "LOW",
+        "HIGH"
+      ]
+    },
+    {
+      "repeat": 1,
+      "shared_buffers_mib": 8192,
+      "WM_profiles": [
+        "LOW",
+        "HIGH"
+      ]
+    },
+    {
+      "repeat": 2,
+      "shared_buffers_mib": 8192,
+      "WM_profiles": [
+        "HIGH",
+        "LOW"
+      ]
+    },
+    {
+      "repeat": 2,
+      "shared_buffers_mib": 4096,
+      "WM_profiles": [
+        "HIGH",
+        "LOW"
+      ]
+    },
+    {
+      "repeat": 2,
+      "shared_buffers_mib": 6144,
+      "WM_profiles": [
+        "HIGH",
+        "LOW"
+      ]
+    },
+    {
+      "repeat": 2,
+      "shared_buffers_mib": 2048,
+      "WM_profiles": [
+        "HIGH",
+        "LOW"
+      ]
+    }
+  ],
+  "source_sha256": {
+    "tools/validate_configuration_TPS_matrix.py": "90dd562a244fa5b91e73fce3e0991f3288486c3b89379b45683222c428a77e8d",
+    "tools/prepare_configuration_TPS_matrix.py": "48687055e99f979ff5ac63f8536779a2137c6589a8030f1d0dc8642b2cfddcbb",
+    "tools/validate_capacity_TPS_live.py": "2d38f524a93f88bcab12db73592f39d89bbb74d1b5fd2a0c86bfa852d3106c4a",
+    "tools/measure_current_mixed_five_stages.py": "5dd3044c39593365d80e7e31ee0e43fd07fa44e869ac697f864eabd8b2d275e9",
+    "tools/collect_current_tp_matrix.py": "caf8aa5f57f81a74b150cc30aac318516e6affedf88ffa4108822ba0a033269b",
+    "tools/current_ap_worker.py": "c9f0b24afc67ce2989277c4f750d2507125cfce70905dbd47788ebc1a9e717cd",
+    "src/jmt/innovation_4_performance/configuration_matrix.py": "ae5ed63f78fbe433d2e24030e2f7ff71b66b83abb1ad57a626c45c515e69bc92",
+    "src/jmt/innovation_4_performance/capacity_tps_validation.py": "27dc8b5b20f196216c207fb6cf70dd97fc797069046b5b69dd787b5fb9d4f079",
+    "src/jmt/innovation_4_performance/preview_cost.py": "7f8ca55997ca26b162d7f7354093bc0b59e2c380b045d0883e49c2526a50832a",
+    "src/jmt/innovation_4_performance/config_evaluation.py": "594b3b27c282c85b05e43a1545d4a5f1de764992cab9cb0d7b4d8ed976da2606",
+    "src/jmt/innovation_4_performance/tp_window_observer.py": "3f8310295a2f3d471e83b79a8f1b83ff7469bd605734ec9f282ae672d99ba33c",
+    "src/jmt/innovation_3_search/cardinality_cache_capacity.py": "9685936184164e0169102027b087c5c8677c365b6ecf101b92c64af39e182b40",
+    "src/jmt/common/process_cpu.py": "8e2cde46fac26e7ab6f0c4f4c4bede5850f1b991f47b39f4a975f40a477a7365"
+  },
+  "full_AP_lifecycle_or_global_optimum_verified": false,
+  "automatic_recommendation_qualified": false
+}

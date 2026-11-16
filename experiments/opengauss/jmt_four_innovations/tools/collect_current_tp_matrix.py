@@ -107,12 +107,14 @@ SELECT json_build_object('target_buffers',
             time.sleep(.2)
         raise TimeoutError("actual active-buffer commit did not reach %dMiB" % mib)
 
-    def wait_status_target(self, mib, seconds=5):
+    def wait_status_target(self, mib, seconds=30):
         """SIGHUP propagates asynchronously to session-local GUC views too.
 
         A fresh physical commit alone is insufficient; conversely, do not
         reject a correct physical commit just because one new-session view
         was initialized immediately before the reload. Wait for BOTH.
+        The bound includes delayed SIGHUP fanout, not just physical resize.
+        A timeout remains a hard rejection, never permission to score a case.
         """
         deadline=time.monotonic()+seconds
         observations=[]

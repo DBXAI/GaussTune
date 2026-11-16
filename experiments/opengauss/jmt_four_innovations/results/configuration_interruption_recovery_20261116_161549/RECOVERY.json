@@ -1,0 +1,41 @@
+{
+  "created_at": "2026-11-16T16:15:49.698160+08:00",
+  "interrupted_run": "results/configuration_TPS_matrix_retry_20261114_235827",
+  "interrupted_run_complete": false,
+  "old_cleanup_not_verified": true,
+  "current_boot_id": "1b4df6d9-0179-466e-8de4-0654aa002917",
+  "prior_boot_not_joined_to_new_monotonic_timeline": true,
+  "old_config_restored_byte_exact": true,
+  "old_config_sha256": "51a077df43b446dca597d8398c3a1e194513583b05bc71bc185c6ed092f501c9",
+  "recovery_resize": {
+    "target_mib": 8192,
+    "commit": {
+      "path": "/opt/openGauss/data/pg_log/postgresql-2026-11-16_160236.log",
+      "line": "2026-11-16 16:15:49.589 [unknown] [unknown] localhost 140584392034048 0[0:0#0]  0 [BACKEND] LOG:  shared buffer resize committed: active buffers 1048576, released 0 bytes",
+      "active_buffers": 1048576,
+      "released_bytes": 0
+    },
+    "elapsed_seconds": 0.12292189,
+    "configured_status": {
+      "target_buffers": 1048576,
+      "maximum_buffers": 1048576,
+      "postmaster_start_time": "2026-11-16 16:02:41.722327+08"
+    },
+    "GUC_propagation_observations": [
+      {
+        "monotonic_ns": 798796948877,
+        "status": {
+          "target_buffers": 1048576,
+          "maximum_buffers": 1048576,
+          "postmaster_start_time": "2026-11-16 16:02:41.722327+08"
+        }
+      }
+    ]
+  },
+  "new_server_status": {
+    "target_buffers": 1048576,
+    "maximum_buffers": 1048576,
+    "postmaster_start_time": "2026-11-16 16:02:41.722327+08"
+  },
+  "old_TPS_windows_not_merged_into_new_trial": true
+}

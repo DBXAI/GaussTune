@@ -1,0 +1,69 @@
+{
+  "schema": "jmt.current-SB-WM-TPS-configuration-validation/v1",
+  "created_at": "2026-11-16T17:06:18.298893+08:00",
+  "report": "CONFIGURATION_TPS_MATRIX_CURRENT.md",
+  "design": "CONFIGURATION_TPS_MATRIX_DESIGN.md",
+  "run_directory": "results/configuration_TPS_matrix_20261116_163514",
+  "result": "results/configuration_TPS_matrix_20261116_163514/live/MATRIX_RESULT.json",
+  "result_sha256": "13417bb1e36323619df582a33abc363cbf10f2e6e24edec94fa6e74237ebf79b",
+  "audit": "results/configuration_TPS_matrix_20261116_163514/CONFIGURATION_TPS_AUDIT.json",
+  "audit_sha256": "4b9283a629b563a728727cbf18e2f3f218c6e460b6fe5eccdbe074be2f55ee98",
+  "summary_csv": "results/configuration_TPS_matrix_20261116_163514/CONFIGURATION_TPS_SUMMARY.csv",
+  "summary_csv_sha256": "a04293057fa1d63c3fedba9b24a08c8c57be8260957b64d808845858df498f52",
+  "final_DB_state": "results/configuration_TPS_matrix_20261116_163514/FINAL_DB_STATE.json",
+  "final_DB_state_sha256": "0b54df1244848a204b3db6fda720c018c15ba10354a23712e6f2160af8f4113d",
+  "regression_tests": 846,
+  "regression_log": "results/configuration_TPS_matrix_20261116_163514/UNITTEST_FINAL.log",
+  "configurations": 8,
+  "independently_restarted_AP_episodes": 16,
+  "TP_only_controls_not_used_for_fit": 8,
+  "complete": true,
+  "restoration_verified": true,
+  "source_offline_exact_replay_passed": true,
+  "configuration_mean_MAPE": {
+    "historical_TP_static_common_initial_cache": 0.1675514458930646,
+    "historical_TP_static_with_AP_capacity_proxy": 0.1616524715949288,
+    "TP_only_cache_hint_diagnostic": 0.15914099003781101
+  },
+  "episode_MAPE": {
+    "historical_TP_static_common_initial_cache": 0.16643697941342192,
+    "historical_TP_static_with_AP_capacity_proxy": 0.1605458969557777,
+    "TP_only_cache_hint_diagnostic": 0.15800773545336472
+  },
+  "paired_change_summary": {
+    "historical_TP_static_common_initial_cache": {
+      "contrasts_with_numeric_predictions": 12,
+      "delta_MAE_TPS": 148.30176509548542,
+      "same_mean_direction_count": 6,
+      "stable_repeat_direction_contrasts": 3,
+      "stable_repeat_direction_and_predicted_direction_match_count": 2,
+      "not_a_statistical_accuracy_confidence_estimate": true
+    },
+    "historical_TP_static_with_AP_capacity_proxy": {
+      "contrasts_with_numeric_predictions": 12,
+      "delta_MAE_TPS": 181.28868226704517,
+      "same_mean_direction_count": 6,
+      "stable_repeat_direction_contrasts": 3,
+      "stable_repeat_direction_and_predicted_direction_match_count": 2,
+      "not_a_statistical_accuracy_confidence_estimate": true
+    },
+    "TP_only_cache_hint_diagnostic": {
+      "contrasts_with_numeric_predictions": 12,
+      "delta_MAE_TPS": 193.47605751496886,
+      "same_mean_direction_count": 6,
+      "stable_repeat_direction_contrasts": 3,
+      "stable_repeat_direction_and_predicted_direction_match_count": 2,
+      "not_a_statistical_accuracy_confidence_estimate": true
+    }
+  },
+  "highest_observed_mean_in_tested_set": "SB8192_HIGH",
+  "full_original_SQL_with_EXPLAIN_ANALYZE_wrapper": true,
+  "instrumentation_overhead_independently_qualified": false,
+  "strict_phase_or_age_matched_causal_experiment": false,
+  "full_AP_lifecycle_or_PPT_five_stage_validation": false,
+  "TPS_prediction_accurate_across_configurations": false,
+  "configuration_optimality_validated": false,
+  "candidate_promoted_to_default": false,
+  "automatic_recommendation_qualified": false,
+  "preserved_incomplete_prior_trials": "results/configuration_TPS_matrix_20261116_163514/PRIOR_INTERRUPTED_TRIALS.json"
+}

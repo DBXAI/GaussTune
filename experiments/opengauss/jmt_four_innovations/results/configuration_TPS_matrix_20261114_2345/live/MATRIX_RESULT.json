@@ -1,0 +1,53 @@
+{
+  "schema": "jmt.actual-SB-WM-TPS-matrix/v1",
+  "created_at": "2026-11-14T23:50:32.815543+08:00",
+  "frozen_sha256": "ae9241581de095de0cf760639f6354dcfc3ea823acc31091bd95fe99571647c0",
+  "episodes": [
+    {
+      "configuration": {
+        "key": "SB2048_LOW",
+        "shared_buffers_mib": 2048,
+        "WM_profile": "LOW",
+        "AP_work_mem_mib": {
+          "9": 256,
+          "13": 64,
+          "18": 512,
+          "21": 256
+        }
+      },
+      "repeat": 1,
+      "TPS": 7467.15,
+      "directory": "SB2048_LOW_r01"
+    },
+    {
+      "configuration": {
+        "key": "SB2048_HIGH",
+        "shared_buffers_mib": 2048,
+        "WM_profile": "HIGH",
+        "AP_work_mem_mib": {
+          "9": 512,
+          "13": 128,
+          "18": 1024,
+          "21": 512
+        }
+      },
+      "repeat": 1,
+      "TPS": 7460.6,
+      "directory": "SB2048_HIGH_r01"
+    }
+  ],
+  "TP_only_controls": [
+    {
+      "repeat": 1,
+      "shared_buffers_mib": 2048,
+      "TPS": 7833.95,
+      "directory": "TP_ONLY_SB2048_r01"
+    }
+  ],
+  "complete": false,
+  "error": "RuntimeError: fresh resize commit but GUC target did not converge: [{'monotonic_ns': 2690179753299519, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690179982052991, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690180206002803, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690180428611723, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690180649162543, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690180867563074, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690181088094681, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690181338332963, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690181562038238, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690181786849097, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690182007285380, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690182235078870, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690182465768285, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690182697090137, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690182925295274, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690183153892576, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690183382014011, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690183599628351, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690183828503787, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690184051633601, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690184263256811, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690184486085154, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}, {'monotonic_ns': 2690184712875733, 'status': {'target_buffers': 262144, 'maximum_buffers': 1048576, 'postmaster_start_time': '2026-10-20 10:52:53.974417+08'}}]",
+  "cleanup_errors": [],
+  "restoration_verified": true,
+  "global_optimum_or_full_AP_lifecycle_verified": false,
+  "automatic_recommendation_qualified": false
+}

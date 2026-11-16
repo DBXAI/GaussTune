@@ -1,0 +1,25 @@
+{
+  "target_mib": 2048,
+  "commit": {
+    "path": "/opt/openGauss/data/pg_log/postgresql-2026-11-14_000000.log",
+    "line": "2026-11-14 23:57:30.194 [unknown] [unknown] localhost 140161406961408 0[0:0#0]  0 [BACKEND] LOG:  shared buffer resize committed: active buffers 262144, released 268431360 bytes",
+    "active_buffers": 262144,
+    "released_bytes": 268431360
+  },
+  "elapsed_seconds": 23.175214371,
+  "configured_status": {
+    "target_buffers": 262144,
+    "maximum_buffers": 1048576,
+    "postmaster_start_time": "2026-10-20 10:52:53.974417+08"
+  },
+  "GUC_propagation_observations": [
+    {
+      "monotonic_ns": 2690603451018562,
+      "status": {
+        "target_buffers": 262144,
+        "maximum_buffers": 1048576,
+        "postmaster_start_time": "2026-10-20 10:52:53.974417+08"
+      }
+    }
+  ]
+}

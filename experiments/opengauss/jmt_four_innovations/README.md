@@ -1,3 +1,12 @@
+> **SB×WM 真实配置对照（2026-11-16）：** 见 `CONFIGURATION_TPS_MATRIX_CURRENT.md` /
+> `CURRENT_CONFIGURATION_TPS_MATRIX.json`。TP128 + 原始 SF85 Q9/Q13/Q18/Q21，
+> 2/4/6/8GiB × 两档WM，16次独立AP重启窗口、8个TP-only对照已实测并离线复核。
+> 共同初始状态事前预测对8组均值的MAPE为16.76%，逐组预AP状态条件预测为16.17%；
+> 历史TP基线偏低约19%，6/8GiB使用同一平尾、AP执行阶段差异未解决。
+> 8GiB+HIGH仅为被测均值最高，不是已验收最优；**不升级为准确自动推荐**。
+> 修复缓存元数据采集瓶颈，推理最高8.27ms，846项回归通过；
+> 三次未完成记录保留，最终配置/SB精确恢复，私有恢复配置不导出。
+>
 > **同机CPU/阶段桥接优化复测（2026-11-14 22点）：** 见 `PHASE_BRIDGE_CURRENT.md` /
 > `CURRENT_PHASE_BRIDGE.json`。先推送8a82027并标记`jmt-before-phase-bridge-20261114`，
 > 再新增独立TP校准、显式驱动CPU服务成本、窗口前AP观测和两轮真实五阶段。

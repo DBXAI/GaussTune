@@ -1,0 +1,319 @@
+{
+  "schema": "jmt.actual-SB-WM-TPS-matrix/v1",
+  "created_at": "2026-11-16T16:59:15.326861+08:00",
+  "frozen_sha256": "5bed0484b45c46fbd072a39b6a0bfa0e9654f46c38eb1e3e7b035fdd49a2f02c",
+  "episodes": [
+    {
+      "configuration": {
+        "key": "SB2048_LOW",
+        "shared_buffers_mib": 2048,
+        "WM_profile": "LOW",
+        "AP_work_mem_mib": {
+          "9": 256,
+          "13": 64,
+          "18": 512,
+          "21": 256
+        }
+      },
+      "repeat": 1,
+      "TPS": 8298.2,
+      "directory": "SB2048_LOW_r01"
+    },
+    {
+      "configuration": {
+        "key": "SB2048_HIGH",
+        "shared_buffers_mib": 2048,
+        "WM_profile": "HIGH",
+        "AP_work_mem_mib": {
+          "9": 512,
+          "13": 128,
+          "18": 1024,
+          "21": 512
+        }
+      },
+      "repeat": 1,
+      "TPS": 8145.5,
+      "directory": "SB2048_HIGH_r01"
+    },
+    {
+      "configuration": {
+        "key": "SB6144_LOW",
+        "shared_buffers_mib": 6144,
+        "WM_profile": "LOW",
+        "AP_work_mem_mib": {
+          "9": 256,
+          "13": 64,
+          "18": 512,
+          "21": 256
+        }
+      },
+      "repeat": 1,
+      "TPS": 8369.2,
+      "directory": "SB6144_LOW_r01"
+    },
+    {
+      "configuration": {
+        "key": "SB6144_HIGH",
+        "shared_buffers_mib": 6144,
+        "WM_profile": "HIGH",
+        "AP_work_mem_mib": {
+          "9": 512,
+          "13": 128,
+          "18": 1024,
+          "21": 512
+        }
+      },
+      "repeat": 1,
+      "TPS": 8209.1,
+      "directory": "SB6144_HIGH_r01"
+    },
+    {
+      "configuration": {
+        "key": "SB4096_LOW",
+        "shared_buffers_mib": 4096,
+        "WM_profile": "LOW",
+        "AP_work_mem_mib": {
+          "9": 256,
+          "13": 64,
+          "18": 512,
+          "21": 256
+        }
+      },
+      "repeat": 1,
+      "TPS": 8432.15,
+      "directory": "SB4096_LOW_r01"
+    },
+    {
+      "configuration": {
+        "key": "SB4096_HIGH",
+        "shared_buffers_mib": 4096,
+        "WM_profile": "HIGH",
+        "AP_work_mem_mib": {
+          "9": 512,
+          "13": 128,
+          "18": 1024,
+          "21": 512
+        }
+      },
+      "repeat": 1,
+      "TPS": 8654.55,
+      "directory": "SB4096_HIGH_r01"
+    },
+    {
+      "configuration": {
+        "key": "SB8192_LOW",
+        "shared_buffers_mib": 8192,
+        "WM_profile": "LOW",
+        "AP_work_mem_mib": {
+          "9": 256,
+          "13": 64,
+          "18": 512,
+          "21": 256
+        }
+      },
+      "repeat": 1,
+      "TPS": 9129.2,
+      "directory": "SB8192_LOW_r01"
+    },
+    {
+      "configuration": {
+        "key": "SB8192_HIGH",
+        "shared_buffers_mib": 8192,
+        "WM_profile": "HIGH",
+        "AP_work_mem_mib": {
+          "9": 512,
+          "13": 128,
+          "18": 1024,
+          "21": 512
+        }
+      },
+      "repeat": 1,
+      "TPS": 9147.85,
+      "directory": "SB8192_HIGH_r01"
+    },
+    {
+      "configuration": {
+        "key": "SB8192_HIGH",
+        "shared_buffers_mib": 8192,
+        "WM_profile": "HIGH",
+        "AP_work_mem_mib": {
+          "9": 512,
+          "13": 128,
+          "18": 1024,
+          "21": 512
+        }
+      },
+      "repeat": 2,
+      "TPS": 9020.2,
+      "directory": "SB8192_HIGH_r02"
+    },
+    {
+      "configuration": {
+        "key": "SB8192_LOW",
+        "shared_buffers_mib": 8192,
+        "WM_profile": "LOW",
+        "AP_work_mem_mib": {
+          "9": 256,
+          "13": 64,
+          "18": 512,
+          "21": 256
+        }
+      },
+      "repeat": 2,
+      "TPS": 9005.6,
+      "directory": "SB8192_LOW_r02"
+    },
+    {
+      "configuration": {
+        "key": "SB4096_HIGH",
+        "shared_buffers_mib": 4096,
+        "WM_profile": "HIGH",
+        "AP_work_mem_mib": {
+          "9": 512,
+          "13": 128,
+          "18": 1024,
+          "21": 512
+        }
+      },
+      "repeat": 2,
+      "TPS": 8985.55,
+      "directory": "SB4096_HIGH_r02"
+    },
+    {
+      "configuration": {
+        "key": "SB4096_LOW",
+        "shared_buffers_mib": 4096,
+        "WM_profile": "LOW",
+        "AP_work_mem_mib": {
+          "9": 256,
+          "13": 64,
+          "18": 512,
+          "21": 256
+        }
+      },
+      "repeat": 2,
+      "TPS": 9070.85,
+      "directory": "SB4096_LOW_r02"
+    },
+    {
+      "configuration": {
+        "key": "SB6144_HIGH",
+        "shared_buffers_mib": 6144,
+        "WM_profile": "HIGH",
+        "AP_work_mem_mib": {
+          "9": 512,
+          "13": 128,
+          "18": 1024,
+          "21": 512
+        }
+      },
+      "repeat": 2,
+      "TPS": 9081.25,
+      "directory": "SB6144_HIGH_r02"
+    },
+    {
+      "configuration": {
+        "key": "SB6144_LOW",
+        "shared_buffers_mib": 6144,
+        "WM_profile": "LOW",
+        "AP_work_mem_mib": {
+          "9": 256,
+          "13": 64,
+          "18": 512,
+          "21": 256
+        }
+      },
+      "repeat": 2,
+      "TPS": 9112.05,
+      "directory": "SB6144_LOW_r02"
+    },
+    {
+      "configuration": {
+        "key": "SB2048_HIGH",
+        "shared_buffers_mib": 2048,
+        "WM_profile": "HIGH",
+        "AP_work_mem_mib": {
+          "9": 512,
+          "13": 128,
+          "18": 1024,
+          "21": 512
+        }
+      },
+      "repeat": 2,
+      "TPS": 9043.15,
+      "directory": "SB2048_HIGH_r02"
+    },
+    {
+      "configuration": {
+        "key": "SB2048_LOW",
+        "shared_buffers_mib": 2048,
+        "WM_profile": "LOW",
+        "AP_work_mem_mib": {
+          "9": 256,
+          "13": 64,
+          "18": 512,
+          "21": 256
+        }
+      },
+      "repeat": 2,
+      "TPS": 9025.55,
+      "directory": "SB2048_LOW_r02"
+    }
+  ],
+  "TP_only_controls": [
+    {
+      "repeat": 1,
+      "shared_buffers_mib": 2048,
+      "TPS": 9261.1,
+      "directory": "TP_ONLY_SB2048_r01"
+    },
+    {
+      "repeat": 1,
+      "shared_buffers_mib": 6144,
+      "TPS": 9211.4,
+      "directory": "TP_ONLY_SB6144_r01"
+    },
+    {
+      "repeat": 1,
+      "shared_buffers_mib": 4096,
+      "TPS": 9219.05,
+      "directory": "TP_ONLY_SB4096_r01"
+    },
+    {
+      "repeat": 1,
+      "shared_buffers_mib": 8192,
+      "TPS": 9415.3,
+      "directory": "TP_ONLY_SB8192_r01"
+    },
+    {
+      "repeat": 2,
+      "shared_buffers_mib": 8192,
+      "TPS": 9450.9,
+      "directory": "TP_ONLY_SB8192_r02"
+    },
+    {
+      "repeat": 2,
+      "shared_buffers_mib": 4096,
+      "TPS": 9471.75,
+      "directory": "TP_ONLY_SB4096_r02"
+    },
+    {
+      "repeat": 2,
+      "shared_buffers_mib": 6144,
+      "TPS": 9421.6,
+      "directory": "TP_ONLY_SB6144_r02"
+    },
+    {
+      "repeat": 2,
+      "shared_buffers_mib": 2048,
+      "TPS": 9354.95,
+      "directory": "TP_ONLY_SB2048_r02"
+    }
+  ],
+  "complete": true,
+  "error": null,
+  "cleanup_errors": [],
+  "restoration_verified": true,
+  "global_optimum_or_full_AP_lifecycle_verified": false,
+  "automatic_recommendation_qualified": false
+}

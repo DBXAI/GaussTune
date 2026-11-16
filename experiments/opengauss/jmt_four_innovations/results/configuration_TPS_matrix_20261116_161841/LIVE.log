@@ -1,0 +1,29 @@
+{"stage": "TP_ONLY_SB2048", "repeat": 1, "actual_TPS": 9436.75, "AP_CPU_seconds": {}}
+{"stage": "SB2048_LOW", "repeat": 1, "actual_TPS": 8928.65, "AP_CPU_seconds": {"9": 2.167772554, "13": 2.081132569, "18": 2.092683689, "21": 2.092693296}}
+{"completed_episode": "SB2048_LOW_r01", "actual_TPS": 8928.65, "primary_predicted_TPS": 7330.917353101225}
+{"stage": "SB2048_HIGH", "repeat": 1, "actual_TPS": 9091.1, "AP_CPU_seconds": {"9": 2.17332165, "13": 2.186725774, "18": 2.237228544, "21": 2.178332047}}
+{"completed_episode": "SB2048_HIGH_r01", "actual_TPS": 9091.1, "primary_predicted_TPS": 7281.962467271955}
+{"stage": "TP_ONLY_SB6144", "repeat": 1, "actual_TPS": 9483.7, "AP_CPU_seconds": {}}
+{"stage": "SB6144_LOW", "repeat": 1, "actual_TPS": 9201.25, "AP_CPU_seconds": {"9": 2.082355987, "13": 2.176246808, "18": 2.150246395, "21": 2.074265913}}
+{"completed_episode": "SB6144_LOW_r01", "actual_TPS": 9201.25, "primary_predicted_TPS": 7400.583780459427}
+{"stage": "SB6144_HIGH", "repeat": 1, "actual_TPS": 9188.3, "AP_CPU_seconds": {"9": 2.261794745, "13": 2.291299455, "18": 2.163710858, "21": 2.176312326}}
+{"completed_episode": "SB6144_HIGH_r01", "actual_TPS": 9188.3, "primary_predicted_TPS": 7396.696035602859}
+{"stage": "TP_ONLY_SB4096", "repeat": 1, "actual_TPS": 9520.9, "AP_CPU_seconds": {}}
+{"stage": "SB4096_LOW", "repeat": 1, "actual_TPS": 9175.25, "AP_CPU_seconds": {"9": 2.200493331, "13": 2.103951044, "18": 2.210131345, "21": 2.137353677}}
+{"completed_episode": "SB4096_LOW_r01", "actual_TPS": 9175.25, "primary_predicted_TPS": 7400.494550328392}
+{"stage": "SB4096_HIGH", "repeat": 1, "actual_TPS": 9155.7, "AP_CPU_seconds": {"9": 2.220094496, "13": 2.221742311, "18": 2.21435334, "21": 2.205137111}}
+{"completed_episode": "SB4096_HIGH_r01", "actual_TPS": 9155.7, "primary_predicted_TPS": 7396.596570138294}
+{"stage": "TP_ONLY_SB8192", "repeat": 1, "actual_TPS": 9535.7, "AP_CPU_seconds": {}}
+{"stage": "SB8192_LOW", "repeat": 1, "actual_TPS": 9131.3, "AP_CPU_seconds": {"9": 2.247939202, "13": 2.153823326, "18": 2.312979289, "21": 2.19002684}}
+{"completed_episode": "SB8192_LOW_r01", "actual_TPS": 9131.3, "primary_predicted_TPS": 7400.583780459427}
+Traceback (most recent call last):
+  File "tools/validate_configuration_TPS_matrix.py", line 189, in <module>
+    main()
+  File "tools/validate_configuration_TPS_matrix.py", line 131, in main
+    before = incoming_cache(client)
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/tools/prepare_configuration_TPS_matrix.py", line 37, in incoming_cache
+    rows = client.json("h5_tpch", """SELECT coalesce(json_agg(t),'[]'::json) FROM (
+  File "/root/JMT_AP_STAGE_CANDIDATE_20261111/src/jmt/common/db.py", line 116, in json
+    raise RuntimeError("read-only gsql request failed: " + result["stderr"][-1600:])
+RuntimeError: read-only gsql request failed: ERROR:  canceling statement due to statement timeout
+

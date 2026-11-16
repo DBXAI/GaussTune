@@ -12,15 +12,15 @@
   "real_SB_shrink_and_restore_smoke_verified": true,
   "SB_smoke_is_recommended_configuration": false,
   "selection_policy_user_updated_20261112": "max_tps",
-  "latest_run_report": "PHASE_BRIDGE_CURRENT.md",
-  "latest_run_directory": "results/phase_bridge_context_v2_20261114_2156",
+  "latest_run_report": "CONFIGURATION_TPS_MATRIX_CURRENT.md",
+  "latest_run_directory": "results/configuration_TPS_matrix_20261116_163514",
   "current_mult_SB_TP_baseline_matrix_completed": true,
   "TP_only_training_selected_SB_mib": 2048,
   "TP_only_winner_stable_on_holdout": false,
   "complete_AP_query_collection_in_progress": false,
   "cpu_aware_DP_and_native_predictor_implemented": true,
   "automatic_recommendation_qualified": false,
-  "last_updated_at": "2026-11-14T22:10:59.820898+08:00",
+  "last_updated_at": "2026-11-16T17:06:18.298893+08:00",
   "current_AP_successful_query_ids": [
     2,
     13,
@@ -36,10 +36,10 @@
   "new_statistics_real_sampling_and_retests_queued_not_yet_verified": true,
   "CPU_aware_current_joint_search_has_explicit_work_limits": true,
   "latest_offline_regression": {
-    "tests_run": 828,
+    "tests_run": 846,
     "failures": 0,
     "errors": 0,
-    "log": "results/phase_bridge_context_v2_20261114_2156/UNITTEST_FINAL.log"
+    "log": "results/configuration_TPS_matrix_20261116_163514/UNITTEST_FINAL.log"
   },
   "latest_recommendation_kind": "frozen_new-budget_sensitivity_two-TP-baseline-lanes_not_live_or_executable",
   "latest_recommendation_pointer": "CURRENT_POST_AP_BUDGET_EVALUATION.json",
@@ -177,5 +177,18 @@
   },
   "AP_competition_changes_TP_CPU_service_observed_not_calibrated": true,
   "AP_phase_persistence_independently_unreliable": true,
-  "driver_fixed_TPS_model_passed_end_to_end_validation": false
+  "driver_fixed_TPS_model_passed_end_to_end_validation": false,
+  "latest_configuration_TPS_validation_pointer": "CURRENT_CONFIGURATION_TPS_MATRIX.json",
+  "current_SB_WM_matrix_completed": true,
+  "current_SB_WM_numeric_configurations": 8,
+  "current_SB_WM_independent_AP_episodes": 16,
+  "current_SB_WM_configuration_mean_MAPE": {
+    "historical_TP_static_common_initial_cache": 0.1675514458930646,
+    "historical_TP_static_with_AP_capacity_proxy": 0.1616524715949288,
+    "TP_only_cache_hint_diagnostic": 0.15914099003781101
+  },
+  "current_SB_WM_TPS_accuracy_accepted": false,
+  "current_SB_WM_global_optimum_verified": false,
+  "metadata_cache_reader_preaggregation_fixed_and_8GiB_TP128_preflight_passed": true,
+  "latest_configuration_trial_restoration_verified": true
 }

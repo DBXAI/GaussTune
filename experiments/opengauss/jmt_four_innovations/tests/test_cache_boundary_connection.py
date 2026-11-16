@@ -66,6 +66,31 @@ class CacheBoundaryTests(unittest.TestCase):
             with self.assertRaises(RuntimeError):
                 sb.wait_status_target(1536,seconds=0)
 
+    def test_resize_allows_propagation_after_five_seconds_but_stays_bounded(self):
+        sb=OnlineSB.__new__(OnlineSB)
+        sb.original_status={"postmaster_start_time":"same","maximum_buffers":1048576,
+                            "target_buffers":1048576}
+        new={**sb.original_status,"target_buffers":1536*128}
+        with patch.object(sb,"status",side_effect=[sb.original_status,new]), \
+                patch("time.monotonic",side_effect=[0,6]),patch("time.sleep"):
+            status,observations=sb.wait_status_target(1536)
+        self.assertEqual(status,new)
+        self.assertEqual(len(observations),2)
+        with patch.object(sb,"status",return_value=sb.original_status), \
+                patch("time.monotonic",side_effect=[0,31]):
+            with self.assertRaisesRegex(RuntimeError,"did not converge"):
+                sb.wait_status_target(1536)
+
+    def test_resize_rejects_changed_identity_even_when_target_matches(self):
+        sb=OnlineSB.__new__(OnlineSB)
+        sb.original_status={"postmaster_start_time":"same","maximum_buffers":1048576,
+                            "target_buffers":1048576}
+        for changes in ({"postmaster_start_time":"restarted"},{"maximum_buffers":524288}):
+            status={**sb.original_status,"target_buffers":1536*128,**changes}
+            with patch.object(sb,"status",return_value=status):
+                with self.assertRaisesRegex(RuntimeError,"identity/maximum"):
+                    sb.wait_status_target(1536)
+
     def test_bound_uses_simulated_SB_hits_not_TPS_or_OS_hits(self):
         rows=curve([(128,.8),(256,.985),(512,.995),(1024,.999)])
         for r in rows:
