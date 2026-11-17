@@ -32,10 +32,39 @@ def client_from(args):
     return Gsql(args.gsql, args.host, args.port, args.user, args.run_as_user, args.timeout)
 
 
+def discovery_arguments(parser):
+    parser.add_argument("--database", required=True)
+    parser.add_argument("--gsql")
+    parser.add_argument("--host")
+    parser.add_argument("--port", type=int)
+    parser.add_argument("--user")
+    parser.add_argument("--run-as-user")
+    parser.add_argument("--pid", type=int)
+    parser.add_argument("--data-directory", type=Path)
+    parser.add_argument("--timeout", type=float, default=30)
+    parser.add_argument("--out")
+
+
+def discover_from(args):
+    from jmt.common.runtime_discovery import discover
+    return discover(
+        args.database, gsql=args.gsql, host=args.host, port=args.port,
+        user=args.user, run_as_user=args.run_as_user, pid=args.pid,
+        data_directory=args.data_directory, timeout_s=args.timeout)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--version", action="version", version="jmt-opengauss " + __version__)
     commands = parser.add_subparsers(dest="command", required=True)
+    startup = commands.add_parser("startup", help="Auto-discover local machine/DB; no implicit benchmark")
+    discovery_arguments(startup)
+    stages = commands.add_parser("plan-stages", help="Auto startup + blind AP operator phase forecast")
+    discovery_arguments(stages)
+    stages.add_argument("--sql", type=Path, required=True)
+    stages.add_argument("--wm", type=int, required=True)
+    stages.add_argument("--calibration", type=Path,
+                        help="Optional current-server-bound phase CPU/wait calibration")
     doctor = commands.add_parser("doctor", help="Dependencies/build/profile; read-only")
     db_arguments(doctor)
     doctor.add_argument("--database", help="If absent, offline dependency check only")
@@ -62,7 +91,50 @@ def main(argv=None):
     recommend.add_argument("--target-tps", type=float, required=True)
     recommend.add_argument("--out")
     args = parser.parse_args(argv)
-    if args.command == "doctor":
+    if args.command in ("startup", "plan-stages"):
+        from jmt.common.runtime_discovery import digest, validate_binding
+        profile, client = discover_from(args)
+        result = {"runtime": profile}
+        if args.command == "plan-stages":
+            from jmt.common.database_memory_domain import validate_candidate_work_mem
+            from jmt.common.db import extract_json
+            from jmt.innovation_2_spill.catalog import collect_catalog
+            from jmt.innovation_2_spill.forecast import ForecastSession
+            from jmt.innovation_4_performance.operator_phases import build_phases, cost_phases
+            from jmt.innovation_4_performance.ap_resource_bridge import BridgeUnavailable
+            validate_candidate_work_mem(args.wm, profile["work_mem_SET_domain"])
+            sql = args.sql.read_text()
+            catalog = collect_catalog(client, args.database)
+            plan_raw = client.explain(args.database, sql, args.wm)
+            if plan_raw["exit_code"]:
+                raise RuntimeError("blind plan failed: " + plan_raw["stderr"][-1000:])
+            document = extract_json(plan_raw["stdout"])
+            forecast = ForecastSession(sql, catalog).forecast(document, args.wm)
+            try:
+                program = build_phases(forecast, document, catalog)
+            except (BridgeUnavailable, ValueError) as exc:
+                program = {
+                    "phase_topology_complete": False, "status": "unavailable",
+                    "reason": str(exc), "stages": [], "total_vector": None,
+                    "automatic_recommendation_qualified": False}
+            result.update({
+                "catalog": catalog, "blind_plan": document, "forecast": forecast,
+                "operator_phases": program, "target_query_executed": False})
+            if args.calibration:
+                if not program["phase_topology_complete"]:
+                    raise ValueError("incomplete phase topology cannot use a timing calibration")
+                calibration = json.loads(args.calibration.read_text())
+                key = digest({"catalog": catalog["catalog_snapshot_fingerprint"],
+                              "executor": "row_DOP1"})
+                validate_binding(calibration["binding"], profile,
+                                 workload_sha256=key, kind="AP_operator_phase_cost")
+                if calibration.get("basis") != program["basis"]:
+                    raise ValueError("calibration CPU/wait feature basis/order mismatch")
+                result["costed_phases"] = cost_phases(
+                    program, calibration["cpu_coefficients"], calibration["wait_coefficients"],
+                    basis=calibration["basis"])
+        write_json(args.out, result)
+    elif args.command == "doctor":
         report = {"python": sys.version.split()[0], "release": __version__}
         for module in ("numpy", "sqlglot", "lz4"):
             report[module] = bool(importlib.util.find_spec(module))

@@ -68,7 +68,7 @@ def resource_vector(features, hash_working_set_interaction=0.0,
     ]
 
 
-def extract_work(forecast, blind_document=None, catalog=None):
+def extract_work(forecast, blind_document=None, catalog=None, *, include_per_operator=False):
     if (forecast.get("is_hypothetical_scenario")
             or forecast.get("release_schema") == "jmt.hypothetical-having-input-bound/v1"):
         raise BridgeUnavailable("hypothetical HAVING scenario is not calibrated forecast evidence")
@@ -93,7 +93,8 @@ def extract_work(forecast, blind_document=None, catalog=None):
     correction = None
     if blind_document is not None and catalog is not None:
         from .ap_cpu_features import corrected_cpu_work
-        correction = corrected_cpu_work(blind_document, operators, catalog)
+        correction = corrected_cpu_work(
+            blind_document, operators, catalog, include_per_operator=include_per_operator)
         cpu_features["predicate_evaluations"] = correction["predicate_evaluations"]
     vector = resource_vector(
         cpu_features, interaction,

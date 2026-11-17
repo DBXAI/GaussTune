@@ -1,0 +1,93 @@
+{
+  "status": "unscored_functional_smoke",
+  "raw": {
+    "exit_code": 0,
+    "stdout": "[\n  {\n    \"Plan\": {\n      \"Node Type\": \"Aggregate\",\n      \"Strategy\": \"Plain\",\n      \"Startup Cost\": 1.31,\n      \"Total Cost\": 1.32,\n      \"Plan Rows\": 1,\n      \"Plan Width\": 8,\n      \"Actual Startup Time\": 0.012,\n      \"Actual Total Time\": 0.012,\n      \"Actual Rows\": 1,\n      \"Actual Loops\": 1,\n      \"Output\": [\"count(*)\"],\n      \"Shared Hit Blocks\": 1,\n      \"Shared Read Blocks\": 0,\n      \"Shared Dirtied Blocks\": 0,\n      \"Shared Written Blocks\": 0,\n      \"Local Hit Blocks\": 0,\n      \"Local Read Blocks\": 0,\n      \"Local Dirtied Blocks\": 0,\n      \"Local Written Blocks\": 0,\n      \"Temp Read Blocks\": 0,\n      \"Temp Written Blocks\": 0,\n      \"IO Read Time\": 0.000,\n      \"IO Write Time\": 0.000,\n      \"Plans\": [\n        {\n          \"Node Type\": \"Seq Scan\",\n          \"Parent Relationship\": \"Outer\",\n          \"Relation Name\": \"nation\",\n          \"Schema\": \"public\",\n          \"Alias\": \"nation\",\n          \"Startup Cost\": 0.00,\n          \"Total Cost\": 1.25,\n          \"Plan Rows\": 25,\n          \"Plan Width\": 0,\n          \"Actual Startup Time\": 0.005,\n          \"Actual Total Time\": 0.007,\n          \"Actual Rows\": 25,\n          \"Actual Loops\": 1,\n          \"Output\": [\"n_nationkey\", \"n_name\", \"n_regionkey\", \"n_comment\"],\n          \"Shared Hit Blocks\": 1,\n          \"Shared Read Blocks\": 0,\n          \"Shared Dirtied Blocks\": 0,\n          \"Shared Written Blocks\": 0,\n          \"Local Hit Blocks\": 0,\n          \"Local Read Blocks\": 0,\n          \"Local Dirtied Blocks\": 0,\n          \"Local Written Blocks\": 0,\n          \"Temp Read Blocks\": 0,\n          \"Temp Written Blocks\": 0,\n          \"IO Read Time\": 0.000,\n          \"IO Write Time\": 0.000\n        }\n      ]\n    },\n    \"Triggers\": [\n    ],\n    \"Total Runtime\": 0.039\n  }\n]\n",
+    "stderr": "",
+    "wall_s": 0.012124334010877647,
+    "sql_sha256": "b7ad0b7b4ced6094d2756e5f8ab4cbcd197d0a8281a126148a93950ac2e49bd2"
+  },
+  "events": [
+    {
+      "mono_ns": 89700396420646,
+      "scheduled_cpu_ns": 1660303,
+      "pointer": 140583378766928,
+      "tid": 352331,
+      "kind": 0,
+      "exit": 0
+    },
+    {
+      "mono_ns": 89700397321233,
+      "scheduled_cpu_ns": 1660303,
+      "pointer": 0,
+      "tid": 352331,
+      "kind": 0,
+      "exit": 1
+    },
+    {
+      "mono_ns": 89700397496494,
+      "scheduled_cpu_ns": 2952920,
+      "pointer": 140583378766928,
+      "tid": 352331,
+      "kind": 0,
+      "exit": 0
+    },
+    {
+      "mono_ns": 89700397502647,
+      "scheduled_cpu_ns": 2952920,
+      "pointer": 0,
+      "tid": 352331,
+      "kind": 0,
+      "exit": 1
+    },
+    {
+      "mono_ns": 89700397889127,
+      "scheduled_cpu_ns": 3215145,
+      "pointer": 140583383531152,
+      "tid": 352331,
+      "kind": 0,
+      "exit": 0
+    },
+    {
+      "mono_ns": 89700397902742,
+      "scheduled_cpu_ns": 3215145,
+      "pointer": 0,
+      "tid": 352331,
+      "kind": 0,
+      "exit": 1
+    }
+  ],
+  "pairs": [
+    {
+      "tid": 352331,
+      "kind": "ExecutorRun",
+      "pointer": 140583378766928,
+      "start_ns": 89700396420646,
+      "end_ns": 89700397321233,
+      "wall_seconds": 0.000900587,
+      "scheduled_CPU_seconds_approx": 0.0,
+      "CPU_not_exact_boundary_runtime_current_timeslice_not_flushed": true
+    },
+    {
+      "tid": 352331,
+      "kind": "ExecutorRun",
+      "pointer": 140583378766928,
+      "start_ns": 89700397496494,
+      "end_ns": 89700397502647,
+      "wall_seconds": 6.153e-06,
+      "scheduled_CPU_seconds_approx": 0.0,
+      "CPU_not_exact_boundary_runtime_current_timeslice_not_flushed": true
+    },
+    {
+      "tid": 352331,
+      "kind": "ExecutorRun",
+      "pointer": 140583383531152,
+      "start_ns": 89700397889127,
+      "end_ns": 89700397902742,
+      "wall_seconds": 1.3615e-05,
+      "scheduled_CPU_seconds_approx": 0.0,
+      "CPU_not_exact_boundary_runtime_current_timeslice_not_flushed": true
+    }
+  ],
+  "not_calibration_or_TPS_label": true
+}

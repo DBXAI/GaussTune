@@ -2,7 +2,7 @@
 import math
 
 
-def corrected_cpu_work(document, operators, catalog):
+def corrected_cpu_work(document, operators, catalog, *, include_per_operator=False):
     import sqlglot
     from sqlglot import exp
     from jmt.innovation_2_spill.ap_plan_model import aggregate_node_calls, blind_root
@@ -53,7 +53,16 @@ def corrected_cpu_work(document, operators, catalog):
     predicate = sum(op["features"]["predicate_evaluations"] for op in operators)
     numeric_arithmetic = numeric_avg = 0.0
     corrections = []
+    per_operator = {}
     for op in operators:
+        local = {
+            "predicate_evaluations": op["features"]["predicate_evaluations"],
+            "numeric_arithmetic_M": 0.0, "numeric_avg_M": 0.0,
+        }
+        if include_per_operator:
+            if op["path"] in per_operator:
+                raise ValueError("duplicate operator CPU path")
+            per_operator[op["path"]] = local
         node = nodes.get(op["path"], {})
         calls = op["calls"]
         if op["node_type"] == "Seq Scan" and node.get("Filter"):
@@ -67,6 +76,7 @@ def corrected_cpu_work(document, operators, catalog):
                         for i, term in enumerate(terms))
             corrected = scanned * units
             predicate += corrected - op["features"]["predicate_evaluations"]
+            local["predicate_evaluations"] = corrected
             corrections.append({
                 "path": op["path"], "kind": "constant-cast/comparison normalization",
                 "old_units": op["features"]["predicate_evaluations"],
@@ -89,15 +99,21 @@ def corrected_cpu_work(document, operators, catalog):
             if not numeric(expression):
                 continue
             rows = op["input_rows_per_call"] * calls
-            numeric_arithmetic += rows * sum(
+            arithmetic = rows * sum(
                 isinstance(term, (exp.Add, exp.Sub, exp.Mul, exp.Div, exp.Mod))
                 and numeric(term) for term in expression.walk())
+            numeric_arithmetic += arithmetic
+            local["numeric_arithmetic_M"] += arithmetic / 1e6
             if call["function"] == "avg":
                 numeric_avg += rows
-    return {
+                local["numeric_avg_M"] += rows / 1e6
+    result = {
         "predicate_evaluations": max(0.0, predicate),
         "numeric_arithmetic_M": numeric_arithmetic / 1e6,
         "numeric_avg_M": numeric_avg / 1e6,
         "corrections": corrections,
         "qualification": "CPU work proxies only; short-circuit selectivity is an explicit approximation.",
     }
+    if include_per_operator:
+        result["per_operator"] = per_operator
+    return result

@@ -1,0 +1,79 @@
+{
+  "prior_probe_TPS_persistence": {
+    "configuration_mean_MAPE": 0.018940840148755925,
+    "window_MAPE": 0.033963496366566676,
+    "worst_window_absolute_relative_error": 0.09469281609711966,
+    "AP_degradation_MAE_TPS": 282.096875,
+    "paired_directions_matched": 6,
+    "paired_contrasts": 12,
+    "ranking": {
+      "configurations_with_complete_predictions": 8,
+      "concordant_pairs": 15,
+      "discordant_pairs": 13,
+      "tied_prediction_pairs": 0,
+      "Kendall_tau_b": 0.07142857142857142,
+      "both_episode_direction_consistent_pairs": 15,
+      "matched_direction_pairs_with_ties_counted_as_not_matched": 9,
+      "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+    }
+  },
+  "prior_AP_CPU_reference_TP_service": {
+    "configuration_mean_MAPE": 0.025202384443190173,
+    "window_MAPE": 0.027021257273289204,
+    "worst_window_absolute_relative_error": 0.08962859591103567,
+    "AP_degradation_MAE_TPS": 223.4057997020481,
+    "paired_directions_matched": 5,
+    "paired_contrasts": 12,
+    "ranking": {
+      "configurations_with_complete_predictions": 8,
+      "concordant_pairs": 11,
+      "discordant_pairs": 17,
+      "tied_prediction_pairs": 0,
+      "Kendall_tau_b": -0.21428571428571427,
+      "both_episode_direction_consistent_pairs": 15,
+      "matched_direction_pairs_with_ties_counted_as_not_matched": 4,
+      "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+    }
+  },
+  "prior_AP_CPU_loaded_TP_backend_service": {
+    "configuration_mean_MAPE": 0.017529901046792334,
+    "window_MAPE": 0.03655247853421898,
+    "worst_window_absolute_relative_error": 0.10037281583932534,
+    "AP_degradation_MAE_TPS": 303.8220821767838,
+    "paired_directions_matched": 6,
+    "paired_contrasts": 12,
+    "ranking": {
+      "configurations_with_complete_predictions": 8,
+      "concordant_pairs": 16,
+      "discordant_pairs": 12,
+      "tied_prediction_pairs": 0,
+      "Kendall_tau_b": 0.14285714285714285,
+      "both_episode_direction_consistent_pairs": 15,
+      "matched_direction_pairs_with_ties_counted_as_not_matched": 9,
+      "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+    }
+  },
+  "prior_AP_CPU_loaded_TP_backend_driver_service": {
+    "configuration_mean_MAPE": 0.019547020678860633,
+    "window_MAPE": 0.03769290916860427,
+    "worst_window_absolute_relative_error": 0.09959517195433665,
+    "AP_degradation_MAE_TPS": 313.4313859320436,
+    "paired_directions_matched": 6,
+    "paired_contrasts": 12,
+    "ranking": {
+      "configurations_with_complete_predictions": 8,
+      "concordant_pairs": 15,
+      "discordant_pairs": 13,
+      "tied_prediction_pairs": 0,
+      "Kendall_tau_b": 0.07142857142857142,
+      "both_episode_direction_consistent_pairs": 15,
+      "matched_direction_pairs_with_ties_counted_as_not_matched": 9,
+      "same_sign_two_repeats_is_not_significance_or_causal_identification": true
+    }
+  }
+}
+PASS: 8 independent TP calibration/heldout windows + 8 prior AP-free references.
+PASS: 16 prior 4s probes -> saved forecasts -> 16 strictly future 20s targets.
+PASS: naive TPS persistence and CPU-service ablations replay without database access.
+Not cold-start configuration search; no target fitting or full-lifecycle/optimum claim.
+Temporary replay outputs: /tmp/jmt-prior-CPU-service-replay.uzbzdp

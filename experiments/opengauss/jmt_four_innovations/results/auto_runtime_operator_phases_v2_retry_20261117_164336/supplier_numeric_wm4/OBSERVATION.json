@@ -1,0 +1,223 @@
+{
+  "started_ns": 88898574324315,
+  "finished_ns": 88898826926930,
+  "raw": {
+    "exit_code": 0,
+    "stdout": "[\n  {\n    \"Plan\": {\n      \"Node Type\": \"Aggregate\",\n      \"Strategy\": \"Plain\",\n      \"Startup Cost\": 33635.64,\n      \"Total Cost\": 33635.65,\n      \"Plan Rows\": 1,\n      \"Plan Width\": 70,\n      \"Actual Startup Time\": 194.130,\n      \"Actual Total Time\": 194.130,\n      \"Actual Rows\": 1,\n      \"Actual Loops\": 1,\n      \"Output\": [\"sum(((s_acctbal * 1.07) + 3::numeric))\", \"avg(s_acctbal)\"],\n      \"Shared Hit Blocks\": 18884,\n      \"Shared Read Blocks\": 0,\n      \"Shared Dirtied Blocks\": 0,\n      \"Shared Written Blocks\": 0,\n      \"Local Hit Blocks\": 0,\n      \"Local Read Blocks\": 0,\n      \"Local Dirtied Blocks\": 0,\n      \"Local Written Blocks\": 0,\n      \"Temp Read Blocks\": 0,\n      \"Temp Written Blocks\": 0,\n      \"IO Read Time\": 0.000,\n      \"IO Write Time\": 0.000,\n      \"Plans\": [\n        {\n          \"Node Type\": \"Seq Scan\",\n          \"Parent Relationship\": \"Outer\",\n          \"Relation Name\": \"supplier\",\n          \"Schema\": \"public\",\n          \"Alias\": \"supplier\",\n          \"Startup Cost\": 0.00,\n          \"Total Cost\": 31634.00,\n          \"Plan Rows\": 200164,\n          \"Plan Width\": 6,\n          \"Actual Startup Time\": 0.006,\n          \"Actual Total Time\": 92.725,\n          \"Actual Rows\": 200000,\n          \"Actual Loops\": 1,\n          \"Output\": [\"s_suppkey\", \"s_name\", \"s_address\", \"s_nationkey\", \"s_phone\", \"s_acctbal\", \"s_comment\"],\n          \"Filter\": \"((supplier.s_suppkey >= 1) AND (supplier.s_suppkey <= 200000))\",\n          \"Rows Removed by Filter\": 650000,\n          \"Shared Hit Blocks\": 18884,\n          \"Shared Read Blocks\": 0,\n          \"Shared Dirtied Blocks\": 0,\n          \"Shared Written Blocks\": 0,\n          \"Local Hit Blocks\": 0,\n          \"Local Read Blocks\": 0,\n          \"Local Dirtied Blocks\": 0,\n          \"Local Written Blocks\": 0,\n          \"Temp Read Blocks\": 0,\n          \"Temp Written Blocks\": 0,\n          \"IO Read Time\": 0.000,\n          \"IO Write Time\": 0.000\n        }\n      ]\n    },\n    \"Triggers\": [\n    ],\n    \"Total Runtime\": 194.171\n  }\n]\n",
+    "stderr": "",
+    "wall_s": 0.20491680900158826,
+    "sql_sha256": "fcc35d3bf7829a5cd38ce9f17d754c6c4d49fa23551719fa9446e4225f70b95a"
+  },
+  "native_events": [
+    {
+      "mono_ns": 88898582666174,
+      "scheduled_cpu_ns": 1337260,
+      "pointer": 140583378766928,
+      "tid": 347269,
+      "kind": 0,
+      "exit": 0
+    },
+    {
+      "mono_ns": 88898583520244,
+      "scheduled_cpu_ns": 1337260,
+      "pointer": 0,
+      "tid": 347269,
+      "kind": 0,
+      "exit": 1
+    },
+    {
+      "mono_ns": 88898583670319,
+      "scheduled_cpu_ns": 2461462,
+      "pointer": 140583378766928,
+      "tid": 347269,
+      "kind": 0,
+      "exit": 0
+    },
+    {
+      "mono_ns": 88898583676184,
+      "scheduled_cpu_ns": 2461462,
+      "pointer": 0,
+      "tid": 347269,
+      "kind": 0,
+      "exit": 1
+    },
+    {
+      "mono_ns": 88898584203869,
+      "scheduled_cpu_ns": 2993945,
+      "pointer": 140583383531328,
+      "tid": 347269,
+      "kind": 0,
+      "exit": 0
+    },
+    {
+      "mono_ns": 88898778338508,
+      "scheduled_cpu_ns": 194796806,
+      "pointer": 0,
+      "tid": 347269,
+      "kind": 0,
+      "exit": 1
+    }
+  ],
+  "CPU_samples": [
+    {
+      "sample_ns": 88898626273482,
+      "read_span_ns": 164916,
+      "cpu_ns": 42795141,
+      "identity": [
+        1075,
+        347269,
+        8889858
+      ]
+    },
+    {
+      "sample_ns": 88898676456320,
+      "read_span_ns": 68493,
+      "cpu_ns": 94794835,
+      "identity": [
+        1075,
+        347269,
+        8889858
+      ]
+    },
+    {
+      "sample_ns": 88898726593393,
+      "read_span_ns": 75405,
+      "cpu_ns": 142797075,
+      "identity": [
+        1075,
+        347269,
+        8889858
+      ]
+    },
+    {
+      "sample_ns": 88898776751510,
+      "read_span_ns": 99949,
+      "cpu_ns": 194796806,
+      "identity": [
+        1075,
+        347269,
+        8889858
+      ]
+    }
+  ],
+  "samples_are_approximate_proc_intervals_not_exact_native_CPU_endpoints": true,
+  "native_pairs": [
+    {
+      "tid": 347269,
+      "kind": "ExecutorRun",
+      "pointer": 140583378766928,
+      "start_ns": 88898582666174,
+      "end_ns": 88898583520244,
+      "wall_seconds": 0.00085407,
+      "scheduled_CPU_seconds_approx": 0.0,
+      "CPU_not_exact_boundary_runtime_current_timeslice_not_flushed": true
+    },
+    {
+      "tid": 347269,
+      "kind": "ExecutorRun",
+      "pointer": 140583378766928,
+      "start_ns": 88898583670319,
+      "end_ns": 88898583676184,
+      "wall_seconds": 5.865e-06,
+      "scheduled_CPU_seconds_approx": 0.0,
+      "CPU_not_exact_boundary_runtime_current_timeslice_not_flushed": true
+    },
+    {
+      "tid": 347269,
+      "kind": "ExecutorRun",
+      "pointer": 140583383531328,
+      "start_ns": 88898584203869,
+      "end_ns": 88898778338508,
+      "wall_seconds": 0.194134639,
+      "scheduled_CPU_seconds_approx": 0.191802861,
+      "CPU_not_exact_boundary_runtime_current_timeslice_not_flushed": true
+    }
+  ],
+  "actual_plan": [
+    {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Plain",
+        "Startup Cost": 33635.64,
+        "Total Cost": 33635.65,
+        "Plan Rows": 1,
+        "Plan Width": 70,
+        "Actual Startup Time": 194.13,
+        "Actual Total Time": 194.13,
+        "Actual Rows": 1,
+        "Actual Loops": 1,
+        "Output": [
+          "sum(((s_acctbal * 1.07) + 3::numeric))",
+          "avg(s_acctbal)"
+        ],
+        "Shared Hit Blocks": 18884,
+        "Shared Read Blocks": 0,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 0,
+        "Temp Written Blocks": 0,
+        "IO Read Time": 0.0,
+        "IO Write Time": 0.0,
+        "Plans": [
+          {
+            "Node Type": "Seq Scan",
+            "Parent Relationship": "Outer",
+            "Relation Name": "supplier",
+            "Schema": "public",
+            "Alias": "supplier",
+            "Startup Cost": 0.0,
+            "Total Cost": 31634.0,
+            "Plan Rows": 200164,
+            "Plan Width": 6,
+            "Actual Startup Time": 0.006,
+            "Actual Total Time": 92.725,
+            "Actual Rows": 200000,
+            "Actual Loops": 1,
+            "Output": [
+              "s_suppkey",
+              "s_name",
+              "s_address",
+              "s_nationkey",
+              "s_phone",
+              "s_acctbal",
+              "s_comment"
+            ],
+            "Filter": "((supplier.s_suppkey >= 1) AND (supplier.s_suppkey <= 200000))",
+            "Rows Removed by Filter": 650000,
+            "Shared Hit Blocks": 18884,
+            "Shared Read Blocks": 0,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "IO Read Time": 0.0,
+            "IO Write Time": 0.0
+          }
+        ]
+      },
+      "Triggers": [],
+      "Total Runtime": 194.171
+    }
+  ],
+  "status": "complete",
+  "lifecycle": {
+    "tid": 347269,
+    "kind": "ExecutorRun",
+    "pointer": 140583383531328,
+    "start_ns": 88898584203869,
+    "end_ns": 88898778338508,
+    "wall_seconds": 0.194134639,
+    "scheduled_CPU_seconds_approx": 0.191802861,
+    "CPU_not_exact_boundary_runtime_current_timeslice_not_flushed": true,
+    "root_instrumented_seconds": 0.19413,
+    "executor_minus_root_seconds_not_rescaled": 4.639000000000726e-06
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "schema": "jmt.current-runtime-and-operator-phases/v1",
+  "created_at": "2026-11-17T17:07:23.763091+08:00",
+  "report": "RUNTIME_AND_OPERATOR_PHASES_CURRENT.md",
+  "design": "RUNTIME_AND_OPERATOR_PHASES_DESIGN.md",
+  "portable_instructions": "PORTABLE_RUNTIME.md",
+  "checks": "results/runtime_operator_checks_20261117_165448",
+  "complete_runs": [
+    {
+      "run": "results/auto_runtime_operator_phases_20261117_162147",
+      "audit_sha256": "7972005336a0ce001106d640a51be5e88bd6d73c35bcee81f7d2213eb503c0e4",
+      "calibration_records": 16,
+      "holdout_records": 12,
+      "window_count": 40,
+      "CPU_MAPE": 0.06307132150589384,
+      "wall_MAPE": 0.06673399679873496,
+      "phase_window_CPU_MAE_cores": 0.051802531005901875,
+      "boundary_pass_rate": 0.7222222222222222,
+      "accepted": false
+    },
+    {
+      "run": "results/auto_runtime_operator_phases_v2_retry_20261117_164336",
+      "audit_sha256": "d20e51a7b3fec99791d5880b94249daf1ec597fc1d5fe1371ac0a99b281132ab",
+      "calibration_records": 28,
+      "holdout_records": 12,
+      "window_count": 32,
+      "CPU_MAPE": 0.11660034475493446,
+      "wall_MAPE": 0.11836916476617698,
+      "phase_window_CPU_MAE_cores": 0.0027107162822191215,
+      "boundary_pass_rate": 0.6111111111111112,
+      "accepted": false
+    }
+  ],
+  "distinct_SQL_across_two_complete_runs": 26,
+  "complete_query_configuration_records": 68,
+  "partial_calibration_records": 24,
+  "partial_run": "results/auto_runtime_operator_phases_v2_20261117_163619",
+  "failed_record_raw_missing_and_not_reconstructed": true,
+  "lightweight_operator_phase_program_implemented": true,
+  "automatic_machine_and_database_facts_implemented": true,
+  "phase_timing_accuracy_accepted": false,
+  "physical_IO_or_TPS_or_mixed_five_stages_qualified": false,
+  "automatic_recommendation_qualified": false,
+  "original_Q9_phase_lifecycle_complete": false,
+  "prior_Q9_spill_estimator_removed": false,
+  "machine_configuration_unchanged": true,
+  "source_regression_tests": 977,
+  "historical_TPS_replays_source_passed": 8,
+  "complete_phase_replays_source_passed": 2,
+  "partial_phase_evidence_verified_source": true,
+  "portable_archive": {
+    "relpath": "results/runtime_operator_checks_20261117_165448/jmt-runtime-20261117.tar.gz",
+    "files": 258,
+    "bytes": 879400,
+    "sha256": "da35192e6d2e67309ac793a1f64034b798f68b0cb77d5fa623f270aae2772def",
+    "relocated_core_tests": 60,
+    "same_host_relocation_verified": true,
+    "another_physical_machine_tested": false,
+    "relocated_blind_Q13_forecast_verified": true
+  },
+  "compute_benchmark": {
+    "startup": [
+      {
+        "wall_ms": 158.937578,
+        "key": "75ef3e4c89fbf167d46930102985aab747df4e4de1369b2fb428d7593fc6dbab"
+      },
+      {
+        "wall_ms": 156.212366,
+        "key": "75ef3e4c89fbf167d46930102985aab747df4e4de1369b2fb428d7593fc6dbab"
+      },
+      {
+        "wall_ms": 155.717457,
+        "key": "75ef3e4c89fbf167d46930102985aab747df4e4de1369b2fb428d7593fc6dbab"
+      }
+    ],
+    "reused_innovation_2_work_phase_layer": {
+      "13": {
+        "phase_count": 9,
+        "first_call_process_CPU_ms": 27.556276,
+        "warm_process_CPU_median_ms": 0.6414035,
+        "warm_process_CPU_max_ms": 1.033586,
+        "warm_wall_max_ms": 1.034051,
+        "repetitions": 100
+      },
+      "18": {
+        "phase_count": 16,
+        "first_call_process_CPU_ms": 0.698502,
+        "warm_process_CPU_median_ms": 0.6699809999999999,
+        "warm_process_CPU_max_ms": 0.819279,
+        "warm_wall_max_ms": 0.81983,
+        "repetitions": 100
+      },
+      "21": {
+        "phase_count": 26,
+        "first_call_process_CPU_ms": 1.412203,
+        "warm_process_CPU_median_ms": 1.294948,
+        "warm_process_CPU_max_ms": 1.480081,
+        "warm_wall_max_ms": 1.480737,
+        "repetitions": 100
+      }
+    },
+    "does_not_include_DB_metadata_plan_or_calibration_wait": true,
+    "three_AP_fluid_scheduler": {
+      "warm_process_CPU_median_ms": 0.29704850000000005,
+      "warm_process_CPU_max_ms": 0.316019,
+      "warm_wall_max_ms": 0.315971,
+      "repetitions": 100,
+      "last_boundary_event_count": 11,
+      "conditional_budget_scenario_not_actual_TP_or_AP_accuracy": true
+    }
+  },
+  "export_verification_pending": false,
+  "latest_actual_mixed_TPS_pointer_kept_separate": "CURRENT_PRIOR_CPU_SERVICE.json",
+  "latest_actual_five_stage_pointer_kept_separate": "CURRENT_PHASE_BRIDGE.json",
+  "native_online_phase_anchoring_implemented": false,
+  "new_phase_model_connected_to_default_five_stage_TPS_controller": false,
+  "legacy_host_specific_experiment_runners_are_not_portable_entrypoints": true,
+  "export_regression_tests": 977,
+  "historical_TPS_replays_export_passed": 8,
+  "complete_phase_replays_export_passed": 2,
+  "partial_phase_evidence_verified_export": true
+}

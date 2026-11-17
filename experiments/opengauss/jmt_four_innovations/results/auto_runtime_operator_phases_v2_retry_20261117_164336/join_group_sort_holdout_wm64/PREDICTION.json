@@ -1,0 +1,1412 @@
+{
+  "frozen_ns": 88928783695078,
+  "blind_plan": [
+    {
+      "Plan": {
+        "Node Type": "Sort",
+        "Startup Cost": 501252.48,
+        "Total Cost": 501252.54,
+        "Plan Rows": 25,
+        "Plan Width": 72,
+        "Output": [
+          "n.n_name",
+          "(count(*))",
+          "(sum(c.c_acctbal))"
+        ],
+        "Sort Key": [
+          "(count(*)) DESC"
+        ],
+        "Plans": [
+          {
+            "Node Type": "Aggregate",
+            "Strategy": "Hashed",
+            "Parent Relationship": "Outer",
+            "Startup Cost": 501251.65,
+            "Total Cost": 501251.9,
+            "Plan Rows": 25,
+            "Plan Width": 72,
+            "Output": [
+              "n.n_name",
+              "count(*)",
+              "sum(c.c_acctbal)"
+            ],
+            "Group By Key": [
+              "n.n_name"
+            ],
+            "Plans": [
+              {
+                "Node Type": "Hash Join",
+                "Parent Relationship": "Outer",
+                "Join Type": "Inner",
+                "Startup Cost": 1.56,
+                "Total Cost": 499445.31,
+                "Plan Rows": 240845,
+                "Plan Width": 32,
+                "Output": [
+                  "c.c_acctbal",
+                  "n.n_name"
+                ],
+                "Inner Unique": false,
+                "Hash Cond": "(c.c_nationkey = n.n_nationkey)",
+                "Plans": [
+                  {
+                    "Node Type": "Seq Scan",
+                    "Parent Relationship": "Outer",
+                    "Relation Name": "customer",
+                    "Schema": "public",
+                    "Alias": "c",
+                    "Startup Cost": 0.0,
+                    "Total Cost": 496395.55,
+                    "Plan Rows": 240845,
+                    "Plan Width": 10,
+                    "Output": [
+                      "c.c_custkey",
+                      "c.c_name",
+                      "c.c_address",
+                      "c.c_nationkey",
+                      "c.c_phone",
+                      "c.c_acctbal",
+                      "c.c_mktsegment",
+                      "c.c_comment"
+                    ],
+                    "Filter": "((c.c_custkey >= 3200001) AND (c.c_custkey <= 3450000))"
+                  },
+                  {
+                    "Node Type": "Hash",
+                    "Parent Relationship": "Inner",
+                    "Startup Cost": 1.25,
+                    "Total Cost": 1.25,
+                    "Plan Rows": 25,
+                    "Plan Width": 30,
+                    "Output": [
+                      "n.n_name",
+                      "n.n_nationkey"
+                    ],
+                    "Plans": [
+                      {
+                        "Node Type": "Seq Scan",
+                        "Parent Relationship": "Outer",
+                        "Relation Name": "nation",
+                        "Schema": "public",
+                        "Alias": "n",
+                        "Startup Cost": 0.0,
+                        "Total Cost": 1.25,
+                        "Plan Rows": 25,
+                        "Plan Width": 30,
+                        "Output": [
+                          "n.n_name",
+                          "n.n_nationkey"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "forecast": {
+    "schema": "huawei7.ap-plan-service-demand/v3.8.0-experimental",
+    "work_mem_mib": 64,
+    "executor_profile": {
+      "allocation_header_bytes": 32,
+      "sort_algorithm": "5.1 quicksort batches + polyphase merge",
+      "qualification": "build-dependent; verify for a different executor binary"
+    },
+    "plan_structure_sha256": "d774e9422ae89a351a56a822d8447e457f6350f2f3f3dcd710e5eced8bb315aa",
+    "features": {
+      "scan_tuples": 12751062.0,
+      "index_probes": 0.0,
+      "index_tuples": 0.0,
+      "predicate_evaluations": 63755185.0,
+      "projection_evaluations": 481740.0,
+      "hash_build_tuples": 25.0,
+      "hash_probe_tuples": 481690.0,
+      "join_comparisons": 481690.0,
+      "aggregate_transitions": 481690.0,
+      "aggregate_groups": 25.0,
+      "aggregate_argument_evaluations": 240845.0,
+      "sort_comparisons": 116.09640474436812,
+      "window_evaluations": 0.0,
+      "store_put_tuples": 0.0,
+      "store_get_tuples": 0.0,
+      "setop_tuples": 0.0,
+      "logical_scan_bytes": 2499633152.0,
+      "logical_temp_read_bytes": 0.0,
+      "logical_temp_write_bytes": 0.0
+    },
+    "operators": [
+      {
+        "path": "",
+        "node_type": "Sort",
+        "strategy": "",
+        "join_type": "",
+        "calls": 1.0,
+        "input_rows_per_call": 25.0,
+        "output_rows_per_call": 25.0,
+        "width": 72.0,
+        "mode": "in_memory_sort",
+        "memory_mib": 0.02728271484375,
+        "temp_read_bytes": 0.0,
+        "temp_write_bytes": 0.0,
+        "features": {
+          "scan_tuples": 0.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 0.0,
+          "projection_evaluations": 0.0,
+          "hash_build_tuples": 0.0,
+          "hash_probe_tuples": 0.0,
+          "join_comparisons": 0.0,
+          "aggregate_transitions": 0.0,
+          "aggregate_groups": 0.0,
+          "aggregate_argument_evaluations": 0.0,
+          "sort_comparisons": 116.09640474436812,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 0.0,
+          "logical_temp_read_bytes": 0.0,
+          "logical_temp_write_bytes": 0.0
+        },
+        "details": {
+          "mode": "in_memory_sort",
+          "memory_mib": 0.02728271484375,
+          "comparisons": 116.09640474436812,
+          "read_bytes": 0.0,
+          "write_bytes": 0.0,
+          "write_bytes_lower": 0.0,
+          "write_bytes_upper": 0.0,
+          "passes": 0,
+          "required_mib": 0.02728271484375,
+          "subtree_structural_peak_upper_mib": 0.28858184814453125
+        },
+        "uncertainties": [
+          "session_work_mem_not_verified_operator_grant"
+        ],
+        "recognized": true
+      },
+      {
+        "path": ".0",
+        "node_type": "Aggregate",
+        "strategy": "Hashed",
+        "join_type": "",
+        "calls": 1.0,
+        "input_rows_per_call": 240845.0,
+        "output_rows_per_call": 25.0,
+        "width": 72.0,
+        "mode": "hash_aggregate_memory",
+        "memory_mib": 0.00977325439453125,
+        "temp_read_bytes": 0.0,
+        "temp_write_bytes": 0.0,
+        "features": {
+          "scan_tuples": 0.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 0.0,
+          "projection_evaluations": 25.0,
+          "hash_build_tuples": 0.0,
+          "hash_probe_tuples": 240845.0,
+          "join_comparisons": 0.0,
+          "aggregate_transitions": 481690.0,
+          "aggregate_groups": 25.0,
+          "aggregate_argument_evaluations": 240845.0,
+          "sort_comparisons": 0.0,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 0.0,
+          "logical_temp_read_bytes": 0.0,
+          "logical_temp_write_bytes": 0.0
+        },
+        "details": {
+          "aggregate_functions": {
+            "count": 1,
+            "sum": 1
+          },
+          "aggregate_state_expressions": [
+            "count(*)",
+            "sum(c.c_acctbal)"
+          ],
+          "mode": "hash_aggregate_memory",
+          "memory_mib": 0.00977325439453125,
+          "required_mib": 0.00914764404296875,
+          "spill_trigger_required_mib": 0.00914764404296875,
+          "child_dynahash_memory_mib_estimate": 0.00196075439453125,
+          "memory_qualification": "physical_parent_plus_child_estimate_NOT_capped_by_spill_check_grant",
+          "entry_bytes_lower_without_byref_payload": 152,
+          "executor_spill_check_entry_bytes": 200,
+          "aggregate_transition_payload_bytes": 48,
+          "counted_entry_state_bytes": 56,
+          "parent_context_layout": {
+            "resident_groups": 25,
+            "required_spill_check_bytes": 9592,
+            "parent_reserved_bytes_at_residency": 8192,
+            "spill_check_bytes_at_residency": 9592,
+            "persistent_parent_bytes_per_group": 144,
+            "manual_entry_state_bytes": 56,
+            "binary_search_steps": 0,
+            "allocator_events_per_evaluation": 1,
+            "accounting": "parent_AllocSet_totalSpace_plus_one_entrysize; child_dynahash_excluded",
+            "qualification": "8KiB..8MiB parent blocks; expected persistent chunk packing; mixed/variable widths and allocation ordering remain approximate"
+          },
+          "dynahash_child_excluded_from_spill_check": true,
+          "planner_partition_groups_proxy": 25,
+          "aggregate_state_slots": 2,
+          "resident_groups": 25.0,
+          "group_discovery_model": "equal_multiplicity_random_order",
+          "frequency_histogram_budget_exceeded": {
+            "group": false,
+            "setop": false
+          },
+          "frequency_solve_bins_max": 256,
+          "estimated_discovery_rows": 240845.0,
+          "setop_frequency_demand": null,
+          "spill_row_bytes_estimate": 48.0,
+          "write_bytes": 0,
+          "read_bytes": 0.0,
+          "write_bytes_lower": 0.0,
+          "write_bytes_upper": 11560560.0,
+          "reachable_partition_files": 32,
+          "nonempty_partition_files_estimate": 0,
+          "eof_read_block_equivalent_bytes": 0.0,
+          "partitions": 48,
+          "repartition_levels": 0,
+          "aggregate_transition_layouts": [
+            {
+              "function": "count",
+              "argument_type": null,
+              "payload_bytes": 0,
+              "collect_initial_payload_bytes": 0,
+              "persistent_payload_bytes": 0,
+              "qualification": "by_value_transition"
+            },
+            {
+              "function": "sum",
+              "argument_type": "numeric",
+              "payload_bytes": 48,
+              "collect_initial_payload_bytes": 0,
+              "persistent_payload_bytes": 48,
+              "qualification": "Numeric_BI64_lower_payload"
+            }
+          ],
+          "stored_group_keys_width": 26.0,
+          "subtree_structural_peak_upper_mib": 0.26129913330078125
+        },
+        "uncertainties": [
+          "session_work_mem_not_verified_operator_grant",
+          "numeric_transition_can_grow_beyond_bi64",
+          "hashagg_group_frequency_and_input_order_unknown",
+          "hashagg_spill_projection_width_not_measured",
+          "hashagg_stored_group_projection_width_not_measured",
+          "by_reference_aggregate_transition_payload_not_measured"
+        ],
+        "recognized": true
+      },
+      {
+        "path": ".0.0",
+        "node_type": "Hash Join",
+        "strategy": "",
+        "join_type": "Inner",
+        "calls": 1.0,
+        "input_rows_per_call": 240845.0,
+        "output_rows_per_call": 240845.0,
+        "width": 32.0,
+        "mode": "hash_join_inner",
+        "memory_mib": 0.0,
+        "temp_read_bytes": 0.0,
+        "temp_write_bytes": 0.0,
+        "features": {
+          "scan_tuples": 0.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 0.0,
+          "projection_evaluations": 240845.0,
+          "hash_build_tuples": 0.0,
+          "hash_probe_tuples": 240845.0,
+          "join_comparisons": 481690.0,
+          "aggregate_transitions": 0.0,
+          "aggregate_groups": 0.0,
+          "aggregate_argument_evaluations": 0.0,
+          "sort_comparisons": 0.0,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 0.0,
+          "logical_temp_read_bytes": 0.0,
+          "logical_temp_write_bytes": 0.0
+        },
+        "details": {
+          "batches": 1,
+          "required_build_mib": 0.25152587890625,
+          "hash_directory": {
+            "planner_input_rows_proxy": 25,
+            "planner_input_width_proxy": 30,
+            "initial_buckets": 32768,
+            "initial_batches": 1,
+            "runtime_buckets": 32768,
+            "batches": 1,
+            "dynamic_bucket_growth_events": 0,
+            "estimated_first_spill_inner_row": null,
+            "simulator_event_budget": 64,
+            "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+            "required_full_memory_mib": 0.25152587890625,
+            "structural_resident_memory_mib": 0.25152587890625,
+            "executor_reported_peak_mib_estimate": 0.25152587890625,
+            "executor_reported_tuple_bytes": 64,
+            "read_bytes": 0,
+            "write_bytes": 0
+          },
+          "physical_hash_input_width_evidence": {
+            "outer": {
+              "source": "blind_SeqScan_Output_catalog_physical_tuple",
+              "relation": "customer",
+              "output_columns": [
+                "c.c_custkey",
+                "c.c_name",
+                "c.c_address",
+                "c.c_nationkey",
+                "c.c_phone",
+                "c.c_acctbal",
+                "c.c_mktsegment",
+                "c.c_comment"
+              ],
+              "planner_width": 10.0,
+              "estimated_output_data_width": 158.0,
+              "data_width": 158.0,
+              "expanded_beyond_planner_width": true,
+              "uses_average_variable_width": true,
+              "field_budget": 64,
+              "wrapper_budget": 8,
+              "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+            },
+            "inner": {
+              "source": "blind_SeqScan_Output_catalog_physical_tuple",
+              "relation": "nation",
+              "output_columns": [
+                "n.n_name",
+                "n.n_nationkey"
+              ],
+              "planner_width": 30.0,
+              "estimated_output_data_width": 32,
+              "data_width": 32,
+              "expanded_beyond_planner_width": true,
+              "uses_average_variable_width": true,
+              "field_budget": 64,
+              "wrapper_budget": 8,
+              "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+            }
+          },
+          "unvalidated_physical_slot_width": true,
+          "independent_ndv_join_rows_diagnostic": 240845.0,
+          "subtree_structural_peak_upper_mib": 0.25152587890625
+        },
+        "uncertainties": [
+          "join_key_ndv_after_filters_and_correlations_unknown"
+        ],
+        "recognized": true
+      },
+      {
+        "path": ".0.0.0",
+        "node_type": "Seq Scan",
+        "strategy": "",
+        "join_type": "",
+        "calls": 1.0,
+        "input_rows_per_call": 240845.0,
+        "output_rows_per_call": 240845.0,
+        "width": 10.0,
+        "mode": "sequential_scan",
+        "memory_mib": 0.0,
+        "temp_read_bytes": 0.0,
+        "temp_write_bytes": 0.0,
+        "features": {
+          "scan_tuples": 12751037.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 63755185.0,
+          "projection_evaluations": 240845.0,
+          "hash_build_tuples": 0.0,
+          "hash_probe_tuples": 0.0,
+          "join_comparisons": 0.0,
+          "aggregate_transitions": 0.0,
+          "aggregate_groups": 0.0,
+          "aggregate_argument_evaluations": 0.0,
+          "sort_comparisons": 0.0,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 2499624960.0,
+          "logical_temp_read_bytes": 0.0,
+          "logical_temp_write_bytes": 0.0
+        },
+        "details": {
+          "subtree_structural_peak_upper_mib": 0.0
+        },
+        "uncertainties": [],
+        "recognized": true
+      },
+      {
+        "path": ".0.0.1",
+        "node_type": "Hash",
+        "strategy": "",
+        "join_type": "",
+        "calls": 1.0,
+        "input_rows_per_call": 25.0,
+        "output_rows_per_call": 25.0,
+        "width": 30.0,
+        "mode": "hash_build",
+        "memory_mib": 0.25152587890625,
+        "temp_read_bytes": 0.0,
+        "temp_write_bytes": 0.0,
+        "features": {
+          "scan_tuples": 0.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 0.0,
+          "projection_evaluations": 0.0,
+          "hash_build_tuples": 25.0,
+          "hash_probe_tuples": 0.0,
+          "join_comparisons": 0.0,
+          "aggregate_transitions": 0.0,
+          "aggregate_groups": 0.0,
+          "aggregate_argument_evaluations": 0.0,
+          "sort_comparisons": 0.0,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 0.0,
+          "logical_temp_read_bytes": 0.0,
+          "logical_temp_write_bytes": 0.0
+        },
+        "details": {
+          "planner_input_rows_proxy": 25,
+          "planner_input_width_proxy": 30,
+          "initial_buckets": 32768,
+          "initial_batches": 1,
+          "runtime_buckets": 32768,
+          "batches": 1,
+          "dynamic_bucket_growth_events": 0,
+          "estimated_first_spill_inner_row": null,
+          "simulator_event_budget": 64,
+          "qualification": "Initial planner sizing retained; runtime bucket growth uses <=64 source events. Mean batch occupancy and Plan Width approximate actual tuple bytes. Dynamic skew, later-batch rewrites, memory auto-spread and unequal batch maxima are not certified. Reported spacePeak is NOT physical process/context peak or an admission safety bound.",
+          "required_full_memory_mib": 0.25152587890625,
+          "structural_resident_memory_mib": 0.25152587890625,
+          "executor_reported_peak_mib_estimate": 0.25152587890625,
+          "executor_reported_tuple_bytes": 64,
+          "read_bytes": 0,
+          "write_bytes": 0,
+          "physical_hash_input_width_evidence": {
+            "source": "blind_SeqScan_Output_catalog_physical_tuple",
+            "relation": "nation",
+            "output_columns": [
+              "n.n_name",
+              "n.n_nationkey"
+            ],
+            "planner_width": 30.0,
+            "estimated_output_data_width": 32,
+            "data_width": 32,
+            "expanded_beyond_planner_width": true,
+            "uses_average_variable_width": true,
+            "field_budget": 64,
+            "wrapper_budget": 8,
+            "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+          },
+          "unvalidated_physical_slot_width": true,
+          "required_memory_mib": 0.25152587890625,
+          "subtree_structural_peak_upper_mib": 0.25152587890625
+        },
+        "uncertainties": [
+          "session_work_mem_not_verified_operator_grant"
+        ],
+        "recognized": true
+      },
+      {
+        "path": ".0.0.1.0",
+        "node_type": "Seq Scan",
+        "strategy": "",
+        "join_type": "",
+        "calls": 1.0,
+        "input_rows_per_call": 25.0,
+        "output_rows_per_call": 25.0,
+        "width": 30.0,
+        "mode": "sequential_scan",
+        "memory_mib": 0.0,
+        "temp_read_bytes": 0.0,
+        "temp_write_bytes": 0.0,
+        "features": {
+          "scan_tuples": 25.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 0.0,
+          "projection_evaluations": 25.0,
+          "hash_build_tuples": 0.0,
+          "hash_probe_tuples": 0.0,
+          "join_comparisons": 0.0,
+          "aggregate_transitions": 0.0,
+          "aggregate_groups": 0.0,
+          "aggregate_argument_evaluations": 0.0,
+          "sort_comparisons": 0.0,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 8192.0,
+          "logical_temp_read_bytes": 0.0,
+          "logical_temp_write_bytes": 0.0
+        },
+        "details": {
+          "subtree_structural_peak_upper_mib": 0.0
+        },
+        "uncertainties": [],
+        "recognized": true
+      }
+    ],
+    "dataflow": {
+      "nodes": [
+        {
+          "path": "",
+          "semantics": "consume_input_then_produce"
+        },
+        {
+          "path": ".0",
+          "semantics": "consume_input_then_produce"
+        },
+        {
+          "path": ".0.0",
+          "semantics": "build_hash_then_stream_probe"
+        },
+        {
+          "path": ".0.0.0",
+          "semantics": "stream"
+        },
+        {
+          "path": ".0.0.1",
+          "semantics": "consume_input_then_produce"
+        },
+        {
+          "path": ".0.0.1.0",
+          "semantics": "stream"
+        }
+      ],
+      "edges": [
+        {
+          "producer": ".0",
+          "consumer": "",
+          "relationship": "Outer",
+          "producer_semantics": "consume_input_then_produce"
+        },
+        {
+          "producer": ".0.0",
+          "consumer": ".0",
+          "relationship": "Outer",
+          "producer_semantics": "build_hash_then_stream_probe"
+        },
+        {
+          "producer": ".0.0.0",
+          "consumer": ".0.0",
+          "relationship": "Outer",
+          "producer_semantics": "stream"
+        },
+        {
+          "producer": ".0.0.1",
+          "consumer": ".0.0",
+          "relationship": "Inner",
+          "producer_semantics": "consume_input_then_produce"
+        },
+        {
+          "producer": ".0.0.1.0",
+          "consumer": ".0.0.1",
+          "relationship": "Outer",
+          "producer_semantics": "stream"
+        }
+      ],
+      "qualification": "execution dependency skeleton; CTE reuse/parameter dependencies and an actual resource-constrained scheduler are not yet implemented"
+    },
+    "node_types": {
+      "Sort": 1,
+      "Aggregate": 1,
+      "Hash Join": 1,
+      "Seq Scan": 2,
+      "Hash": 1
+    },
+    "modes": {
+      "in_memory_sort": 1,
+      "hash_aggregate_memory": 1,
+      "hash_join_inner": 1,
+      "sequential_scan": 2,
+      "hash_build": 1
+    },
+    "unsupported_operators": [],
+    "uncertainties": {
+      "session_work_mem_not_verified_operator_grant": 3,
+      "numeric_transition_can_grow_beyond_bi64": 1,
+      "hashagg_group_frequency_and_input_order_unknown": 1,
+      "hashagg_spill_projection_width_not_measured": 1,
+      "hashagg_stored_group_projection_width_not_measured": 1,
+      "by_reference_aggregate_transition_payload_not_measured": 1,
+      "join_key_ndv_after_filters_and_correlations_unknown": 1
+    },
+    "logical_temp_estimate_complete": true,
+    "logical_temp_read_bytes_estimate": 0.0,
+    "logical_temp_write_bytes_estimate": 0.0,
+    "feature_qualification": "logical_temp_* features include modeled components only; an incomplete temp estimate must never be interpreted as zero total spill",
+    "structural_peak_upper_mib": 0.28858184814453125,
+    "peak_qualification": "structural approximation, NOT a measured or certified safety bound",
+    "latency_seconds": null,
+    "physical_read_requests": null,
+    "physical_write_requests": null,
+    "status": "experimental_resource_estimate",
+    "qualification": "no per-query/family calibration; cardinality remains planner/statistics dependent; not production-qualified, not a physical IOPS or latency prediction",
+    "experimental_cardinality_input": null,
+    "spill_input_guard": null,
+    "experimental_cardinality_effects": [],
+    "preexecution_key_group_sample_evidence": {},
+    "release_schema": "jmt.ap-forecast/1.0.0rc4",
+    "reliability": {
+      "operator_coverage_complete": true,
+      "join_cardinality_independently_validated": false,
+      "join_nodes_requiring_input_validation": [
+        {
+          "path": ".0.0",
+          "node_type": "Hash Join"
+        }
+      ],
+      "classification": "unvalidated_join_cardinality",
+      "qualification": "An implementation-complete numeric result is NOT a confidence interval, a safety guarantee or qualification for automatic WM recommendation."
+    },
+    "forecasted_at": "2026-11-17T08:44:39.683937+00:00",
+    "forecast_pipeline_schema": "huawei7.ap-light-cardinality/v1.1-experimental",
+    "uses_preflight_statistics": false,
+    "cardinality_evidence_status": "planner_only",
+    "automatic_recommendation_qualified": false,
+    "preflight_estimates": [],
+    "cardinality_propagation": [],
+    "light_cardinality_effects": [],
+    "dimension_evidence": [],
+    "group_occupancy_evidence": {},
+    "offline_group_frequency_evidence": {},
+    "offline_group_frequency_effects": [],
+    "offline_group_frequency_assumptions": [],
+    "unique_union_group_evidence": {},
+    "unique_union_group_effects": [],
+    "joint_synopsis_evidence": null,
+    "joint_cardinality_effects": [],
+    "sql_metadata_available": true,
+    "expression_type_evidence": {
+      "schema": "huawei7.ap-expression-types/v1-experimental",
+      "available": true,
+      "scope_preparation_available": true,
+      "resolved_argument_expressions": {
+        "c.c_acctbal": "numeric"
+      },
+      "unresolved_argument_expressions": [],
+      "qualification": "type-only bounded AST inference; no new row/NDV/width evidence"
+    },
+    "formula_compute_ms": 2.0158029947197065,
+    "shared_preparation_ms": 1.7282140033785254,
+    "forecast_qualification": "experimental logical temp buffer-equivalent bytes; no target runtime labels; a numeric estimate is not a certified accuracy or zero-spill guarantee"
+  },
+  "program": {
+    "schema": "jmt.operator-boundary-phases/v2",
+    "basis": [
+      "startup",
+      "scan_filter_M",
+      "projection_argument_M",
+      "hash_join_M",
+      "aggregate_M",
+      "sort_comparisons_M",
+      "state_index_M",
+      "hash_aggregate_working_set_interaction",
+      "numeric_arithmetic_M",
+      "numeric_avg_M",
+      "logical_scan_GiB",
+      "logical_temp_read_GiB",
+      "logical_temp_write_GiB"
+    ],
+    "stages": [
+      {
+        "label": "Hash Join outer first-tuple gate",
+        "vector": [
+          1.0,
+          0.00011316202368906907,
+          1e-06,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          9.665789837116454e-06,
+          0.0,
+          0.0
+        ],
+        "contributions": {
+          ".0.0.0": [
+            0.0,
+            0.00011316202368906907,
+            1e-06,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            9.665789837116454e-06,
+            0.0,
+            0.0
+          ],
+          "@query-startup": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "output_fraction": 0.0,
+        "ends": [
+          {
+            "path": ".0.0",
+            "kind": "Outer first tuple before Hash build"
+          }
+        ],
+        "timing_uncertainty": {
+          "kind": "unknown_physical_filter_prefix_and_synchronized_scan_start",
+          "point_assumption": "uniform qualifying rows, NOT measured first-match position",
+          "prefix_vector_lower": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "prefix_vector_upper": [
+            0.0,
+            27.254507595393843,
+            0.240845,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2.3279571533203125,
+            0.0,
+            0.0
+          ]
+        },
+        "id": 0
+      },
+      {
+        "label": "Seq Scan",
+        "vector": [
+          0.0,
+          2.5e-05,
+          2.5e-05,
+          2.5e-05,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          7.62939453125e-06,
+          0.0,
+          0.0
+        ],
+        "contributions": {
+          ".0.0.1.0": [
+            0.0,
+            2.5e-05,
+            2.5e-05,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            7.62939453125e-06,
+            0.0,
+            0.0
+          ],
+          ".0.0.1": [
+            0.0,
+            0.0,
+            0.0,
+            2.5e-05,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "output_fraction": 0.0,
+        "ends": [
+          {
+            "path": ".0.0.1",
+            "kind": "Hash build"
+          }
+        ],
+        "id": 1
+      },
+      {
+        "label": "Hash build ready",
+        "vector": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "contributions": {},
+        "output_fraction": 0.0,
+        "ends": [],
+        "id": 2
+      },
+      {
+        "label": "Cached outer first tuple",
+        "vector": [
+          0.0,
+          0.0,
+          2e-06,
+          4e-06,
+          2e-06,
+          0.0,
+          0.0,
+          1.4031370713800503e-08,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "contributions": {
+          ".0.0": [
+            0.0,
+            0.0,
+            1e-06,
+            3e-06,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          ".0": [
+            0.0,
+            0.0,
+            1e-06,
+            1e-06,
+            2e-06,
+            0.0,
+            0.0,
+            1.4031370713800503e-08,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "output_fraction": 0.0,
+        "ends": [],
+        "id": 3
+      },
+      {
+        "label": "Seq Scan",
+        "vector": [
+          0.0,
+          27.254394433370155,
+          0.722532,
+          0.963376,
+          0.481688,
+          0.0,
+          0.0,
+          0.0033793714481945686,
+          0.0,
+          0.0,
+          2.3279474875304755,
+          0.0,
+          0.0
+        ],
+        "contributions": {
+          ".0.0.0": [
+            0.0,
+            27.254394433370155,
+            0.240844,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2.3279474875304755,
+            0.0,
+            0.0
+          ],
+          ".0.0": [
+            0.0,
+            0.0,
+            0.240844,
+            0.7225320000000001,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          ".0": [
+            0.0,
+            0.0,
+            0.240844,
+            0.240844,
+            0.481688,
+            0.0,
+            0.0,
+            0.0033793714481945686,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "output_fraction": 0.0,
+        "ends": [
+          {
+            "path": ".0",
+            "kind": "Hash aggregate consume"
+          }
+        ],
+        "id": 4
+      },
+      {
+        "label": "Aggregate resident output",
+        "vector": [
+          0.0,
+          0.0,
+          2.5e-05,
+          0.0,
+          2.5e-05,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "contributions": {
+          ".0": [
+            0.0,
+            0.0,
+            2.5e-05,
+            0.0,
+            2.5e-05,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "output_fraction": 0.0,
+        "ends": [],
+        "id": 5
+      },
+      {
+        "label": "Sort finish",
+        "vector": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.00011609640474436812,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "contributions": {
+          "": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.00011609640474436812,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "output_fraction": 0.0,
+        "ends": [
+          {
+            "path": "",
+            "kind": "Sort"
+          }
+        ],
+        "id": 6
+      },
+      {
+        "label": "Sort output",
+        "vector": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "contributions": {
+          "": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "output_fraction": 1.0,
+        "ends": [],
+        "id": 7
+      }
+    ],
+    "operator_count": 6,
+    "phase_count": 8,
+    "phase_topology_complete": true,
+    "unsupported": [],
+    "total_vector": [
+      1.0,
+      27.254532595393844,
+      0.722585,
+      0.963405,
+      0.481715,
+      0.00011609640474436812,
+      0.0,
+      0.0033793854795652824,
+      0.0,
+      0.0,
+      2.3279647827148438,
+      0.0,
+      0.0
+    ],
+    "innovation_2_vector": [
+      1.0,
+      27.254532595393844,
+      0.722585,
+      0.963405,
+      0.481715,
+      0.00011609640474436812,
+      0.0,
+      0.0033793854795652824,
+      0.0,
+      0.0,
+      2.3279647827148438,
+      0.0,
+      0.0
+    ],
+    "innovation_2_work_conserved": true,
+    "plan_structure_sha256": "d774e9422ae89a351a56a822d8447e457f6350f2f3f3dcd710e5eced8bb315aa",
+    "work_mem_mib": 64,
+    "physical_IO_estimate": null,
+    "physical_IO_qualified": false,
+    "phase_timing_accuracy_qualified": false,
+    "phase_timing_inputs_complete": false,
+    "automatic_recommendation_qualified": false,
+    "timing_uncertainties": [
+      {
+        "path": ".0.0",
+        "kind": "unknown_physical_filter_prefix_and_synchronized_scan_start",
+        "point_assumption": "uniform qualifying rows, NOT measured first-match position",
+        "prefix_vector_lower": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "prefix_vector_upper": [
+          0.0,
+          27.254507595393843,
+          0.240845,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          2.3279571533203125,
+          0.0,
+          0.0
+        ]
+      }
+    ],
+    "assumptions": [
+      "DOP=1 row executor; one coarse fluid segment per blocking/replay boundary, not per tuple",
+      "Innovation 2 cardinality/spill errors remain; work conservation does not prove accuracy",
+      "Hash replay CPU absent from innovation 2 is not invented by this layer",
+      "Coarse spill replay distribution is approximate; grants/cache/physical IO are not inferred"
+    ],
+    "compute_process_cpu_ns": 843641
+  },
+  "costed_program": {
+    "schema": "jmt.costed-operator-phases/v1",
+    "stages": [
+      {
+        "id": 0,
+        "label": "Hash Join outer first-tuple gate",
+        "ends": [
+          {
+            "path": ".0.0",
+            "kind": "Outer first tuple before Hash build"
+          }
+        ],
+        "cpu_seconds": 7.462847256587496e-06,
+        "non_CPU_seconds_proxy": 6.750367657939519e-11,
+        "isolated_seconds_proxy": 7.4629147602640756e-06,
+        "logical_scan_bytes": 10378.562810106085,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0,
+        "timing_uncertainty": {
+          "kind": "unknown_physical_filter_prefix_and_synchronized_scan_start",
+          "point_assumption": "uniform qualifying rows, NOT measured first-match position",
+          "prefix_vector_lower": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "prefix_vector_upper": [
+            0.0,
+            27.254507595393843,
+            0.240845,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2.3279571533203125,
+            0.0,
+            0.0
+          ]
+        }
+      },
+      {
+        "id": 1,
+        "label": "Seq Scan",
+        "ends": [
+          {
+            "path": ".0.0.1",
+            "kind": "Hash build"
+          }
+        ],
+        "cpu_seconds": 5.320073073844436e-06,
+        "non_CPU_seconds_proxy": 2.0561398284960026e-09,
+        "isolated_seconds_proxy": 5.322129213672932e-06,
+        "logical_scan_bytes": 8192.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0,
+        "timing_uncertainty": null
+      },
+      {
+        "id": 2,
+        "label": "Hash build ready",
+        "ends": [],
+        "cpu_seconds": 0.0,
+        "non_CPU_seconds_proxy": 0.0,
+        "isolated_seconds_proxy": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0,
+        "timing_uncertainty": null
+      },
+      {
+        "id": 3,
+        "label": "Cached outer first tuple",
+        "ends": [],
+        "cpu_seconds": 5.505097417197951e-07,
+        "non_CPU_seconds_proxy": 1.8841987352213392e-08,
+        "isolated_seconds_proxy": 5.693517290720085e-07,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0,
+        "timing_uncertainty": null
+      },
+      {
+        "id": 4,
+        "label": "Seq Scan",
+        "ends": [
+          {
+            "path": ".0",
+            "kind": "Hash aggregate consume"
+          }
+        ],
+        "cpu_seconds": 1.9299689529003217,
+        "non_CPU_seconds_proxy": 0.00455423745733857,
+        "isolated_seconds_proxy": 1.9345231903576603,
+        "logical_scan_bytes": 2499614581.43719,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0,
+        "timing_uncertainty": null
+      },
+      {
+        "id": 5,
+        "label": "Aggregate resident output",
+        "ends": [],
+        "cpu_seconds": 3.895693068685354e-06,
+        "non_CPU_seconds_proxy": 2.3464873301733385e-07,
+        "isolated_seconds_proxy": 4.130341801702688e-06,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0,
+        "timing_uncertainty": null
+      },
+      {
+        "id": 6,
+        "label": "Sort finish",
+        "ends": [
+          {
+            "path": "",
+            "kind": "Sort"
+          }
+        ],
+        "cpu_seconds": 7.299131533066687e-06,
+        "non_CPU_seconds_proxy": 0.0,
+        "isolated_seconds_proxy": 7.299131533066687e-06,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0,
+        "timing_uncertainty": null
+      },
+      {
+        "id": 7,
+        "label": "Sort output",
+        "ends": [],
+        "cpu_seconds": 0.0,
+        "non_CPU_seconds_proxy": 0.0,
+        "isolated_seconds_proxy": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0,
+        "timing_uncertainty": null
+      }
+    ],
+    "physical_IO_qualified": false,
+    "phase_timing_accuracy_qualified": false,
+    "automatic_recommendation_qualified": false
+  }
+}

@@ -1,4 +1,15 @@
-> **最新完整验证（2026-11-17 凌晨）：** 见 `PRIOR_CPU_SERVICE_CURRENT.md` /
+> **最新实现与验收（2026-11-17 下午）：** 见 `RUNTIME_AND_OPERATOR_PHASES_CURRENT.md`
+> 与 `RUNTIME_AND_OPERATOR_PHASES_DESIGN.md`。新增可迁移的 `bash run_jmt.sh startup`
+> / `plan-stages`：自动读取本机CPU/cgroup/内存/存储/数据库实例/实际SB/WM域，
+> 不自动沿用旧机器性能校准。创新四新增复用创新二工作的 Hash/Sort/阻塞聚合粗阶段层，
+> 不是逐行仿真；暖态新增阶段开销最高约1.48ms，三AP窗口推进最高约0.316ms CPU。
+> 两轮完整只读实验68个query×WM配置，另保留24条部分校准及1个raw缺失的失败项；
+> 第二轮12个留出配置CPU/耗时MAPE约11.66%/11.84%，但边界只有11/18通过，
+> **阶段准确性仍未验收，不升级默认推荐，不冒充物理IO/混合TPS/完整五阶段验证**。
+> 977项回归、历史8套TPS重放通过；代码快照、两套完整重放和部分记录复核脚本保留。
+> Q9仍有重扫生命周期缺口，不影响原创新二spill估计；本轮没有重启/更改全局GUC。
+>
+> **此前完整验证（2026-11-17 凌晨）：** 见 `PRIOR_CPU_SERVICE_CURRENT.md` /
 > `CURRENT_PRIOR_CPU_SERVICE.json`，以及 `CPU_QUEUE_FEEDBACK_CURRENT.md`。
 > 两批共新增80个原始窗口。接通近邻纯TP参考、CPU→AP反馈、先行加载TP单位CPU，
 > 但CPU排队公式和4秒阶段持久性都未达到推荐验收要求，**不升级默认、不宣称已找准最优配置**。

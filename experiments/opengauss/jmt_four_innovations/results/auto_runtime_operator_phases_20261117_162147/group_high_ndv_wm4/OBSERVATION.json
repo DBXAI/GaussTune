@@ -1,0 +1,613 @@
+{
+  "started_ns": 87570495040642,
+  "finished_ns": 87572701817487,
+  "raw": {
+    "exit_code": 0,
+    "stdout": "[\n  {\n    \"Plan\": {\n      \"Node Type\": \"Aggregate\",\n      \"Strategy\": \"Hashed\",\n      \"Startup Cost\": 500789.48,\n      \"Total Cost\": 505277.03,\n      \"Plan Rows\": 204255,\n      \"Plan Width\": 50,\n      \"Actual Startup Time\": 2086.916,\n      \"Actual Total Time\": 2162.011,\n      \"Actual Rows\": 200000,\n      \"Actual Loops\": 1,\n      \"Output\": [\"c_custkey\", \"count(*)\", \"sum(c_acctbal)\"],\n      \"Group By Key\": [\"customer.c_custkey\"],\n      \"Temp File Num\": 64,\n      \"Spill Time\": 0,\n      \"Expand Times\": 0,\n      \"Shared Hit Blocks\": 12288,\n      \"Shared Read Blocks\": 292842,\n      \"Shared Dirtied Blocks\": 0,\n      \"Shared Written Blocks\": 0,\n      \"Local Hit Blocks\": 0,\n      \"Local Read Blocks\": 0,\n      \"Local Dirtied Blocks\": 0,\n      \"Local Written Blocks\": 0,\n      \"Temp Read Blocks\": 698,\n      \"Temp Written Blocks\": 634,\n      \"IO Read Time\": 0.000,\n      \"IO Write Time\": 0.000,\n      \"Plans\": [\n        {\n          \"Node Type\": \"Seq Scan\",\n          \"Parent Relationship\": \"Outer\",\n          \"Relation Name\": \"customer\",\n          \"Schema\": \"public\",\n          \"Alias\": \"customer\",\n          \"Startup Cost\": 0.00,\n          \"Total Cost\": 496395.55,\n          \"Plan Rows\": 204255,\n          \"Plan Width\": 10,\n          \"Actual Startup Time\": 525.520,\n          \"Actual Total Time\": 2005.633,\n          \"Actual Rows\": 200000,\n          \"Actual Loops\": 1,\n          \"Output\": [\"c_custkey\", \"c_acctbal\"],\n          \"Filter\": \"((customer.c_custkey >= 1) AND (customer.c_custkey <= 200000))\",\n          \"Rows Removed by Filter\": 12550000,\n          \"Shared Hit Blocks\": 12288,\n          \"Shared Read Blocks\": 292842,\n          \"Shared Dirtied Blocks\": 0,\n          \"Shared Written Blocks\": 0,\n          \"Local Hit Blocks\": 0,\n          \"Local Read Blocks\": 0,\n          \"Local Dirtied Blocks\": 0,\n          \"Local Written Blocks\": 0,\n          \"Temp Read Blocks\": 0,\n          \"Temp Written Blocks\": 0,\n          \"IO Read Time\": 0.000,\n          \"IO Write Time\": 0.000\n        }\n      ]\n    },\n    \"Triggers\": [\n    ],\n    \"Total Runtime\": 2173.755\n  }\n]\n",
+    "stderr": "",
+    "wall_s": 2.1850821169937262,
+    "sql_sha256": "418c7c999030ebc3c4545e9d4fc10d792b63b331e1df14f6e9cdeabc185bb575"
+  },
+  "native_events": [
+    {
+      "mono_ns": 87570503762221,
+      "scheduled_cpu_ns": 1383842,
+      "pointer": 140583378766928,
+      "tid": 336486,
+      "kind": 0,
+      "exit": 0
+    },
+    {
+      "mono_ns": 87570504637214,
+      "scheduled_cpu_ns": 1812291,
+      "pointer": 0,
+      "tid": 336486,
+      "kind": 0,
+      "exit": 1
+    },
+    {
+      "mono_ns": 87570504790469,
+      "scheduled_cpu_ns": 2538274,
+      "pointer": 140583378766928,
+      "tid": 336486,
+      "kind": 0,
+      "exit": 0
+    },
+    {
+      "mono_ns": 87570504796174,
+      "scheduled_cpu_ns": 2538274,
+      "pointer": 0,
+      "tid": 336486,
+      "kind": 0,
+      "exit": 1
+    },
+    {
+      "mono_ns": 87570505315789,
+      "scheduled_cpu_ns": 3062843,
+      "pointer": 140583383531392,
+      "tid": 336486,
+      "kind": 0,
+      "exit": 0
+    },
+    {
+      "mono_ns": 87572678989521,
+      "scheduled_cpu_ns": 2137949491,
+      "pointer": 0,
+      "tid": 336486,
+      "kind": 0,
+      "exit": 1
+    }
+  ],
+  "native_pairs": [
+    {
+      "tid": 336486,
+      "kind": "ExecutorRun",
+      "pointer": 140583378766928,
+      "start_ns": 87570503762221,
+      "end_ns": 87570504637214,
+      "wall_seconds": 0.000874993,
+      "scheduled_CPU_seconds_approx": 0.000428449,
+      "CPU_not_exact_boundary_runtime_current_timeslice_not_flushed": true
+    },
+    {
+      "tid": 336486,
+      "kind": "ExecutorRun",
+      "pointer": 140583378766928,
+      "start_ns": 87570504790469,
+      "end_ns": 87570504796174,
+      "wall_seconds": 5.705e-06,
+      "scheduled_CPU_seconds_approx": 0.0,
+      "CPU_not_exact_boundary_runtime_current_timeslice_not_flushed": true
+    },
+    {
+      "tid": 336486,
+      "kind": "ExecutorRun",
+      "pointer": 140583383531392,
+      "start_ns": 87570505315789,
+      "end_ns": 87572678989521,
+      "wall_seconds": 2.173673732,
+      "scheduled_CPU_seconds_approx": 2.134886648,
+      "CPU_not_exact_boundary_runtime_current_timeslice_not_flushed": true
+    }
+  ],
+  "CPU_samples": [
+    {
+      "sample_ns": 87570546331354,
+      "read_span_ns": 158811,
+      "cpu_ns": 41758572,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87570596512092,
+      "read_span_ns": 69914,
+      "cpu_ns": 93758005,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87570646640525,
+      "read_span_ns": 59587,
+      "cpu_ns": 141757810,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87570696764279,
+      "read_span_ns": 53102,
+      "cpu_ns": 193757744,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87570746912236,
+      "read_span_ns": 101104,
+      "cpu_ns": 241757620,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87570797086077,
+      "read_span_ns": 102182,
+      "cpu_ns": 293755574,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87570847258603,
+      "read_span_ns": 102114,
+      "cpu_ns": 341757316,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87570897402511,
+      "read_span_ns": 56880,
+      "cpu_ns": 393757439,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87570947542408,
+      "read_span_ns": 87210,
+      "cpu_ns": 441757050,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87570997703401,
+      "read_span_ns": 90888,
+      "cpu_ns": 493755910,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571047847482,
+      "read_span_ns": 68905,
+      "cpu_ns": 539582549,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571097975379,
+      "read_span_ns": 59439,
+      "cpu_ns": 557965817,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571148092570,
+      "read_span_ns": 49949,
+      "cpu_ns": 609962926,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571198204774,
+      "read_span_ns": 51575,
+      "cpu_ns": 657966638,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571248317289,
+      "read_span_ns": 50508,
+      "cpu_ns": 709967676,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571298430099,
+      "read_span_ns": 52388,
+      "cpu_ns": 757967034,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571348542247,
+      "read_span_ns": 49360,
+      "cpu_ns": 809966568,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571398651297,
+      "read_span_ns": 45617,
+      "cpu_ns": 857966337,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571448765361,
+      "read_span_ns": 57482,
+      "cpu_ns": 909966870,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571498890853,
+      "read_span_ns": 65212,
+      "cpu_ns": 957966889,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571549012761,
+      "read_span_ns": 53531,
+      "cpu_ns": 1009966458,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571599127674,
+      "read_span_ns": 47897,
+      "cpu_ns": 1057965425,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571649255431,
+      "read_span_ns": 76472,
+      "cpu_ns": 1109962213,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571699383768,
+      "read_span_ns": 54872,
+      "cpu_ns": 1157961829,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571749530276,
+      "read_span_ns": 95281,
+      "cpu_ns": 1209960970,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571799663987,
+      "read_span_ns": 46994,
+      "cpu_ns": 1257961964,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571849770157,
+      "read_span_ns": 40482,
+      "cpu_ns": 1309961798,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571899866353,
+      "read_span_ns": 35277,
+      "cpu_ns": 1357956765,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87571949960656,
+      "read_span_ns": 36755,
+      "cpu_ns": 1409956190,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572000064406,
+      "read_span_ns": 90032,
+      "cpu_ns": 1461956046,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572050190981,
+      "read_span_ns": 39994,
+      "cpu_ns": 1509955627,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572100286348,
+      "read_span_ns": 34936,
+      "cpu_ns": 1561955235,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572150380058,
+      "read_span_ns": 36408,
+      "cpu_ns": 1609955427,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572200472996,
+      "read_span_ns": 33890,
+      "cpu_ns": 1661955297,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572250564576,
+      "read_span_ns": 34041,
+      "cpu_ns": 1709948091,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572300658085,
+      "read_span_ns": 36688,
+      "cpu_ns": 1761950577,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572350752945,
+      "read_span_ns": 37082,
+      "cpu_ns": 1809951196,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572400990712,
+      "read_span_ns": 323449,
+      "cpu_ns": 1861951320,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572451253961,
+      "read_span_ns": 68334,
+      "cpu_ns": 1909950958,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572501382187,
+      "read_span_ns": 61714,
+      "cpu_ns": 1961950226,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572551489901,
+      "read_span_ns": 34709,
+      "cpu_ns": 2009949148,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572601582245,
+      "read_span_ns": 33872,
+      "cpu_ns": 2061949073,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    },
+    {
+      "sample_ns": 87572651674211,
+      "read_span_ns": 35425,
+      "cpu_ns": 2109949342,
+      "identity": [
+        1075,
+        336486,
+        8757050
+      ]
+    }
+  ],
+  "samples_are_approximate_proc_intervals_not_exact_native_CPU_endpoints": true,
+  "status": "complete",
+  "actual_plan": [
+    {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Hashed",
+        "Startup Cost": 500789.48,
+        "Total Cost": 505277.03,
+        "Plan Rows": 204255,
+        "Plan Width": 50,
+        "Actual Startup Time": 2086.916,
+        "Actual Total Time": 2162.011,
+        "Actual Rows": 200000,
+        "Actual Loops": 1,
+        "Output": [
+          "c_custkey",
+          "count(*)",
+          "sum(c_acctbal)"
+        ],
+        "Group By Key": [
+          "customer.c_custkey"
+        ],
+        "Temp File Num": 64,
+        "Spill Time": 0,
+        "Expand Times": 0,
+        "Shared Hit Blocks": 12288,
+        "Shared Read Blocks": 292842,
+        "Shared Dirtied Blocks": 0,
+        "Shared Written Blocks": 0,
+        "Local Hit Blocks": 0,
+        "Local Read Blocks": 0,
+        "Local Dirtied Blocks": 0,
+        "Local Written Blocks": 0,
+        "Temp Read Blocks": 698,
+        "Temp Written Blocks": 634,
+        "IO Read Time": 0.0,
+        "IO Write Time": 0.0,
+        "Plans": [
+          {
+            "Node Type": "Seq Scan",
+            "Parent Relationship": "Outer",
+            "Relation Name": "customer",
+            "Schema": "public",
+            "Alias": "customer",
+            "Startup Cost": 0.0,
+            "Total Cost": 496395.55,
+            "Plan Rows": 204255,
+            "Plan Width": 10,
+            "Actual Startup Time": 525.52,
+            "Actual Total Time": 2005.633,
+            "Actual Rows": 200000,
+            "Actual Loops": 1,
+            "Output": [
+              "c_custkey",
+              "c_acctbal"
+            ],
+            "Filter": "((customer.c_custkey >= 1) AND (customer.c_custkey <= 200000))",
+            "Rows Removed by Filter": 12550000,
+            "Shared Hit Blocks": 12288,
+            "Shared Read Blocks": 292842,
+            "Shared Dirtied Blocks": 0,
+            "Shared Written Blocks": 0,
+            "Local Hit Blocks": 0,
+            "Local Read Blocks": 0,
+            "Local Dirtied Blocks": 0,
+            "Local Written Blocks": 0,
+            "Temp Read Blocks": 0,
+            "Temp Written Blocks": 0,
+            "IO Read Time": 0.0,
+            "IO Write Time": 0.0
+          }
+        ]
+      },
+      "Triggers": [],
+      "Total Runtime": 2173.755
+    }
+  ],
+  "lifecycle": {
+    "tid": 336486,
+    "kind": "ExecutorRun",
+    "pointer": 140583383531392,
+    "start_ns": 87570505315789,
+    "end_ns": 87572678989521,
+    "wall_seconds": 2.173673732,
+    "scheduled_CPU_seconds_approx": 2.134886648,
+    "CPU_not_exact_boundary_runtime_current_timeslice_not_flushed": true
+  }
+}

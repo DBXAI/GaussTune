@@ -1,0 +1,602 @@
+{
+  "schema": "jmt.runtime-discovery/v1",
+  "collected_at": "2026-11-17T08:36:59.411199+00:00",
+  "started_monotonic_ns": 88468348040094,
+  "finished_monotonic_ns": 88468510088113,
+  "connection": {
+    "gsql": "/opt/openGauss/bin/gsql",
+    "host": "/tmp",
+    "port": 5432,
+    "user": null,
+    "run_as_user": "omm",
+    "database": "h5_tpch"
+  },
+  "local_instance": {
+    "pid": 1075,
+    "gaussdb": "/opt/openGauss/bin/gaussdb",
+    "data_directory": "/opt/openGauss/data",
+    "owner": "omm",
+    "port": 5432,
+    "socket_directory": "/tmp",
+    "postmaster_start_epoch": 1794816155
+  },
+  "local_server_hardware_verified": true,
+  "database": {
+    "database": "h5_tpch",
+    "version": "(openGauss 5.1.0 build b5a8d5b0) compiled at 2026-07-27 22:42:53 commit 0 last mr   on x86_64-unknown-linux-gnu, compiled by g++ (GCC) 7.3.0, 64-bit",
+    "postmaster_start_time": "2026-11-16 16:02:41.722327+08",
+    "settings": [
+      {
+        "name": "block_size",
+        "setting": "8192",
+        "unit": "",
+        "min_val": "8192",
+        "max_val": "8192",
+        "context": "internal",
+        "source": "default"
+      },
+      {
+        "name": "cstore_buffers",
+        "setting": "524288",
+        "unit": "kB",
+        "min_val": "16384",
+        "max_val": "1073741823",
+        "context": "postmaster",
+        "source": "configuration file"
+      },
+      {
+        "name": "data_directory",
+        "setting": "/opt/openGauss/data",
+        "unit": null,
+        "min_val": null,
+        "max_val": null,
+        "context": "postmaster",
+        "source": "override"
+      },
+      {
+        "name": "disable_memory_protect",
+        "setting": "off",
+        "unit": null,
+        "min_val": null,
+        "max_val": null,
+        "context": "user",
+        "source": "default"
+      },
+      {
+        "name": "enable_memory_limit",
+        "setting": "on",
+        "unit": null,
+        "min_val": null,
+        "max_val": null,
+        "context": "postmaster",
+        "source": "default"
+      },
+      {
+        "name": "enable_vector_engine",
+        "setting": "on",
+        "unit": null,
+        "min_val": null,
+        "max_val": null,
+        "context": "user",
+        "source": "default"
+      },
+      {
+        "name": "max_process_memory",
+        "setting": "20971520",
+        "unit": "kB",
+        "min_val": "2097152",
+        "max_val": "2147483647",
+        "context": "postmaster",
+        "source": "configuration file"
+      },
+      {
+        "name": "port",
+        "setting": "5432",
+        "unit": "",
+        "min_val": "1",
+        "max_val": "65535",
+        "context": "postmaster",
+        "source": "default"
+      },
+      {
+        "name": "query_dop",
+        "setting": "1",
+        "unit": "",
+        "min_val": "1",
+        "max_val": "64",
+        "context": "user",
+        "source": "default"
+      },
+      {
+        "name": "query_max_mem",
+        "setting": "0",
+        "unit": "kB",
+        "min_val": "0",
+        "max_val": "2147483647",
+        "context": "user",
+        "source": "default"
+      },
+      {
+        "name": "query_mem",
+        "setting": "0",
+        "unit": "kB",
+        "min_val": "0",
+        "max_val": "2147483647",
+        "context": "user",
+        "source": "default"
+      },
+      {
+        "name": "shared_buffers",
+        "setting": "1048576",
+        "unit": "8kB",
+        "min_val": "16",
+        "max_val": "1073741823",
+        "context": "postmaster",
+        "source": "configuration file"
+      },
+      {
+        "name": "shared_buffers_target",
+        "setting": "1048576",
+        "unit": "8kB",
+        "min_val": "0",
+        "max_val": "1073741823",
+        "context": "sighup",
+        "source": "configuration file"
+      },
+      {
+        "name": "synchronize_seqscans",
+        "setting": "on",
+        "unit": null,
+        "min_val": null,
+        "max_val": null,
+        "context": "user",
+        "source": "default"
+      },
+      {
+        "name": "temp_tablespaces",
+        "setting": "",
+        "unit": null,
+        "min_val": null,
+        "max_val": null,
+        "context": "user",
+        "source": "default"
+      },
+      {
+        "name": "work_mem",
+        "setting": "32768",
+        "unit": "kB",
+        "min_val": "64",
+        "max_val": "2147483647",
+        "context": "user",
+        "source": "user"
+      }
+    ]
+  },
+  "native_memory": [
+    {
+      "nodename": "primary",
+      "memorytype": "max_process_memory",
+      "memorymbytes": 20480
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "process_used_memory",
+      "memorymbytes": 4688
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "max_dynamic_memory",
+      "memorymbytes": 8850
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "dynamic_used_memory",
+      "memorymbytes": 581
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "dynamic_peak_memory",
+      "memorymbytes": 3818
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "dynamic_used_shrctx",
+      "memorymbytes": 295
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "dynamic_peak_shrctx",
+      "memorymbytes": 297
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "max_backend_memory",
+      "memorymbytes": 348
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "backend_used_memory",
+      "memorymbytes": 1
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "max_shared_memory",
+      "memorymbytes": 10769
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "shared_used_memory",
+      "memorymbytes": 4156
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "max_cstore_memory",
+      "memorymbytes": 512
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "cstore_used_memory",
+      "memorymbytes": 0
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "max_sctpcomm_memory",
+      "memorymbytes": 0
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "sctpcomm_used_memory",
+      "memorymbytes": 0
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "sctpcomm_peak_memory",
+      "memorymbytes": 0
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "other_used_memory",
+      "memorymbytes": 0
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "gpu_max_dynamic_memory",
+      "memorymbytes": 0
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "gpu_dynamic_used_memory",
+      "memorymbytes": 0
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "gpu_dynamic_peak_memory",
+      "memorymbytes": 0
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "pooler_conn_memory",
+      "memorymbytes": 0
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "pooler_freeconn_memory",
+      "memorymbytes": 0
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "storage_compress_memory",
+      "memorymbytes": 0
+    },
+    {
+      "nodename": "primary",
+      "memorytype": "udf_reserved_memory",
+      "memorymbytes": 0
+    }
+  ],
+  "native_memory_error": null,
+  "resources": {
+    "host_logical_cpus": 16,
+    "database_affinity_cpus": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "effective_logical_cpu_capacity": 16,
+    "effective_physical_cores": 8,
+    "host_memory_bytes": 32564355072,
+    "effective_memory_limit_bytes": 32564355072,
+    "host_mem_available_bytes_snapshot": 25801404416,
+    "available_memory_upper_bound_bytes_snapshot": 25801404416,
+    "host_swap_bytes": 0,
+    "cgroups": {
+      "cpu_quota_cores": null,
+      "memory_limit_bytes": null,
+      "memory_headroom_bytes_snapshot": null,
+      "cpuset_cpus": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "ancestor_directories_checked": 23,
+      "unavailable_paths": [],
+      "unmapped_membership": false
+    },
+    "resource_constraints_verified": true,
+    "capacity_is_not_guaranteed_exclusive_CPU_or_free_AP_budget": true
+  },
+  "filesystems": [
+    {
+      "path": "/opt/openGauss/data",
+      "major_minor": "259:3",
+      "mount": {
+        "major_minor": "259:3",
+        "root": "/",
+        "mountpoint": "/",
+        "fstype": "ext4",
+        "source": "/dev/nvme0n1p3",
+        "super_options": [
+          "rw",
+          "errors=remount-ro"
+        ]
+      },
+      "leaf_devices": [
+        {
+          "name": "nvme0n1",
+          "major_minor": "259:0",
+          "size_bytes": 375809638400,
+          "rotational": "0"
+        }
+      ],
+      "free_bytes_snapshot": 35029512192,
+      "physical_device_known": true,
+      "bandwidth_IOPS_latency_are_not_inferred_from_device_size": true
+    },
+    {
+      "path": "/opt/openGauss/data/pg_xlog",
+      "major_minor": "259:3",
+      "mount": {
+        "major_minor": "259:3",
+        "root": "/",
+        "mountpoint": "/",
+        "fstype": "ext4",
+        "source": "/dev/nvme0n1p3",
+        "super_options": [
+          "rw",
+          "errors=remount-ro"
+        ]
+      },
+      "leaf_devices": [
+        {
+          "name": "nvme0n1",
+          "major_minor": "259:0",
+          "size_bytes": 375809638400,
+          "rotational": "0"
+        }
+      ],
+      "free_bytes_snapshot": 35029512192,
+      "physical_device_known": true,
+      "bandwidth_IOPS_latency_are_not_inferred_from_device_size": true
+    }
+  ],
+  "database_memory_facts": {
+    "block_size_bytes": 8192,
+    "shared_buffers_bytes": 8589934592,
+    "shared_buffers_target_bytes": 8589934592,
+    "configured_max_process_memory_bytes": 21474836480,
+    "native_max_dynamic_memory_bytes_by_node": {
+      "primary": 9279897600
+    },
+    "native_dynamic_remainder_is_not_an_operator_grant_or_WM_SET_cap": true
+  },
+  "machine_identity": {
+    "host_id_hash": "6f301235c4373f0024c6ebd89b36ceb88128289f7f1d6efcc36e1973ada826fe",
+    "architecture": "x86_64",
+    "kernel": "5.4.0-216-generic",
+    "resource_domain": {
+      "effective_logical_cpu_capacity": 16,
+      "database_affinity_cpus": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15
+      ],
+      "effective_memory_limit_bytes": 32564355072,
+      "host_swap_bytes": 0
+    },
+    "gaussdb_sha256": "79f7d79af465d7bb4c62f5f3e9fa0992ab7f585a37201846424d2468cf707a7b",
+    "storage_topology": [
+      {
+        "major_minor": "259:3",
+        "devices": [
+          {
+            "name": "nvme0n1",
+            "major_minor": "259:0",
+            "size_bytes": 375809638400,
+            "rotational": "0"
+          }
+        ]
+      },
+      {
+        "major_minor": "259:3",
+        "devices": [
+          {
+            "name": "nvme0n1",
+            "major_minor": "259:0",
+            "size_bytes": 375809638400,
+            "rotational": "0"
+          }
+        ]
+      }
+    ]
+  },
+  "calibration_machine_key": "75ef3e4c89fbf167d46930102985aab747df4e4de1369b2fb428d7593fc6dbab",
+  "database_resource_settings_key": "d842a4a89f7e4fe907c986dd1579e3fd11f172c7b7a7e1285982ad3f31866e0c",
+  "boot_id": "1b4df6d9-0179-466e-8de4-0654aa002917",
+  "performance_calibration": {
+    "status": "required_not_obtainable_from_settings",
+    "missing": [
+      "CPU_seconds_per_operator_work_unit",
+      "physical_IO_conversion_and_rates",
+      "fresh_TP_baseline_for_requested_workload_and_SB"
+    ],
+    "legacy_host_calibration_automatically_reused": false,
+    "implicit_benchmark_or_global_configuration_change": false
+  },
+  "automatic_recommendation_qualified": false,
+  "work_mem_SET_domain": {
+    "schema": "jmt.database-allowed-work-mem-domain/v1",
+    "raw_pg_settings": [
+      {
+        "name": "disable_memory_protect",
+        "setting": "off",
+        "unit": null,
+        "min_val": null,
+        "max_val": null,
+        "context": "user",
+        "source": "default"
+      },
+      {
+        "name": "enable_memory_limit",
+        "setting": "on",
+        "unit": null,
+        "min_val": null,
+        "max_val": null,
+        "context": "postmaster",
+        "source": "default"
+      },
+      {
+        "name": "max_process_memory",
+        "setting": "20971520",
+        "unit": "kB",
+        "min_val": "2097152",
+        "max_val": "2147483647",
+        "context": "postmaster",
+        "source": "configuration file"
+      },
+      {
+        "name": "query_max_mem",
+        "setting": "0",
+        "unit": "kB",
+        "min_val": "0",
+        "max_val": "2147483647",
+        "context": "user",
+        "source": "default"
+      },
+      {
+        "name": "query_mem",
+        "setting": "0",
+        "unit": "kB",
+        "min_val": "0",
+        "max_val": "2147483647",
+        "context": "user",
+        "source": "default"
+      },
+      {
+        "name": "work_mem",
+        "setting": "32768",
+        "unit": "kB",
+        "min_val": "64",
+        "max_val": "2147483647",
+        "context": "user",
+        "source": "user"
+      }
+    ],
+    "minimum_mib": 1,
+    "maximum_mib": 2097151,
+    "limit_source": "pg_settings.work_mem.min_val/max_val, intersect adapter integer domain",
+    "query_memory_settings": {
+      "query_mem": {
+        "name": "query_mem",
+        "setting": "0",
+        "unit": "kB",
+        "min_val": "0",
+        "max_val": "2147483647",
+        "context": "user",
+        "source": "default"
+      },
+      "query_max_mem": {
+        "name": "query_max_mem",
+        "setting": "0",
+        "unit": "kB",
+        "min_val": "0",
+        "max_val": "2147483647",
+        "context": "user",
+        "source": "default"
+      }
+    },
+    "database_global_settings": {
+      "max_process_memory": {
+        "name": "max_process_memory",
+        "setting": "20971520",
+        "unit": "kB",
+        "min_val": "2097152",
+        "max_val": "2147483647",
+        "context": "postmaster",
+        "source": "configuration file"
+      },
+      "enable_memory_limit": {
+        "name": "enable_memory_limit",
+        "setting": "on",
+        "unit": null,
+        "min_val": null,
+        "max_val": null,
+        "context": "postmaster",
+        "source": "default"
+      },
+      "disable_memory_protect": {
+        "name": "disable_memory_protect",
+        "setting": "off",
+        "unit": null,
+        "min_val": null,
+        "max_val": null,
+        "context": "user",
+        "source": "default"
+      }
+    },
+    "TP_reserve_or_native_dynamic_remainder_used_as_WM_GUC_limit": false,
+    "SET_acceptance_is_not_memory_allocation_or_operator_grant": true,
+    "large_SET_does_not_authorize_host_overcommit": true
+  },
+  "config_sha256": "51a077df43b446dca597d8398c3a1e194513583b05bc71bc185c6ed092f501c9",
+  "config_exactly_unchanged": true,
+  "SB_exactly_unchanged": true
+}

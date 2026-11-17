@@ -1,0 +1,286 @@
+{
+  "frozen_ns": 87557643512470,
+  "blind_plan": [
+    {
+      "Plan": {
+        "Node Type": "Seq Scan",
+        "Relation Name": "customer",
+        "Schema": "public",
+        "Alias": "customer",
+        "Startup Cost": 0.0,
+        "Total Cost": 496395.55,
+        "Plan Rows": 204255,
+        "Plan Width": 10,
+        "Output": [
+          "c_custkey",
+          "c_acctbal"
+        ],
+        "Filter": "((customer.c_custkey >= 1) AND (customer.c_custkey <= 200000))"
+      }
+    }
+  ],
+  "forecast": {
+    "schema": "huawei7.ap-plan-service-demand/v3.8.0-experimental",
+    "work_mem_mib": 4,
+    "executor_profile": {
+      "allocation_header_bytes": 32,
+      "sort_algorithm": "5.1 quicksort batches + polyphase merge",
+      "qualification": "build-dependent; verify for a different executor binary"
+    },
+    "plan_structure_sha256": "cd575411104e36c2d73314cd1ca8b8089192c98e76ba0d0e438a9ef37517feb9",
+    "features": {
+      "scan_tuples": 12751037.0,
+      "index_probes": 0.0,
+      "index_tuples": 0.0,
+      "predicate_evaluations": 63755185.0,
+      "projection_evaluations": 204255.0,
+      "hash_build_tuples": 0.0,
+      "hash_probe_tuples": 0.0,
+      "join_comparisons": 0.0,
+      "aggregate_transitions": 0.0,
+      "aggregate_groups": 0.0,
+      "aggregate_argument_evaluations": 0.0,
+      "sort_comparisons": 0.0,
+      "window_evaluations": 0.0,
+      "store_put_tuples": 0.0,
+      "store_get_tuples": 0.0,
+      "setop_tuples": 0.0,
+      "logical_scan_bytes": 2499624960.0,
+      "logical_temp_read_bytes": 0.0,
+      "logical_temp_write_bytes": 0.0
+    },
+    "operators": [
+      {
+        "path": "",
+        "node_type": "Seq Scan",
+        "strategy": "",
+        "join_type": "",
+        "calls": 1.0,
+        "input_rows_per_call": 204255.0,
+        "output_rows_per_call": 204255.0,
+        "width": 10.0,
+        "mode": "sequential_scan",
+        "memory_mib": 0.0,
+        "temp_read_bytes": 0.0,
+        "temp_write_bytes": 0.0,
+        "features": {
+          "scan_tuples": 12751037.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 63755185.0,
+          "projection_evaluations": 204255.0,
+          "hash_build_tuples": 0.0,
+          "hash_probe_tuples": 0.0,
+          "join_comparisons": 0.0,
+          "aggregate_transitions": 0.0,
+          "aggregate_groups": 0.0,
+          "aggregate_argument_evaluations": 0.0,
+          "sort_comparisons": 0.0,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 2499624960.0,
+          "logical_temp_read_bytes": 0.0,
+          "logical_temp_write_bytes": 0.0
+        },
+        "details": {
+          "subtree_structural_peak_upper_mib": 0.0
+        },
+        "uncertainties": [],
+        "recognized": true
+      }
+    ],
+    "dataflow": {
+      "nodes": [
+        {
+          "path": "",
+          "semantics": "stream"
+        }
+      ],
+      "edges": [],
+      "qualification": "execution dependency skeleton; CTE reuse/parameter dependencies and an actual resource-constrained scheduler are not yet implemented"
+    },
+    "node_types": {
+      "Seq Scan": 1
+    },
+    "modes": {
+      "sequential_scan": 1
+    },
+    "unsupported_operators": [],
+    "uncertainties": {},
+    "logical_temp_estimate_complete": true,
+    "logical_temp_read_bytes_estimate": 0.0,
+    "logical_temp_write_bytes_estimate": 0.0,
+    "feature_qualification": "logical_temp_* features include modeled components only; an incomplete temp estimate must never be interpreted as zero total spill",
+    "structural_peak_upper_mib": 0.0,
+    "peak_qualification": "structural approximation, NOT a measured or certified safety bound",
+    "latency_seconds": null,
+    "physical_read_requests": null,
+    "physical_write_requests": null,
+    "status": "experimental_resource_estimate",
+    "qualification": "no per-query/family calibration; cardinality remains planner/statistics dependent; not production-qualified, not a physical IOPS or latency prediction",
+    "experimental_cardinality_input": null,
+    "spill_input_guard": null,
+    "experimental_cardinality_effects": [],
+    "preexecution_key_group_sample_evidence": {},
+    "release_schema": "jmt.ap-forecast/1.0.0rc4",
+    "reliability": {
+      "operator_coverage_complete": true,
+      "join_cardinality_independently_validated": null,
+      "join_nodes_requiring_input_validation": [],
+      "classification": "experimental_operator_estimate",
+      "qualification": "An implementation-complete numeric result is NOT a confidence interval, a safety guarantee or qualification for automatic WM recommendation."
+    },
+    "forecasted_at": "2026-11-17T08:21:48.543279+00:00",
+    "forecast_pipeline_schema": "huawei7.ap-light-cardinality/v1.1-experimental",
+    "uses_preflight_statistics": false,
+    "cardinality_evidence_status": "planner_only",
+    "automatic_recommendation_qualified": false,
+    "preflight_estimates": [],
+    "cardinality_propagation": [],
+    "light_cardinality_effects": [],
+    "dimension_evidence": [],
+    "group_occupancy_evidence": {},
+    "offline_group_frequency_evidence": {},
+    "offline_group_frequency_effects": [],
+    "offline_group_frequency_assumptions": [],
+    "unique_union_group_evidence": {},
+    "unique_union_group_effects": [],
+    "joint_synopsis_evidence": null,
+    "joint_cardinality_effects": [],
+    "sql_metadata_available": true,
+    "expression_type_evidence": {
+      "schema": "huawei7.ap-expression-types/v1-experimental",
+      "available": true,
+      "scope_preparation_available": true,
+      "resolved_argument_expressions": {},
+      "unresolved_argument_expressions": [],
+      "qualification": "type-only bounded AST inference; no new row/NDV/width evidence"
+    },
+    "formula_compute_ms": 0.8148619963321835,
+    "shared_preparation_ms": 24.383198004215956,
+    "forecast_qualification": "experimental logical temp buffer-equivalent bytes; no target runtime labels; a numeric estimate is not a certified accuracy or zero-spill guarantee"
+  },
+  "program": {
+    "schema": "jmt.operator-boundary-phases/v1",
+    "basis": [
+      "startup",
+      "scan_filter_M",
+      "projection_argument_M",
+      "hash_join_M",
+      "aggregate_M",
+      "sort_comparisons_M",
+      "state_index_M",
+      "hash_aggregate_working_set_interaction",
+      "numeric_arithmetic_M",
+      "numeric_avg_M",
+      "logical_scan_GiB",
+      "logical_temp_read_GiB",
+      "logical_temp_write_GiB"
+    ],
+    "stages": [
+      {
+        "label": "Seq Scan",
+        "vector": [
+          1.0,
+          27.115908893176808,
+          0.204255,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          2.3279571533203125,
+          0.0,
+          0.0
+        ],
+        "contributions": {
+          "": [
+            0.0,
+            27.115908893176808,
+            0.204255,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2.3279571533203125,
+            0.0,
+            0.0
+          ],
+          "@query-startup": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "output_fraction": 1.0,
+        "ends": [],
+        "id": 0
+      }
+    ],
+    "operator_count": 1,
+    "phase_count": 1,
+    "phase_topology_complete": true,
+    "unsupported": [],
+    "total_vector": [
+      1.0,
+      27.115908893176808,
+      0.204255,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.3279571533203125,
+      0.0,
+      0.0
+    ],
+    "innovation_2_vector": [
+      1.0,
+      27.115908893176808,
+      0.204255,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.3279571533203125,
+      0.0,
+      0.0
+    ],
+    "innovation_2_work_conserved": true,
+    "plan_structure_sha256": "cd575411104e36c2d73314cd1ca8b8089192c98e76ba0d0e438a9ef37517feb9",
+    "work_mem_mib": 4,
+    "physical_IO_estimate": null,
+    "physical_IO_qualified": false,
+    "phase_timing_accuracy_qualified": false,
+    "automatic_recommendation_qualified": false,
+    "assumptions": [
+      "DOP=1 row executor; one coarse fluid segment per blocking/replay boundary, not per tuple",
+      "Innovation 2 cardinality/spill errors remain; work conservation does not prove accuracy",
+      "Hash replay CPU absent from innovation 2 is not invented by this layer",
+      "Coarse spill replay distribution is approximate; grants/cache/physical IO are not inferred"
+    ],
+    "compute_process_cpu_ns": 1325426
+  }
+}

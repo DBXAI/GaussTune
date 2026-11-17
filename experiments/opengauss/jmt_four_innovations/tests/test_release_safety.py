@@ -119,6 +119,20 @@ class ReleaseSafetyTest(unittest.TestCase):
             self.assertIn("START TRANSACTION READ ONLY;SELECT\n1;ROLLBACK;", argv[argv.index("-c") + 1])
             self.assertNotIn("BEGIN;", argv[argv.index("-c") + 1])
 
+    def test_startup_metadata_read_does_not_override_work_mem_or_executor(self):
+        import subprocess
+        fake = subprocess.CompletedProcess([], 0, '[]', '')
+        with patch("shutil.which", return_value="/bin/true"), \
+                patch("subprocess.run", return_value=fake) as run:
+            client = Gsql("gsql")
+            client.execute("unit", "SELECT 1", wm_mib=None, row_executor=False)
+            argv = run.call_args[0][0]
+            sql = argv[argv.index("-c") + 1]
+            self.assertNotIn("work_mem=", sql)
+            self.assertNotIn("enable_vector_engine=", sql)
+            self.assertNotIn("query_dop=", sql)
+            self.assertIn("START TRANSACTION READ ONLY", sql)
+
     def test_kernel_control_requires_explicit_opt_in(self):
         from jmt.innovation_1_cache.kernel_trace_control import set_guc
         with patch.dict("os.environ", {}, clear=True):

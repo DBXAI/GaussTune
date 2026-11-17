@@ -1,0 +1,34 @@
+scan_project_wm4 complete 1.951
+scan_project_wm64 complete 1.935
+plain_numeric_wm4 complete 2.001
+plain_numeric_wm64 complete 2.004
+group_low_ndv_wm4 complete 1.927
+group_low_ndv_wm64 complete 1.929
+group_high_ndv_wm4 complete 2.054
+group_high_ndv_wm64 complete 2.028
+sort_payload_wm4 complete 2.01
+sort_payload_wm64 complete 1.978
+hash_dimension_wm4 complete 1.901
+hash_dimension_wm64 complete 1.907
+joined_group_wm4 complete 1.973
+joined_group_wm64 complete 1.976
+group_sort_wm4 complete 1.885
+group_sort_wm64 complete 1.863
+supplier_scan_wm4 complete 0.206
+supplier_scan_wm64 complete 0.107
+supplier_numeric_wm4 complete 0.195
+supplier_numeric_wm64 complete 0.195
+supplier_sort_text_wm4 complete 0.724
+supplier_sort_text_wm64 complete 0.812
+supplier_group_wm4 complete 0.227
+supplier_group_wm64 complete 0.21
+Traceback (most recent call last):
+  File "tools/validate_operator_phases.py", line 492, in <module>
+    main()
+  File "tools/validate_operator_phases.py", line 486, in main
+    run(args)
+  File "tools/validate_operator_phases.py", line 417, in run
+    observation = measure(client, args.database, definition, observer)
+  File "tools/validate_operator_phases.py", line 149, in measure
+    raise ValueError("target native lifecycle / EXPLAIN scope mismatch")
+ValueError: target native lifecycle / EXPLAIN scope mismatch

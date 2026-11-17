@@ -1,0 +1,505 @@
+{
+  "frozen_ns": 88880919489525,
+  "blind_plan": [
+    {
+      "Plan": {
+        "Node Type": "Aggregate",
+        "Strategy": "Hashed",
+        "Startup Cost": 497927.47,
+        "Total Cost": 499970.02,
+        "Plan Rows": 204255,
+        "Plan Width": 50,
+        "Output": [
+          "c_custkey",
+          "count(*)",
+          "sum(c_acctbal)"
+        ],
+        "Group By Key": [
+          "customer.c_custkey"
+        ],
+        "Plans": [
+          {
+            "Node Type": "Seq Scan",
+            "Parent Relationship": "Outer",
+            "Relation Name": "customer",
+            "Schema": "public",
+            "Alias": "customer",
+            "Startup Cost": 0.0,
+            "Total Cost": 496395.55,
+            "Plan Rows": 204255,
+            "Plan Width": 10,
+            "Output": [
+              "c_custkey",
+              "c_acctbal"
+            ],
+            "Filter": "((customer.c_custkey >= 1) AND (customer.c_custkey <= 200000))"
+          }
+        ]
+      }
+    }
+  ],
+  "forecast": {
+    "schema": "huawei7.ap-plan-service-demand/v3.8.0-experimental",
+    "work_mem_mib": 64,
+    "executor_profile": {
+      "allocation_header_bytes": 32,
+      "sort_algorithm": "5.1 quicksort batches + polyphase merge",
+      "qualification": "build-dependent; verify for a different executor binary"
+    },
+    "plan_structure_sha256": "d46a2ed8e5e915400d8ca49c5c31035eea1cda64bd88b88b452cb659539393ed",
+    "features": {
+      "scan_tuples": 12751037.0,
+      "index_probes": 0.0,
+      "index_tuples": 0.0,
+      "predicate_evaluations": 63755185.0,
+      "projection_evaluations": 408510.0,
+      "hash_build_tuples": 0.0,
+      "hash_probe_tuples": 204255.0,
+      "join_comparisons": 0.0,
+      "aggregate_transitions": 408510.0,
+      "aggregate_groups": 204255.0,
+      "aggregate_argument_evaluations": 204255.0,
+      "sort_comparisons": 0.0,
+      "window_evaluations": 0.0,
+      "store_put_tuples": 0.0,
+      "store_get_tuples": 0.0,
+      "setop_tuples": 0.0,
+      "logical_scan_bytes": 2499624960.0,
+      "logical_temp_read_bytes": 0.0,
+      "logical_temp_write_bytes": 0.0
+    },
+    "operators": [
+      {
+        "path": "",
+        "node_type": "Aggregate",
+        "strategy": "Hashed",
+        "join_type": "",
+        "calls": 1.0,
+        "input_rows_per_call": 204255.0,
+        "output_rows_per_call": 204255.0,
+        "width": 50.0,
+        "mode": "hash_aggregate_memory",
+        "memory_mib": 40.01726531982422,
+        "temp_read_bytes": 0.0,
+        "temp_write_bytes": 0.0,
+        "features": {
+          "scan_tuples": 0.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 0.0,
+          "projection_evaluations": 204255.0,
+          "hash_build_tuples": 0.0,
+          "hash_probe_tuples": 204255.0,
+          "join_comparisons": 0.0,
+          "aggregate_transitions": 408510.0,
+          "aggregate_groups": 204255.0,
+          "aggregate_argument_evaluations": 204255.0,
+          "sort_comparisons": 0.0,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 0.0,
+          "logical_temp_read_bytes": 0.0,
+          "logical_temp_write_bytes": 0.0
+        },
+        "details": {
+          "aggregate_functions": {
+            "count": 1,
+            "sum": 1
+          },
+          "aggregate_state_expressions": [
+            "count(*)",
+            "sum(c_acctbal)"
+          ],
+          "mode": "hash_aggregate_memory",
+          "memory_mib": 40.01726531982422,
+          "required_mib": 34.90058135986328,
+          "spill_trigger_required_mib": 34.90058135986328,
+          "child_dynahash_memory_mib_estimate": 16.02507781982422,
+          "memory_qualification": "physical_parent_plus_child_estimate_NOT_capped_by_spill_check_grant",
+          "entry_bytes_lower_without_byref_payload": 120,
+          "executor_spill_check_entry_bytes": 168,
+          "aggregate_transition_payload_bytes": 48,
+          "counted_entry_state_bytes": 56,
+          "parent_context_layout": {
+            "resident_groups": 204255,
+            "required_spill_check_bytes": 36595912,
+            "parent_reserved_bytes_at_residency": 25157632,
+            "spill_check_bytes_at_residency": 36595912,
+            "persistent_parent_bytes_per_group": 112,
+            "manual_entry_state_bytes": 56,
+            "binary_search_steps": 0,
+            "allocator_events_per_evaluation": 11,
+            "accounting": "parent_AllocSet_totalSpace_plus_one_entrysize; child_dynahash_excluded",
+            "qualification": "8KiB..8MiB parent blocks; expected persistent chunk packing; mixed/variable widths and allocation ordering remain approximate"
+          },
+          "dynahash_child_excluded_from_spill_check": true,
+          "planner_partition_groups_proxy": 204255,
+          "aggregate_state_slots": 2,
+          "resident_groups": 204255.0,
+          "group_discovery_model": "equal_multiplicity_random_order",
+          "frequency_histogram_budget_exceeded": {
+            "group": false,
+            "setop": false
+          },
+          "frequency_solve_bins_max": 256,
+          "estimated_discovery_rows": 204255.0,
+          "setop_frequency_demand": null,
+          "spill_row_bytes_estimate": 26.0,
+          "write_bytes": 0,
+          "read_bytes": 0.0,
+          "write_bytes_lower": 0.0,
+          "write_bytes_upper": 5310630.0,
+          "reachable_partition_files": 32,
+          "nonempty_partition_files_estimate": 0,
+          "eof_read_block_equivalent_bytes": 0.0,
+          "partitions": 48,
+          "repartition_levels": 0,
+          "aggregate_transition_layouts": [
+            {
+              "function": "count",
+              "argument_type": null,
+              "payload_bytes": 0,
+              "collect_initial_payload_bytes": 0,
+              "persistent_payload_bytes": 0,
+              "qualification": "by_value_transition"
+            },
+            {
+              "function": "sum",
+              "argument_type": "numeric",
+              "payload_bytes": 48,
+              "collect_initial_payload_bytes": 0,
+              "persistent_payload_bytes": 48,
+              "qualification": "Numeric_BI64_lower_payload"
+            }
+          ],
+          "stored_group_keys_width": 4.0,
+          "subtree_structural_peak_upper_mib": 40.01726531982422
+        },
+        "uncertainties": [
+          "session_work_mem_not_verified_operator_grant",
+          "numeric_transition_can_grow_beyond_bi64",
+          "hashagg_group_frequency_and_input_order_unknown",
+          "hashagg_spill_projection_width_not_measured",
+          "hashagg_stored_group_projection_width_not_measured",
+          "by_reference_aggregate_transition_payload_not_measured"
+        ],
+        "recognized": true
+      },
+      {
+        "path": ".0",
+        "node_type": "Seq Scan",
+        "strategy": "",
+        "join_type": "",
+        "calls": 1.0,
+        "input_rows_per_call": 204255.0,
+        "output_rows_per_call": 204255.0,
+        "width": 10.0,
+        "mode": "sequential_scan",
+        "memory_mib": 0.0,
+        "temp_read_bytes": 0.0,
+        "temp_write_bytes": 0.0,
+        "features": {
+          "scan_tuples": 12751037.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 63755185.0,
+          "projection_evaluations": 204255.0,
+          "hash_build_tuples": 0.0,
+          "hash_probe_tuples": 0.0,
+          "join_comparisons": 0.0,
+          "aggregate_transitions": 0.0,
+          "aggregate_groups": 0.0,
+          "aggregate_argument_evaluations": 0.0,
+          "sort_comparisons": 0.0,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 2499624960.0,
+          "logical_temp_read_bytes": 0.0,
+          "logical_temp_write_bytes": 0.0
+        },
+        "details": {
+          "subtree_structural_peak_upper_mib": 0.0
+        },
+        "uncertainties": [],
+        "recognized": true
+      }
+    ],
+    "dataflow": {
+      "nodes": [
+        {
+          "path": "",
+          "semantics": "consume_input_then_produce"
+        },
+        {
+          "path": ".0",
+          "semantics": "stream"
+        }
+      ],
+      "edges": [
+        {
+          "producer": ".0",
+          "consumer": "",
+          "relationship": "Outer",
+          "producer_semantics": "stream"
+        }
+      ],
+      "qualification": "execution dependency skeleton; CTE reuse/parameter dependencies and an actual resource-constrained scheduler are not yet implemented"
+    },
+    "node_types": {
+      "Aggregate": 1,
+      "Seq Scan": 1
+    },
+    "modes": {
+      "hash_aggregate_memory": 1,
+      "sequential_scan": 1
+    },
+    "unsupported_operators": [],
+    "uncertainties": {
+      "session_work_mem_not_verified_operator_grant": 1,
+      "numeric_transition_can_grow_beyond_bi64": 1,
+      "hashagg_group_frequency_and_input_order_unknown": 1,
+      "hashagg_spill_projection_width_not_measured": 1,
+      "hashagg_stored_group_projection_width_not_measured": 1,
+      "by_reference_aggregate_transition_payload_not_measured": 1
+    },
+    "logical_temp_estimate_complete": true,
+    "logical_temp_read_bytes_estimate": 0.0,
+    "logical_temp_write_bytes_estimate": 0.0,
+    "feature_qualification": "logical_temp_* features include modeled components only; an incomplete temp estimate must never be interpreted as zero total spill",
+    "structural_peak_upper_mib": 40.01726531982422,
+    "peak_qualification": "structural approximation, NOT a measured or certified safety bound",
+    "latency_seconds": null,
+    "physical_read_requests": null,
+    "physical_write_requests": null,
+    "status": "experimental_resource_estimate",
+    "qualification": "no per-query/family calibration; cardinality remains planner/statistics dependent; not production-qualified, not a physical IOPS or latency prediction",
+    "experimental_cardinality_input": null,
+    "spill_input_guard": null,
+    "experimental_cardinality_effects": [],
+    "preexecution_key_group_sample_evidence": {},
+    "release_schema": "jmt.ap-forecast/1.0.0rc4",
+    "reliability": {
+      "operator_coverage_complete": true,
+      "join_cardinality_independently_validated": null,
+      "join_nodes_requiring_input_validation": [],
+      "classification": "experimental_operator_estimate",
+      "qualification": "An implementation-complete numeric result is NOT a confidence interval, a safety guarantee or qualification for automatic WM recommendation."
+    },
+    "forecasted_at": "2026-11-17T08:43:51.819895+00:00",
+    "forecast_pipeline_schema": "huawei7.ap-light-cardinality/v1.1-experimental",
+    "uses_preflight_statistics": false,
+    "cardinality_evidence_status": "planner_only",
+    "automatic_recommendation_qualified": false,
+    "preflight_estimates": [],
+    "cardinality_propagation": [],
+    "light_cardinality_effects": [],
+    "dimension_evidence": [],
+    "group_occupancy_evidence": {},
+    "offline_group_frequency_evidence": {},
+    "offline_group_frequency_effects": [],
+    "offline_group_frequency_assumptions": [],
+    "unique_union_group_evidence": {},
+    "unique_union_group_effects": [],
+    "joint_synopsis_evidence": null,
+    "joint_cardinality_effects": [],
+    "sql_metadata_available": true,
+    "expression_type_evidence": {
+      "schema": "huawei7.ap-expression-types/v1-experimental",
+      "available": true,
+      "scope_preparation_available": true,
+      "resolved_argument_expressions": {
+        "c_acctbal": "numeric"
+      },
+      "unresolved_argument_expressions": [],
+      "qualification": "type-only bounded AST inference; no new row/NDV/width evidence"
+    },
+    "formula_compute_ms": 1.8083920003846288,
+    "shared_preparation_ms": 1.2805909937014803,
+    "forecast_qualification": "experimental logical temp buffer-equivalent bytes; no target runtime labels; a numeric estimate is not a certified accuracy or zero-spill guarantee"
+  },
+  "program": {
+    "schema": "jmt.operator-boundary-phases/v2",
+    "basis": [
+      "startup",
+      "scan_filter_M",
+      "projection_argument_M",
+      "hash_join_M",
+      "aggregate_M",
+      "sort_comparisons_M",
+      "state_index_M",
+      "hash_aggregate_working_set_interaction",
+      "numeric_arithmetic_M",
+      "numeric_avg_M",
+      "logical_scan_GiB",
+      "logical_temp_read_GiB",
+      "logical_temp_write_GiB"
+    ],
+    "stages": [
+      {
+        "label": "Seq Scan",
+        "vector": [
+          1.0,
+          27.115908893176808,
+          0.40851,
+          0.204255,
+          0.40851000000000004,
+          0.0,
+          0.0,
+          1.094430848932163,
+          0.0,
+          0.0,
+          2.3279571533203125,
+          0.0,
+          0.0
+        ],
+        "contributions": {
+          ".0": [
+            0.0,
+            27.115908893176808,
+            0.204255,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2.3279571533203125,
+            0.0,
+            0.0
+          ],
+          "": [
+            0.0,
+            0.0,
+            0.204255,
+            0.204255,
+            0.40851000000000004,
+            0.0,
+            0.0,
+            1.094430848932163,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "@query-startup": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "output_fraction": 0.0,
+        "ends": [
+          {
+            "path": "",
+            "kind": "Hash aggregate consume"
+          }
+        ],
+        "id": 0
+      },
+      {
+        "label": "Aggregate resident output",
+        "vector": [
+          0.0,
+          0.0,
+          0.204255,
+          0.0,
+          0.204255,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "contributions": {
+          "": [
+            0.0,
+            0.0,
+            0.204255,
+            0.0,
+            0.204255,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "output_fraction": 1.0,
+        "ends": [],
+        "id": 1
+      }
+    ],
+    "operator_count": 2,
+    "phase_count": 2,
+    "phase_topology_complete": true,
+    "unsupported": [],
+    "total_vector": [
+      1.0,
+      27.115908893176808,
+      0.612765,
+      0.204255,
+      0.612765,
+      0.0,
+      0.0,
+      1.094430848932163,
+      0.0,
+      0.0,
+      2.3279571533203125,
+      0.0,
+      0.0
+    ],
+    "innovation_2_vector": [
+      1.0,
+      27.115908893176808,
+      0.612765,
+      0.204255,
+      0.612765,
+      0.0,
+      0.0,
+      1.094430848932163,
+      0.0,
+      0.0,
+      2.3279571533203125,
+      0.0,
+      0.0
+    ],
+    "innovation_2_work_conserved": true,
+    "plan_structure_sha256": "d46a2ed8e5e915400d8ca49c5c31035eea1cda64bd88b88b452cb659539393ed",
+    "work_mem_mib": 64,
+    "physical_IO_estimate": null,
+    "physical_IO_qualified": false,
+    "phase_timing_accuracy_qualified": false,
+    "phase_timing_inputs_complete": true,
+    "automatic_recommendation_qualified": false,
+    "timing_uncertainties": [],
+    "assumptions": [
+      "DOP=1 row executor; one coarse fluid segment per blocking/replay boundary, not per tuple",
+      "Innovation 2 cardinality/spill errors remain; work conservation does not prove accuracy",
+      "Hash replay CPU absent from innovation 2 is not invented by this layer",
+      "Coarse spill replay distribution is approximate; grants/cache/physical IO are not inferred"
+    ],
+    "compute_process_cpu_ns": 680485
+  }
+}

@@ -1,0 +1,539 @@
+{
+  "frozen_ns": 88914039771267,
+  "blind_plan": [
+    {
+      "Plan": {
+        "Node Type": "Sort",
+        "Startup Cost": 519954.78,
+        "Total Cost": 520609.28,
+        "Plan Rows": 261797,
+        "Plan Width": 54,
+        "Output": [
+          "c_custkey",
+          "c_name",
+          "c_address",
+          "c_acctbal"
+        ],
+        "Sort Key": [
+          "customer.c_address",
+          "customer.c_acctbal DESC"
+        ],
+        "Plans": [
+          {
+            "Node Type": "Seq Scan",
+            "Parent Relationship": "Outer",
+            "Relation Name": "customer",
+            "Schema": "public",
+            "Alias": "customer",
+            "Startup Cost": 0.0,
+            "Total Cost": 496395.55,
+            "Plan Rows": 261797,
+            "Plan Width": 54,
+            "Output": [
+              "c_custkey",
+              "c_name",
+              "c_address",
+              "c_acctbal"
+            ],
+            "Filter": "((customer.c_custkey >= 2000001) AND (customer.c_custkey <= 2250000))"
+          }
+        ]
+      }
+    }
+  ],
+  "forecast": {
+    "schema": "huawei7.ap-plan-service-demand/v3.8.0-experimental",
+    "work_mem_mib": 64,
+    "executor_profile": {
+      "allocation_header_bytes": 32,
+      "sort_algorithm": "5.1 quicksort batches + polyphase merge",
+      "qualification": "build-dependent; verify for a different executor binary"
+    },
+    "plan_structure_sha256": "5ee06f550c39e94f47b74662d0ed0b430c28ddc2b273fee30598411cbbeb2d39",
+    "features": {
+      "scan_tuples": 12751037.0,
+      "index_probes": 0.0,
+      "index_tuples": 0.0,
+      "predicate_evaluations": 63755185.0,
+      "projection_evaluations": 261797.0,
+      "hash_build_tuples": 0.0,
+      "hash_probe_tuples": 0.0,
+      "join_comparisons": 0.0,
+      "aggregate_transitions": 0.0,
+      "aggregate_groups": 0.0,
+      "aggregate_argument_evaluations": 0.0,
+      "sort_comparisons": 9423691.432598494,
+      "window_evaluations": 0.0,
+      "store_put_tuples": 0.0,
+      "store_get_tuples": 0.0,
+      "setop_tuples": 0.0,
+      "logical_scan_bytes": 2499624960.0,
+      "logical_temp_read_bytes": 0.0,
+      "logical_temp_write_bytes": 0.0
+    },
+    "operators": [
+      {
+        "path": "",
+        "node_type": "Sort",
+        "strategy": "",
+        "join_type": "",
+        "calls": 1.0,
+        "input_rows_per_call": 261797.0,
+        "output_rows_per_call": 261797.0,
+        "width": 54.0,
+        "mode": "in_memory_sort",
+        "memory_mib": 45.94708251953125,
+        "temp_read_bytes": 0.0,
+        "temp_write_bytes": 0.0,
+        "features": {
+          "scan_tuples": 0.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 0.0,
+          "projection_evaluations": 0.0,
+          "hash_build_tuples": 0.0,
+          "hash_probe_tuples": 0.0,
+          "join_comparisons": 0.0,
+          "aggregate_transitions": 0.0,
+          "aggregate_groups": 0.0,
+          "aggregate_argument_evaluations": 0.0,
+          "sort_comparisons": 9423691.432598494,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 0.0,
+          "logical_temp_read_bytes": 0.0,
+          "logical_temp_write_bytes": 0.0
+        },
+        "details": {
+          "physical_sort_input_width_evidence": {
+            "source": "blind_SeqScan_Output_catalog_physical_tuple",
+            "relation": "customer",
+            "output_columns": [
+              "c_custkey",
+              "c_name",
+              "c_address",
+              "c_acctbal"
+            ],
+            "planner_width": 54.0,
+            "estimated_output_data_width": 54.0,
+            "data_width": 54.0,
+            "expanded_beyond_planner_width": false,
+            "uses_average_variable_width": true,
+            "field_budget": 64,
+            "wrapper_budget": 8,
+            "qualification": "physical scan output, not parent logical projection; fixed non-null alignment source-derived, variable widths are averages; NULL/unknown expression/type rejected; no target execution labels"
+          },
+          "mode": "in_memory_sort",
+          "memory_mib": 45.94708251953125,
+          "comparisons": 9423691.432598494,
+          "read_bytes": 0.0,
+          "write_bytes": 0.0,
+          "write_bytes_lower": 0.0,
+          "write_bytes_upper": 0.0,
+          "passes": 0,
+          "required_mib": 45.94708251953125,
+          "subtree_structural_peak_upper_mib": 45.94708251953125
+        },
+        "uncertainties": [
+          "session_work_mem_not_verified_operator_grant"
+        ],
+        "recognized": true
+      },
+      {
+        "path": ".0",
+        "node_type": "Seq Scan",
+        "strategy": "",
+        "join_type": "",
+        "calls": 1.0,
+        "input_rows_per_call": 261797.0,
+        "output_rows_per_call": 261797.0,
+        "width": 54.0,
+        "mode": "sequential_scan",
+        "memory_mib": 0.0,
+        "temp_read_bytes": 0.0,
+        "temp_write_bytes": 0.0,
+        "features": {
+          "scan_tuples": 12751037.0,
+          "index_probes": 0.0,
+          "index_tuples": 0.0,
+          "predicate_evaluations": 63755185.0,
+          "projection_evaluations": 261797.0,
+          "hash_build_tuples": 0.0,
+          "hash_probe_tuples": 0.0,
+          "join_comparisons": 0.0,
+          "aggregate_transitions": 0.0,
+          "aggregate_groups": 0.0,
+          "aggregate_argument_evaluations": 0.0,
+          "sort_comparisons": 0.0,
+          "window_evaluations": 0.0,
+          "store_put_tuples": 0.0,
+          "store_get_tuples": 0.0,
+          "setop_tuples": 0.0,
+          "logical_scan_bytes": 2499624960.0,
+          "logical_temp_read_bytes": 0.0,
+          "logical_temp_write_bytes": 0.0
+        },
+        "details": {
+          "subtree_structural_peak_upper_mib": 0.0
+        },
+        "uncertainties": [],
+        "recognized": true
+      }
+    ],
+    "dataflow": {
+      "nodes": [
+        {
+          "path": "",
+          "semantics": "consume_input_then_produce"
+        },
+        {
+          "path": ".0",
+          "semantics": "stream"
+        }
+      ],
+      "edges": [
+        {
+          "producer": ".0",
+          "consumer": "",
+          "relationship": "Outer",
+          "producer_semantics": "stream"
+        }
+      ],
+      "qualification": "execution dependency skeleton; CTE reuse/parameter dependencies and an actual resource-constrained scheduler are not yet implemented"
+    },
+    "node_types": {
+      "Sort": 1,
+      "Seq Scan": 1
+    },
+    "modes": {
+      "in_memory_sort": 1,
+      "sequential_scan": 1
+    },
+    "unsupported_operators": [],
+    "uncertainties": {
+      "session_work_mem_not_verified_operator_grant": 1
+    },
+    "logical_temp_estimate_complete": true,
+    "logical_temp_read_bytes_estimate": 0.0,
+    "logical_temp_write_bytes_estimate": 0.0,
+    "feature_qualification": "logical_temp_* features include modeled components only; an incomplete temp estimate must never be interpreted as zero total spill",
+    "structural_peak_upper_mib": 45.94708251953125,
+    "peak_qualification": "structural approximation, NOT a measured or certified safety bound",
+    "latency_seconds": null,
+    "physical_read_requests": null,
+    "physical_write_requests": null,
+    "status": "experimental_resource_estimate",
+    "qualification": "no per-query/family calibration; cardinality remains planner/statistics dependent; not production-qualified, not a physical IOPS or latency prediction",
+    "experimental_cardinality_input": null,
+    "spill_input_guard": null,
+    "experimental_cardinality_effects": [],
+    "preexecution_key_group_sample_evidence": {},
+    "release_schema": "jmt.ap-forecast/1.0.0rc4",
+    "reliability": {
+      "operator_coverage_complete": true,
+      "join_cardinality_independently_validated": null,
+      "join_nodes_requiring_input_validation": [],
+      "classification": "experimental_operator_estimate",
+      "qualification": "An implementation-complete numeric result is NOT a confidence interval, a safety guarantee or qualification for automatic WM recommendation."
+    },
+    "forecasted_at": "2026-11-17T08:44:24.940091+00:00",
+    "forecast_pipeline_schema": "huawei7.ap-light-cardinality/v1.1-experimental",
+    "uses_preflight_statistics": false,
+    "cardinality_evidence_status": "planner_only",
+    "automatic_recommendation_qualified": false,
+    "preflight_estimates": [],
+    "cardinality_propagation": [],
+    "light_cardinality_effects": [],
+    "dimension_evidence": [],
+    "group_occupancy_evidence": {},
+    "offline_group_frequency_evidence": {},
+    "offline_group_frequency_effects": [],
+    "offline_group_frequency_assumptions": [],
+    "unique_union_group_evidence": {},
+    "unique_union_group_effects": [],
+    "joint_synopsis_evidence": null,
+    "joint_cardinality_effects": [],
+    "sql_metadata_available": true,
+    "expression_type_evidence": {
+      "schema": "huawei7.ap-expression-types/v1-experimental",
+      "available": true,
+      "scope_preparation_available": true,
+      "resolved_argument_expressions": {},
+      "unresolved_argument_expressions": [],
+      "qualification": "type-only bounded AST inference; no new row/NDV/width evidence"
+    },
+    "formula_compute_ms": 0.750559993321076,
+    "shared_preparation_ms": 1.1617970012594014,
+    "forecast_qualification": "experimental logical temp buffer-equivalent bytes; no target runtime labels; a numeric estimate is not a certified accuracy or zero-spill guarantee"
+  },
+  "program": {
+    "schema": "jmt.operator-boundary-phases/v2",
+    "basis": [
+      "startup",
+      "scan_filter_M",
+      "projection_argument_M",
+      "hash_join_M",
+      "aggregate_M",
+      "sort_comparisons_M",
+      "state_index_M",
+      "hash_aggregate_working_set_interaction",
+      "numeric_arithmetic_M",
+      "numeric_avg_M",
+      "logical_scan_GiB",
+      "logical_temp_read_GiB",
+      "logical_temp_write_GiB"
+    ],
+    "stages": [
+      {
+        "label": "Seq Scan",
+        "vector": [
+          1.0,
+          27.3291435754374,
+          0.261797,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          2.3279571533203125,
+          0.0,
+          0.0
+        ],
+        "contributions": {
+          ".0": [
+            0.0,
+            27.3291435754374,
+            0.261797,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            2.3279571533203125,
+            0.0,
+            0.0
+          ],
+          "": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "@query-startup": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "output_fraction": 0.0,
+        "ends": [],
+        "id": 0
+      },
+      {
+        "label": "Sort finish",
+        "vector": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          9.423691432598494,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "contributions": {
+          "": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            9.423691432598494,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "output_fraction": 0.0,
+        "ends": [
+          {
+            "path": "",
+            "kind": "Sort"
+          }
+        ],
+        "id": 1
+      },
+      {
+        "label": "Sort output",
+        "vector": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "contributions": {
+          "": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "output_fraction": 1.0,
+        "ends": [],
+        "id": 2
+      }
+    ],
+    "operator_count": 2,
+    "phase_count": 3,
+    "phase_topology_complete": true,
+    "unsupported": [],
+    "total_vector": [
+      1.0,
+      27.3291435754374,
+      0.261797,
+      0.0,
+      0.0,
+      9.423691432598494,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.3279571533203125,
+      0.0,
+      0.0
+    ],
+    "innovation_2_vector": [
+      1.0,
+      27.329143575437396,
+      0.261797,
+      0.0,
+      0.0,
+      9.423691432598494,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      2.3279571533203125,
+      0.0,
+      0.0
+    ],
+    "innovation_2_work_conserved": true,
+    "plan_structure_sha256": "5ee06f550c39e94f47b74662d0ed0b430c28ddc2b273fee30598411cbbeb2d39",
+    "work_mem_mib": 64,
+    "physical_IO_estimate": null,
+    "physical_IO_qualified": false,
+    "phase_timing_accuracy_qualified": false,
+    "phase_timing_inputs_complete": true,
+    "automatic_recommendation_qualified": false,
+    "timing_uncertainties": [],
+    "assumptions": [
+      "DOP=1 row executor; one coarse fluid segment per blocking/replay boundary, not per tuple",
+      "Innovation 2 cardinality/spill errors remain; work conservation does not prove accuracy",
+      "Hash replay CPU absent from innovation 2 is not invented by this layer",
+      "Coarse spill replay distribution is approximate; grants/cache/physical IO are not inferred"
+    ],
+    "compute_process_cpu_ns": 767545
+  },
+  "costed_program": {
+    "schema": "jmt.costed-operator-phases/v1",
+    "stages": [
+      {
+        "id": 0,
+        "label": "Seq Scan",
+        "ends": [],
+        "cpu_seconds": 1.8040966435082482,
+        "non_CPU_seconds_proxy": 1.7672260017455923e-05,
+        "isolated_seconds_proxy": 1.8041143157682655,
+        "logical_scan_bytes": 2499624960.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0,
+        "timing_uncertainty": null
+      },
+      {
+        "id": 1,
+        "label": "Sort finish",
+        "ends": [
+          {
+            "path": "",
+            "kind": "Sort"
+          }
+        ],
+        "cpu_seconds": 0.5924797020633563,
+        "non_CPU_seconds_proxy": 0.0,
+        "isolated_seconds_proxy": 0.5924797020633563,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0,
+        "timing_uncertainty": null
+      },
+      {
+        "id": 2,
+        "label": "Sort output",
+        "ends": [],
+        "cpu_seconds": 0.0,
+        "non_CPU_seconds_proxy": 0.0,
+        "isolated_seconds_proxy": 0.0,
+        "logical_scan_bytes": 0.0,
+        "logical_temp_read_bytes": 0.0,
+        "logical_temp_write_bytes": 0.0,
+        "timing_uncertainty": null
+      }
+    ],
+    "physical_IO_qualified": false,
+    "phase_timing_accuracy_qualified": false,
+    "automatic_recommendation_qualified": false
+  }
+}

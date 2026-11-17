@@ -63,15 +63,16 @@ class Gsql:
 
     def execute(self, database, sql, wm_mib=32, row_executor=True):
         from .memory_units import MAX_WORK_MEM_MIB, valid_work_mem_mib
-        if not valid_work_mem_mib(wm_mib):
+        if wm_mib is not None and not valid_work_mem_mib(wm_mib):
             raise ValueError("integer work_mem in 1..%d MiB required" % MAX_WORK_MEM_MIB)
         timeout_ms = int(self.timeout_s * 1000)
         settings = (
             "SET default_transaction_read_only=on;"
             "SET application_name='jmt_release_validation';"
-            "SET statement_timeout='%dms';SET work_mem='%dMB';"
-            % (timeout_ms, wm_mib)
+            "SET statement_timeout='%dms';" % timeout_ms
         )
+        if wm_mib is not None:
+            settings += "SET work_mem='%dMB';" % wm_mib
         if row_executor:
             settings += "SET enable_vector_engine=off;SET query_dop=1;"
         command = [self.binary, "-X", "-A", "-t", "-q", "-v", "ON_ERROR_STOP=1",

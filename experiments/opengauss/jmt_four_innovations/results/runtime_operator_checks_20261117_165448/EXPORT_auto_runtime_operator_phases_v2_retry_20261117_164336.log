@@ -1,0 +1,25 @@
+{
+  "schema": "jmt.operator-phase-prospective-acceptance/v2",
+  "holdout_queries": 12,
+  "within_query_windows": 32,
+  "holdout_CPU_MAPE": 0.11660034475493446,
+  "holdout_wall_MAPE": 0.11836916476617698,
+  "phase_window_CPU_MAE_cores": 0.0027107162822191215,
+  "frozen_average_CPU_MAE_cores": 0.0036430389703463184,
+  "same_predicted_lifecycle_average_CPU_MAE_cores": 0.0036430389703463184,
+  "within_query_windows_not_claimed_iid_statistical_replicates": true,
+  "observed_boundaries": 18,
+  "boundary_pass_rate": 0.6111111111111112,
+  "acceptance_gates": {
+    "12_holdout_queries": true,
+    "24_nonoverlapping_within_query_windows": true,
+    "CPU_MAPE_at_most_15_percent": true,
+    "boundary_pass_rate_at_least_80_percent": false,
+    "phase_window_MAE_at_most_0.15_core": true,
+    "phase_beats_same_lifecycle_average_by_20_percent": true
+  },
+  "isolated_phase_timing_screen_passed": false,
+  "physical_IO_or_TPS_or_mixed_five_stages_qualified": false,
+  "CPU_ground_truth_qualification": "approximate kernel runtime/proc counters, not exact boundary-flushed CPU",
+  "automatic_recommendation_qualified": false
+}

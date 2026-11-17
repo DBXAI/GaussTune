@@ -1,0 +1,787 @@
+{
+  "schema": "jmt.operator-phase-prospective-acceptance/v2",
+  "holdout_queries": 12,
+  "within_query_windows": 32,
+  "holdout_CPU_MAPE": 0.11660034475493446,
+  "holdout_wall_MAPE": 0.11836916476617698,
+  "phase_window_CPU_MAE_cores": 0.0027107162822191215,
+  "frozen_average_CPU_MAE_cores": 0.0036430389703463184,
+  "same_predicted_lifecycle_average_CPU_MAE_cores": 0.0036430389703463184,
+  "within_query_windows_not_claimed_iid_statistical_replicates": true,
+  "observed_boundaries": 18,
+  "boundary_pass_rate": 0.6111111111111112,
+  "acceptance_gates": {
+    "12_holdout_queries": true,
+    "24_nonoverlapping_within_query_windows": true,
+    "CPU_MAPE_at_most_15_percent": true,
+    "boundary_pass_rate_at_least_80_percent": false,
+    "phase_window_MAE_at_most_0.15_core": true,
+    "phase_beats_same_lifecycle_average_by_20_percent": true
+  },
+  "isolated_phase_timing_screen_passed": false,
+  "all_scored_queries": [
+    {
+      "key": "sort_wider_holdout_wm4",
+      "predicted_CPU_seconds": 2.3965763455716047,
+      "actual_scheduled_CPU_seconds_approx": 2.046478009,
+      "CPU_APE": 0.17107358839525388,
+      "predicted_wall_seconds": 2.4082538139609193,
+      "actual_wall_seconds": 2.050044063,
+      "wall_APE": 0.17473270815297548,
+      "boundary_scores": {
+        "mapped": true,
+        "boundaries": [
+          {
+            "path": "",
+            "kind": "Sort",
+            "predicted_seconds": 2.4082538139609193,
+            "actual_seconds": 1.931407859,
+            "absolute_error_seconds": 0.4768459549609194,
+            "within_preregistered_tolerance": false
+          }
+        ]
+      },
+      "windows": [
+        {
+          "start_ns": 88912066483039,
+          "end_ns": 88912568057310,
+          "duration_seconds": 0.501574271,
+          "actual_CPU_cores": 1.0047974789360758,
+          "phase_CPU_cores": 0.9999902044677198,
+          "frozen_whole_query_average_CPU_cores": 0.995151064093984,
+          "phase_absolute_error_cores": 0.004807274468356049,
+          "constant_absolute_error_cores": 0.009646414842091833,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.995151064093984,
+          "clipped_constant_absolute_error_cores": 0.009646414842091833,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88912568057310,
+          "end_ns": 88913069684192,
+          "duration_seconds": 0.501626882,
+          "actual_CPU_cores": 0.9967430274201292,
+          "phase_CPU_cores": 0.9999902044677198,
+          "frozen_whole_query_average_CPU_cores": 0.995151064093984,
+          "phase_absolute_error_cores": 0.003247177047590588,
+          "constant_absolute_error_cores": 0.001591963326145196,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.995151064093984,
+          "clipped_constant_absolute_error_cores": 0.001591963326145196,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88913069684192,
+          "end_ns": 88913571242875,
+          "duration_seconds": 0.501558683,
+          "actual_CPU_cores": 0.996885345517984,
+          "phase_CPU_cores": 0.9999902044677198,
+          "frozen_whole_query_average_CPU_cores": 0.995151064093984,
+          "phase_absolute_error_cores": 0.003104858949735778,
+          "constant_absolute_error_cores": 0.001734281424000006,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.995151064093984,
+          "clipped_constant_absolute_error_cores": 0.001734281424000006,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        }
+      ]
+    },
+    {
+      "key": "sort_wider_holdout_wm64",
+      "predicted_CPU_seconds": 2.3965763455716047,
+      "actual_scheduled_CPU_seconds_approx": 1.961057161,
+      "CPU_APE": 0.22208388069092333,
+      "predicted_wall_seconds": 2.396594017831622,
+      "actual_wall_seconds": 1.962643842,
+      "wall_APE": 0.2211049027567895,
+      "boundary_scores": {
+        "mapped": true,
+        "boundaries": [
+          {
+            "path": "",
+            "kind": "Sort",
+            "predicted_seconds": 2.396594017831622,
+            "actual_seconds": 1.912316767,
+            "absolute_error_seconds": 0.48427725083162176,
+            "within_preregistered_tolerance": false
+          }
+        ]
+      },
+      "windows": [
+        {
+          "start_ns": 88914191952411,
+          "end_ns": 88914693018457,
+          "duration_seconds": 0.501066046,
+          "actual_CPU_cores": 1.0058455926586571,
+          "phase_CPU_cores": 0.9999902044677198,
+          "frozen_whole_query_average_CPU_cores": 0.9999926260935786,
+          "phase_absolute_error_cores": 0.005855388190937338,
+          "constant_absolute_error_cores": 0.005852966565078499,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9999926260935788,
+          "clipped_constant_absolute_error_cores": 0.005852966565078388,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88914693018457,
+          "end_ns": 88915194111785,
+          "duration_seconds": 0.501093328,
+          "actual_CPU_cores": 0.9978000824628821,
+          "phase_CPU_cores": 0.9999902044677197,
+          "frozen_whole_query_average_CPU_cores": 0.9999926260935786,
+          "phase_absolute_error_cores": 0.0021901220048375913,
+          "constant_absolute_error_cores": 0.002192543630696542,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9999926260935786,
+          "clipped_constant_absolute_error_cores": 0.002192543630696542,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88915194111785,
+          "end_ns": 88915695195657,
+          "duration_seconds": 0.501083872,
+          "actual_CPU_cores": 0.997819217378443,
+          "phase_CPU_cores": 0.9999902044677197,
+          "frozen_whole_query_average_CPU_cores": 0.9999926260935786,
+          "phase_absolute_error_cores": 0.0021709870892766547,
+          "constant_absolute_error_cores": 0.002173408715135605,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9999926260935786,
+          "clipped_constant_absolute_error_cores": 0.002173408715135605,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        }
+      ]
+    },
+    {
+      "key": "group_count_holdout_wm4",
+      "predicted_CPU_seconds": 1.8980341867844512,
+      "actual_scheduled_CPU_seconds_approx": 1.816740882,
+      "CPU_APE": 0.044746780121421414,
+      "predicted_wall_seconds": 1.907860636944094,
+      "actual_wall_seconds": 1.820050903,
+      "wall_APE": 0.04824575719248103,
+      "boundary_scores": {
+        "mapped": true,
+        "boundaries": [
+          {
+            "path": "",
+            "kind": "Hash aggregate consume",
+            "predicted_seconds": 1.839452667274497,
+            "actual_seconds": 1.736065,
+            "absolute_error_seconds": 0.10338766727449711,
+            "ground_truth": "EXPLAIN unary-prefix startup = first output, not full spill replay",
+            "within_preregistered_tolerance": true
+          }
+        ]
+      },
+      "windows": [
+        {
+          "start_ns": 88916216303772,
+          "end_ns": 88916717416902,
+          "duration_seconds": 0.50111313,
+          "actual_CPU_cores": 0.9977704974523418,
+          "phase_CPU_cores": 0.9994768766210261,
+          "frozen_whole_query_average_CPU_cores": 0.9948494926886368,
+          "phase_absolute_error_cores": 0.0017063791686843244,
+          "constant_absolute_error_cores": 0.0029210047637050485,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9948494926886368,
+          "clipped_constant_absolute_error_cores": 0.0029210047637050485,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88916717416902,
+          "end_ns": 88917218457603,
+          "duration_seconds": 0.501040701,
+          "actual_CPU_cores": 0.9979033399923333,
+          "phase_CPU_cores": 0.999476876621026,
+          "frozen_whole_query_average_CPU_cores": 0.9948494926886368,
+          "phase_absolute_error_cores": 0.001573536628692751,
+          "constant_absolute_error_cores": 0.003053847303696511,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9948494926886368,
+          "clipped_constant_absolute_error_cores": 0.003053847303696511,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88917218457603,
+          "end_ns": 88917719442065,
+          "duration_seconds": 0.500984462,
+          "actual_CPU_cores": 0.9980284178953238,
+          "phase_CPU_cores": 0.999476876621026,
+          "frozen_whole_query_average_CPU_cores": 0.9948494926886368,
+          "phase_absolute_error_cores": 0.0014484587257022064,
+          "constant_absolute_error_cores": 0.0031789252066870555,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9948494926886368,
+          "clipped_constant_absolute_error_cores": 0.0031789252066870555,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        }
+      ]
+    },
+    {
+      "key": "group_count_holdout_wm64",
+      "predicted_CPU_seconds": 1.9076167297800781,
+      "actual_scheduled_CPU_seconds_approx": 1.815393258,
+      "CPU_APE": 0.05080082311293799,
+      "predicted_wall_seconds": 1.9139807160888627,
+      "actual_wall_seconds": 1.817826605,
+      "wall_APE": 0.05289509506813639,
+      "boundary_scores": {
+        "mapped": true,
+        "boundaries": [
+          {
+            "path": "",
+            "kind": "Hash aggregate consume",
+            "predicted_seconds": 1.868366873367579,
+            "actual_seconds": 1.743855,
+            "absolute_error_seconds": 0.12451187336757896,
+            "ground_truth": "EXPLAIN unary-prefix startup = first output, not full spill replay",
+            "within_preregistered_tolerance": true
+          }
+        ]
+      },
+      "windows": [
+        {
+          "start_ns": 88918089423767,
+          "end_ns": 88918590411312,
+          "duration_seconds": 0.500987545,
+          "actual_CPU_cores": 0.9980232682231651,
+          "phase_CPU_cores": 0.9979807929509932,
+          "frozen_whole_query_average_CPU_cores": 0.9966749997764924,
+          "phase_absolute_error_cores": 4.247527217193792e-05,
+          "constant_absolute_error_cores": 0.0013482684466726846,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9966749997764924,
+          "clipped_constant_absolute_error_cores": 0.0013482684466726846,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88918590411312,
+          "end_ns": 88919091411700,
+          "duration_seconds": 0.501000388,
+          "actual_CPU_cores": 0.9980002051415577,
+          "phase_CPU_cores": 0.9979807929509934,
+          "frozen_whole_query_average_CPU_cores": 0.9966749997764924,
+          "phase_absolute_error_cores": 1.9412190564338516e-05,
+          "constant_absolute_error_cores": 0.0013252053650653073,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9966749997764924,
+          "clipped_constant_absolute_error_cores": 0.0013252053650653073,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88919091411700,
+          "end_ns": 88919592498445,
+          "duration_seconds": 0.501086745,
+          "actual_CPU_cores": 1.005796924442693,
+          "phase_CPU_cores": 0.9979807929509933,
+          "frozen_whole_query_average_CPU_cores": 0.9966749997764924,
+          "phase_absolute_error_cores": 0.007816131491699685,
+          "constant_absolute_error_cores": 0.009121924666200543,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9966749997764924,
+          "clipped_constant_absolute_error_cores": 0.009121924666200543,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        }
+      ]
+    },
+    {
+      "key": "numeric_holdout_wm4",
+      "predicted_CPU_seconds": 1.9049635445810602,
+      "actual_scheduled_CPU_seconds_approx": 1.791073977,
+      "CPU_APE": 0.0635873051831295,
+      "predicted_wall_seconds": 1.9098142341413462,
+      "actual_wall_seconds": 1.793747931,
+      "wall_APE": 0.06470602760591904,
+      "boundary_scores": {
+        "mapped": true,
+        "boundaries": [
+          {
+            "path": "",
+            "kind": "Blocking aggregate",
+            "predicted_seconds": 1.9098140689276741,
+            "actual_seconds": 1.793741,
+            "absolute_error_seconds": 0.1160730689276741,
+            "ground_truth": "EXPLAIN unary-prefix startup = first output, not full spill replay",
+            "within_preregistered_tolerance": true
+          }
+        ]
+      },
+      "windows": [
+        {
+          "start_ns": 88919961909783,
+          "end_ns": 88920463110998,
+          "duration_seconds": 0.501201215,
+          "actual_CPU_cores": 0.9975944312106265,
+          "phase_CPU_cores": 0.9974601296255713,
+          "frozen_whole_query_average_CPU_cores": 0.997460124930702,
+          "phase_absolute_error_cores": 0.00013430158505522982,
+          "constant_absolute_error_cores": 0.00013430627992450095,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.997460124930702,
+          "clipped_constant_absolute_error_cores": 0.00013430627992450095,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88920463110998,
+          "end_ns": 88920964362963,
+          "duration_seconds": 0.501251965,
+          "actual_CPU_cores": 1.0054647606219358,
+          "phase_CPU_cores": 0.9974601296255712,
+          "frozen_whole_query_average_CPU_cores": 0.997460124930702,
+          "phase_absolute_error_cores": 0.008004630996364615,
+          "constant_absolute_error_cores": 0.008004635691233775,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.997460124930702,
+          "clipped_constant_absolute_error_cores": 0.008004635691233775,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88920964362963,
+          "end_ns": 88921465736296,
+          "duration_seconds": 0.501373333,
+          "actual_CPU_cores": 0.9972537629958075,
+          "phase_CPU_cores": 0.9974601296255714,
+          "frozen_whole_query_average_CPU_cores": 0.997460124930702,
+          "phase_absolute_error_cores": 0.00020636662976392106,
+          "constant_absolute_error_cores": 0.0002063619348945389,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.997460124930702,
+          "clipped_constant_absolute_error_cores": 0.0002063619348945389,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        }
+      ]
+    },
+    {
+      "key": "numeric_holdout_wm64",
+      "predicted_CPU_seconds": 1.9049635445810602,
+      "actual_scheduled_CPU_seconds_approx": 1.781437338,
+      "CPU_APE": 0.06934075307961263,
+      "predicted_wall_seconds": 1.9098142341413462,
+      "actual_wall_seconds": 1.784257174,
+      "wall_APE": 0.07036937386098252,
+      "boundary_scores": {
+        "mapped": true,
+        "boundaries": [
+          {
+            "path": "",
+            "kind": "Blocking aggregate",
+            "predicted_seconds": 1.9098140689276741,
+            "actual_seconds": 1.78425,
+            "absolute_error_seconds": 0.12556406892767424,
+            "ground_truth": "EXPLAIN unary-prefix startup = first output, not full spill replay",
+            "within_preregistered_tolerance": true
+          }
+        ]
+      },
+      "windows": [
+        {
+          "start_ns": 88921835874019,
+          "end_ns": 88922337186190,
+          "duration_seconds": 0.501312171,
+          "actual_CPU_cores": 1.0053449430414885,
+          "phase_CPU_cores": 0.9974601296255713,
+          "frozen_whole_query_average_CPU_cores": 0.997460124930702,
+          "phase_absolute_error_cores": 0.00788481341591718,
+          "constant_absolute_error_cores": 0.007884818110786451,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.997460124930702,
+          "clipped_constant_absolute_error_cores": 0.007884818110786451,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88922337186190,
+          "end_ns": 88922838325633,
+          "duration_seconds": 0.501139443,
+          "actual_CPU_cores": 0.9977144924112468,
+          "phase_CPU_cores": 0.9974601296255712,
+          "frozen_whole_query_average_CPU_cores": 0.997460124930702,
+          "phase_absolute_error_cores": 0.0002543627856755881,
+          "constant_absolute_error_cores": 0.0002543674805447482,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.997460124930702,
+          "clipped_constant_absolute_error_cores": 0.0002543674805447482,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88922838325633,
+          "end_ns": 88923339378166,
+          "duration_seconds": 0.501052533,
+          "actual_CPU_cores": 0.9978841759492713,
+          "phase_CPU_cores": 0.9974601296255712,
+          "frozen_whole_query_average_CPU_cores": 0.997460124930702,
+          "phase_absolute_error_cores": 0.000424046323700078,
+          "constant_absolute_error_cores": 0.0004240510185692381,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.997460124930702,
+          "clipped_constant_absolute_error_cores": 0.0004240510185692381,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        }
+      ]
+    },
+    {
+      "key": "join_filter_holdout_wm4",
+      "predicted_CPU_seconds": 1.8660196883322548,
+      "actual_scheduled_CPU_seconds_approx": 1.680510947,
+      "CPU_APE": 0.11038829688281404,
+      "predicted_wall_seconds": 1.8660601057924644,
+      "actual_wall_seconds": 1.682971841,
+      "wall_APE": 0.10878866795755515,
+      "boundary_scores": {
+        "mapped": true,
+        "boundaries": [
+          {
+            "path": ".1",
+            "kind": "Hash build",
+            "predicted_seconds": 1.2022691311797063e-05,
+            "actual_seconds": 0.921389342,
+            "absolute_error_seconds": 0.9213773193086882,
+            "within_preregistered_tolerance": false
+          }
+        ]
+      },
+      "windows": [
+        {
+          "start_ns": 88923660723861,
+          "end_ns": 88924161722393,
+          "duration_seconds": 0.500998532,
+          "actual_CPU_cores": 0.9980047446526251,
+          "phase_CPU_cores": 0.9999783413487243,
+          "frozen_whole_query_average_CPU_cores": 0.9999783407511451,
+          "phase_absolute_error_cores": 0.0019735966960992,
+          "constant_absolute_error_cores": 0.001973596098519992,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9999783407511451,
+          "clipped_constant_absolute_error_cores": 0.001973596098519992,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88924161722393,
+          "end_ns": 88924662818401,
+          "duration_seconds": 0.501096008,
+          "actual_CPU_cores": 0.9977988230151696,
+          "phase_CPU_cores": 0.9999783413487244,
+          "frozen_whole_query_average_CPU_cores": 0.9999783407511451,
+          "phase_absolute_error_cores": 0.0021795183335547863,
+          "constant_absolute_error_cores": 0.002179517735975467,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9999783407511451,
+          "clipped_constant_absolute_error_cores": 0.002179517735975467,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        }
+      ]
+    },
+    {
+      "key": "join_filter_holdout_wm64",
+      "predicted_CPU_seconds": 1.8660196883322548,
+      "actual_scheduled_CPU_seconds_approx": 1.680864156,
+      "CPU_APE": 0.11015496503469668,
+      "predicted_wall_seconds": 1.8660601057924644,
+      "actual_wall_seconds": 1.683272298,
+      "wall_APE": 0.10859075386058814,
+      "boundary_scores": {
+        "mapped": true,
+        "boundaries": [
+          {
+            "path": ".1",
+            "kind": "Hash build",
+            "predicted_seconds": 1.2022691311797063e-05,
+            "actual_seconds": 0.925493255,
+            "absolute_error_seconds": 0.9254812323086882,
+            "within_preregistered_tolerance": false
+          }
+        ]
+      },
+      "windows": [
+        {
+          "start_ns": 88925384332376,
+          "end_ns": 88925885475202,
+          "duration_seconds": 0.501142826,
+          "actual_CPU_cores": 0.9977229804742331,
+          "phase_CPU_cores": 0.9999783413487243,
+          "frozen_whole_query_average_CPU_cores": 0.9999783407511451,
+          "phase_absolute_error_cores": 0.0022553608744911857,
+          "constant_absolute_error_cores": 0.0022553602769119774,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9999783407511451,
+          "clipped_constant_absolute_error_cores": 0.0022553602769119774,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88925885475202,
+          "end_ns": 88926386585164,
+          "duration_seconds": 0.501109962,
+          "actual_CPU_cores": 0.9977513438457645,
+          "phase_CPU_cores": 0.9999783413487244,
+          "frozen_whole_query_average_CPU_cores": 0.9999783407511451,
+          "phase_absolute_error_cores": 0.00222699750295996,
+          "constant_absolute_error_cores": 0.0022269969053806404,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9999783407511452,
+          "clipped_constant_absolute_error_cores": 0.0022269969053807515,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        }
+      ]
+    },
+    {
+      "key": "join_group_sort_holdout_wm4",
+      "predicted_CPU_seconds": 1.9299934811549955,
+      "actual_scheduled_CPU_seconds_approx": 1.742267378,
+      "CPU_APE": 0.10774815939588556,
+      "predicted_wall_seconds": 1.934547974226698,
+      "actual_wall_seconds": 1.742970419,
+      "wall_APE": 0.1099144042482445,
+      "boundary_scores": {
+        "mapped": true,
+        "boundaries": [
+          {
+            "path": ".0.0.1",
+            "kind": "Hash build",
+            "predicted_seconds": 1.2785043973937007e-05,
+            "actual_seconds": 0.962207307,
+            "absolute_error_seconds": 0.9621945219560261,
+            "within_preregistered_tolerance": false
+          },
+          {
+            "path": "",
+            "kind": "Sort",
+            "predicted_seconds": 1.934547974226698,
+            "actual_seconds": 1.742963362,
+            "absolute_error_seconds": 0.19158461222669798,
+            "within_preregistered_tolerance": true
+          },
+          {
+            "path": ".0",
+            "kind": "Hash aggregate consume",
+            "predicted_seconds": 1.9345365447533633,
+            "actual_seconds": 1.742937,
+            "absolute_error_seconds": 0.19159954475336338,
+            "ground_truth": "EXPLAIN unary-prefix startup = first output, not full spill replay",
+            "within_preregistered_tolerance": true
+          }
+        ]
+      },
+      "windows": [
+        {
+          "start_ns": 88927110567611,
+          "end_ns": 88927611690159,
+          "duration_seconds": 0.501122548,
+          "actual_CPU_cores": 0.9977565667230763,
+          "phase_CPU_cores": 0.9976458088070288,
+          "frozen_whole_query_average_CPU_cores": 0.9976457068357154,
+          "phase_absolute_error_cores": 0.00011075791604753249,
+          "constant_absolute_error_cores": 0.00011085988736092567,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9976457068357154,
+          "clipped_constant_absolute_error_cores": 0.00011085988736092567,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88927611690159,
+          "end_ns": 88928112617716,
+          "duration_seconds": 0.500927557,
+          "actual_CPU_cores": 1.00610854395459,
+          "phase_CPU_cores": 0.9976458088070288,
+          "frozen_whole_query_average_CPU_cores": 0.9976457068357154,
+          "phase_absolute_error_cores": 0.00846273514756124,
+          "constant_absolute_error_cores": 0.008462837118874633,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9976457068357154,
+          "clipped_constant_absolute_error_cores": 0.008462837118874633,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        }
+      ]
+    },
+    {
+      "key": "join_group_sort_holdout_wm64",
+      "predicted_CPU_seconds": 1.9299934811549955,
+      "actual_scheduled_CPU_seconds_approx": 1.727891912,
+      "CPU_APE": 0.11696424281601447,
+      "predicted_wall_seconds": 1.934547974226698,
+      "actual_wall_seconds": 1.729847746,
+      "wall_APE": 0.11833424571615336,
+      "boundary_scores": {
+        "mapped": true,
+        "boundaries": [
+          {
+            "path": ".0.0.1",
+            "kind": "Hash build",
+            "predicted_seconds": 1.2785043973937007e-05,
+            "actual_seconds": 0.957494963,
+            "absolute_error_seconds": 0.9574821779560261,
+            "within_preregistered_tolerance": false
+          },
+          {
+            "path": "",
+            "kind": "Sort",
+            "predicted_seconds": 1.934547974226698,
+            "actual_seconds": 1.729841734,
+            "absolute_error_seconds": 0.20470624022669792,
+            "within_preregistered_tolerance": true
+          },
+          {
+            "path": ".0",
+            "kind": "Hash aggregate consume",
+            "predicted_seconds": 1.9345365447533633,
+            "actual_seconds": 1.729817,
+            "absolute_error_seconds": 0.2047195447533634,
+            "ground_truth": "EXPLAIN unary-prefix startup = first output, not full spill replay",
+            "within_preregistered_tolerance": true
+          }
+        ]
+      },
+      "windows": [
+        {
+          "start_ns": 88928937933626,
+          "end_ns": 88929438922704,
+          "duration_seconds": 0.500989078,
+          "actual_CPU_cores": 0.9980001280586799,
+          "phase_CPU_cores": 0.9976458088070289,
+          "frozen_whole_query_average_CPU_cores": 0.9976457068357154,
+          "phase_absolute_error_cores": 0.00035431925165096967,
+          "constant_absolute_error_cores": 0.00035442122296447387,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9976457068357154,
+          "clipped_constant_absolute_error_cores": 0.00035442122296447387,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88929438922704,
+          "end_ns": 88929939902712,
+          "duration_seconds": 0.500980008,
+          "actual_CPU_cores": 0.9980316519935862,
+          "phase_CPU_cores": 0.9976458088070287,
+          "frozen_whole_query_average_CPU_cores": 0.9976457068357154,
+          "phase_absolute_error_cores": 0.000385843186557544,
+          "constant_absolute_error_cores": 0.00038594515787082617,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9976457068357154,
+          "clipped_constant_absolute_error_cores": 0.00038594515787082617,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        }
+      ]
+    },
+    {
+      "key": "group_sort_holdout_wm4",
+      "predicted_CPU_seconds": 2.1936364620124955,
+      "actual_scheduled_CPU_seconds_approx": 1.904709176,
+      "CPU_APE": 0.151691024358511,
+      "predicted_wall_seconds": 2.212942166084259,
+      "actual_wall_seconds": 1.906487983,
+      "wall_APE": 0.1607427824444143,
+      "boundary_scores": {
+        "mapped": true,
+        "boundaries": [
+          {
+            "path": "",
+            "kind": "Sort",
+            "predicted_seconds": 2.212942166084259,
+            "actual_seconds": 1.84790097,
+            "absolute_error_seconds": 0.3650411960842592,
+            "within_preregistered_tolerance": true
+          },
+          {
+            "path": ".0",
+            "kind": "Hash aggregate consume",
+            "predicted_seconds": 1.8513263735758998,
+            "actual_seconds": 1.6739249999999999,
+            "absolute_error_seconds": 0.1774013735758999,
+            "ground_truth": "EXPLAIN unary-prefix startup = first output, not full spill replay",
+            "within_preregistered_tolerance": true
+          }
+        ]
+      },
+      "windows": [
+        {
+          "start_ns": 88930711771638,
+          "end_ns": 88931212844157,
+          "duration_seconds": 0.501072519,
+          "actual_CPU_cores": 1.0058422301942285,
+          "phase_CPU_cores": 0.9995831338287434,
+          "frozen_whole_query_average_CPU_cores": 0.9912760015297082,
+          "phase_absolute_error_cores": 0.006259096365485051,
+          "constant_absolute_error_cores": 0.014566228664520287,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9912760015297082,
+          "clipped_constant_absolute_error_cores": 0.014566228664520287,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88931212844157,
+          "end_ns": 88931713888261,
+          "duration_seconds": 0.501044104,
+          "actual_CPU_cores": 0.9979059108936247,
+          "phase_CPU_cores": 0.9995831338287434,
+          "frozen_whole_query_average_CPU_cores": 0.9912760015297082,
+          "phase_absolute_error_cores": 0.0016772229351187384,
+          "constant_absolute_error_cores": 0.006629909363916497,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9912760015297082,
+          "clipped_constant_absolute_error_cores": 0.006629909363916497,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88931713888261,
+          "end_ns": 88932214899229,
+          "duration_seconds": 0.501010968,
+          "actual_CPU_cores": 0.9979649627151476,
+          "phase_CPU_cores": 0.9995831338287435,
+          "frozen_whole_query_average_CPU_cores": 0.9912760015297082,
+          "phase_absolute_error_cores": 0.0016181711135959675,
+          "constant_absolute_error_cores": 0.006688961185439379,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9912760015297082,
+          "clipped_constant_absolute_error_cores": 0.006688961185439379,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        }
+      ]
+    },
+    {
+      "key": "group_sort_holdout_wm64",
+      "predicted_CPU_seconds": 2.2035178292112296,
+      "actual_scheduled_CPU_seconds_approx": 1.86640051,
+      "CPU_APE": 0.18062431798801293,
+      "predicted_wall_seconds": 2.2094358522389013,
+      "actual_wall_seconds": 1.869226754,
+      "wall_APE": 0.18200525832988435,
+      "boundary_scores": {
+        "mapped": true,
+        "boundaries": [
+          {
+            "path": "",
+            "kind": "Sort",
+            "predicted_seconds": 2.2094358522389013,
+            "actual_seconds": 1.823870572,
+            "absolute_error_seconds": 0.38556528023890135,
+            "within_preregistered_tolerance": false
+          },
+          {
+            "path": ".0",
+            "kind": "Hash aggregate consume",
+            "predicted_seconds": 1.8799742146685423,
+            "actual_seconds": 1.682947,
+            "absolute_error_seconds": 0.19702721466854234,
+            "ground_truth": "EXPLAIN unary-prefix startup = first output, not full spill replay",
+            "within_preregistered_tolerance": true
+          }
+        ]
+      },
+      "windows": [
+        {
+          "start_ns": 88932686511659,
+          "end_ns": 88933187560303,
+          "duration_seconds": 0.501048644,
+          "actual_CPU_cores": 0.9978960485920404,
+          "phase_CPU_cores": 0.9981229921372784,
+          "frozen_whole_query_average_CPU_cores": 0.9973214777782868,
+          "phase_absolute_error_cores": 0.00022694354523800087,
+          "constant_absolute_error_cores": 0.000574570813753561,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9973214777782868,
+          "clipped_constant_absolute_error_cores": 0.000574570813753561,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88933187560303,
+          "end_ns": 88933688575733,
+          "duration_seconds": 0.50101543,
+          "actual_CPU_cores": 1.0059416693014824,
+          "phase_CPU_cores": 0.9981229921372784,
+          "frozen_whole_query_average_CPU_cores": 0.9973214777782868,
+          "phase_absolute_error_cores": 0.007818677164204035,
+          "constant_absolute_error_cores": 0.008620191523195597,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9973214777782868,
+          "clipped_constant_absolute_error_cores": 0.008620191523195597,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        },
+        {
+          "start_ns": 88933688575733,
+          "end_ns": 88934189662471,
+          "duration_seconds": 0.501086738,
+          "actual_CPU_cores": 0.9978200341035567,
+          "phase_CPU_cores": 0.9981229921372785,
+          "frozen_whole_query_average_CPU_cores": 0.9973214777782868,
+          "phase_absolute_error_cores": 0.00030295803372182295,
+          "constant_absolute_error_cores": 0.0004985563252698499,
+          "frozen_average_with_predicted_lifecycle_CPU_cores": 0.9973214777782868,
+          "clipped_constant_absolute_error_cores": 0.0004985563252698499,
+          "always_running_constant_is_conditional_not_same_lifecycle_forecast": true
+        }
+      ]
+    }
+  ],
+  "physical_IO_or_TPS_or_mixed_five_stages_qualified": false,
+  "CPU_ground_truth_qualification": "approximate kernel runtime/proc counters, not exact boundary-flushed CPU",
+  "automatic_recommendation_qualified": false
+}
